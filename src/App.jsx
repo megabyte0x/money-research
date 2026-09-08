@@ -26,12 +26,16 @@ const BASE = import.meta.env.BASE_URL || '/';
 // Editor-exposed props in the design file; fixed here at their defaults.
 const BODY_SIZE = 17.5;
 const GLOSSARY_HOVER = true;
-const QUOTE_TO_X = true;
+const SELECTION_ACTIONS = true;
+const VIEW_NAMES = { arc: 'the arc', research: 'the research index', timeline: 'the master timeline', takeaways: 'the takeaways', glossary: 'the glossary', search: 'search results' };
+const CHATGPT_URL = 'https://chatgpt.com/?q=';
+const DEFAULT_QUESTION = 'Explain this passage: what is it claiming, and why does it matter?';
+const MAX_PASSAGE = 1200;
 
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 
 export default class App extends React.Component {
-  state = { manifest: [], docs: {}, blocks: {}, glossary: [], route: { view: 'arc' }, query: '', tlq: '', glq: '', collapsed: {}, hoverTerm: null, progress: 0, copied: false, quote: null, theme: null, loaded: false, headerH: 52 };
+  state = { manifest: [], docs: {}, blocks: {}, glossary: [], route: { view: 'arc' }, query: '', tlq: '', glq: '', collapsed: {}, hoverTerm: null, progress: 0, copied: false, quote: null, askOpen: false, askQ: '', promptCopied: false, theme: null, loaded: false, headerH: 52 };
   headerRef = React.createRef();
 
   // The header is one 52px row on desktop and wraps to two rows on a phone; every
@@ -346,6 +350,68 @@ export default class App extends React.Component {
     }
     return res;
   }
+  // ---- selection → ask ChatGPT
+  askPrompt() {
+    const q = this.state.quote; if (!q) return '';
+    const question = this.state.askQ.trim() || DEFAULT_QUESTION;
+    const passage = q.text.length > MAX_PASSAGE ? q.text.slice(0, MAX_PASSAGE - 1) + '…' : q.text;
+    return [question, '', 'Passage from ' + q.label + (q.secTitle ? ', section “' + q.secTitle + '”' : '') + ':',
+      '```', passage, '```', '', 'Source: ' + q.href].join('\n');
+  }
+  openInChatGPT() {
+    window.open(CHATGPT_URL + encodeURIComponent(this.askPrompt()), '_blank', 'noopener');
+    this.setState({ quote: null, askOpen: false, askQ: '' });
+  }
+  copyPrompt() {
+    if (navigator.clipboard) navigator.clipboard.writeText(this.askPrompt());
+    this.setState({ promptCopied: true });
+    clearTimeout(this.pt); this.pt = setTimeout(() => this.setState({ promptCopied: false }), 1600);
+  }
+  renderSelection() {
+    const q = this.state.quote; if (!q) return null;
+    const open = this.state.askOpen;
+    const vw = typeof window !== 'undefined' ? window.innerWidth : 1200;
+    const halfW = open ? Math.min(190, vw / 2 - 12) : 110;
+    const left = Math.min(Math.max(q.x, halfW + 8), vw - halfW - 8);
+    const box = { position: 'absolute', left, top: q.y, transform: 'translateX(-50%)', zIndex: 40, fontFamily: MONO, fontSize: 11 };
+    const xUrl = 'https://twitter.com/intent/tweet?text=' +
+      encodeURIComponent('“' + (q.text.length > 220 ? q.text.slice(0, 217) + '…' : q.text) + '”') + '&url=' + encodeURIComponent(q.href);
+
+    if (!open) {
+      return (
+        <div data-quote-btn="1" style={{ ...box, display: 'flex', gap: 1 }}>
+          <button onClick={() => this.setState({ askOpen: true })}
+            style={s('background:var(--fg);color:var(--bg);padding:6px 10px;white-space:nowrap;font-size:11px')}>Ask ChatGPT ↗</button>
+          <a href={xUrl} target="_blank" rel="noopener"
+            style={s('background:var(--fg);color:var(--bg);padding:6px 10px;white-space:nowrap;text-decoration:none;font-size:11px')}>Post on X ↗</a>
+        </div>
+      );
+    }
+    return (
+      <div data-quote-btn="1" style={{ ...box, width: halfW * 2, maxWidth: 'calc(100vw - 16px)', background: 'var(--bg)', border: '1px solid var(--fg)', boxShadow: '0 8px 24px rgba(0,0,0,.14)' }}>
+        <div style={s('display:flex;align-items:baseline;gap:8px;padding:10px 12px 0')}>
+          <span style={s('color:var(--mut);flex:1')}>Ask ChatGPT about this passage</span>
+          <button onClick={() => this.setState({ quote: null, askOpen: false })} title="Close" style={s('color:var(--mut);font-size:12px')}>×</button>
+        </div>
+        <div style={s("padding:8px 12px 0;font-family:'Newsreader',Georgia,serif;font-size:13.5px;line-height:1.45;color:var(--mut);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden")}>“{q.text}”</div>
+        <div style={s('padding:10px 12px 12px')}>
+          <input autoFocus value={this.state.askQ} placeholder="What do you want to know?"
+            onChange={e => this.setState({ askQ: e.target.value })}
+            onKeyDown={e => { if (e.key === 'Enter') this.openInChatGPT(); if (e.key === 'Escape') this.setState({ quote: null, askOpen: false }); }}
+            style={s('width:100%;box-sizing:border-box;padding:8px 10px;font-size:12px')} />
+          <div style={s('display:flex;gap:8px;align-items:center;margin-top:8px')}>
+            <button onClick={() => this.openInChatGPT()}
+              style={s('background:var(--fg);color:var(--bg);padding:7px 10px;font-size:11px;white-space:nowrap')}>Open in ChatGPT ↗</button>
+            <button onClick={() => this.copyPrompt()} className="hov-fg-border"
+              style={s('color:var(--mut);border:1px solid var(--rule);padding:6px 10px;font-size:11px;white-space:nowrap')}>{this.state.promptCopied ? 'Copied' : 'Copy prompt'}</button>
+            <div style={s('flex:1')}></div>
+            <a href={xUrl} target="_blank" rel="noopener" className="hov-fg" style={s('color:var(--mut);font-size:11px;white-space:nowrap')}>Post on X ↗</a>
+          </div>
+          <div style={s('color:var(--mut);margin-top:8px;line-height:1.45')}>Opens ChatGPT in a new tab with the passage and its source link, answered on your own plan. Empty question → “{DEFAULT_QUESTION.split(':')[0]}…”</div>
+        </div>
+      </div>
+    );
+  }
   renderVals() {
     const st = this.state, r = st.route, R = React.createElement;
     const mobile = !!st.mobile, narrow = !!st.narrow;
@@ -391,7 +457,7 @@ export default class App extends React.Component {
     vals.onSelect = e => { if (e.target.value) location.hash = e.target.value; };
     vals.isArticle = !!cur; vals.isTimeline = r.view === 'timeline'; vals.isGlossary = r.view === 'glossary';
     vals.isTakeaways = r.view === 'takeaways'; vals.isSearch = r.view === 'search';
-    vals.toc = []; vals.tocLabel = 'Contents'; vals.quoteButton = null;
+    vals.toc = []; vals.tocLabel = 'Contents';
     vals.isArc = r.view === 'arc';
     if (vals.isArc) {
       const act = st.stage || 1; const A = App.ARC;
@@ -475,18 +541,22 @@ export default class App extends React.Component {
       vals.searchSummary = st.query.trim().length < 2 ? 'Type at least two characters' : vals.searchResults.length + ' passages match “' + st.query.trim() + '”';
       vals.tocLabel = 'Search'; vals.toc = [];
     }
-    vals.onArticleMouseUp = (e) => {
-      if (!QUOTE_TO_X) return;
+    vals.onArticleMouseUp = () => {
+      if (!SELECTION_ACTIONS) return;
       const sel = window.getSelection(); const text = sel && sel.toString().trim();
       if (!text || text.length < 12) return;
       const rect = sel.getRangeAt(0).getBoundingClientRect();
-      this.setState({ quote: { text, x: rect.left + rect.width / 2, y: rect.top + window.scrollY - 40 } });
+      // remember where the passage came from, so the question carries its own citation
+      let sec = null;
+      document.querySelectorAll('main h2[id]').forEach(h => { if (h.getBoundingClientRect().top <= rect.top + 1) sec = h.id; });
+      const secEl = sec && document.getElementById(sec);
+      const secTitle = secEl ? secEl.innerText.replace(/^[−+]\s*/, '').replace(/\s*(§|copied)\s*$/, '').trim() : null;
+      const label = cur
+        ? (cur.vol === 'gold' ? 'Vol. I — Gold' : 'Vol. II — After Gold') + ', file ' + cur.num + ' — ' + cur.title.replace(/^\d+\s+—\s+/, '')
+        : 'Gold → Dollar · research notes, ' + (VIEW_NAMES[r.view] || r.view);
+      const href = location.origin + location.pathname + (cur ? '#/' + cur.vol + '/' + cur.slug + (sec ? '/' + sec : '') : location.hash);
+      this.setState({ quote: { text, x: rect.left + rect.width / 2, y: rect.top + window.scrollY - 40, label, secTitle, href }, askOpen: false, askQ: '', promptCopied: false });
     };
-    if (st.quote) {
-      const q = st.quote; const t = q.text.length > 220 ? q.text.slice(0, 217) + '…' : q.text;
-      const url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent('“' + t + '”') + '&url=' + encodeURIComponent(location.href);
-      vals.quoteButton = R('a', { href: url, target: '_blank', rel: 'noopener', 'data-quote-btn': '1', style: { position: 'absolute', left: q.x, top: q.y, transform: 'translateX(-50%)', background: 'var(--fg)', color: 'var(--bg)', fontFamily: MONO, fontSize: 11, padding: '6px 10px', textDecoration: 'none', zIndex: 40, whiteSpace: 'nowrap' } }, 'Post quote on X ↗');
-    }
     return vals;
   }
   render() {
@@ -900,7 +970,7 @@ export default class App extends React.Component {
             )}
           </aside>
         </div>
-        {v.quoteButton}
+        {this.renderSelection()}
       </div>
     );
   }
