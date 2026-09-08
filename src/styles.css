@@ -1,0 +1,21 @@
+body{margin:0;--bg:#f6f3ec;--fg:#1c1a16;--mut:#6f6a60;--rule:#dcd6c9;--soft:#ebe6da;--mark:#f3e7b9;background:var(--bg);color:var(--fg);font-family:'Newsreader',Georgia,serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body[data-theme="dark"]{--bg:#161511;--fg:#e6e1d5;--mut:#8f897c;--rule:#2e2b24;--soft:#1f1d17;--mark:#4a4020}
+@media (prefers-color-scheme:dark){body:not([data-theme="light"]){--bg:#161511;--fg:#e6e1d5;--mut:#8f897c;--rule:#2e2b24;--soft:#1f1d17;--mark:#4a4020}}
+a{color:var(--fg);text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--fg)}
+input{font-family:'IBM Plex Mono',monospace;background:transparent;color:var(--fg);border:1px solid var(--rule);outline:none}
+input:focus{border-color:var(--mut)}
+input::placeholder{color:var(--mut)}
+select{font-family:'IBM Plex Mono',monospace}
+button{font-family:'IBM Plex Mono',monospace;background:none;border:0;color:var(--fg);cursor:pointer;padding:0}
+::selection{background:var(--mark)}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+
+/* the header nav scrolls sideways on a phone instead of pushing the page wider */
+.nav-scroll{scrollbar-width:none;-ms-overflow-style:none}
+.nav-scroll::-webkit-scrollbar{display:none}
+
+/* hover states carried over from the prototype's style-hover attributes */
+.hov-soft:hover{background:var(--soft)}
+.hov-fg:hover{color:var(--fg)}
+.hov-fg-border:hover{color:var(--fg);border-color:var(--fg)}

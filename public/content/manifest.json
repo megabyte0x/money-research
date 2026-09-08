@@ -1,0 +1,441 @@
+[
+ {
+  "vol": "gold",
+  "slug": "00-readme",
+  "path": "content/gold/00-readme.md",
+  "title": "Gold: From Bare Metal to World Money and Back — Research Directory",
+  "words": 708,
+  "h2": [
+   "Reading order",
+   "The arc in one paragraph"
+  ],
+  "num": "00"
+ },
+ {
+  "vol": "gold",
+  "slug": "01-the-metal-itself",
+  "path": "content/gold/01-the-metal-itself.md",
+  "title": "01 — The Metal Itself: Where Gold Came From and Why It Was Different",
+  "words": 909,
+  "h2": [
+   "Cosmic and geological origin",
+   "Why gold is chemically unusual",
+   "Where humans first found it",
+   "Electrum: the natural alloy that started coinage",
+   "Key takeaways"
+  ],
+  "num": "01"
+ },
+ {
+  "vol": "gold",
+  "slug": "02-before-money-ornament-ritual-power",
+  "path": "content/gold/02-before-money-ornament-ritual-power.md",
+  "title": "02 — Before Money: Ornament, Ritual, Power and Other Uses",
+  "words": 904,
+  "h2": [
+   "Ornament and status",
+   "Religion and the divine",
+   "Burial and the afterlife",
+   "Tribute, gifts and plunder",
+   "Practical and technical uses",
+   "A unit of weight before a unit of money",
+   "Key takeaways"
+  ],
+  "num": "02"
+ },
+ {
+  "vol": "gold",
+  "slug": "03-from-metal-to-money-weights-rings-coins",
+  "path": "content/gold/03-from-metal-to-money-weights-rings-coins.md",
+  "title": "03 — From Metal to Money: Dust, Rings, Bars and the First Coins",
+  "words": 1150,
+  "h2": [
+   "Stage one: metal by weight (c. 3000–650 BCE)",
+   "Stage two: the invention of the coin (c. 650–550 BCE)",
+   "Stage three: Croesus separates gold from silver (c. 550 BCE)",
+   "Stage four: coinage spreads (550–300 BCE)",
+   "What form gold money took after coinage",
+   "Was gold \"backed\" by anything?",
+   "Key takeaways"
+  ],
+  "num": "03"
+ },
+ {
+  "vol": "gold",
+  "slug": "04-what-gives-gold-its-value",
+  "path": "content/gold/04-what-gives-gold-its-value.md",
+  "title": "04 — What Gives Gold Its Value, and Why Everything Was Denominated in It",
+  "words": 1163,
+  "h2": [
+   "The question properly stated",
+   "Why one good becomes money at all",
+   "Why gold is the most saleable good",
+   "Why prices came to be denominated in gold",
+   "Is gold's value \"intrinsic\" or a social convention?",
+   "What gold's value is *not*",
+   "Key takeaways"
+  ],
+  "num": "04"
+ },
+ {
+  "vol": "gold",
+  "slug": "05-silver-copper-bronze-and-bimetallism",
+  "path": "content/gold/05-silver-copper-bronze-and-bimetallism.md",
+  "title": "05 — Silver, Copper, Bronze and Bimetallism: How the Other Metals Fit Under Gold",
+  "words": 1300,
+  "h2": [
+   "Silver was the workhorse, not the understudy",
+   "Copper and bronze: the oldest and the smallest",
+   "Bimetallism: the fixed ratio and why it kept failing",
+   "How silver and copper were \"backed\" by gold",
+   "The gold–silver ratio through time",
+   "Key takeaways"
+  ],
+  "num": "05"
+ },
+ {
+  "vol": "gold",
+  "slug": "06-rulers-and-empires-how-gold-was-used",
+  "path": "content/gold/06-rulers-and-empires-how-gold-was-used.md",
+  "title": "06 — Rulers and Empires: How Gold Was Worked and Used Across Time and Place",
+  "words": 2009,
+  "h2": [
+   "Egypt (c. 3000–30 BCE)",
+   "Mesopotamia and the Levant (c. 3000–500 BCE)",
+   "Lydia and Persia (c. 650–330 BCE)",
+   "Greece and the Hellenistic world (c. 600–30 BCE)",
+   "Rome (c. 300 BCE–476 CE)",
+   "Byzantium (330–1453)",
+   "The Islamic Caliphate (7th–13th centuries)",
+   "West Africa: Ghana, Mali and Songhai (8th–16th centuries)",
+   "Medieval Europe (c. 500–1500)",
+   "India (c. 600 BCE–1947)",
+   "China (c. 1000 BCE–1935)",
+   "Spain and the Americas (1492–1800)",
+   "Japan (1600–1870)",
+   "Recurring patterns",
+   "Key takeaways"
+  ],
+  "num": "06"
+ },
+ {
+  "vol": "gold",
+  "slug": "07-the-gold-standard-era-1717-1971",
+  "path": "content/gold/07-the-gold-standard-era-1717-1971.md",
+  "title": "07 — The Gold Standard Era, 1717–1971: How Gold Became the Sole World Money and How It Lost the Job",
+  "words": 1569,
+  "h2": [
+   "Newton's accident (1717)",
+   "The gold rushes (1848–1900)",
+   "The classical gold standard (1871–1914)",
+   "The wars break it (1914–1944)",
+   "Bretton Woods (1944–1971)",
+   "The Nixon shock (15 August 1971)",
+   "Why the system failed: the underlying tension",
+   "Key takeaways"
+  ],
+  "num": "07"
+ },
+ {
+  "vol": "gold",
+  "slug": "08-why-the-dollar-replaced-gold",
+  "path": "content/gold/08-why-the-dollar-replaced-gold.md",
+  "title": "08 — Why the Dollar, Not Gold, Is the World's Unit of Account",
+  "words": 1431,
+  "h2": [
+   "The short answer",
+   "Step one: the dollar becomes gold's proxy (1944–1971)",
+   "Step two: oil and the petrodollar (1974 onward)",
+   "Step three: the infrastructure of dollar dominance",
+   "Step four: why gold could not do the job",
+   "What replaced gold's function, precisely",
+   "Is the dollar's position weakening?",
+   "Key takeaways"
+  ],
+  "num": "08"
+ },
+ {
+  "vol": "gold",
+  "slug": "09-gold-today-what-still-holds-its-value",
+  "path": "content/gold/09-gold-today-what-still-holds-its-value.md",
+  "title": "09 — Gold Today (September 2026): What Still Holds Its Value",
+  "words": 1171,
+  "h2": [
+   "The numbers",
+   "The last four years in one paragraph",
+   "What still gives gold value",
+   "What gold does *not* do today",
+   "Why it is still not \"the\" unit of economy",
+   "Key takeaways"
+  ],
+  "num": "09"
+ },
+ {
+  "vol": "gold",
+  "slug": "10-master-timeline",
+  "path": "content/gold/10-master-timeline.md",
+  "title": "10 — Master Timeline: Gold from 4600 BCE to 2026",
+  "words": 1347,
+  "h2": [],
+  "num": "10"
+ },
+ {
+  "vol": "gold",
+  "slug": "11-glossary",
+  "path": "content/gold/11-glossary.md",
+  "title": "11 — Glossary",
+  "words": 976,
+  "h2": [],
+  "num": "11"
+ },
+ {
+  "vol": "gold",
+  "slug": "12-sources",
+  "path": "content/gold/12-sources.md",
+  "title": "12 — Sources and Further Reading",
+  "words": 601,
+  "h2": [
+   "Present-day data (consulted 7 September 2026)",
+   "Ancient and medieval history",
+   "Theory of money",
+   "Gold standard and modern era",
+   "Note on reliability"
+  ],
+  "num": "12"
+ },
+ {
+  "vol": "after",
+  "slug": "00-readme",
+  "path": "content/after/00-readme.md",
+  "title": "After Gold: The Fiat World, 1971–2026 — Research Directory",
+  "words": 890,
+  "h2": [
+   "Reading order",
+   "The arc in one paragraph"
+  ],
+  "num": "00"
+ },
+ {
+  "vol": "after",
+  "slug": "01-the-break-1971-1976",
+  "path": "content/after/01-the-break-1971-1976.md",
+  "title": "01 — The Break, 1971–1976: From the Nixon Shock to Legalised Floating",
+  "words": 1405,
+  "h2": [
+   "What actually happened on 15 August 1971",
+   "The Smithsonian Agreement (December 1971)",
+   "Europe tries to keep fixed rates among itself",
+   "The oil shock forces the issue (1973–74)",
+   "Herstatt and the birth of banking rules (1974)",
+   "Legalising the accident: the Jamaica Accords (1976)",
+   "What floating did to the world economy",
+   "Key takeaways"
+  ],
+  "num": "01"
+ },
+ {
+  "vol": "after",
+  "slug": "02-oil-petrodollars-and-stagflation-1973-1982",
+  "path": "content/after/02-oil-petrodollars-and-stagflation-1973-1982.md",
+  "title": "02 — Oil, Petrodollars and Stagflation, 1973–1982: The First Decade Without an Anchor",
+  "words": 1434,
+  "h2": [
+   "Why inflation followed the end of gold",
+   "The first oil shock (1973–74)",
+   "The petrodollar: the dollar's new anchor",
+   "The policy response and its failure (1974–79)",
+   "The second oil shock and the Soviet invasion of Afghanistan (1979)",
+   "The Volcker shock (1979–82)",
+   "Britain, Reagan and the strong dollar",
+   "Innovation in this decade",
+   "Key takeaways"
+  ],
+  "num": "02"
+ },
+ {
+  "vol": "after",
+  "slug": "03-debt-crises-and-the-managed-dollar-1982-1990",
+  "path": "content/after/03-debt-crises-and-the-managed-dollar-1982-1990.md",
+  "title": "03 — Debt Crises and the Managed Dollar, 1982–1990",
+  "words": 1513,
+  "h2": [
+   "The Latin American debt crisis (1982–89)",
+   "The strong dollar and the Plaza Accord (1985)",
+   "Black Monday (19 October 1987)",
+   "The savings-and-loan disaster (1986–95)",
+   "Basel I (1988): the first global banking rule",
+   "Deregulation and the rise of London",
+   "Wars and politics of the decade in economic terms",
+   "Key takeaways"
+  ],
+  "num": "03"
+ },
+ {
+  "vol": "after",
+  "slug": "04-cold-war-ends-new-nations-new-currencies-1989-2001",
+  "path": "content/after/04-cold-war-ends-new-nations-new-currencies-1989-2001.md",
+  "title": "04 — The Cold War Ends: New Nations, New Currencies and the Euro, 1989–2001",
+  "words": 1819,
+  "h2": [
+   "German reunification and the price of a 1:1 conversion",
+   "The Soviet collapse: fifteen new states, fifteen new currencies",
+   "Central Europe, Yugoslavia and the worst hyperinflation of the era",
+   "Other independences and new currencies",
+   "Maastricht, the ERM crisis and Black Wednesday (1992–93)",
+   "The euro (1999–2002)",
+   "The independence wave",
+   "Key takeaways"
+  ],
+  "num": "04"
+ },
+ {
+  "vol": "after",
+  "slug": "05-globalization-and-emerging-market-crises-1990-2001",
+  "path": "content/after/05-globalization-and-emerging-market-crises-1990-2001.md",
+  "title": "05 — Globalization and the Emerging-Market Crises, 1990–2001",
+  "words": 1581,
+  "h2": [
+   "The trade treaties",
+   "The Tequila crisis (1994–95)",
+   "The Asian financial crisis (1997–98)",
+   "Russia's default and LTCM (1998)",
+   "Brazil and Argentina (1999–2002)",
+   "Deregulation and the dot-com bubble (1995–2002)",
+   "Gold's low point",
+   "Key takeaways"
+  ],
+  "num": "05"
+ },
+ {
+  "vol": "after",
+  "slug": "06-wars-invasions-and-money-1971-2026",
+  "path": "content/after/06-wars-invasions-and-money-1971-2026.md",
+  "title": "06 — Wars, Invasions and Money, 1971–2026",
+  "words": 2248,
+  "h2": [
+   "How the fiat era changed the financing of war",
+   "Vietnam and the Yom Kippur War (1965–74)",
+   "The Soviet–Afghan War and the Iran–Iraq War (1979–89)",
+   "The Gulf War (1990–91)",
+   "The Yugoslav wars (1991–99)",
+   "9/11, Afghanistan and Iraq (2001–21)",
+   "Georgia, Crimea and the road to 2022 (2008–21)",
+   "Ukraine (2022–present)",
+   "Gaza, the Red Sea and the twelve-day war (2023–25)",
+   "The 2026 Iran war and the closure of Hormuz",
+   "Patterns",
+   "Key takeaways"
+  ],
+  "num": "06"
+ },
+ {
+  "vol": "after",
+  "slug": "07-financial-crisis-and-the-age-of-qe-2007-2019",
+  "path": "content/after/07-financial-crisis-and-the-age-of-qe-2007-2019.md",
+  "title": "07 — The Financial Crisis and the Age of Quantitative Easing, 2007–2019",
+  "words": 1732,
+  "h2": [
+   "The bubble",
+   "The crash (2007–09)",
+   "Quantitative easing: the invention of a new instrument",
+   "The eurozone crisis (2010–15)",
+   "The new rulebook",
+   "The political consequences",
+   "China and the yuan",
+   "The end of the cycle (2015–19)",
+   "Key takeaways"
+  ],
+  "num": "07"
+ },
+ {
+  "vol": "after",
+  "slug": "08-innovation-cards-bitcoin-stablecoins-cbdcs",
+  "path": "content/after/08-innovation-cards-bitcoin-stablecoins-cbdcs.md",
+  "title": "08 — Innovation: How Money Dematerialised, 1971–2026",
+  "words": 1878,
+  "h2": [
+   "Why 1971 was also a technological turning point",
+   "Managing the new risks: derivatives (1972–2000)",
+   "Moving money: from SWIFT to real-time payments (1973–2023)",
+   "Financialising gold: the ETF (2003–04)",
+   "Money without an issuer: Bitcoin (2008–)",
+   "The digital dollar by accident: stablecoins (2014–)",
+   "The state's answer: central-bank digital currencies (2020–)",
+   "Innovation's effect on the monetary system",
+   "Key takeaways"
+  ],
+  "num": "08"
+ },
+ {
+  "vol": "after",
+  "slug": "09-pandemic-inflation-and-weaponized-reserves-2020-2026",
+  "path": "content/after/09-pandemic-inflation-and-weaponized-reserves-2020-2026.md",
+  "title": "09 — Pandemic, Inflation and Weaponised Reserves, 2020–2026: Where the System Stands",
+  "words": 1945,
+  "h2": [
+   "The pandemic response: the largest money creation in history",
+   "The inflation (2021–23)",
+   "The weaponisation of reserves and the return of gold (2022–26)",
+   "American debt, the Fed and the tariffs (2025–26)",
+   "Europe, Japan, China and the rest",
+   "The 2026 energy shock",
+   "Where money stands in September 2026",
+   "Key takeaways"
+  ],
+  "num": "09"
+ },
+ {
+  "vol": "after",
+  "slug": "10-rules-treaties-and-institutions",
+  "path": "content/after/10-rules-treaties-and-institutions.md",
+  "title": "10 — Rules, Treaties and Institutions of the Fiat Era: A Reference Table",
+  "words": 1606,
+  "h2": [
+   "International monetary agreements",
+   "Trade agreements",
+   "National laws and regulatory rules that shaped the system",
+   "Institutions created or transformed since 1971",
+   "The pattern",
+   "Key takeaways"
+  ],
+  "num": "10"
+ },
+ {
+  "vol": "after",
+  "slug": "11-master-timeline-1971-2026",
+  "path": "content/after/11-master-timeline-1971-2026.md",
+  "title": "11 — Master Timeline: The Fiat Era, 1971–2026",
+  "words": 1925,
+  "h2": [],
+  "num": "11"
+ },
+ {
+  "vol": "after",
+  "slug": "12-glossary",
+  "path": "content/after/12-glossary.md",
+  "title": "12 — Glossary",
+  "words": 998,
+  "h2": [],
+  "num": "12"
+ },
+ {
+  "vol": "after",
+  "slug": "13-sources",
+  "path": "content/after/13-sources.md",
+  "title": "13 — Sources and Further Reading",
+  "words": 1233,
+  "h2": [
+   "Present-day data and events (consulted 8 September 2026)",
+   "1971–1976: the break",
+   "1973–1982: oil, petrodollars, stagflation",
+   "1982–1990: debt, Plaza, Japan, Basel",
+   "1989–2001: new nations, the euro, emerging-market crises",
+   "Wars and money",
+   "2007–2019: crisis and QE",
+   "Innovation",
+   "2020–2026",
+   "Note on reliability"
+  ],
+  "num": "13"
+ }
+]
