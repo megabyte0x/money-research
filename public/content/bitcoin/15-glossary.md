@@ -1,0 +1,99 @@
+# 15 — Glossary
+ 
+**51% attack** — Control of a majority of mining power, which allows an attacker to censor transactions or reverse recent blocks, but not to create coins the network's nodes would accept. Assembling it from scratch in 2026 would cost about $5 billion of hardware plus gigawatts of power; the practical risk is coercion of the two or three largest pools.
+ 
+**ASIC** — Application-specific integrated circuit; the purpose-built chip used for mining. One maker, Bitmain, supplies about 82% of the market.
+ 
+**Bitcoin standard** — Used in three senses: bitcoin as the unit of account and base money of an economy (the classical-gold-standard analogue); bitcoin as a reserve asset held by states beside gold and Treasuries; and bitcoin as a privately held monetary good. Only the first raises the questions of fixed supply and elasticity (file 07).
+ 
+**Bitcoinisation** — Full adoption of bitcoin as a country's currency, analogous to dollarisation; tried only by El Salvador, 2021–25.
+ 
+**BIP** — Bitcoin Improvement Proposal, the document through which changes to the software or protocol are proposed. BIP-148 (2017) was the user-activated soft fork that forced SegWit; BIP-360 and BIP-361 (2026) address the quantum threat.
+ 
+**Block subsidy** — New coins paid to the miner of each block: 3.125 BTC since April 2024, halving to 1.5625 in April 2028. In 2026 it provided over 99% of miner income.
+ 
+**Cash creation/redemption** — The ETF mechanism the SEC required in 2024, under which authorised participants deliver dollars rather than coins; the sponsor's custodian must then buy real bitcoin, so ETF shares cannot exceed vaulted coins.
+ 
+**Chivo** — El Salvador's state bitcoin wallet, launched 2021 with a $30 bonus; over 60% of users never transacted after collecting it; majority-privatised in 2026 under IMF conditions.
+ 
+**CLARITY Act** — US market-structure bill assigning jurisdiction between the SEC and CFTC; passed the House in 2025, Senate cloture vote 15 September 2026.
+ 
+**Cryptoization** — The IMF's term (2021) for currency and asset substitution by residents of emerging markets into crypto, which it finds reinforces dollarisation and circumvents capital controls.
+ 
+**Custodian** — A firm that holds keys on behalf of others; Coinbase custodies over 80% of US ETF bitcoin. The concentration of custody is the main channel through which a bitcoin failure could reach the traditional system.
+ 
+**Debasement trade** — Investment positioning (JPMorgan's term, 2025) that buys gold and bitcoin as hedges against the erosion of fiat currencies' value; bitcoin is the higher-beta leg.
+ 
+**Debt-deflation** — Irving Fisher's 1933 mechanism: falling prices raise the real burden of fixed nominal debts, forcing distress sales that lower prices further. The core macroeconomic objection to a fixed-supply money.
+ 
+**Difficulty adjustment** — Recalibration every 2,016 blocks (about two weeks) of the mining puzzle so blocks keep arriving every ten minutes regardless of hashrate. The lag means a sudden loss of miners slows the chain for up to two weeks.
+ 
+**Digital Asset Stockpile** — The US holding of seized non-bitcoin tokens created by the March 2025 executive order, alongside the Strategic Bitcoin Reserve.
+ 
+**Elasticity** — The ability of a money supply to expand when demand for money rises, as in a panic; supplied in fiat systems by central-bank lending. Bitcoin's supply has none, which is the basis of the "no lender of last resort" objection.
+ 
+**Exposed public key** — An address whose public key is visible on-chain (all early "pay-to-public-key" outputs and any address that has spent), making it vulnerable to a future quantum computer; estimates run from 1.7 million to 6.9 million BTC.
+ 
+**Fair-value accounting** — FASB's 2023 standard (effective 2025) letting US companies carry bitcoin at market value rather than cost-less-impairment; the change that made corporate treasuries practical.
+ 
+**GENIUS Act** — US federal stablecoin law signed 18 July 2025: issuers must hold 100% reserves in cash and short-term Treasuries, be licensed and audited; no deposit insurance.
+ 
+**Gresham's Law / Thiers' Law** — Bad money drives out good when a legal-tender rule fixes their exchange rate (Gresham); good money drives out bad when people are free to choose and the bad money is failing fast (Thiers). El Salvador demonstrated the first; "hyperbitcoinisation" requires the second.
+ 
+**Halving** — The programmed 50% cut in the block subsidy every 210,000 blocks (about four years): 2012, 2016, 2020, 2024; next expected April 2028.
+ 
+**Hashrate** — Total computing power securing the network, measured in exahashes (10¹⁸) or zettahashes (10²¹) per second; about 950 EH/s in September 2026, down from a peak above 1 ZH/s in autumn 2025.
+ 
+**Hyperbitcoinisation** — Daniel Krawisz's 2014 term for a rapid voluntary switch from fiat to bitcoin as money; on inspection, a scenario that presupposes a fiat collapse.
+ 
+**IBIT** — BlackRock's iShares Bitcoin Trust, the largest spot ETF: 771,610 BTC (3.8% of supply) in September 2026.
+ 
+**Knots** — A rival to the Bitcoin Core reference software, maintained by essentially one person, that kept a strict limit on data in transactions after Core v30 (October 2025) relaxed it; reached 20–25% of reachable nodes.
+ 
+**Legal tender** — A statutory status obliging creditors to accept an asset in discharge of debts and the state to accept it for taxes; it does not oblige merchants to price in it or citizens to use it. Granted to bitcoin by El Salvador (2021–25) and the Central African Republic (2022–23) only.
+ 
+**Lightning Network** — Bitcoin's second-layer payment system of pre-funded channels; public capacity about 4,900 BTC in May 2026, below its 2024 peak; most consumer use is through custodial apps; carries Tether's dollar since March 2026.
+ 
+**Lost coins** — Bitcoins whose keys are irrecoverable; estimated at 2.3–4 million (11–18% of the cap), including the ~1.1 million mined by Satoshi that have never moved.
+ 
+**MiCA** — The EU's Markets in Crypto-Assets regulation, fully in force by 2025 with grandfathering ended 1 July 2026.
+ 
+**mNAV** — Market value of a treasury company divided by the value of its bitcoin; Strategy's fell from about four in late 2024 to about one in 2026, ending the "sell shares above NAV, buy bitcoin" loop.
+ 
+**Node** — A computer running the software that validates every block and transaction against the rules; about 23,000 reachable in 2026. Nodes, not miners or holders, decide what is valid — the lesson of the 2017 block-size war.
+ 
+**OP_RETURN** — A transaction output type that carries arbitrary data; the subject of the 2025–26 Core-versus-Knots dispute.
+ 
+**Paper bitcoin** — Claims on bitcoin exceeding the bitcoin held, created by fractional exchanges, lenders and offshore derivatives; Mt. Gox, FTX and Celsius are the cases.
+ 
+**Perpetual futures** — Derivatives with no expiry, settled mostly in Tether's dollar on offshore venues at up to 100× leverage; the venue of most price discovery and of the $19 billion liquidation of October 2025.
+ 
+**Proof of reserves** — A point-in-time cryptographic attestation of an exchange's assets; omits liabilities and so cannot detect fractional reserves.
+ 
+**Proof of work** — The mechanism (from Hashcash, 1997) by which miners compete to add blocks by expending computation; the source of both bitcoin's security and its energy use.
+ 
+**Satoshi (sat)** — One hundred-millionth of a bitcoin; the unit that would be used if bitcoin were a unit of account.
+ 
+**Security budget** — Total miner income (subsidy plus fees), the cost an attacker must exceed; 99% subsidy in 2026, halving in 2028.
+ 
+**SegWit / Taproot** — Soft-fork upgrades of 2017 and 2021, the two consensus changes of the last decade; each took years to activate.
+ 
+**Stablecoin** — A token redeemable one-for-one for a fiat currency, backed by cash and Treasuries; $300 billion-plus in 2026, 99% dollars; the unit of account of the crypto system and the bridge that makes bitcoin usable — and dollar-dependent.
+ 
+**Strategic Bitcoin Reserve** — US holding of forfeited bitcoin (about 328,000 coins) designated by executive order on 6 March 2025 as not for sale; no purchases have been made and no statute authorises it.
+ 
+**Stratum V2** — A mining protocol letting individual miners build their own block templates instead of accepting the pool's; pledged by pools with 75% of hashrate in May 2026.
+ 
+**Tail emission** — A proposed perpetual small block subsidy to fund security after the halvings; would abandon the 21 million cap.
+ 
+**Template proxying** — The practice, exposed in 2025, of smaller pools relaying AntPool's block templates, so that six entities constructed over 95% of blocks.
+ 
+**Treasury company** — A listed firm whose business is holding bitcoin financed by equity and debt; Strategy (845,050 BTC) and about a hundred imitators from 2025.
+ 
+**Triffin dilemma** — The contradiction in any exchange standard: the centre must issue more claims than it holds reserves to supply the world, and is eventually run on. Applies to a bitcoin-backed fiat as it did to Bretton Woods.
+ 
+**Unit of account** — The function of money in which prices, wages, debts and taxes are stated; bitcoin has never performed it anywhere.
+ 
+**UTXO** — Unspent transaction output; bitcoin's ledger records coins as outputs, each traceable to the block that created it.
+ 
+**Wrench attack** — Physical coercion to obtain a holder's keys; 72 verified cases in 2025, one every 2.5 days in France in early 2026.

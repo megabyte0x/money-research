@@ -437,5 +437,289 @@
    "Note on reliability"
   ],
   "num": "13"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "00-readme",
+  "path": "content/bitcoin/00-readme.md",
+  "title": "Bitcoin: Money Without an Issuer, 2008–2026 — Research Directory",
+  "words": 1239,
+  "h2": [
+   "Reading order",
+   "The arc in one paragraph"
+  ],
+  "num": "00"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "01-the-origin-what-2008-produced",
+  "path": "content/bitcoin/01-the-origin-what-2008-produced.md",
+  "title": "01 — The Origin: What 2008 Produced, and the Currency Structure That Grew Around It",
+  "words": 1815,
+  "h2": [
+   "Where this volume starts",
+   "The moment of birth",
+   "What the design actually is",
+   "How a currency structure formed around it",
+   "What kind of thing this is",
+   "Key takeaways"
+  ],
+  "num": "01"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "02-what-bitcoin-solved-and-what-it-did-not",
+  "path": "content/bitcoin/02-what-bitcoin-solved-and-what-it-did-not.md",
+  "title": "02 — What Bitcoin Solved in Production, and What It Did Not",
+  "words": 1793,
+  "h2": [
+   "The claim, tested against use",
+   "Solved and demonstrated",
+   "Solved in principle, not in practice",
+   "Not solved",
+   "The honest comparison",
+   "Key takeaways"
+  ],
+  "num": "02"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "03-how-bitcoin-is-actually-used-global-adoption",
+  "path": "content/bitcoin/03-how-bitcoin-is-actually-used-global-adoption.md",
+  "title": "03 — How Bitcoin Is Actually Used: Global Adoption, 2009–2026",
+  "words": 1723,
+  "h2": [
+   "The headline numbers",
+   "The dominant use: a savings and speculative asset",
+   "Who adopts it, and where",
+   "Institutional and sovereign adoption",
+   "The industry behind it",
+   "Payments: the small, real corner",
+   "How bitcoin has behaved when it mattered",
+   "Key takeaways"
+  ],
+  "num": "03"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "04-countries-that-adopted-bitcoin-and-what-happened",
+  "path": "content/bitcoin/04-countries-that-adopted-bitcoin-and-what-happened.md",
+  "title": "04 — Countries That Adopted Bitcoin, in What Form, and What Happened",
+  "words": 2918,
+  "h2": [
+   "Four forms of adoption",
+   "El Salvador: the only full experiment",
+   "Central African Republic: the second experiment, in twelve months",
+   "The United States: a reserve of confiscated coins",
+   "Bhutan: mined, then spent",
+   "The rest: announcements, tests and regimes",
+   "Summary table",
+   "What the record shows",
+   "Key takeaways"
+  ],
+  "num": "04"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "05-supporters-and-opponents-and-their-reasoning",
+  "path": "content/bitcoin/05-supporters-and-opponents-and-their-reasoning.md",
+  "title": "05 — Who Favours a Bitcoin Standard, Who Opposes It, and Why",
+  "words": 2142,
+  "h2": [
+   "The shape of the argument",
+   "The opponents",
+   "The reasoning, sorted",
+   "The supporters",
+   "What divides them",
+   "Key takeaways"
+  ],
+  "num": "05"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "06-what-legal-tender-requires-and-what-is-missing",
+  "path": "content/bitcoin/06-what-legal-tender-requires-and-what-is-missing.md",
+  "title": "06 — What Legal Tender Requires, and What Bitcoin Still Lacks",
+  "words": 1604,
+  "h2": [
+   "What \"legal tender\" actually means",
+   "The legal architecture",
+   "The financial architecture",
+   "The economic requirements",
+   "The political requirements",
+   "What is still missing, in order of difficulty",
+   "Key takeaways"
+  ],
+  "num": "06"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "07-the-supply-system-fixed-rate-variable-rate-and-backing",
+  "path": "content/bitcoin/07-the-supply-system-fixed-rate-variable-rate-and-backing.md",
+  "title": "07 — If Bitcoin Were the Unit of the Economy: The Supply System, Fixed Versus Variable Rates, Backing, and How Denomination Would Shift",
+  "words": 2770,
+  "h2": [
+   "Three things people mean by \"a Bitcoin standard\"",
+   "The supply system: what a fixed base does to an economy",
+   "Fixed rate or variable rate? The five regimes",
+   "How would everything come to be denominated in bitcoin?",
+   "Key takeaways"
+  ],
+  "num": "07"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "08-why-not-gold-again",
+  "path": "content/bitcoin/08-why-not-gold-again.md",
+  "title": "08 — Why Not Gold Again? Bitcoin Against the Metal It Imitates",
+  "words": 1832,
+  "h2": [
+   "The question, stated precisely",
+   "First, what the world is actually doing: going back to gold as an asset, not as a standard",
+   "The case for bitcoin over gold",
+   "The case for gold over bitcoin",
+   "Why a restored standard would not be gold — and would not be bitcoin either",
+   "Key takeaways"
+  ],
+  "num": "08"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "09-supply-and-control-who-holds-bitcoin-and-who-benefits",
+  "path": "content/bitcoin/09-supply-and-control-who-holds-bitcoin-and-who-benefits.md",
+  "title": "09 — Supply and Control: Who Holds Bitcoin, Who Runs the Network, and Who Benefits",
+  "words": 2656,
+  "h2": [
+   "Two different kinds of control",
+   "The supply, September 2026",
+   "Who holds it",
+   "Who runs the network",
+   "Corporations that benefit from control of supply or flows",
+   "Key takeaways"
+  ],
+  "num": "09"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "10-the-path-for-large-economies",
+  "path": "content/bitcoin/10-the-path-for-large-economies.md",
+  "title": "10 — The Path for Large Economies: How the United States, China, Europe, Japan, India and the Rest Would Get From Here to a Bitcoin Reserve — or a Bitcoin Standard",
+  "words": 1838,
+  "h2": [
+   "The ladder",
+   "The United States: the leader, by executive order",
+   "China: off the ladder, holding the hardware",
+   "The European Union: regulated, and closed to reserves",
+   "Japan, Korea, India: tax first",
+   "The rest: Russia, Brazil, the Gulf, Switzerland",
+   "What would push a large economy up the ladder",
+   "A realistic sequence",
+   "Key takeaways"
+  ],
+  "num": "10"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "11-defects-that-stop-bitcoin-from-being-a-global-currency",
+  "path": "content/bitcoin/11-defects-that-stop-bitcoin-from-being-a-global-currency.md",
+  "title": "11 — The Defects That Have Stopped Bitcoin From Becoming a Global Currency",
+  "words": 1966,
+  "h2": [
+   "Sorting the defects",
+   "1. Legal and regulatory perimeter — being fixed",
+   "2. Tax and accounting — partly fixed",
+   "3. Scalability — mitigated, not solved",
+   "4. Custody, irreversibility and physical risk — structural, with mitigations",
+   "5. Concentration — structural and worsening",
+   "6. Energy and the security budget — structural and worsening",
+   "7. Governance and technical risk — structural",
+   "8. Unit-of-account failure — structural",
+   "9. Volatility — structural",
+   "10. The macro objections — structural",
+   "The pattern",
+   "Key takeaways"
+  ],
+  "num": "11"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "12-how-bitcoin-could-reproduce-old-crises",
+  "path": "content/bitcoin/12-how-bitcoin-could-reproduce-old-crises.md",
+  "title": "12 — How Bitcoin Could Reproduce the Old Crises",
+  "words": 2314,
+  "h2": [
+   "The thesis",
+   "1. Custodians: the bank run without a central bank (analogue: 1907, 1930–33)",
+   "2. Leverage: the margin cascade (analogue: 1929 margin loans, 1987 portfolio insurance, LTCM 1998)",
+   "3. Treasury companies: the leveraged investment trust (analogue: the 1929 trusts)",
+   "4. Stablecoins: the money-market run (analogue: Reserve Primary Fund 2008, wildcat banks 1837–62)",
+   "5. Deflation: the 1930s in a fixed-supply economy (analogue: 1929–33)",
+   "6. Contagion into the banking system (analogue: 2008 shadow banking)",
+   "7. Sovereign and concentration risk (analogue: central-bank gold sales; the 1960s gold pool)",
+   "8. Mining and security shocks (analogue: the 1970s oil shock, for an economy dependent on one input)",
+   "9. Technical black swans (no analogue: the cap is a software promise)",
+   "The pattern",
+   "Key takeaways"
+  ],
+  "num": "12"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "13-is-bitcoin-the-answer",
+  "path": "content/bitcoin/13-is-bitcoin-the-answer.md",
+  "title": "13 — Is Bitcoin the True Solution to Money After Gold?",
+  "words": 1588,
+  "h2": [
+   "The question the whole project has been building toward",
+   "Is bitcoin a solution to the store-of-value problem fiat created?",
+   "Is bitcoin a solution to the money problem — a unit of account and medium of exchange?",
+   "Is bitcoin a solution to the problem of trust in the institutions that issue money?",
+   "So what is bitcoin, in the terms of this project?",
+   "What would have to change",
+   "A note toward the next question",
+   "Key takeaways"
+  ],
+  "num": "13"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "14-master-timeline-2008-2026",
+  "path": "content/bitcoin/14-master-timeline-2008-2026.md",
+  "title": "14 — Master Timeline, 2008–2026",
+  "words": 1941,
+  "h2": [
+   "Origins and the first structure, 2008–2013",
+   "Exchanges, forks and the first state responses, 2014–2020",
+   "Institutions and states arrive, 2021–2023",
+   "ETFs, sovereign reserves and the 2025 peak, 2024–2025",
+   "The 2026 drawdown, the Iran war, and where things stand"
+  ],
+  "num": "14"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "15-glossary",
+  "path": "content/bitcoin/15-glossary.md",
+  "title": "15 — Glossary",
+  "words": 1496,
+  "h2": [],
+  "num": "15"
+ },
+ {
+  "vol": "bitcoin",
+  "slug": "16-sources",
+  "path": "content/bitcoin/16-sources.md",
+  "title": "16 — Sources and Further Reading",
+  "words": 2013,
+  "h2": [
+   "Primary documents",
+   "Academic and think-tank",
+   "Adoption data",
+   "Country cases (files 04, 05, 10)",
+   "Markets, crises and 2026 events (files 03, 09, 12)",
+   "Books",
+   "Note on reliability"
+  ],
+  "num": "16"
  }
 ]

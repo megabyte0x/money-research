@@ -301,7 +301,7 @@ export default class App extends React.Component {
       if (best) out.push({ m, ...best, same: m.vol === vol ? 1 : 0 });
     }
     out.sort((a, b) => b.same - a.same || b.score - a.score);
-    return out.slice(0, 2).map(o => ({ href: this.href(o.m, o.sec), label: (o.m.vol === 'gold' ? 'I·' : 'II·') + o.m.num + ' ' + this.short(o.m) }));
+    return out.slice(0, 2).map(o => ({ href: this.href(o.m, o.sec), label: ({ gold: 'I·', after: 'II·', bitcoin: 'III·' }[o.m.vol]) + o.m.num + ' ' + this.short(o.m) }));
   }
   timelineGroups() {
     this.refCache = this.refCache || {};
@@ -343,7 +343,7 @@ export default class App extends React.Component {
         const line = b.type === 'table' ? txt.split('\n').find(l => l.toLowerCase().includes(q)) : txt; const li = line.toLowerCase().indexOf(q);
         const start = Math.max(0, li - 110); const end = Math.min(line.length, li + q.length + 160);
         const snippet = [start > 0 ? '…' : '', line.slice(start, li), R('mark', { key: 'm', style: { background: 'var(--mark)', color: 'inherit' } }, line.slice(li, li + q.length)), line.slice(li + q.length, end), end < line.length ? '…' : ''];
-        res.push({ href: this.href(m, sec), label: (m.vol === 'gold' ? 'Vol. I · ' : 'Vol. II · ') + m.num + ' — ' + this.short(m), snippet });
+        res.push({ href: this.href(m, sec), label: ({ gold: 'Vol. I · ', after: 'Vol. II · ', bitcoin: 'Vol. III · ' }[m.vol]) + m.num + ' — ' + this.short(m), snippet });
         if (++n >= 3) break;
       }
       if (res.length > 80) break;
@@ -452,7 +452,7 @@ export default class App extends React.Component {
     vals.themeLabel = (st.theme || (typeof matchMedia !== 'undefined' && matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light')) === 'dark' ? '☾ dark' : '☀ light';
     ['Timeline', 'Takeaways', 'Glossary', 'Arc', 'Research'].forEach(n => vals['nav' + n] = r.view === n.toLowerCase() ? 'var(--fg)' : 'var(--mut)');
     const cur = r.view === 'article' ? this.chapter(r.vol, r.slug) : null;
-    vals.allChapters = st.manifest.map(m => ({ href: this.href(m), optLabel: (m.vol === 'gold' ? 'I·' : 'II·') + m.num + ' ' + this.short(m) }));
+    vals.allChapters = st.manifest.map(m => ({ href: this.href(m), optLabel: ({ gold: 'I·', after: 'II·', bitcoin: 'III·' }[m.vol]) + m.num + ' ' + this.short(m) }));
     vals.selectValue = cur ? this.href(cur) : '';
     vals.onSelect = e => { if (e.target.value) location.hash = e.target.value; };
     vals.isArticle = !!cur; vals.isTimeline = r.view === 'timeline'; vals.isGlossary = r.view === 'glossary';
@@ -469,7 +469,7 @@ export default class App extends React.Component {
     }
     if (cur) {
       const key = cur.slug + '@' + cur.vol; const bl = st.blocks[key] || [];
-      vals.volLabel = cur.vol === 'gold' ? 'Vol. I — Gold' : 'Vol. II — After Gold';
+      vals.volLabel = { gold: 'Vol. I — Gold', after: 'Vol. II — After Gold', bitcoin: 'Vol. III — Bitcoin' }[cur.vol];
       vals.chapterNum = cur.num; vals.readTime = Math.max(1, Math.round(cur.words / 230)); vals.wordCount = cur.words.toLocaleString();
       vals.chapterTitle = cur.title.replace(/^\d+\s+—\s+/, '');
       vals.articleBody = R('div', null, this.blocksToEls(bl, { vol: cur.vol, usedGloss: { set: new Set() } }));
@@ -503,9 +503,10 @@ export default class App extends React.Component {
       });
       vals.volumes = [
         mk('gold', 'Vol. I', '4600 BCE – 1971', 'Gold: from bare metal to world money and back', 'How did a yellow metal become the unit everything else was measured in, how did it share and then lose that job, and why does it still hold value when nothing is priced in it?'),
-        mk('after', 'Vol. II', '1971 – 2026', 'After gold: the fiat world', 'What happened once no currency was defined as a weight of anything — the rules, wars, new currencies, technologies and shocks of the fiat half-century.')];
+        mk('after', 'Vol. II', '1971 – 2026', 'After gold: the fiat world', 'What happened once no currency was defined as a weight of anything — the rules, wars, new currencies, technologies and shocks of the fiat half-century.'),
+        mk('bitcoin', 'Vol. III', '2008 – 2026', 'Bitcoin: money without an issuer', 'What Bitcoin solved, how it is used, and whether it could become the unit of an economy.')];
       vals.tocLabel = 'Volumes';
-      vals.toc = [{ text: 'I · Gold', href: '#/research/vol-gold', indent: '0' }, { text: 'II · After gold', href: '#/research/vol-after', indent: '0' }];
+      vals.toc = [{ text: 'I · Gold', href: '#/research/vol-gold', indent: '0' }, { text: 'II · After gold', href: '#/research/vol-after', indent: '0' }, { text: 'III · Bitcoin', href: '#/research/vol-bitcoin', indent: '0' }];
     }
     if (vals.isTimeline) {
       vals.toggleTlAll = () => this.setState(s2 => ({ tlAll: !s2.tlAll }));
@@ -531,7 +532,7 @@ export default class App extends React.Component {
         const bl = st.blocks[m.slug + '@' + m.vol] || [];
         const i = bl.findIndex(b => b.type === 'h2' && /takeaway/i.test(b.text));
         const body = i < 0 ? [] : bl.slice(i + 1, bl.slice(i + 1).findIndex(b => b.type === 'h2') < 0 ? undefined : i + 1 + bl.slice(i + 1).findIndex(b => b.type === 'h2'));
-        return { id: 'tk-' + m.vol + '-' + m.num, href: this.href(m), label: (m.vol === 'gold' ? 'I · ' : 'II · ') + m.num, title: this.short(m), body: R('div', null, this.blocksToEls(body, { vol: m.vol, usedGloss: { set: new Set() } })) };
+        return { id: 'tk-' + m.vol + '-' + m.num, href: this.href(m), label: ({ gold: 'I · ', after: 'II · ', bitcoin: 'III · ' }[m.vol]) + m.num, title: this.short(m), body: R('div', null, this.blocksToEls(body, { vol: m.vol, usedGloss: { set: new Set() } })) };
       });
       vals.tocLabel = 'Files';
       vals.toc = vals.takeaways.map(t => ({ text: t.label + ' ' + t.title, href: '#/takeaways/' + t.id, indent: '0' }));
@@ -552,7 +553,7 @@ export default class App extends React.Component {
       const secEl = sec && document.getElementById(sec);
       const secTitle = secEl ? secEl.innerText.replace(/^[−+]\s*/, '').replace(/\s*(§|copied)\s*$/, '').trim() : null;
       const label = cur
-        ? (cur.vol === 'gold' ? 'Vol. I — Gold' : 'Vol. II — After Gold') + ', file ' + cur.num + ' — ' + cur.title.replace(/^\d+\s+—\s+/, '')
+        ? ({ gold: 'Vol. I — Gold', after: 'Vol. II — After Gold', bitcoin: 'Vol. III — Bitcoin' }[cur.vol]) + ', file ' + cur.num + ' — ' + cur.title.replace(/^\d+\s+—\s+/, '')
         : 'Gold → Dollar · research notes, ' + (VIEW_NAMES[r.view] || r.view);
       const href = location.origin + location.pathname + (cur ? '#/' + cur.vol + '/' + cur.slug + (sec ? '/' + sec : '') : location.hash);
       this.setState({ quote: { text, x: rect.left + rect.width / 2, y: rect.top + window.scrollY - 40, label, secTitle, href }, askOpen: false, askQ: '', promptCopied: false });
@@ -853,9 +854,9 @@ export default class App extends React.Component {
             </>}
 
             {v.isResearch && <>
-              <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>Research · 27 files in two volumes · compiled 7–8 September 2026</div>
+              <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>Research · {this.state.manifest.length} files in three volumes · updated 13 September 2026</div>
               <h1 style={s('font-weight:500;font-size:34px;line-height:1.15;letter-spacing:-.012em;margin:0 0 20px')}>The research</h1>
-              <p style={s('font-size:17.5px;line-height:1.6;margin:0 0 40px;max-width:64ch;text-wrap:pretty')}>Two sets of notes, each answering one long question. Volume I: how a metal became the unit everything was measured in, and lost the job. Volume II: how a world with no metallic anchor organised its money, and what that cost. Every file ends with key takeaways; historical material is drawn from standard economic-history sources, present-day figures from the IMF, ECB and World Gold Council.</p>
+              <p style={s('font-size:17.5px;line-height:1.6;margin:0 0 40px;max-width:64ch;text-wrap:pretty')}>Three sets of notes, each answering one long question. Volume I traces how gold became money and lost that role. Volume II follows the fiat world after 1971. Volume III examines what Bitcoin solved, how it is used, and what would be required for it to become a monetary standard.</p>
               {v.volumes.map(vol => (
                 <div key={vol.id} id={vol.id} style={s('margin-bottom:48px')}>
                   <div style={s('padding-bottom:12px;border-bottom:1px solid var(--fg);display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
@@ -919,7 +920,7 @@ export default class App extends React.Component {
             </>}
 
             {v.isGlossary && <>
-              <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>Glossary · {v.glossaryCount} terms across both volumes</div>
+              <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>Glossary · {v.glossaryCount} terms across three volumes</div>
               <h1 style={s('font-weight:500;font-size:34px;line-height:1.15;margin:0 0 24px')}>Glossary</h1>
               <input type="search" placeholder="Filter terms" value={v.glq} onChange={v.onGlq} style={s('width:100%;box-sizing:border-box;padding:9px 12px;font-size:12px;margin-bottom:24px')} />
               {v.glossaryRows.map(g => (
@@ -931,7 +932,7 @@ export default class App extends React.Component {
 
             {v.isTakeaways && <>
               <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>Skim mode · the “Key takeaways” section of every file, in reading order</div>
-              <h1 style={s('font-weight:500;font-size:34px;line-height:1.15;margin:0 0 36px')}>The whole arc in 18 paragraphs</h1>
+              <h1 style={s('font-weight:500;font-size:34px;line-height:1.15;margin:0 0 36px')}>The whole arc in key takeaways</h1>
               {v.takeaways.map(t => (
                 <div key={t.id} id={t.id} style={s('padding:24px 0;border-top:1px solid var(--rule)')}>
                   <a href={t.href} style={s('text-decoration:none;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;margin-bottom:10px')}>
