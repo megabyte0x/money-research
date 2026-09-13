@@ -417,7 +417,7 @@ export default class App extends React.Component {
     const mobile = !!st.mobile, narrow = !!st.narrow;
     const vals = {
       shellCols: narrow ? 'minmax(0,1fr)' : 'minmax(0,1fr) 210px',
-      brand: narrow ? 'Gold → Dollar' : 'Gold → Dollar · research notes',
+      brand: 'Gold → Dollar → Crypto',
       selectMax: mobile ? '96px' : '180px',
       navGap: narrow ? '12px' : '18px',
       headerGap: mobile ? '10px' : narrow ? '14px' : '24px',
@@ -554,7 +554,7 @@ export default class App extends React.Component {
       const secTitle = secEl ? secEl.innerText.replace(/^[−+]\s*/, '').replace(/\s*(§|copied)\s*$/, '').trim() : null;
       const label = cur
         ? ({ gold: 'Vol. I — Gold', after: 'Vol. II — After Gold', bitcoin: 'Vol. III — Bitcoin' }[cur.vol]) + ', file ' + cur.num + ' — ' + cur.title.replace(/^\d+\s+—\s+/, '')
-        : 'Gold → Dollar · research notes, ' + (VIEW_NAMES[r.view] || r.view);
+        : 'Gold → Dollar → Crypto · research notes, ' + (VIEW_NAMES[r.view] || r.view);
       const href = location.origin + location.pathname + (cur ? '#/' + cur.vol + '/' + cur.slug + (sec ? '/' + sec : '') : location.hash);
       this.setState({ quote: { text, x: rect.left + rect.width / 2, y: rect.top + window.scrollY - 40, label, secTitle, href }, askOpen: false, askQ: '', promptCopied: false });
     };
