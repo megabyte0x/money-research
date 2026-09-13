@@ -193,6 +193,32 @@ test('Nigeria purchase and cross-border flow shares retain different denominator
   assert.match(sources, /E11.*over 65%.*2024 crypto inflows/);
 });
 
+test('Bitcoin hedge and volatility conclusions do not outrun their dated evidence', () => {
+  for (const path of [
+    'content/bitcoin/02-what-bitcoin-solved-and-what-it-did-not.md',
+    'content/bitcoin/03-how-bitcoin-is-actually-used-global-adoption.md',
+    'content/bitcoin/08-why-not-gold-again.md',
+    'content/bitcoin/11-defects-that-stop-bitcoin-from-being-a-global-currency.md',
+    'content/bitcoin/13-is-bitcoin-the-answer.md'
+  ]) {
+    const article = readFileSync(join(root, 'public', path), 'utf8');
+    assert.match(article, /matched|same dates|same source|same currency/i, path);
+    assert.doesNotMatch(article, /every five.year period|every asset class|every currency|store of value over the cycle|gold is both|first hours of every crisis in which dollars are scarce|structural defects are not solvable|gold's is 9–15%/i, path);
+  }
+  for (const num of ['02', '03', '11']) {
+    const path = manifest.find(m => m.vol === 'bitcoin' && m.num === num).path;
+    const article = readFileSync(join(root, 'public', path), 'utf8');
+    assert.match(article, /000201503426000008\/btc-20260630\.htm/, path);
+    assert.match(article, /87,549\.41/);
+    assert.match(article, /58,745\.18/);
+  }
+  const conclusion = readFileSync(join(root, 'public/content/bitcoin/13-is-bitcoin-the-answer.md'), 'utf8');
+  assert.match(conclusion, /not evidence by itself/);
+  assert.match(conclusion, /2018–23 sample/);
+  assert.match(conclusion, /10% annual-volatility line.*not a necessary condition/);
+  assert.match(conclusion, /Gold Mid-Year Outlook 2026/);
+});
+
 test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {
   const dates = ['3 Jan 2009', '15 Aug 1971', 'c. 4600–4300 BCE', '1925', '31 Oct 2008'];
   assert.deepEqual(dates.sort((a, b) => eventSortValue(a) - eventSortValue(b)),

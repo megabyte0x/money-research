@@ -530,7 +530,7 @@
   "source": "bitcoin/00.md",
   "aliases": ["00"],
   "title": "Bitcoin: Money Without an Issuer, 2008–2026 — Research Directory",
-  "words": 949,
+  "words": 947,
   "h2": [
    "Reading order",
    "The arc in one paragraph"
@@ -564,7 +564,7 @@
   "source": "bitcoin/02.md",
   "aliases": ["02"],
   "title": "02 — What Bitcoin Solved in Production, and What It Did Not",
-  "words": 1674,
+  "words": 1721,
   "h2": [
    "The claim, tested against use",
    "Solved and demonstrated",
@@ -583,7 +583,7 @@
   "source": "bitcoin/03.md",
   "aliases": ["03"],
   "title": "03 — How Bitcoin Is Actually Used: Global Adoption, 2009–2026",
-  "words": 1834,
+  "words": 1819,
   "h2": [
    "The headline numbers",
    "The dominant use: a savings and speculative asset",
@@ -683,7 +683,7 @@
   "source": "bitcoin/08.md",
   "aliases": ["08"],
   "title": "08 — Why Not Gold Again? Bitcoin Against the Metal It Imitates",
-  "words": 1790,
+  "words": 1797,
   "h2": [
    "The question, stated precisely",
    "First, what the world is actually doing: going back to gold as an asset, not as a standard",
@@ -743,7 +743,7 @@
   "source": "bitcoin/11.md",
   "aliases": ["11"],
   "title": "11 — The Defects That Have Stopped Bitcoin From Becoming a Global Currency",
-  "words": 1966,
+  "words": 1910,
   "h2": [
    "Sorting the defects",
    "1. Legal and regulatory perimeter — being fixed",
@@ -794,7 +794,7 @@
   "source": "bitcoin/13.md",
   "aliases": ["13"],
   "title": "13 — Is Bitcoin the True Solution to Money After Gold?",
-  "words": 1130,
+  "words": 1067,
   "h2": [
    "The question the whole project has been building toward",
    "Is bitcoin a solution to the store-of-value problem fiat created?",
@@ -845,7 +845,7 @@
   "source": "bitcoin/16.md",
   "aliases": ["16"],
   "title": "16 — Sources and Further Reading",
-  "words": 2396,
+  "words": 2589,
   "h2": [
    "Primary documents",
    "Academic and think-tank",
