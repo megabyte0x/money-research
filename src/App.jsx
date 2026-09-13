@@ -273,7 +273,8 @@ export default class App extends React.Component {
   }
   static ERAS = {
     gold: [[-650, 'Before coin', 'Metal by weight: silver as the unit of account, gold as treasure and the stuff of kings. Power sits with whoever owns the scales and the mines.'], [500, 'Coin and empire', 'Lydia invents the coin; Persia, Rome and Byzantium make it imperial. Rome discovers debasement — the first inflation.'], [1500, 'The Middle Ages', 'Western Europe on silver pennies for five centuries; Islamic dinars, Mali\'s gold and the Florentine florin bring gold back.'], [1800, 'Early modern', 'American silver floods Europe; prices triple. Bimetallic ratios keep breaking, and Newton\'s mistake puts Britain on gold.'], [1900, 'The 19th century', 'Gold rushes, then the classical gold standard: a currency is a weight of gold, exchange rates are fixed, and deflation bites.'], [1972, '1900 – 1971', 'War breaks the standard; Bretton Woods makes the dollar gold\'s proxy; the proxy fails.'], [9999, 'After 1971', 'Officially just a commodity — yet the price runs from $35 to $850, falls for twenty years, and after 2022 central banks buy it back faster than at any time since the 1960s.']],
-    after: [[1980, 'The 1970s', 'No anchor: two oil shocks, the Great Inflation, gold $35 → $850. Oil is priced in dollars; Volcker restores credibility with 20% rates.'], [1990, 'The 1980s', 'Debt crisis in Latin America, the managed dollar, Japan\'s bubble, and the first global bank rules.'], [2000, 'The 1990s', 'New nations and currencies, the euro, central-bank independence — and a crisis every few years from Mexico to Russia.'], [2010, 'The 2000s', 'China joins the world economy; cheap money builds a housing bubble; 2008 is the fiat era\'s 1929, answered by QE.'], [2020, 'The 2010s', 'Zero rates, eurozone crisis, Bitcoin and stablecoins; money becomes almost entirely information.'], [9999, 'The 2020s', 'Pandemic stimulus, the first serious inflation in forty years, reserves frozen — and central banks go back to gold.']]
+    after: [[1980, 'The 1970s', 'No anchor: two oil shocks, the Great Inflation, gold $35 → $850. Oil is priced in dollars; Volcker restores credibility with 20% rates.'], [1990, 'The 1980s', 'Debt crisis in Latin America, the managed dollar, Japan\'s bubble, and the first global bank rules.'], [2000, 'The 1990s', 'New nations and currencies, the euro, central-bank independence — and a crisis every few years from Mexico to Russia.'], [2010, 'The 2000s', 'China joins the world economy; cheap money builds a housing bubble; 2008 is the fiat era\'s 1929, answered by QE.'], [2020, 'The 2010s', 'Zero rates, eurozone crisis, Bitcoin and stablecoins; money becomes almost entirely information.'], [9999, 'The 2020s', 'Pandemic stimulus, the first serious inflation in forty years, reserves frozen — and central banks go back to gold.']],
+    bitcoin: [[2014, 'Origins, 2008–2013', 'The whitepaper, genesis block, first transactions, exchanges and first failures.'], [2021, 'Exchanges and forks, 2014–2020', 'Custody failures, scaling disputes, stablecoins and the first institutional buyers.'], [2024, 'Institutions and states, 2021–2023', 'Legal-tender experiments, mining bans, contagion and the 2022 crash.'], [2026, 'ETFs and reserves, 2024–2025', 'Spot ETFs open institutional access while governments test reserves and change the rules.'], [9999, 'The 2026 drawdown', 'Price volatility, the Iran war, custody concentration and the unresolved monetary-standard question.']]
   };
   parseYear(date) {
     const d = date.replace(/[*_]/g, ''); let y;
@@ -307,22 +308,25 @@ export default class App extends React.Component {
     this.refCache = this.refCache || {};
     const q = this.state.tlq.trim().toLowerCase(); const groups = [];
     const big = /Varna|Hammurabi|Lydia strikes|Croesus|Darius|Alexander coins|Denarius debased|Constantine|Abd al-Malik|Charlemagne|jiaozi|Florence strikes|Mansa Musa|Potosí|Newton|Bank of England|Britain (leaves|suspends|returns|adopts|formally)|California|Germany adopts|Coinage Act|Witwatersrand|Bretton Woods|Roosevelt|Gold Pool|Nixon suspends|Smithsonian|major currencies float|Yom Kippur|Herstatt|Jamaica|Volcker|Gold peaks|Mexico announces|Plaza|Black Monday|Basel I\b|Berlin Wall|Soviet Union dissolved|Maastricht|ERM crisis|Tequila|Thai baht|Asian|Russia defaults|LTCM|euro (launched|notes)|China joins WTO|9\/11|Iraq invaded|Lehman|QE1|Bitcoin genesis|Whatever it takes|Draghi|Tether|COVID|Russia invades|CPI 9\.1|Liberation Day|GENIUS|gold \$3,000|gold peaks|record|\$5,590|Basel III/i;
+    const bitcoinBig = /whitepaper|genesis block|first transaction|two pizzas|Mt\. Gox|first halving|SegWit|Bitcoin Cash|MicroStrategy|El Salvador|China bans mining|Central African Republic|Terra\/UST|FTX|spot bitcoin ETFs|fourth halving|Strategic Bitcoin Reserve|GENIUS Act|all-time high|Iran war|cycle low|Chivo majority privatised|20\.08m BTC/i;
     const onlyBig = !this.state.tlAll;
-    for (const vol of ['gold', 'after']) {
+    for (const vol of ['gold', 'after', 'bitcoin']) {
       const m = this.state.manifest.find(x => x.vol === vol && x.slug.includes('timeline')); if (!m) continue;
-      const t = (this.state.blocks[m.slug + '@' + vol] || []).find(b => b.type === 'table'); if (!t) continue;
+      const tables = (this.state.blocks[m.slug + '@' + vol] || []).filter(b => b.type === 'table'); if (!tables.length) continue;
       const eras = App.ERAS[vol];
-      const buckets = eras.map(e => ({ id: vol + '-era-' + e[1].toLowerCase().replace(/[^a-z0-9]+/g, '-'), vol: vol === 'gold' ? 'Vol. I' : 'Vol. II', label: e[1], gloss: e[2], rows: [] }));
-      t.rows.forEach((r, i) => {
+      const buckets = eras.map(e => ({ id: vol + '-era-' + e[1].toLowerCase().replace(/[^a-z0-9]+/g, '-'), vol: { gold: 'Vol. I', after: 'Vol. II', bitcoin: 'Vol. III' }[vol], label: e[1], gloss: e[2], rows: [] }));
+      tables.flatMap(t => t.rows).forEach((r, i) => {
         if (q && !r.join(' ').toLowerCase().includes(q)) return;
         const y = this.parseYear(r[0] || ''); let k = eras.findIndex(e => y < e[0]); if (k < 0) k = eras.length - 1;
-        const isBig = big.test(r[1] || '') || big.test(r[2] || '');
+        if (vol === 'bitcoin' && y > 2026) return;
+        const isBig = (vol === 'bitcoin' ? bitcoinBig : big).test((r[1] || '') + ' ' + (r[2] || ''));
         if (onlyBig && !isBig && !q) return;
         const ck = vol + i; const refs = this.refCache[ck] || (this.refCache[ck] = this.rowRefs(vol, r));
+        if (vol === 'bitcoin' && !refs.some(ref => ref.href.startsWith('#/bitcoin/'))) refs.push({ href: this.href(m), label: 'III·14 Master timeline' });
         buckets[k].rows.push({
           id: vol + '-tl-' + i, refs, hasRefs: refs.length > 0, date: this.md.stripInline(r[0] || ''),
           eventEl: this.inline(r[1] || '', { vol, gloss: false, usedGloss: { set: new Set() } }),
-          sigEl: this.inline((r[2] || '').replace(/^—$/, ''), { vol, gloss: false, usedGloss: { set: new Set() } }),
+          sigEl: this.inline((r[2] || '').replace(/^—$/, ''), { vol, gloss: false, usedGloss: { set: new Set() } }), hasSig: !!r[2] && r[2] !== '—',
           size: isBig ? '20px' : '15.5px', weight: isBig ? 500 : 400, pad: isBig ? '18px' : '11px', dot: isBig ? '11px' : '7px',
           dotBg: isBig ? 'var(--fg)' : 'var(--bg)', dotTop: isBig ? '22px' : '17px', dateColor: isBig ? 'var(--fg)' : 'var(--mut)'
         });
@@ -516,7 +520,7 @@ export default class App extends React.Component {
       vals.tlCols = mobile ? '78px 20px minmax(0,1fr)' : '132px 24px minmax(0,1fr)';
       vals.tlKind = st.tlAll || st.tlq ? 'entries' : 'turning points';
       vals.tocLabel = 'Eras';
-      vals.toc = vals.tlGroups.map(g => ({ text: (g.vol === 'Vol. I' ? 'I · ' : 'II · ') + g.label, href: '#/timeline/' + g.id, indent: '0' }));
+      vals.toc = vals.tlGroups.map(g => ({ text: ({ 'Vol. I': 'I · ', 'Vol. II': 'II · ', 'Vol. III': 'III · ' }[g.vol]) + g.label, href: '#/timeline/' + g.id, indent: '0' }));
     }
     if (vals.isGlossary) {
       const q = st.glq.trim().toLowerCase();
@@ -881,8 +885,8 @@ export default class App extends React.Component {
 
             {v.isTimeline && <>
               <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>Master timeline · 4600 BCE – 2026 · {v.timelineCount} {v.tlKind}</div>
-              <h1 style={s('font-weight:500;font-size:34px;line-height:1.15;letter-spacing:-.012em;margin:0 0 20px')}>Six thousand years of gold, fifty-five of fiat</h1>
-              <p style={s('font-size:17px;line-height:1.6;color:var(--mut);margin:0 0 28px;max-width:62ch;text-wrap:pretty')}>One chronology from both volumes, reduced to the turning points. Each era opens with what changed in it; every event links to the file that explains it. Show all entries or filter by name, place or year.</p>
+              <h1 style={s('font-weight:500;font-size:34px;line-height:1.15;letter-spacing:-.012em;margin:0 0 20px')}>From gold to fiat to Bitcoin</h1>
+              <p style={s('font-size:17px;line-height:1.6;color:var(--mut);margin:0 0 28px;max-width:62ch;text-wrap:pretty')}>Three research timelines: gold, the fiat era and Bitcoin. Each era opens with what changed in it; events link to the files that explain them. Show all entries or filter by name, place or year.</p>
               <div style={s('display:flex;gap:12px;align-items:center;margin-bottom:8px')}>
                 <input type="search" placeholder="Filter events — e.g. Lydia, Volcker, Basel, 1980" value={v.tlq} onChange={v.onTlq} style={s('flex:1;min-width:0;box-sizing:border-box;padding:9px 12px;font-size:12px')} />
                 <button onClick={v.toggleTlAll} className="hov-fg-border" style={s('font-size:11px;color:var(--mut);border:1px solid var(--rule);padding:8px 12px;white-space:nowrap')}>{v.tlAllLabel}</button>
@@ -906,7 +910,7 @@ export default class App extends React.Component {
                       </div>
                       <div style={s('border-bottom:1px solid var(--rule)', { padding: rw.pad + ' 0 ' + rw.pad })}>
                         <div style={s('line-height:1.35;text-wrap:pretty', { fontSize: rw.size, fontWeight: rw.weight })}>{rw.eventEl}</div>
-                        <div style={s('font-size:14px;color:var(--mut);line-height:1.5;margin-top:4px')}>{rw.sigEl}</div>
+                        {rw.hasSig && <div style={s('font-size:14px;color:var(--mut);line-height:1.5;margin-top:4px')}>{rw.sigEl}</div>}
                         {rw.hasRefs && (
                           <div style={s("display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:11px")}>
                             {rw.refs.map(x => <a key={x.href + x.label} href={x.href} className="hov-fg" style={s('color:var(--mut);text-decoration-color:var(--rule)')}>→ {x.label}</a>)}
