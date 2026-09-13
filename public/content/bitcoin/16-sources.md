@@ -5,6 +5,8 @@ Compiled 13 September 2026. Live dashboards (bitcointreasuries.net, mempool.spac
 ## Primary documents
  
 Satoshi Nakamoto, *Bitcoin: A Peer-to-Peer Electronic Cash System* (31 October 2008) — https://bitcoin.org/bitcoin.pdf
+
+Bitcoin Developer Guide, *Payment Processing*, “Verifying Payment” and “Issuing Refunds” — https://developer.bitcoin.org/devguide/payment_processing.html#verifying-payment ; https://developer.bitcoin.org/devguide/payment_processing.html#issuing-refunds . Confirmations increase protection against replacement but do not make a transfer absolutely irreversible at a fixed time; a refund is a separate transfer. Accessed 13 September 2026; older numerical examples in the guide are not treated as current network statistics.
  
 White House, *Establishment of the Strategic Bitcoin Reserve and United States Digital Asset Stockpile* (Executive Order, 6 March 2025) — https://www.whitehouse.gov/presidential-actions/2025/03/establishment-of-the-strategic-bitcoin-reserve-and-united-states-digital-asset-stockpile/
  

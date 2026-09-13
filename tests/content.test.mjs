@@ -61,6 +61,22 @@ test('Federal Reserve cryptocurrency survey is not presented as a global Bitcoin
   }
 });
 
+test('Bitcoin settlement claims distinguish confirmations from absolute finality', () => {
+  for (const path of [
+    'content/bitcoin/01-the-origin-what-2008-produced.md',
+    'content/bitcoin/02-what-bitcoin-solved-and-what-it-did-not.md',
+    'content/bitcoin/08-why-not-gold-again.md',
+    'content/bitcoin/13-is-bitcoin-the-answer.md'
+  ]) {
+    const article = readFileSync(join(root, 'public', path), 'utf8');
+    assert.match(article, /confirmations?/i, path);
+    assert.match(article, /developer\.bitcoin\.org\/devguide\/payment_processing\.html#verifying-payment/, path);
+    assert.doesNotMatch(article, /settles with finality in about an hour|final settlement[^.]*takes about an hour|settlement no one can reverse|settled in an hour/i, path);
+    const record = manifest.find(m => m.path === path);
+    assert.equal(record.words, article.trim().split(/\s+/).length, `${path} reading-length metadata`);
+  }
+});
+
 test('reserve-share explanations name the incompatible COFER and gold denominators', () => {
   for (const path of [
     'content/gold/08-why-the-dollar-replaced-gold.md',
