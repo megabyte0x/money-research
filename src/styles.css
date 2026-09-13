@@ -6,7 +6,10 @@ a:hover{text-decoration-color:var(--fg)}
 input{font-family:'IBM Plex Mono',monospace;background:transparent;color:var(--fg);border:1px solid var(--rule);outline:none}
 input:focus{border-color:var(--mut)}
 input::placeholder{color:var(--mut)}
-select{font-family:'IBM Plex Mono',monospace}
+select{font-family:'IBM Plex Mono',monospace;color-scheme:light}
+select option{background:var(--bg);color:var(--fg)}
+body[data-theme="dark"] select{color-scheme:dark}
+@media (prefers-color-scheme:dark){body:not([data-theme="light"]) select{color-scheme:dark}}
 button{font-family:'IBM Plex Mono',monospace;background:none;border:0;color:var(--fg);cursor:pointer;padding:0}
 ::selection{background:var(--mark)}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
