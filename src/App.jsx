@@ -27,7 +27,7 @@ const BASE = import.meta.env.BASE_URL || '/';
 const BODY_SIZE = 17.5;
 const GLOSSARY_HOVER = true;
 const SELECTION_ACTIONS = true;
-const VIEW_NAMES = { arc: 'the arc', research: 'the research index', timeline: 'the master timeline', takeaways: 'the takeaways', glossary: 'the glossary', search: 'search results' };
+const VIEW_NAMES = { home: 'start here', compare: 'comparison', methods: 'methods', arc: 'the arc', research: 'the research index', timeline: 'the master timeline', takeaways: 'the takeaways', glossary: 'the glossary', search: 'search results' };
 const CHATGPT_URL = 'https://chatgpt.com/?q=';
 const DEFAULT_QUESTION = 'Explain this passage: what is it claiming, and why does it matter?';
 const MAX_PASSAGE = 1200;
@@ -35,7 +35,7 @@ const MAX_PASSAGE = 1200;
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 
 export default class App extends React.Component {
-  state = { manifest: [], docs: {}, blocks: {}, glossary: [], route: { view: 'arc' }, query: '', tlq: '', glq: '', collapsed: {}, hoverTerm: null, progress: 0, copied: false, quote: null, askOpen: false, askQ: '', promptCopied: false, theme: null, loaded: false, headerH: 52 };
+  state = { manifest: [], docs: {}, blocks: {}, glossary: [], route: { view: 'home' }, query: '', tlq: '', glq: '', collapsed: {}, hoverTerm: null, progress: 0, copied: false, quote: null, askOpen: false, askQ: '', promptCopied: false, theme: null, loaded: false, headerH: 52, menuOpen: false };
   headerRef = React.createRef();
 
   // The header is one 52px row on desktop and wraps to two rows on a phone; every
@@ -49,7 +49,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    this.onHash = () => this.setState({ route: this.parseHash(), collapsed: {}, quote: null }, () => this.scrollToSection());
+    this.onHash = () => this.setState({ route: this.parseHash(), collapsed: {}, quote: null, menuOpen: false, query: this.searchFromHash() }, () => this.scrollToSection());
     window.addEventListener('hashchange', this.onHash);
     this.onScroll = () => {
       const h = document.documentElement; const max = h.scrollHeight - h.clientHeight; const stage = this.currentStage();
@@ -89,18 +89,21 @@ export default class App extends React.Component {
     glossary = glossary.filter(g => { const k = g.term.toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; }).sort((a, b) => a.term.localeCompare(b.term));
     this.glossRe = new RegExp('\\b(' + glossary.map(g => g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim()).filter(t => t.length > 3).sort((a, b) => b.length - a.length).map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')\\b', 'i');
     this.glossMap = {}; glossary.forEach(g => { this.glossMap[g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim().toLowerCase()] = g; });
-    this.setState({ manifest, docs, blocks, glossary, loaded: true, route: this.parseHash() }, () => this.scrollToSection());
+    this.setState({ manifest, docs, blocks, glossary, loaded: true, route: this.parseHash(), query: this.searchFromHash() }, () => this.scrollToSection());
+  }
+  searchFromHash() {
+    return new URLSearchParams((location.hash.split('?')[1] || '')).get('q') || '';
   }
   parseHash() {
     // #/<view>[/<section>] for the standalone views, #/<vol>/<slug>[/<section>] for a file.
     // The prototype only read a section off a third segment, which sent every jump link
     // (#/arc/arc-5, #/timeline/<era>, #/glossary/<term>) down the article branch and blanked the page.
-    const h = (location.hash || '#/arc').replace(/^#\/?/, '');
+    const h = (location.hash || '#/home').split('?')[0].replace(/^#\/?/, '');
     const seg = h.split('/').filter(Boolean);
-    if (['timeline', 'glossary', 'takeaways', 'arc', 'research'].includes(seg[0])) return { view: seg[0], sec: seg[1] || null };
+    if (['home', 'compare', 'methods', 'timeline', 'glossary', 'takeaways', 'arc', 'research'].includes(seg[0])) return { view: seg[0], sec: seg[1] || null };
     if ((seg[0] || '').startsWith('search')) return { view: 'search' };
     if (seg[0] && seg[1]) return { view: 'article', vol: seg[0], slug: seg[1], sec: seg[2] || null };
-    return { view: 'arc' };
+    return { view: 'home' };
   }
   // ---- Arc: regimes + charts
   static ARC = [
@@ -283,26 +286,20 @@ export default class App extends React.Component {
     return /BCE/.test(d) ? -y : y;
   }
   rowRefs(vol, r) {
-    const text = this.md.stripInline((r[1] || '') + ' ' + (r[2] || ''));
-    const stop = /^(The|And|First|Second|New|Gold|Silver|Bank|Act|War|Crisis|Agreement|Treaty|United|States|Europe|European|World|Money|Coins?|Central|Federal|System|Standard|Reserve|Dollar|Price|Rate|Rates)$/;
-    const words = [...new Set((text.match(/\b[A-Z][a-zA-Zé'’-]{3,}\b/g) || []).filter(w => !stop.test(w)))].slice(0, 8);
-    const years = [...new Set((r[0] || '').match(/\b\d{4}\b/g) || [])];
-    if (!words.length && !years.length) return [];
-    const out = [];
-    for (const m of this.state.manifest) {
-      if (/timeline|glossary|sources|readme/.test(m.slug)) continue;
-      const bl = this.state.blocks[m.slug + '@' + m.vol] || []; let sec = null, best = null;
-      for (const b of bl) {
-        if (b.type === 'h2') { sec = b.id; continue; }
-        if (b.type !== 'p') continue;
-        const t = b.text; let score = 0;
-        words.forEach(w => { if (t.includes(w)) score += 2; }); years.forEach(y => { if (t.includes(y)) score += 1; });
-        if (score >= 3 && (!best || score > best.score)) best = { score, sec };
-      }
-      if (best) out.push({ m, ...best, same: m.vol === vol ? 1 : 0 });
+    // Only editorially reviewed event-to-section mappings may lead to a chapter.
+    // All other rows link to their source timeline, never a keyword-matched passage.
+    const key = `${vol}|${this.md.stripInline(r[0] || '')}|${this.md.stripInline(r[1] || '')}`;
+    const reviewed = {
+      'after|Mar 2003|Iraq invaded': ['after', '06', '9-11-afghanistan-and-iraq-2001-21'],
+      'after|2 Jul 1997|Thai baht floats': ['after', '05', 'the-asian-financial-crisis-1997-98']
+    }[key];
+    if (reviewed) {
+      const m = this.state.manifest.find(x => x.vol === reviewed[0] && x.num === reviewed[1]);
+      const section = m && (this.state.blocks[m.slug + '@' + m.vol] || []).find(b => b.id === reviewed[2]);
+      if (section) return [{ href: this.href(m, section.id), label: this.short(m) + ' · ' + this.md.stripInline(section.text) }];
     }
-    out.sort((a, b) => b.same - a.same || b.score - a.score);
-    return out.slice(0, 2).map(o => ({ href: this.href(o.m, o.sec), label: ({ gold: 'I·', after: 'II·', bitcoin: 'III·' }[o.m.vol]) + o.m.num + ' ' + this.short(o.m) }));
+    const source = this.state.manifest.find(x => x.vol === vol && x.slug.includes('timeline'));
+    return source ? [{ href: this.href(source), label: 'Source timeline · Vol. ' + ({ gold: 'I', after: 'II', bitcoin: 'III' }[vol]) }] : [];
   }
   timelineGroups() {
     this.refCache = this.refCache || {};
@@ -322,7 +319,6 @@ export default class App extends React.Component {
         const isBig = (vol === 'bitcoin' ? bitcoinBig : big).test((r[1] || '') + ' ' + (r[2] || ''));
         if (onlyBig && !isBig && !q) return;
         const ck = vol + i; const refs = this.refCache[ck] || (this.refCache[ck] = this.rowRefs(vol, r));
-        if (vol === 'bitcoin' && !refs.some(ref => ref.href.startsWith('#/bitcoin/'))) refs.push({ href: this.href(m), label: 'III·14 Master timeline' });
         buckets[k].rows.push({
           id: vol + '-tl-' + i, refs, hasRefs: refs.length > 0, date: this.md.stripInline(r[0] || ''),
           eventEl: this.inline(r[1] || '', { vol, gloss: false, usedGloss: { set: new Set() } }),
@@ -339,20 +335,22 @@ export default class App extends React.Component {
     const q = this.state.query.trim().toLowerCase(); if (q.length < 2) return [];
     const R = React.createElement; const res = [];
     for (const m of this.state.manifest) {
-      const bl = this.state.blocks[m.slug + '@' + m.vol]; let sec = null; let n = 0;
+      const bl = this.state.blocks[m.slug + '@' + m.vol]; let sec = null, secTitle = ''; let n = 0;
       for (const b of bl) {
-        if (b.type === 'h2') sec = b.id;
+        if (b.type === 'h2') { sec = b.id; secTitle = this.md.stripInline(b.text); }
         const txt = b.type === 'p' || b.type === 'quote' ? this.md.stripInline(b.text) : b.type === 'table' ? b.rows.map(r => r.join(' — ')).join('\n') : b.type === 'ul' || b.type === 'ol' ? b.items.join('\n') : '';
         const idx = txt.toLowerCase().indexOf(q); if (idx < 0) continue;
         const line = b.type === 'table' ? txt.split('\n').find(l => l.toLowerCase().includes(q)) : txt; const li = line.toLowerCase().indexOf(q);
         const start = Math.max(0, li - 110); const end = Math.min(line.length, li + q.length + 160);
         const snippet = [start > 0 ? '…' : '', line.slice(start, li), R('mark', { key: 'm', style: { background: 'var(--mark)', color: 'inherit' } }, line.slice(li, li + q.length)), line.slice(li + q.length, end), end < line.length ? '…' : ''];
-        res.push({ href: this.href(m, sec), label: ({ gold: 'Vol. I · ', after: 'Vol. II · ', bitcoin: 'Vol. III · ' }[m.vol]) + m.num + ' — ' + this.short(m), snippet });
+        const reference = /readme|timeline|sources/.test(m.slug);
+        res.push({ href: this.href(m, sec), label: ({ gold: 'Vol. I · ', after: 'Vol. II · ', bitcoin: 'Vol. III · ' }[m.vol]) + this.short(m) + (secTitle ? ' · ' + secTitle : ''), snippet,
+          score: (reference ? -10 : 0) + (m.slug.includes('glossary') ? 7 : 0) + (secTitle.toLowerCase().includes(q) ? 5 : 0) + (txt.toLowerCase().startsWith(q) ? 2 : 0) });
         if (++n >= 3) break;
       }
       if (res.length > 80) break;
     }
-    return res;
+    return res.sort((a, b) => b.score - a.score);
   }
   // ---- selection → ask ChatGPT
   askPrompt() {
@@ -420,8 +418,9 @@ export default class App extends React.Component {
     const st = this.state, r = st.route, R = React.createElement;
     const mobile = !!st.mobile, narrow = !!st.narrow;
     const vals = {
+      mobile,
       shellCols: narrow ? 'minmax(0,1fr)' : 'minmax(0,1fr) 210px',
-      brand: 'Gold → Dollar → Crypto',
+      brand: 'Money Research',
       selectMax: mobile ? '96px' : '180px',
       navGap: narrow ? '12px' : '18px',
       headerGap: mobile ? '10px' : narrow ? '14px' : '24px',
@@ -436,15 +435,18 @@ export default class App extends React.Component {
       rightDisplay: narrow ? 'none' : 'block',
       stageCols: mobile ? 'minmax(0,1fr)' : '120px minmax(0,1fr)',
       stageGap: mobile ? '10px' : '24px',
-      selectDisplay: 'block',
+      selectDisplay: mobile ? 'none' : 'block',
       progressPct: (st.progress * 100).toFixed(1) + '%',
       query: st.query, tlq: st.tlq, glq: st.glq,
       bodyFontSize: BODY_SIZE + 'px'
     };
     vals.onQuery = e => {
       const v = e.target.value; this.setState({ query: v });
-      if (v.trim().length >= 2) { if (r.view !== 'search') { this.prevHash = location.hash; location.hash = '#/search'; } }
-      else if (r.view === 'search') location.hash = this.prevHash || '#/arc';
+      if (v.trim()) {
+        if (r.view !== 'search') this.prevHash = location.hash;
+        history.replaceState(null, '', '#/search?q=' + encodeURIComponent(v));
+        if (r.view !== 'search') this.setState({ route: { view: 'search' } });
+      } else if (r.view === 'search') location.hash = this.prevHash || '#/home';
     };
     vals.onTlq = e => this.setState({ tlq: e.target.value });
     vals.onGlq = e => this.setState({ glq: e.target.value });
@@ -454,18 +456,19 @@ export default class App extends React.Component {
       document.body.dataset.theme = next; localStorage.setItem('mr-theme', next); this.setState({ theme: next });
     };
     vals.themeLabel = (st.theme || (typeof matchMedia !== 'undefined' && matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light')) === 'dark' ? '☾ dark' : '☀ light';
-    ['Timeline', 'Takeaways', 'Glossary', 'Arc', 'Research'].forEach(n => vals['nav' + n] = r.view === n.toLowerCase() ? 'var(--fg)' : 'var(--mut)');
+    ['Home', 'Compare', 'Methods', 'Timeline', 'Takeaways', 'Glossary', 'Arc', 'Research'].forEach(n => vals['nav' + n] = r.view === n.toLowerCase() ? 'var(--fg)' : 'var(--mut)');
     const cur = r.view === 'article' ? this.chapter(r.vol, r.slug) : null;
     vals.allChapters = st.manifest.map(m => ({ href: this.href(m), optLabel: ({ gold: 'I·', after: 'II·', bitcoin: 'III·' }[m.vol]) + m.num + ' ' + this.short(m) }));
     vals.selectValue = cur ? this.href(cur) : '';
     vals.onSelect = e => { if (e.target.value) location.hash = e.target.value; };
+    vals.isHome = r.view === 'home'; vals.isCompare = r.view === 'compare'; vals.isMethods = r.view === 'methods';
     vals.isArticle = !!cur; vals.isTimeline = r.view === 'timeline'; vals.isGlossary = r.view === 'glossary';
     vals.isTakeaways = r.view === 'takeaways'; vals.isSearch = r.view === 'search';
     vals.toc = []; vals.tocLabel = 'Contents';
     vals.isArc = r.view === 'arc';
     if (vals.isArc) {
       const act = st.stage || 1; const A = App.ARC;
-      vals.arcBand = A.map(a => ({ href: '#/arc/arc-' + a.n, title: a.title, label: narrow ? ROMAN[a.n - 1] : a.label, flex: a.flex, bg: a.n === act ? 'var(--fg)' : 'transparent', color: a.n === act ? 'var(--bg)' : 'var(--mut)' }));
+      vals.arcBand = A.map(a => ({ href: '#/arc/arc-' + a.n, title: a.title, label: a.label, flex: a.flex, bg: a.n === act ? 'var(--fg)' : 'transparent', color: a.n === act ? 'var(--bg)' : 'var(--mut)' }));
       const active = A[act - 1]; vals.arcActiveAnchor = active.anchor; vals.arcActivePower = active.power;
       Object.assign(vals, this.arcCharts());
       vals.tocLabel = 'Regimes';
@@ -569,8 +572,8 @@ export default class App extends React.Component {
     return (
       <div style={s('min-height:100vh;display:flex;flex-direction:column')}>
         <div style={s('position:fixed;top:0;left:0;height:2px;background:var(--fg);z-index:20', { width: v.progressPct })}></div>
-        <header ref={this.headerRef} style={s("position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--rule);display:flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px", { gap: v.headerGap, rowGap: '8px', padding: v.headerPad, height: v.headerHeight, minHeight: '52px', flexWrap: v.headerWrap })}>
-          <a href="#/arc" style={s('text-decoration:none;white-space:nowrap;display:flex;gap:10px;align-items:center')}>
+        <header ref={this.headerRef} style={s("position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--rule);display:flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px", { columnGap: v.headerGap, rowGap: '8px', padding: v.headerPad, height: v.headerHeight, minHeight: '52px', flexWrap: v.headerWrap })}>
+          <a href="#/home" style={s('text-decoration:none;white-space:nowrap;display:flex;gap:10px;align-items:center')}>
             <span style={s('width:7px;height:7px;border:1px solid var(--fg);display:inline-block')}></span>{v.brand}
           </a>
           <select value={v.selectValue} onChange={v.onSelect} style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;background:transparent;color:var(--fg);border:1px solid var(--rule);padding:6px 8px;min-width:0", { display: v.selectDisplay, maxWidth: v.selectMax })}>
@@ -580,23 +583,78 @@ export default class App extends React.Component {
           <input type="search" placeholder="Search" value={v.query} onChange={v.onQuery} aria-label="Search all files"
             style={s('padding:6px 8px;font-size:12px;box-sizing:border-box;min-width:0;flex-shrink:1', { width: v.searchWidth })} />
           <div style={s('flex:1')}></div>
-          <nav className="nav-scroll" style={s('display:flex;color:var(--mut);white-space:nowrap;align-items:center;min-width:0', { gap: v.navGap, flex: v.navFlex, overflowX: v.navOverflow })}>
-            <a href="#/arc" style={s('text-decoration:none', { color: v.navArc })}>The arc</a>
+          {v.mobile && <button aria-expanded={!!this.state.menuOpen} aria-controls="main-navigation" onClick={() => this.setState(st => ({ menuOpen: !st.menuOpen }))} style={s('border:1px solid var(--rule);padding:7px 10px')}>Menu</button>}
+          <nav id="main-navigation" className="nav-scroll" style={s('display:flex;color:var(--mut);white-space:nowrap;align-items:center;min-width:0', { gap: v.navGap, flex: v.navFlex, overflowX: v.navOverflow, display: v.mobile && !this.state.menuOpen ? 'none' : 'flex', flexWrap: v.mobile ? 'wrap' : 'nowrap' })}>
+            <a href="#/home" style={s('text-decoration:none', { color: v.navHome })}>Start here</a>
+            <a href="#/compare" style={s('text-decoration:none', { color: v.navCompare })}>Compare</a>
+            <a href="#/arc" style={s('text-decoration:none', { color: v.navArc })}>History</a>
             <a href="#/research" style={s('text-decoration:none', { color: v.navResearch })}>Research</a>
             <a href="#/timeline" style={s('text-decoration:none', { color: v.navTimeline })}>Timeline</a>
             <a href="#/takeaways" style={s('text-decoration:none', { color: v.navTakeaways })}>Takeaways</a>
             <a href="#/glossary" style={s('text-decoration:none', { color: v.navGlossary })}>Glossary</a>
+            <a href="#/methods" style={s('text-decoration:none', { color: v.navMethods })}>Sources</a>
             <button onClick={v.toggleTheme} title="Toggle color mode" style={s('color:var(--mut);font-size:12px')}>{v.themeLabel}</button>
           </nav>
         </header>
         <div style={s('display:grid;gap:0;flex:1', { gridTemplateColumns: v.shellCols })}>
           <main style={s('padding:40px clamp(16px,4vw,56px) 120px;max-width:820px;width:100%;box-sizing:border-box;justify-self:center;min-width:0')} onMouseUp={v.onArticleMouseUp}>
 
+            {v.isHome && <div className="intro-page">
+              <p className="eyebrow">An evidence-led guide · three research volumes</p>
+              <h1>How money works—and why it changes.</h1>
+              <p className="lead">Explore gold, government currencies, and Bitcoin through history, evidence, and the trade-offs between saving, paying, pricing, and settling.</p>
+              <div className="actions"><a href="#/research">Start with the research →</a><a href="#/compare">Compare monetary arrangements →</a></div>
+              <h2>Four jobs, different arrangements</h2>
+              <p>A store of value carries purchasing power through time. A medium of exchange helps people pay. A unit of account is what prices and debts are written in. A settlement asset discharges an obligation between parties or institutions. One asset need not do all four jobs.</p>
+              <div className="question-grid">
+                <a href="#/gold/08-why-the-dollar-replaced-gold">Why did gold lose its monetary role?<small>Convertibility, crisis and the dollar network · Vol. I</small></a>
+                <a href="#/after/01-the-break-1971-1976">What supports money today?<small>Institutions, bank liabilities and acceptance · Vol. II</small></a>
+                <a href="#/bitcoin/02-what-bitcoin-solved-and-what-it-did-not">What did Bitcoin solve?<small>Permissionless transfer—and its limits · Vol. III</small></a>
+              </div>
+              <h2>A useful comparison starts with custody</h2>
+              <p>Cash is an issuer's liability, a bank balance is a claim on a bank, physical gold is an asset held somewhere, and self-custodied Bitcoin depends on control of keys. An exchange balance or stablecoin adds another issuer or custodian. <a href="#/compare">Compare the arrangements by use →</a></p>
+              <h2>History overlaps</h2>
+              <p>Classical gold convertibility was interrupted by the First World War. Interwar attempts to restore it differed from the post-1944 Bretton Woods dollar system. Since the 1970s, fiat currencies, gold reserves, bank deposits and newer digital arrangements have coexisted; Bitcoin is not an inevitable next regime.</p>
+              <div className="actions"><a href="#/arc">Read the historical arc →</a><a href="#/timeline">Explore the timelines →</a></div>
+              <h2>What remains unresolved</h2>
+              <p>Bitcoin permits transfer without a central operator, but broad use for wages, prices and debts remains limited. Claims about adoption, comparative returns and official reserves need populations, dates and precise source locations. We are reviewing those claims and have withheld the historical arc's unverified quantitative charts.</p>
+              <p className="small-note">Research edition · 13 September 2026 · <a href="#/methods">Scope, sources and corrections</a></p>
+            </div>}
+
+            {v.isCompare && <div className="intro-page">
+              <p className="eyebrow">Comparison · provisional qualitative guide</p><h1>Compare arrangements, not slogans.</h1>
+              <p className="lead">The custody and issuer matter as much as the asset. Pick a use—saving, everyday payment, cross-border settlement, or pricing debts—and inspect the trade-offs. This is not an asset ranking or investment advice.</p>
+              <div className="comparison-wrap"><table className="comparison"><caption>Illustrative arrangements; terms vary by jurisdiction and provider. Follow the chapters for context.</caption><thead><tr><th>Arrangement</th><th>Who holds or owes it?</th><th>Useful distinction</th><th>Read further</th></tr></thead><tbody>
+                <tr><th>Physical gold</th><td>Owner or chosen vault; custody must be specified</td><td>No issuer liability for the metal itself; storage, assay and payment friction remain.</td><td><a href="#/gold/04-what-gives-gold-its-value">Gold's uses</a></td></tr>
+                <tr><th>Fiat cash</th><td>Central-bank liability, held by bearer</td><td>Convenient domestic payment and pricing; access and value depend on institutions.</td><td><a href="#/after/01-the-break-1971-1976">After 1971</a></td></tr>
+                <tr><th>Bank deposit</th><td>Commercial-bank liability</td><td>Payment and credit services with bank, legal and deposit-protection exposure.</td><td><a href="#/after/07-financial-crisis-and-the-age-of-qe-2007-2019">Banks and QE</a></td></tr>
+                <tr><th>Self-custodied Bitcoin</th><td>Key holder controls transfers</td><td>Network settlement without a central operator; key loss, fees and price risk remain.</td><td><a href="#/bitcoin/02-what-bitcoin-solved-and-what-it-did-not">Solved and unsolved</a></td></tr>
+                <tr><th>Custodial Bitcoin</th><td>Exchange or other custodian owes a balance</td><td>Provider may ease access but reintroduces custody and withdrawal risk.</td><td><a href="#/bitcoin/09-supply-and-control-who-holds-bitcoin-and-who-benefits">Control and custody</a></td></tr>
+                <tr><th>Fiat-backed stablecoin</th><td>Named issuer and its reserve/custody chain</td><td>Dollar-denominated transfer; backing, redemption eligibility and law vary by token.</td><td><a href="#/after/08-innovation-cards-bitcoin-stablecoins-cbdcs">Digital arrangements</a></td></tr>
+              </tbody></table></div><p className="small-note">Evidence review is in progress. No scores, universal guarantees or current market figures are implied. <a href="#/methods">Methods and corrections →</a></p>
+            </div>}
+
+            {v.isMethods && <div className="intro-page">
+              <p className="eyebrow">Research method · revision 13 September 2026</p><h1>Scope and sources</h1>
+              <p>The library contains 44 original research documents: 13 on gold, 14 on the post-1971 monetary system and 17 on Bitcoin. This edition presents their arguments, not an independently verified dataset. Historical, legal and market claims are under editorial review; dated observations should not be read as live figures.</p>
+              <p>Each volume includes its source list: <a href="#/gold/12-sources">Gold sources</a>, <a href="#/after/13-sources">After Gold sources</a>, and <a href="#/bitcoin/16-sources">Bitcoin sources</a>. Some entries still need exact document and passage locators. The comparison is a qualitative guide and the historical arc's numerical charts are withheld while their data are checked.</p>
+              <p>Authorship and editorial attribution have not yet been verified for publication. To suggest a correction, <a href="https://github.com/megabyte0x/money-research/issues/new" target="_blank" rel="noopener noreferrer">open a correction issue ↗</a> with the chapter, passage and supporting source. Substantive revisions will be recorded here as the audit progresses.</p>
+              <p className="small-note">Revision history: 13 September 2026 — first evidence-led entry page, qualitative comparison, and removal of automatic timeline references.</p>
+            </div>}
+
+            {v.isArticle && v.mobile && <select aria-label="Reading contents and chapters" value="" onChange={e => { if (e.target.value) location.hash = e.target.value; }} style={s('width:100%;padding:10px;margin-bottom:22px;background:var(--bg);border:1px solid var(--rule)')}>
+              <option value="">On this page…</option>
+              {v.toc.map(t => <option key={t.href} value={t.href}>{t.text}</option>)}
+              <option disabled>— Other chapters —</option>
+              {v.allChapters.map(t => <option key={t.href} value={t.href}>{t.optLabel}</option>)}
+            </select>}
+
             {v.isArticle && <>
               <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px")}>
                 <span>{v.volLabel}</span><span>·</span><span>File {v.chapterNum}</span><span>·</span><span>{v.readTime} min read</span><span>·</span><span>{v.wordCount} words</span>
               </div>
               <h1 style={s('font-weight:500;font-size:34px;line-height:1.15;letter-spacing:-.012em;margin:0 0 32px;text-wrap:pretty')}>{v.chapterTitle}</h1>
+              <div className="evidence-notice" role="note">This research chapter is under editorial review. Treat dated figures, legal status and broad conclusions as claims to verify against the <a href="#/methods">source lists and method</a>, not as live data or advice.</div>
               <div style={s('line-height:1.6', { fontSize: v.bodyFontSize })}>{v.articleBody}</div>
               <div style={s('margin-top:64px;padding-top:24px;border-top:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:15px')}>
                 <div>{v.hasPrev && <><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>← Previous</div><a href={v.prevHref} style={s('text-decoration:none')}>{v.prevTitle}</a></>}</div>
@@ -617,10 +675,11 @@ export default class App extends React.Component {
               )}
             </>}
 
-            {v.isArc && <>
+            {v.isArc && <div className="history-arc">
+              <div className="evidence-notice" role="note">This historical narrative is being reviewed. Its quantitative charts are withheld until the underlying series, definitions and source locations are verified. Read the <a href="#/methods">source method</a> or begin with the <a href="#/home">short introduction</a>.</div>
               <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>The arc · what money was anchored to, who held the power, and what broke it — nine regimes, 4600 BCE to 2026</div>
               <h1 style={s('font-weight:500;font-size:34px;line-height:1.15;letter-spacing:-.012em;margin:0 0 20px;text-wrap:pretty')}>Every monetary order was built on the last one's failure</h1>
-              <p style={s('font-size:17.5px;line-height:1.6;margin:0 0 36px;max-width:64ch;text-wrap:pretty')}>Money has had six anchors: a weight of metal, a ruler's stamp, a fixed ratio between two metals, a fixed weight of gold, a dollar redeemable in gold, and — since 1971 — nothing but a central bank's promise. Each hand-off moved power to whoever controlled the new anchor, and each new anchor eventually broke under the same pressure: the need to pay for more than the anchor allowed. Follow the band below or scroll.</p>
+              <p style={s('font-size:17.5px;line-height:1.6;margin:0 0 36px;max-width:64ch;text-wrap:pretty')}>Monetary arrangements have often overlapped. Metal, coin, bank credit, redeemable notes and modern deposits solved different problems for different people and places. Since dollar–gold convertibility ended, major currencies have relied on monetary and fiscal institutions, legal frameworks and acceptance in trade. Follow this selective historical narrative, then explore the Bitcoin volume for a distinct design and its unresolved questions.</p>
 
               <div style={s('position:sticky;z-index:5;background:var(--bg);padding:14px 0 12px;margin-bottom:40px;border-bottom:1px solid var(--rule)', { top: v.stickyTop })}>
                 <div style={s('display:flex;gap:2px;height:28px')}>
@@ -855,7 +914,7 @@ export default class App extends React.Component {
                   </div>
                 </div>
               </div>
-            </>}
+            </div>}
 
             {v.isResearch && <>
               <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>Research · {this.state.manifest.length} files in three volumes · updated 13 September 2026</div>
@@ -886,7 +945,7 @@ export default class App extends React.Component {
             {v.isTimeline && <>
               <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>Master timeline · 4600 BCE – 2026 · {v.timelineCount} {v.tlKind}</div>
               <h1 style={s('font-weight:500;font-size:34px;line-height:1.15;letter-spacing:-.012em;margin:0 0 20px')}>From gold to fiat to Bitcoin</h1>
-              <p style={s('font-size:17px;line-height:1.6;color:var(--mut);margin:0 0 28px;max-width:62ch;text-wrap:pretty')}>Three research timelines: gold, the fiat era and Bitcoin. Each era opens with what changed in it; events link to the files that explain them. Show all entries or filter by name, place or year.</p>
+              <p style={s('font-size:17px;line-height:1.6;color:var(--mut);margin:0 0 28px;max-width:62ch;text-wrap:pretty')}>Three volume timelines in reading order, not yet a merged chronology. Reviewed events link to a relevant chapter section; other events link to their source timeline while references are audited. Show all entries or filter by name, place or year.</p>
               <div style={s('display:flex;gap:12px;align-items:center;margin-bottom:8px')}>
                 <input type="search" placeholder="Filter events — e.g. Lydia, Volcker, Basel, 1980" value={v.tlq} onChange={v.onTlq} style={s('flex:1;min-width:0;box-sizing:border-box;padding:9px 12px;font-size:12px')} />
                 <button onClick={v.toggleTlAll} className="hov-fg-border" style={s('font-size:11px;color:var(--mut);border:1px solid var(--rule);padding:8px 12px;white-space:nowrap')}>{v.tlAllLabel}</button>
