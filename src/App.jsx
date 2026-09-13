@@ -466,8 +466,10 @@ export default class App extends React.Component {
     vals.onQuery = e => {
       const v = e.target.value; this.setState({ query: v });
       if (v.trim()) {
-        if (r.view !== 'search') this.prevUrl = location.href;
-        history.replaceState(null, '', '/#/search?q=' + encodeURIComponent(v));
+        if (r.view !== 'search') {
+          this.prevUrl = location.href;
+          history.pushState(null, '', '/#/search?q=' + encodeURIComponent(v));
+        } else history.replaceState(null, '', '/#/search?q=' + encodeURIComponent(v));
         if (r.view !== 'search') this.setState({ route: { view: 'search' } });
       } else if (r.view === 'search') location.href = this.prevUrl || '/#/home';
     };

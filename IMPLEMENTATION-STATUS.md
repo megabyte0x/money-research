@@ -17,7 +17,7 @@ This branch is a staged preview of the companion `website-improvement-plan.md` h
 - F02: all 44 documents have explicit stable IDs and original-file provenance; numeric Bitcoin routes resolve to their descriptive website records.
 - D07 (partial): the three volume timelines now display together in chronological order, with textual volume lanes and five explicitly identified shared events deduplicated. Composite rows, date precision and the remaining overlap audit are still open.
 - T02 (substantial): all 44 articles now get a direct static HTML route with crawlable text, unique title/description, canonical and Open Graph URL, plus sitemap entries. Numeric Bitcoin aliases get canonicalized pages; old hash routes still resolve. Search and other standalone views remain hash-routed, and social-image previews/indexing still need validation.
-- D03/D04 (partial): explanatory and glossary search hits rank above directories; section names are shown; queries can be copied as `#/search?q=…`.
+- D03/D04 (partial): explanatory and glossary search hits rank above directories; section names are shown; queries can be copied as `#/search?q=…`; browser Back restores a direct article after entering search. Volume filters, aliases and grouping still need work.
 - F07 (partial): methods page with scope, source lists, revision note, and correction issue link. Author attribution remains unverified.
 - T01/T05 (partial): inventory and relevance regression tests, plus a reproducible Vite build.
 
