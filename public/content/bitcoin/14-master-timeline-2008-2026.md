@@ -107,9 +107,9 @@
  
 | Date | Event |
 |---|---|
-| 29 Jan 2026 | Gold reaches $5,405/oz in the World Gold Council's USD series; IBIT record daily outflow $528m (30 Jan); bitcoin −10% for the month. [WGC July 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
+| 29 Jan 2026 | Gold reaches ${{obs:gold-usd-2026-record-high}}/oz in the World Gold Council's USD series; IBIT record daily outflow $528m (30 Jan); bitcoin −10% for the month. [WGC July 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
 | Feb 2026 | Price falls ~52% from peak to ~$60,000 (6 Feb); RESBit reserve bill reintroduced in Brazil; BIP-360 (quantum-resistant addresses) published. |
-| 28 Feb 2026 | Iran war begins; bitcoin dips to $63,106. Gold later retreats from its pre-war January record; the WGC reports $4,027/oz at July month-end, about a quarter below that record. [WGC July 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
+| 28 Feb 2026 | Iran war begins; bitcoin dips to $63,106. Gold later retreats from its pre-war January record; the WGC reports ${{obs:gold-usd-2026-july-end}}/oz at July month-end, about a quarter below that record. [WGC July 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
 | Mar 2026 | Pakistan's Virtual Assets Act (6 Mar); Google paper cuts qubits needed to break bitcoin's signatures to <500,000; Fidelity "Getting Off Zero"; USDT launches on Lightning; Labor Department 401(k) rule (30 Mar); Metaplanet reports $725m loss. |
 | Apr 2026 | Ceasefire; bitcoin ~$80,000; BIP-361 proposes phased freeze of quantum-vulnerable coins (14 Apr); Michl at Bitcoin 2026: "this is the future." |
 | May 2026 | Pools with 75% of hashrate pledge Stratum V2 (11 May); Tether takes full control of Twenty One (20 May); nine-session $2.8bn ETF outflow and $1.29bn IBIT block sale; House bill drops the 1m-BTC purchase target (22 May); Bhutan disputes $1bn drawdown. |

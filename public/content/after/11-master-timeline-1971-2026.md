@@ -102,7 +102,7 @@
 | 2 Apr 2025 | "Liberation Day" IEEPA tariffs | Highest US tariffs since 1930s |
 | May–Jul 2025 | Moody's downgrades US (May); Israel–Iran twelve-day war and US strikes (Jun); NATO 5% target; OBBBA (4 Jul); GENIUS Act (18 Jul); CLARITY Act passes House | — |
 | Sep–Dec 2025 | Fed cuts three times to 3.50–3.75%; 43-day shutdown (Oct–Nov); Gaza ceasefire (Oct); US–China truce (Nov); gold $4,000; Bitcoin >$120k (Oct); Argentina $20 bn swap; Bulgaria adopts euro (1 Jan 2026) | — |
-| 29 Jan 2026 | Gold reaches $5,405/oz in the WGC USD series | Record high in that series; [WGC July 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
+| 29 Jan 2026 | Gold reaches ${{obs:gold-usd-2026-record-high}}/oz in the WGC USD series | Record high in that series; [WGC July 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
 | 20 Feb 2026 | Supreme Court strikes down IEEPA tariffs 6–3; Section 122 10% tariff from 24 Feb | Emergency tariff power ends |
 | Late Feb 2026 | US–Israel war on Iran; Strait of Hormuz closed | Largest oil disruption in history |
 | Mar 2026 | Qatar force majeure; Ras Laffan hit (18 Mar); IEA 400 mb release; Philippines energy emergency; Brent $118 (31 Mar) | Global fuel crisis |
@@ -110,5 +110,5 @@
 | May 2026 | Kevin Warsh becomes Fed chair; Victory Day truce in Ukraine; Spirit Airlines fails; stablecoins ~$320 bn | — |
 | Jun 2026 | ECB reports gold at 27% of end-2025 official reserves including gold, largely reflecting valuation effects; Fed holds at 3.50–3.75% | ECB's broad reserve measure is not IMF COFER |
 | Jul 2026 | IMF cuts 2026 growth to 3.0%; Fed holds with three hawkish dissents; Brent $72 then $97 | — |
-| 31 Jul–31 Aug 2026 | Gold finishes July at $4,027/oz and August at $4,563/oz | WGC month-end USD observations, not a continuous price band; [July table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026); [August table 1](https://www.gold.org/goldhub/research/gold-market-commentary-august-2026) |
+| 31 Jul–31 Aug 2026 | Gold finishes July at ${{obs:gold-usd-2026-july-end}}/oz and August at ${{obs:gold-usd-2026-august-end}}/oz | WGC month-end USD observations, not a continuous price band; [July table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026); [August table 1](https://www.gold.org/goldhub/research/gold-market-commentary-august-2026) |
 | Sep 2026 | US–Iran strikes in Hormuz resume; Brent ~$97; gold ~$4,490; latest cited IMF COFER dollar share is 57.13% of 2026 Q1 foreign-exchange reserves; Putin says Ukraine deal "possible" | COFER excludes gold; figures have different dates |

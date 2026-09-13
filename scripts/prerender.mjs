@@ -2,10 +2,12 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseMd, tokenizeInline } from '../src/md.js';
+import { indexObservations, resolveObservations } from '../src/observations.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = join(root, 'dist');
 const manifest = JSON.parse(readFileSync(join(root, 'public/content/manifest.json'), 'utf8'));
+const observations = indexObservations(JSON.parse(readFileSync(join(root, 'public/content/observations.json'), 'utf8')));
 const byVolumeNumber = new Map(manifest.map(record => [`${record.vol}/${record.num}`, record]));
 const template = readFileSync(join(dist, 'index.html'), 'utf8');
 const origin = 'https://money-research-iota.vercel.app';
@@ -45,7 +47,7 @@ function inline(text, record) {
 }
 
 function staticArticle(record) {
-  const source = readFileSync(join(root, 'public', record.path), 'utf8');
+  const source = resolveObservations(readFileSync(join(root, 'public', record.path), 'utf8'), observations);
   const blocks = parseMd(source);
   const sections = blocks.filter(block => block.type === 'h2');
   const toc = sections.length ? `<nav class="static-toc" aria-label="Chapter contents"><p>On this page</p><ol>${sections.map(block => `<li><a href="/${record.vol}/${record.slug}/?section=${encodeURIComponent(block.id)}">${inline(block.text, record)}</a></li>`).join('')}</ol></nav>` : '';

@@ -4,6 +4,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseMd } from '../src/md.js';
 import { eventYear, eventSortValue, mergeSharedEvents, sharedEventId } from '../src/timeline.js';
+import { indexObservations, resolveObservations } from '../src/observations.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const manifest = JSON.parse(readFileSync(join(root, 'public/content/manifest.json'), 'utf8'));
@@ -137,7 +138,8 @@ test('gold-standard ending is distinct from reserves and later reserve-basket cu
 
 test('E10 gold-price observations are dated and agree across the three volume timelines', () => {
   const observations = JSON.parse(readFileSync(join(root, 'public/content/observations.json'), 'utf8'));
-  const byId = Object.fromEntries(observations.map(o => [o.id, o]));
+  const indexed = indexObservations(observations);
+  const byId = Object.fromEntries(indexed);
   assert.equal(observations.length, new Set(observations.map(o => o.id)).size);
   for (const observation of observations) {
     assert.ok(Number.isFinite(observation.value));
@@ -146,6 +148,7 @@ test('E10 gold-price observations are dated and agree across the three volume ti
     assert.match(observation.source, /^https:\/\/www\.gold\.org\/goldhub\/research\//);
     assert.equal(observation.verification, 'verified against publisher table');
     assert.ok(observation.method && observation.scope && observation.accessed && observation.revision);
+    assert.ok(observation.denominator && observation.sourceLocator && observation.uncertainty && observation.claimId);
   }
   const record = byId['gold-usd-2026-record-high'];
   const july = byId['gold-usd-2026-july-end'];
@@ -160,7 +163,9 @@ test('E10 gold-price observations are dated and agree across the three volume ti
     'content/after/11-master-timeline-1971-2026.md',
     'content/bitcoin/14-master-timeline-2008-2026.md'
   ]) {
-    const article = readFileSync(join(root, 'public', path), 'utf8');
+    const source = readFileSync(join(root, 'public', path), 'utf8');
+    assert.match(source, /\{\{obs:gold-usd-2026-record-high\}\}/);
+    const article = resolveObservations(source, indexed);
     assert.match(article, new RegExp(record.value.toLocaleString('en-US')));
     assert.doesNotMatch(article, /\$5,58[09]|\$5,590|held above \$4,400 throughout|\$4,400–4,700 range/i);
     assert.match(article, /gold-market-commentary-july-2026/);
@@ -171,10 +176,24 @@ test('E10 gold-price observations are dated and agree across the three volume ti
     'content/after/09-pandemic-inflation-and-weaponized-reserves-2020-2026.md',
     'content/after/11-master-timeline-1971-2026.md'
   ]) {
-    const article = readFileSync(join(root, 'public', path), 'utf8');
+    const article = resolveObservations(readFileSync(join(root, 'public', path), 'utf8'), indexed);
     assert.match(article, new RegExp(july.value.toLocaleString('en-US')));
     assert.match(article, new RegExp(august.value.toLocaleString('en-US')));
   }
+});
+
+test('observation references reject missing and unverified data', () => {
+  const records = JSON.parse(readFileSync(join(root, 'public/content/observations.json'), 'utf8'));
+  const indexed = indexObservations(records);
+  for (const record of manifest) {
+    const article = readFileSync(join(root, 'public', record.path), 'utf8');
+    assert.doesNotMatch(resolveObservations(article, indexed), /\{\{obs:/, record.path);
+  }
+  assert.equal(resolveObservations('US${{obs:gold-usd-2026-record-high}}/oz', indexed), 'US$5,405/oz');
+  assert.throws(() => resolveObservations('{{obs:unknown}}', indexed), /Unknown observation/);
+  assert.throws(() => resolveObservations('{{obs:broken', indexed), /Malformed observation token/);
+  assert.throws(() => indexObservations([...records, records[0]]), /duplicate observation ID/);
+  assert.throws(() => indexObservations([{ ...records[0], verification: 'unverified' }]), /unverified observation/);
 });
 
 test('Nigeria purchase and cross-border flow shares retain different denominators', () => {

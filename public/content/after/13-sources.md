@@ -150,7 +150,7 @@ ECB, *The international role of the euro*, June 2026 — https://www.ecb.europa.
 
 World Gold Council, *Gold Demand Trends* (full-year 2025; Q1 and Q2 2026) — https://www.gold.org/goldhub
 
-World Gold Council, *Gold Market Commentary: Making waves* (6 August 2026), table 1 — https://www.gold.org/goldhub/research/gold-market-commentary-july-2026 (USD-series record $5,405/oz on 29 January; July month-end $4,027/oz). *Gold Market Commentary: Paved with good interventions* (9 September 2026), table 1 — https://www.gold.org/goldhub/research/gold-market-commentary-august-2026 (August month-end $4,563/oz). These observations do not support a $4,400 floor throughout the 2026 shock.
+World Gold Council, *Gold Market Commentary: Making waves* (6 August 2026), table 1 — https://www.gold.org/goldhub/research/gold-market-commentary-july-2026 (USD-series record ${{obs:gold-usd-2026-record-high}}/oz on 29 January; July month-end ${{obs:gold-usd-2026-july-end}}/oz). *Gold Market Commentary: Paved with good interventions* (9 September 2026), table 1 — https://www.gold.org/goldhub/research/gold-market-commentary-august-2026 (August month-end ${{obs:gold-usd-2026-august-end}}/oz). These observations do not support a $4,400 floor throughout the 2026 shock.
 
 IMF, *Currency Composition of Official Foreign Exchange Reserves (COFER)* — https://data.imf.org/en/datasets/IMF.STA:COFER
 

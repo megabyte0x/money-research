@@ -81,7 +81,7 @@
 | Feb 2022 | Russian central-bank reserves frozen | Trigger for reserve diversification |
 | 2022–24 | Central banks buy >1,000 t/year for three years | Record official demand |
 | 2025 | Average price $3,431; 53 record highs; demand ~5,000 t / $555 bn | Gold passes $3,000 and $4,000 |
-| 29 Jan 2026 | Gold reaches $5,405/oz in the WGC USD series | Record high in that series; [WGC July 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
-| 31 Jul–31 Aug 2026 | Gold finishes July at $4,027/oz and August at $4,563/oz | WGC month-end USD observations, not continuous prices; [July table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026); [August table 1](https://www.gold.org/goldhub/research/gold-market-commentary-august-2026) |
+| 29 Jan 2026 | Gold reaches ${{obs:gold-usd-2026-record-high}}/oz in the WGC USD series | Record high in that series; [WGC July 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
+| 31 Jul–31 Aug 2026 | Gold finishes July at ${{obs:gold-usd-2026-july-end}}/oz and August at ${{obs:gold-usd-2026-august-end}}/oz | WGC month-end USD observations, not continuous prices; [July table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026); [August table 1](https://www.gold.org/goldhub/research/gold-market-commentary-august-2026) |
 | Jun 2026 | ECB reports gold at 27% of end-2025 official reserves including gold; most of its share increase reflects price valuation | Broader reserve measure, not IMF COFER |
 | Sept 2026 | Gold price estimate ~$4,490/oz; latest cited IMF COFER dollar share is 57.13% of 2026 Q1 foreign-exchange reserves, excluding gold | Different dates and denominators |

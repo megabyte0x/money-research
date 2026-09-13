@@ -3,6 +3,7 @@ import * as md from './md.js';
 import { eventYear, eventSortValue, mergeSharedEvents } from './timeline.js';
 import MoneyMechanics from './MoneyMechanics.jsx';
 import { searchDocuments, searchState, searchUrl } from './search.js';
+import { indexObservations, resolveObservations } from './observations.js';
 
 // The prototype declared every rule as an inline CSS string. Keeping those strings
 // verbatim and parsing them once keeps the port pixel-identical to the design file.
@@ -129,13 +130,18 @@ export default class App extends React.Component {
   }
   async load() {
     this.md = md;
-    const manifest = await (await fetch(BASE + 'content/manifest.json')).json();
+    const [manifest, observations] = await Promise.all([
+      fetch(BASE + 'content/manifest.json').then(r => r.json()),
+      fetch(BASE + 'content/observations.json').then(r => r.json())
+    ]);
+    const byObservationId = indexObservations(observations);
     const texts = await Promise.all(manifest.map(m => fetch(BASE + m.path).then(r => r.text())));
     const docs = {}, blocks = {}; let glossary = [];
     manifest.forEach((m, i) => {
-      docs[m.slug + '@' + m.vol] = texts[i];
-      blocks[m.slug + '@' + m.vol] = this.md.parseMd(texts[i]);
-      if (m.slug.includes('glossary')) glossary = glossary.concat(this.md.parseGlossary(texts[i]).map(g => ({ ...g, vol: m.vol })));
+      const content = resolveObservations(texts[i], byObservationId);
+      docs[m.slug + '@' + m.vol] = content;
+      blocks[m.slug + '@' + m.vol] = this.md.parseMd(content);
+      if (m.slug.includes('glossary')) glossary = glossary.concat(this.md.parseGlossary(content).map(g => ({ ...g, vol: m.vol })));
     });
     const seen = new Set();
     glossary = glossary.filter(g => { const k = g.term.toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; }).sort((a, b) => a.term.localeCompare(b.term));

@@ -30,7 +30,7 @@ Goldman Sachs Research via PR Newswire, *Gold Forecast to Reach $4,900 an Ounce 
 
 Fortune, *Current price of gold: September 3, 2026* — https://fortune.com/article/current-price-of-gold-09-03-2026/ (spot ~$4,491)
 
-World Gold Council, *Gold Market Commentary: Making waves* (6 August 2026), table 1 — https://www.gold.org/goldhub/research/gold-market-commentary-july-2026 (USD-series record $5,405/oz on 29 January; July month-end $4,027/oz). *Gold Market Commentary: Paved with good interventions* (9 September 2026), table 1 — https://www.gold.org/goldhub/research/gold-market-commentary-august-2026 (August month-end $4,563/oz). These dated series observations should not be substituted for an intraday spot peak or a continuous price floor.
+World Gold Council, *Gold Market Commentary: Making waves* (6 August 2026), table 1 — https://www.gold.org/goldhub/research/gold-market-commentary-july-2026 (USD-series record ${{obs:gold-usd-2026-record-high}}/oz on 29 January; July month-end ${{obs:gold-usd-2026-july-end}}/oz). *Gold Market Commentary: Paved with good interventions* (9 September 2026), table 1 — https://www.gold.org/goldhub/research/gold-market-commentary-august-2026 (August month-end ${{obs:gold-usd-2026-august-end}}/oz). These dated series observations should not be substituted for an intraday spot peak or a continuous price floor.
 
 IMF, *Currency Composition of Official Foreign Exchange Reserves*, 2026 Q1 data brief (1 July 2026) — https://data.imf.org/en/news/imf%20data%20brief%20july%201 (dollar 57.13%, euro 20.03%; excludes gold and notes valuation effects)
 
