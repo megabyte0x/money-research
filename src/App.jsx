@@ -1,5 +1,6 @@
 import React from 'react';
 import * as md from './md.js';
+import { eventYear, eventSortValue, mergeSharedEvents } from './timeline.js';
 
 // The prototype declared every rule as an inline CSS string. Keeping those strings
 // verbatim and parsing them once keeps the port pixel-identical to the design file.
@@ -49,8 +50,12 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    this.onHash = () => this.setState({ route: this.parseHash(), collapsed: {}, quote: null, menuOpen: false, query: this.searchFromHash() }, () => this.scrollToSection());
+    this.onHash = () => {
+      if (location.pathname !== '/' && location.hash.startsWith('#/')) { location.assign('/' + location.hash); return; }
+      this.setState({ route: this.parseHash(), collapsed: {}, quote: null, menuOpen: false, query: this.searchFromHash() }, () => this.scrollToSection());
+    };
     window.addEventListener('hashchange', this.onHash);
+    window.addEventListener('popstate', this.onHash);
     this.onScroll = () => {
       const h = document.documentElement; const max = h.scrollHeight - h.clientHeight; const stage = this.currentStage();
       this.setState(st => ({ progress: max > 0 ? window.scrollY / max : 0, stage: stage !== st.stage ? stage : st.stage }));
@@ -71,7 +76,7 @@ export default class App extends React.Component {
   }
   componentDidUpdate() { this.measureHeader(); }
   componentWillUnmount() {
-    window.removeEventListener('hashchange', this.onHash); window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('hashchange', this.onHash); window.removeEventListener('popstate', this.onHash); window.removeEventListener('scroll', this.onScroll);
     window.removeEventListener('mousedown', this.onDown); window.removeEventListener('resize', this.onResize);
     window.removeEventListener('resize', this.onFontResize);
   }
@@ -98,6 +103,8 @@ export default class App extends React.Component {
     // #/<view>[/<section>] for the standalone views, #/<vol>/<slug>[/<section>] for a file.
     // The prototype only read a section off a third segment, which sent every jump link
     // (#/arc/arc-5, #/timeline/<era>, #/glossary/<term>) down the article branch and blanked the page.
+    const direct = location.pathname.match(/^\/(gold|after|bitcoin)\/([a-z0-9-]+)\/?$/);
+    if (!location.hash && direct) return { view: 'article', vol: direct[1], slug: direct[2], sec: new URLSearchParams(location.search).get('section') };
     const h = (location.hash || '#/home').split('?')[0].replace(/^#\/?/, '');
     const seg = h.split('/').filter(Boolean);
     if (['home', 'compare', 'methods', 'timeline', 'glossary', 'takeaways', 'arc', 'research'].includes(seg[0])) return { view: seg[0], sec: seg[1] || null };
@@ -186,8 +193,8 @@ export default class App extends React.Component {
       else window.scrollTo({ top: 0 });
     });
   }
-  chapter(vol, slug) { return this.state.manifest.find(m => m.vol === vol && m.slug === slug); }
-  href(m, sec) { return '#/' + m.vol + '/' + m.slug + (sec ? '/' + sec : ''); }
+  chapter(vol, slug) { return this.state.manifest.find(m => m.vol === vol && (m.slug === slug || m.aliases?.includes(slug))); }
+  href(m, sec) { return '/' + m.vol + '/' + m.slug + '/' + (sec ? '?section=' + encodeURIComponent(sec) : ''); }
   short(m) { if (m.num === '00') return 'Directory / reading order'; return m.title.replace(/^\d+\s+—\s+/, '').split(/[:(]/)[0].trim(); }
   // ---- inline rendering with glossary hover + file refs
   inline(text, ctx) {
@@ -270,7 +277,8 @@ export default class App extends React.Component {
   }
   copyLink(sec) {
     const r = this.state.route;
-    const url = location.origin + location.pathname + (r.view === 'article' ? '#/' + r.vol + '/' + r.slug : '#/' + r.view) + (sec ? '/' + sec : '');
+    const cur = r.view === 'article' && this.chapter(r.vol, r.slug);
+    const url = cur ? location.origin + this.href(cur, sec) : location.origin + '/#/' + r.view + (sec ? '/' + sec : '');
     navigator.clipboard && navigator.clipboard.writeText(url);
     this.setState({ copied: sec || 'page' }); clearTimeout(this.ct); this.ct = setTimeout(() => this.setState({ copied: false }), 1600);
   }
@@ -280,10 +288,7 @@ export default class App extends React.Component {
     bitcoin: [[2014, 'Origins, 2008–2013', 'The whitepaper, genesis block, first transactions, exchanges and first failures.'], [2021, 'Exchanges and forks, 2014–2020', 'Custody failures, scaling disputes, stablecoins and the first institutional buyers.'], [2024, 'Institutions and states, 2021–2023', 'Legal-tender experiments, mining bans, contagion and the 2022 crash.'], [2026, 'ETFs and reserves, 2024–2025', 'Spot ETFs open institutional access while governments test reserves and change the rules.'], [9999, 'The 2026 drawdown', 'Price volatility, the Iran war, custody concentration and the unresolved monetary-standard question.']]
   };
   parseYear(date) {
-    const d = date.replace(/[*_]/g, ''); let y;
-    const c = d.match(/(\d+)(?:st|nd|rd|th)\s*(?:[–-]\s*\d+(?:st|nd|rd|th))?\s*c(?:entury|\.)/i);
-    if (c) y = (+c[1] - 1) * 100 + 50; else { const m4 = d.match(/\b\d{4}\b/); const m = m4 || d.match(/\d{1,4}/); y = m ? +m[0] : 0; }
-    return /BCE/.test(d) ? -y : y;
+    return eventYear(date);
   }
   rowRefs(vol, r) {
     // Only editorially reviewed event-to-section mappings may lead to a chapter.
@@ -303,33 +308,51 @@ export default class App extends React.Component {
   }
   timelineGroups() {
     this.refCache = this.refCache || {};
-    const q = this.state.tlq.trim().toLowerCase(); const groups = [];
+    const q = this.state.tlq.trim().toLowerCase(); const events = [];
     const big = /Varna|Hammurabi|Lydia strikes|Croesus|Darius|Alexander coins|Denarius debased|Constantine|Abd al-Malik|Charlemagne|jiaozi|Florence strikes|Mansa Musa|Potosí|Newton|Bank of England|Britain (leaves|suspends|returns|adopts|formally)|California|Germany adopts|Coinage Act|Witwatersrand|Bretton Woods|Roosevelt|Gold Pool|Nixon suspends|Smithsonian|major currencies float|Yom Kippur|Herstatt|Jamaica|Volcker|Gold peaks|Mexico announces|Plaza|Black Monday|Basel I\b|Berlin Wall|Soviet Union dissolved|Maastricht|ERM crisis|Tequila|Thai baht|Asian|Russia defaults|LTCM|euro (launched|notes)|China joins WTO|9\/11|Iraq invaded|Lehman|QE1|Bitcoin genesis|Whatever it takes|Draghi|Tether|COVID|Russia invades|CPI 9\.1|Liberation Day|GENIUS|gold \$3,000|gold peaks|record|\$5,590|Basel III/i;
     const bitcoinBig = /whitepaper|genesis block|first transaction|two pizzas|Mt\. Gox|first halving|SegWit|Bitcoin Cash|MicroStrategy|El Salvador|China bans mining|Central African Republic|Terra\/UST|FTX|spot bitcoin ETFs|fourth halving|Strategic Bitcoin Reserve|GENIUS Act|all-time high|Iran war|cycle low|Chivo majority privatised|20\.08m BTC/i;
     const onlyBig = !this.state.tlAll;
     for (const vol of ['gold', 'after', 'bitcoin']) {
       const m = this.state.manifest.find(x => x.vol === vol && x.slug.includes('timeline')); if (!m) continue;
       const tables = (this.state.blocks[m.slug + '@' + vol] || []).filter(b => b.type === 'table'); if (!tables.length) continue;
-      const eras = App.ERAS[vol];
-      const buckets = eras.map(e => ({ id: vol + '-era-' + e[1].toLowerCase().replace(/[^a-z0-9]+/g, '-'), vol: { gold: 'Vol. I', after: 'Vol. II', bitcoin: 'Vol. III' }[vol], label: e[1], gloss: e[2], rows: [] }));
       tables.flatMap(t => t.rows).forEach((r, i) => {
         if (q && !r.join(' ').toLowerCase().includes(q)) return;
-        const y = this.parseYear(r[0] || ''); let k = eras.findIndex(e => y < e[0]); if (k < 0) k = eras.length - 1;
+        const y = this.parseYear(r[0] || '');
         if (vol === 'bitcoin' && y > 2026) return;
         const isBig = (vol === 'bitcoin' ? bitcoinBig : big).test((r[1] || '') + ' ' + (r[2] || ''));
         if (onlyBig && !isBig && !q) return;
         const ck = vol + i; const refs = this.refCache[ck] || (this.refCache[ck] = this.rowRefs(vol, r));
-        buckets[k].rows.push({
-          id: vol + '-tl-' + i, refs, hasRefs: refs.length > 0, date: this.md.stripInline(r[0] || ''),
-          eventEl: this.inline(r[1] || '', { vol, gloss: false, usedGloss: { set: new Set() } }),
-          sigEl: this.inline((r[2] || '').replace(/^—$/, ''), { vol, gloss: false, usedGloss: { set: new Set() } }), hasSig: !!r[2] && r[2] !== '—',
+        events.push({
+          id: 'evt-' + vol + '-' + m.num + '-' + i, vol, year: y, sort: eventSortValue(r[0] || ''),
+          refs, date: this.md.stripInline(r[0] || ''), eventText: this.md.stripInline(r[1] || ''), significance: (r[2] || '').replace(/^—$/, ''),
           size: isBig ? '20px' : '15.5px', weight: isBig ? 500 : 400, pad: isBig ? '18px' : '11px', dot: isBig ? '11px' : '7px',
           dotBg: isBig ? 'var(--fg)' : 'var(--bg)', dotTop: isBig ? '22px' : '17px', dateColor: isBig ? 'var(--fg)' : 'var(--mut)'
         });
       });
-      buckets.forEach(b => { b.count = b.rows.length; if (b.rows.length) groups.push(b); });
     }
-    return groups;
+    const periods = [
+      [1, 'Before 1 CE', 'Ancient monetary arrangements; dates are approximate where the source says so.'],
+      [1500, '1–1499', 'Coins, credit and regional monetary systems.'],
+      [1900, '1500–1899', 'Trade, banking and the classical gold standard.'],
+      [1945, '1900–1944', 'War and interwar monetary experiments.'],
+      [1971, '1945–1970', 'The Bretton Woods dollar system.'],
+      [1990, '1971–1989', 'Floating currencies, inflation and financial change.'],
+      [2008, '1990–2007', 'Globalisation and emerging-market crises.'],
+      [2020, '2008–2019', 'Financial crisis, QE and Bitcoin’s first decade.'],
+      [9999, '2020–2026', 'Pandemic, sanctions and overlapping digital arrangements.']
+    ];
+    const groups = periods.map(p => ({ id: 'period-' + p[1].toLowerCase().replace(/[^a-z0-9]+/g, '-'), vol: 'All volumes', label: p[1], gloss: p[2], rows: [] }));
+    mergeSharedEvents(events).forEach(event => {
+      const k = periods.findIndex(p => event.year < p[0]);
+      const vol = event.vol;
+      groups[k < 0 ? groups.length - 1 : k].rows.push({
+        ...event, hasRefs: event.refs.length > 0, hasSig: !!event.significance,
+        sourceLabel: event.sources.map(v => ({ gold: 'I · Gold', after: 'II · After Gold', bitcoin: 'III · Bitcoin' }[v])).join(' + '),
+        eventEl: this.inline(event.eventText, { vol, gloss: false, usedGloss: { set: new Set() } }),
+        sigEl: this.inline(event.significance, { vol, gloss: false, usedGloss: { set: new Set() } })
+      });
+    });
+    return groups.filter(g => { g.count = g.rows.length; return g.count > 0; });
   }
   search() {
     const q = this.state.query.trim().toLowerCase(); if (q.length < 2) return [];
@@ -443,10 +466,10 @@ export default class App extends React.Component {
     vals.onQuery = e => {
       const v = e.target.value; this.setState({ query: v });
       if (v.trim()) {
-        if (r.view !== 'search') this.prevHash = location.hash;
-        history.replaceState(null, '', '#/search?q=' + encodeURIComponent(v));
+        if (r.view !== 'search') this.prevUrl = location.href;
+        history.replaceState(null, '', '/#/search?q=' + encodeURIComponent(v));
         if (r.view !== 'search') this.setState({ route: { view: 'search' } });
-      } else if (r.view === 'search') location.hash = this.prevHash || '#/home';
+      } else if (r.view === 'search') location.href = this.prevUrl || '/#/home';
     };
     vals.onTlq = e => this.setState({ tlq: e.target.value });
     vals.onGlq = e => this.setState({ glq: e.target.value });
@@ -460,7 +483,7 @@ export default class App extends React.Component {
     const cur = r.view === 'article' ? this.chapter(r.vol, r.slug) : null;
     vals.allChapters = st.manifest.map(m => ({ href: this.href(m), optLabel: ({ gold: 'I·', after: 'II·', bitcoin: 'III·' }[m.vol]) + m.num + ' ' + this.short(m) }));
     vals.selectValue = cur ? this.href(cur) : '';
-    vals.onSelect = e => { if (e.target.value) location.hash = e.target.value; };
+    vals.onSelect = e => { if (e.target.value) location.href = e.target.value; };
     vals.isHome = r.view === 'home'; vals.isCompare = r.view === 'compare'; vals.isMethods = r.view === 'methods';
     vals.isArticle = !!cur; vals.isTimeline = r.view === 'timeline'; vals.isGlossary = r.view === 'glossary';
     vals.isTakeaways = r.view === 'takeaways'; vals.isSearch = r.view === 'search';
@@ -523,7 +546,7 @@ export default class App extends React.Component {
       vals.tlCols = mobile ? '78px 20px minmax(0,1fr)' : '132px 24px minmax(0,1fr)';
       vals.tlKind = st.tlAll || st.tlq ? 'entries' : 'turning points';
       vals.tocLabel = 'Eras';
-      vals.toc = vals.tlGroups.map(g => ({ text: ({ 'Vol. I': 'I · ', 'Vol. II': 'II · ', 'Vol. III': 'III · ' }[g.vol]) + g.label, href: '#/timeline/' + g.id, indent: '0' }));
+      vals.toc = vals.tlGroups.map(g => ({ text: g.label, href: '#/timeline/' + g.id, indent: '0' }));
     }
     if (vals.isGlossary) {
       const q = st.glq.trim().toLowerCase();
@@ -562,7 +585,7 @@ export default class App extends React.Component {
       const label = cur
         ? ({ gold: 'Vol. I — Gold', after: 'Vol. II — After Gold', bitcoin: 'Vol. III — Bitcoin' }[cur.vol]) + ', file ' + cur.num + ' — ' + cur.title.replace(/^\d+\s+—\s+/, '')
         : 'Gold → Dollar → Crypto · research notes, ' + (VIEW_NAMES[r.view] || r.view);
-      const href = location.origin + location.pathname + (cur ? '#/' + cur.vol + '/' + cur.slug + (sec ? '/' + sec : '') : location.hash);
+      const href = cur ? location.origin + this.href(cur, sec) : location.origin + '/' + location.hash;
       this.setState({ quote: { text, x: rect.left + rect.width / 2, y: rect.top + window.scrollY - 40, label, secTitle, href }, askOpen: false, askQ: '', promptCopied: false });
     };
     return vals;
@@ -607,9 +630,9 @@ export default class App extends React.Component {
               <h2>Four jobs, different arrangements</h2>
               <p>A store of value carries purchasing power through time. A medium of exchange helps people pay. A unit of account is what prices and debts are written in. A settlement asset discharges an obligation between parties or institutions. One asset need not do all four jobs.</p>
               <div className="question-grid">
-                <a href="#/gold/08-why-the-dollar-replaced-gold">Why did gold lose its monetary role?<small>Convertibility, crisis and the dollar network · Vol. I</small></a>
-                <a href="#/after/01-the-break-1971-1976">What supports money today?<small>Institutions, bank liabilities and acceptance · Vol. II</small></a>
-                <a href="#/bitcoin/02-what-bitcoin-solved-and-what-it-did-not">What did Bitcoin solve?<small>Permissionless transfer—and its limits · Vol. III</small></a>
+                <a href="/gold/08-why-the-dollar-replaced-gold/">Why did gold lose its monetary role?<small>Convertibility, crisis and the dollar network · Vol. I</small></a>
+                <a href="/after/01-the-break-1971-1976/">What supports money today?<small>Institutions, bank liabilities and acceptance · Vol. II</small></a>
+                <a href="/bitcoin/02-what-bitcoin-solved-and-what-it-did-not/">What did Bitcoin solve?<small>Permissionless transfer—and its limits · Vol. III</small></a>
               </div>
               <h2>A useful comparison starts with custody</h2>
               <p>Cash is an issuer's liability, a bank balance is a claim on a bank, physical gold is an asset held somewhere, and self-custodied Bitcoin depends on control of keys. An exchange balance or stablecoin adds another issuer or custodian. <a href="#/compare">Compare the arrangements by use →</a></p>
@@ -625,24 +648,24 @@ export default class App extends React.Component {
               <p className="eyebrow">Comparison · provisional qualitative guide</p><h1>Compare arrangements, not slogans.</h1>
               <p className="lead">The custody and issuer matter as much as the asset. Pick a use—saving, everyday payment, cross-border settlement, or pricing debts—and inspect the trade-offs. This is not an asset ranking or investment advice.</p>
               <div className="comparison-wrap"><table className="comparison"><caption>Illustrative arrangements; terms vary by jurisdiction and provider. Follow the chapters for context.</caption><thead><tr><th>Arrangement</th><th>Who holds or owes it?</th><th>Useful distinction</th><th>Read further</th></tr></thead><tbody>
-                <tr><th>Physical gold</th><td>Owner or chosen vault; custody must be specified</td><td>No issuer liability for the metal itself; storage, assay and payment friction remain.</td><td><a href="#/gold/04-what-gives-gold-its-value">Gold's uses</a></td></tr>
-                <tr><th>Fiat cash</th><td>Central-bank liability, held by bearer</td><td>Convenient domestic payment and pricing; access and value depend on institutions.</td><td><a href="#/after/01-the-break-1971-1976">After 1971</a></td></tr>
-                <tr><th>Bank deposit</th><td>Commercial-bank liability</td><td>Payment and credit services with bank, legal and deposit-protection exposure.</td><td><a href="#/after/07-financial-crisis-and-the-age-of-qe-2007-2019">Banks and QE</a></td></tr>
-                <tr><th>Self-custodied Bitcoin</th><td>Key holder controls transfers</td><td>Network settlement without a central operator; key loss, fees and price risk remain.</td><td><a href="#/bitcoin/02-what-bitcoin-solved-and-what-it-did-not">Solved and unsolved</a></td></tr>
-                <tr><th>Custodial Bitcoin</th><td>Exchange or other custodian owes a balance</td><td>Provider may ease access but reintroduces custody and withdrawal risk.</td><td><a href="#/bitcoin/09-supply-and-control-who-holds-bitcoin-and-who-benefits">Control and custody</a></td></tr>
-                <tr><th>Fiat-backed stablecoin</th><td>Named issuer and its reserve/custody chain</td><td>Dollar-denominated transfer; backing, redemption eligibility and law vary by token.</td><td><a href="#/after/08-innovation-cards-bitcoin-stablecoins-cbdcs">Digital arrangements</a></td></tr>
+                <tr><th>Physical gold</th><td>Owner or chosen vault; custody must be specified</td><td>No issuer liability for the metal itself; storage, assay and payment friction remain.</td><td><a href="/gold/04-what-gives-gold-its-value/">Gold's uses</a></td></tr>
+                <tr><th>Fiat cash</th><td>Central-bank liability, held by bearer</td><td>Convenient domestic payment and pricing; access and value depend on institutions.</td><td><a href="/after/01-the-break-1971-1976/">After 1971</a></td></tr>
+                <tr><th>Bank deposit</th><td>Commercial-bank liability</td><td>Payment and credit services with bank, legal and deposit-protection exposure.</td><td><a href="/after/07-financial-crisis-and-the-age-of-qe-2007-2019/">Banks and QE</a></td></tr>
+                <tr><th>Self-custodied Bitcoin</th><td>Key holder controls transfers</td><td>Network settlement without a central operator; key loss, fees and price risk remain.</td><td><a href="/bitcoin/02-what-bitcoin-solved-and-what-it-did-not/">Solved and unsolved</a></td></tr>
+                <tr><th>Custodial Bitcoin</th><td>Exchange or other custodian owes a balance</td><td>Provider may ease access but reintroduces custody and withdrawal risk.</td><td><a href="/bitcoin/09-supply-and-control-who-holds-bitcoin-and-who-benefits/">Control and custody</a></td></tr>
+                <tr><th>Fiat-backed stablecoin</th><td>Named issuer and its reserve/custody chain</td><td>Dollar-denominated transfer; backing, redemption eligibility and law vary by token.</td><td><a href="/after/08-innovation-cards-bitcoin-stablecoins-cbdcs/">Digital arrangements</a></td></tr>
               </tbody></table></div><p className="small-note">Evidence review is in progress. No scores, universal guarantees or current market figures are implied. <a href="#/methods">Methods and corrections →</a></p>
             </div>}
 
             {v.isMethods && <div className="intro-page">
               <p className="eyebrow">Research method · revision 13 September 2026</p><h1>Scope and sources</h1>
               <p>The library contains 44 original research documents: 13 on gold, 14 on the post-1971 monetary system and 17 on Bitcoin. This edition presents their arguments, not an independently verified dataset. Historical, legal and market claims are under editorial review; dated observations should not be read as live figures.</p>
-              <p>Each volume includes its source list: <a href="#/gold/12-sources">Gold sources</a>, <a href="#/after/13-sources">After Gold sources</a>, and <a href="#/bitcoin/16-sources">Bitcoin sources</a>. Some entries still need exact document and passage locators. The comparison is a qualitative guide and the historical arc's numerical charts are withheld while their data are checked.</p>
+              <p>Each volume includes its source list: <a href="/gold/12-sources/">Gold sources</a>, <a href="/after/13-sources/">After Gold sources</a>, and <a href="/bitcoin/16-sources/">Bitcoin sources</a>. Some entries still need exact document and passage locators. The comparison is a qualitative guide and the historical arc's numerical charts are withheld while their data are checked.</p>
               <p>Authorship and editorial attribution have not yet been verified for publication. To suggest a correction, <a href="https://github.com/megabyte0x/money-research/issues/new" target="_blank" rel="noopener noreferrer">open a correction issue ↗</a> with the chapter, passage and supporting source. Substantive revisions will be recorded here as the audit progresses.</p>
               <p className="small-note">Revision history: 13 September 2026 — first evidence-led entry page, qualitative comparison, and removal of automatic timeline references.</p>
             </div>}
 
-            {v.isArticle && v.mobile && <select aria-label="Reading contents and chapters" value="" onChange={e => { if (e.target.value) location.hash = e.target.value; }} style={s('width:100%;padding:10px;margin-bottom:22px;background:var(--bg);border:1px solid var(--rule)')}>
+            {v.isArticle && v.mobile && <select aria-label="Reading contents and chapters" value="" onChange={e => { if (e.target.value) location.href = e.target.value; }} style={s('width:100%;padding:10px;margin-bottom:22px;background:var(--bg);border:1px solid var(--rule)')}>
               <option value="">On this page…</option>
               {v.toc.map(t => <option key={t.href} value={t.href}>{t.text}</option>)}
               <option disabled>— Other chapters —</option>
@@ -943,9 +966,9 @@ export default class App extends React.Component {
             </>}
 
             {v.isTimeline && <>
-              <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>Master timeline · 4600 BCE – 2026 · {v.timelineCount} {v.tlKind}</div>
-              <h1 style={s('font-weight:500;font-size:34px;line-height:1.15;letter-spacing:-.012em;margin:0 0 20px')}>From gold to fiat to Bitcoin</h1>
-              <p style={s('font-size:17px;line-height:1.6;color:var(--mut);margin:0 0 28px;max-width:62ch;text-wrap:pretty')}>Three volume timelines in reading order, not yet a merged chronology. Reviewed events link to a relevant chapter section; other events link to their source timeline while references are audited. Show all entries or filter by name, place or year.</p>
+              <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>Connected timeline · 4600 BCE – 2026 · {v.timelineCount} {v.tlKind}</div>
+              <h1 style={s('font-weight:500;font-size:34px;line-height:1.15;letter-spacing:-.012em;margin:0 0 20px')}>A connected monetary timeline</h1>
+              <p style={s('font-size:17px;line-height:1.6;color:var(--mut);margin:0 0 28px;max-width:62ch;text-wrap:pretty')}>Events from all three volumes now share one chronological view; five reviewed duplicates are combined. Composite rows and most chapter references still need editorial review. Reviewed events link to relevant sections; other events link to their source timeline.</p>
               <div style={s('display:flex;gap:12px;align-items:center;margin-bottom:8px')}>
                 <input type="search" placeholder="Filter events — e.g. Lydia, Volcker, Basel, 1980" value={v.tlq} onChange={v.onTlq} style={s('flex:1;min-width:0;box-sizing:border-box;padding:9px 12px;font-size:12px')} />
                 <button onClick={v.toggleTlAll} className="hov-fg-border" style={s('font-size:11px;color:var(--mut);border:1px solid var(--rule);padding:8px 12px;white-space:nowrap')}>{v.tlAllLabel}</button>
@@ -968,6 +991,7 @@ export default class App extends React.Component {
                         <div style={s('position:relative;border-radius:50%;border:1px solid var(--fg)', { width: rw.dot, height: rw.dot, background: rw.dotBg, marginTop: rw.dotTop })}></div>
                       </div>
                       <div style={s('border-bottom:1px solid var(--rule)', { padding: rw.pad + ' 0 ' + rw.pad })}>
+                        <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:5px")}>{rw.sourceLabel}</div>
                         <div style={s('line-height:1.35;text-wrap:pretty', { fontSize: rw.size, fontWeight: rw.weight })}>{rw.eventEl}</div>
                         {rw.hasSig && <div style={s('font-size:14px;color:var(--mut);line-height:1.5;margin-top:4px')}>{rw.sigEl}</div>}
                         {rw.hasRefs && (

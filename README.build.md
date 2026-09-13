@@ -1,43 +1,44 @@
-# Gold → Dollar · research notes
+# Money Research · reader implementation
 
-A research reader over 27 markdown files in two volumes (Vol. I *Gold*, Vol. II *After Gold*),
-built from the Claude Design handoff in `project/` and `chats/`.
+A research reader over 44 Markdown files in three volumes: Gold, After Gold and Bitcoin. The original design handoff is in `project/` and `chats/`; the active site is `src/` plus `public/content/`.
 
 ## Stack
 
-Vite + React 18, no router library — the prototype's hash routes are kept as-is:
+Vite + React 18, no router library. Article pages are prebuilt as crawlable HTML and also render in React; legacy hash URLs remain usable:
 
 | Route | View |
 | --- | --- |
-| `#/arc` | The arc — nine monetary regimes with ten SVG charts; `#/arc/arc-5` jumps to a regime |
-| `#/research` | Index of both volumes, each file with reading time and the question it answers |
-| `#/timeline` | Master timeline, turning points by default, `Show all events` for all 191 |
-| `#/takeaways` | Skim mode — the "Key takeaways" of every file |
-| `#/glossary` | 84 terms; `#/glossary/<term-id>` jumps to one |
-| `#/<vol>/<slug>[/<section>]` | A file, e.g. `#/gold/07-the-gold-standard-era-1717-1971` |
-| `#/search` | Full-text search across every file (header search box) |
+| `/#/home` | Short introduction |
+| `/#/compare` | Provisional arrangement comparison |
+| `/#/arc` | Historical arc; numerical charts withheld during source audit |
+| `/#/research` | Three-volume research index |
+| `/#/timeline` | Connected chronology; turning points or all events |
+| `/#/takeaways` | Existing chapter takeaways |
+| `/#/glossary` | Aggregated glossary |
+| `/#/methods` | Research scope, source lists and corrections |
+| `/<vol>/<slug>/` | Crawlable article with unique metadata and canonical URL |
+| `/<vol>/<slug>/?section=<id>` | Direct section link |
+| `/#/<vol>/<slug>[/<section>]` | Supported legacy hash article link |
+| `/#/search?q=…` | Shareable passage search |
 
 ## Content
 
-The markdown lives in `public/content/` with `manifest.json` listing every file
-(volume, slug, title, word count, h2 headings). It is fetched and parsed in the
-browser at load by `src/md.js` — the same minimal parser the design prototype used.
-To add or edit a chapter, drop the `.md` in `public/content/<vol>/` and add its
-manifest entry; nothing else needs to change.
+The published Markdown is in `public/content/`. `manifest.json` records each article's stable ID, original-file provenance, volume, slug, numeric alias where applicable, title, word count and headings. Bitcoin source files in the supplied workspace are numeric; the website uses descriptive slugs. `src/md.js` parses the content, while `scripts/prerender.mjs` creates article HTML and `sitemap.xml` from the same manifest at build time. See `IMPLEMENTATION-STATUS.md` for open editorial and release gates.
 
 ## Develop
 
 ```
-npm install
+npm ci
+npm test
 npm run dev      # http://localhost:5173
-npm run build    # -> dist/
+npm run build    # -> dist/, including 44 static article pages
+npm run test:build
 npm run preview
 ```
 
 ## Deploy
 
-Static build; Vercel auto-detects Vite. `vercel.json` rewrites unknown paths to
-`index.html` and sets cache headers for `/content` and `/assets`.
+Vercel auto-detects Vite. `vercel.json` serves prebuilt article directories directly, rewrites standalone SPA views to `index.html`, and sets cache headers for `/content` and `/assets`. Non-production Git branches get protected preview deployments; do not promote until the release gates in `IMPLEMENTATION-STATUS.md` pass.
 
 ## Ask ChatGPT about a passage
 

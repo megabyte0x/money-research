@@ -34,6 +34,13 @@ input:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .comparison th{font-weight:500}
 .evidence-notice{border:1px solid var(--fg);padding:14px 18px;line-height:1.55;margin-bottom:32px;font-size:15px}
 .history-arc figure{display:none}
+.static-article{max-width:72ch;margin:0 auto;padding:36px 16px 96px;font-size:18px;line-height:1.6}
+.static-article h1{font-size:2.3rem;line-height:1.18;font-weight:500}
+.static-article h2{font-size:1.65rem;line-height:1.22;font-weight:500;margin-top:2.4em}
+.static-article h3{font-size:1.25rem;font-weight:500;margin-top:1.8em}
+.static-article .static-table-wrap{overflow-x:auto}
+.static-article table{border-collapse:collapse;min-width:480px}
+.static-article th,.static-article td{text-align:left;vertical-align:top;padding:8px;border-bottom:1px solid var(--rule)}
 @media(max-width:639px){.intro-page{font-size:17px}.comparison{font-size:14px}.evidence-notice{font-size:14px}}
 
 /* the header nav scrolls sideways on a phone instead of pushing the page wider */
