@@ -38,6 +38,11 @@ input:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .static-article h1{font-size:2.3rem;line-height:1.18;font-weight:500}
 .static-article h2{font-size:1.65rem;line-height:1.22;font-weight:500;margin-top:2.4em}
 .static-article h3{font-size:1.25rem;font-weight:500;margin-top:1.8em}
+.static-article .static-toc{border-block:1px solid var(--rule);padding:1rem 0;margin:1.5rem 0;font-size:.9em}
+.static-article .static-toc p{margin:0 0 .5rem;font-weight:600}
+.static-article .static-toc ol{margin:0;padding-left:1.4rem;columns:2;column-gap:2rem}
+.static-article .static-toc li{break-inside:avoid;margin:.25rem 0}
+@media(max-width:620px){.static-article .static-toc ol{columns:1}}
 .static-article .static-table-wrap{overflow-x:auto}
 .static-article table{border-collapse:collapse;min-width:480px}
 .static-article th,.static-article td{text-align:left;vertical-align:top;padding:8px;border-bottom:1px solid var(--rule)}

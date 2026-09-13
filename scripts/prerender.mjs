@@ -6,13 +6,30 @@ import { parseMd, tokenizeInline } from '../src/md.js';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = join(root, 'dist');
 const manifest = JSON.parse(readFileSync(join(root, 'public/content/manifest.json'), 'utf8'));
+const byVolumeNumber = new Map(manifest.map(record => [`${record.vol}/${record.num}`, record]));
 const template = readFileSync(join(dist, 'index.html'), 'utf8');
 const origin = 'https://money-research-iota.vercel.app';
 const escape = text => String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const volumeName = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin' };
 const urls = [`${origin}/`];
 
-function inline(text) {
+function linkedText(text, record) {
+  let result = '';
+  let last = 0;
+  for (const match of text.matchAll(/\bfiles?\s+\d{2}(?:(?:,|\s+and)\s+\d{2})*/gi)) {
+    result += escape(text.slice(last, match.index));
+    result += match[0].split(/(\d{2})/).map(part => {
+      if (!/^\d{2}$/.test(part)) return escape(part);
+      const destination = byVolumeNumber.get(`${record.vol}/${part}`);
+      if (!destination) throw new Error(`Unresolved file ${part} in ${record.id}`);
+      return `<a href="/${destination.vol}/${destination.slug}/" title="${escape(destination.title)}">${escape(part)}</a>`;
+    }).join('');
+    last = match.index + match[0].length;
+  }
+  return result + escape(text.slice(last));
+}
+
+function inline(text, record) {
   return tokenizeInline(text).map(token => {
     const value = escape(token.v);
     if (token.t === 'b') return `<strong>${value}</strong>`;
@@ -22,6 +39,7 @@ function inline(text) {
       const href = token.href.trim();
       return /^(https?:\/\/|#\/|\/)/i.test(href) ? `<a href="${escape(href)}">${value}</a>` : value;
     }
+    if (token.t === 'text') return linkedText(token.v, record);
     return value;
   }).join('');
 }
@@ -29,13 +47,15 @@ function inline(text) {
 function staticArticle(record) {
   const source = readFileSync(join(root, 'public', record.path), 'utf8');
   const blocks = parseMd(source);
+  const sections = blocks.filter(block => block.type === 'h2');
+  const toc = sections.length ? `<nav class="static-toc" aria-label="Chapter contents"><p>On this page</p><ol>${sections.map(block => `<li><a href="/${record.vol}/${record.slug}/?section=${encodeURIComponent(block.id)}">${inline(block.text, record)}</a></li>`).join('')}</ol></nav>` : '';
   const body = blocks.map(block => {
-    if (/^h[1-4]$/.test(block.type)) return `<${block.type} id="${escape(block.id)}">${inline(block.text)}</${block.type}>`;
-    if (block.type === 'p') return `<p>${inline(block.text)}</p>`;
-    if (block.type === 'quote') return `<blockquote>${inline(block.text)}</blockquote>`;
-    if (block.type === 'ul' || block.type === 'ol') return `<${block.type}>${block.items.map(item => `<li>${inline(item)}</li>`).join('')}</${block.type}>`;
+    if (/^h[1-4]$/.test(block.type)) return `<${block.type} id="${escape(block.id)}">${inline(block.text, record)}</${block.type}>${block.type === 'h1' ? toc : ''}`;
+    if (block.type === 'p') return `<p>${inline(block.text, record)}</p>`;
+    if (block.type === 'quote') return `<blockquote>${inline(block.text, record)}</blockquote>`;
+    if (block.type === 'ul' || block.type === 'ol') return `<${block.type}>${block.items.map(item => `<li>${inline(item, record)}</li>`).join('')}</${block.type}>`;
     if (block.type === 'hr') return '<hr>';
-    if (block.type === 'table') return `<div class="static-table-wrap"><table><thead><tr>${block.header.map(cell => `<th>${inline(cell)}</th>`).join('')}</tr></thead><tbody>${block.rows.map(row => `<tr>${row.map(cell => `<td>${inline(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    if (block.type === 'table') return `<div class="static-table-wrap"><table><thead><tr>${block.header.map(cell => `<th>${inline(cell, record)}</th>`).join('')}</tr></thead><tbody>${block.rows.map(row => `<tr>${row.map(cell => `<td>${inline(cell, record)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
     return '';
   }).join('\n');
   return `<main class="static-article"><p class="eyebrow">Volume ${ { gold: 'I', after: 'II', bitcoin: 'III' }[record.vol] } · ${volumeName[record.vol]} · <a href="/">Money Research</a></p><p class="evidence-notice">This research chapter is under editorial review. Dated figures, legal status and broad conclusions require source verification.</p>${body}</main>`;
