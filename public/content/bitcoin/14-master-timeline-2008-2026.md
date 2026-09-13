@@ -59,7 +59,7 @@
 | 13 Jun 2022 | Celsius freezes withdrawals ($4.7bn liabilities); Three Arrows Capital fails (>$4bn losses); Voyager follows. |
 | 8–11 Nov 2022 | FTX halts withdrawals and files for bankruptcy; $8bn customer shortfall. |
 | 30 Nov 2022 | ECB blog "Bitcoin's last stand." |
-| Dec 2022 | Basel Committee finalises 1,250% risk weight for bitcoin (effective 2025); price bottoms ~$16,500 (−78%); Core Scientific files for bankruptcy. |
+| Dec 2022 | Basel Committee publishes its cryptoasset prudential standard (later revised, with international implementation date 1 Jan 2026); price bottoms ~$16,500 (−78%); Core Scientific files for bankruptcy. |
 | Feb 2023 | IMF "Elements of Effective Policies for Crypto Assets": do not grant legal tender, do not hold in reserves; BIS's Carstens: "the battle has been won." |
 | 8–12 Mar 2023 | Silvergate liquidates; USDC depegs to $0.87 on SVB exposure; Signature Bank closed; bitcoin rises 21% in the month. |
 | 6 Apr 2023 | CAR repeals crypto legal tender. |

@@ -18,7 +18,7 @@ For a country to adopt bitcoin as legal tender, and more so as a monetary standa
  
 ## The financial architecture
  
-**Bank regulation.** The Basel standard in force since January 2025 assigns bitcoin a 1,250% risk weight and caps exposure at 1–2% of Tier 1 capital. A bank in a bitcoin-standard economy could not hold its own currency without capital equal to the holding. Either the standard is carved out — which the Basel Committee has shown no inclination to do, though the Bitcoin Policy Institute calls the weight "a category error" and a review is under way — or the payment system must run outside banks.
+**Bank regulation.** The Basel Committee's revised cryptoasset standard has an international implementation date of 1 January 2026, not 2025; actual application depends on each jurisdiction's rules. Under the standard, an unbacked exposure such as bitcoin normally falls in Group 2b, with a 1,250% risk weight. The Group 2 exposure threshold is 1% of Tier 1 capital, with more severe treatment if it exceeds 2%; these are not a simple blanket ban on bank holdings. Custody, payments and balance-sheet exposure must also be distinguished. [Basel Committee, SCO60, especially 60.83–60.86 and 60.116–60.119](https://www.bis.org/committees/bcbs/basel-framework/standard/sco/60/inforce/2026-01-01/published/2024-11-27).
  
 **Accounting.** US companies could only carry bitcoin at fair value from 2025 (FASB's 2023 standard); under IFRS it is still an intangible asset or, for brokers, inventory. Public-sector accounting standards have no category for it. A state that holds bitcoin books it as "other assets," which is what the US and El Salvador do, and marks it wherever it chooses.
  

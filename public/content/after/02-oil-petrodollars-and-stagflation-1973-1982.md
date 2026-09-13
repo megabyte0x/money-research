@@ -1,8 +1,8 @@
 # 02 — Oil, Petrodollars and Stagflation, 1973–1982: The First Decade Without an Anchor
 
-## Why inflation followed the end of gold
+## Inflation before and after the gold break
 
-Under Bretton Woods a country that inflated lost gold or dollars and had to stop. After 1971 there was no such brake. The United States ran an expansionary policy into the 1972 election under Fed chairman Arthur Burns, who believed inflation was caused by unions and oil rather than money and who was under open pressure from the White House. Broad money growth in the US, Britain, Japan and much of Europe ran at double-digit rates in 1971–73, and world commodity prices were already rising sharply before the oil shock — wheat had doubled after the Soviet grain purchases of 1972. Economists still argue about how much of the Great Inflation was monetary and how much was oil, but the sequence is clear: the anchor was removed in 1971, money accelerated in 1972, and the oil shock of 1973 landed on economies already overheating.
+US inflation had begun rising before the dollar–gold link was suspended in 1971: the Federal Reserve dates the Great Inflation to 1965–1982. Bretton Woods constrained policy but did not prevent inflation. The end of convertibility changed one constraint during an inflation already under way; it did not start that inflation on its own. Expansionary policy, expectations, fiscal pressures and the later oil shocks all matter to the account, although their relative weights remain debated. The 1973 oil shock struck economies already facing price pressure. [Federal Reserve History, “The Great Inflation,” opening and “The Motive”–“The Opportunity”](https://www.federalreservehistory.org/essays/great-inflation).
 
 ## The first oil shock (1973–74)
 
@@ -40,4 +40,4 @@ High and volatile inflation and interest rates forced financial innovation. Mone
 
 ## Key takeaways
 
-The first decade without gold produced the Great Inflation, because nothing replaced gold as a brake on money creation until Volcker did in 1979. The two oil shocks of 1973 and 1979 quadrupled and then doubled the price of energy, transferred wealth to OPEC, and could have dethroned the dollar; instead the 1974 arrangement with Saudi Arabia to price oil in dollars and recycle the proceeds into Treasuries gave the dollar an energy anchor to replace its gold anchor. Volcker's 20% interest rates and double recession established that a fiat currency's backing is the credibility of its central bank. Gold's rise from $35 to $850 measured the ten years it took to learn that.
+The Great Inflation began before the 1971 gold break and continued through two major oil shocks. Changes in monetary and fiscal policy, expectations and supply conditions all contributed; attributing the period to the end of convertibility alone mistakes chronology for causation. Oil remained dollar-invoiced, and exporters recycled some surpluses into dollar assets, but a dollar was not redeemable for oil as it had been for gold. The Volcker disinflation demonstrated the importance—and economic cost—of a central bank's commitment to price stability. [Federal Reserve History, “The Great Inflation”](https://www.federalreservehistory.org/essays/great-inflation).

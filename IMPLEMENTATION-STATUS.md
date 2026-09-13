@@ -19,6 +19,7 @@ This branch is a staged preview of the companion `website-improvement-plan.md` h
 - T02 (substantial): all 44 articles now get a direct static HTML route with crawlable text, unique title/description, canonical and Open Graph URL, plus sitemap entries. Numeric Bitcoin aliases get canonicalized pages; old hash routes still resolve. Search and other standalone views remain hash-routed, and social-image previews/indexing still need validation.
 - D03/D04 (partial): explanatory and glossary search hits rank above directories; section names are shown; queries can be copied as `#/search?q=…`; browser Back restores a direct article after entering search. Volume filters, aliases and grouping still need work.
 - F07 (partial): methods page with scope, source lists, revision note, and correction issue link. Author attribution remains unverified.
+- F01/F03 (partial): a claim-level source ledger now records primary-source locators for E03 (Basel timing/treatment), E05 (Great Inflation chronology) and E06 (FX settlement mechanism). These corrections were applied to affected chapters, an After Gold directory summary, and a Bitcoin timeline entry. Most P0 claims still lack this treatment.
 - T01/T05 (partial): inventory and relevance regression tests, plus a reproducible Vite build.
 
 ## Release blockers before production promotion
