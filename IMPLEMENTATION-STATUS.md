@@ -11,6 +11,7 @@ This branch is a staged preview of the companion `website-improvement-plan.md` h
 ## In this preview
 
 - R01/R06/R07 (partial): short introduction and responsive menu/contents control; the full historical arc remains under History.
+- R02/R03 (partial): the History arc now has an explicit 1914–1944 interwar bridge and an overlapping Bitcoin/stablecoin stage. Its ending no longer treats gold or Bitcoin as an inevitable successor. The reserve passage separates gold's share of broad official reserves from the dollar's share of foreign-exchange reserves; the source ledger records primary anchors A01/A02. Earlier arc stages and all chapter-to-arc consistency still need editorial audit.
 - V01 (provisional): qualitative arrangement-specific comparison without scores or volatile figures. This is **not** the cited final table.
 - F05 (interim): the historical arc's numerical charts are withheld pending dataset and citation audit; its prose is still under review.
 - F06 (interim): automatic keyword matching is removed. Two reviewed event-to-section relationships are explicit; unreviewed rows lead only to the source timeline, not an unrelated chapter. Composite events and chronology still need editorial normalization.

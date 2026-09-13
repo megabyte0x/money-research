@@ -33,7 +33,7 @@ const CHATGPT_URL = 'https://chatgpt.com/?q=';
 const DEFAULT_QUESTION = 'Explain this passage: what is it claiming, and why does it matter?';
 const MAX_PASSAGE = 1200;
 
-const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'];
 
 function GlossaryTerm({ term, label, definition }) {
   const [open, setOpen] = React.useState(false);
@@ -158,15 +158,23 @@ export default class App extends React.Component {
   }
   // ---- Arc: regimes + charts
   static ARC = [
-    { n: 1, label: 'Weight', title: 'Metal by weight', flex: 10, anchor: 'Silver, by weight', power: 'Temples and palaces' },
+    { n: 1, label: 'Weight', title: 'Metal by weight', flex: 10, anchor: 'Silver by weight, in the Near East', power: 'Temples and palaces' },
     { n: 2, label: 'Coin', title: "The sovereign's stamp", flex: 12, anchor: "Ruler's stamp on metal", power: 'Whoever held the mint' },
-    { n: 3, label: 'Bimetal', title: 'Bimetallism', flex: 9, anchor: 'Gold and silver at a legal ratio', power: 'Mine-owners and bankers' },
-    { n: 4, label: 'Gold std', title: 'The gold standard', flex: 9, anchor: 'A fixed weight of gold', power: 'Bank of England, the City' },
-    { n: 5, label: 'BW', title: 'Bretton Woods', flex: 6, anchor: 'Dollar at $35/oz', power: 'US Treasury' },
-    { n: 6, label: 'Oil', title: 'No anchor; oil', flex: 6, anchor: 'Oil priced in dollars', power: 'OPEC, US Treasury, Volcker' },
-    { n: 7, label: 'Credibility', title: 'Central-bank credibility', flex: 9, anchor: 'Inflation targets', power: 'Independent central banks, IMF' },
-    { n: 8, label: 'QE', title: 'Money at will', flex: 6, anchor: "Central bank's balance sheet", power: 'Central banks as buyer of last resort' },
-    { n: 9, label: '→ Gold', title: 'Weaponised dollar, return to gold', flex: 5, anchor: 'Dollar for pricing; gold for reserves', power: 'Sanctions — and geology' }];
+    { n: 3, label: 'Bimetal', title: 'Bimetallism', flex: 9, anchor: 'Gold and silver at a legal ratio', power: 'Mints, merchants and bankers' },
+    { n: 4, label: 'Gold std', title: 'The classical gold standard', flex: 9, anchor: 'Gold convertibility in participating countries', power: 'Governments and central banks' },
+    { n: 'interwar', label: 'Interwar', title: 'War, return and Depression', flex: 9, anchor: 'Contested gold parities, then suspensions', power: 'National governments and central banks' },
+    { n: 5, label: 'BW', title: 'Bretton Woods', flex: 7, anchor: 'Dollar–gold convertibility for foreign officials', power: 'US Treasury and participating states' },
+    { n: 6, label: 'Float', title: 'Floating dollars and inflation', flex: 7, anchor: 'Policy and institutions, not oil redemption', power: 'Governments, central banks and markets' },
+    { n: 7, label: 'Credibility', title: 'Central-bank credibility', flex: 9, anchor: 'Policy frameworks and financial regulation', power: 'Central banks, banks and regulators' },
+    { n: 8, label: 'QE', title: 'Crisis balance sheets', flex: 7, anchor: 'Central-bank reserves and bank credit are distinct', power: 'Central banks, governments and banks' },
+    { n: 9, label: 'Reserves', title: 'Reserve custody and the dollar', flex: 8, anchor: 'Dollar networks alongside gold reserves', power: 'Issuers, custodians and reserve managers' },
+    { n: 'digital', label: 'Digital', title: 'Bitcoin and dollar stablecoins', flex: 10, anchor: 'Bitcoin issuance rules; stablecoin issuer claims', power: 'Key holders, networks, issuers and custodians' }];
+
+  arcStage(id) {
+    const index = App.ARC.findIndex(stage => `arc-${stage.n}` === id);
+    if (index < 0) throw new Error(`Unknown arc stage: ${id}`);
+    return index + 1;
+  }
 
   svg(w, h, children, extra = {}) {
     return React.createElement('svg', { viewBox: `0 0 ${w} ${h}`, width: '100%', style: { display: 'block', border: '1px solid var(--rule)', padding: 12, boxSizing: 'border-box', background: 'transparent', ...extra }, fontFamily: MONO, fontSize: 10 }, ...children);
@@ -231,9 +239,14 @@ export default class App extends React.Component {
     return act;
   }
   scrollToSection() {
-    const sec = this.state.route.sec; const off = this.state.headerH + 20;
+    const sec = this.state.route.sec;
     requestAnimationFrame(() => {
-      if (sec) { const el = document.getElementById(sec); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - off }); }
+      if (sec) {
+        const el = document.getElementById(sec);
+        const arcBand = this.state.route.view === 'arc' ? document.querySelector('.arc-band')?.parentElement?.offsetHeight || 0 : 0;
+        const off = this.state.headerH + arcBand + 20;
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - off });
+      }
       else window.scrollTo({ top: 0 });
     });
   }
@@ -533,11 +546,11 @@ export default class App extends React.Component {
     vals.isArc = r.view === 'arc';
     if (vals.isArc) {
       const act = st.stage || 1; const A = App.ARC;
-      vals.arcBand = A.map(a => ({ href: '#/arc/arc-' + a.n, title: a.title, label: a.label, flex: a.flex, bg: a.n === act ? 'var(--fg)' : 'transparent', color: a.n === act ? 'var(--bg)' : 'var(--mut)' }));
+      vals.arcBand = A.map((a, index) => ({ href: '#/arc/arc-' + a.n, title: a.title, label: a.label, flex: a.flex, bg: index + 1 === act ? 'var(--fg)' : 'transparent', color: index + 1 === act ? 'var(--bg)' : 'var(--mut)' }));
       const active = A[act - 1]; vals.arcActiveAnchor = active.anchor; vals.arcActivePower = active.power;
       Object.assign(vals, this.arcCharts());
       vals.tocLabel = 'Regimes';
-      vals.toc = A.map(a => ({ text: ROMAN[a.n - 1] + ' · ' + a.title, href: '#/arc/arc-' + a.n, indent: '0' }));
+      vals.toc = A.map((a, index) => ({ text: ROMAN[index] + ' · ' + a.title, href: '#/arc/arc-' + a.n, indent: '0' }));
     }
     if (cur) {
       const key = cur.slug + '@' + cur.vol; const bl = st.blocks[key] || [];
@@ -742,19 +755,19 @@ export default class App extends React.Component {
 
             {v.isArc && <div className="history-arc">
               <div className="evidence-notice" role="note">This historical narrative is being reviewed. Its quantitative charts are withheld until the underlying series, definitions and source locations are verified. Read the <a href="#/methods">source method</a> or begin with the <a href="#/home">short introduction</a>.</div>
-              <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>The arc · what money was anchored to, who held the power, and what broke it — nine regimes, 4600 BCE to 2026</div>
-              <h1 style={s('font-weight:500;font-size:34px;line-height:1.15;letter-spacing:-.012em;margin:0 0 20px;text-wrap:pretty')}>Every monetary order was built on the last one's failure</h1>
-              <p style={s('font-size:17.5px;line-height:1.6;margin:0 0 36px;max-width:64ch;text-wrap:pretty')}>Monetary arrangements have often overlapped. Metal, coin, bank credit, redeemable notes and modern deposits solved different problems for different people and places. Since dollar–gold convertibility ended, major currencies have relied on monetary and fiscal institutions, legal frameworks and acceptance in trade. Follow this selective historical narrative, then explore the Bitcoin volume for a distinct design and its unresolved questions.</p>
+              <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>The arc · 11 selected arrangements and turning points · c. 3000 BCE to the present</div>
+              <h1 style={s('font-weight:500;font-size:34px;line-height:1.15;letter-spacing:-.012em;margin:0 0 20px;text-wrap:pretty')}>Monetary arrangements overlap—and change under pressure</h1>
+              <p style={s('font-size:17.5px;line-height:1.6;margin:0 0 36px;max-width:64ch;text-wrap:pretty')}>This is a selective history, not a sequence in which each form of money disappeared when the next arrived. Metal, redeemable notes, bank deposits, central-bank reserves, Bitcoin and dollar stablecoins solve different problems for different users. The interwar bridge explains why Bretton Woods was a new design, while the final digital track overlaps the fiat and reserve stories rather than replacing them. Dates and geographic scope vary by section.</p>
 
               <div style={s('position:sticky;z-index:5;background:var(--bg);padding:14px 0 12px;margin-bottom:40px;border-bottom:1px solid var(--rule)', { top: v.stickyTop })}>
-                <div style={s('display:flex;gap:2px;height:28px')}>
+                <div className="arc-band" style={s('display:flex;gap:2px;min-height:28px;overflow-x:auto')}>
                   {v.arcBand.map(b => (
                     <a key={b.href} href={b.href} title={b.title} className="hov-soft"
-                      style={s("min-width:0;border:1px solid var(--fg);text-decoration:none;display:flex;align-items:center;padding:0 6px;overflow:hidden;font-family:'IBM Plex Mono',monospace;font-size:10px;white-space:nowrap;text-overflow:ellipsis", { flex: b.flex, background: b.bg, color: b.color })}>{b.label}</a>
+                      style={s("border:1px solid var(--fg);text-decoration:none;display:flex;align-items:center;padding:0 6px;overflow:hidden;font-family:'IBM Plex Mono',monospace;font-size:10px;white-space:nowrap;text-overflow:ellipsis", { flex: b.flex, minWidth: v.mobile ? '74px' : 0, background: b.bg, color: b.color })}>{b.label}</a>
                   ))}
                 </div>
                 <div style={s("display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mut);margin-top:6px")}>
-                  <span>3000 BCE</span><span>650 BCE</span><span>1252</span><span>1717</span><span>1944</span><span>1971</span><span>2026</span>
+                  <span>c. 3000 BCE</span><span>1914–1944 bridge</span><span>2008 onward overlaps</span><span>2026</span>
                 </div>
                 <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;margin-top:10px;display:flex;gap:16px;flex-wrap:wrap")}>
                   <span style={s('color:var(--mut)')}>Anchor now:</span><span>{v.arcActiveAnchor}</span>
@@ -764,7 +777,7 @@ export default class App extends React.Component {
 
               <div style={s('display:flex;flex-direction:column')}>
 
-                <section data-stage="1" id="arc-1" style={s('padding:8px 0 40px')}>
+                <section data-stage={this.arcStage('arc-1')} id="arc-1" style={s('padding:8px 0 40px')}>
                   <div style={s('display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                     <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:var(--mut)")}>
                       <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>I</span>c. 3000 BCE<br />– 650 BCE
@@ -798,7 +811,7 @@ export default class App extends React.Component {
                   <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>Why it changed →</span> Armies and markets needed a unit that could be counted rather than weighed. Whoever could certify metal in advance would own the standard.</div>
                 </div>
 
-                <section data-stage="2" id="arc-2" style={s('padding:0 0 40px')}>
+                <section data-stage={this.arcStage('arc-2')} id="arc-2" style={s('padding:0 0 40px')}>
                   <div style={s('display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                     <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:var(--mut)")}>
                       <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>II</span>650 BCE<br />– 1252 CE
@@ -819,7 +832,7 @@ export default class App extends React.Component {
                   <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>Why it changed →</span> Western Europe went five centuries with silver pennies only. Trade with the East and new African gold via Mali brought gold coin back — and the two metals had to be priced against each other.</div>
                 </div>
 
-                <section data-stage="3" id="arc-3" style={s('padding:0 0 40px')}>
+                <section data-stage={this.arcStage('arc-3')} id="arc-3" style={s('padding:0 0 40px')}>
                   <div style={s('display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                     <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:var(--mut)")}>
                       <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>III</span>1252<br />– 1717
@@ -840,7 +853,7 @@ export default class App extends React.Component {
                   <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>Why it changed →</span> In 1717 Isaac Newton, as Master of the Mint, priced the guinea too high in silver. Silver drained out of Britain and the world's leading trader slid onto gold by accident.</div>
                 </div>
 
-                <section data-stage="4" id="arc-4" style={s('padding:0 0 40px')}>
+                <section data-stage={this.arcStage('arc-4')} id="arc-4" style={s('padding:0 0 40px')}>
                   <div style={s('display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                     <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:var(--mut)")}>
                       <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>IV</span>1717<br />– 1914
@@ -858,13 +871,34 @@ export default class App extends React.Component {
                 </section>
                 <div style={s('padding:0 0 40px;display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                   <div style={s('border-left:1px solid var(--fg);margin-left:6px')}></div>
-                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>Why it changed →</span> Two world wars and a depression. Governments suspended convertibility to print for war, tried to return in the 1920s at the old parities, and the 1930s taught democracies they would not accept mass unemployment to defend a gold price. Only one country still had the gold.</div>
+                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>The break was not immediate replacement →</span> The First World War interrupted the international gold standard. Attempts to restore it and the Depression occupied the three decades before Bretton Woods.</div>
                 </div>
 
-                <section data-stage="5" id="arc-5" style={s('padding:0 0 40px')}>
+                <section data-stage={this.arcStage('arc-interwar')} id="arc-interwar" style={s('padding:0 0 40px')}>
                   <div style={s('display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                     <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:var(--mut)")}>
-                      <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>V</span>1944<br />– 1971
+                      <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>V</span>1914<br />– 1944
+                    </div>
+                    <div>
+                      <h2 style={s('font-weight:500;font-size:26px;line-height:1.2;margin:0 0 18px;text-wrap:pretty')}>War, attempted restoration and Depression</h2>
+                      <div style={s('display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;font-size:15px;line-height:1.5')}>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What changed</div>The international gold standard broke with the First World War. Britain restored a gold-bullion standard at its pre-war parity in 1925, then suspended it after gold losses in September 1931.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Different national paths</div>The United States suspended domestic gold redemption in 1933 and redefined the dollar in gold in 1934 without restoring ordinary holders' right to redeem. These were not the same rules as Britain's 1925 system.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Why a new design</div>Depression-era exchange and trade restrictions, alongside conflicting domestic and external priorities, shaped the 1944 Bretton Woods negotiations. The post-war dollar–gold system was not a simple restart of pre-1914 convertibility.</div>
+                      </div>
+                      <p className="small-note">Scope: Britain and the United States illustrate different paths; other countries followed different dates and rules. <a href="/gold/07-the-gold-standard-era-1717-1971/">Read the Gold chapter →</a> Sources: <a href="https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/1968/the-exchange-equalisation-account-its-origins-and-development.pdf">Bank of England, 1968, p. 377</a>; <a href="https://www.federalreservehistory.org/essays/roosevelts-gold-program">Federal Reserve History, “Roosevelt's Gold Program”</a>; <a href="https://www.federalreservehistory.org/essays/bretton-woods-created">Federal Reserve History, “Creation of the Bretton Woods System”</a>.</p>
+                    </div>
+                  </div>
+                </section>
+                <div style={s('padding:0 0 40px;display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
+                  <div style={s('border-left:1px solid var(--fg);margin-left:6px')}></div>
+                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>The 1944 compromise →</span> A dollar redeemable in gold for foreign monetary authorities, adjustable pegs for other participating currencies, and a new IMF to help manage balance-of-payments stress.</div>
+                </div>
+
+                <section data-stage={this.arcStage('arc-5')} id="arc-5" style={s('padding:0 0 40px')}>
+                  <div style={s('display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
+                    <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:var(--mut)")}>
+                      <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>VI</span>1944<br />– 1971
                     </div>
                     <div>
                       <h2 style={s('font-weight:500;font-size:26px;line-height:1.2;margin:0 0 18px;text-wrap:pretty')}>Bretton Woods: the dollar becomes gold's proxy</h2>
@@ -882,19 +916,19 @@ export default class App extends React.Component {
                   <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>15 August 1971 →</span> Nixon suspends convertibility, “temporarily”. For the first time in history no currency on earth is defined as a weight of anything. “The dollar is our currency, but it's your problem.”</div>
                 </div>
 
-                <section data-stage="6" id="arc-6" style={s('padding:0 0 40px')}>
+                <section data-stage={this.arcStage('arc-6')} id="arc-6" style={s('padding:0 0 40px')}>
                   <div style={s('display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                     <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:var(--mut)")}>
-                      <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>VI</span>1971<br />– 1982
+                      <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>VII</span>1971<br />– 1982
                     </div>
                     <div>
-                      <h2 style={s('font-weight:500;font-size:26px;line-height:1.2;margin:0 0 18px;text-wrap:pretty')}>No anchor: the Great Inflation, then oil as the substitute</h2>
+                      <h2 style={s('font-weight:500;font-size:26px;line-height:1.2;margin:0 0 18px;text-wrap:pretty')}>Floating dollars: inflation, oil shocks and policy</h2>
                       <div style={s('display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;font-size:15px;line-height:1.5')}>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Anchor</div>None, then oil. In 1974 Saudi Arabia agreed to price oil in dollars and park the proceeds in Treasuries. Every importer now needed dollars for energy, whether or not it traded with America.</div>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>OPEC over prices, the US Treasury over the currency they were set in — and, from 1979, Paul Volcker, who proved a fiat currency could be made credible by raising rates to 20% and accepting a deep recession.</div>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>The worst peacetime inflation in the West: US CPI touched 14%, Britain 24%, and gold — now just a commodity, officially — went from $35 to $850 in nine years. Floating rates created a hedging industry: currency futures 1972, options 1973, swaps 1981.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Anchor</div>Gold redemption ended for foreign official dollar holders in 1971; major currencies floated by 1973. The dollar continued to depend on institutions, taxation and use in trade. Pricing oil in dollars did not make dollars redeemable for oil.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who set policy</div>Governments and central banks made monetary and fiscal choices while oil producers influenced energy prices. Paul Volcker's Federal Reserve tightened policy sharply from 1979; no single actor controlled every cause of inflation.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What happened</div>U.S. inflation had been rising since the mid-1960s, before the gold-window closure. The 1970s oil shocks added pressure; disinflation under Volcker came with severe economic costs. Floating exchange rates also created new demand for hedging.</div>
                       </div>
-                      <figure style={s('margin:24px 0 0')}>{v.chartInflation}<figcaption style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px")}>US consumer-price inflation, annual %, 1965–1985. Two oil shocks and no anchor; then the Volcker squeeze. Vol. II, file 02.</figcaption></figure>
+                      <p className="small-note">The chronology and multiple causal channels are reviewed in <a href="https://www.federalreservehistory.org/essays/great-inflation">Federal Reserve History, “The Great Inflation”</a>. <a href="/after/02-oil-petrodollars-and-stagflation-1973-1982/">Read the After Gold chapter →</a></p>
                     </div>
                   </div>
                 </section>
@@ -903,17 +937,17 @@ export default class App extends React.Component {
                   <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>Why it changed →</span> Volcker's lesson was institutionalised: money would be anchored not by metal but by independent central banks with inflation targets. New Zealand first (1990), the euro treaty next, almost everyone by 2000.</div>
                 </div>
 
-                <section data-stage="7" id="arc-7" style={s('padding:0 0 40px')}>
+                <section data-stage={this.arcStage('arc-7')} id="arc-7" style={s('padding:0 0 40px')}>
                   <div style={s('display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                     <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:var(--mut)")}>
-                      <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>VII</span>1982<br />– 2008
+                      <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>VIII</span>1982<br />– 2008
                     </div>
                     <div>
                       <h2 style={s('font-weight:500;font-size:26px;line-height:1.2;margin:0 0 18px;text-wrap:pretty')}>Anchored by credibility: central banks, and a crisis every decade</h2>
                       <div style={s('display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;font-size:15px;line-height:1.5')}>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Anchor</div>A promise: an independent central bank targeting ~2% inflation. Freed from metal, credit could expand without limit — securitisation, Eurodollars, derivatives, cross-border capital.</div>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>Central banks, and the IMF as crisis manager — lending on condition of austerity, devaluation and reform. Basel I (1988) wrote the first global bank rules because no gold reserve constrained lending any more.</div>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>Low inflation, and a debt crisis roughly every four years: Latin America, Japan, the ERM, Mexico, Asia, Russia and LTCM, Argentina, dot-com. Each was answered with a bigger bailout and a new rulebook; the Asian crisis taught emerging economies to hoard reserves.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Framework</div>Many central banks adopted explicit inflation goals and more independent policy structures. Bank lending was not unlimited: capital, liquidity, funding, borrower demand and regulation still constrained credit.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>Central banks set policy rates, commercial banks created deposits through lending, and governments and regulators shaped the boundaries. The IMF supported some countries in crisis, under programme conditions.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>Different crises exposed different weaknesses: sovereign borrowing, exchange-rate pegs, maturity and currency mismatches, leverage, and banking supervision. They cannot all be attributed to the absence of gold.</div>
                       </div>
                       <figure style={s('margin:24px 0 0')}>{v.chartCrises}<figcaption style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px")}>Major financial crises of the fiat era, with the size of the rescue that followed. Vol. II, files 03, 05, 07.</figcaption></figure>
                     </div>
@@ -921,20 +955,20 @@ export default class App extends React.Component {
                 </section>
                 <div style={s('padding:0 0 40px;display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                   <div style={s('border-left:1px solid var(--fg);margin-left:6px')}></div>
-                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>Why it changed →</span> 1% interest rates, deregulation and leverage produced the fiat era's 1929. This time the answer was not gold-standard deflation but the opposite: create money without limit.</div>
+                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>After 2008 →</span> Housing and credit losses spread through leveraged institutions. Central banks expanded liquidity support and bought assets; those operations were not the same as unconstrained lending to households or governments.</div>
                 </div>
 
-                <section data-stage="8" id="arc-8" style={s('padding:0 0 40px')}>
+                <section data-stage={this.arcStage('arc-8')} id="arc-8" style={s('padding:0 0 40px')}>
                   <div style={s('display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                     <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:var(--mut)")}>
-                      <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>VIII</span>2008<br />– 2021
+                      <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>IX</span>2008<br />– 2021
                     </div>
                     <div>
-                      <h2 style={s('font-weight:500;font-size:26px;line-height:1.2;margin:0 0 18px;text-wrap:pretty')}>Money at will: zero rates, QE and the debt that followed</h2>
+                      <h2 style={s('font-weight:500;font-size:26px;line-height:1.2;margin:0 0 18px;text-wrap:pretty')}>Crisis balance sheets: zero rates and asset purchases</h2>
                       <div style={s('display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;font-size:15px;line-height:1.5')}>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Anchor</div>The central bank's own balance sheet. With rates at zero the Fed bought bonds with newly created reserves — QE1 alone $1.75 trillion — and in March 2020 did in weeks what had taken years after 2008.</div>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>Central banks as buyer of last resort for their own governments' debt; the Fed as lender of last resort to the world through swap lines. Bailouts for banks, austerity for citizens — and the politics that produced.</div>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>Asset inflation rather than consumer inflation at first; then, in 2021–23, the first serious inflation in forty years. US gross debt went from $10 trillion to $39 trillion. Bitcoin (2009) and stablecoins (2014) appeared as private answers.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Mechanism</div>Central banks purchased assets with newly created reserves and supplied emergency liquidity. Reserves are balances held by banks at a central bank; they are not identical to household bank deposits or government borrowing.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>Central banks chose asset purchases and lending facilities; legislatures and treasuries made fiscal decisions; commercial banks still decided which loans to make, subject to regulation and risk.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What followed</div>Low rates, public borrowing and later pandemic support interacted with supply conditions and inflation. Bitcoin and stablecoins also developed during these years, but they are distinct designs and cannot be reduced to a single response to QE.</div>
                       </div>
                       <figure style={s('margin:24px 0 0')}>{v.chartDebt}<figcaption style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px")}>US gross federal debt, $ trillion, 1971–2026. Every war and crisis of the fiat era was borrowed for rather than paid for. Vol. II, files 06, 07, 09.</figcaption></figure>
                     </div>
@@ -942,26 +976,39 @@ export default class App extends React.Component {
                 </section>
                 <div style={s('padding:0 0 40px;display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                   <div style={s('border-left:1px solid var(--fg);margin-left:6px')}></div>
-                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>24 February 2022 →</span> The US and EU freeze about $300 billion of Russia's central-bank reserves. Every reserve manager draws the same lesson: a dollar reserve is a claim the issuer can cancel. Gold in your own vault is not.</div>
+                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>2022 and after →</span> Restrictions on Russia's official reserves made custody and jurisdiction more salient for reserve managers. That does not mean every reserve asset is interchangeable, or that gold held abroad is free of custody risk.</div>
                 </div>
 
-                <section data-stage="9" id="arc-9" style={s('padding:0 0 40px')}>
+                <section data-stage={this.arcStage('arc-9')} id="arc-9" style={s('padding:0 0 40px')}>
                   <div style={s('display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                     <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:var(--mut)")}>
-                      <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>IX</span>2022<br />– 2026
+                      <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>X</span>2022<br />– 2026
                     </div>
                     <div>
-                      <h2 style={s('font-weight:500;font-size:26px;line-height:1.2;margin:0 0 18px;text-wrap:pretty')}>The weaponised dollar, and the quiet return to gold</h2>
+                      <h2 style={s('font-weight:500;font-size:26px;line-height:1.2;margin:0 0 18px;text-wrap:pretty')}>Reserve custody, gold and the continuing dollar</h2>
                       <div style={s('display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;font-size:15px;line-height:1.5')}>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Anchor</div>Still the dollar for pricing, invoicing and settlement — it is on one side of 88% of all FX trades. But as a <em>store</em> of reserves, gold is being shared back in: 27% of global reserves at end-2025, above Treasuries (22%) and the euro (15%).</div>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>Sanctions gave the US Treasury a weapon; using it handed power to geology. Central banks — China, Poland, India, Turkey — bought over 1,000 tonnes a year for three years. Tether, a stablecoin issuer, was the single largest buyer of 2025.</div>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>Gold from $1,800 to a $5,590 peak in January 2026; the dollar's reserve share from 71% (2000) to 57%. Not de-dollarisation toward a rival currency, but a partial move back to the one asset that predates the dollar.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Two different measures</div>The ECB estimated gold at 27% of the value of broad official reserves, <em>including gold</em>, at end-2025. The IMF put the dollar near 57% of reported <em>foreign-exchange</em> reserves in early 2026, a measure that excludes gold. These shares cannot be subtracted or compared as parts of one pie.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What changed</div>Some central banks added gold while its dollar price rose. Valuation is therefore part of the higher measured gold share, not proof of equivalent physical buying or a single motive. Sanctions also raised questions about access to assets held in foreign jurisdictions.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What persists</div>Dollar use in trade, borrowing, settlement and foreign-exchange reserves remains substantial. Gold can diversify official reserves without serving as the unit of account for wages and contracts. Custody, liquidity and legal access matter alongside the asset's physical form.</div>
                       </div>
-                      <div style={s('display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:24px')}>
-                        <figure style={s('margin:0')}>{v.chartReserves}<figcaption style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px")}>Share of global central-bank reserves, end-2025 (ECB, June 2026). Vol. I, file 09.</figcaption></figure>
-                        <figure style={s('margin:0')}>{v.chartCBBuying}<figcaption style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px")}>Net central-bank gold purchases, tonnes per year (WGC). Vol. II, file 09.</figcaption></figure>
+                      <p className="small-note">Different denominators and dates: <a href="https://www.ecb.europa.eu/press/other-publications/ire/html/ecb.ire202606.en.html">ECB, International Role of the Euro, June 2026, chart 7</a>; <a href="https://data.imf.org/Datasets/COFER">IMF COFER</a> and its <a href="https://data.imf.org/en/news/imf%20data%20brief%20july%201">first-quarter 2026 data brief</a>. <a href="/after/09-pandemic-inflation-and-weaponized-reserves-2020-2026/">Read the After Gold chapter →</a></p>
+                    </div>
+                  </div>
+                </section>
+
+                <section data-stage={this.arcStage('arc-digital')} id="arc-digital" style={s('padding:0 0 40px')}>
+                  <div style={s('display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
+                    <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:var(--mut)")}>
+                      <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>XI</span>2008 onward<br />overlaps IX–X
+                    </div>
+                    <div>
+                      <h2 style={s('font-weight:500;font-size:26px;line-height:1.2;margin:0 0 18px;text-wrap:pretty')}>Parallel digital paths: Bitcoin and dollar stablecoins</h2>
+                      <div style={s('display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;font-size:15px;line-height:1.5')}>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Bitcoin</div>The 2008 whitepaper proposed peer-to-peer electronic cash without a central issuer. Its issuance and transfer rules can be independently checked, but actual users face price volatility, custody choices and varying access to payments. A balance at an exchange is still a claim on that intermediary.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Dollar stablecoins</div>These digital tokens usually promise redemption at a dollar value. Unlike Bitcoin, they are liabilities of issuers: users depend on reserve quality, redemption terms, custodians and payment infrastructure. Their growing transfer activity does not by itself show broad use for everyday prices or wages.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>The open test</div>Both operate alongside bank deposits and sovereign currencies. Their long-term monetary roles depend on what they can reliably do—payments, saving, pricing, credit and settlement—and on the risks users retain. Neither automatically solves every problem identified in the preceding stages.</div>
                       </div>
-                      <figure style={s('margin:24px 0 0')}>{v.chartGold}<figcaption style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px")}>Gold in US dollars per ounce, 1971–2026, log scale. The price is a running vote on whether the promise will hold. Vol. I, file 09.</figcaption></figure>
+                      <p className="small-note">Sources: <a href="https://bitcoin.org/bitcoin.pdf">Nakamoto, “Bitcoin: A Peer-to-Peer Electronic Cash System”</a>; <a href="https://www.bis.org/publ/arpdf/ar2025e.pdf">BIS Annual Economic Report 2025, p. 85</a>; <a href="https://www.bis.org/publ/arpdf/ar2026e.pdf">BIS Annual Economic Report 2026</a>. Continue with <a href="/bitcoin/02-what-bitcoin-solved-and-what-it-did-not/">the Bitcoin design</a> and <a href="/bitcoin/13-is-bitcoin-the-answer/">the standard question</a>.</p>
                     </div>
                   </div>
                 </section>
@@ -969,11 +1016,12 @@ export default class App extends React.Component {
                 <div style={s('padding:24px 0 0;border-top:1px solid var(--fg);display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                   <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut)")}>What stays</div>
                   <div style={s('font-size:17.5px;line-height:1.6;max-width:62ch;text-wrap:pretty')}>
-                    <p style={s('margin:0 0 1em')}>Each regime moved the power to create money one step further from the ground — from the mine to the mint, from the mint to the bank, from the bank to the state, from the state to a committee. Each step bought elasticity: money that could be created in a crisis and to fight a war. Each step was paid for in the same coin — debasement, inflation, debt — and each collapse sent the world back, briefly, to the asset that is nobody's liability.</p>
-                    <p style={s('margin:0')}>Gold is not the unit of account today because nothing is priced in it. It is the reserve underneath the system rather than the system itself — the role it held for most of history before 1870. The open question of 2026 is whether a currency that can be frozen can stay the world's store of value, or only its measuring stick.</p>
+                    <p style={s('margin:0 0 1em')}>Monetary history is not a ladder with one inevitable last rung. Metal, sovereign money, bank credit and digital networks coexist because users need different combinations of stable prices, accessible payments, credit, final settlement and control over custody.</p>
+                    <p style={s('margin:0')}>The questions now are comparative: which arrangement works for which use, who can change its rules, and who bears the risk when a promise fails? The three research volumes examine gold, the post-1971 dollar system and Bitcoin without treating any one of them as a predetermined answer.</p>
                     <div style={s("display:flex;gap:20px;flex-wrap:wrap;margin-top:24px;font-family:'IBM Plex Mono',monospace;font-size:12px")}>
-                      <a href="#/gold/08-why-the-dollar-replaced-gold">Why the dollar replaced gold →</a>
-                      <a href="#/after/09-pandemic-inflation-and-weaponized-reserves-2020-2026">Where the system stands, Sep 2026 →</a>
+                      <a href="#/gold/08-why-the-dollar-replaced-gold">Gold and the dollar →</a>
+                      <a href="#/after/09-pandemic-inflation-and-weaponized-reserves-2020-2026">The present reserve system →</a>
+                      <a href="#/bitcoin/13-is-bitcoin-the-answer">The Bitcoin question →</a>
                       <a href="#/timeline">Full timeline →</a>
                     </div>
                   </div>
