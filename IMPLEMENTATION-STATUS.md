@@ -20,6 +20,7 @@ This branch is a staged preview of the companion `website-improvement-plan.md` h
 - D03/D04 (partial): explanatory and glossary search hits rank above directories; section names are shown; queries can be copied as `#/search?q=…`; browser Back restores a direct article after entering search. Volume filters, aliases and grouping still need work.
 - F07 (partial): methods page with scope, source lists, revision note, and correction issue link. Author attribution remains unverified.
 - F01/F03 (partial): a claim-level source ledger now records primary-source locators for E03 (Basel timing/treatment), E05 (Great Inflation chronology) and E06 (FX settlement mechanism). These corrections were applied to affected chapters, an After Gold directory summary, and a Bitcoin timeline entry. Most P0 claims still lack this treatment.
+- F01/F03 (partial): E01 now uses the exact 2025 Federal Reserve SHED table and questionnaire. The Bitcoin directory, payment chapter and adoption chapter no longer translate U.S.-adult cryptocurrency percentages into a global Bitcoin-user payment share. The source list points to the actual table; the global share remains unknown here.
 - T01/T05 (partial): inventory and relevance regression tests, plus a reproducible Vite build.
 
 ## Release blockers before production promotion

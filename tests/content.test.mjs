@@ -48,6 +48,19 @@ test('all volumes retain a source list and a source timeline', () => {
   }
 });
 
+test('Federal Reserve cryptocurrency survey is not presented as a global Bitcoin payment share', () => {
+  for (const path of [
+    'content/bitcoin/00-readme.md',
+    'content/bitcoin/02-what-bitcoin-solved-and-what-it-did-not.md',
+    'content/bitcoin/03-how-bitcoin-is-actually-used-global-adoption.md'
+  ]) {
+    const article = readFileSync(join(root, 'public', path), 'utf8');
+    assert.match(article, /U\.S\. adults/);
+    assert.match(article, /cryptocurrency/i);
+    assert.doesNotMatch(article, /under 2% of (?:its |bitcoin )?users|payments are under 2% of use|under 2% for a payment/i);
+  }
+});
+
 test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {
   const dates = ['3 Jan 2009', '15 Aug 1971', 'c. 4600–4300 BCE', '1925', '31 Oct 2008'];
   assert.deepEqual(dates.sort((a, b) => eventSortValue(a) - eventSortValue(b)),
