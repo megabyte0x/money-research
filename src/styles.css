@@ -42,6 +42,9 @@ input:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .mechanics-table caption{text-align:left;color:var(--mut);font-size:13px;line-height:1.45;margin-bottom:8px}
 .mechanics-table th,.mechanics-table td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--rule)}
 .mechanics-table th{font-weight:500}
+.search-filter{display:flex;align-items:center;gap:10px;margin:0 0 24px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+.search-filter select{background:var(--bg);color:var(--fg);border:1px solid var(--rule);padding:7px 10px;font:inherit}
+.search-empty{max-width:60ch;font-size:17px;line-height:1.5}
 .evidence-notice{border:1px solid var(--fg);padding:14px 18px;line-height:1.55;margin-bottom:32px;font-size:15px}
 .history-arc figure{display:none}
 .static-article{max-width:72ch;margin:0 auto;padding:36px 16px 96px;font-size:18px;line-height:1.6}

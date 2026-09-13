@@ -2,6 +2,7 @@ import React from 'react';
 import * as md from './md.js';
 import { eventYear, eventSortValue, mergeSharedEvents } from './timeline.js';
 import MoneyMechanics from './MoneyMechanics.jsx';
+import { searchDocuments, searchState, searchUrl } from './search.js';
 
 // The prototype declared every rule as an inline CSS string. Keeping those strings
 // verbatim and parsing them once keeps the port pixel-identical to the design file.
@@ -81,7 +82,7 @@ function GlossaryTerm({ term, label, definition }) {
 }
 
 export default class App extends React.Component {
-  state = { manifest: [], docs: {}, blocks: {}, glossary: [], route: { view: 'home' }, query: '', tlq: '', glq: '', collapsed: {}, progress: 0, copied: false, quote: null, askOpen: false, askQ: '', promptCopied: false, theme: null, loaded: false, headerH: 52, menuOpen: false };
+  state = { manifest: [], docs: {}, blocks: {}, glossary: [], route: { view: 'home' }, query: '', searchVol: '', tlq: '', glq: '', collapsed: {}, progress: 0, copied: false, quote: null, askOpen: false, askQ: '', promptCopied: false, theme: null, loaded: false, headerH: 52, menuOpen: false };
   headerRef = React.createRef();
 
   // The header is one 52px row on desktop and wraps to two rows on a phone; every
@@ -97,7 +98,8 @@ export default class App extends React.Component {
   componentDidMount() {
     this.onHash = () => {
       if (location.pathname !== '/' && location.hash.startsWith('#/')) { location.assign('/' + location.hash); return; }
-      this.setState({ route: this.parseHash(), collapsed: {}, quote: null, menuOpen: false, query: this.searchFromHash() }, () => this.scrollToSection());
+      const search = searchState(location.hash);
+      this.setState({ route: this.parseHash(), collapsed: {}, quote: null, menuOpen: false, query: search.query, searchVol: search.volume }, () => this.scrollToSection());
     };
     window.addEventListener('hashchange', this.onHash);
     window.addEventListener('popstate', this.onHash);
@@ -139,10 +141,8 @@ export default class App extends React.Component {
     glossary = glossary.filter(g => { const k = g.term.toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; }).sort((a, b) => a.term.localeCompare(b.term));
     this.glossRe = new RegExp('\\b(' + glossary.map(g => g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim()).filter(t => t.length > 3).sort((a, b) => b.length - a.length).map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')\\b', 'i');
     this.glossMap = {}; glossary.forEach(g => { this.glossMap[g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim().toLowerCase()] = g; });
-    this.setState({ manifest, docs, blocks, glossary, loaded: true, route: this.parseHash(), query: this.searchFromHash() }, () => this.scrollToSection());
-  }
-  searchFromHash() {
-    return new URLSearchParams((location.hash.split('?')[1] || '')).get('q') || '';
+    const search = searchState(location.hash);
+    this.setState({ manifest, docs, blocks, glossary, loaded: true, route: this.parseHash(), query: search.query, searchVol: search.volume }, () => this.scrollToSection());
   }
   parseHash() {
     // #/<view>[/<section>] for the standalone views, #/<vol>/<slug>[/<section>] for a file.
@@ -409,25 +409,11 @@ export default class App extends React.Component {
     return groups.filter(g => { g.count = g.rows.length; return g.count > 0; });
   }
   search() {
-    const q = this.state.query.trim().toLowerCase(); if (q.length < 2) return [];
-    const R = React.createElement; const res = [];
-    for (const m of this.state.manifest) {
-      const bl = this.state.blocks[m.slug + '@' + m.vol]; let sec = null, secTitle = ''; let n = 0;
-      for (const b of bl) {
-        if (b.type === 'h2') { sec = b.id; secTitle = this.md.stripInline(b.text); }
-        const txt = b.type === 'p' || b.type === 'quote' ? this.md.stripInline(b.text) : b.type === 'table' ? b.rows.map(r => r.join(' — ')).join('\n') : b.type === 'ul' || b.type === 'ol' ? b.items.join('\n') : '';
-        const idx = txt.toLowerCase().indexOf(q); if (idx < 0) continue;
-        const line = b.type === 'table' ? txt.split('\n').find(l => l.toLowerCase().includes(q)) : txt; const li = line.toLowerCase().indexOf(q);
-        const start = Math.max(0, li - 110); const end = Math.min(line.length, li + q.length + 160);
-        const snippet = [start > 0 ? '…' : '', line.slice(start, li), R('mark', { key: 'm', style: { background: 'var(--mark)', color: 'inherit' } }, line.slice(li, li + q.length)), line.slice(li + q.length, end), end < line.length ? '…' : ''];
-        const reference = /readme|timeline|sources/.test(m.slug);
-        res.push({ href: this.href(m, sec), label: ({ gold: 'Vol. I · ', after: 'Vol. II · ', bitcoin: 'Vol. III · ' }[m.vol]) + this.short(m) + (secTitle ? ' · ' + secTitle : ''), snippet,
-          score: (reference ? -10 : 0) + (m.slug.includes('glossary') ? 7 : 0) + (secTitle.toLowerCase().includes(q) ? 5 : 0) + (txt.toLowerCase().startsWith(q) ? 2 : 0) });
-        if (++n >= 3) break;
-      }
-      if (res.length > 80) break;
-    }
-    return res.sort((a, b) => b.score - a.score);
+    return searchDocuments(this.state.manifest, this.state.blocks, this.state.query, this.state.searchVol).map(result => ({
+      ...result, href: result.glossaryId ? '#/glossary/' + result.glossaryId : this.href(result.article, result.section),
+      label: result.glossaryId ? 'Glossary · ' + result.glossaryTerm :
+        ({ gold: 'Vol. I · ', after: 'Vol. II · ', bitcoin: 'Vol. III · ' }[result.article.vol]) + this.short(result.article) + (result.sectionTitle ? ' · ' + result.sectionTitle : '')
+    }));
   }
   // ---- selection → ask ChatGPT
   askPrompt() {
@@ -514,7 +500,7 @@ export default class App extends React.Component {
       stageGap: mobile ? '10px' : '24px',
       selectDisplay: mobile ? 'none' : 'block',
       progressPct: (st.progress * 100).toFixed(1) + '%',
-      query: st.query, tlq: st.tlq, glq: st.glq,
+      query: st.query, searchVol: st.searchVol, tlq: st.tlq, glq: st.glq,
       bodyFontSize: BODY_SIZE + 'px'
     };
     vals.onQuery = e => {
@@ -522,10 +508,15 @@ export default class App extends React.Component {
       if (v.trim()) {
         if (r.view !== 'search') {
           this.prevUrl = location.href;
-          history.pushState(null, '', '/#/search?q=' + encodeURIComponent(v));
-        } else history.replaceState(null, '', '/#/search?q=' + encodeURIComponent(v));
+          history.pushState(null, '', searchUrl(v, st.searchVol));
+        } else history.replaceState(null, '', searchUrl(v, st.searchVol));
         if (r.view !== 'search') this.setState({ route: { view: 'search' } });
       } else if (r.view === 'search') location.href = this.prevUrl || '/#/home';
+    };
+    vals.onSearchVol = e => {
+      const volume = e.target.value;
+      history.pushState(null, '', searchUrl(st.query, volume));
+      this.setState({ searchVol: volume });
     };
     vals.onTlq = e => this.setState({ tlq: e.target.value });
     vals.onGlq = e => this.setState({ glq: e.target.value });
@@ -633,7 +624,7 @@ export default class App extends React.Component {
     }
     if (vals.isSearch) {
       vals.searchResults = this.search();
-      vals.searchSummary = st.query.trim().length < 2 ? 'Type at least two characters' : vals.searchResults.length + ' passages match “' + st.query.trim() + '”';
+      vals.searchSummary = st.query.trim().length < 2 ? 'Type at least two characters' : vals.searchResults.length + ' sections match “' + st.query.trim() + '”';
       vals.tocLabel = 'Search'; vals.toc = [];
     }
     vals.onArticleMouseUp = () => {
@@ -1135,10 +1126,14 @@ export default class App extends React.Component {
 
             {v.isSearch && <>
               <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>{v.searchSummary}</div>
+              <label className="search-filter">Volume <select aria-label="Filter search by volume" value={v.searchVol} onChange={v.onSearchVol}>
+                <option value="">All volumes</option><option value="gold">I · Gold</option><option value="after">II · After Gold</option><option value="bitcoin">III · Bitcoin</option>
+              </select></label>
+              {v.query.trim().length >= 2 && v.searchResults.length === 0 && <p className="search-empty">No matching sections in {v.searchVol ? 'this volume' : 'the library'}. Try another term or choose All volumes. <a href="#/research">Browse the research →</a></p>}
               {v.searchResults.map((sr, i) => (
                 <a key={sr.href + i} href={sr.href} style={s('display:block;text-decoration:none;padding:16px 0;border-top:1px solid var(--rule)')}>
-                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>{sr.label}</div>
-                  <div style={s('font-size:15px;line-height:1.55')}>{sr.snippet}</div>
+                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>{sr.label}{sr.matches > 1 ? ' · ' + sr.matches + ' matching passages' : ''}</div>
+                  <div style={s('font-size:15px;line-height:1.55')}>{sr.snippet.before}{sr.snippet.match && <mark style={{ background: 'var(--mark)', color: 'inherit' }}>{sr.snippet.match}</mark>}{sr.snippet.after}</div>
                 </a>
               ))}
             </>}
