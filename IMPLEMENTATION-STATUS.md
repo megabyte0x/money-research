@@ -21,6 +21,7 @@ This branch is a staged preview of the companion `website-improvement-plan.md` h
 - F07 (partial): methods page with scope, source lists, revision note, and correction issue link. Author attribution remains unverified.
 - F01/F03 (partial): a claim-level source ledger now records primary-source locators for E03 (Basel timing/treatment), E05 (Great Inflation chronology) and E06 (FX settlement mechanism). These corrections were applied to affected chapters, an After Gold directory summary, and a Bitcoin timeline entry. Most P0 claims still lack this treatment.
 - F01/F03 (partial): E01 now uses the exact 2025 Federal Reserve SHED table and questionnaire. The Bitcoin directory, payment chapter and adoption chapter no longer translate U.S.-adult cryptocurrency percentages into a global Bitcoin-user payment share. The source list points to the actual table; the global share remains unknown here.
+- F01/F03 (partial): E04 now separates the IMF COFER foreign-exchange denominator from the ECB's broader official-reserves measure in the Gold, After Gold and Bitcoin chapters. The old “allocated FX” label was removed for the revised series, and valuation effects are stated alongside the end-2025 gold share. Homepage reserve visualisation and other reserve claims still require audit.
 - T01/T05 (partial): inventory and relevance regression tests, plus a reproducible Vite build.
 
 ## Release blockers before production promotion

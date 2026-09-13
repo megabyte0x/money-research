@@ -20,8 +20,8 @@ Figures are from the World Gold Council's *Gold Demand Trends* for full-year 202
 | Price peak | about US$5,590/oz, 28 January 2026 |
 | Spot price, 3 September 2026 | about US$4,490/oz |
 | Central-bank buying, Q1 / Q2 2026 | ~57 t (revised down from 244 t) / 289 t |
-| Gold's share of global reserves, end-2025 (ECB) | 27%, above US Treasuries (22%) and the euro (15%) |
-| Dollar's share of allocated FX reserves, Q1 2026 (IMF) | 57.1% (from 71% in 2000) |
+| Gold's share of official reserves including gold, end-2025 (ECB) | 27% at current gold prices; roughly 16% at end-2023 gold prices. The ECB puts the euro at 15% and US Treasuries at 22% at current prices. These shares use a broader denominator than COFER. [ECB chart 7](https://www.ecb.europa.eu/press/other-publications/ire/html/ecb.ire202606.en.html) |
+| Dollar's share of foreign-exchange reserves, Q1 2026 (IMF COFER) | 57.13%. COFER excludes gold, SDRs and IMF reserve positions; the old “allocated” label no longer applies to the revised series. [IMF COFER](https://data.imf.org/Datasets/COFER); [Q1 2026 brief](https://data.imf.org/en/news/imf%20data%20brief%20july%201) |
 | Below-ground reserves | ~55,000–64,000 t economically mineable; ~132,000 t resources |
 
 Largest official holders (approximate, 2026): United States ~8,133 t, Germany ~3,350 t, Italy ~2,450 t, France ~2,440 t, Russia ~2,330 t, China ~2,300 t reported (widely believed to be higher), India ~880 t and rising, with Poland the most aggressive recent buyer among developed economies. A notable new buyer is the stablecoin issuer Tether, reported by the ECB as the single largest gold purchaser of 2025 at over 100 tonnes, backing part of its dollar-token reserves with metal.
@@ -54,4 +54,4 @@ Because the world chose elasticity over discipline. A monetary system anchored t
 
 ## Key takeaways
 
-In September 2026 gold trades around $4,500 an ounce after a January peak near $5,590; annual demand is about 5,000 tonnes worth over half a trillion dollars; central banks hold over 36,000 tonnes and have bought roughly 3,500 tonnes since 2022; and gold has overtaken the euro and US Treasuries as a share of global reserves. It holds value because it is scarce by geology, incorruptible by chemistry, no one's liability by construction, and universally accepted by six thousand years of habit. It is not the unit of account because nothing is priced in it and because modern economies chose currencies that can expand over a metal that cannot.
+At end-2025 market prices, gold's 27% share of the ECB's broad official-reserves measure exceeded the euro's 15% and US Treasuries' 22%; the ECB says this was largely a gold-price valuation effect, not evidence by itself of reserve managers selling dollar assets. At a constant end-2023 gold price, gold and the euro would each be about 16% and Treasuries 26%. The IMF's dollar share of **foreign-exchange** reserves has a different denominator that excludes gold. Gold remains a reserve asset without an issuer's promise, but it is not the unit in which most contemporary wages, prices or debts are stated. [ECB, June 2026, chart 7](https://www.ecb.europa.eu/press/other-publications/ire/html/ecb.ire202606.en.html); [IMF COFER](https://data.imf.org/Datasets/COFER).

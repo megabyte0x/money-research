@@ -61,6 +61,20 @@ test('Federal Reserve cryptocurrency survey is not presented as a global Bitcoin
   }
 });
 
+test('reserve-share explanations name the incompatible COFER and gold denominators', () => {
+  for (const path of [
+    'content/gold/08-why-the-dollar-replaced-gold.md',
+    'content/gold/09-gold-today-what-still-holds-its-value.md',
+    'content/after/09-pandemic-inflation-and-weaponized-reserves-2020-2026.md',
+    'content/bitcoin/08-why-not-gold-again.md'
+  ]) {
+    const article = readFileSync(join(root, 'public', path), 'utf8');
+    assert.match(article, /COFER/);
+    assert.match(article, /excludes gold|excludes monetary gold/);
+    assert.match(article, /valuation|price effect|market price|price rose/i);
+  }
+});
+
 test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {
   const dates = ['3 Jan 2009', '15 Aug 1971', 'c. 4600–4300 BCE', '1925', '31 Oct 2008'];
   assert.deepEqual(dates.sort((a, b) => eventSortValue(a) - eventSortValue(b)),

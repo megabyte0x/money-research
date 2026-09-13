@@ -8,7 +8,7 @@ World Gold Council, *You asked, we answered: Are we running out of gold?* (March
 
 World Gold Council, *How much gold has been mined?* — https://www.gold.org/goldhub/data/how-much-gold
 
-Mining.com, *Gold overtakes US Treasuries in global reserve shift: ECB* (2 June 2026) — https://www.mining.com/gold-overtakes-us-treasuries-in-global-reserve-shift-ecb/ (gold 27% of reserves; >36,000 t official holdings; 2025 purchases; Tether)
+ECB, *The international role of the euro* (June 2026), section 1.1, chart 7(a) — https://www.ecb.europa.eu/press/other-publications/ire/html/ecb.ire202606.en.html (gold's market-value share of official reserves including gold; constant-price comparison). Other official-holdings and purchase figures need their own source checks.
 
 Mining.com / CNBC, *Gold surpasses euro as second-largest reserve asset* (June 2025) — https://www.mining.com/gold-surpasses-euro-as-second-largest-reserve-asset-ecb/ ; https://www.cnbc.com/2025/06/11/gold-overtakes-euro-as-second-biggest-global-reserve-asset.html
 
@@ -20,7 +20,7 @@ Goldman Sachs Research via PR Newswire, *Gold Forecast to Reach $4,900 an Ounce 
 
 Fortune, *Current price of gold: September 3, 2026* — https://fortune.com/article/current-price-of-gold-09-03-2026/ (spot ~$4,491)
 
-BestBrokers, *US Dollar Share of Global Currency Reserves in 2026* (IMF COFER Q1 2026: dollar 57.13%, euro 20.03%) — https://www.bestbrokers.com/forex-trading/us-dollar-share-of-global-currency-reserves/
+IMF, *Currency Composition of Official Foreign Exchange Reserves*, 2026 Q1 data brief (1 July 2026) — https://data.imf.org/en/news/imf%20data%20brief%20july%201 (dollar 57.13%, euro 20.03%; excludes gold and notes valuation effects)
 
 IMF, *Currency Composition of Official Foreign Exchange Reserves (COFER)* — https://data.imf.org/en/datasets/IMF.STA:COFER
 

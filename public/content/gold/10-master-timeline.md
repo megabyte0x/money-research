@@ -82,5 +82,5 @@
 | 2022–24 | Central banks buy >1,000 t/year for three years | Record official demand |
 | 2025 | Average price $3,431; 53 record highs; demand ~5,000 t / $555 bn | Gold passes $3,000 and $4,000 |
 | 28 Jan 2026 | Gold peaks at about $5,590/oz | All-time high |
-| Jun 2026 | ECB: gold 27% of global reserves, above Treasuries and euro | Gold's reserve status restored |
-| Sept 2026 | Gold ~$4,490/oz; dollar 57.1% of FX reserves | Current state |
+| Jun 2026 | ECB reports gold at 27% of end-2025 official reserves including gold; most of its share increase reflects price valuation | Broader reserve measure, not IMF COFER |
+| Sept 2026 | Gold price estimate ~$4,490/oz; latest cited IMF COFER dollar share is 57.13% of 2026 Q1 foreign-exchange reserves, excluding gold | Different dates and denominators |

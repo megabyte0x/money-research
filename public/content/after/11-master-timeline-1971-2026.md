@@ -108,6 +108,6 @@
 | Mar 2026 | Qatar force majeure; Ras Laffan hit (18 Mar); IEA 400 mb release; Philippines energy emergency; Brent $118 (31 Mar) | Global fuel crisis |
 | Apr 2026 | US–Iran ceasefire (8 Apr); Hormuz stays mostly shut; Easter truce in Ukraine | — |
 | May 2026 | Kevin Warsh becomes Fed chair; Victory Day truce in Ukraine; Spirit Airlines fails; stablecoins ~$320 bn | — |
-| Jun 2026 | ECB: gold 27% of world reserves, above Treasuries and euro; Fed holds at 3.50–3.75% | Gold restored as second reserve asset |
+| Jun 2026 | ECB reports gold at 27% of end-2025 official reserves including gold, largely reflecting valuation effects; Fed holds at 3.50–3.75% | ECB's broad reserve measure is not IMF COFER |
 | Jul 2026 | IMF cuts 2026 growth to 3.0%; Fed holds with three hawkish dissents; Brent $72 then $97 | — |
-| Sep 2026 | US–Iran strikes in Hormuz resume; Brent ~$97; gold ~$4,490; dollar 57.1% of FX reserves; Putin says Ukraine deal "possible" | Current state |
+| Sep 2026 | US–Iran strikes in Hormuz resume; Brent ~$97; gold ~$4,490; latest cited IMF COFER dollar share is 57.13% of 2026 Q1 foreign-exchange reserves; Putin says Ukraine deal "possible" | COFER excludes gold; figures have different dates |
