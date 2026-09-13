@@ -82,3 +82,9 @@ test('generated internal article links and section targets resolve', () => {
   assert.ok(chapterLinks >= 50, `expected crawlable chapter cross-references, got ${chapterLinks}`);
   assert.ok(sectionLinks >= 100, `expected validated chapter-section links, got ${sectionLinks}`);
 });
+
+test('cross-reference links expose chapter names rather than bare file numbers', () => {
+  const html = readFileSync(join(root, 'dist/after/09-pandemic-inflation-and-weaponized-reserves-2020-2026/index.html'), 'utf8');
+  assert.match(html, /<a href="\/after\/06-wars-invasions-and-money-1971-2026\/"[^>]*>“Wars, Invasions and Money[^<]*”<\/a>/);
+  assert.doesNotMatch(html, /<a href="\/after\/06-wars-invasions-and-money-1971-2026\/"[^>]*>06<\/a>/);
+});

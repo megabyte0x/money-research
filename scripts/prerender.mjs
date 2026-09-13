@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { tokenizeInline } from '../src/md.js';
+import { referenceSegments } from '../src/references.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = join(root, 'dist');
@@ -14,19 +15,9 @@ const volumeName = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin' };
 const urls = [`${origin}/`];
 
 function linkedText(text, record) {
-  let result = '';
-  let last = 0;
-  for (const match of text.matchAll(/\bfiles?\s+\d{2}(?:(?:,|\s+and)\s+\d{2})*/gi)) {
-    result += escape(text.slice(last, match.index));
-    result += match[0].split(/(\d{2})/).map(part => {
-      if (!/^\d{2}$/.test(part)) return escape(part);
-      const destination = byVolumeNumber.get(`${record.vol}/${part}`);
-      if (!destination) throw new Error(`Unresolved file ${part} in ${record.id}`);
-      return `<a href="/${destination.vol}/${destination.slug}/" title="${escape(destination.title)}">${escape(part)}</a>`;
-    }).join('');
-    last = match.index + match[0].length;
-  }
-  return result + escape(text.slice(last));
+  return referenceSegments(text, record.vol, byVolumeNumber).map(part => part.type === 'ref'
+    ? `<a href="/${part.record.vol}/${part.record.slug}/" title="${escape(part.record.vol.toUpperCase() + ' · file ' + part.record.num)}">${escape(part.text)}</a>`
+    : escape(part.text)).join('');
 }
 
 function inline(text, record) {

@@ -3,6 +3,7 @@ import * as md from './md.js';
 import { eventYear, eventSortValue, mergeSharedEvents } from './timeline.js';
 import MoneyMechanics from './MoneyMechanics.jsx';
 import { searchDocuments, searchState, searchUrl } from './search.js';
+import { referenceSegments, shortTitle } from './references.js';
 
 // The prototype declared every rule as an inline CSS string. Keeping those strings
 // verbatim and parsing them once keeps the port pixel-identical to the design file.
@@ -132,6 +133,7 @@ export default class App extends React.Component {
     const response = await fetch(BASE + 'content/index.json');
     if (!response.ok) throw new Error(`Content index unavailable: ${response.status}`);
     const { manifest, blocks, fileRefs, glossary } = await response.json();
+    this.byVolumeNumber = new Map(manifest.map(record => [`${record.vol}/${record.num}`, record]));
     this.glossRe = new RegExp('\\b(' + glossary.map(g => g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim()).filter(t => t.length > 3).sort((a, b) => b.length - a.length).map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')\\b', 'i');
     this.glossMap = {}; glossary.forEach(g => { this.glossMap[g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim().toLowerCase()] = g; });
     const search = searchState(location.hash);
@@ -246,36 +248,30 @@ export default class App extends React.Component {
   }
   chapter(vol, slug) { return this.state.manifest.find(m => m.vol === vol && (m.slug === slug || m.aliases?.includes(slug))); }
   href(m, sec) { return '/' + m.vol + '/' + m.slug + '/' + (sec ? '?section=' + encodeURIComponent(sec) : ''); }
-  short(m) { if (m.num === '00') return 'Directory / reading order'; return m.title.replace(/^\d+\s+—\s+/, '').split(/[:(]/)[0].trim(); }
+  short(m) { return shortTitle(m); }
   // ---- inline rendering with glossary hover + file refs
   inline(text, ctx) {
     const R = React.createElement; const toks = this.md.tokenizeInline(text); const out = []; let k = 0;
     const gloss = ctx.gloss !== false && GLOSSARY_INLINE;
     const pushText = (str) => {
-      // file refs: "file 02", "files 03 and 05"
-      const parts = str.split(/(\bfiles?\s+\d{2}(?:(?:,|\s+and)\s+\d{2})*)/i);
+      const parts = ctx.vol ? referenceSegments(str, ctx.vol, this.byVolumeNumber) : [{ type: 'text', text: str }];
       parts.forEach(part => {
-        if (/^\bfiles?\s+\d{2}/i.test(part) && ctx.vol) {
-          const bits = part.split(/(\d{2})/);
-          bits.forEach(b => {
-            if (/^\d{2}$/.test(b)) {
-              const m = this.state.manifest.find(x => x.vol === ctx.vol && x.num === b);
-              out.push(m ? R('a', { key: k++, href: this.href(m), title: m.title, style: { textDecorationColor: 'var(--mut)' } }, b) : b);
-            } else if (b) out.push(b);
-          });
+        if (part.type === 'ref') {
+          out.push(R('a', { key: k++, href: this.href(part.record), title: `${part.record.vol.toUpperCase()} · file ${part.record.num}`, style: { textDecorationColor: 'var(--mut)' } }, part.text));
           return;
         }
+        const value = part.text;
         if (gloss && this.glossRe && !ctx.usedGloss.done) {
-          const m = part.match(this.glossRe);
+          const m = value.match(this.glossRe);
           if (m) {
             const g = this.glossMap[m[1].toLowerCase()];
             if (g && !ctx.usedGloss.set.has(g.id)) {
               ctx.usedGloss.set.add(g.id);
-              out.push(part.slice(0, m.index)); out.push(this.term(g, m[1], k++)); pushText(part.slice(m.index + m[1].length)); return;
+              out.push(value.slice(0, m.index)); out.push(this.term(g, m[1], k++)); pushText(value.slice(m.index + m[1].length)); return;
             }
           }
         }
-        out.push(part);
+        out.push(value);
       });
     };
     toks.forEach(t => {
