@@ -87,6 +87,7 @@ test('El Salvador legal-status summaries distinguish the amended label from lega
     assert.match(article, /curso legal/);
     assert.match(article, /voluntary/i);
     assert.doesNotMatch(article, /un-made it in 2025|repealed that status in January 2025/);
+    assert.doesNotMatch(article, /no country has bitcoin as legal tender|both reversed it|no country has bitcoin as legal tender in 2026/i);
   }
 });
 

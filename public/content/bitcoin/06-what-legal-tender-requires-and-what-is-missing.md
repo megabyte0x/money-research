@@ -44,7 +44,7 @@ For a country to adopt bitcoin as legal tender, and more so as a monetary standa
  
 ## What is still missing, in order of difficulty
  
-Ranked from the least to the most tractable: the tax and accounting rules can be changed by statute and partly have been; the AML and Basel rules can be carved out by a determined regulator; the payment infrastructure can be built, and Lightning and custodial wallets are being built; the legal architecture can be written, as El Salvador showed, in a dollarised economy without a monetary union. What cannot be legislated is price stability, an elastic credit system without a lender of last resort, a population that chooses to use it, and a government willing to give up deficit finance. These four are the reasons no country has bitcoin as legal tender in 2026, and they are economic and political, not technical.
+Tax, accounting and acceptance rules can be changed by statute, as El Salvador demonstrated in both 2021 and 2025. Payment infrastructure and custody can be built, but law alone cannot produce price stability, an elastic credit system or a population that chooses to use Bitcoin. The 2025 Salvadoran statute still calls it “curso legal” while removing mandatory private acceptance and tax-payment authority, so a claim that *no country uses the label* would confuse terminology with practical legal effect. [Decree 199](https://www.jurisprudencia.gob.sv/DocumentosBoveda/R/2/2020-2029/2021/06/1080B6.HTML?embedded=true); [IMF Country Report 25/58, para. 27 n.18](https://www.imf.org/-/media/files/publications/cr/2025/english/1slvea2025001-print-pdf.pdf).
  
 ## Key takeaways
  
