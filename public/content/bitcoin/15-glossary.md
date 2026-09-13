@@ -30,7 +30,7 @@
  
 **Digital Asset Stockpile** — The US holding of seized non-bitcoin tokens created by the March 2025 executive order, alongside the Strategic Bitcoin Reserve.
  
-**Elasticity** — The ability of a money supply to expand when demand for money rises, as in a panic; supplied in fiat systems by central-bank lending. Bitcoin's supply has none, which is the basis of the "no lender of last resort" objection.
+**Elasticity** — The capacity of a specified monetary aggregate to respond to demand. Bitcoin's base issuance schedule is not discretionary, but Bitcoin-denominated bank claims and credit could change. Emergency lending would depend on whether a redeemable issuer exists and how much redemption risk it can bear; a Bitcoin-only system would lack such an issuer. [Weber, 2016, §3](https://www.bankofcanada.ca/wp-content/uploads/2016/03/swp2016-14.pdf).
  
 **Exposed public key** — An address whose public key is visible on-chain (all early "pay-to-public-key" outputs and any address that has spent), making it vulnerable to a future quantum computer; estimates run from 1.7 million to 6.9 million BTC.
  

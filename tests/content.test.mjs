@@ -253,6 +253,25 @@ test('Bitcoin hedge and volatility conclusions do not outrun their dated evidenc
   assert.match(conclusion, /Gold Mid-Year Outlook 2026/);
 });
 
+test('E15 Bitcoin-standard claims separate base supply, broad money, credit and redemption', () => {
+  const standard = readFileSync(join(root, 'public/content/bitcoin/07-the-supply-system-fixed-rate-variable-rate-and-backing.md'), 'utf8');
+  const gold = readFileSync(join(root, 'public/content/bitcoin/08-why-not-gold-again.md'), 'utf8');
+  const crises = readFileSync(join(root, 'public/content/bitcoin/12-how-bitcoin-could-reproduce-old-crises.md'), 'utf8');
+  const glossary = readFileSync(join(root, 'public/content/bitcoin/15-glossary.md'), 'utf8');
+  const sources = readFileSync(join(root, 'EDITORIAL-SOURCES.md'), 'utf8');
+  assert.match(standard, /broad money growth tracks Bitcoin issuance/);
+  assert.match(standard, /velocity growth is near zero/);
+  assert.match(standard, /lending existing Bitcoin/);
+  assert.match(standard, /not necessarily one-to-one/);
+  assert.match(standard, /reserve holding.*convertibility/);
+  assert.match(gold, /borrow Bitcoin/);
+  assert.match(crises, /does \*\*not\*\* mean every measure of money or credit would be fixed/);
+  assert.match(glossary, /Bitcoin-denominated bank claims and credit could change/);
+  assert.match(sources, /E15.*Weber.*near-zero velocity growth/);
+  assert.doesNotMatch(standard, /money supply is exactly 21 million|full-reserve banking[^.]*removes credit|trade at par with every other/);
+  assert.doesNotMatch(standard, /El Salvador is a clean demonstration/);
+});
+
 test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {
   const dates = ['3 Jan 2009', '15 Aug 1971', 'c. 4600–4300 BCE', '1925', '31 Oct 2008'];
   assert.deepEqual(dates.sort((a, b) => eventSortValue(a) - eventSortValue(b)),

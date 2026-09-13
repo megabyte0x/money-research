@@ -50,7 +50,11 @@ FBI IC3, *2025 Internet Crime Report* (April 2026) — https://www.ic3.gov/Annua
  
 ## Academic and think-tank
  
-Warren Weber, *A Bitcoin Standard: Lessons from the Gold Standard*, Bank of Canada Staff Working Paper 2016-14 — https://www.bankofcanada.ca/2016/03/staff-working-paper-2016-14/
+Warren Weber, *A Bitcoin Standard: Lessons from the Gold Standard*, Bank of Canada Staff Working Paper 2016-14 — https://www.bankofcanada.ca/wp-content/uploads/2016/03/swp2016-14.pdf . The title-page disclaimer makes this the author's staff research, not Bank of Canada policy. Sections 2–4 assume redeemable claims and limited emergency lending; the 2–3% deflation conjecture assumes broad-money growth near Bitcoin issuance, output growth of 2–3% and near-zero velocity growth. The gold-parity example shows fixed weights do not mean a numerically one-to-one exchange rate.
+
+Federal Reserve Board staff, *Taylor Rules* (2007), §2, equations (1)–(2) — https://www.federalreserve.gov/pubs/feds/2007/200718/index.html . Money growth, velocity growth, prices and output enter separately; a fixed base alone is insufficient for a numerical price forecast.
+
+Bank of England, *New forms of digital money* (2021), §1.1 and box A — https://www.bankofengland.co.uk/paper/2021/new-forms-of-digital-money . Deposit creation by banks differs from lending existing funds; fully backed payment instruments could shift credit funding rather than eliminate credit. Applying that distinction to Bitcoin is an inference, not a Bank of England Bitcoin forecast.
  
 Amol Amol and Erzo Luttmer, *Unique Implementation of Permanent Primary Deficits?*, Minneapolis Fed Working Paper 807 (October 2024) — https://www.minneapolisfed.org/research/working-papers/unique-implementation-of-permanent-primary-deficits
  
