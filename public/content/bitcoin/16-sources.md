@@ -3,6 +3,8 @@
 Compiled 13 September 2026. Live dashboards (bitcointreasuries.net, mempool.space, CoinWarz, WalletPilot) were read on 11–13 September 2026 and their figures will have moved. Items are grouped by the file they chiefly support.
  
 ## Primary documents
+
+For the Gold-versus-Bitcoin comparison: IMF, *Financial Organization and Operations of the IMF*, sixth ed. (2001), ch. II, “Gold in the Articles of Agreement” — https://www.imf.org/external/pubs/ft/pam/pam45/pdf/chap2.pdf ; Reserve Bank of Zimbabwe, *2024 Monetary Policy Statement*, “Anchor of the Currency” — https://www.rbz.co.zw/index.php/monetary-policy/monetary-policy-statements/1389-2024-monetary-policy-statement ; IMF, *Zimbabwe: 2025 Article IV Consultation—Informational Annex*, “Exchange Rate Arrangements” — https://www.imf.org/-/media/files/publications/cr/2025/english/1zweea2025001-source-pdf.pdf . Backing by a basket including gold is different from fixed-weight gold convertibility.
  
 Satoshi Nakamoto, *Bitcoin: A Peer-to-Peer Electronic Cash System* (31 October 2008) — https://bitcoin.org/bitcoin.pdf
 

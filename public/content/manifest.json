@@ -7,7 +7,7 @@
   "source": "gold-research/00-README.md",
   "aliases": [],
   "title": "Gold: From Bare Metal to World Money and Back — Research Directory",
-  "words": 708,
+  "words": 731,
   "h2": [
    "Reading order",
    "The arc in one paragraph"
@@ -146,8 +146,8 @@
   "id": "gold-07",
   "source": "gold-research/07-the-gold-standard-era-1717-1971.md",
   "aliases": [],
-  "title": "07 — The Gold Standard Era, 1717–1971: How Gold Became the Sole World Money and How It Lost the Job",
-  "words": 1569,
+  "title": "07 — The Gold Standard Era, 1717–1971: How Gold Became a Major Monetary Standard and Lost That Role",
+  "words": 1644,
   "h2": [
    "Newton's accident (1717)",
    "The gold rushes (1848–1900)",
@@ -168,7 +168,7 @@
   "source": "gold-research/08-why-the-dollar-replaced-gold.md",
   "aliases": [],
   "title": "08 — Why the Dollar, Not Gold, Is the World's Unit of Account",
-  "words": 1427,
+  "words": 1397,
   "h2": [
    "The short answer",
    "Step one: the dollar becomes gold's proxy (1944–1971)",
@@ -189,7 +189,7 @@
   "source": "gold-research/09-gold-today-what-still-holds-its-value.md",
   "aliases": [],
   "title": "09 — Gold Today (September 2026): What Still Holds Its Value",
-  "words": 1171,
+  "words": 1232,
   "h2": [
    "The numbers",
    "The last four years in one paragraph",
@@ -232,8 +232,9 @@
   "source": "gold-research/12-sources.md",
   "aliases": [],
   "title": "12 — Sources and Further Reading",
-  "words": 601,
+  "words": 775,
   "h2": [
+   "Gold's post-1978 monetary role (reviewed 13 September 2026)",
    "Present-day data (consulted 7 September 2026)",
    "Ancient and medieval history",
    "Theory of money",
@@ -250,7 +251,7 @@
   "source": "after-gold/00-README.md",
   "aliases": [],
   "title": "After Gold: The Fiat World, 1971–2026 — Research Directory",
-  "words": 890,
+  "words": 635,
   "h2": [
    "Reading order",
    "The arc in one paragraph"
@@ -504,8 +505,9 @@
   "source": "after-gold/13-sources.md",
   "aliases": [],
   "title": "13 — Sources and Further Reading",
-  "words": 1335,
+  "words": 1440,
   "h2": [
+   "Gold and reserve-basket currencies (reviewed 13 September 2026)",
    "Money creation and asset purchases (reviewed 13 September 2026)",
    "Present-day data and events (consulted 8 September 2026)",
    "1971–1976: the break",
@@ -543,7 +545,7 @@
   "source": "bitcoin/01.md",
   "aliases": ["01"],
   "title": "01 — The Origin: What 2008 Produced, and the Currency Structure That Grew Around It",
-  "words": 1726,
+  "words": 1693,
   "h2": [
    "Where this volume starts",
    "The moment of birth",
@@ -681,7 +683,7 @@
   "source": "bitcoin/08.md",
   "aliases": ["08"],
   "title": "08 — Why Not Gold Again? Bitcoin Against the Metal It Imitates",
-  "words": 1749,
+  "words": 1790,
   "h2": [
    "The question, stated precisely",
    "First, what the world is actually doing: going back to gold as an asset, not as a standard",
@@ -843,7 +845,7 @@
   "source": "bitcoin/16.md",
   "aliases": ["16"],
   "title": "16 — Sources and Further Reading",
-  "words": 2160,
+  "words": 2226,
   "h2": [
    "Primary documents",
    "Academic and think-tank",

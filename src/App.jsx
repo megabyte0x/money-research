@@ -587,7 +587,7 @@ export default class App extends React.Component {
         files: st.manifest.filter(m => m.vol === vol && m.num !== '00').map(m => ({ href: this.href(m), num: m.num, mins: Math.max(1, Math.round(m.words / 230)), title: m.title.replace(/^\d+\s+—\s+/, ''), question: questions[vol + '/' + m.num] || '' }))
       });
       vals.volumes = [
-        mk('gold', 'Vol. I', '4600 BCE – 1971', 'Gold: from bare metal to world money and back', 'How did a yellow metal become the unit everything else was measured in, how did it share and then lose that job, and why does it still hold value when nothing is priced in it?'),
+        mk('gold', 'Vol. I', '4600 BCE – 1971', 'Gold: from bare metal to world money and back', 'How did a yellow metal become a major monetary standard, how did it lose that job to national currencies, and why does it still hold value when most wages and debts are not stated in it?'),
         mk('after', 'Vol. II', '1971 – 2026', 'After gold: the fiat world', 'What happened once no currency was defined as a weight of anything — the rules, wars, new currencies, technologies and shocks of the fiat half-century.'),
         mk('bitcoin', 'Vol. III', '2008 – 2026', 'Bitcoin: money without an issuer', 'What Bitcoin solved, how it is used, and whether it could become the unit of an economy.')];
       vals.tocLabel = 'Volumes';
@@ -915,7 +915,7 @@ export default class App extends React.Component {
                 </section>
                 <div style={s('padding:0 0 40px;display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                   <div style={s('border-left:1px solid var(--fg);margin-left:6px')}></div>
-                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>15 August 1971 →</span> Nixon suspends convertibility, “temporarily”. For the first time in history no currency on earth is defined as a weight of anything. “The dollar is our currency, but it's your problem.”</div>
+                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>15 August 1971 →</span> Nixon suspends official dollar–gold conversion, “temporarily.” The international par-value system unravels; <a href="https://www.imf.org/external/pubs/ft/pam/pam45/pdf/chap2.pdf">the IMF's 1978 reform</a> removes gold as its common denominator, not as every official reserve or domestic policy reference.</div>
                 </div>
 
                 <section data-stage={this.arcStage('arc-6')} id="arc-6" style={s('padding:0 0 40px')}>

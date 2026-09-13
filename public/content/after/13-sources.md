@@ -1,5 +1,11 @@
 # 13 — Sources and Further Reading
 
+## Gold and reserve-basket currencies (reviewed 13 September 2026)
+
+IMF, *Financial Organization and Operations of the IMF*, sixth ed. (2001), ch. II, “Gold in the Articles of Agreement” — https://www.imf.org/external/pubs/ft/pam/pam45/pdf/chap2.pdf . Distinguishes the 1978 end of the international gold par-value system from continued official gold reserves.
+
+Reserve Bank of Zimbabwe, *2024 Monetary Policy Statement*, “Anchor of the Currency” — https://www.rbz.co.zw/index.php/monetary-policy/monetary-policy-statements/1389-2024-monetary-policy-statement ; IMF, *Zimbabwe: 2025 Article IV Consultation—Informational Annex*, “Exchange Rate Arrangements” — https://www.imf.org/-/media/files/publications/cr/2025/english/1zweea2025001-source-pdf.pdf . ZiG's announced reserve basket includes gold and foreign currency, while its exchange-rate arrangement is classified as de jure floating and de facto other managed; neither source establishes a classical fixed-gold-weight currency.
+
 ## Money creation and asset purchases (reviewed 13 September 2026)
 
 Bank of England, *Money creation in the modern economy* (Quarterly Bulletin 2014 Q1), Figures 1–3 and pp. 16–20, 24–25 — https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2014/money-creation-in-the-modern-economy.pdf . Distinguishes loan-created deposits, interbank reserves, constraints on lending and the balance-sheet effects of asset purchases from non-bank sellers.

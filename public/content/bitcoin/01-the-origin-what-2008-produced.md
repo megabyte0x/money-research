@@ -2,7 +2,7 @@
  
 ## Where this volume starts
  
-The previous two directories ended in the same place from two directions. `gold-research/` ended on 15 August 1971, when the last currency defined as a weight of metal stopped being one. The After Gold set ended in September 2026 with a world in which nothing backs money except trust in the institutions that issue it, and in which the most important monetary innovations of the last fifty years — the Eurodollar, the petrodollar, the derivative, the card, the ETF, the stablecoin — all extended the reach of the dollar rather than escaping it. Bitcoin is the one innovation of the fiat era that was built to escape it. This volume asks whether it can, and what it has actually done in its first seventeen years.
+The previous two volumes meet at the end of the Bretton Woods dollar–gold promise: the United States suspended official conversion on 15 August 1971, and the [IMF's 1978 reform](https://www.imf.org/external/pubs/ft/pam/pam45/pdf/chap2.pdf) later removed gold from the international par-value framework. That did not erase central-bank gold reserves or all domestic reserve-backed currencies. The subsequent dollar system expanded through offshore banking, trade invoicing, cards, derivatives, exchange-traded funds and stablecoins, alongside other monetary arrangements. Bitcoin was designed for transfers without a central operator. This volume asks what that design solved and how it has actually been used.
  
 ## The moment of birth
  

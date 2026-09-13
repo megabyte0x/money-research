@@ -5,7 +5,7 @@ This branch is a staged preview of the companion `website-improvement-plan.md` h
 ## Baseline
 
 - Deployed project: Vercel `money-research`, linked to `megabyte0x/money-research`; Vite/React 18, static content in `public/content`, legacy hash routes.
-- The manifest lists 44 records: Gold 13, After Gold 14, Bitcoin 17. Each now has an explicit stable volume-number ID, original source path, and any numeric legacy alias. The supplied Bitcoin files are numeric (`00.md`–`16.md`), while website slugs are descriptive. The 42 otherwise unchanged published documents match the originals byte-for-byte; Bitcoin 02 and 13 contain the branch's editorial qualifications.
+- The manifest lists 44 records: Gold 13, After Gold 14, Bitcoin 17. Each has an explicit stable volume-number ID, original source path, and any numeric legacy alias. The supplied Bitcoin files are numeric (`00.md`–`16.md`), while website slugs are descriptive. Published copies are being corrected on this branch; original research snapshots remain separate.
 - Original research and existing article links remain available. Published copies now contain several editorial corrections while the original source directories remain unchanged; the source `project/content` and public copies should be consolidated after review.
 
 ## In this preview
@@ -28,6 +28,7 @@ This branch is a staged preview of the companion `website-improvement-plan.md` h
 - F01/F03 (partial): E02 now qualifies finality across Bitcoin 01, 02, 08 and 13: confirmation depth raises confidence but no fixed hour guarantees irreversibility. Refunds and card-style chargebacks are distinguished, with an exact Bitcoin Developer Guide locator in each revised chapter and the source ledger. Other absolute technical claims remain under review.
 - F01/F03 (partial): E04 now separates the IMF COFER foreign-exchange denominator from the ECB's broader official-reserves measure in the Gold, After Gold and Bitcoin chapters. The old “allocated FX” label was removed for the revised series, and valuation effects are stated alongside the end-2025 gold share. Homepage reserve visualisation and other reserve claims still require audit.
 - F01/F03 (partial): E08 now distinguishes El Salvador's 2025 amendment from repeal: the domestic statute retains “curso legal” wording but makes private acceptance voluntary and removes Bitcoin tax-payment authority. The legal distinction has been propagated through relevant Bitcoin and After Gold chapters, timelines, glossary and source list. Separate IMF programme commitments and adoption figures still require verification.
+- F01/F03 (partial): E09's blanket “no legal monetary role anywhere” and “no currency backed by gold” statements have been replaced in Gold, After Gold and Bitcoin entries. IMF 1978 rules, continued official reserves, Zimbabwe's announced reserve-basket ZiG, and the IMF's floating exchange-rate classification are distinguished with exact source locators. Gold 09 also now distinguishes gold-conversion constraints from impossible bank credit. ZiG reserve coverage and remaining universal statements across the library still need review.
 - T01/T05 (partial): inventory and relevance regression tests, plus a reproducible Vite build.
 
 ## Release blockers before production promotion

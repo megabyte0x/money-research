@@ -1,5 +1,15 @@
 # 12 — Sources and Further Reading
 
+## Gold's post-1978 monetary role (reviewed 13 September 2026)
+
+IMF, *Financial Organization and Operations of the IMF*, sixth ed. (2001), ch. II, “Gold in the Articles of Agreement” — https://www.imf.org/external/pubs/ft/pam/pam45/pdf/chap2.pdf . The 1978 Second Amendment removed gold from the common par-value denominator and abolished its official price; it did not abolish official reserve holdings.
+
+Reserve Bank of Zimbabwe, *2024 Monetary Policy Statement*, “Anchor of the Currency” — https://www.rbz.co.zw/index.php/monetary-policy/monetary-policy-statements/1389-2024-monetary-policy-statement . Describes ZiG's announced backing by a composite reserve basket, including foreign currency and precious metals (mainly gold); this statement alone does not independently verify later reserve coverage.
+
+IMF, *Zimbabwe: 2025 Article IV Consultation—Informational Annex*, “Exchange Rate Arrangements” — https://www.imf.org/-/media/files/publications/cr/2025/english/1zweea2025001-source-pdf.pdf . Classifies ZiG as de jure floating and de facto other managed, not a fixed gold-weight parity.
+
+Federal Reserve History, *National Banking Acts of 1863 and 1864*, reserve-requirements section — https://www.federalreservehistory.org/essays/national-banking-acts . U.S. national banks held fractional reserves against note and deposit liabilities; a gold link did not eliminate bank credit.
+
 ## Present-day data (consulted 7 September 2026)
 
 World Gold Council, *Gold Demand Trends: Q4 and Full Year 2025* — https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-full-year-2025 (2025 demand, supply, price figures)

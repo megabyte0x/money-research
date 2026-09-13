@@ -107,6 +107,32 @@ test('El Salvador legal-status summaries distinguish the amended label from lega
   }
 });
 
+test('gold-standard ending is distinct from reserves and later reserve-basket currencies', () => {
+  const paths = [
+    'content/gold/00-readme.md',
+    'content/gold/07-the-gold-standard-era-1717-1971.md',
+    'content/gold/08-why-the-dollar-replaced-gold.md',
+    'content/gold/09-gold-today-what-still-holds-its-value.md',
+    'content/after/00-readme.md',
+    'content/bitcoin/01-the-origin-what-2008-produced.md',
+    'content/bitcoin/08-why-not-gold-again.md'
+  ];
+  for (const path of paths) {
+    const article = readFileSync(join(root, 'public', path), 'utf8');
+    assert.doesNotMatch(article, /no legal monetary role anywhere|no official monetary role since 1976|no currency on earth|no currency is defined as a weight of gold|nothing has been money by law with a gold definition|nothing backs money except trust|gold cannot invoice a shipment|cannot create money in a crisis|cannot support a modern banking system's credit expansion/i, path);
+    const record = manifest.find(m => m.path === path);
+    assert.equal(record.words, article.trim().split(/\s+/).length, `${path} reading-length metadata`);
+  }
+  const gold = readFileSync(join(root, 'public/content/gold/07-the-gold-standard-era-1717-1971.md'), 'utf8');
+  assert.match(gold, /1978 reform|Second Amendment/i);
+  assert.match(gold, /ZiG/);
+  assert.match(gold, /de jure floating and de facto other managed/);
+  const sources = readFileSync(join(root, 'EDITORIAL-SOURCES.md'), 'utf8');
+  assert.match(sources, /E09.*pam45\/pdf\/chap2\.pdf/);
+  assert.match(sources, /E09.*2024 Monetary Policy Statement/);
+  assert.match(sources, /E09.*2025 Article IV Consultation/);
+});
+
 test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {
   const dates = ['3 Jan 2009', '15 Aug 1971', 'c. 4600–4300 BCE', '1925', '31 Oct 2008'];
   assert.deepEqual(dates.sort((a, b) => eventSortValue(a) - eventSortValue(b)),
