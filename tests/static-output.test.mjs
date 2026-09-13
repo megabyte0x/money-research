@@ -2,9 +2,25 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { createContentModel } from '../src/content-model.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const manifest = JSON.parse(readFileSync(join(root, 'public/content/manifest.json'), 'utf8'));
+
+test('built browser index and static pages use the same validated source model', () => {
+  const documents = Object.fromEntries(manifest.map(record =>
+    [record.path, readFileSync(join(root, 'public', record.path), 'utf8')]));
+  const observations = JSON.parse(readFileSync(join(root, 'public/content/observations.json'), 'utf8'));
+  const expected = createContentModel(manifest, documents, observations);
+  const browserIndex = JSON.parse(readFileSync(join(root, 'dist/content/index.json'), 'utf8'));
+  assert.deepEqual(browserIndex, expected);
+  const timeline = readFileSync(join(root, 'dist/gold/10-master-timeline/index.html'), 'utf8');
+  assert.match(timeline, /Gold reaches \$5,405\/oz/);
+  assert.doesNotMatch(timeline, /\{\{obs:/);
+  const source = readFileSync(join(root, 'dist/content/resolved/gold/10-master-timeline.md'), 'utf8');
+  assert.match(source, /Gold reaches \$5,405\/oz/);
+  assert.doesNotMatch(source, /\{\{obs:/);
+});
 
 test('each article has a direct HTML page with unique canonical metadata', () => {
   for (const record of manifest) {

@@ -3,7 +3,6 @@ import * as md from './md.js';
 import { eventYear, eventSortValue, mergeSharedEvents } from './timeline.js';
 import MoneyMechanics from './MoneyMechanics.jsx';
 import { searchDocuments, searchState, searchUrl } from './search.js';
-import { indexObservations, resolveObservations } from './observations.js';
 
 // The prototype declared every rule as an inline CSS string. Keeping those strings
 // verbatim and parsing them once keeps the port pixel-identical to the design file.
@@ -83,7 +82,7 @@ function GlossaryTerm({ term, label, definition }) {
 }
 
 export default class App extends React.Component {
-  state = { manifest: [], docs: {}, blocks: {}, glossary: [], route: { view: 'home' }, query: '', searchVol: '', tlq: '', glq: '', collapsed: {}, progress: 0, copied: false, quote: null, askOpen: false, askQ: '', promptCopied: false, theme: null, loaded: false, headerH: 52, menuOpen: false };
+  state = { manifest: [], fileRefs: {}, blocks: {}, glossary: [], route: { view: 'home' }, query: '', searchVol: '', tlq: '', glq: '', collapsed: {}, progress: 0, copied: false, quote: null, askOpen: false, promptCopied: false, theme: null, loaded: false, headerH: 52, menuOpen: false };
   headerRef = React.createRef();
 
   // The header is one 52px row on desktop and wraps to two rows on a phone; every
@@ -130,25 +129,13 @@ export default class App extends React.Component {
   }
   async load() {
     this.md = md;
-    const [manifest, observations] = await Promise.all([
-      fetch(BASE + 'content/manifest.json').then(r => r.json()),
-      fetch(BASE + 'content/observations.json').then(r => r.json())
-    ]);
-    const byObservationId = indexObservations(observations);
-    const texts = await Promise.all(manifest.map(m => fetch(BASE + m.path).then(r => r.text())));
-    const docs = {}, blocks = {}; let glossary = [];
-    manifest.forEach((m, i) => {
-      const content = resolveObservations(texts[i], byObservationId);
-      docs[m.slug + '@' + m.vol] = content;
-      blocks[m.slug + '@' + m.vol] = this.md.parseMd(content);
-      if (m.slug.includes('glossary')) glossary = glossary.concat(this.md.parseGlossary(content).map(g => ({ ...g, vol: m.vol })));
-    });
-    const seen = new Set();
-    glossary = glossary.filter(g => { const k = g.term.toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; }).sort((a, b) => a.term.localeCompare(b.term));
+    const response = await fetch(BASE + 'content/index.json');
+    if (!response.ok) throw new Error(`Content index unavailable: ${response.status}`);
+    const { manifest, blocks, fileRefs, glossary } = await response.json();
     this.glossRe = new RegExp('\\b(' + glossary.map(g => g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim()).filter(t => t.length > 3).sort((a, b) => b.length - a.length).map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')\\b', 'i');
     this.glossMap = {}; glossary.forEach(g => { this.glossMap[g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim().toLowerCase()] = g; });
     const search = searchState(location.hash);
-    this.setState({ manifest, docs, blocks, glossary, loaded: true, route: this.parseHash(), query: search.query, searchVol: search.volume }, () => this.scrollToSection());
+    this.setState({ manifest, blocks, fileRefs, glossary, loaded: true, route: this.parseHash(), query: search.query, searchVol: search.volume }, () => this.scrollToSection());
   }
   parseHash() {
     // #/<view>[/<section>] for the standalone views, #/<vol>/<slug>[/<section>] for a file.
@@ -569,15 +556,15 @@ export default class App extends React.Component {
       const list = st.manifest.filter(m => m.vol === cur.vol); const i = list.indexOf(cur); const prev = list[i - 1], next = list[i + 1];
       vals.hasPrev = !!prev; vals.prevHref = prev && this.href(prev); vals.prevTitle = prev && this.short(prev);
       vals.hasNext = !!next; vals.nextHref = next && this.href(next); vals.nextTitle = next && this.short(next);
-      const refs = new Set([...(st.docs[key] || '').matchAll(/\bfiles?\s+(\d{2}(?:(?:,|\s+and)\s+\d{2})*)/gi)].flatMap(m => m[1].match(/\d{2}/g)));
-      vals.related = [...refs].filter(n => n !== cur.num).sort().map(n => list.find(m => m.num === n)).filter(Boolean).map(m => ({ num: m.num, title: this.short(m), href: this.href(m) }));
+      const refs = st.fileRefs[key] || [];
+      vals.related = refs.filter(n => n !== cur.num).sort().map(n => list.find(m => m.num === n)).filter(Boolean).map(m => ({ num: m.num, title: this.short(m), href: this.href(m) }));
       vals.hasRelated = vals.related.length > 0;
       const allCollapsed = bl.filter(b => b.type === 'h2').every(b => st.collapsed[b.id]);
       vals.toggleAll = () => { const c = {}; if (!allCollapsed) bl.filter(b => b.type === 'h2').forEach(b => c[b.id] = true); this.setState({ collapsed: c }); };
       vals.toggleAllLabel = allCollapsed ? 'Expand all sections' : 'Collapse all sections';
       vals.copyPageLink = () => this.copyLink(null);
       vals.copyLabel = st.copied === 'page' ? 'Link copied' : 'Copy link to this file';
-      vals.rawHref = BASE + cur.path;
+      vals.rawHref = BASE + cur.path.replace(/^content\//, 'content/resolved/');
     }
     vals.isResearch = r.view === 'research';
     if (vals.isResearch) {

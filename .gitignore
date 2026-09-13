@@ -1,5 +1,7 @@
 node_modules
 dist
+/public/content/index.json
+/public/content/resolved/
 .vercel
 .firecrawl/
 .DS_Store

@@ -5,9 +5,24 @@ import { join } from 'node:path';
 import { parseMd } from '../src/md.js';
 import { eventYear, eventSortValue, mergeSharedEvents, sharedEventId } from '../src/timeline.js';
 import { indexObservations, resolveObservations } from '../src/observations.js';
+import { createContentModel } from '../src/content-model.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const manifest = JSON.parse(readFileSync(join(root, 'public/content/manifest.json'), 'utf8'));
+
+test('validated content model resolves articles, glossary and related-file references once', () => {
+  const documents = Object.fromEntries(manifest.map(record =>
+    [record.path, readFileSync(join(root, 'public', record.path), 'utf8')]));
+  const observations = JSON.parse(readFileSync(join(root, 'public/content/observations.json'), 'utf8'));
+  const model = createContentModel(manifest, documents, observations);
+  assert.equal(Object.keys(model.blocks).length, 44);
+  assert.ok(model.glossary.length > 100);
+  assert.match(JSON.stringify(model.blocks['10-master-timeline@gold']), /Gold reaches \$5,405\/oz/);
+  assert.doesNotMatch(JSON.stringify(model), /\{\{obs:/);
+  assert.deepEqual(model.fileRefs['09-gold-today-what-still-holds-its-value@gold'],
+    [...new Set(model.fileRefs['09-gold-today-what-still-holds-its-value@gold'])]);
+  assert.throws(() => createContentModel(manifest, { ...documents, [manifest[0].path]: undefined }, observations), /Missing article/);
+});
 
 test('the three-volume inventory has 44 unique, resolvable records', () => {
   assert.deepEqual(Object.fromEntries(['gold', 'after', 'bitcoin'].map(vol =>
