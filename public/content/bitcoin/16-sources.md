@@ -83,6 +83,10 @@ World Gold Council, *Central Bank Gold Reserves Survey 2026* — https://www.gol
 ## Adoption data
  
 Chainalysis, *2025 Global Crypto Adoption Index* — https://www.chainalysis.com/blog/2025-global-crypto-adoption-index/ ; Sub-Saharan Africa and Latin America 2025 reports; *2026 Crypto Crime Report* — https://www.chainalysis.com/blog/2026-crypto-crime-report-introduction/
+
+Chainalysis, *Sub-Saharan Africa Emerges as Third-Fastest Growing Crypto Region with Strong Retail Activity* (10 September 2025), “Bitcoin holds dominance” — https://www.chainalysis.com/blog/subsaharan-africa-crypto-adoption-2025/ . The 89% Bitcoin and 7% USDT figures refer to Nigeria's covered centralized-exchange fiat purchases of crypto, not all users, payments or cross-border flows; the report explicitly excludes informal, B2B and OTC transactions from that purchase comparison.
+
+IMF, *Nigeria: 2026 Article IV Consultation*, Country Report 26/125, annex VII, pp. 64–65 — https://www.imf.org/-/media/files/publications/cr/2026/english/1ngaea2026001.pdf . The report estimates that USDT/USDC were over 65% of Nigeria's 2024 crypto inflows using an on-chain cross-border proxy; its source data run only through January 2025. This flow share cannot be substituted for a centralized-exchange purchase share.
  
 TRM Labs, *Q1 2026 Global Crypto Adoption Index* — https://www.trmlabs.com/resources/blog/q1-2026-global-crypto-adoption-index
  

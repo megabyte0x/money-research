@@ -177,6 +177,22 @@ test('E10 gold-price observations are dated and agree across the three volume ti
   }
 });
 
+test('Nigeria purchase and cross-border flow shares retain different denominators', () => {
+  const use = readFileSync(join(root, 'public/content/bitcoin/03-how-bitcoin-is-actually-used-global-adoption.md'), 'utf8');
+  const regimes = readFileSync(join(root, 'public/content/bitcoin/07-the-supply-system-fixed-rate-variable-rate-and-backing.md'), 'utf8');
+  const sources = readFileSync(join(root, 'EDITORIAL-SOURCES.md'), 'utf8');
+  for (const article of [use, regimes]) {
+    assert.match(article, /89%[^.]*centralized.exchange fiat purchases|89%[^.]*fiat purchases[^.]*centralized exchanges/i);
+    assert.match(article, /over 65%[^.]*2024 crypto inflows|over 65%[^.]*crypto inflows[^.]*2024/i);
+    assert.match(article, /denominator|different (?:channels|transaction)/i);
+    assert.match(article, /subsaharan-africa-crypto-adoption-2025/);
+    assert.match(article, /1ngaea2026001\.pdf/);
+    assert.doesNotMatch(article, /89% of crypto purchases were bitcoin rather than stablecoins|Argentina, Türkiye, Nigeria and Lebanon the crypto rails carried mostly dollar stablecoins/i);
+  }
+  assert.match(sources, /E11.*89%.*centralized exchanges/);
+  assert.match(sources, /E11.*over 65%.*2024 crypto inflows/);
+});
+
 test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {
   const dates = ['3 Jan 2009', '15 Aug 1971', 'c. 4600–4300 BCE', '1925', '31 Oct 2008'];
   assert.deepEqual(dates.sort((a, b) => eventSortValue(a) - eventSortValue(b)),
