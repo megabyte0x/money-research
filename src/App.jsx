@@ -26,7 +26,7 @@ const MONO = "'IBM Plex Mono',monospace";
 const BASE = import.meta.env.BASE_URL || '/';
 // Editor-exposed props in the design file; fixed here at their defaults.
 const BODY_SIZE = 17.5;
-const GLOSSARY_HOVER = true;
+const GLOSSARY_INLINE = true;
 const SELECTION_ACTIONS = true;
 const VIEW_NAMES = { home: 'start here', compare: 'comparison', methods: 'methods', arc: 'the arc', research: 'the research index', timeline: 'the master timeline', takeaways: 'the takeaways', glossary: 'the glossary', search: 'search results' };
 const CHATGPT_URL = 'https://chatgpt.com/?q=';
@@ -35,8 +35,52 @@ const MAX_PASSAGE = 1200;
 
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 
+function GlossaryTerm({ term, label, definition }) {
+  const [open, setOpen] = React.useState(false);
+  const [alignment, setAlignment] = React.useState('left');
+  const id = React.useId();
+  const container = React.useRef(null);
+  const trigger = React.useRef(null);
+
+  React.useEffect(() => {
+    if (!open) return;
+    const closeOutside = event => { if (!container.current?.contains(event.target)) setOpen(false); };
+    const closeEscape = event => {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      setOpen(false);
+      trigger.current?.focus();
+    };
+    document.addEventListener('pointerdown', closeOutside);
+    document.addEventListener('keydown', closeEscape);
+    return () => {
+      document.removeEventListener('pointerdown', closeOutside);
+      document.removeEventListener('keydown', closeEscape);
+    };
+  }, [open]);
+
+  return <span className="glossary-term" ref={container} onBlur={event => {
+    if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
+  }}>
+    <button type="button" ref={trigger} className="glossary-trigger" aria-label={`Define ${label}`}
+      aria-expanded={open} aria-controls={id} onClick={event => {
+        setAlignment(event.currentTarget.getBoundingClientRect().left < window.innerWidth / 2 ? 'left' : 'right');
+        setOpen(value => !value);
+      }}>{label}</button>
+    <span id={id} role="group" aria-label={`${term.term} definition`}
+      className={`glossary-panel glossary-panel-${alignment}`} hidden={!open}>
+      <strong>{term.term}</strong><span>{definition}</span>
+      <a href={'#/glossary/' + term.id}>Full glossary entry →</a>
+      <button type="button" className="glossary-close" onClick={() => {
+        setOpen(false);
+        trigger.current?.focus();
+      }}>Close definition</button>
+    </span>
+  </span>;
+}
+
 export default class App extends React.Component {
-  state = { manifest: [], docs: {}, blocks: {}, glossary: [], route: { view: 'home' }, query: '', tlq: '', glq: '', collapsed: {}, hoverTerm: null, progress: 0, copied: false, quote: null, askOpen: false, askQ: '', promptCopied: false, theme: null, loaded: false, headerH: 52, menuOpen: false };
+  state = { manifest: [], docs: {}, blocks: {}, glossary: [], route: { view: 'home' }, query: '', tlq: '', glq: '', collapsed: {}, progress: 0, copied: false, quote: null, askOpen: false, askQ: '', promptCopied: false, theme: null, loaded: false, headerH: 52, menuOpen: false };
   headerRef = React.createRef();
 
   // The header is one 52px row on desktop and wraps to two rows on a phone; every
@@ -199,7 +243,7 @@ export default class App extends React.Component {
   // ---- inline rendering with glossary hover + file refs
   inline(text, ctx) {
     const R = React.createElement; const toks = this.md.tokenizeInline(text); const out = []; let k = 0;
-    const gloss = ctx.gloss !== false && GLOSSARY_HOVER;
+    const gloss = ctx.gloss !== false && GLOSSARY_INLINE;
     const pushText = (str) => {
       // file refs: "file 02", "files 03 and 05"
       const parts = str.split(/(\bfiles?\s+\d{2}(?:(?:,|\s+and)\s+\d{2})*)/i);
@@ -240,11 +284,7 @@ export default class App extends React.Component {
     return out;
   }
   term(g, label, key) {
-    const R = React.createElement; const open = this.state.hoverTerm === g.id + label;
-    return R('span', { key, style: { position: 'relative', borderBottom: '1px dotted var(--mut)', cursor: 'help' }, onMouseEnter: () => this.setState({ hoverTerm: g.id + label }), onMouseLeave: () => this.setState({ hoverTerm: null }) }, label,
-      open ? R('span', { style: { position: 'absolute', left: 0, top: '100%', marginTop: 6, zIndex: 30, width: 320, maxWidth: '80vw', background: 'var(--bg)', color: 'var(--fg)', border: '1px solid var(--fg)', padding: '10px 12px', fontSize: 14, lineHeight: 1.45, fontStyle: 'normal', fontWeight: 400, boxShadow: '0 8px 24px rgba(0,0,0,.12)' } },
-        R('span', { style: { fontFamily: MONO, fontSize: 11, color: 'var(--mut)', display: 'block', marginBottom: 4 } }, g.term), this.md.stripInline(g.def), ' ',
-        R('a', { href: '#/glossary/' + g.id, style: { fontFamily: MONO, fontSize: 11, color: 'var(--mut)' } }, 'glossary →')) : null);
+    return React.createElement(GlossaryTerm, { key, term: g, label, definition: this.md.stripInline(g.def) });
   }
   // ---- block rendering
   blocksToEls(blocks, ctx, opts = {}) {

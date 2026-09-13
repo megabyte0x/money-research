@@ -56,3 +56,14 @@ input:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .hov-soft:hover{background:var(--soft)}
 .hov-fg:hover{color:var(--fg)}
 .hov-fg-border:hover{color:var(--fg);border-color:var(--fg)}
+.glossary-term{position:relative;display:inline}
+.glossary-trigger{font:inherit;line-height:inherit;color:inherit;border-bottom:1px dotted var(--mut);text-align:inherit}
+.glossary-trigger:hover{border-bottom-color:var(--fg)}
+.glossary-panel{position:absolute;top:calc(100% + 8px);z-index:40;display:flex;flex-direction:column;gap:7px;box-sizing:border-box;width:320px;max-width:calc(100vw - 32px);padding:12px 14px;background:var(--bg);color:var(--fg);border:1px solid var(--fg);box-shadow:0 8px 24px rgba(0,0,0,.16);font-family:'Newsreader',Georgia,serif;font-size:15px;line-height:1.45;font-style:normal;font-weight:400;text-align:left}
+.glossary-panel[hidden]{display:none}
+.glossary-panel-left{left:0}
+.glossary-panel-right{right:0}
+.glossary-panel strong{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500}
+.glossary-panel a,.glossary-close{font-family:'IBM Plex Mono',monospace;font-size:12px}
+.glossary-close{align-self:flex-start;text-decoration:underline;text-decoration-color:var(--rule)}
+@media(max-width:639px){.glossary-panel{position:fixed;top:auto;bottom:16px;left:16px;right:16px;width:auto;max-width:none}}
