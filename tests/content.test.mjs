@@ -75,6 +75,21 @@ test('reserve-share explanations name the incompatible COFER and gold denominato
   }
 });
 
+test('El Salvador legal-status summaries distinguish the amended label from legal effect', () => {
+  for (const path of [
+    'content/bitcoin/04-countries-that-adopted-bitcoin-and-what-happened.md',
+    'content/bitcoin/06-what-legal-tender-requires-and-what-is-missing.md',
+    'content/bitcoin/15-glossary.md',
+    'content/after/08-innovation-cards-bitcoin-stablecoins-cbdcs.md'
+  ]) {
+    const article = readFileSync(join(root, 'public', path), 'utf8');
+    assert.match(article, /Decree 199/);
+    assert.match(article, /curso legal/);
+    assert.match(article, /voluntary/i);
+    assert.doesNotMatch(article, /un-made it in 2025|repealed that status in January 2025/);
+  }
+});
+
 test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {
   const dates = ['3 Jan 2009', '15 Aug 1971', 'c. 4600–4300 BCE', '1925', '31 Oct 2008'];
   assert.deepEqual(dates.sort((a, b) => eventSortValue(a) - eventSortValue(b)),

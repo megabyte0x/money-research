@@ -98,7 +98,7 @@
 | Oct–Nov 2023 | Gaza war; Houthi Red Sea attacks | Suez traffic halved |
 | Jan 2024 | Bitcoin ETFs approved; BRICS expands; Zimbabwe ZiG (Apr); BoJ ends negative rates (Mar); MiCA; G7 ERA loans (Jun); BIS leaves mBridge | — |
 | Sep–Dec 2024 | Fed cuts three times | — |
-| Jan–Mar 2025 | US bans retail CBDC (Jan); Strategic Bitcoin Reserve (Mar); Germany reforms debt brake (Mar); El Salvador drops Bitcoin tender; gold $3,000 | — |
+| Jan–Mar 2025 | El Salvador adopts and publishes Decree 199 in January, amending—not repealing—the Bitcoin Law; voluntary private acceptance takes effect 90 days after publication. US Strategic Bitcoin Reserve (Mar); Germany reforms debt brake (Mar); gold reaches $3,000 | Domestic law retains “curso legal” wording; IMF says essential tender features removed. [Decree 199](https://www.jurisprudencia.gob.sv/DocumentosBoveda/R/2/2020-2029/2021/06/1080B6.HTML?embedded=true) |
 | 2 Apr 2025 | "Liberation Day" IEEPA tariffs | Highest US tariffs since 1930s |
 | May–Jul 2025 | Moody's downgrades US (May); Israel–Iran twelve-day war and US strikes (Jun); NATO 5% target; OBBBA (4 Jul); GENIUS Act (18 Jul); CLARITY Act passes House | — |
 | Sep–Dec 2025 | Fed cuts three times to 3.50–3.75%; 43-day shutdown (Oct–Nov); Gaza ceasefire (Oct); US–China truce (Nov); gold $4,000; Bitcoin >$120k (Oct); Argentina $20 bn swap; Bulgaria adopts euro (1 Jan 2026) | — |

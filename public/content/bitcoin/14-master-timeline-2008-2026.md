@@ -83,7 +83,7 @@
 | 18 Dec 2024 | Powell: "We're not allowed to own bitcoin"; IMF staff agreement with El Salvador ($1.4bn) requiring legal-tender rollback. |
 | Dec 2024 | Japan's government rejects a bitcoin reserve; MiCA fully in force in the EU. |
 | Jan 2025 | Tether moves HQ to El Salvador; Nagel: "digital tulips"; Fink at Davos on sovereign 2–5% allocations; Lagarde: no EU central bank will hold bitcoin. |
-| 29 Jan 2025 | El Salvador amends the Bitcoin Law: acceptance voluntary, taxes in dollars. |
+| 29–30 Jan 2025 | El Salvador adopts and publishes Decree 199 amending, not repealing, the Bitcoin Law; voluntary private acceptance and repeal of Bitcoin tax-payment authority take effect 90 days after publication. The statute retains “curso legal” wording. [Decree 199](https://www.jurisprudencia.gob.sv/DocumentosBoveda/R/2/2020-2029/2021/06/1080B6.HTML?embedded=true) |
 | 21 Feb 2025 | Bybit hacked for $1.5bn by North Korea. |
 | 6 Mar 2025 | US executive order creates the Strategic Bitcoin Reserve and Digital Asset Stockpile from forfeited coins. |
 | 11 Mar 2025 | Lummis reintroduces the BITCOIN Act (1m BTC over five years). |

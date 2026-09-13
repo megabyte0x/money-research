@@ -6,7 +6,7 @@
  
 **Bitcoin standard** — Used in three senses: bitcoin as the unit of account and base money of an economy (the classical-gold-standard analogue); bitcoin as a reserve asset held by states beside gold and Treasuries; and bitcoin as a privately held monetary good. Only the first raises the questions of fixed supply and elasticity (file 07).
  
-**Bitcoinisation** — Full adoption of bitcoin as a country's currency, analogous to dollarisation; tried only by El Salvador, 2021–25.
+**Bitcoinisation** — A proposed shift toward Bitcoin as a country's widely used money or unit of account. El Salvador's 2021 mandatory-acceptance law was a narrower experiment alongside the U.S. dollar, not full Bitcoinisation; its 2025 amendment made private acceptance voluntary while retaining “curso legal” wording.
  
 **BIP** — Bitcoin Improvement Proposal, the document through which changes to the software or protocol are proposed. BIP-148 (2017) was the user-activated soft fork that forced SegWit; BIP-360 and BIP-361 (2026) address the quantum threat.
  
@@ -38,7 +38,7 @@
  
 **GENIUS Act** — US federal stablecoin law signed 18 July 2025: issuers must hold 100% reserves in cash and short-term Treasuries, be licensed and audited; no deposit insurance.
  
-**Gresham's Law / Thiers' Law** — Bad money drives out good when a legal-tender rule fixes their exchange rate (Gresham); good money drives out bad when people are free to choose and the bad money is failing fast (Thiers). El Salvador demonstrated the first; "hyperbitcoinisation" requires the second.
+**Gresham's Law / Thiers' Law** — Heuristics about currency choice under different monetary rules: an enforced exchange ratio may encourage spending the overvalued money and holding the undervalued one (Gresham); voluntary choice amid a failing currency can favour the stronger money (Thiers). Neither alone establishes why people did or did not use Bitcoin in El Salvador.
  
 **Halving** — The programmed 50% cut in the block subsidy every 210,000 blocks (about four years): 2012, 2016, 2020, 2024; next expected April 2028.
  
@@ -50,7 +50,7 @@
  
 **Knots** — A rival to the Bitcoin Core reference software, maintained by essentially one person, that kept a strict limit on data in transactions after Core v30 (October 2025) relaxed it; reached 20–25% of reachable nodes.
  
-**Legal tender** — A statutory status obliging creditors to accept an asset in discharge of debts and the state to accept it for taxes; it does not oblige merchants to price in it or citizens to use it. Granted to bitcoin by El Salvador (2021–25) and the Central African Republic (2022–23) only.
+**Legal tender** — A legal status whose consequences depend on the jurisdiction; acceptance for new purchases, debt discharge, tax payment and pricing should be checked separately. El Salvador's 2025 amendment kept the phrase “curso legal” but made private Bitcoin acceptance voluntary and repealed the prior tax-payment authorization. The IMF describes this as removing the essential features of legal tender. [Decree 199](https://www.jurisprudencia.gob.sv/DocumentosBoveda/R/2/2020-2029/2021/06/1080B6.HTML?embedded=true); [IMF Country Report 25/58, para. 27 n.18](https://www.imf.org/-/media/files/publications/cr/2025/english/1slvea2025001-print-pdf.pdf).
  
 **Lightning Network** — Bitcoin's second-layer payment system of pre-funded channels; public capacity about 4,900 BTC in May 2026, below its 2024 peak; most consumer use is through custodial apps; carries Tether's dollar since March 2026.
  
