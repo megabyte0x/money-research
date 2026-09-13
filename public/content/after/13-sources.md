@@ -1,5 +1,13 @@
 # 13 — Sources and Further Reading
 
+## Money creation and asset purchases (reviewed 13 September 2026)
+
+Bank of England, *Money creation in the modern economy* (Quarterly Bulletin 2014 Q1), Figures 1–3 and pp. 16–20, 24–25 — https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2014/money-creation-in-the-modern-economy.pdf . Distinguishes loan-created deposits, interbank reserves, constraints on lending and the balance-sheet effects of asset purchases from non-bank sellers.
+
+UK Debt Management Office, *Investor Information* — https://www.dmo.gov.uk/investor-information/ . Gilt issuance finances government needs and refinances maturing debt; it is separate from a central-bank purchase of an existing gilt.
+
+Federal Reserve History, *The Great Recession*, “Monetary Policy Response” — https://www.federalreservehistory.org/essays/great-recession-of-200709 . First U.S. large-scale asset-purchase programme, including approximately $1.75 trillion in longer-term purchases.
+
 ## Present-day data and events (consulted 8 September 2026)
 
 Congressional Research Service, *Supreme Court Rules Against Tariffs Imposed Under IEEPA* (LSB11398) — https://www.congress.gov/crs-product/LSB11398 (20 February 2026 decision, 6–3, Learning Resources / V.O.S. Selections)

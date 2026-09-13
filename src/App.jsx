@@ -1,6 +1,7 @@
 import React from 'react';
 import * as md from './md.js';
 import { eventYear, eventSortValue, mergeSharedEvents } from './timeline.js';
+import MoneyMechanics from './MoneyMechanics.jsx';
 
 // The prototype declared every rule as an inline CSS string. Keeping those strings
 // verbatim and parsing them once keeps the port pixel-identical to the design file.
@@ -28,7 +29,7 @@ const BASE = import.meta.env.BASE_URL || '/';
 const BODY_SIZE = 17.5;
 const GLOSSARY_INLINE = true;
 const SELECTION_ACTIONS = true;
-const VIEW_NAMES = { home: 'start here', compare: 'comparison', methods: 'methods', arc: 'the arc', research: 'the research index', timeline: 'the master timeline', takeaways: 'the takeaways', glossary: 'the glossary', search: 'search results' };
+const VIEW_NAMES = { home: 'start here', compare: 'comparison', mechanics: 'money mechanics', methods: 'methods', arc: 'the arc', research: 'the research index', timeline: 'the master timeline', takeaways: 'the takeaways', glossary: 'the glossary', search: 'search results' };
 const CHATGPT_URL = 'https://chatgpt.com/?q=';
 const DEFAULT_QUESTION = 'Explain this passage: what is it claiming, and why does it matter?';
 const MAX_PASSAGE = 1200;
@@ -151,7 +152,7 @@ export default class App extends React.Component {
     if (!location.hash && direct) return { view: 'article', vol: direct[1], slug: direct[2], sec: new URLSearchParams(location.search).get('section') };
     const h = (location.hash || '#/home').split('?')[0].replace(/^#\/?/, '');
     const seg = h.split('/').filter(Boolean);
-    if (['home', 'compare', 'methods', 'timeline', 'glossary', 'takeaways', 'arc', 'research'].includes(seg[0])) return { view: seg[0], sec: seg[1] || null };
+    if (['home', 'compare', 'mechanics', 'methods', 'timeline', 'glossary', 'takeaways', 'arc', 'research'].includes(seg[0])) return { view: seg[0], sec: seg[1] || null };
     if ((seg[0] || '').startsWith('search')) return { view: 'search' };
     if (seg[0] && seg[1]) return { view: 'article', vol: seg[0], slug: seg[1], sec: seg[2] || null };
     return { view: 'home' };
@@ -539,10 +540,18 @@ export default class App extends React.Component {
     vals.allChapters = st.manifest.map(m => ({ href: this.href(m), optLabel: ({ gold: 'I·', after: 'II·', bitcoin: 'III·' }[m.vol]) + m.num + ' ' + this.short(m) }));
     vals.selectValue = cur ? this.href(cur) : '';
     vals.onSelect = e => { if (e.target.value) location.href = e.target.value; };
-    vals.isHome = r.view === 'home'; vals.isCompare = r.view === 'compare'; vals.isMethods = r.view === 'methods';
+    vals.isHome = r.view === 'home'; vals.isCompare = r.view === 'compare'; vals.isMechanics = r.view === 'mechanics'; vals.isMethods = r.view === 'methods';
     vals.isArticle = !!cur; vals.isTimeline = r.view === 'timeline'; vals.isGlossary = r.view === 'glossary';
     vals.isTakeaways = r.view === 'takeaways'; vals.isSearch = r.view === 'search';
     vals.toc = []; vals.tocLabel = 'Contents';
+    if (vals.isMechanics) {
+      vals.tocLabel = 'Four transactions';
+      vals.toc = [
+        ['loan', '1 · Bank loan'], ['payment', '2 · Interbank payment'],
+        ['bond', '3 · New government bond'], ['qe', '4 · Asset purchase'],
+        ['takeaway', 'What stays distinct']
+      ].map(([id, text]) => ({ text, href: '#/mechanics/mechanics-' + id, indent: '0' }));
+    }
     vals.isArc = r.view === 'arc';
     if (vals.isArc) {
       const act = st.stage || 1; const A = App.ARC;
@@ -681,7 +690,7 @@ export default class App extends React.Component {
               <p className="eyebrow">An evidence-led guide · three research volumes</p>
               <h1>How money works—and why it changes.</h1>
               <p className="lead">Explore gold, government currencies, and Bitcoin through history, evidence, and the trade-offs between saving, paying, pricing, and settling.</p>
-              <div className="actions"><a href="#/research">Start with the research →</a><a href="#/compare">Compare monetary arrangements →</a></div>
+              <div className="actions"><a href="#/research">Start with the research →</a><a href="#/compare">Compare monetary arrangements →</a><a href="#/mechanics">How money is created →</a></div>
               <h2>Four jobs, different arrangements</h2>
               <p>A store of value carries purchasing power through time. A medium of exchange helps people pay. A unit of account is what prices and debts are written in. A settlement asset discharges an obligation between parties or institutions. One asset need not do all four jobs.</p>
               <div className="question-grid">
@@ -690,7 +699,7 @@ export default class App extends React.Component {
                 <a href="/bitcoin/02-what-bitcoin-solved-and-what-it-did-not/">What did Bitcoin solve?<small>Permissionless transfer—and its limits · Vol. III</small></a>
               </div>
               <h2>A useful comparison starts with custody</h2>
-              <p>Cash is an issuer's liability, a bank balance is a claim on a bank, physical gold is an asset held somewhere, and self-custodied Bitcoin depends on control of keys. An exchange balance or stablecoin adds another issuer or custodian. <a href="#/compare">Compare the arrangements by use →</a></p>
+              <p>Cash is an issuer's liability, a bank balance is a claim on a bank, physical gold is an asset held somewhere, and self-custodied Bitcoin depends on control of keys. An exchange balance or stablecoin adds another issuer or custodian. <a href="#/compare">Compare the arrangements by use →</a> To see how a bank balance is created and moved, <a href="#/mechanics">follow four £100 transactions →</a></p>
               <h2>History overlaps</h2>
               <p>Classical gold convertibility was interrupted by the First World War. Interwar attempts to restore it differed from the post-1944 Bretton Woods dollar system. Since the 1970s, fiat currencies, gold reserves, bank deposits and newer digital arrangements have coexisted; Bitcoin is not an inevitable next regime.</p>
               <div className="actions"><a href="#/arc">Read the historical arc →</a><a href="#/timeline">Explore the timelines →</a></div>
@@ -709,8 +718,10 @@ export default class App extends React.Component {
                 <tr><th>Self-custodied Bitcoin</th><td>Key holder controls transfers</td><td>Network settlement without a central operator; key loss, fees and price risk remain.</td><td><a href="/bitcoin/02-what-bitcoin-solved-and-what-it-did-not/">Solved and unsolved</a></td></tr>
                 <tr><th>Custodial Bitcoin</th><td>Exchange or other custodian owes a balance</td><td>Provider may ease access but reintroduces custody and withdrawal risk.</td><td><a href="/bitcoin/09-supply-and-control-who-holds-bitcoin-and-who-benefits/">Control and custody</a></td></tr>
                 <tr><th>Fiat-backed stablecoin</th><td>Named issuer and its reserve/custody chain</td><td>Dollar-denominated transfer; backing, redemption eligibility and law vary by token.</td><td><a href="/after/08-innovation-cards-bitcoin-stablecoins-cbdcs/">Digital arrangements</a></td></tr>
-              </tbody></table></div><p className="small-note">Evidence review is in progress. No scores, universal guarantees or current market figures are implied. <a href="#/methods">Methods and corrections →</a></p>
+              </tbody></table></div><p className="small-note">Evidence review is in progress. No scores, universal guarantees or current market figures are implied. <a href="#/mechanics">See how deposits, reserves, bonds and QE differ →</a> <a href="#/methods">Methods and corrections →</a></p>
             </div>}
+
+            {v.isMechanics && <MoneyMechanics />}
 
             {v.isMethods && <div className="intro-page">
               <p className="eyebrow">Research method · revision 13 September 2026</p><h1>Scope and sources</h1>
@@ -970,6 +981,7 @@ export default class App extends React.Component {
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>Central banks chose asset purchases and lending facilities; legislatures and treasuries made fiscal decisions; commercial banks still decided which loans to make, subject to regulation and risk.</div>
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What followed</div>Low rates, public borrowing and later pandemic support interacted with supply conditions and inflation. Bitcoin and stablecoins also developed during these years, but they are distinct designs and cannot be reduced to a single response to QE.</div>
                       </div>
+                      <p className="small-note">A bank loan, interbank payment, bond issue and asset purchase change different balance sheets. <a href="#/mechanics">Follow the four transactions →</a> Source: <a href="https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2014/money-creation-in-the-modern-economy.pdf">Bank of England, 2014, Figures 1–3</a>.</p>
                       <figure style={s('margin:24px 0 0')}>{v.chartDebt}<figcaption style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px")}>US gross federal debt, $ trillion, 1971–2026. Every war and crisis of the fiat era was borrowed for rather than paid for. Vol. II, files 06, 07, 09.</figcaption></figure>
                     </div>
                   </div>

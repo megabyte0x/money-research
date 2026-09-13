@@ -6,13 +6,14 @@ This branch is a staged preview of the companion `website-improvement-plan.md` h
 
 - Deployed project: Vercel `money-research`, linked to `megabyte0x/money-research`; Vite/React 18, static content in `public/content`, legacy hash routes.
 - The manifest lists 44 records: Gold 13, After Gold 14, Bitcoin 17. Each now has an explicit stable volume-number ID, original source path, and any numeric legacy alias. The supplied Bitcoin files are numeric (`00.md`–`16.md`), while website slugs are descriptive. The 42 otherwise unchanged published documents match the originals byte-for-byte; Bitcoin 02 and 13 contain the branch's editorial qualifications.
-- Original research and existing article links remain available. The source `project/content` and public copies should be consolidated after editorial review.
+- Original research and existing article links remain available. Published copies now contain several editorial corrections while the original source directories remain unchanged; the source `project/content` and public copies should be consolidated after review.
 
 ## In this preview
 
 - R01/R06/R07 (partial): short introduction and responsive menu/contents control; the full historical arc remains under History.
 - R02/R03 (partial): the History arc now has an explicit 1914–1944 interwar bridge and an overlapping Bitcoin/stablecoin stage. Its ending no longer treats gold or Bitcoin as an inevitable successor. The reserve passage separates gold's share of broad official reserves from the dollar's share of foreign-exchange reserves; the source ledger records primary anchors A01/A02. Earlier arc stages and all chapter-to-arc consistency still need editorial audit.
 - V01 (provisional): qualitative arrangement-specific comparison without scores or volatile figures. This is **not** the cited final table.
+- V02/E07 (substantial, not final): a new “How money is created and moved” explainer uses four stylised £100 transactions and actor-by-actor balance-sheet changes to distinguish a bank loan, an interbank payment, a new government bond and QE. It links primary Bank of England, UK Debt Management Office and Federal Reserve accounts. The After Gold 07 QE discussion and takeaway and Gold 08 qualification now point to this distinction; remaining E07 statements across the library and the explainer's mobile/accessibility review are still open.
 - F05 (interim): the historical arc's numerical charts are withheld pending dataset and citation audit; its prose is still under review.
 - F06 (interim): automatic keyword matching is removed. Two reviewed event-to-section relationships are explicit; unreviewed rows lead only to the source timeline, not an unrelated chapter. Composite events and chronology still need editorial normalization.
 - F02: all 44 documents have explicit stable IDs and original-file provenance; numeric Bitcoin routes resolve to their descriptive website records.

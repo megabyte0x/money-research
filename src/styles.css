@@ -32,6 +32,16 @@ input:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .comparison caption{text-align:left;color:var(--mut);font-size:13px;margin-bottom:12px}
 .comparison th,.comparison td{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid var(--rule)}
 .comparison th{font-weight:500}
+.mechanics-page section{border-top:1px solid var(--rule);margin-top:44px}
+.mechanics-page section h2{margin-top:30px}
+.mechanics-jump{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 38px}
+.mechanics-jump a{border:1px solid var(--rule);padding:7px 10px;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:12px}
+.mechanics-jump a:hover{border-color:var(--fg)}
+.mechanics-table-wrap{max-width:100%;overflow-x:auto;margin:22px 0}
+.mechanics-table{border-collapse:collapse;width:100%;min-width:550px;font-size:15px;line-height:1.45}
+.mechanics-table caption{text-align:left;color:var(--mut);font-size:13px;line-height:1.45;margin-bottom:8px}
+.mechanics-table th,.mechanics-table td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--rule)}
+.mechanics-table th{font-weight:500}
 .evidence-notice{border:1px solid var(--fg);padding:14px 18px;line-height:1.55;margin-bottom:32px;font-size:15px}
 .history-arc figure{display:none}
 .static-article{max-width:72ch;margin:0 auto;padding:36px 16px 96px;font-size:18px;line-height:1.6}
