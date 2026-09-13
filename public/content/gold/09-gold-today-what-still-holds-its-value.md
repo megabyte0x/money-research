@@ -17,7 +17,8 @@ Figures are from the World Gold Council's *Gold Demand Trends* for full-year 202
 | — Gold ETFs | 801 t |
 | — Central banks | 863 t (after three years above 1,000 t) |
 | Average LBMA price, 2025 | US$3,431.50/oz (+44% on 2024; 53 record highs in the year) |
-| Price peak | about US$5,590/oz, 28 January 2026 |
+| WGC series record high, 29 January 2026 | US$5,405/oz. This is the World Gold Council's stated USD-series high, not an intraday spot quote. [WGC July 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
+| WGC series, 31 July / 31 August 2026 | US$4,027/oz / US$4,563/oz, respectively. Month-end observations, not a claim about every trading day. [WGC July 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026); [WGC August 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-august-2026) |
 | Spot price, 3 September 2026 | about US$4,490/oz |
 | Central-bank buying, Q1 / Q2 2026 | ~57 t (revised down from 244 t) / 289 t |
 | Gold's share of official reserves including gold, end-2025 (ECB) | 27% at current gold prices; roughly 16% at end-2023 gold prices. The ECB puts the euro at 15% and US Treasuries at 22% at current prices. These shares use a broader denominator than COFER. [ECB chart 7](https://www.ecb.europa.eu/press/other-publications/ire/html/ecb.ire202606.en.html) |
@@ -28,7 +29,7 @@ Largest official holders (approximate, 2026): United States ~8,133 t, Germany ~3
 
 ## The last four years in one paragraph
 
-Gold traded around $1,800 in 2022 when the US and EU froze Russia's dollar reserves. Central banks, especially in Asia, Eastern Europe and the Middle East, responded by buying more than 1,000 tonnes a year for three years, the highest sustained official demand since the 1960s, and the price rose through $2,000, $3,000 (early 2025), $4,000 (late 2025) and briefly to about $5,590 on 28 January 2026 before correcting to the $4,400–4,700 range through summer 2026. The drivers were, in order: reserve diversification away from the dollar after 2022; US fiscal deficits and the erosion of confidence in the long end of the Treasury market; geopolitical fragmentation (tariffs, the Ukraine and Middle East wars); Chinese retail investors moving out of property into gold; and, from 2025, Western investors returning via ETFs. Goldman Sachs' September 2026 forecast is $4,900 by year-end, J.P. Morgan's higher; both cite central-bank buying as "a multi-year trend rather than a trade." Forecasts are forecasts.
+Gold traded around $1,800 in 2022 when the US and EU froze Russian central-bank assets. Official gold purchases exceeded 1,000 tonnes annually in 2022–24, while gold's price rose substantially over the following years; that chronology alone cannot assign a single cause or rank the motives of all buyers. In the World Gold Council's USD series, the record was $5,405/oz on 29 January 2026. Gold then fell toward $4,000, ended July at $4,027/oz and rebounded to $4,563/oz at end-August. These are dated observations, not a continuous summer price band. The Council discusses momentum, interest rates, the dollar, ETF flows, Asian investors and central-bank demand as interacting factors, with uncertainty about their contributions. [WGC July 2026, table 1 and discussion](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026); [WGC August 2026, table 1 and discussion](https://www.gold.org/goldhub/research/gold-market-commentary-august-2026).
 
 ## What still gives gold value
 

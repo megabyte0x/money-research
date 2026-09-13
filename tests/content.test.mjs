@@ -22,7 +22,9 @@ test('the three-volume inventory has 44 unique, resolvable records', () => {
     if (record.vol === 'bitcoin') assert.deepEqual(record.aliases, [record.num]);
     assert.ok(existsSync(join(root, 'public', record.path)), record.path);
     assert.ok(record.title && Number.isInteger(record.words) && record.words > 0);
-    const headings = parseMd(readFileSync(join(root, 'public', record.path), 'utf8')).filter(block => block.type === 'h2');
+    const article = readFileSync(join(root, 'public', record.path), 'utf8');
+    assert.equal(record.words, article.trim().split(/\s+/).length, `${record.id} reading-length metadata`);
+    const headings = parseMd(article).filter(block => block.type === 'h2');
     assert.deepEqual(headings.map(block => block.text), record.h2, `${record.id} heading manifest`);
     assert.equal(new Set(headings.map(block => block.id)).size, headings.length, `${record.id} section IDs`);
   }
@@ -131,6 +133,48 @@ test('gold-standard ending is distinct from reserves and later reserve-basket cu
   assert.match(sources, /E09.*pam45\/pdf\/chap2\.pdf/);
   assert.match(sources, /E09.*2024 Monetary Policy Statement/);
   assert.match(sources, /E09.*2025 Article IV Consultation/);
+});
+
+test('E10 gold-price observations are dated and agree across the three volume timelines', () => {
+  const observations = JSON.parse(readFileSync(join(root, 'public/content/observations.json'), 'utf8'));
+  const byId = Object.fromEntries(observations.map(o => [o.id, o]));
+  assert.equal(observations.length, new Set(observations.map(o => o.id)).size);
+  for (const observation of observations) {
+    assert.ok(Number.isFinite(observation.value));
+    assert.match(observation.unit, /USD per troy ounce/);
+    assert.match(observation.period, /^2026-\d\d-\d\d$/);
+    assert.match(observation.source, /^https:\/\/www\.gold\.org\/goldhub\/research\//);
+    assert.equal(observation.verification, 'verified against publisher table');
+    assert.ok(observation.method && observation.scope && observation.accessed && observation.revision);
+  }
+  const record = byId['gold-usd-2026-record-high'];
+  const july = byId['gold-usd-2026-july-end'];
+  const august = byId['gold-usd-2026-august-end'];
+  assert.equal(record.period, '2026-01-29');
+  assert.equal(july.period, '2026-07-31');
+  assert.equal(august.period, '2026-08-31');
+  for (const path of [
+    'content/gold/09-gold-today-what-still-holds-its-value.md',
+    'content/gold/10-master-timeline.md',
+    'content/after/09-pandemic-inflation-and-weaponized-reserves-2020-2026.md',
+    'content/after/11-master-timeline-1971-2026.md',
+    'content/bitcoin/14-master-timeline-2008-2026.md'
+  ]) {
+    const article = readFileSync(join(root, 'public', path), 'utf8');
+    assert.match(article, new RegExp(record.value.toLocaleString('en-US')));
+    assert.doesNotMatch(article, /\$5,58[09]|\$5,590|held above \$4,400 throughout|\$4,400–4,700 range/i);
+    assert.match(article, /gold-market-commentary-july-2026/);
+  }
+  for (const path of [
+    'content/gold/09-gold-today-what-still-holds-its-value.md',
+    'content/gold/10-master-timeline.md',
+    'content/after/09-pandemic-inflation-and-weaponized-reserves-2020-2026.md',
+    'content/after/11-master-timeline-1971-2026.md'
+  ]) {
+    const article = readFileSync(join(root, 'public', path), 'utf8');
+    assert.match(article, new RegExp(july.value.toLocaleString('en-US')));
+    assert.match(article, new RegExp(august.value.toLocaleString('en-US')));
+  }
 });
 
 test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {

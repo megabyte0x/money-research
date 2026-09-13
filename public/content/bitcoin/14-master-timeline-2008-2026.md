@@ -107,16 +107,16 @@
  
 | Date | Event |
 |---|---|
-| Jan 2026 | Gold record $5,589; IBIT record daily outflow $528m (30 Jan); bitcoin −10% for the month. |
+| 29 Jan 2026 | Gold reaches $5,405/oz in the World Gold Council's USD series; IBIT record daily outflow $528m (30 Jan); bitcoin −10% for the month. [WGC July 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
 | Feb 2026 | Price falls ~52% from peak to ~$60,000 (6 Feb); RESBit reserve bill reintroduced in Brazil; BIP-360 (quantum-resistant addresses) published. |
-| 28 Feb 2026 | Iran war begins; bitcoin dips to $63,106; gold spikes to ~$5,400 (2 Mar) then falls 25%. |
+| 28 Feb 2026 | Iran war begins; bitcoin dips to $63,106. Gold later retreats from its pre-war January record; the WGC reports $4,027/oz at July month-end, about a quarter below that record. [WGC July 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
 | Mar 2026 | Pakistan's Virtual Assets Act (6 Mar); Google paper cuts qubits needed to break bitcoin's signatures to <500,000; Fidelity "Getting Off Zero"; USDT launches on Lightning; Labor Department 401(k) rule (30 Mar); Metaplanet reports $725m loss. |
 | Apr 2026 | Ceasefire; bitcoin ~$80,000; BIP-361 proposes phased freeze of quantum-vulnerable coins (14 Apr); Michl at Bitcoin 2026: "this is the future." |
 | May 2026 | Pools with 75% of hashrate pledge Stratum V2 (11 May); Tether takes full control of Twenty One (20 May); nine-session $2.8bn ETF outflow and $1.29bn IBIT block sale; House bill drops the 1m-BTC purchase target (22 May); Bhutan disputes $1bn drawdown. |
 | 29 Jun 2026 | Strategy adopts "Digital Credit Capital Framework," raises STRC coupon to 12%, begins first bitcoin sales since 2022. |
 | 30 Jun 2026 | Cycle low $58,562 (−53.5% from peak). |
 | 1 Jul 2026 | MiCA grandfathering ends; Binance suspends EU services. |
-| 13–14 Jul 2026 | Iran declares Hormuz closed; gold breaks below $4,000; bitcoin below $62,000; Warsh: "no bailouts, including crypto." |
+| 13–14 Jul 2026 | Iran declares Hormuz closed; bitcoin below $62,000; Warsh: "no bailouts, including crypto." Gold tested the $4,000 level on several occasions during July, but this monthly account does not establish a sub-$4,000 price on these dates. [WGC July 2026](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
 | 15 Jul 2026 | Japan's upper house passes the 20% flat crypto tax (from 2028). |
 | 4 Aug 2026 | Russia signs crypto-exchange licensing law (effective 1 Sep). |
 | Aug 2026 | Bitcoin +26% for the month; ETFs +$3.5bn; correlation with gold 0.81; Trump Media abandons its treasury (17 Aug); Pakistan opens licensing. |

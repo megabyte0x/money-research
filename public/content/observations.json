@@ -1,0 +1,41 @@
+[
+  {
+    "id": "gold-usd-2026-record-high",
+    "value": 5405,
+    "unit": "USD per troy ounce",
+    "scope": "Gold price series reported by the World Gold Council in its USD column; record high, not an intraday spot quote",
+    "period": "2026-01-29",
+    "method": "Record high price and date, Table 1 of the July 2026 Gold Market Commentary",
+    "source": "https://www.gold.org/goldhub/research/gold-market-commentary-july-2026",
+    "sourcePublicationDate": "2026-08-06",
+    "accessed": "2026-09-13",
+    "verification": "verified against publisher table",
+    "revision": 1
+  },
+  {
+    "id": "gold-usd-2026-july-end",
+    "value": 4027,
+    "unit": "USD per troy ounce",
+    "scope": "Gold price in USD reported by the World Gold Council at July month-end; rounded to whole dollars",
+    "period": "2026-07-31",
+    "method": "July price, Table 1 of the July 2026 Gold Market Commentary",
+    "source": "https://www.gold.org/goldhub/research/gold-market-commentary-july-2026",
+    "sourcePublicationDate": "2026-08-06",
+    "accessed": "2026-09-13",
+    "verification": "verified against publisher table",
+    "revision": 1
+  },
+  {
+    "id": "gold-usd-2026-august-end",
+    "value": 4563,
+    "unit": "USD per troy ounce",
+    "scope": "Gold price in USD reported by the World Gold Council at August month-end; rounded to whole dollars",
+    "period": "2026-08-31",
+    "method": "August price, Table 1 of the August 2026 Gold Market Commentary",
+    "source": "https://www.gold.org/goldhub/research/gold-market-commentary-august-2026",
+    "sourcePublicationDate": "2026-09-09",
+    "accessed": "2026-09-13",
+    "verification": "verified against publisher table",
+    "revision": 1
+  }
+]

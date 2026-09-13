@@ -133,6 +133,8 @@ Coin Metrics, *Strategy selling BTC to fund dividends* (2026) — https://coinme
 Glassnode, *The Week On-chain*, weeks 41–42 2025 (the October 2025 liquidation) — https://research.glassnode.com/the-week-onchain-week-41-2025/
  
 Cointelegraph, *How Bitcoin and gold reacted differently to the Iran war shock* (2026) — https://cointelegraph.com/features/how-bitcoin-and-gold-reacted-differently-to-the-iran-war-shock ; OANDA, *2026 Iran conflict: oil, gold, bitcoin, forex impact* — https://www.oanda.com/us-en/skills-and-insights/education/market-commentary/market-moves/2026-iran-conflict-oil-gold-bitcoin-forex-impact/ ; Fortune, bitcoin and gold price reports (September 2026) ; 24/7 Wall St, *How low can bitcoin go?* (12 September 2026) — https://247wallst.com/investing/cryptocurrency/2026/09/12/how-low-can-bitcoin-go/ ; ChartRow, *Bitcoin annual returns* — https://chartrow.com/bitcoin/returns
+
+World Gold Council, *Gold Market Commentary: Making waves* (6 August 2026), table 1 — https://www.gold.org/goldhub/research/gold-market-commentary-july-2026 (USD-series record $5,405/oz on 29 January; July month-end $4,027/oz; $4,000 level tested during July). *Gold Market Commentary: Paved with good interventions* (9 September 2026), table 1 — https://www.gold.org/goldhub/research/gold-market-commentary-august-2026 (August month-end $4,563/oz). The WGC monthly account does not identify a sub-$4,000 print on 13–14 July.
  
 Bitwise, presentation to the SEC on bitcoin trading volume (March 2019) — https://www.sec.gov/comments/sr-nysearca-2019-01/srnysearca201901-5164833-183434.pdf ; Forbes, *More than half of all bitcoin trades are fake* (August 2022) — https://www.forbes.com/sites/javierpaz/2022/08/26/more-than-half-of-all-bitcoin-trades-are-fake/
  
