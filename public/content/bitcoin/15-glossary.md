@@ -80,7 +80,7 @@
  
 **Stablecoin** — A token redeemable one-for-one for a fiat currency, backed by cash and Treasuries; $300 billion-plus in 2026, 99% dollars; the unit of account of the crypto system and the bridge that makes bitcoin usable — and dollar-dependent.
  
-**Strategic Bitcoin Reserve** — US holding of forfeited bitcoin (about 328,000 coins) designated by executive order on 6 March 2025 as not for sale; no purchases have been made and no statute authorises it.
+**Strategic Bitcoin Reserve** — Established by US executive order on 6 March 2025 for eligible Treasury-held bitcoin that has been finally forfeited and is not needed for other statutory purposes. A seizure or pending forfeiture complaint is not automatically part of the reserve; the order does not publish a reconciled balance. [White House executive order](https://www.whitehouse.gov/presidential-actions/2025/03/establishment-of-the-strategic-bitcoin-reserve-and-united-states-digital-asset-stockpile/).
  
 **Stratum V2** — A mining protocol letting individual miners build their own block templates instead of accepting the pool's; pledged by pools with 75% of hashrate in May 2026.
  

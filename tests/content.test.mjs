@@ -315,6 +315,25 @@ test('E15 Bitcoin-standard claims separate base supply, broad money, credit and 
   assert.doesNotMatch(standard, /El Salvador is a clean demonstration/);
 });
 
+test('E20 government holdings separate claims, custody, ownership and reserve status', () => {
+  const read = num => readFileSync(join(root, 'public/content/bitcoin', manifest.find(record =>
+    record.vol === 'bitcoin' && record.num === num).path.split('/').at(-1)), 'utf8');
+  const cases = read('04');
+  const holders = read('09');
+  const timeline = read('14');
+  const glossary = read('15');
+  assert.match(cases, /civil forfeiture complaint/);
+  assert.match(cases, /finally forfeited/);
+  assert.match(cases, /transfers do not establish budget proceeds/);
+  assert.match(holders, /No reliable cross-country total/);
+  assert.match(holders, /civil-recovery proceedings/);
+  assert.match(timeline, /civil forfeiture complaint/);
+  assert.match(glossary, /order does not publish a reconciled balance/);
+  for (const article of [read('03'), cases, read('08'), holders, read('10'), timeline, glossary]) {
+    assert.doesNotMatch(article, /governments? (?:hold|held) about 650,000|US holdings ~328,000|holds? 328,000 coins|forfeits 127,271 BTC/);
+  }
+});
+
 test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {
   const dates = ['3 Jan 2009', '15 Aug 1971', 'c. 4600–4300 BCE', '1925', '31 Oct 2008'];
   assert.deepEqual(dates.sort((a, b) => eventSortValue(a) - eventSortValue(b)),

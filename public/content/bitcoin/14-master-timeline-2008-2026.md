@@ -99,7 +99,7 @@
 | 6 Oct 2025 | All-time high $126,198. |
 | 10–11 Oct 2025 | ~$19bn of futures liquidated in a day — largest deleveraging on record. |
 | 10–13 Oct 2025 | Bitcoin Core v30 raises the OP_RETURN data limit; Knots client reaches ~20–25% of nodes. |
-| 14–15 Oct 2025 | US DOJ forfeits 127,271 BTC from the Prince Group; US holdings ~328,000. |
+| 14 Oct 2025 | US DOJ files a civil forfeiture complaint concerning approximately 127,271 BTC linked to the Prince Group; a complaint is not final forfeiture or a verified reserve balance. [DOJ](https://www.justice.gov/usao-edny/pr/chairman-prince-group-indicted-operating-cambodian-forced-labor-scam-compounds-engaged) |
 | Nov 2025 | Strategy's market value falls below the value of its bitcoin; Texas buys ~$5m of IBIT; Czech National Bank buys a $1m test portfolio (13 Nov); fees fall below 1% of miner revenue; PBoC restates the ban. |
 | Dec 2025 | Twenty One Capital lists on NYSE with 43,500 BTC; Bhutan pledges up to 10,000 BTC to Gelephu; Fed note: dollar stablecoins reinforce dollar internationalisation. |
  

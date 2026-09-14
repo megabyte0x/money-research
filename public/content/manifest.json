@@ -583,7 +583,7 @@
   "source": "bitcoin/03.md",
   "aliases": ["03"],
   "title": "03 — How Bitcoin Is Actually Used: Global Adoption, 2009–2026",
-  "words": 1819,
+  "words": 1862,
   "h2": [
    "The headline numbers",
    "The dominant use: a savings and speculative asset",
@@ -604,13 +604,13 @@
   "source": "bitcoin/04.md",
   "aliases": ["04"],
   "title": "04 — Countries That Adopted Bitcoin, in What Form, and What Happened",
-  "words": 2836,
+  "words": 2781,
   "h2": [
    "Four forms of adoption",
    "El Salvador: the only full experiment",
    "Central African Republic: the second experiment, in twelve months",
-   "The United States: a reserve of confiscated coins",
-   "Bhutan: mined, then spent",
+   "The United States: a reserve with a legal-status test",
+   "Bhutan: state-linked mining, uncertain disposition",
    "The rest: announcements, tests and regimes",
    "Summary table",
    "What the record shows",
@@ -683,7 +683,7 @@
   "source": "bitcoin/08.md",
   "aliases": ["08"],
   "title": "08 — Why Not Gold Again? Bitcoin Against the Metal It Imitates",
-  "words": 1731,
+  "words": 1742,
   "h2": [
    "The question, stated precisely",
    "First, what the world is actually doing: going back to gold as an asset, not as a standard",
@@ -702,7 +702,7 @@
   "source": "bitcoin/09.md",
   "aliases": ["09"],
   "title": "09 — Supply and Control: Who Holds Bitcoin, Who Runs the Network, and Who Benefits",
-  "words": 2519,
+  "words": 2587,
   "h2": [
    "Two different kinds of control",
    "The supply, September 2026",
@@ -721,7 +721,7 @@
   "source": "bitcoin/10.md",
   "aliases": ["10"],
   "title": "10 — The Path for Large Economies: How the United States, China, Europe, Japan, India and the Rest Would Get From Here to a Bitcoin Reserve — or a Bitcoin Standard",
-  "words": 1838,
+  "words": 1669,
   "h2": [
    "The ladder",
    "The United States: the leader, by executive order",
@@ -815,7 +815,7 @@
   "source": "bitcoin/14.md",
   "aliases": ["14"],
   "title": "14 — Master Timeline, 2008–2026",
-  "words": 2076,
+  "words": 2092,
   "h2": [
    "Origins and the first structure, 2008–2013",
    "Exchanges, forks and the first state responses, 2014–2020",
@@ -833,7 +833,7 @@
   "source": "bitcoin/15.md",
   "aliases": ["15"],
   "title": "15 — Glossary",
-  "words": 1741,
+  "words": 1762,
   "h2": [],
   "num": "15"
  },
@@ -845,7 +845,7 @@
   "source": "bitcoin/16.md",
   "aliases": ["16"],
   "title": "16 — Sources and Further Reading",
-  "words": 2903,
+  "words": 3053,
   "h2": [
    "Primary documents",
    "Academic and think-tank",
