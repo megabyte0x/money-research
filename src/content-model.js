@@ -64,5 +64,5 @@ export function createContentModel(manifest, documents, observations, timelineEv
     seen.add(key);
     return true;
   }).sort((a, b) => a.term.localeCompare(b.term));
-  return { manifest, blocks, fileRefs, glossary };
+  return { manifest, blocks, fileRefs, glossary, observations: Object.fromEntries(byObservationId) };
 }

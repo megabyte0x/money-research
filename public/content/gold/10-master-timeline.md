@@ -89,6 +89,6 @@
 | 29 Jan 2026 | Gold reaches ${{obs:gold-usd-2026-record-high}}/oz in the WGC USD series | Record high in that series; [WGC July 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
 | 31 Jul 2026 | Gold finishes July at ${{obs:gold-usd-2026-july-end}}/oz | WGC month-end USD observation, not a continuous price; [July table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
 | 31 Aug 2026 | Gold finishes August at ${{obs:gold-usd-2026-august-end}}/oz | WGC month-end USD observation, not a continuous price; [August table 1](https://www.gold.org/goldhub/research/gold-market-commentary-august-2026) |
-| Jun 2026 | ECB reports gold at 27% of end-2025 official reserves including gold; most of its share increase reflects price valuation | Broader reserve measure, not IMF COFER |
+| Jun 2026 | ECB reports gold at {{obs:ecb-gold-share-2025-end}}% of end-2025 official reserves including gold; most of its share increase reflects price valuation | Broader reserve measure, not IMF COFER |
 | 3 Sep 2026 | Gold spot-price estimate around $4,490/oz | Dated market-price estimate, not an official reserve share |
-| 2026 Q1 | IMF COFER dollar share is 57.13% of foreign-exchange reserves, excluding gold | Different denominator from the ECB's broad reserve measure |
+| 2026 Q1 | IMF COFER dollar share is {{obs:imf-cofer-usd-share-2026q1}}% of foreign-exchange reserves, excluding gold | Different denominator from the ECB's broad reserve measure |

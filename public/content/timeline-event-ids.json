@@ -349,7 +349,7 @@
   },
   {
     "id": "evt-gold-0088",
-    "key": "gold|Jun 2026|ECB reports gold at 27% of end-2025 official reserves including gold; most of its share increase reflects price valuation"
+    "key": "gold|Jun 2026|ECB reports gold at {{obs:ecb-gold-share-2025-end}}% of end-2025 official reserves including gold; most of its share increase reflects price valuation"
   },
   {
     "id": "evt-gold-0089",
@@ -357,7 +357,7 @@
   },
   {
     "id": "evt-gold-0090",
-    "key": "gold|2026 Q1|IMF COFER dollar share is 57.13% of foreign-exchange reserves, excluding gold"
+    "key": "gold|2026 Q1|IMF COFER dollar share is {{obs:imf-cofer-usd-share-2026q1}}% of foreign-exchange reserves, excluding gold"
   },
   {
     "id": "evt-after-0001",
@@ -797,7 +797,7 @@
   },
   {
     "id": "evt-after-0110",
-    "key": "after|Jun 2026|ECB reports gold at 27% of end-2025 official reserves including gold, largely reflecting valuation effects; Fed holds at 3.50–3.75%"
+    "key": "after|Jun 2026|ECB reports gold at {{obs:ecb-gold-share-2025-end}}% of end-2025 official reserves including gold, largely reflecting valuation effects; Fed holds at 3.50–3.75%"
   },
   {
     "id": "evt-after-0111",
@@ -809,7 +809,7 @@
   },
   {
     "id": "evt-after-0113",
-    "key": "after|Sep 2026|US–Iran strikes in Hormuz resume; Brent ~$97; gold ~$4,490; latest cited IMF COFER dollar share is 57.13% of 2026 Q1 foreign-exchange reserves; Putin says Ukraine deal \"possible\""
+    "key": "after|Sep 2026|US–Iran strikes in Hormuz resume; Brent ~$97; gold ~$4,490; latest cited IMF COFER dollar share is {{obs:imf-cofer-usd-share-2026q1}}% of 2026 Q1 foreign-exchange reserves; Putin says Ukraine deal \"possible\""
   },
   {
     "id": "evt-after-0114",

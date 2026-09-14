@@ -49,5 +49,39 @@
     "accessed": "2026-09-13",
     "verification": "verified against publisher table",
     "revision": 1
+  },
+  {
+    "id": "imf-cofer-usd-share-2026q1",
+    "value": 57.13,
+    "unit": "percent",
+    "denominator": "world official foreign-exchange reserves in IMF COFER; excludes monetary gold, SDRs and IMF reserve positions",
+    "scope": "US dollar holdings in the IMF COFER world aggregate, 2026 Q1; not a share of all official reserve assets",
+    "period": "2026-03-31",
+    "method": "IMF COFER 2026 Q1 world aggregate as reported in its 1 July 2026 data brief; revised series",
+    "sourceLocator": "World Official Foreign Currency Reserves Largely Unchanged in the First Quarter of 2026, paragraph beginning 'The share of US dollar holdings'",
+    "uncertainty": "Published aggregate is subject to revisions and exchange-rate valuation effects; it is not a gold-share complement",
+    "claimId": "E04",
+    "source": "https://data.imf.org/en/news/imf%20data%20brief%20july%201",
+    "sourcePublicationDate": "2026-07-01",
+    "accessed": "2026-09-14",
+    "verification": "verified against publisher document",
+    "revision": 1
+  },
+  {
+    "id": "ecb-gold-share-2025-end",
+    "value": 27,
+    "unit": "percent",
+    "denominator": "ECB measure of total official foreign reserves comprising foreign exchange and gold holdings; country coverage differs between component datasets",
+    "scope": "Gold's market-value share at end-2025, using current gold prices; not a share of IMF COFER foreign-exchange reserves",
+    "period": "2025-12-31",
+    "method": "ECB International Role of the Euro, June 2026, Chart 7 panel a, IMF and World Gold Council data with ECB staff calculations",
+    "sourceLocator": "Section 1.1, paragraphs immediately before Chart 7 and Chart 7 panel a, current-gold-price column",
+    "uncertainty": "Higher share largely reflects gold-price valuation; constant end-2023 gold price yields roughly 16%; component datasets have differing country coverage",
+    "claimId": "E04",
+    "source": "https://www.ecb.europa.eu/press/other-publications/ire/html/ecb.ire202606.en.html",
+    "sourcePublicationDate": "2026-06-02",
+    "accessed": "2026-09-14",
+    "verification": "verified against publisher document",
+    "revision": 1
   }
 ]

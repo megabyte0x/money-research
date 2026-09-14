@@ -84,7 +84,7 @@ function GlossaryTerm({ term, label, definition }) {
 }
 
 export default class App extends React.Component {
-  state = { manifest: [], fileRefs: {}, blocks: {}, glossary: [], route: { view: 'home' }, query: '', searchVol: '', tlq: '', glq: '', collapsed: {}, progress: 0, copied: false, quote: null, askOpen: false, promptCopied: false, theme: null, loaded: false, headerH: 52, menuOpen: false };
+  state = { manifest: [], fileRefs: {}, blocks: {}, glossary: [], observations: {}, route: { view: 'home' }, query: '', searchVol: '', tlq: '', glq: '', collapsed: {}, progress: 0, copied: false, quote: null, askOpen: false, promptCopied: false, theme: null, loaded: false, headerH: 52, menuOpen: false };
   headerRef = React.createRef();
 
   // The header is one 52px row on desktop and wraps to two rows on a phone; every
@@ -133,12 +133,12 @@ export default class App extends React.Component {
     this.md = md;
     const response = await fetch(BASE + 'content/index.json');
     if (!response.ok) throw new Error(`Content index unavailable: ${response.status}`);
-    const { manifest, blocks, fileRefs, glossary } = await response.json();
+    const { manifest, blocks, fileRefs, glossary, observations } = await response.json();
     this.byVolumeNumber = new Map(manifest.map(record => [`${record.vol}/${record.num}`, record]));
     this.glossRe = new RegExp('\\b(' + glossary.map(g => g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim()).filter(t => t.length > 3).sort((a, b) => b.length - a.length).map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')\\b', 'i');
     this.glossMap = {}; glossary.forEach(g => { this.glossMap[g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim().toLowerCase()] = g; });
     const search = searchState(location.hash);
-    this.setState({ manifest, blocks, fileRefs, glossary, loaded: true, route: this.parseHash(), query: search.query, searchVol: search.volume }, () => this.scrollToSection());
+    this.setState({ manifest, blocks, fileRefs, glossary, observations, loaded: true, route: this.parseHash(), query: search.query, searchVol: search.volume }, () => this.scrollToSection());
   }
   parseHash() {
     // #/<view>[/<section>] for the standalone views, #/<vol>/<slug>[/<section>] for a file.
@@ -576,6 +576,8 @@ export default class App extends React.Component {
   }
   render() {
     const v = this.renderVals();
+    const reserveGold = this.state.observations['ecb-gold-share-2025-end']?.value;
+    const reserveDollar = this.state.observations['imf-cofer-usd-share-2026q1']?.value;
     return (
       <div style={s('min-height:100vh;display:flex;flex-direction:column')}>
         <div style={s('position:fixed;top:0;left:0;height:2px;background:var(--fg);z-index:20', { width: v.progressPct })}></div>
@@ -899,7 +901,7 @@ export default class App extends React.Component {
                     <div>
                       <h2 style={s('font-weight:500;font-size:26px;line-height:1.2;margin:0 0 18px;text-wrap:pretty')}>Reserve custody, gold and the continuing dollar</h2>
                       <div style={s('display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;font-size:15px;line-height:1.5')}>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Two different measures</div>The ECB estimated gold at 27% of the value of broad official reserves, <em>including gold</em>, at end-2025. The IMF put the dollar near 57% of reported <em>foreign-exchange</em> reserves in early 2026, a measure that excludes gold. These shares cannot be subtracted or compared as parts of one pie.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Two different measures</div>The ECB estimated gold at {reserveGold}% of the value of broad official reserves, <em>including gold</em>, at end-2025. The IMF put the dollar at {reserveDollar}% of reported <em>foreign-exchange</em> reserves in 2026 Q1, a measure that excludes gold. These shares cannot be subtracted or compared as parts of one pie.</div>
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What changed</div>Some central banks added gold while its dollar price rose. Valuation is therefore part of the higher measured gold share, not proof of equivalent physical buying or a single motive. Sanctions also raised questions about access to assets held in foreign jurisdictions.</div>
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What persists</div>Dollar use in trade, borrowing, settlement and foreign-exchange reserves remains substantial. Gold can diversify official reserves without serving as the unit of account for wages and contracts. Custody, liquidity and legal access matter alongside the asset's physical form.</div>
                       </div>

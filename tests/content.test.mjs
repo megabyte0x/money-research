@@ -151,7 +151,7 @@ test('unrelated dated events are separate timeline rows', () => {
     ['Sep 1999', 'Central Bank Gold Agreement'],
     ['31 Jul 2026', 'Gold finishes July at ${{obs:gold-usd-2026-july-end}}/oz'],
     ['31 Aug 2026', 'Gold finishes August at ${{obs:gold-usd-2026-august-end}}/oz'],
-    ['2026 Q1', 'IMF COFER dollar share is 57.13% of foreign-exchange reserves, excluding gold']
+    ['2026 Q1', 'IMF COFER dollar share is {{obs:imf-cofer-usd-share-2026q1}}% of foreign-exchange reserves, excluding gold']
   ]) assert.ok(goldRows.some(r => r[0] === date && r[1] === event), `${date}: ${event}`);
   assert.doesNotMatch(goldRows.map(r => r[2]).join(' '), /Gold's official monetary role ends|Fiat era begins|Trigger for reserve diversification/);
 });
@@ -296,7 +296,7 @@ test('E10 gold-price observations are dated and agree across the three volume ti
   const indexed = indexObservations(observations);
   const byId = Object.fromEntries(indexed);
   assert.equal(observations.length, new Set(observations.map(o => o.id)).size);
-  for (const observation of observations) {
+  for (const observation of observations.filter(o => o.claimId === 'E10')) {
     assert.ok(Number.isFinite(observation.value));
     assert.match(observation.unit, /USD per troy ounce/);
     assert.match(observation.period, /^2026-\d\d-\d\d$/);
@@ -335,6 +335,39 @@ test('E10 gold-price observations are dated and agree across the three volume ti
     assert.match(article, new RegExp(july.value.toLocaleString('en-US')));
     assert.match(article, new RegExp(august.value.toLocaleString('en-US')));
   }
+});
+
+test('E04 reserve shares use separate dated observations and denominators', () => {
+  const observations = JSON.parse(readFileSync(join(root, 'public/content/observations.json'), 'utf8'));
+  const indexed = indexObservations(observations);
+  const gold = indexed.get('ecb-gold-share-2025-end');
+  const dollar = indexed.get('imf-cofer-usd-share-2026q1');
+  assert.equal(gold.value, 27);
+  assert.equal(gold.period, '2025-12-31');
+  assert.match(gold.denominator, /foreign exchange and gold/i);
+  assert.match(gold.sourceLocator, /Chart 7 panel a/);
+  assert.equal(dollar.value, 57.13);
+  assert.equal(dollar.period, '2026-03-31');
+  assert.match(dollar.denominator, /excludes monetary gold/i);
+  assert.match(dollar.sourceLocator, /share of US dollar holdings/);
+  assert.notEqual(gold.denominator, dollar.denominator);
+  for (const record of manifest) {
+    const source = readFileSync(join(root, 'public', record.path), 'utf8');
+    assert.doesNotMatch(source, /57\.13%|\b27%/, `${record.id}: literal reserve share bypasses observation`);
+  }
+  const goldTimeline = readFileSync(join(root, 'public/content/gold/10-master-timeline.md'), 'utf8');
+  assert.match(goldTimeline, /\{\{obs:ecb-gold-share-2025-end\}\}%/);
+  assert.match(goldTimeline, /\{\{obs:imf-cofer-usd-share-2026q1\}\}%/);
+  const resolved = resolveObservations(goldTimeline, indexed);
+  assert.match(resolved, /27% of end-2025 official reserves including gold/);
+  assert.match(resolved, /57\.13% of foreign-exchange reserves, excluding gold/);
+  const documents = Object.fromEntries(manifest.map(record =>
+    [record.path, readFileSync(join(root, 'public', record.path), 'utf8')]));
+  const revised = observations.map(record => record.id === gold.id ? { ...record, value: 28 } : record);
+  const revisedModel = createContentModel(manifest, documents, revised, timelineEventIds);
+  assert.equal(revisedModel.observations[gold.id].value, 28);
+  assert.match(JSON.stringify(revisedModel.blocks['10-master-timeline@gold']), /28% of end-2025 official reserves/);
+  assert.doesNotMatch(readFileSync(join(root, 'src/App.jsx'), 'utf8'), /estimated gold at 27%/);
 });
 
 test('observation references reject missing and unverified data', () => {

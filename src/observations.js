@@ -13,7 +13,7 @@ export function indexObservations(records) {
         !record.sourceLocator || !/^https:\/\//.test(record.source || '') ||
         !ISO_DATE.test(record.sourcePublicationDate) || !ISO_DATE.test(record.accessed) ||
         !record.uncertainty || !record.claimId || !Number.isInteger(record.revision) || record.revision < 1 ||
-        record.verification !== 'verified against publisher table') {
+        !['verified against publisher table', 'verified against publisher document'].includes(record.verification)) {
       throw new Error(`Incomplete or unverified observation: ${record.id}`);
     }
     byId.set(record.id, record);
