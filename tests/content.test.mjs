@@ -385,6 +385,18 @@ test('E27 bank capital, funding and reserve eligibility stay distinct', () => {
   }
 });
 
+test('unverified historical-arc charts are absent rather than CSS-hidden', () => {
+  const app = readFileSync(join(root, 'src/App.jsx'), 'utf8');
+  const css = readFileSync(join(root, 'src/styles.css'), 'utf8');
+  const audit = readFileSync(join(root, 'CHART-AUDIT.md'), 'utf8');
+  assert.match(app, /quantitative charts are withheld/);
+  assert.doesNotMatch(app, /arcCharts\(|lineChart\(|barChart\(|<figure|chartDenarius|chartGoldStd/);
+  assert.doesNotMatch(css, /\.history-arc figure\s*\{\s*display\s*:\s*none/);
+  for (const candidate of ['Three-metal ladder', 'Denarius silver content', 'Gold:silver ratio', 'Countries on gold standard', 'Bretton Woods gold and dollar claims', 'US CPI inflation', 'Fiat-era crises', 'US gross federal debt', 'Reserve composition', 'Central-bank gold buying', 'Gold price']) {
+    assert.ok(audit.includes(`| ${candidate} |`), `Missing audit row: ${candidate}`);
+  }
+});
+
 test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {
   const dates = ['3 Jan 2009', '15 Aug 1971', 'c. 4600–4300 BCE', '1925', '31 Oct 2008'];
   assert.deepEqual(dates.sort((a, b) => eventSortValue(a) - eventSortValue(b)),

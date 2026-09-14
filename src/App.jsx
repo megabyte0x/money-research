@@ -152,7 +152,7 @@ export default class App extends React.Component {
     if (seg[0] && seg[1]) return { view: 'article', vol: seg[0], slug: seg[1], sec: seg[2] || null };
     return { view: 'home' };
   }
-  // ---- Arc: regimes + charts
+  // ---- Arc: regimes
   static ARC = [
     { n: 1, label: 'Weight', title: 'Metal by weight', flex: 10, anchor: 'Silver by weight, in the Near East', power: 'Temples and palaces' },
     { n: 2, label: 'Coin', title: "The sovereign's stamp", flex: 12, anchor: "Ruler's stamp on metal", power: 'Whoever held the mint' },
@@ -172,62 +172,6 @@ export default class App extends React.Component {
     return index + 1;
   }
 
-  svg(w, h, children, extra = {}) {
-    return React.createElement('svg', { viewBox: `0 0 ${w} ${h}`, width: '100%', style: { display: 'block', border: '1px solid var(--rule)', padding: 12, boxSizing: 'border-box', background: 'transparent', ...extra }, fontFamily: MONO, fontSize: 10 }, ...children);
-  }
-  lineChart(series, opts) {
-    const R = React.createElement; const W = 640, H = opts.h || 200, L = 44, Rr = 16, T = 14, B = 26;
-    const xs = series.flatMap(sr => sr.d.map(p => p[0])), ys = series.flatMap(sr => sr.d.map(p => p[1]));
-    const x0 = opts.x0 ?? Math.min(...xs), x1 = opts.x1 ?? Math.max(...xs); const log = !!opts.log;
-    const ymin = opts.y0 ?? (log ? Math.min(...ys) : Math.min(0, ...ys)), ymax = opts.y1 ?? Math.max(...ys) * 1.05;
-    const X = x => L + (x - x0) / (x1 - x0) * (W - L - Rr);
-    const Y = y => log ? T + (1 - (Math.log10(y) - Math.log10(ymin)) / (Math.log10(ymax) - Math.log10(ymin))) * (H - T - B) : T + (1 - (y - ymin) / (ymax - ymin)) * (H - T - B);
-    const ticks = opts.yticks || []; const xt = opts.xticks || [];
-    const kids = [];
-    ticks.forEach(t => {
-      kids.push(R('line', { key: 'g' + t, x1: L, x2: W - Rr, y1: Y(t), y2: Y(t), stroke: 'var(--rule)', strokeDasharray: '2 3' }));
-      kids.push(R('text', { key: 'gt' + t, x: L - 6, y: Y(t) + 3, textAnchor: 'end', fill: 'var(--mut)' }, opts.fmt ? opts.fmt(t) : t));
-    });
-    xt.forEach(t => kids.push(R('text', { key: 'x' + t, x: X(t), y: H - 8, textAnchor: 'middle', fill: 'var(--mut)' }, t)));
-    if (opts.zero) kids.push(R('line', { key: 'z', x1: L, x2: W - Rr, y1: Y(0), y2: Y(0), stroke: 'var(--mut)' }));
-    (opts.marks || []).forEach((m, i) => {
-      kids.push(R('line', { key: 'm' + i, x1: X(m[0]), x2: X(m[0]), y1: T, y2: H - B, stroke: 'var(--mut)', strokeDasharray: '1 3' }));
-      kids.push(R('text', { key: 'mt' + i, x: X(m[0]) + 4, y: T + 8 + (m[2] || 0), fill: 'var(--mut)' }, m[1]));
-    });
-    series.forEach((sr, si) => {
-      kids.push(R('polyline', { key: 'p' + si, points: sr.d.map(p => X(p[0]) + ',' + Y(p[1])).join(' '), fill: 'none', stroke: 'var(--fg)', strokeWidth: sr.w || 1.5, strokeOpacity: sr.o ?? 1, strokeDasharray: sr.dash || 'none' }));
-      sr.d.forEach((p, i) => kids.push(R('circle', { key: 'c' + si + i, cx: X(p[0]), cy: Y(p[1]), r: 6, fill: 'transparent' }, R('title', null, `${sr.name ? sr.name + ' · ' : ''}${p[0]}: ${opts.fmt ? opts.fmt(p[1]) : p[1]}`))));
-      if (sr.name) { const last = sr.d[sr.d.length - 1]; kids.push(R('text', { key: 'n' + si, x: X(last[0]) + 4, y: Y(last[1]) + 3, fill: 'var(--fg)', fillOpacity: sr.o ?? 1 }, sr.name)); }
-    });
-    (opts.labels || []).forEach((l, i) => kids.push(R('text', { key: 'l' + i, x: X(l[0]) + (l[3] || 0), y: Y(l[1]) - 6, textAnchor: l[4] || 'middle', fill: 'var(--fg)' }, l[2])));
-    return this.svg(W, H, kids);
-  }
-  barChart(rows, opts) {
-    const R = React.createElement; const W = 640, rh = 22, gap = 8, L = opts.labelW || 150, H = rows.length * (rh + gap) + 6;
-    const max = opts.max || Math.max(...rows.map(r => r.v));
-    const kids = rows.flatMap((r, i) => {
-      const y = 3 + i * (rh + gap); const w = (W - L - 60) * r.v / max;
-      return [
-        R('text', { key: 'l' + i, x: L - 8, y: y + rh / 2 + 3, textAnchor: 'end', fill: 'var(--fg)' }, r.label),
-        R('rect', { key: 'r' + i, x: L, y, width: w, height: rh, fill: 'var(--fg)', fillOpacity: r.o ?? 1 }),
-        R('text', { key: 'v' + i, x: L + w + 6, y: y + rh / 2 + 3, fill: 'var(--mut)' }, r.txt ?? r.v)];
-    });
-    return this.svg(W, H, kids);
-  }
-  arcCharts() {
-    return {
-      chartDenarius: this.lineChart([{ d: [[-211, 97], [-23, 95], [64, 93], [117, 89], [180, 79], [215, 50], [250, 40], [270, 5]], name: '' }], { h: 180, y0: 0, y1: 100, yticks: [0, 50, 100], fmt: v => v + '%', xticks: [-200, -100, 0, 100, 200, 270], labels: [[-23, 95, 'Augustus ~95%', 0, 'start'], [64, 93, 'Nero clips the coin, 64 CE', 40], [215, 50, 'Caracalla', 30], [270, 5, '<5% by the 270s', -10, 'end']] }),
-      chartRatio: this.lineChart([{ d: [[-550, 13.3], [1500, 11], [1717, 15.2], [1792, 15], [1834, 16], [1865, 15.5], [1873, 16], [1900, 33], [1930, 60], [1971, 25], [2026, 90]], name: 'market ratio' }], { h: 200, y0: 0, y1: 100, yticks: [15, 30, 60, 90], fmt: v => v + ':1', xticks: [-550, 0, 500, 1000, 1500, 2026], marks: [[1873, 'Silver demonetised, 1871–73', 0]], labels: [[-550, 13.3, 'Croesus 13.3:1', 0, 'start'], [1865, 15.5, 'Latin Monetary Union 15.5:1', -20, 'end'], [2026, 90, '~90:1 today', -8, 'end']] }),
-      chartGoldStd: this.lineChart([{ d: [[1717, 1], [1816, 1], [1854, 2], [1871, 3], [1873, 8], [1879, 12], [1897, 20], [1900, 30], [1914, 59], [1919, 5], [1926, 40], [1931, 25], [1933, 12], [1936, 2]], name: 'countries' }], { h: 200, y0: 0, y1: 65, yticks: [0, 20, 40, 60], xticks: [1717, 1750, 1800, 1850, 1900, 1936], marks: [[1717, "Newton's guinea", 0], [1871, 'Germany, then the US', 14], [1914, 'War suspends it', 0], [1931, 'Britain leaves', 28]] }),
-      chartBW: this.barChart([{ label: 'US gold stock, 1950', v: 23, txt: '$23 bn' }, { label: 'Foreign $ claims, 1950', v: 8, txt: '$8 bn', o: .45 }, { label: 'US gold stock, 1960', v: 18, txt: '$18 bn' }, { label: 'Foreign $ claims, 1960', v: 19, txt: '$19 bn', o: .45 }, { label: 'US gold stock, Aug 1971', v: 10, txt: '$10 bn' }, { label: 'Foreign $ claims, Aug 1971', v: 45, txt: '~$45 bn — c. 4×', o: .45 }], { labelW: 190 }),
-      chartInflation: this.lineChart([{ d: [[1965, 1.6], [1966, 2.9], [1967, 3.1], [1968, 4.2], [1969, 5.5], [1970, 5.7], [1971, 4.4], [1972, 3.2], [1973, 6.2], [1974, 11.0], [1975, 9.1], [1976, 5.8], [1977, 6.5], [1978, 7.6], [1979, 11.3], [1980, 13.5], [1981, 10.3], [1982, 6.2], [1983, 3.2], [1984, 4.3], [1985, 3.6]], name: 'US CPI' }], { h: 210, y0: 0, y1: 15, yticks: [0, 5, 10, 14], fmt: v => v + '%', xticks: [1965, 1970, 1975, 1980, 1985], marks: [[1971, 'Gold window shut', 0], [1973, 'Oil ×4', 14], [1979, 'Oil ×2 · Volcker', 0], [1982, 'Fed funds ~20%', 14]] }),
-      chartCrises: this.barChart([{ label: 'Latin America 1982', v: 1, txt: 'IMF programmes; Brady bonds 1989' }, { label: 'Black Monday 1987', v: 1, txt: 'Fed liquidity — the “Greenspan put”' }, { label: 'Japan bubble 1990', v: 2, txt: 'Zero rates, first QE 2001' }, { label: 'ERM crisis 1992', v: 1, txt: 'Pound and lira forced out' }, { label: 'Mexico 1994', v: 2, txt: '$50 bn US–IMF package' }, { label: 'Asia 1997', v: 3, txt: '$110+ bn IMF; reserve hoarding' }, { label: 'Russia · LTCM 1998', v: 2, txt: 'Fed-brokered rescue; rate cuts' }, { label: 'Argentina · dot-com 2001', v: 2, txt: '$100 bn default; Fed to 1%' }, { label: 'Global 2008', v: 6, txt: 'TARP $700 bn; QE $1.75 tn; swap lines' }], { labelW: 170, max: 6 }),
-      chartDebt: this.lineChart([{ d: [[1971, 0.4], [1975, 0.5], [1980, 0.9], [1985, 1.8], [1990, 3.2], [1995, 4.9], [2000, 5.7], [2003, 6.8], [2008, 10.0], [2012, 16.1], [2016, 19.6], [2019, 22.7], [2020, 27.7], [2022, 31.4], [2024, 36.2], [2026, 39.0]], name: '$ tn' }], { h: 210, y0: 0, y1: 42, yticks: [0, 10, 20, 30, 39], fmt: v => '$' + v + ' tn', xticks: [1971, 1980, 1990, 2000, 2010, 2020, 2026], marks: [[1981, 'Reagan deficits', 0], [2001, 'Post-9/11 wars, ~$8 tn', 0], [2008, 'Crisis · QE', 14], [2020, 'COVID', 0]] }),
-      chartReserves: this.barChart([{ label: 'Gold', v: 27, txt: '27%' }, { label: 'US Treasuries', v: 22, txt: '22%', o: .45 }, { label: 'Euro assets', v: 15, txt: '15%', o: .45 }, { label: 'Gold, a year earlier', v: 20, txt: '20%', o: .2 }], { labelW: 130, max: 30 }),
-      chartCBBuying: this.lineChart([{ d: [[2010, 79], [2011, 481], [2012, 569], [2013, 629], [2014, 601], [2015, 580], [2016, 395], [2017, 379], [2018, 656], [2019, 605], [2020, 255], [2021, 450], [2022, 1082], [2023, 1037], [2024, 1045], [2025, 863]], name: 't' }], { h: 160, y0: 0, y1: 1200, yticks: [0, 500, 1000], xticks: [2010, 2015, 2020, 2025], marks: [[2022, 'Reserves frozen', 0]] }),
-      chartGold: this.lineChart([{ d: [[1971, 35], [1972, 58], [1974, 195], [1976, 105], [1978, 208], [1980, 850], [1982, 375], [1985, 300], [1987, 500], [1990, 385], [1995, 385], [1999, 253], [2003, 363], [2006, 600], [2008, 870], [2011, 1900], [2013, 1200], [2015, 1050], [2018, 1280], [2020, 2000], [2022, 1800], [2023, 2060], [2024, 2600], [2025, 3431], [2026.1, 5590], [2026.7, 4490]], name: '$/oz' }], { h: 240, log: true, y0: 30, y1: 7000, yticks: [35, 100, 300, 850, 2000, 5590], fmt: v => '$' + v.toLocaleString(), xticks: [1971, 1980, 1990, 2000, 2010, 2020, 2026], marks: [[1971, '$35', 0], [1980, '$850 · Volcker', 0], [1999, 'CBGA — the low', 0], [2008, 'Crisis · QE', 0], [2022, 'Frozen reserves', 0]] })
-    };
-  }
   currentStage() {
     if (this.state.route.view !== 'arc') return 0;
     const els = [...document.querySelectorAll('[data-stage]')]; let act = 1; const mid = window.innerHeight * 0.4;
@@ -537,7 +481,6 @@ export default class App extends React.Component {
       const act = st.stage || 1; const A = App.ARC;
       vals.arcBand = A.map((a, index) => ({ href: '#/arc/arc-' + a.n, title: a.title, label: a.label, flex: a.flex, bg: index + 1 === act ? 'var(--fg)' : 'transparent', color: index + 1 === act ? 'var(--bg)' : 'var(--mut)' }));
       const active = A[act - 1]; vals.arcActiveAnchor = active.anchor; vals.arcActivePower = active.power;
-      Object.assign(vals, this.arcCharts());
       vals.tocLabel = 'Regimes';
       vals.toc = A.map((a, index) => ({ text: ROMAN[index] + ' · ' + a.title, href: '#/arc/arc-' + a.n, indent: '0' }));
     }
@@ -780,20 +723,6 @@ export default class App extends React.Component {
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>Temples and palaces that owned the standard weights and the stockpiles. Egypt's pharaohs ran the Nubian mines as a state monopoly; “gold is as common as dust” was a boast between kings.</div>
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>Trade by assay. Every payment needed a scale, a touchstone and trust in the seller's metal — slow, and useless for a soldier's wage.</div>
                       </div>
-                      <figure style={s('margin:24px 0 0')}>
-                        <div style={s('border:1px solid var(--rule);padding:16px')}>
-                          <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:12px")}>The three-metal ladder that lasted until 1971 — who used which metal</div>
-                          <div style={s('display:grid;grid-template-columns:90px 1fr;gap:8px 16px;font-size:14px;align-items:center')}>
-                            <span style={s("font-family:'IBM Plex Mono',monospace;font-size:11px")}>Gold</span>
-                            <div style={s('display:flex;align-items:center;gap:10px')}><div style={s('height:18px;width:22%;background:var(--fg)')}></div><span style={s('color:var(--mut)')}>treasuries, kings, settlement between states</span></div>
-                            <span style={s("font-family:'IBM Plex Mono',monospace;font-size:11px")}>Silver</span>
-                            <div style={s('display:flex;align-items:center;gap:10px')}><div style={s('height:18px;width:60%;background:var(--fg);opacity:.55')}></div><span style={s('color:var(--mut)')}>wages, taxes, daily commerce</span></div>
-                            <span style={s("font-family:'IBM Plex Mono',monospace;font-size:11px")}>Copper</span>
-                            <div style={s('display:flex;align-items:center;gap:10px')}><div style={s('height:18px;width:38%;background:var(--fg);opacity:.25')}></div><span style={s('color:var(--mut)')}>small change</span></div>
-                          </div>
-                        </div>
-                        <figcaption style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px")}>A 4–8 g gold coin was weeks of a labourer's wage; it could not buy bread. Vol. I, file 05.</figcaption>
-                      </figure>
                     </div>
                   </div>
                 </section>
@@ -814,7 +743,6 @@ export default class App extends React.Component {
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>Whoever controlled the mint. Persia, Alexander, Rome, Byzantium and the Caliphate each made coinage an instrument of empire — and each discovered the mint could quietly pay for wars.</div>
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>Debasement. Rome's denarius went from ~95% silver to under 5% in three centuries as emperors paid troops in thinner coin; prices followed. Byzantium's solidus held for 700 years, then broke the same way — and lost its reserve role.</div>
                       </div>
-                      <figure style={s('margin:24px 0 0')}>{v.chartDenarius}<figcaption style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px")}>Silver content of the Roman denarius, approximate. The template for every later inflation: the issuer keeps the face value and removes the substance. Vol. I, file 06.</figcaption></figure>
                     </div>
                   </div>
                 </section>
@@ -835,7 +763,6 @@ export default class App extends React.Component {
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>Whoever owned the mines and the ratio. Spain's Potosí (1545) poured American silver into Europe; Italian and later Dutch bankers turned metal into credit. Henry VIII's Great Debasement showed the crown could still cheat on silver.</div>
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>The price revolution — a century of rising prices from a flood of metal — and Gresham's law in action: whichever metal the ratio undervalued vanished from circulation. Fixed ratios kept breaking.</div>
                       </div>
-                      <figure style={s('margin:24px 0 0')}>{v.chartRatio}<figcaption style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px")}>Legal gold:silver ratios set by states versus what actually happened to the market ratio once silver was demonetised in the 1870s. Vol. I, file 05.</figcaption></figure>
                     </div>
                   </div>
                 </section>
@@ -856,7 +783,6 @@ export default class App extends React.Component {
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>The Bank of England and the City of London. Britain's trade dominance pulled Germany (1871–73, paid for with French indemnity gold) and then the US (“Crime of '73”, resumption 1879) onto gold.</div>
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>Price stability over decades but deflation in between — 1873–96 — because gold supply could not keep up with growing economies. Debtors and farmers paid the bill; the gold rushes of 1848, 1851 and 1886 were the only relief.</div>
                       </div>
-                      <figure style={s('margin:24px 0 0')}>{v.chartGoldStd}<figcaption style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px")}>Countries on a gold standard. The system covered the world for barely forty years before the First World War suspended it everywhere. Vol. I, file 07.</figcaption></figure>
                     </div>
                   </div>
                 </section>
@@ -898,7 +824,6 @@ export default class App extends React.Component {
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>The US Treasury, holder of most of the world's gold in 1944 and the only intact major economy. The IMF was built to police the pegs.</div>
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>The Triffin dilemma. The world needed dollars for reserves, so the US had to run deficits; the more dollars abroad, the less credible the gold promise. Vietnam and the Great Society pushed money supply far past what gold could cover.</div>
                       </div>
-                      <figure style={s('margin:24px 0 0')}>{v.chartBW}<figcaption style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px")}>Foreign official dollar claims against the US gold stock, approximate. By 1971 claims were roughly four times the gold; Britain asked to convert $3 bn the week before the window shut. Vol. II, file 01.</figcaption></figure>
                     </div>
                   </div>
                 </section>
@@ -940,7 +865,6 @@ export default class App extends React.Component {
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>Central banks set policy rates, commercial banks created deposits through lending, and governments and regulators shaped the boundaries. The IMF supported some countries in crisis, under programme conditions.</div>
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>Different crises exposed different weaknesses: sovereign borrowing, exchange-rate pegs, maturity and currency mismatches, leverage, and banking supervision. They cannot all be attributed to the absence of gold.</div>
                       </div>
-                      <figure style={s('margin:24px 0 0')}>{v.chartCrises}<figcaption style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px")}>Major financial crises of the fiat era, with the size of the rescue that followed. Vol. II, files 03, 05, 07.</figcaption></figure>
                     </div>
                   </div>
                 </section>
@@ -962,7 +886,6 @@ export default class App extends React.Component {
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What followed</div>Low rates, public borrowing and later pandemic support interacted with supply conditions and inflation. Bitcoin and stablecoins also developed during these years, but they are distinct designs and cannot be reduced to a single response to QE.</div>
                       </div>
                       <p className="small-note">A bank loan, interbank payment, bond issue and asset purchase change different balance sheets. <a href="#/mechanics">Follow the four transactions →</a> Source: <a href="https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2014/money-creation-in-the-modern-economy.pdf">Bank of England, 2014, Figures 1–3</a>.</p>
-                      <figure style={s('margin:24px 0 0')}>{v.chartDebt}<figcaption style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px")}>US gross federal debt, $ trillion, 1971–2026. Every war and crisis of the fiat era was borrowed for rather than paid for. Vol. II, files 06, 07, 09.</figcaption></figure>
                     </div>
                   </div>
                 </section>
