@@ -6,7 +6,7 @@ Under a gold standard a war is paid for by suspending convertibility, borrowing,
 
 ## Vietnam and the Yom Kippur War (1965–74)
 
-Vietnam was the war that ended Bretton Woods: financing it without raising taxes produced the dollar overhang that forced the gold window shut (file 01). The Yom Kippur War of October 1973 was the first war of the floating era and gave it its defining shock, the OPEC embargo and the quadrupling of oil (file 02). Together they established the fiat-era pattern: war abroad, inflation at home, and a new role for oil as the dollar's anchor.
+Vietnam was the war that ended Bretton Woods: financing it without raising taxes produced the dollar overhang that forced the gold window shut (file 01). The Yom Kippur War of October 1973 was the first war of the floating era and gave it its defining shock, the OPEC embargo and the quadrupling of oil (file 02). These episodes connected war finance, inflation and oil prices, but oil invoicing and the later recycling of exporter receipts were not a replacement convertibility anchor for the dollar. [GAO, US–Saudi Joint Commission, 1979](https://www.gao.gov/assets/id-79-7.pdf).
 
 ## The Soviet–Afghan War and the Iran–Iraq War (1979–89)
 

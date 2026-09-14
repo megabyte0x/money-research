@@ -60,7 +60,7 @@
 
 **Mohur** — Mughal gold coin of ~11 g.
 
-**Petrodollar** — Dollars earned from oil sales, especially under the post-1974 arrangement by which OPEC oil was priced in dollars and proceeds invested in US assets.
+**Petrodollar** — Dollar receipts from oil exports, and sometimes the subsequent investment or lending of those receipts. Dollar invoicing predates the 1974 US–Saudi economic-cooperation commission; this is not a dollar-for-oil redemption right or a claim that every oil sale used dollars. [GAO, 1979](https://www.gao.gov/assets/id-79-7.pdf); [Federal Reserve staff memorandum, 1975](https://fraser.stlouisfed.org/title/federal-open-market-committee-meeting-minutes-transcripts-documents-677/meeting-may-20-1975-22476/content/fulltext/FOMC19750502Memo01).
 
 **Price-specie flow mechanism** — David Hume's account of how a gold standard self-corrects: trade deficits export gold, shrink the money supply, lower prices, and restore competitiveness.
 

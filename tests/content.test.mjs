@@ -334,6 +334,22 @@ test('E20 government holdings separate claims, custody, ownership and reserve st
   }
 });
 
+test('E23 petrodollar copy distinguishes invoicing and recycling from redemption', () => {
+  const chapter = readFileSync(join(root, 'public/content/after/02-oil-petrodollars-and-stagflation-1973-1982.md'), 'utf8');
+  const gold = readFileSync(join(root, 'public/content/gold/08-why-the-dollar-replaced-gold.md'), 'utf8');
+  const rules = readFileSync(join(root, 'public/content/after/10-rules-treaties-and-institutions.md'), 'utf8');
+  const ledger = readFileSync(join(root, 'EDITORIAL-SOURCES.md'), 'utf8');
+  assert.match(chapter, /invoicing and recycling, not redemption/);
+  assert.match(chapter, /dollars \*\*or sterling\*\*/);
+  assert.match(chapter, /no fixed quantity of oil claimable/);
+  assert.match(gold, /already widely used to quote oil before/);
+  assert.match(rules, /Not a dollar-for-oil redemption/);
+  assert.match(ledger, /E23.*ID-79-7/);
+  for (const article of [chapter, gold, rules]) {
+    assert.doesNotMatch(article, /demand base had shifted from gold convertibility to energy convertibility|every country needed dollars to buy energy|agreed that Saudi oil would be priced and sold in dollars/);
+  }
+});
+
 test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {
   const dates = ['3 Jan 2009', '15 Aug 1971', 'c. 4600–4300 BCE', '1925', '31 Oct 2008'];
   assert.deepEqual(dates.sort((a, b) => eventSortValue(a) - eventSortValue(b)),

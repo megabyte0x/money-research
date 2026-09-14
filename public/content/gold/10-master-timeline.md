@@ -72,7 +72,7 @@
 | 1969 | IMF creates SDRs ("paper gold") | Synthetic reserve asset |
 | 15 Aug 1971 | Nixon closes the gold window | End of gold convertibility |
 | 1973 | Major currencies float | Fiat era begins |
-| 1974 | Petrodollar arrangement with Saudi Arabia; US private gold ownership legal again (31 Dec) | Dollar demand anchored to oil |
+| 1974 | US–Saudi economic-cooperation commission established (8 Jun); US private gold ownership legal again (31 Dec) | Oil-revenue recycling, not dollar-for-oil redemption. [GAO, 1979](https://www.gao.gov/assets/id-79-7.pdf) |
 | 1976 | Jamaica Accords demonetize gold in IMF articles | Gold's official monetary role ends |
 | Jan 1980 | Gold peaks at $850 | Inflation-era high |
 | 1999 | Gold bottoms ~$252; UK sells half its reserves; Central Bank Gold Agreement | Low point of gold's monetary status |

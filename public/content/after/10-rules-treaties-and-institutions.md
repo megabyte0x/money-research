@@ -10,7 +10,7 @@ The gold standard needed almost no rules: a currency was a weight of metal and c
 | Dec 1971 | Smithsonian Agreement (G10) | Dollar devalued to $38/oz; other currencies revalued; bands ±2.25% | Collapsed by March 1973 |
 | Apr 1972 | European "snake" | EC currencies fixed to each other within ±2.25% | Shrank to a DM zone; ancestor of the euro |
 | Mar 1973 | Generalised floating | Europe and Japan stop defending dollar parities | De facto floating ever since |
-| Jun 1974 | US–Saudi Joint Commission and Treasury arrangement | Oil priced in dollars; Saudi surpluses into Treasuries | The petrodollar anchor |
+| Jun 1974 | US–Saudi Joint Commission on Economic Cooperation | Development and financial cooperation; petrodollar recycling described by a later GAO audit | Not a dollar-for-oil redemption or verified exclusive-pricing treaty. [GAO, 1979, pp. 1–2](https://www.gao.gov/assets/id-79-7.pdf) |
 | Dec 1974 | Basel Committee on Banking Supervision created | G10 central banks coordinate bank supervision after Herstatt | Source of all capital rules |
 | Nov 1975 | Rambouillet summit (first G6) | Leaders bless floating and Jamaica terms | Annual G7 summits since |
 | Jan 1976 | Jamaica Accords (IMF Second Amendment, in force Apr 1978) | Floating legalised; gold demonetised; SDR nominal reserve asset; IMF surveillance | Legal basis of the current system |

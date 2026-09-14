@@ -10,7 +10,7 @@
 | Feb–Mar 1973 | Dollar devalued to $42.22; major currencies float | Floating by default |
 | Apr 1973 | CBOE opens; Black–Scholes published; SWIFT founded (May) | Options pricing; bank messaging network |
 | Oct 1973 | Yom Kippur War; OPEC embargo; oil quadruples | First oil shock; stagflation |
-| Jun 1974 | Herstatt Bank fails; US–Saudi Joint Commission | Settlement risk; petrodollar arrangement |
+| Jun 1974 | Herstatt Bank fails (26 Jun); US–Saudi Joint Commission established (8 Jun) | Distinct events: foreign-exchange settlement risk and economic cooperation/petrodollar recycling. [GAO, 1979](https://www.gao.gov/assets/id-79-7.pdf) |
 | Dec 1974 | Basel Committee created; US private gold legal again (31 Dec) | Bank regulation begins |
 | 1975 | UK inflation 24%; Angola, Mozambique, Suriname independent | Great Inflation peak in Britain; decolonisation |
 | Nov 1975 | Rambouillet, first G6 summit | Summit governance of money |

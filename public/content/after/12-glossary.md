@@ -44,7 +44,7 @@
 
 **Nixon shock** — The 15 August 1971 package: gold-convertibility suspension, 10% import surcharge, wage-price freeze.
 
-**Petrodollar** — Dollars earned from oil sales; under the 1974 US–Saudi arrangement, oil was priced in dollars and surpluses invested in Treasuries.
+**Petrodollar** — Dollar receipts from oil exports, or the reinvestment and lending of some of those receipts. The 1974 US–Saudi commission supported economic cooperation and petrodollar recycling; it did not establish dollar-for-oil redemption or, on the official record reviewed here, a universal exclusive-pricing rule. [GAO, 1979](https://www.gao.gov/assets/id-79-7.pdf); [Federal Reserve staff memorandum, 1975](https://fraser.stlouisfed.org/title/federal-open-market-committee-meeting-minutes-transcripts-documents-677/meeting-may-20-1975-22476/content/fulltext/FOMC19750502Memo01).
 
 **Plaza Accord** — 22 September 1985 G5 agreement to intervene jointly to lower the dollar.
 

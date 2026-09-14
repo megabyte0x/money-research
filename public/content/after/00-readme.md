@@ -9,7 +9,7 @@ Compiled 8 September 2026. Historical material is drawn from standard economic-h
 | File | Question it answers |
 |---|---|
 | `01-the-break-1971-1976.md` | How the fixed-rate world was dismantled between the Nixon shock and the Jamaica Accords, and what "floating" actually meant. |
-| `02-oil-petrodollars-and-stagflation-1973-1982.md` | Why the first decade without gold produced the worst peacetime inflation in the West, how oil became the dollar's new anchor, and how Volcker restored credibility. |
+| `02-oil-petrodollars-and-stagflation-1973-1982.md` | How inflation, oil shocks, dollar invoicing and petrodollar recycling interacted after gold redemption ended, and how Volcker's disinflation changed monetary policy. |
 | `03-debt-crises-and-the-managed-dollar-1982-1990.md` | The Latin American lost decade, the Plaza and Louvre accords, Black Monday, Japan's bubble, Basel I and the first rules of the fiat era. |
 | `04-cold-war-ends-new-nations-new-currencies-1989-2001.md` | The collapse of communism, the birth of some 25 new states and currencies, hyperinflations, the ERM crisis, the euro, and the wave of central-bank independence. |
 | `05-globalization-and-emerging-market-crises-1990-2001.md` | NAFTA, the WTO, China's entry, the Tequila, Asian, Russian and Argentine crises, LTCM and the dot-com bubble — and the reserve hoarding that followed. |

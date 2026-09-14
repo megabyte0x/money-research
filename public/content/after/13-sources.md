@@ -60,6 +60,8 @@ Bank for International Settlements, *History of the Basel Committee* — https:/
 
 ## 1973–1982: oil, petrodollars, stagflation
 
+US Government Accountability Office, [*The U.S.-Saudi Arabian Joint Commission on Economic Cooperation* (ID-79-7)](https://www.gao.gov/assets/id-79-7.pdf), digest and pp. 1–2 (22 March 1979). Describes the commission established by the 8 June 1974 joint statement: Saudi development, financial cooperation, US technical services and petrodollar recycling. The report is **not** a treaty text establishing exclusive oil pricing or redemption. Federal Reserve Bank of New York staff, [*Exchange Market Implications of Recent Changes in Valuation of OPEC Currencies*](https://fraser.stlouisfed.org/title/federal-open-market-committee-meeting-minutes-transcripts-documents-677/meeting-may-20-1975-22476/content/fulltext/FOMC19750502Memo01), pp. 1–2 (15 April 1975; released in FOMC records): oil prices described as in dollars or sterling, with dollars the principal transaction currency; possible basket pricing discussed. This staff analysis records conditions and expectations, not a binding oil contract.
+
 Daniel Yergin, *The Prize: The Epic Quest for Oil, Money and Power* (1991)
 
 Bloomberg, *The Untold Story Behind Saudi Arabia's 41-Year U.S. Debt Secret* (30 May 2016) — the 1974 Simon arrangement
