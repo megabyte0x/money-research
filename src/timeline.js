@@ -18,26 +18,29 @@ export function eventSortValue(date) {
   return year + month / 13 + day / 420;
 }
 
-// Only these shared events have been editorially identified as the same event.
-// Do not merge rows just because dates or keywords happen to match.
-export function sharedEventId(year, event) {
-  const text = event.toLowerCase();
-  if (year === 1971 && /nixon/.test(text) && /gold (window|convertibility)/.test(text)) return 'nixon-gold-window-1971';
-  if (year === 1973 && /major currencies float/.test(text)) return 'major-currencies-float-1973';
-  if (year === 1974 && /us[–-]saudi/.test(text) && /(joint commission|economic.cooperation commission)/.test(text)) return 'us-saudi-joint-commission-1974';
-  if (year === 1976 && /jamaica accords/.test(text)) return 'jamaica-accords-1976';
-  if (year === 1980 && /gold peaks at \$850/.test(text)) return 'gold-peak-1980';
-  if (year === 2026 && /gold peaks? (?:at |~)?(?:about )?\$5,590/.test(text)) return 'gold-peak-2026';
-  return null;
+// Only these pairs have been editorially reviewed as the same event.
+// The IDs, unlike dates and prose, survive source-text corrections.
+export const SHARED_EVENT_PAIRS = Object.freeze([
+  ['evt-gold-0071', 'evt-after-0002'], // Nixon suspends dollar-gold convertibility
+  ['evt-gold-0072', 'evt-after-0114'], // major currencies float in March 1973
+  ['evt-gold-0073', 'evt-after-0009'], // US–Saudi economic-cooperation commission
+  ['evt-gold-0075', 'evt-after-0014'], // Jamaica Accords
+  ['evt-gold-0076', 'evt-after-0021'], // January 1980 gold-price peak
+]);
+const SHARED_EVENT_KEYS = new Map(SHARED_EVENT_PAIRS.flatMap(([first, second]) =>
+  [[first, first], [second, first]]));
+
+export function sharedEventId(eventId) {
+  return SHARED_EVENT_KEYS.get(eventId) || null;
 }
 
 export function mergeSharedEvents(events) {
   const merged = new Map();
   for (const event of events) {
-    const id = sharedEventId(event.year, event.eventText) || event.id;
-    if (!merged.has(id)) merged.set(id, { ...event, id, sources: [event.vol], refs: [...event.refs] });
+    const groupKey = sharedEventId(event.id) || event.id;
+    if (!merged.has(groupKey)) merged.set(groupKey, { ...event, sources: [event.vol], refs: [...event.refs] });
     else {
-      const current = merged.get(id);
+      const current = merged.get(groupKey);
       if (!current.sources.includes(event.vol)) current.sources.push(event.vol);
       for (const ref of event.refs) if (!current.refs.some(r => r.href === ref.href)) current.refs.push(ref);
       current.sort = Math.min(current.sort, event.sort);

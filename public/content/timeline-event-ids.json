@@ -381,7 +381,7 @@
   },
   {
     "id": "evt-after-0006",
-    "key": "after|Feb–Mar 1973|Dollar devalued to $42.22; major currencies float"
+    "key": "after|Feb 1973|Dollar devalued again, to $42.22 per ounce"
   },
   {
     "id": "evt-after-0007",
@@ -810,6 +810,10 @@
   {
     "id": "evt-after-0113",
     "key": "after|Sep 2026|US–Iran strikes in Hormuz resume; Brent ~$97; gold ~$4,490; latest cited IMF COFER dollar share is 57.13% of 2026 Q1 foreign-exchange reserves; Putin says Ukraine deal \"possible\""
+  },
+  {
+    "id": "evt-after-0114",
+    "key": "after|Mar 1973|Major currencies float against the dollar"
   },
   {
     "id": "evt-bitcoin-0001",

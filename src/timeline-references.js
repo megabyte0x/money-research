@@ -92,6 +92,8 @@ export const TIMELINE_SECTION_REFS = Object.freeze({
   'evt-gold-0090': ["gold","09","the-numbers"],
   'evt-after-0002': ["after","01","what-actually-happened-on-15-august-1971"],
   'evt-after-0003': ["after","01","the-smithsonian-agreement-december-1971"],
+  'evt-after-0006': ["after","01","the-smithsonian-agreement-december-1971"],
+  'evt-after-0114': ["after","01","the-smithsonian-agreement-december-1971"],
   'evt-after-0008': ["after","01","the-oil-shock-forces-the-issue-1973-74"],
   'evt-after-0009': ["after","02","the-petrodollar-invoicing-and-recycling-not-redemption"],
   'evt-after-0010': ["after","01","herstatt-and-the-birth-of-banking-rules-1974"],

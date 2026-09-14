@@ -7,7 +7,8 @@
 | Dec 1971 | Smithsonian Agreement: dollar to $38/oz, bands ±2.25% | First multilateral realignment; fails in 14 months |
 | Dec 1971 | Bangladesh independent (taka 1972) | First new state and currency of the era |
 | Apr–May 1972 | European "snake"; CME launches currency futures | Europe seeks fixed rates; derivatives era begins |
-| Feb–Mar 1973 | Dollar devalued to $42.22; major currencies float | Floating by default |
+| Feb 1973 | Dollar devalued again, to $42.22 per ounce | Smithsonian realignment fails |
+| Mar 1973 | Major currencies float against the dollar | Floating by default |
 | Apr 1973 | CBOE opens; Black–Scholes published; SWIFT founded (May) | Options pricing; bank messaging network |
 | Oct 1973 | Yom Kippur War; OPEC embargo; oil quadruples | First oil shock; stagflation |
 | 8 Jun 1974 | US–Saudi Joint Commission established | Economic cooperation and petrodollar recycling, not oil redemption. [GAO, 1979](https://www.gao.gov/assets/id-79-7.pdf) |

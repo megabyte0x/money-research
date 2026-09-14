@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseMd, stripInline } from '../src/md.js';
-import { eventYear, eventSortValue, mergeSharedEvents, sharedEventId } from '../src/timeline.js';
+import { eventYear, eventSortValue, mergeSharedEvents, sharedEventId, SHARED_EVENT_PAIRS } from '../src/timeline.js';
 import { TIMELINE_SECTION_REFS, timelineReferenceKey } from '../src/timeline-references.js';
 import { indexObservations, resolveObservations } from '../src/observations.js';
 import { createContentModel } from '../src/content-model.js';
@@ -119,6 +119,8 @@ test('unrelated dated events are separate timeline rows', () => {
   const rows = parseMd(readFileSync(join(root, 'public', source.path), 'utf8'))
     .filter(b => b.type === 'table').flatMap(t => t.rows);
   for (const [date, event] of [
+    ['Feb 1973', 'Dollar devalued again, to $42.22 per ounce'],
+    ['Mar 1973', 'Major currencies float against the dollar'],
     ['8 Jun 1974', 'US–Saudi Joint Commission established'],
     ['26 Jun 1974', 'Herstatt Bank fails'],
     ['May 1997', 'Bank of England independence'],
@@ -126,6 +128,8 @@ test('unrelated dated events are separate timeline rows', () => {
     ['31 Oct 2008', 'Bitcoin whitepaper published'],
     ['3 Jan 2009', 'Bitcoin genesis block mined']
   ]) assert.ok(rows.some(r => r[0] === date && r[1] === event), `${date}: ${event}`);
+  assert.equal(rows.some(r => r[1].includes('Dollar devalued') && r[1].includes('currencies float')), false,
+    'the dollar-price change is no longer bundled with the floating-rate transition');
   const gold = manifest.find(m => m.vol === 'gold' && m.num === '10');
   const goldRows = parseMd(readFileSync(join(root, 'public', gold.path), 'utf8'))
     .filter(b => b.type === 'table').flatMap(t => t.rows);
@@ -489,15 +493,26 @@ test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {
 
 test('only reviewed duplicate monetary events combine their volume references', () => {
   const rows = [
-    { id: 'a', vol: 'gold', year: 1971, sort: 1971.6, eventText: 'Nixon closes the gold window', refs: [{ href: '#/gold' }] },
-    { id: 'b', vol: 'after', year: 1971, sort: 1971.6, eventText: 'Nixon suspends gold convertibility', refs: [{ href: '#/after' }] },
-    { id: 'c', vol: 'bitcoin', year: 2009, sort: 2009.1, eventText: 'Genesis block mined', refs: [] }
+    { id: 'evt-gold-0071', vol: 'gold', year: 1971, sort: 1971.6, eventText: 'Gold window closes', refs: [{ href: '#/gold' }] },
+    { id: 'evt-after-0002', vol: 'after', year: 1971, sort: 1971.6, eventText: 'Dollar convertibility suspended', refs: [{ href: '#/after' }] },
+    { id: 'evt-bitcoin-0003', vol: 'bitcoin', year: 2009, sort: 2009.1, eventText: 'Genesis block mined', refs: [] }
   ];
   const result = mergeSharedEvents(rows);
   assert.equal(result.length, 2);
   assert.deepEqual(result[0].sources, ['gold', 'after']);
   assert.deepEqual(result[0].refs.map(r => r.href), ['#/gold', '#/after']);
-  assert.equal(sharedEventId(1997, 'Bank of England independence'), null);
-  assert.equal(sharedEventId(1974, 'US–Saudi economic-cooperation commission established'),
-    sharedEventId(1974, 'US–Saudi Joint Commission established'));
+  assert.equal(sharedEventId('evt-after-0051'), null);
+  assert.equal(sharedEventId('evt-after-0009'), sharedEventId('evt-gold-0073'));
+  assert.equal(mergeSharedEvents(rows.slice(1))[0].id, 'evt-after-0002', 'filtered views keep a present source ID');
+  assert.equal(SHARED_EVENT_PAIRS.length, 5);
+  for (const [first, second] of SHARED_EVENT_PAIRS) {
+    assert.ok(timelineEventIds.some(record => record.id === first), first);
+    assert.ok(timelineEventIds.some(record => record.id === second), second);
+    assert.equal(sharedEventId(first), sharedEventId(second));
+  }
+  const sameWords = mergeSharedEvents([
+    { id: 'evt-gold-0071', vol: 'gold', sort: 1971, eventText: 'Gold window closes', refs: [] },
+    { id: 'evt-after-0051', vol: 'after', sort: 1971, eventText: 'Gold window closes', refs: [] }
+  ]);
+  assert.equal(sameWords.length, 2, 'matching copy does not create an unreviewed duplicate');
 });
