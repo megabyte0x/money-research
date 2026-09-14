@@ -121,6 +121,14 @@ test('unrelated dated events are separate timeline rows', () => {
   for (const [date, event] of [
     ['Feb 1973', 'Dollar devalued again, to $42.22 per ounce'],
     ['Mar 1973', 'Major currencies float against the dollar'],
+    ['15 Sep 2008', 'Lehman Brothers files for bankruptcy'],
+    ['16 Sep 2008', 'Federal Reserve lends to AIG'],
+    ['3 Oct 2008', 'US Congress authorizes TARP'],
+    ['Late 2008', 'Federal Reserve expands dollar swap lines with foreign central banks'],
+    ['Nov 2008', 'China announces a large fiscal stimulus'],
+    ['Nov 2008', "G20 holds its first leaders' summit"],
+    ['Nov 2008', 'Federal Reserve announces its first large-scale asset-purchase programme'],
+    ['16 Dec 2008', 'Federal Reserve cuts its policy rate near zero'],
     ['8 Jun 1974', 'US–Saudi Joint Commission established'],
     ['26 Jun 1974', 'Herstatt Bank fails'],
     ['May 1997', 'Bank of England independence'],
@@ -130,6 +138,8 @@ test('unrelated dated events are separate timeline rows', () => {
   ]) assert.ok(rows.some(r => r[0] === date && r[1] === event), `${date}: ${event}`);
   assert.equal(rows.some(r => r[1].includes('Dollar devalued') && r[1].includes('currencies float')), false,
     'the dollar-price change is no longer bundled with the floating-rate transition');
+  assert.equal(rows.some(r => r[0] === '15 Sep 2008' && /AIG|TARP|swap lines|China stimulus/.test(r[1])), false,
+    'later crisis responses are not dated to Lehman bankruptcy');
   const gold = manifest.find(m => m.vol === 'gold' && m.num === '10');
   const goldRows = parseMd(readFileSync(join(root, 'public', gold.path), 'utf8'))
     .filter(b => b.type === 'table').flatMap(t => t.rows);
@@ -489,6 +499,8 @@ test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {
   assert.deepEqual(dates.sort((a, b) => eventSortValue(a) - eventSortValue(b)),
     ['c. 4600–4300 BCE', '1925', '15 Aug 1971', '31 Oct 2008', '3 Jan 2009']);
   assert.equal(eventYear('c. 6th c. BCE'), -550);
+  assert.ok(eventSortValue('15 Sep 2008') < eventSortValue('Late 2008'));
+  assert.ok(eventSortValue('Late 2008') < eventSortValue('Nov 2008'));
 });
 
 test('only reviewed duplicate monetary events combine their volume references', () => {

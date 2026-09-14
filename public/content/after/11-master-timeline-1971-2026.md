@@ -73,10 +73,16 @@
 | Jul 2005 | China unpegs yuan | Gradual appreciation |
 | 2007 | M-Pesa (Mar); iPhone (Jun); BNP Paribas freezes funds (Aug); Northern Rock run (Sep) | Mobile money; crisis begins |
 | Mar 2008 | Bear Stearns rescued; Georgia war (Aug); oil $147 (Jul) | — |
-| 15 Sep 2008 | Lehman fails; AIG rescued; TARP (3 Oct); swap lines; China stimulus (Nov) | Global financial crisis |
+| 15 Sep 2008 | Lehman Brothers files for bankruptcy | Global financial crisis intensifies |
+| 16 Sep 2008 | Federal Reserve lends to AIG | Emergency insurer support, separate from Lehman's bankruptcy |
+| 3 Oct 2008 | US Congress authorizes TARP | Crisis-response authority, not a measure of final net cost |
+| Late 2008 | Federal Reserve expands dollar swap lines with foreign central banks | Cross-border dollar liquidity facility, distinct from QE |
+| Nov 2008 | China announces a large fiscal stimulus | National fiscal response, not part of the US rescue |
 | 31 Oct 2008 | Bitcoin whitepaper published | Proposed peer-to-peer electronic cash design |
 | 3 Jan 2009 | Bitcoin genesis block mined | Network begins operation |
-| Nov–Dec 2008 | G20 leaders' summit; QE1; Fed to zero (16 Dec) | New monetary instruments |
+| Nov 2008 | G20 holds its first leaders' summit | Crisis coordination among major economies |
+| Nov 2008 | Federal Reserve announces its first large-scale asset-purchase programme | Asset purchases financed with reserves, distinct from swap lines |
+| 16 Dec 2008 | Federal Reserve cuts its policy rate near zero | Rate decision, distinct from asset purchases |
 | Apr 2009 | G20 London $1.1 tn; FSB created | — |
 | Oct 2009–May 2010 | Greek deficit revealed; €110 bn bailout | Eurozone crisis |
 | Jul 2010 | Dodd–Frank Act | US re-regulation |

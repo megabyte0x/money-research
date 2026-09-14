@@ -15,7 +15,8 @@ export function eventSortValue(date) {
   if (year < 0) return year;
   const month = MONTHS[date.match(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/i)?.[1]?.toLowerCase()] || 0;
   const day = +(date.match(/^\s*(\d{1,2})\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/i)?.[1] || 0);
-  return year + month / 13 + day / 420;
+  const approximatePart = !month && /^\s*late\b/i.test(date) ? 0.75 : 0;
+  return year + (month ? month / 13 + day / 420 : approximatePart);
 }
 
 // Only these pairs have been editorially reviewed as the same event.

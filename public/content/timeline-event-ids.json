@@ -641,7 +641,7 @@
   },
   {
     "id": "evt-after-0071",
-    "key": "after|15 Sep 2008|Lehman fails; AIG rescued; TARP (3 Oct); swap lines; China stimulus (Nov)"
+    "key": "after|15 Sep 2008|Lehman Brothers files for bankruptcy"
   },
   {
     "id": "evt-after-0072",
@@ -653,7 +653,7 @@
   },
   {
     "id": "evt-after-0074",
-    "key": "after|Nov–Dec 2008|G20 leaders' summit; QE1; Fed to zero (16 Dec)"
+    "key": "after|Nov 2008|Federal Reserve announces its first large-scale asset-purchase programme"
   },
   {
     "id": "evt-after-0075",
@@ -814,6 +814,30 @@
   {
     "id": "evt-after-0114",
     "key": "after|Mar 1973|Major currencies float against the dollar"
+  },
+  {
+    "id": "evt-after-0115",
+    "key": "after|16 Sep 2008|Federal Reserve lends to AIG"
+  },
+  {
+    "id": "evt-after-0116",
+    "key": "after|3 Oct 2008|US Congress authorizes TARP"
+  },
+  {
+    "id": "evt-after-0117",
+    "key": "after|Late 2008|Federal Reserve expands dollar swap lines with foreign central banks"
+  },
+  {
+    "id": "evt-after-0118",
+    "key": "after|Nov 2008|China announces a large fiscal stimulus"
+  },
+  {
+    "id": "evt-after-0119",
+    "key": "after|Nov 2008|G20 holds its first leaders' summit"
+  },
+  {
+    "id": "evt-after-0120",
+    "key": "after|16 Dec 2008|Federal Reserve cuts its policy rate near zero"
   },
   {
     "id": "evt-bitcoin-0001",
