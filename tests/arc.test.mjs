@@ -29,3 +29,10 @@ test('direct article references in the arc resolve to published records', () => 
     assert.ok(published.has(path), `${path} is not a published article`);
   }
 });
+
+test('published arc does not collapse gold-standard credit or universalise regional history', () => {
+  assert.match(view, /bank deposits and credit also expanded or contracted/i);
+  assert.match(view, /other regional systems continued/i);
+  assert.match(view, /Some countries gave central banks greater independence/i);
+  assert.doesNotMatch(view, /money supply grew as fast as gold was mined|first inflation|first bimetallic standard|silver pennies only|almost everyone by 2000/i);
+});

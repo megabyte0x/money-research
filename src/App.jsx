@@ -734,18 +734,18 @@ export default class App extends React.Component {
                       <span style={s("color:var(--fg);font-size:22px;display:block;font-family:'Newsreader',serif;font-weight:500")}>II</span>650 BCE<br />– 1252 CE
                     </div>
                     <div>
-                      <h2 style={s('font-weight:500;font-size:26px;line-height:1.2;margin:0 0 18px;text-wrap:pretty')}>The sovereign's stamp: coin, and the first inflation</h2>
+                      <h2 style={s('font-weight:500;font-size:26px;line-height:1.2;margin:0 0 18px;text-wrap:pretty')}>The sovereign's stamp: coin and debasement</h2>
                       <div style={s('display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;font-size:15px;line-height:1.5')}>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Anchor</div>A ruler's mark on a fixed weight of metal. Lydia struck electrum c. 650 BCE; Croesus split it into pure gold and pure silver at about 13.3:1 — the first bimetallic standard.</div>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>Whoever controlled the mint. Persia, Alexander, Rome, Byzantium and the Caliphate each made coinage an instrument of empire — and each discovered the mint could quietly pay for wars.</div>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>Debasement. Rome's denarius went from ~95% silver to under 5% in three centuries as emperors paid troops in thinner coin; prices followed. Byzantium's solidus held for 700 years, then broke the same way — and lost its reserve role.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Anchor</div>A ruler's mark certified the weight and composition of a coin. Lydian electrum coinage and Croesus's separate gold and silver issues are important early examples; coinage did not replace weighed metal or credit everywhere.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>Rulers could set mint standards and collect or spend coin; merchants and creditors also shaped how it circulated. The balance differed across Persia, Rome, Byzantium and Islamic polities.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>Coins made some payments easier to recognize and count. Debasement changed the metal in particular issues, but a single continuous silver-content line cannot stand in for every Roman denomination or explain all price changes.</div>
                       </div>
                     </div>
                   </div>
                 </section>
                 <div style={s('padding:0 0 40px;display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                   <div style={s('border-left:1px solid var(--fg);margin-left:6px')}></div>
-                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>Why it changed →</span> Western Europe went five centuries with silver pennies only. Trade with the East and new African gold via Mali brought gold coin back — and the two metals had to be priced against each other.</div>
+                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>Why it changed →</span> Silver pennies were prominent in parts of medieval Western Europe, while credit and other regional systems continued. Growing trade and access to gold supported renewed Western European gold coinage.</div>
                 </div>
 
                 <section data-stage={this.arcStage('arc-3')} id="arc-3" style={s('padding:0 0 40px')}>
@@ -776,9 +776,9 @@ export default class App extends React.Component {
                     <div>
                       <h2 style={s('font-weight:500;font-size:26px;line-height:1.2;margin:0 0 18px;text-wrap:pretty')}>The gold standard: a currency is a weight of gold</h2>
                       <div style={s('display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px;font-size:15px;line-height:1.5')}>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Anchor</div>A fixed weight of gold per unit of currency, so exchange rates were fixed too: £1 = $4.8665 for a century. Notes were claims on metal; money supply grew as fast as gold was mined.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Anchor</div>Under classical gold-standard rules, participating currencies were defined by gold weights and their official exchange rates were linked. Notes could be redeemed under specified conditions; bank deposits and credit also expanded or contracted.</div>
                         <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>Who held the power</div>The Bank of England and the City of London. Britain's trade dominance pulled Germany (1871–73, paid for with French indemnity gold) and then the US (“Crime of '73”, resumption 1879) onto gold.</div>
-                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>Price stability over decades but deflation in between — 1873–96 — because gold supply could not keep up with growing economies. Debtors and farmers paid the bill; the gold rushes of 1848, 1851 and 1886 were the only relief.</div>
+                        <div><div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-bottom:6px")}>What it produced</div>Fixed parities limited exchange-rate movements among participating countries, but domestic prices, output and credit still fluctuated. Deflation and debt burdens in some periods cannot be explained by gold mining alone.</div>
                       </div>
                     </div>
                   </div>
@@ -847,7 +847,7 @@ export default class App extends React.Component {
                 </section>
                 <div style={s('padding:0 0 40px;display:grid', { gridTemplateColumns: v.stageCols, gap: v.stageGap })}>
                   <div style={s('border-left:1px solid var(--fg);margin-left:6px')}></div>
-                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>Why it changed →</span> Volcker's lesson was institutionalised: money would be anchored not by metal but by independent central banks with inflation targets. New Zealand first (1990), the euro treaty next, almost everyone by 2000.</div>
+                  <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--mut);max-width:60ch")}><span style={s('color:var(--fg)')}>What followed →</span> Some countries gave central banks greater independence or adopted explicit inflation targets; others used different monetary frameworks. Those choices did not remove financial-crisis or credit risks.</div>
                 </div>
 
                 <section data-stage={this.arcStage('arc-7')} id="arc-7" style={s('padding:0 0 40px')}>
