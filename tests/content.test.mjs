@@ -111,6 +111,22 @@ test('Bitcoin supply and custody copy keeps distinct measures non-additive', () 
   assert.match(read('01'), /not separate coin owners/);
 });
 
+test('Bitcoin security and quantum copy distinguishes rewards, models and draft BIPs', () => {
+  const read = num => {
+    const record = manifest.find(m => m.vol === 'bitcoin' && m.num === num);
+    return readFileSync(join(root, 'public', record.path), 'utf8');
+  };
+  assert.match(read('11'), /block subsidy \*\*plus\*\* transaction fees/);
+  assert.match(read('11'), /not a measured current attack threshold/);
+  assert.match(read('09'), /BIP-361 remains a draft informational proposal/);
+  assert.match(read('12'), /does not mechanically halve fees/);
+  assert.match(read('15'), /not itself the cost of acquiring/);
+  assert.match(read('14'), /not activated Bitcoin rules/);
+  for (const num of ['08', '09', '11', '12']) {
+    assert.doesNotMatch(read(num), /quantum migration is the first deadline|2030–33|confiscate Satoshi's/, `bitcoin-${num}`);
+  }
+});
+
 test('reserve-share explanations name the incompatible COFER and gold denominators', () => {
   for (const path of [
     'content/gold/08-why-the-dollar-replaced-gold.md',

@@ -8,9 +8,9 @@
  
 **Bitcoinisation** — A proposed shift toward Bitcoin as a country's widely used money or unit of account. El Salvador's 2021 mandatory-acceptance law was a narrower experiment alongside the U.S. dollar, not full Bitcoinisation; its 2025 amendment made private acceptance voluntary while retaining “curso legal” wording.
  
-**BIP** — Bitcoin Improvement Proposal, the document through which changes to the software or protocol are proposed. BIP-148 (2017) was the user-activated soft fork that forced SegWit; BIP-360 and BIP-361 (2026) address the quantum threat.
+**BIP** — Bitcoin Improvement Proposal: a published specification or discussion, not automatically an activated consensus rule. BIP-360 is a draft soft-fork specification and BIP-361 a draft informational migration proposal; neither sets a binding Bitcoin quantum deadline. [BIP-360](https://bips.dev/360/); [BIP-361](https://bips.dev/361/).
  
-**Block subsidy** — New coins paid to the miner of each block: 3.125 BTC since April 2024, halving to 1.5625 in April 2028. In 2026 it provided over 99% of miner income.
+**Block subsidy** — Newly issuable coins in a block reward, currently at most 3.125 BTC per block and scheduled to fall to 1.5625 BTC at height 1,050,000. Transaction fees are separate; a subsidy halving does not by itself halve total miner income or its dollar value. [Bitcoin Developer Guide, “Block Chain”](https://developer.bitcoin.org/devguide/block_chain.html).
  
 **Cash creation/redemption** — An ETF process in which authorised participants exchange cash rather than bitcoin for fund shares. Shares represent an interest in the trust's net assets, not one coin each; the trust's filed holdings and liabilities, rather than the creation method alone, establish its asset position. [iShares Bitcoin Trust ETF Form 10-Q](https://www.sec.gov/Archives/edgar/data/1980994/000143774926026004/bit20260630c_10q.htm).
  
@@ -32,7 +32,7 @@
  
 **Elasticity** — The capacity of a specified monetary aggregate to respond to demand. Bitcoin's base issuance schedule is not discretionary, but Bitcoin-denominated bank claims and credit could change. Emergency lending would depend on whether a redeemable issuer exists and how much redemption risk it can bear; a Bitcoin-only system would lack such an issuer. [Weber, 2016, §3](https://www.bankofcanada.ca/wp-content/uploads/2016/03/swp2016-14.pdf).
  
-**Exposed public key** — An address whose public key is visible on-chain (all early "pay-to-public-key" outputs and any address that has spent), making it vulnerable to a future quantum computer; estimates run from 1.7 million to 6.9 million BTC.
+**Exposed public key** — A spending public key already visible in an unspent output or revealed through address reuse or a prior spend. Such exposure could enable a long-exposure attack if a sufficiently capable quantum computer exists; counts depend on output-type and reuse assumptions, not merely the number of addresses. [BIP-360, threat model](https://bips.dev/360/).
  
 **Fair-value accounting** — FASB's 2023 standard (effective 2025) letting US companies carry bitcoin at market value rather than cost-less-impairment; the change that made corporate treasuries practical.
  
@@ -40,7 +40,7 @@
  
 **Gresham's Law / Thiers' Law** — Heuristics about currency choice under different monetary rules: an enforced exchange ratio may encourage spending the overvalued money and holding the undervalued one (Gresham); voluntary choice amid a failing currency can favour the stronger money (Thiers). Neither alone establishes why people did or did not use Bitcoin in El Salvador.
  
-**Halving** — The programmed 50% cut in the block subsidy every 210,000 blocks (about four years): 2012, 2016, 2020, 2024; next expected April 2028.
+**Halving** — The programmed 50% cut in the BTC block subsidy every 210,000 blocks. The next is at height 1,050,000, often estimated for 2028; the calendar date and effects on fees, price and hashrate are not fixed by the rule.
  
 **Hashrate** — Total computing power securing the network, measured in exahashes (10¹⁸) or zettahashes (10²¹) per second; about 950 EH/s in September 2026, down from a peak above 1 ZH/s in autumn 2025.
  
@@ -74,7 +74,7 @@
  
 **Satoshi (sat)** — One hundred-millionth of a bitcoin; the unit that would be used if bitcoin were a unit of account.
  
-**Security budget** — Total miner income (subsidy plus fees), the cost an attacker must exceed; 99% subsidy in 2026, halving in 2028.
+**Security budget** — A shorthand for miner revenue from subsidy plus transaction fees over a stated period, usually expressed in BTC or converted to a fiat value at a dated exchange rate. It is not itself the cost of acquiring, operating or coercing attack hashpower. [Bitcoin Developer Guide, “Block Chain”](https://developer.bitcoin.org/devguide/block_chain.html); [Budish, NBER Working Paper 24717](https://www.nber.org/papers/w24717).
  
 **SegWit / Taproot** — Soft-fork upgrades of 2017 and 2021, the two consensus changes of the last decade; each took years to activate.
  

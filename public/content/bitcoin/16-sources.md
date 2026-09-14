@@ -42,7 +42,7 @@ Federal Reserve, Waller speeches (10 February 2023; 20 August 2025) — https://
  
 Strategy Inc., Form 8-K (29 June 2026) — https://www.sec.gov/Archives/edgar/data/1050446/000119312526286871/mstr-20260629.htm
  
-BIP-148, BIP-360, BIP-361 — https://github.com/bitcoin/bips ; Bitcoin Core, *CVE-2018-17144 Full Disclosure* (20 September 2018) — https://bitcoincore.org/en/2018/09/20/notice/ ; Bitcoin Wiki, *Value overflow incident* — https://en.bitcoin.it/wiki/Value_overflow_incident
+BIP-148 — https://bips.dev/148/ ; BIP-360, draft specification, *Pay-to-Merkle-Root* — https://bips.dev/360/ ; BIP-361, draft informational proposal, *Post Quantum Migration and Legacy Signature Sunset* — https://bips.dev/361/ ; Bitcoin Core, *CVE-2018-17144 Full Disclosure* (20 September 2018) — https://bitcoincore.org/en/2018/09/20/notice/ ; Bitcoin Wiki, *Value overflow incident* — https://en.bitcoin.it/wiki/Value_overflow_incident
  
 New York Attorney General, Tether/Bitfinex settlement (23 February 2021) — https://ag.ny.gov/press-release/2021/attorney-general-james-ends-virtual-currency-trading-platform-bitfinexs-illegal ; CFTC, Tether and Bitfinex orders (15 October 2021) — https://www.cftc.gov/PressRoom/PressReleases/8450-21
  
@@ -158,7 +158,7 @@ Elliptic, *Crypto donations to Ukraine and Russia* (2022) — https://www.ellipt
  
 Schwab, *Why bitcoin's attack costs matter for valuation* (June 2026) — https://www.schwab.com/learn/story/why-bitcoins-attack-costs-matter-valuation ; Crypto51 — https://www.crypto51.app/
  
-OAK Research, *Update on OP_RETURN: Bitcoin Core v30, the Core–Knots war* — https://oakresearch.io/en/analyses/fundamentals/update-op-return-bitcoin-core-v30-core-knots-war ; KuCoin, *BIP-361 explained* — https://www.kucoin.com/blog/bip-361-explained-bitcoin-new-plan-to-survive-quantum-computing
+OAK Research, *Update on OP_RETURN: Bitcoin Core v30, the Core–Knots war* — https://oakresearch.io/en/analyses/fundamentals/update-op-return-bitcoin-core-v30-core-knots-war ; Bitcoin Developer Guide, *Block Chain*, block reward and difficulty sections — https://developer.bitcoin.org/devguide/block_chain.html ; Eric Budish, *The Economic Limits of Bitcoin and the Blockchain*, NBER Working Paper 24717 (2018) — https://www.nber.org/papers/w24717 ; NIST, *Post-Quantum Cryptography* — https://csrc.nist.gov/projects/post-quantum-cryptography/
  
 ## Books
  

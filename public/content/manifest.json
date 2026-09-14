@@ -683,7 +683,7 @@
   "source": "bitcoin/08.md",
   "aliases": ["08"],
   "title": "08 — Why Not Gold Again? Bitcoin Against the Metal It Imitates",
-  "words": 1780,
+  "words": 1731,
   "h2": [
    "The question, stated precisely",
    "First, what the world is actually doing: going back to gold as an asset, not as a standard",
@@ -702,7 +702,7 @@
   "source": "bitcoin/09.md",
   "aliases": ["09"],
   "title": "09 — Supply and Control: Who Holds Bitcoin, Who Runs the Network, and Who Benefits",
-  "words": 2506,
+  "words": 2519,
   "h2": [
    "Two different kinds of control",
    "The supply, September 2026",
@@ -743,7 +743,7 @@
   "source": "bitcoin/11.md",
   "aliases": ["11"],
   "title": "11 — The Defects That Have Stopped Bitcoin From Becoming a Global Currency",
-  "words": 1938,
+  "words": 1780,
   "h2": [
    "Sorting the defects",
    "1. Legal and regulatory perimeter — being fixed",
@@ -769,7 +769,7 @@
   "source": "bitcoin/12.md",
   "aliases": ["12"],
   "title": "12 — How Bitcoin Could Reproduce the Old Crises",
-  "words": 2121,
+  "words": 2019,
   "h2": [
    "The thesis",
    "1. Custodians: the bank run without a central bank (analogue: 1907, 1930–33)",
@@ -815,7 +815,7 @@
   "source": "bitcoin/14.md",
   "aliases": ["14"],
   "title": "14 — Master Timeline, 2008–2026",
-  "words": 2024,
+  "words": 2076,
   "h2": [
    "Origins and the first structure, 2008–2013",
    "Exchanges, forks and the first state responses, 2014–2020",
@@ -833,7 +833,7 @@
   "source": "bitcoin/15.md",
   "aliases": ["15"],
   "title": "15 — Glossary",
-  "words": 1656,
+  "words": 1741,
   "h2": [],
   "num": "15"
  },
@@ -845,7 +845,7 @@
   "source": "bitcoin/16.md",
   "aliases": ["16"],
   "title": "16 — Sources and Further Reading",
-  "words": 2730,
+  "words": 2780,
   "h2": [
    "Primary documents",
    "Academic and think-tank",
