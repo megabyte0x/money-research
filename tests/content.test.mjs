@@ -114,6 +114,38 @@ test('explicit timeline references identify one source event and a real target s
   assert.deepEqual(TIMELINE_SECTION_REFS['evt-gold-0086'], ['gold', '09', 'the-numbers']);
 });
 
+test('newly reviewed fiat timeline links discuss their specific events', () => {
+  const expected = {
+    'evt-after-0004': /Bangladesh/i,
+    'evt-after-0013': /Rambouillet/i,
+    'evt-after-0016': /Carter bonds/i,
+    'evt-after-0017': /Iranian Revolution/i,
+    'evt-after-0018': /European Monetary System/i,
+    'evt-after-0020': /Carter Doctrine/i,
+    'evt-after-0021': /850/,
+    'evt-after-0025': /Garn[–-]St Germain/i,
+    'evt-after-0029': /Louvre in Paris/i,
+    'evt-after-0031': /Basel I/i,
+    'evt-after-0034': /Nikkei/i,
+    'evt-after-0035': /Balcerowicz/i,
+    'evt-after-0037': /Iraq invaded Kuwait/i,
+    'evt-after-0038': /Convertibility Law/i,
+    'evt-after-0041': /Maastricht Treaty/i,
+    'evt-after-0042': /Estonia.s kroon/i,
+    'evt-after-0043': /Black Wednesday/i
+  };
+  for (const [id, needle] of Object.entries(expected)) {
+    const [vol, num, sectionId] = TIMELINE_SECTION_REFS[id];
+    const target = manifest.find(record => record.vol === vol && record.num === num);
+    const blocks = parseMd(readFileSync(join(root, 'public', target.path), 'utf8'));
+    const start = blocks.findIndex(block => block.type === 'h2' && block.id === sectionId);
+    assert.ok(start >= 0, `${id}: target heading`);
+    const next = blocks.findIndex((block, index) => index > start && block.type === 'h2');
+    const body = JSON.stringify(blocks.slice(start + 1, next < 0 ? undefined : next));
+    assert.match(body, needle, `${id}: target body discusses the event`);
+  }
+});
+
 test('unrelated dated events are separate timeline rows', () => {
   const source = manifest.find(m => m.vol === 'after' && m.num === '11');
   const rows = parseMd(readFileSync(join(root, 'public', source.path), 'utf8'))
