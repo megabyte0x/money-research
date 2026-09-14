@@ -95,6 +95,22 @@ test('Bitcoin settlement claims distinguish confirmations from absolute finality
   }
 });
 
+test('Bitcoin supply and custody copy keeps distinct measures non-additive', () => {
+  const read = num => {
+    const record = manifest.find(m => m.vol === 'bitcoin' && m.num === num);
+    return readFileSync(join(root, 'public', record.path), 'utf8');
+  };
+  const supply = read('09');
+  assert.match(supply, /Dormant outputs/);
+  assert.match(supply, /not additive holder categories/);
+  assert.match(supply, /Bitcoin Core, `gettxoutsetinfo`/);
+  assert.doesNotMatch(supply, /effective liquid supply is perhaps 3–5 million|8–9 million coins — 40–45%/);
+  assert.doesNotMatch(read('07'), /effective supply is roughly 16–17 million/);
+  assert.match(read('15'), /Long inactivity.*is not proof of loss/);
+  assert.match(read('12'), /may omit liabilities/);
+  assert.match(read('01'), /not separate coin owners/);
+});
+
 test('reserve-share explanations name the incompatible COFER and gold denominators', () => {
   for (const path of [
     'content/gold/08-why-the-dollar-replaced-gold.md',

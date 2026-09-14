@@ -545,7 +545,7 @@
   "source": "bitcoin/01.md",
   "aliases": ["01"],
   "title": "01 — The Origin: What 2008 Produced, and the Currency Structure That Grew Around It",
-  "words": 1693,
+  "words": 1695,
   "h2": [
    "Where this volume starts",
    "The moment of birth",
@@ -665,7 +665,7 @@
   "source": "bitcoin/07.md",
   "aliases": ["07"],
   "title": "07 — If Bitcoin Were the Unit of the Economy: The Supply System, Fixed Versus Variable Rates, Backing, and How Denomination Would Shift",
-  "words": 2661,
+  "words": 2691,
   "h2": [
    "Three things people mean by \"a Bitcoin standard\"",
    "The supply system: what a fixed base does to an economy",
@@ -683,7 +683,7 @@
   "source": "bitcoin/08.md",
   "aliases": ["08"],
   "title": "08 — Why Not Gold Again? Bitcoin Against the Metal It Imitates",
-  "words": 1791,
+  "words": 1780,
   "h2": [
    "The question, stated precisely",
    "First, what the world is actually doing: going back to gold as an asset, not as a standard",
@@ -702,7 +702,7 @@
   "source": "bitcoin/09.md",
   "aliases": ["09"],
   "title": "09 — Supply and Control: Who Holds Bitcoin, Who Runs the Network, and Who Benefits",
-  "words": 2656,
+  "words": 2506,
   "h2": [
    "Two different kinds of control",
    "The supply, September 2026",
@@ -743,7 +743,7 @@
   "source": "bitcoin/11.md",
   "aliases": ["11"],
   "title": "11 — The Defects That Have Stopped Bitcoin From Becoming a Global Currency",
-  "words": 1910,
+  "words": 1938,
   "h2": [
    "Sorting the defects",
    "1. Legal and regulatory perimeter — being fixed",
@@ -769,7 +769,7 @@
   "source": "bitcoin/12.md",
   "aliases": ["12"],
   "title": "12 — How Bitcoin Could Reproduce the Old Crises",
-  "words": 2280,
+  "words": 2121,
   "h2": [
    "The thesis",
    "1. Custodians: the bank run without a central bank (analogue: 1907, 1930–33)",
@@ -833,7 +833,7 @@
   "source": "bitcoin/15.md",
   "aliases": ["15"],
   "title": "15 — Glossary",
-  "words": 1561,
+  "words": 1656,
   "h2": [],
   "num": "15"
  },

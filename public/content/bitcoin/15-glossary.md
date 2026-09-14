@@ -12,7 +12,7 @@
  
 **Block subsidy** — New coins paid to the miner of each block: 3.125 BTC since April 2024, halving to 1.5625 in April 2028. In 2026 it provided over 99% of miner income.
  
-**Cash creation/redemption** — The ETF mechanism the SEC required in 2024, under which authorised participants deliver dollars rather than coins; the sponsor's custodian must then buy real bitcoin, so ETF shares cannot exceed vaulted coins.
+**Cash creation/redemption** — An ETF process in which authorised participants exchange cash rather than bitcoin for fund shares. Shares represent an interest in the trust's net assets, not one coin each; the trust's filed holdings and liabilities, rather than the creation method alone, establish its asset position. [iShares Bitcoin Trust ETF Form 10-Q](https://www.sec.gov/Archives/edgar/data/1980994/000143774926026004/bit20260630c_10q.htm).
  
 **Chivo** — El Salvador's state bitcoin wallet, launched 2021 with a $30 bonus; over 60% of users never transacted after collecting it; majority-privatised in 2026 under IMF conditions.
  
@@ -20,7 +20,7 @@
  
 **Cryptoization** — The IMF's term (2021) for currency and asset substitution by residents of emerging markets into crypto, which it finds reinforces dollarisation and circumvents capital controls.
  
-**Custodian** — A firm that holds keys on behalf of others; Coinbase custodies over 80% of US ETF bitcoin. The concentration of custody is the main channel through which a bitcoin failure could reach the traditional system.
+**Custodian** — A firm that safeguards keys or assets on behalf of another legal owner, such as an ETF trust. Assets it controls for clients are not necessarily its own beneficial holdings; custody concentration and ownership concentration are different measures.
  
 **Debasement trade** — Investment positioning (JPMorgan's term, 2025) that buys gold and bitcoin as hedges against the erosion of fiat currencies' value; bitcoin is the higher-beta leg.
  
@@ -46,7 +46,7 @@
  
 **Hyperbitcoinisation** — Daniel Krawisz's 2014 term for a rapid voluntary switch from fiat to bitcoin as money; on inspection, a scenario that presupposes a fiat collapse.
  
-**IBIT** — BlackRock's iShares Bitcoin Trust, the largest spot ETF: 771,610 BTC (3.8% of supply) in September 2026.
+**IBIT** — iShares Bitcoin Trust ETF, sponsored by a BlackRock affiliate. The trust reports bitcoin as its asset, a custodian holds it on the trust's behalf, and shareholders hold beneficial interests in the trust's net assets. These are not additive coin holdings. [SEC-filed Form 10-Q](https://www.sec.gov/Archives/edgar/data/1980994/000143774926026004/bit20260630c_10q.htm).
  
 **Knots** — A rival to the Bitcoin Core reference software, maintained by essentially one person, that kept a strict limit on data in transactions after Core v30 (October 2025) relaxed it; reached 20–25% of reachable nodes.
  
@@ -54,7 +54,7 @@
  
 **Lightning Network** — Bitcoin's second-layer payment system of pre-funded channels; public capacity about 4,900 BTC in May 2026, below its 2024 peak; most consumer use is through custodial apps; carries Tether's dollar since March 2026.
  
-**Lost coins** — Bitcoins whose keys are irrecoverable; estimated at 2.3–4 million (11–18% of the cap), including the ~1.1 million mined by Satoshi that have never moved.
+**Lost coins** — Outputs whose spending keys are irrecoverable, a status generally not observable from the chain alone. Long inactivity, including coins attributed to early miners, is not proof of loss. Provably unspendable outputs are a narrower, separately measurable category. [Bitcoin Core, `gettxoutsetinfo`](https://bitcoincore.org/en/doc/29.0.0/rpc/blockchain/gettxoutsetinfo/).
  
 **MiCA** — The EU's Markets in Crypto-Assets regulation, fully in force by 2025 with grandfathering ended 1 July 2026.
  
@@ -68,7 +68,7 @@
  
 **Perpetual futures** — Derivatives with no expiry, settled mostly in Tether's dollar on offshore venues at up to 100× leverage; the venue of most price discovery and of the $19 billion liquidation of October 2025.
  
-**Proof of reserves** — A point-in-time cryptographic attestation of an exchange's assets; omits liabilities and so cannot detect fractional reserves.
+**Proof of reserves** — A report or demonstration about specified assets at a point in time, with scope set by its procedures. It is not automatically an audit and may fail to test liabilities, rights to assets or borrowed funds; read its actual scope before inferring solvency. [PCAOB staff investor advisory](https://pcaobus.org/resources/information-for-investors/investor-advisories/investor-advisory-exercise-caution-with-third-party-verification-proof-of-reserve-reports).
  
 **Proof of work** — The mechanism (from Hashcash, 1997) by which miners compete to add blocks by expending computation; the source of both bitcoin's security and its energy use.
  
