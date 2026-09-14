@@ -4,6 +4,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseMd } from '../src/md.js';
 import { eventYear, eventSortValue, mergeSharedEvents, sharedEventId } from '../src/timeline.js';
+import { TIMELINE_SECTION_REFS, timelineReferenceKey } from '../src/timeline-references.js';
 import { indexObservations, resolveObservations } from '../src/observations.js';
 import { createContentModel } from '../src/content-model.js';
 
@@ -57,6 +58,45 @@ test('reviewed timeline links point to relevant existing sections', () => {
     assert.ok(heading, `${vol}/${num}/${section}`);
     assert.match(heading.text, new RegExp(expected, 'i'));
   }
+});
+
+test('explicit timeline references identify one source event and a real target section', () => {
+  const sourceRows = new Map();
+  for (const vol of ['gold', 'after', 'bitcoin']) {
+    const source = manifest.find(m => m.vol === vol && m.slug.includes('timeline'));
+    const tables = parseMd(readFileSync(join(root, 'public', source.path), 'utf8')).filter(b => b.type === 'table');
+    for (const row of tables.flatMap(t => t.rows)) {
+      const key = timelineReferenceKey(vol, row[0], row[1]);
+      sourceRows.set(key, (sourceRows.get(key) || 0) + 1);
+    }
+  }
+  for (const [key, [vol, num, sectionId]] of Object.entries(TIMELINE_SECTION_REFS)) {
+    assert.equal(sourceRows.get(key), 1, `${key} must identify one current source row`);
+    const target = manifest.find(m => m.vol === vol && m.num === num);
+    assert.ok(target, `${key} target article`);
+    const sections = parseMd(readFileSync(join(root, 'public', target.path), 'utf8'));
+    assert.ok(sections.some(b => b.type === 'h2' && b.id === sectionId), `${key} target section`);
+  }
+  assert.deepEqual(TIMELINE_SECTION_REFS['after|May 1997|Bank of England independence'],
+    ['after', '04', 'the-independence-wave']);
+  assert.deepEqual(TIMELINE_SECTION_REFS['after|2 Jul 1997|Thai baht floats'],
+    ['after', '05', 'the-asian-financial-crisis-1997-98']);
+  assert.deepEqual(TIMELINE_SECTION_REFS['after|Mar 2003|Iraq invaded'],
+    ['after', '06', '9-11-afghanistan-and-iraq-2001-21']);
+});
+
+test('unrelated dated events are separate timeline rows', () => {
+  const source = manifest.find(m => m.vol === 'after' && m.num === '11');
+  const rows = parseMd(readFileSync(join(root, 'public', source.path), 'utf8'))
+    .filter(b => b.type === 'table').flatMap(t => t.rows);
+  for (const [date, event] of [
+    ['8 Jun 1974', 'US–Saudi Joint Commission established'],
+    ['26 Jun 1974', 'Herstatt Bank fails'],
+    ['May 1997', 'Bank of England independence'],
+    ['Jul 1997', 'Hong Kong handover'],
+    ['31 Oct 2008', 'Bitcoin whitepaper published'],
+    ['3 Jan 2009', 'Bitcoin genesis block mined']
+  ]) assert.ok(rows.some(r => r[0] === date && r[1] === event), `${date}: ${event}`);
 });
 
 test('all volumes retain a source list and a source timeline', () => {

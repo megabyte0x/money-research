@@ -10,7 +10,8 @@
 | Feb–Mar 1973 | Dollar devalued to $42.22; major currencies float | Floating by default |
 | Apr 1973 | CBOE opens; Black–Scholes published; SWIFT founded (May) | Options pricing; bank messaging network |
 | Oct 1973 | Yom Kippur War; OPEC embargo; oil quadruples | First oil shock; stagflation |
-| Jun 1974 | Herstatt Bank fails (26 Jun); US–Saudi Joint Commission established (8 Jun) | Distinct events: foreign-exchange settlement risk and economic cooperation/petrodollar recycling. [GAO, 1979](https://www.gao.gov/assets/id-79-7.pdf) |
+| 8 Jun 1974 | US–Saudi Joint Commission established | Economic cooperation and petrodollar recycling, not oil redemption. [GAO, 1979](https://www.gao.gov/assets/id-79-7.pdf) |
+| 26 Jun 1974 | Herstatt Bank fails | Foreign-exchange settlement risk; one currency leg can settle without the other. [BIS, 2026](https://www.bis.org/publications/qr-202606/uncovering-fx-settlement-risk-new-measures-2025-bis-triennial-survey) |
 | Dec 1974 | Basel Committee created; US private gold legal again (31 Dec) | Bank regulation begins |
 | 1975 | UK inflation 24%; Angola, Mozambique, Suriname independent | Great Inflation peak in Britain; decolonisation |
 | Nov 1975 | Rambouillet, first G6 summit | Summit governance of money |
@@ -51,7 +52,8 @@
 | Jan 1995 | WTO created | Global trade court |
 | 1994–97 | China unifies its exchange rate at 8.7 yuan/$ (Jan 1994), then pegs at 8.28 (1997–2005) | Bretton Woods II foundations |
 | 1996 | Ukrainian hryvnia issued | — |
-| May 1997 | Bank of England independence; Hong Kong handover (Jul) | — |
+| May 1997 | Bank of England independence | Monetary-policy governance changes |
+| Jul 1997 | Hong Kong handover | Currency-board regime continues |
 | 2 Jul 1997 | Thai baht floats | Asian financial crisis |
 | Dec 1997 | Korea's $58 bn IMF package | Largest rescue to date |
 | Jun 1998 | ECB established | — |
@@ -71,7 +73,8 @@
 | 2007 | M-Pesa (Mar); iPhone (Jun); BNP Paribas freezes funds (Aug); Northern Rock run (Sep) | Mobile money; crisis begins |
 | Mar 2008 | Bear Stearns rescued; Georgia war (Aug); oil $147 (Jul) | — |
 | 15 Sep 2008 | Lehman fails; AIG rescued; TARP (3 Oct); swap lines; China stimulus (Nov) | Global financial crisis |
-| 31 Oct 2008 | Bitcoin whitepaper; genesis block 3 Jan 2009 | Digital gold invented |
+| 31 Oct 2008 | Bitcoin whitepaper published | Proposed peer-to-peer electronic cash design |
+| 3 Jan 2009 | Bitcoin genesis block mined | Network begins operation |
 | Nov–Dec 2008 | G20 leaders' summit; QE1; Fed to zero (16 Dec) | New monetary instruments |
 | Apr 2009 | G20 London $1.1 tn; FSB created | — |
 | Oct 2009–May 2010 | Greek deficit revealed; €110 bn bailout | Eurozone crisis |

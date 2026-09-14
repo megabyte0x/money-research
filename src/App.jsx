@@ -1,6 +1,7 @@
 import React from 'react';
 import * as md from './md.js';
 import { eventYear, eventSortValue, mergeSharedEvents } from './timeline.js';
+import { TIMELINE_SECTION_REFS, timelineReferenceKey } from './timeline-references.js';
 import MoneyMechanics from './MoneyMechanics.jsx';
 import { searchDocuments, searchState, searchUrl } from './search.js';
 import { referenceSegments, shortTitle } from './references.js';
@@ -280,11 +281,8 @@ export default class App extends React.Component {
   rowRefs(vol, r) {
     // Only editorially reviewed event-to-section mappings may lead to a chapter.
     // All other rows link to their source timeline, never a keyword-matched passage.
-    const key = `${vol}|${this.md.stripInline(r[0] || '')}|${this.md.stripInline(r[1] || '')}`;
-    const reviewed = {
-      'after|Mar 2003|Iraq invaded': ['after', '06', '9-11-afghanistan-and-iraq-2001-21'],
-      'after|2 Jul 1997|Thai baht floats': ['after', '05', 'the-asian-financial-crisis-1997-98']
-    }[key];
+    const key = timelineReferenceKey(vol, this.md.stripInline(r[0] || ''), this.md.stripInline(r[1] || ''));
+    const reviewed = TIMELINE_SECTION_REFS[key];
     if (reviewed) {
       const m = this.state.manifest.find(x => x.vol === reviewed[0] && x.num === reviewed[1]);
       const section = m && (this.state.blocks[m.slug + '@' + m.vol] || []).find(b => b.id === reviewed[2]);
