@@ -10,19 +10,45 @@ import { createContentModel } from '../src/content-model.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const manifest = JSON.parse(readFileSync(join(root, 'public/content/manifest.json'), 'utf8'));
+const timelineEventIds = JSON.parse(readFileSync(join(root, 'public/content/timeline-event-ids.json'), 'utf8'));
+const idByTimelineKey = new Map(timelineEventIds.map(record => [record.key, record.id]));
 
 test('validated content model resolves articles, glossary and related-file references once', () => {
   const documents = Object.fromEntries(manifest.map(record =>
     [record.path, readFileSync(join(root, 'public', record.path), 'utf8')]));
   const observations = JSON.parse(readFileSync(join(root, 'public/content/observations.json'), 'utf8'));
-  const model = createContentModel(manifest, documents, observations);
+  const model = createContentModel(manifest, documents, observations, timelineEventIds);
   assert.equal(Object.keys(model.blocks).length, 44);
   assert.ok(model.glossary.length > 100);
   assert.match(JSON.stringify(model.blocks['10-master-timeline@gold']), /Gold reaches \$5,405\/oz/);
   assert.doesNotMatch(JSON.stringify(model), /\{\{obs:/);
   assert.deepEqual(model.fileRefs['09-gold-today-what-still-holds-its-value@gold'],
     [...new Set(model.fileRefs['09-gold-today-what-still-holds-its-value@gold'])]);
-  assert.throws(() => createContentModel(manifest, { ...documents, [manifest[0].path]: undefined }, observations), /Missing article/);
+  assert.throws(() => createContentModel(manifest, { ...documents, [manifest[0].path]: undefined }, observations, timelineEventIds), /Missing article/);
+  assert.throws(() => createContentModel(manifest, documents, observations, timelineEventIds.slice(1)), /Missing or duplicate timeline event ID/);
+  assert.throws(() => createContentModel(manifest, documents, observations, [...timelineEventIds, timelineEventIds[0]]), /Invalid or duplicate timeline event ID/);
+  assert.throws(() => createContentModel(manifest, documents, observations,
+    [...timelineEventIds, { id: 'evt-gold-0091', key: 'gold|2099|Unpublished event' }]), /Unreferenced timeline event ID/);
+  const goldTimeline = model.blocks['10-master-timeline@gold'].find(block => block.type === 'table');
+  assert.equal(goldTimeline.eventIds.length, goldTimeline.rows.length);
+  assert.equal(goldTimeline.eventIds[0], 'evt-gold-0001');
+  assert.equal(goldTimeline.eventIds.at(-1), 'evt-gold-0090');
+  const changedObservations = observations.map(record => record.id === 'gold-usd-2026-july-end'
+    ? { ...record, value: record.value + 1 } : record);
+  const changedModel = createContentModel(manifest, documents, changedObservations, [...timelineEventIds].reverse());
+  const changedTimeline = changedModel.blocks['10-master-timeline@gold'].find(block => block.type === 'table');
+  assert.deepEqual(changedTimeline.eventIds, goldTimeline.eventIds, 'IDs survive changed values and registry order');
+  assert.notDeepEqual(changedTimeline.rows, goldTimeline.rows, 'observation value actually changed');
+  const sourceGoldTimeline = manifest.find(record => record.id === 'gold-10');
+  const lines = documents[sourceGoldTimeline.path].split('\n');
+  const first = lines.findIndex(line => line.startsWith('| c. 4600–4300 BCE |'));
+  const second = lines.findIndex(line => line.startsWith('| c. 3000 BCE | Egypt'));
+  assert.ok(first >= 0 && second >= 0);
+  [lines[first], lines[second]] = [lines[second], lines[first]];
+  const reordered = createContentModel(manifest,
+    { ...documents, [sourceGoldTimeline.path]: lines.join('\n') }, observations, timelineEventIds);
+  const reorderedTable = reordered.blocks['10-master-timeline@gold'].find(block => block.type === 'table');
+  assert.deepEqual(reorderedTable.eventIds.slice(0, 2), ['evt-gold-0002', 'evt-gold-0001']);
 });
 
 test('the three-volume inventory has 44 unique, resolvable records', () => {
@@ -70,19 +96,22 @@ test('explicit timeline references identify one source event and a real target s
       sourceRows.set(key, (sourceRows.get(key) || 0) + 1);
     }
   }
-  for (const [key, [vol, num, sectionId]] of Object.entries(TIMELINE_SECTION_REFS)) {
-    assert.equal(sourceRows.get(key), 1, `${key} must identify one current source row`);
+  assert.equal(timelineEventIds.length, [...sourceRows.values()].reduce((sum, count) => sum + count, 0));
+  for (const record of timelineEventIds) assert.equal(sourceRows.get(record.key), 1, `${record.key} must identify one current source row`);
+  for (const [id, [vol, num, sectionId]] of Object.entries(TIMELINE_SECTION_REFS)) {
+    assert.ok(timelineEventIds.some(record => record.id === id), `${id} must name a current event`);
     const target = manifest.find(m => m.vol === vol && m.num === num);
-    assert.ok(target, `${key} target article`);
+    assert.ok(target, `${id} target article`);
     const sections = parseMd(readFileSync(join(root, 'public', target.path), 'utf8'));
-    assert.ok(sections.some(b => b.type === 'h2' && b.id === sectionId), `${key} target section`);
+    assert.ok(sections.some(b => b.type === 'h2' && b.id === sectionId), `${id} target section`);
   }
-  assert.deepEqual(TIMELINE_SECTION_REFS['after|May 1997|Bank of England independence'],
+  assert.deepEqual(TIMELINE_SECTION_REFS[idByTimelineKey.get('after|May 1997|Bank of England independence')],
     ['after', '04', 'the-independence-wave']);
-  assert.deepEqual(TIMELINE_SECTION_REFS['after|2 Jul 1997|Thai baht floats'],
+  assert.deepEqual(TIMELINE_SECTION_REFS[idByTimelineKey.get('after|2 Jul 1997|Thai baht floats')],
     ['after', '05', 'the-asian-financial-crisis-1997-98']);
-  assert.deepEqual(TIMELINE_SECTION_REFS['after|Mar 2003|Iraq invaded'],
+  assert.deepEqual(TIMELINE_SECTION_REFS[idByTimelineKey.get('after|Mar 2003|Iraq invaded')],
     ['after', '06', '9-11-afghanistan-and-iraq-2001-21']);
+  assert.deepEqual(TIMELINE_SECTION_REFS['evt-gold-0086'], ['gold', '09', 'the-numbers']);
 });
 
 test('unrelated dated events are separate timeline rows', () => {

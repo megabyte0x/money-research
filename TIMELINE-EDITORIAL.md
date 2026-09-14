@@ -1,0 +1,7 @@
+# Timeline editing and IDs
+
+The three source timelines remain the editorial text. `public/content/timeline-event-ids.json` is metadata: every source table row has one durable ID, separate from its date, label and row position. A text or date correction changes that row's `key`, **not** its `id`. A new row gets the next unused ID for its volume (for example, after the existing `evt-gold-0090`, use `evt-gold-0091`); never renumber older IDs after inserting or removing a row. Retire an ID when an event is withdrawn rather than reusing it for a different event.
+
+`src/timeline-references.js` maps reviewed IDs to article sections. Add a mapping only after checking the destination discusses the specific event; otherwise the UI links to its source timeline. `src/timeline.js` names the small set of cross-volume duplicates that an editor has confirmed represent the same event. Do not merge on date alone. Price values can change in `observations.json` without changing event IDs or their reviewed links.
+
+Run `npm run build` and `node --test --test-isolation=none tests/*.test.mjs` after editing. The build fails for unregistered, duplicate or stale source-event keys; tests validate registry coverage and section existence. These mechanical checks do **not** establish historical accuracy or editorial relevance for unmapped rows. The F06/D07 release gate still requires human review of the remaining events and composite claims.

@@ -1,7 +1,7 @@
 import React from 'react';
 import * as md from './md.js';
 import { eventYear, eventSortValue, mergeSharedEvents } from './timeline.js';
-import { TIMELINE_SECTION_REFS, timelineReferenceKey } from './timeline-references.js';
+import { TIMELINE_SECTION_REFS } from './timeline-references.js';
 import MoneyMechanics from './MoneyMechanics.jsx';
 import { searchDocuments, searchState, searchUrl } from './search.js';
 import { referenceSegments, shortTitle } from './references.js';
@@ -278,11 +278,10 @@ export default class App extends React.Component {
   parseYear(date) {
     return eventYear(date);
   }
-  rowRefs(vol, r) {
+  rowRefs(vol, eventId) {
     // Only editorially reviewed event-to-section mappings may lead to a chapter.
     // All other rows link to their source timeline, never a keyword-matched passage.
-    const key = timelineReferenceKey(vol, this.md.stripInline(r[0] || ''), this.md.stripInline(r[1] || ''));
-    const reviewed = TIMELINE_SECTION_REFS[key];
+    const reviewed = TIMELINE_SECTION_REFS[eventId];
     if (reviewed) {
       const m = this.state.manifest.find(x => x.vol === reviewed[0] && x.num === reviewed[1]);
       const section = m && (this.state.blocks[m.slug + '@' + m.vol] || []).find(b => b.id === reviewed[2]);
@@ -300,15 +299,15 @@ export default class App extends React.Component {
     for (const vol of ['gold', 'after', 'bitcoin']) {
       const m = this.state.manifest.find(x => x.vol === vol && x.slug.includes('timeline')); if (!m) continue;
       const tables = (this.state.blocks[m.slug + '@' + vol] || []).filter(b => b.type === 'table'); if (!tables.length) continue;
-      tables.flatMap(t => t.rows).forEach((r, i) => {
+      tables.flatMap(t => t.rows.map((row, index) => ({ row, eventId: t.eventIds[index] }))).forEach(({ row: r, eventId }) => {
         if (q && !r.join(' ').toLowerCase().includes(q)) return;
         const y = this.parseYear(r[0] || '');
         if (vol === 'bitcoin' && y > 2026) return;
         const isBig = (vol === 'bitcoin' ? bitcoinBig : big).test((r[1] || '') + ' ' + (r[2] || ''));
         if (onlyBig && !isBig && !q) return;
-        const ck = vol + i; const refs = this.refCache[ck] || (this.refCache[ck] = this.rowRefs(vol, r));
+        const refs = this.refCache[eventId] || (this.refCache[eventId] = this.rowRefs(vol, eventId));
         events.push({
-          id: 'evt-' + vol + '-' + m.num + '-' + i, vol, year: y, sort: eventSortValue(r[0] || ''),
+          id: eventId, vol, year: y, sort: eventSortValue(r[0] || ''),
           refs, date: this.md.stripInline(r[0] || ''), eventText: this.md.stripInline(r[1] || ''), significance: (r[2] || '').replace(/^—$/, ''),
           size: isBig ? '20px' : '15.5px', weight: isBig ? 500 : 400, pad: isBig ? '18px' : '11px', dot: isBig ? '11px' : '7px',
           dotBg: isBig ? 'var(--fg)' : 'var(--bg)', dotTop: isBig ? '22px' : '17px', dateColor: isBig ? 'var(--fg)' : 'var(--mut)'

@@ -8,9 +8,10 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const content = join(root, 'public/content');
 const manifest = JSON.parse(readFileSync(join(content, 'manifest.json'), 'utf8'));
 const observations = JSON.parse(readFileSync(join(content, 'observations.json'), 'utf8'));
+const timelineEventIds = JSON.parse(readFileSync(join(content, 'timeline-event-ids.json'), 'utf8'));
 const documents = Object.fromEntries(manifest.map(record =>
   [record.path, readFileSync(join(root, 'public', record.path), 'utf8')]));
-const model = createContentModel(manifest, documents, observations);
+const model = createContentModel(manifest, documents, observations, timelineEventIds);
 const byObservationId = indexObservations(observations);
 for (const record of manifest) {
   const output = join(content, 'resolved', record.path.slice('content/'.length));

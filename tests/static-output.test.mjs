@@ -6,12 +6,13 @@ import { createContentModel } from '../src/content-model.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const manifest = JSON.parse(readFileSync(join(root, 'public/content/manifest.json'), 'utf8'));
+const timelineEventIds = JSON.parse(readFileSync(join(root, 'public/content/timeline-event-ids.json'), 'utf8'));
 
 test('built browser index and static pages use the same validated source model', () => {
   const documents = Object.fromEntries(manifest.map(record =>
     [record.path, readFileSync(join(root, 'public', record.path), 'utf8')]));
   const observations = JSON.parse(readFileSync(join(root, 'public/content/observations.json'), 'utf8'));
-  const expected = createContentModel(manifest, documents, observations);
+  const expected = createContentModel(manifest, documents, observations, timelineEventIds);
   const browserIndex = JSON.parse(readFileSync(join(root, 'dist/content/index.json'), 'utf8'));
   assert.deepEqual(browserIndex, expected);
   const timeline = readFileSync(join(root, 'dist/gold/10-master-timeline/index.html'), 'utf8');

@@ -1,0 +1,1218 @@
+[
+  {
+    "id": "evt-gold-0001",
+    "key": "gold|c. 4600–4300 BCE|Varna necropolis, Bulgaria: ~3,000 gold objects, ~6 kg"
+  },
+  {
+    "id": "evt-gold-0002",
+    "key": "gold|c. 3000 BCE|Egypt mines Nubian gold"
+  },
+  {
+    "id": "evt-gold-0003",
+    "key": "gold|c. 3000 BCE|Mesopotamia prices goods in silver shekels"
+  },
+  {
+    "id": "evt-gold-0004",
+    "key": "gold|c. 2600 BCE|Royal Cemetery of Ur (Puabi's headdress)"
+  },
+  {
+    "id": "evt-gold-0005",
+    "key": "gold|c. 1750 BCE|Code of Hammurabi sets fines in silver"
+  },
+  {
+    "id": "evt-gold-0006",
+    "key": "gold|c. 1550 BCE|Mycenaean shaft graves (\"Mask of Agamemnon\")"
+  },
+  {
+    "id": "evt-gold-0007",
+    "key": "gold|c. 1350 BCE|Amarna letters: \"gold in Egypt is as common as dust\""
+  },
+  {
+    "id": "evt-gold-0008",
+    "key": "gold|c. 1323 BCE|Tutankhamun buried with ~110 kg gold coffin, 10 kg mask"
+  },
+  {
+    "id": "evt-gold-0009",
+    "key": "gold|c. 1150 BCE|Turin Papyrus gold-mine map"
+  },
+  {
+    "id": "evt-gold-0010",
+    "key": "gold|c. 700 BCE|Etruscan gold dental work"
+  },
+  {
+    "id": "evt-gold-0011",
+    "key": "gold|c. 650–600 BCE|Lydia strikes first coins, in electrum"
+  },
+  {
+    "id": "evt-gold-0012",
+    "key": "gold|c. 610–560 BCE|Alyattes' lion-head electrum coins"
+  },
+  {
+    "id": "evt-gold-0013",
+    "key": "gold|c. 550 BCE|Croesus issues pure gold and silver Croeseids at ~13.3:1"
+  },
+  {
+    "id": "evt-gold-0014",
+    "key": "gold|546 BCE|Persia conquers Lydia, keeps coinage"
+  },
+  {
+    "id": "evt-gold-0015",
+    "key": "gold|c. 515 BCE|Darius I's gold daric and silver siglos"
+  },
+  {
+    "id": "evt-gold-0016",
+    "key": "gold|c. 6th c. BCE|Punch-marked silver coins in India"
+  },
+  {
+    "id": "evt-gold-0017",
+    "key": "gold|407 BCE|Athens melts temple gold for emergency coins"
+  },
+  {
+    "id": "evt-gold-0018",
+    "key": "gold|c. 356 BCE|Philip II's gold staters from Pangaion"
+  },
+  {
+    "id": "evt-gold-0019",
+    "key": "gold|331–323 BCE|Alexander coins Persian treasuries (~180,000 talents)"
+  },
+  {
+    "id": "evt-gold-0020",
+    "key": "gold|221 BCE|Qin unifies China; round bronze ban liang cash"
+  },
+  {
+    "id": "evt-gold-0021",
+    "key": "gold|211 BCE|Roman silver denarius introduced"
+  },
+  {
+    "id": "evt-gold-0022",
+    "key": "gold|c. 46 BCE|Julius Caesar regularizes the gold aureus"
+  },
+  {
+    "id": "evt-gold-0023",
+    "key": "gold|c. 23 BCE|Augustus: 1 aureus = 25 denarii = 100 sestertii"
+  },
+  {
+    "id": "evt-gold-0024",
+    "key": "gold|c. 100 CE|Kushan gold dinaras in India"
+  },
+  {
+    "id": "evt-gold-0025",
+    "key": "gold|106 CE|Trajan conquers Dacian gold"
+  },
+  {
+    "id": "evt-gold-0026",
+    "key": "gold|3rd century|Denarius debased from ~95% to <5% silver"
+  },
+  {
+    "id": "evt-gold-0027",
+    "key": "gold|309–312|Constantine's gold solidus, 4.5 g"
+  },
+  {
+    "id": "evt-gold-0028",
+    "key": "gold|5th–11th c.|Solidus/bezant as Mediterranean world money"
+  },
+  {
+    "id": "evt-gold-0029",
+    "key": "gold|696–697|Abd al-Malik's Islamic dinar (4.25 g) and dirham"
+  },
+  {
+    "id": "evt-gold-0030",
+    "key": "gold|c. 794|Charlemagne's silver penny reform"
+  },
+  {
+    "id": "evt-gold-0031",
+    "key": "gold|1024|Song China issues jiaozi paper money"
+  },
+  {
+    "id": "evt-gold-0032",
+    "key": "gold|1040s–1090s|Byzantine solidus debased; hyperpyron reform 1092"
+  },
+  {
+    "id": "evt-gold-0033",
+    "key": "gold|1252|Florence strikes the gold florin"
+  },
+  {
+    "id": "evt-gold-0034",
+    "key": "gold|1284|Venice strikes the gold ducat (unchanged to 1797)"
+  },
+  {
+    "id": "evt-gold-0035",
+    "key": "gold|1324|Mansa Musa's hajj depresses Cairo gold prices"
+  },
+  {
+    "id": "evt-gold-0036",
+    "key": "gold|1344|England's gold noble"
+  },
+  {
+    "id": "evt-gold-0037",
+    "key": "gold|1489|English gold sovereign"
+  },
+  {
+    "id": "evt-gold-0038",
+    "key": "gold|1492–1533|Spanish conquest; Atahualpa's ransom (~6 t gold)"
+  },
+  {
+    "id": "evt-gold-0039",
+    "key": "gold|1540|Sher Shah Suri's silver rupee"
+  },
+  {
+    "id": "evt-gold-0040",
+    "key": "gold|1545|Potosí silver discovered"
+  },
+  {
+    "id": "evt-gold-0041",
+    "key": "gold|1544–51|Henry VIII's Great Debasement (silver)"
+  },
+  {
+    "id": "evt-gold-0042",
+    "key": "gold|1663|English guinea"
+  },
+  {
+    "id": "evt-gold-0043",
+    "key": "gold|1694|Bank of England founded"
+  },
+  {
+    "id": "evt-gold-0044",
+    "key": "gold|1717|Newton fixes guinea at 21s (15.2:1)"
+  },
+  {
+    "id": "evt-gold-0045",
+    "key": "gold|1792|US Coinage Act, bimetallic dollar at 15:1"
+  },
+  {
+    "id": "evt-gold-0046",
+    "key": "gold|1797–1821|Bank of England suspends gold payments"
+  },
+  {
+    "id": "evt-gold-0047",
+    "key": "gold|1816|UK Coinage Act: gold sole standard, sovereign 7.32 g"
+  },
+  {
+    "id": "evt-gold-0048",
+    "key": "gold|1834|US ratio changed to 16:1"
+  },
+  {
+    "id": "evt-gold-0049",
+    "key": "gold|1848–1851|California and Australian gold rushes"
+  },
+  {
+    "id": "evt-gold-0050",
+    "key": "gold|1865|Latin Monetary Union at 15.5:1"
+  },
+  {
+    "id": "evt-gold-0051",
+    "key": "gold|1871–73|Germany adopts gold mark with French indemnity"
+  },
+  {
+    "id": "evt-gold-0052",
+    "key": "gold|1873|US Coinage Act demonetizes silver dollar"
+  },
+  {
+    "id": "evt-gold-0053",
+    "key": "gold|1879|US resumes gold payments"
+  },
+  {
+    "id": "evt-gold-0054",
+    "key": "gold|1886|Witwatersrand discovered"
+  },
+  {
+    "id": "evt-gold-0055",
+    "key": "gold|1893|India closes mints to silver"
+  },
+  {
+    "id": "evt-gold-0056",
+    "key": "gold|1896|Bryan's \"Cross of Gold\" speech"
+  },
+  {
+    "id": "evt-gold-0057",
+    "key": "gold|1896|Klondike gold rush"
+  },
+  {
+    "id": "evt-gold-0058",
+    "key": "gold|1897|Russia and Japan adopt gold"
+  },
+  {
+    "id": "evt-gold-0059",
+    "key": "gold|1900|US Gold Standard Act, $20.67/oz"
+  },
+  {
+    "id": "evt-gold-0060",
+    "key": "gold|1914|Belligerents suspend gold on outbreak of war"
+  },
+  {
+    "id": "evt-gold-0061",
+    "key": "gold|1925|Britain returns to gold at pre-war parity"
+  },
+  {
+    "id": "evt-gold-0062",
+    "key": "gold|1931|Britain leaves gold (September)"
+  },
+  {
+    "id": "evt-gold-0063",
+    "key": "gold|1933|US Executive Order 6102: private gold surrendered"
+  },
+  {
+    "id": "evt-gold-0064",
+    "key": "gold|1934|US Gold Reserve Act: $35/oz"
+  },
+  {
+    "id": "evt-gold-0065",
+    "key": "gold|1935|China leaves silver"
+  },
+  {
+    "id": "evt-gold-0066",
+    "key": "gold|1944|Bretton Woods: dollar at $35, others pegged to dollar"
+  },
+  {
+    "id": "evt-gold-0067",
+    "key": "gold|1960|Triffin dilemma articulated"
+  },
+  {
+    "id": "evt-gold-0068",
+    "key": "gold|1961–68|London Gold Pool"
+  },
+  {
+    "id": "evt-gold-0069",
+    "key": "gold|1968|Two-tier gold market"
+  },
+  {
+    "id": "evt-gold-0070",
+    "key": "gold|1969|IMF creates SDRs (\"paper gold\")"
+  },
+  {
+    "id": "evt-gold-0071",
+    "key": "gold|15 Aug 1971|Nixon closes the gold window"
+  },
+  {
+    "id": "evt-gold-0072",
+    "key": "gold|1973|Major currencies float"
+  },
+  {
+    "id": "evt-gold-0073",
+    "key": "gold|8 Jun 1974|US–Saudi economic-cooperation commission established"
+  },
+  {
+    "id": "evt-gold-0074",
+    "key": "gold|31 Dec 1974|US private gold ownership legal again"
+  },
+  {
+    "id": "evt-gold-0075",
+    "key": "gold|1976|Jamaica Accords agree IMF gold-rule changes (in force 1978)"
+  },
+  {
+    "id": "evt-gold-0076",
+    "key": "gold|Jan 1980|Gold peaks at $850"
+  },
+  {
+    "id": "evt-gold-0077",
+    "key": "gold|1999|Gold bottoms around $252/oz"
+  },
+  {
+    "id": "evt-gold-0078",
+    "key": "gold|1999–2002|UK auctions about half its gold reserves"
+  },
+  {
+    "id": "evt-gold-0079",
+    "key": "gold|Sep 1999|Central Bank Gold Agreement"
+  },
+  {
+    "id": "evt-gold-0080",
+    "key": "gold|2008–2011|Financial crisis; gold to ~$1,900 (Sept 2011)"
+  },
+  {
+    "id": "evt-gold-0081",
+    "key": "gold|2010s–22|Basel III rules implemented on varying national schedules; conditional bullion credit-risk weight and separate stable-funding treatment"
+  },
+  {
+    "id": "evt-gold-0082",
+    "key": "gold|Feb 2022|Russian central-bank reserves frozen"
+  },
+  {
+    "id": "evt-gold-0083",
+    "key": "gold|2022–24|Central banks buy >1,000 t/year for three years"
+  },
+  {
+    "id": "evt-gold-0084",
+    "key": "gold|2025|Average price $3,431; 53 record highs; demand ~5,000 t / $555 bn"
+  },
+  {
+    "id": "evt-gold-0085",
+    "key": "gold|29 Jan 2026|Gold reaches ${{obs:gold-usd-2026-record-high}}/oz in the WGC USD series"
+  },
+  {
+    "id": "evt-gold-0086",
+    "key": "gold|31 Jul 2026|Gold finishes July at ${{obs:gold-usd-2026-july-end}}/oz"
+  },
+  {
+    "id": "evt-gold-0087",
+    "key": "gold|31 Aug 2026|Gold finishes August at ${{obs:gold-usd-2026-august-end}}/oz"
+  },
+  {
+    "id": "evt-gold-0088",
+    "key": "gold|Jun 2026|ECB reports gold at 27% of end-2025 official reserves including gold; most of its share increase reflects price valuation"
+  },
+  {
+    "id": "evt-gold-0089",
+    "key": "gold|3 Sep 2026|Gold spot-price estimate around $4,490/oz"
+  },
+  {
+    "id": "evt-gold-0090",
+    "key": "gold|2026 Q1|IMF COFER dollar share is 57.13% of foreign-exchange reserves, excluding gold"
+  },
+  {
+    "id": "evt-after-0001",
+    "key": "after|Feb 1971|Nasdaq opens; Intel 4004 ships (Nov)"
+  },
+  {
+    "id": "evt-after-0002",
+    "key": "after|15 Aug 1971|Nixon suspends gold convertibility, 10% import surcharge, price freeze"
+  },
+  {
+    "id": "evt-after-0003",
+    "key": "after|Dec 1971|Smithsonian Agreement: dollar to $38/oz, bands ±2.25%"
+  },
+  {
+    "id": "evt-after-0004",
+    "key": "after|Dec 1971|Bangladesh independent (taka 1972)"
+  },
+  {
+    "id": "evt-after-0005",
+    "key": "after|Apr–May 1972|European \"snake\"; CME launches currency futures"
+  },
+  {
+    "id": "evt-after-0006",
+    "key": "after|Feb–Mar 1973|Dollar devalued to $42.22; major currencies float"
+  },
+  {
+    "id": "evt-after-0007",
+    "key": "after|Apr 1973|CBOE opens; Black–Scholes published; SWIFT founded (May)"
+  },
+  {
+    "id": "evt-after-0008",
+    "key": "after|Oct 1973|Yom Kippur War; OPEC embargo; oil quadruples"
+  },
+  {
+    "id": "evt-after-0009",
+    "key": "after|8 Jun 1974|US–Saudi Joint Commission established"
+  },
+  {
+    "id": "evt-after-0010",
+    "key": "after|26 Jun 1974|Herstatt Bank fails"
+  },
+  {
+    "id": "evt-after-0011",
+    "key": "after|Dec 1974|Basel Committee created; US private gold legal again (31 Dec)"
+  },
+  {
+    "id": "evt-after-0012",
+    "key": "after|1975|UK inflation 24%; Angola, Mozambique, Suriname independent"
+  },
+  {
+    "id": "evt-after-0013",
+    "key": "after|Nov 1975|Rambouillet, first G6 summit"
+  },
+  {
+    "id": "evt-after-0014",
+    "key": "after|Jan 1976|Jamaica Accords (in force Apr 1978)"
+  },
+  {
+    "id": "evt-after-0015",
+    "key": "after|1976|Britain takes IMF loan; Visa named"
+  },
+  {
+    "id": "evt-after-0016",
+    "key": "after|1978–79|\"Carter bonds\" in DM and francs; dollar crisis"
+  },
+  {
+    "id": "evt-after-0017",
+    "key": "after|Jan–Feb 1979|Iranian Revolution; second oil shock"
+  },
+  {
+    "id": "evt-after-0018",
+    "key": "after|Mar 1979|European Monetary System / ERM"
+  },
+  {
+    "id": "evt-after-0019",
+    "key": "after|Aug–Oct 1979|Volcker appointed; 6 Oct reserve-targeting shift"
+  },
+  {
+    "id": "evt-after-0020",
+    "key": "after|Dec 1979|Soviet invasion of Afghanistan; Carter Doctrine (Jan 1980)"
+  },
+  {
+    "id": "evt-after-0021",
+    "key": "after|21 Jan 1980|Gold peaks at $850"
+  },
+  {
+    "id": "evt-after-0022",
+    "key": "after|1980|Zimbabwe independent; Iran–Iraq War begins (Sep); US deregulation act"
+  },
+  {
+    "id": "evt-after-0023",
+    "key": "after|1981|Reagan tax cuts; first interest-rate swap (IBM–World Bank); fed funds ~20%"
+  },
+  {
+    "id": "evt-after-0024",
+    "key": "after|Aug 1982|Mexico announces it cannot pay"
+  },
+  {
+    "id": "evt-after-0025",
+    "key": "after|Oct 1982|Garn–St Germain Act"
+  },
+  {
+    "id": "evt-after-0026",
+    "key": "after|Oct 1983|Hong Kong dollar currency board"
+  },
+  {
+    "id": "evt-after-0027",
+    "key": "after|Sep 1985|Plaza Accord"
+  },
+  {
+    "id": "evt-after-0028",
+    "key": "after|1986|Oil collapses under $10; UK Big Bang; Single European Act"
+  },
+  {
+    "id": "evt-after-0029",
+    "key": "after|Feb 1987|Louvre Accord"
+  },
+  {
+    "id": "evt-after-0030",
+    "key": "after|19 Oct 1987|Black Monday, Dow −22.6%"
+  },
+  {
+    "id": "evt-after-0031",
+    "key": "after|Jul 1988|Basel I"
+  },
+  {
+    "id": "evt-after-0032",
+    "key": "after|Mar 1989|Brady Plan; Delors Report (Apr); Washington Consensus"
+  },
+  {
+    "id": "evt-after-0033",
+    "key": "after|Nov 1989|Berlin Wall opens; NZ Reserve Bank Act (Dec)"
+  },
+  {
+    "id": "evt-after-0034",
+    "key": "after|29 Dec 1989|Nikkei peaks at 38,915"
+  },
+  {
+    "id": "evt-after-0035",
+    "key": "after|Jan 1990|Balcerowicz Plan, Poland"
+  },
+  {
+    "id": "evt-after-0036",
+    "key": "after|Jul–Oct 1990|German monetary union 1:1; reunification; Namibia independent (Mar)"
+  },
+  {
+    "id": "evt-after-0037",
+    "key": "after|Aug 1990–Feb 1991|Iraq invades Kuwait; Gulf War; oil $40"
+  },
+  {
+    "id": "evt-after-0038",
+    "key": "after|Apr 1991|Argentina Convertibility Law (peso = dollar)"
+  },
+  {
+    "id": "evt-after-0039",
+    "key": "after|Jun–Dec 1991|Slovenia, Croatia, Baltics independent; USSR dissolves (26 Dec)"
+  },
+  {
+    "id": "evt-after-0040",
+    "key": "after|Jan 1992|Russian price liberalisation; 2,500% inflation"
+  },
+  {
+    "id": "evt-after-0041",
+    "key": "after|Feb 1992|Maastricht Treaty signed"
+  },
+  {
+    "id": "evt-after-0042",
+    "key": "after|Jun 1992|Estonian kroon currency board"
+  },
+  {
+    "id": "evt-after-0043",
+    "key": "after|16 Sep 1992|Black Wednesday; sterling and lira leave ERM"
+  },
+  {
+    "id": "evt-after-0044",
+    "key": "after|Jan–Feb 1993|Czechoslovakia and its currency split; Eritrea independent (May)"
+  },
+  {
+    "id": "evt-after-0045",
+    "key": "after|Jul–Aug 1993|Russia expels ruble zone; ERM bands widened to ±15%"
+  },
+  {
+    "id": "evt-after-0046",
+    "key": "after|Jan 1994|NAFTA; CFA franc devalued 50%; Yugoslav hyperinflation peaks (313 million %/month)"
+  },
+  {
+    "id": "evt-after-0047",
+    "key": "after|Dec 1994|Mexican peso devaluation; $50 bn rescue (1995)"
+  },
+  {
+    "id": "evt-after-0048",
+    "key": "after|Jan 1995|WTO created"
+  },
+  {
+    "id": "evt-after-0049",
+    "key": "after|1994–97|China unifies its exchange rate at 8.7 yuan/$ (Jan 1994), then pegs at 8.28 (1997–2005)"
+  },
+  {
+    "id": "evt-after-0050",
+    "key": "after|1996|Ukrainian hryvnia issued"
+  },
+  {
+    "id": "evt-after-0051",
+    "key": "after|May 1997|Bank of England independence"
+  },
+  {
+    "id": "evt-after-0052",
+    "key": "after|Jul 1997|Hong Kong handover"
+  },
+  {
+    "id": "evt-after-0053",
+    "key": "after|2 Jul 1997|Thai baht floats"
+  },
+  {
+    "id": "evt-after-0054",
+    "key": "after|Dec 1997|Korea's $58 bn IMF package"
+  },
+  {
+    "id": "evt-after-0055",
+    "key": "after|Jun 1998|ECB established"
+  },
+  {
+    "id": "evt-after-0056",
+    "key": "after|Aug 1998|Russia defaults and devalues"
+  },
+  {
+    "id": "evt-after-0057",
+    "key": "after|Sep 1998|LTCM rescued; Malaysia imposes capital controls"
+  },
+  {
+    "id": "evt-after-0058",
+    "key": "after|1 Jan 1999|Euro launched (11 members); Brazil floats real (Jan)"
+  },
+  {
+    "id": "evt-after-0059",
+    "key": "after|1999|Gold bottoms ~$252; UK sells half its gold; Central Bank Gold Agreement (Sep); Gramm–Leach–Bliley (Nov); G20 created"
+  },
+  {
+    "id": "evt-after-0060",
+    "key": "after|Jan 2000|Ecuador dollarises; Nasdaq peaks 5,048 (10 Mar)"
+  },
+  {
+    "id": "evt-after-0061",
+    "key": "after|Dec 2000|Commodity Futures Modernization Act"
+  },
+  {
+    "id": "evt-after-0062",
+    "key": "after|2001|El Salvador dollarises; Argentina defaults ~$100 bn (Dec); 9/11; Afghanistan war (Oct); China joins WTO (Dec)"
+  },
+  {
+    "id": "evt-after-0063",
+    "key": "after|Jan 2002|Euro notes and coins; Argentine peso floats; East Timor independent (May)"
+  },
+  {
+    "id": "evt-after-0064",
+    "key": "after|Mar 2003|Iraq invaded"
+  },
+  {
+    "id": "evt-after-0065",
+    "key": "after|Jun 2003|Fed funds 1%"
+  },
+  {
+    "id": "evt-after-0066",
+    "key": "after|Jun 2004|Basel II"
+  },
+  {
+    "id": "evt-after-0067",
+    "key": "after|Nov 2004|GLD gold ETF launched"
+  },
+  {
+    "id": "evt-after-0068",
+    "key": "after|Jul 2005|China unpegs yuan"
+  },
+  {
+    "id": "evt-after-0069",
+    "key": "after|2007|M-Pesa (Mar); iPhone (Jun); BNP Paribas freezes funds (Aug); Northern Rock run (Sep)"
+  },
+  {
+    "id": "evt-after-0070",
+    "key": "after|Mar 2008|Bear Stearns rescued; Georgia war (Aug); oil $147 (Jul)"
+  },
+  {
+    "id": "evt-after-0071",
+    "key": "after|15 Sep 2008|Lehman fails; AIG rescued; TARP (3 Oct); swap lines; China stimulus (Nov)"
+  },
+  {
+    "id": "evt-after-0072",
+    "key": "after|31 Oct 2008|Bitcoin whitepaper published"
+  },
+  {
+    "id": "evt-after-0073",
+    "key": "after|3 Jan 2009|Bitcoin genesis block mined"
+  },
+  {
+    "id": "evt-after-0074",
+    "key": "after|Nov–Dec 2008|G20 leaders' summit; QE1; Fed to zero (16 Dec)"
+  },
+  {
+    "id": "evt-after-0075",
+    "key": "after|Apr 2009|G20 London $1.1 tn; FSB created"
+  },
+  {
+    "id": "evt-after-0076",
+    "key": "after|Oct 2009–May 2010|Greek deficit revealed; €110 bn bailout"
+  },
+  {
+    "id": "evt-after-0077",
+    "key": "after|Jul 2010|Dodd–Frank Act"
+  },
+  {
+    "id": "evt-after-0078",
+    "key": "after|Dec 2010|Basel III agreed"
+  },
+  {
+    "id": "evt-after-0079",
+    "key": "after|2011|Arab Spring; S&P downgrades US (5 Aug); gold $1,921 (6 Sep); South Sudan independent (Jul); SNB franc floor (Sep)"
+  },
+  {
+    "id": "evt-after-0080",
+    "key": "after|Mar 2012|SWIFT disconnects Iranian banks"
+  },
+  {
+    "id": "evt-after-0081",
+    "key": "after|26 Jul 2012|Draghi: \"whatever it takes\"; ESM (Oct)"
+  },
+  {
+    "id": "evt-after-0082",
+    "key": "after|2013|Abenomics QE; Cyprus bail-in (Mar); taper tantrum (May); Belt and Road; WeChat Pay"
+  },
+  {
+    "id": "evt-after-0083",
+    "key": "after|Mar 2014|Crimea annexed; first Russia sanctions; Russia begins gold build-up; ECB negative rates (Jun)"
+  },
+  {
+    "id": "evt-after-0084",
+    "key": "after|2015|SNB abandons floor (Jan); Greek referendum (Jul); China devaluation (Aug); CIPS (Oct); Fed first hike (Dec); Ethereum"
+  },
+  {
+    "id": "evt-after-0085",
+    "key": "after|2016|BoJ negative rates (Jan); Brexit vote (23 Jun); yuan joins SDR (Oct); Trump elected (Nov); India's UPI"
+  },
+  {
+    "id": "evt-after-0086",
+    "key": "after|2018–19|US–China tariff war; Basel III NSFR in force; Libra announced (Jun 2019); repo spike (Sep 2019)"
+  },
+  {
+    "id": "evt-after-0087",
+    "key": "after|Mar 2020|COVID: Fed to zero, unlimited QE, CARES $2.2 tn; ECB PEPP"
+  },
+  {
+    "id": "evt-after-0088",
+    "key": "after|Jul 2020|NextGenerationEU €750 bn; USMCA"
+  },
+  {
+    "id": "evt-after-0089",
+    "key": "after|Oct–Nov 2020|Bahamas Sand Dollar (first CBDC); Brazil Pix"
+  },
+  {
+    "id": "evt-after-0090",
+    "key": "after|2021|El Salvador adopts Bitcoin; Evergrande defaults; inflation \"transitory\"; Afghanistan withdrawal (Aug)"
+  },
+  {
+    "id": "evt-after-0091",
+    "key": "after|24 Feb 2022|Russia invades Ukraine; ~$300 bn reserves frozen; SWIFT cut-offs"
+  },
+  {
+    "id": "evt-after-0092",
+    "key": "after|Mar 2022|Fed begins fastest hikes since 1979"
+  },
+  {
+    "id": "evt-after-0093",
+    "key": "after|Jun–Oct 2022|US CPI 9.1%; TTF gas €340/MWh (Aug); UK gilt crisis (Sep); eurozone CPI 10.6% (Oct); FTX collapses (Nov); oil price cap (Dec)"
+  },
+  {
+    "id": "evt-after-0094",
+    "key": "after|2022–24|Central banks buy >1,000 t gold a year"
+  },
+  {
+    "id": "evt-after-0095",
+    "key": "after|Mar 2023|SVB fails; Credit Suisse absorbed by UBS; FedNow (Jul)"
+  },
+  {
+    "id": "evt-after-0096",
+    "key": "after|Jul 2023|Fed at 5.25–5.50%"
+  },
+  {
+    "id": "evt-after-0097",
+    "key": "after|Oct–Nov 2023|Gaza war; Houthi Red Sea attacks"
+  },
+  {
+    "id": "evt-after-0098",
+    "key": "after|Jan 2024|Bitcoin ETFs approved; BRICS expands; Zimbabwe ZiG (Apr); BoJ ends negative rates (Mar); MiCA; G7 ERA loans (Jun); BIS leaves mBridge"
+  },
+  {
+    "id": "evt-after-0099",
+    "key": "after|Sep–Dec 2024|Fed cuts three times"
+  },
+  {
+    "id": "evt-after-0100",
+    "key": "after|Jan–Mar 2025|El Salvador adopts and publishes Decree 199 in January, amending—not repealing—the Bitcoin Law; voluntary private acceptance takes effect 90 days after publication. US Strategic Bitcoin Reserve (Mar); Germany reforms debt brake (Mar); gold reaches $3,000"
+  },
+  {
+    "id": "evt-after-0101",
+    "key": "after|2 Apr 2025|\"Liberation Day\" IEEPA tariffs"
+  },
+  {
+    "id": "evt-after-0102",
+    "key": "after|May–Jul 2025|Moody's downgrades US (May); Israel–Iran twelve-day war and US strikes (Jun); NATO 5% target; OBBBA (4 Jul); GENIUS Act (18 Jul); CLARITY Act passes House"
+  },
+  {
+    "id": "evt-after-0103",
+    "key": "after|Sep–Dec 2025|Fed cuts three times to 3.50–3.75%; 43-day shutdown (Oct–Nov); Gaza ceasefire (Oct); US–China truce (Nov); gold $4,000; Bitcoin >$120k (Oct); Argentina $20 bn swap; Bulgaria adopts euro (1 Jan 2026)"
+  },
+  {
+    "id": "evt-after-0104",
+    "key": "after|29 Jan 2026|Gold reaches ${{obs:gold-usd-2026-record-high}}/oz in the WGC USD series"
+  },
+  {
+    "id": "evt-after-0105",
+    "key": "after|20 Feb 2026|Supreme Court strikes down IEEPA tariffs 6–3; Section 122 10% tariff from 24 Feb"
+  },
+  {
+    "id": "evt-after-0106",
+    "key": "after|Late Feb 2026|US–Israel war on Iran; Strait of Hormuz closed"
+  },
+  {
+    "id": "evt-after-0107",
+    "key": "after|Mar 2026|Qatar force majeure; Ras Laffan hit (18 Mar); IEA 400 mb release; Philippines energy emergency; Brent $118 (31 Mar)"
+  },
+  {
+    "id": "evt-after-0108",
+    "key": "after|Apr 2026|US–Iran ceasefire (8 Apr); Hormuz stays mostly shut; Easter truce in Ukraine"
+  },
+  {
+    "id": "evt-after-0109",
+    "key": "after|May 2026|Kevin Warsh becomes Fed chair; Victory Day truce in Ukraine; Spirit Airlines fails; stablecoins ~$320 bn"
+  },
+  {
+    "id": "evt-after-0110",
+    "key": "after|Jun 2026|ECB reports gold at 27% of end-2025 official reserves including gold, largely reflecting valuation effects; Fed holds at 3.50–3.75%"
+  },
+  {
+    "id": "evt-after-0111",
+    "key": "after|Jul 2026|IMF cuts 2026 growth to 3.0%; Fed holds with three hawkish dissents; Brent $72 then $97"
+  },
+  {
+    "id": "evt-after-0112",
+    "key": "after|31 Jul–31 Aug 2026|Gold finishes July at ${{obs:gold-usd-2026-july-end}}/oz and August at ${{obs:gold-usd-2026-august-end}}/oz"
+  },
+  {
+    "id": "evt-after-0113",
+    "key": "after|Sep 2026|US–Iran strikes in Hormuz resume; Brent ~$97; gold ~$4,490; latest cited IMF COFER dollar share is 57.13% of 2026 Q1 foreign-exchange reserves; Putin says Ukraine deal \"possible\""
+  },
+  {
+    "id": "evt-bitcoin-0001",
+    "key": "bitcoin|15 Sep 2008|Lehman Brothers fails."
+  },
+  {
+    "id": "evt-bitcoin-0002",
+    "key": "bitcoin|31 Oct 2008|Satoshi Nakamoto posts Bitcoin: A Peer-to-Peer Electronic Cash System."
+  },
+  {
+    "id": "evt-bitcoin-0003",
+    "key": "bitcoin|3 Jan 2009|Genesis block mined, embedding The Times headline \"Chancellor on brink of second bailout for banks.\""
+  },
+  {
+    "id": "evt-bitcoin-0004",
+    "key": "bitcoin|12 Jan 2009|First transaction: 10 BTC to Hal Finney (block 170)."
+  },
+  {
+    "id": "evt-bitcoin-0005",
+    "key": "bitcoin|Oct 2009|First published exchange rate: 1,309 BTC per dollar, derived from electricity cost."
+  },
+  {
+    "id": "evt-bitcoin-0006",
+    "key": "bitcoin|22 May 2010|10,000 BTC paid for two pizzas — first purchase of a physical good."
+  },
+  {
+    "id": "evt-bitcoin-0007",
+    "key": "bitcoin|Jul 2010|Mt. Gox exchange opens in Tokyo."
+  },
+  {
+    "id": "evt-bitcoin-0008",
+    "key": "bitcoin|15 Aug 2010|Value-overflow bug creates 184 billion BTC in one block; reversed by soft fork within hours."
+  },
+  {
+    "id": "evt-bitcoin-0009",
+    "key": "bitcoin|Jun 2011|Price reaches $31, then falls ~94% to ~$2."
+  },
+  {
+    "id": "evt-bitcoin-0010",
+    "key": "bitcoin|Nov 2012|First halving: subsidy 50 → 25 BTC."
+  },
+  {
+    "id": "evt-bitcoin-0011",
+    "key": "bitcoin|Mar 2013|Chain split (versions 0.7/0.8); the second and last outage in Bitcoin's history."
+  },
+  {
+    "id": "evt-bitcoin-0012",
+    "key": "bitcoin|Nov 2013|Price passes $1,000; Mt. Gox \"Willy\" bot later found to have bought ~270,000 BTC with non-existent dollars."
+  },
+  {
+    "id": "evt-bitcoin-0013",
+    "key": "bitcoin|Dec 2013|People's Bank of China bars banks from bitcoin."
+  },
+  {
+    "id": "evt-bitcoin-0014",
+    "key": "bitcoin|Feb 2014|Mt. Gox halts withdrawals; ~850,000 BTC lost (200,000 later found); price −36%."
+  },
+  {
+    "id": "evt-bitcoin-0015",
+    "key": "bitcoin|2014|Tether issues the first dollar stablecoin on Bitcoin's Omni layer; IRS Notice 2014-21 makes bitcoin property for US tax."
+  },
+  {
+    "id": "evt-bitcoin-0016",
+    "key": "bitcoin|2015|Ethereum launches; price bottoms ~$152 (−87% from 2013 peak)."
+  },
+  {
+    "id": "evt-bitcoin-0017",
+    "key": "bitcoin|Aug 2016|Bitfinex hacked; 119,756 BTC stolen; 36% haircut on all customers."
+  },
+  {
+    "id": "evt-bitcoin-0018",
+    "key": "bitcoin|Jul 2016|Second halving: 25 → 12.5 BTC."
+  },
+  {
+    "id": "evt-bitcoin-0019",
+    "key": "bitcoin|2017|Griffin & Shams later find Tether issuance timed to prop up the price; China bans exchanges and token offerings (Sep)."
+  },
+  {
+    "id": "evt-bitcoin-0020",
+    "key": "bitcoin|1 Aug 2017|Bitcoin Cash hard fork over block size."
+  },
+  {
+    "id": "evt-bitcoin-0021",
+    "key": "bitcoin|24 Aug 2017|SegWit activates after user-activated soft-fork threat; the \"block-size war.\""
+  },
+  {
+    "id": "evt-bitcoin-0022",
+    "key": "bitcoin|8 Nov 2017|SegWit2x (miners' and companies' hard fork) cancelled for lack of consensus."
+  },
+  {
+    "id": "evt-bitcoin-0023",
+    "key": "bitcoin|Dec 2017|CME lists bitcoin futures; price peaks at $19,783."
+  },
+  {
+    "id": "evt-bitcoin-0024",
+    "key": "bitcoin|2018|Price falls 84% to $3,122; Tether trades at $0.88 (Oct); CVE-2018-17144 inflation bug patched before disclosure (Sep)."
+  },
+  {
+    "id": "evt-bitcoin-0025",
+    "key": "bitcoin|Feb 2019|QuadrigaCX collapses after founder dies with the only keys; C$216m owed."
+  },
+  {
+    "id": "evt-bitcoin-0026",
+    "key": "bitcoin|Mar 2019|Bitwise tells the SEC 95% of reported bitcoin volume is fake."
+  },
+  {
+    "id": "evt-bitcoin-0027",
+    "key": "bitcoin|2019|Bhutan's state holding company begins mining with surplus hydropower (disclosed 2023)."
+  },
+  {
+    "id": "evt-bitcoin-0028",
+    "key": "bitcoin|Mar 2020|Price falls 50% in two days in the COVID crash, then rises 300% for the year."
+  },
+  {
+    "id": "evt-bitcoin-0029",
+    "key": "bitcoin|May 2020|Third halving: 12.5 → 6.25 BTC."
+  },
+  {
+    "id": "evt-bitcoin-0030",
+    "key": "bitcoin|Aug 2020|MicroStrategy begins converting its treasury into bitcoin."
+  },
+  {
+    "id": "evt-bitcoin-0031",
+    "key": "bitcoin|Oct 2020|Nigeria's EndSARS protest movement switches to bitcoin after bank accounts are frozen."
+  },
+  {
+    "id": "evt-bitcoin-0032",
+    "key": "bitcoin|Feb 2021|Central Bank of Nigeria bars banks from crypto (reversed Dec 2023); New York AG settles with Tether/Bitfinex ($18.5m)."
+  },
+  {
+    "id": "evt-bitcoin-0033",
+    "key": "bitcoin|8–9 Jun 2021|El Salvador passes the Bitcoin Law (62 of 84 votes)."
+  },
+  {
+    "id": "evt-bitcoin-0034",
+    "key": "bitcoin|Jun 2021|China bans mining; hashrate halves; largest difficulty drop on record (Jul)."
+  },
+  {
+    "id": "evt-bitcoin-0035",
+    "key": "bitcoin|7 Sep 2021|Bitcoin becomes legal tender in El Salvador; Chivo wallet with $30 bonus."
+  },
+  {
+    "id": "evt-bitcoin-0036",
+    "key": "bitcoin|24 Sep 2021|China bans all crypto trading and mining."
+  },
+  {
+    "id": "evt-bitcoin-0037",
+    "key": "bitcoin|Oct 2021|IMF GFSR chapter warns of \"cryptoization\" in emerging markets; CFTC fines Tether $41m (fully backed 27.6% of days)."
+  },
+  {
+    "id": "evt-bitcoin-0038",
+    "key": "bitcoin|Nov 2021|Taproot activates; price peaks at $69,000."
+  },
+  {
+    "id": "evt-bitcoin-0039",
+    "key": "bitcoin|Jan 2022|IMF Article IV tells El Salvador to remove legal-tender status."
+  },
+  {
+    "id": "evt-bitcoin-0040",
+    "key": "bitcoin|Feb 2022|Canada freezes protest donors' accounts and lists 34 crypto wallets; 14.6 BTC already distributed in person. Russia invades Ukraine; Ukraine raises $54m in crypto in a week."
+  },
+  {
+    "id": "evt-bitcoin-0041",
+    "key": "bitcoin|21 Apr 2022|Central African Republic makes crypto legal tender; CEMAC objects within days."
+  },
+  {
+    "id": "evt-bitcoin-0042",
+    "key": "bitcoin|May 2022|Terra/UST collapses ($40–60bn); Tether trades at $0.945 with $7bn redeemed in five days."
+  },
+  {
+    "id": "evt-bitcoin-0043",
+    "key": "bitcoin|13 Jun 2022|Celsius freezes withdrawals ($4.7bn liabilities); Three Arrows Capital fails (>$4bn losses); Voyager follows."
+  },
+  {
+    "id": "evt-bitcoin-0044",
+    "key": "bitcoin|8–11 Nov 2022|FTX halts withdrawals and files for bankruptcy; $8bn customer shortfall."
+  },
+  {
+    "id": "evt-bitcoin-0045",
+    "key": "bitcoin|30 Nov 2022|ECB blog \"Bitcoin's last stand.\""
+  },
+  {
+    "id": "evt-bitcoin-0046",
+    "key": "bitcoin|Dec 2022|Basel Committee publishes its cryptoasset prudential standard (later revised, with international implementation date 1 Jan 2026); price bottoms ~$16,500 (−78%); Core Scientific files for bankruptcy."
+  },
+  {
+    "id": "evt-bitcoin-0047",
+    "key": "bitcoin|Feb 2023|IMF \"Elements of Effective Policies for Crypto Assets\": do not grant legal tender, do not hold in reserves; BIS's Carstens: \"the battle has been won.\""
+  },
+  {
+    "id": "evt-bitcoin-0048",
+    "key": "bitcoin|8–12 Mar 2023|Silvergate liquidates; USDC depegs to $0.87 on SVB exposure; Signature Bank closed; bitcoin rises 21% in the month."
+  },
+  {
+    "id": "evt-bitcoin-0049",
+    "key": "bitcoin|6 Apr 2023|CAR repeals crypto legal tender."
+  },
+  {
+    "id": "evt-bitcoin-0050",
+    "key": "bitcoin|Aug 2023|DC Circuit rules for Grayscale against the SEC."
+  },
+  {
+    "id": "evt-bitcoin-0051",
+    "key": "bitcoin|Nov 2023|Binance pleads guilty and pays $4.3bn; Wallet of Satoshi exits the US."
+  },
+  {
+    "id": "evt-bitcoin-0052",
+    "key": "bitcoin|Dec 2023|FASB fair-value accounting standard for crypto (effective 2025); fees spike to $38 on Ordinals demand."
+  },
+  {
+    "id": "evt-bitcoin-0053",
+    "key": "bitcoin|10 Jan 2024|SEC approves eleven US spot bitcoin ETFs."
+  },
+  {
+    "id": "evt-bitcoin-0054",
+    "key": "bitcoin|22 Feb 2024|ECB blog \"The naked emperor's new clothes.\""
+  },
+  {
+    "id": "evt-bitcoin-0055",
+    "key": "bitcoin|19–20 Apr 2024|Fourth halving: 6.25 → 3.125 BTC; average fee $128 on the day."
+  },
+  {
+    "id": "evt-bitcoin-0056",
+    "key": "bitcoin|29–30 Apr 2024|Hong Kong lists spot bitcoin ETFs."
+  },
+  {
+    "id": "evt-bitcoin-0057",
+    "key": "bitcoin|Jun–Jul 2024|Germany (Saxony) sells 49,858 seized BTC for €2.64bn."
+  },
+  {
+    "id": "evt-bitcoin-0058",
+    "key": "bitcoin|Jul 2024|Mt. Gox begins creditor repayments."
+  },
+  {
+    "id": "evt-bitcoin-0059",
+    "key": "bitcoin|27 Jul 2024|Trump at Nashville: \"Never sell your Bitcoin\"; strategic stockpile promised."
+  },
+  {
+    "id": "evt-bitcoin-0060",
+    "key": "bitcoin|Oct 2024|ECB paper on the distributional consequences of bitcoin; Minneapolis Fed paper recommends taxing or banning a fixed-supply asset to preserve deficit finance; Bhutan's holdings peak at 13,295 BTC."
+  },
+  {
+    "id": "evt-bitcoin-0061",
+    "key": "bitcoin|5 Dec 2024|Price passes $100,000."
+  },
+  {
+    "id": "evt-bitcoin-0062",
+    "key": "bitcoin|18 Dec 2024|Powell: \"We're not allowed to own bitcoin\"; IMF staff agreement with El Salvador ($1.4bn) requiring legal-tender rollback."
+  },
+  {
+    "id": "evt-bitcoin-0063",
+    "key": "bitcoin|Dec 2024|Japan's government rejects a bitcoin reserve; MiCA fully in force in the EU."
+  },
+  {
+    "id": "evt-bitcoin-0064",
+    "key": "bitcoin|Jan 2025|Tether moves HQ to El Salvador; Nagel: \"digital tulips\"; Fink at Davos on sovereign 2–5% allocations; Lagarde: no EU central bank will hold bitcoin."
+  },
+  {
+    "id": "evt-bitcoin-0065",
+    "key": "bitcoin|29–30 Jan 2025|El Salvador adopts and publishes Decree 199 amending, not repealing, the Bitcoin Law; voluntary private acceptance and repeal of Bitcoin tax-payment authority take effect 90 days after publication. The statute retains “curso legal” wording. Decree 199"
+  },
+  {
+    "id": "evt-bitcoin-0066",
+    "key": "bitcoin|21 Feb 2025|Bybit hacked for $1.5bn by North Korea."
+  },
+  {
+    "id": "evt-bitcoin-0067",
+    "key": "bitcoin|6 Mar 2025|US executive order creates the Strategic Bitcoin Reserve and Digital Asset Stockpile from forfeited coins."
+  },
+  {
+    "id": "evt-bitcoin-0068",
+    "key": "bitcoin|11 Mar 2025|Lummis reintroduces the BITCOIN Act (1m BTC over five years)."
+  },
+  {
+    "id": "evt-bitcoin-0069",
+    "key": "bitcoin|Mar 2025|Bank of Korea rules out a reserve."
+  },
+  {
+    "id": "evt-bitcoin-0070",
+    "key": "bitcoin|7 Apr 2025|Price falls to $74,508 on the tariff shock; recovers above $100,000 by May."
+  },
+  {
+    "id": "evt-bitcoin-0071",
+    "key": "bitcoin|Apr 2025|Swiss National Bank rejects bitcoin reserves; 0xB10C shows nine pools relaying AntPool's block templates."
+  },
+  {
+    "id": "evt-bitcoin-0072",
+    "key": "bitcoin|May 2025|New Hampshire (HB302) and Arizona (HB2749) reserve laws; Pakistan announces a strategic reserve and 2,000 MW for mining (29 May); IMF objects; Steak 'n Shake accepts bitcoin."
+  },
+  {
+    "id": "evt-bitcoin-0073",
+    "key": "bitcoin|22 Jun 2025|Texas SB21 creates a $10m state reserve."
+  },
+  {
+    "id": "evt-bitcoin-0074",
+    "key": "bitcoin|18 Jul 2025|GENIUS Act signed: federal licensing of dollar stablecoins."
+  },
+  {
+    "id": "evt-bitcoin-0075",
+    "key": "bitcoin|7 Aug 2025|Executive order opens 401(k) plans to digital assets."
+  },
+  {
+    "id": "evt-bitcoin-0076",
+    "key": "bitcoin|Aug 2025|Lightning public capacity falls to ~3,850 BTC; Bessent rules out reserve purchases."
+  },
+  {
+    "id": "evt-bitcoin-0077",
+    "key": "bitcoin|Sep 2025|Chainalysis 2025 index: India, US, Pakistan, Vietnam, Brazil lead; hashrate crosses 1 ZH/s; Kazakhstan launches Alem Crypto Fund."
+  },
+  {
+    "id": "evt-bitcoin-0078",
+    "key": "bitcoin|6 Oct 2025|All-time high $126,198."
+  },
+  {
+    "id": "evt-bitcoin-0079",
+    "key": "bitcoin|10–11 Oct 2025|~$19bn of futures liquidated in a day — largest deleveraging on record."
+  },
+  {
+    "id": "evt-bitcoin-0080",
+    "key": "bitcoin|10–13 Oct 2025|Bitcoin Core v30 raises the OP_RETURN data limit; Knots client reaches ~20–25% of nodes."
+  },
+  {
+    "id": "evt-bitcoin-0081",
+    "key": "bitcoin|14 Oct 2025|US DOJ files a civil forfeiture complaint concerning approximately 127,271 BTC linked to the Prince Group; a complaint is not final forfeiture or a verified reserve balance. DOJ"
+  },
+  {
+    "id": "evt-bitcoin-0082",
+    "key": "bitcoin|Nov 2025|Strategy's market value falls below the value of its bitcoin; Texas buys ~$5m of IBIT; Czech National Bank buys a $1m test portfolio (13 Nov); fees fall below 1% of miner revenue; PBoC restates the ban."
+  },
+  {
+    "id": "evt-bitcoin-0083",
+    "key": "bitcoin|Dec 2025|Twenty One Capital lists on NYSE with 43,500 BTC; Bhutan pledges up to 10,000 BTC to Gelephu; Fed note: dollar stablecoins reinforce dollar internationalisation."
+  },
+  {
+    "id": "evt-bitcoin-0084",
+    "key": "bitcoin|29 Jan 2026|Gold reaches ${{obs:gold-usd-2026-record-high}}/oz in the World Gold Council's USD series; IBIT record daily outflow $528m (30 Jan); bitcoin −10% for the month. WGC July 2026, table 1"
+  },
+  {
+    "id": "evt-bitcoin-0085",
+    "key": "bitcoin|Feb 2026|Price falls ~52% from peak to ~$60,000 (6 Feb); RESBit reserve bill reintroduced in Brazil; BIP-360's draft P2MR design is revised and BIP-361 is assigned as a draft informational migration proposal (11 Feb), not activated Bitcoin rules. BIP-360; BIP-361"
+  },
+  {
+    "id": "evt-bitcoin-0086",
+    "key": "bitcoin|28 Feb 2026|Iran war begins; bitcoin dips to $63,106. Gold later retreats from its pre-war January record; the WGC reports ${{obs:gold-usd-2026-july-end}}/oz at July month-end, about a quarter below that record. WGC July 2026, table 1"
+  },
+  {
+    "id": "evt-bitcoin-0087",
+    "key": "bitcoin|Mar 2026|Pakistan's Virtual Assets Act (6 Mar); Google researchers estimate that a future, error-corrected machine could attack 256-bit elliptic-curve cryptography with under 500,000 physical qubits under stated superconducting-hardware assumptions—a resource model, not a demonstrated attack or Bitcoin deadline (31 Mar); Fidelity \"Getting Off Zero\"; USDT launches on Lightning; Labor Department 401(k) rule (30 Mar); Metaplanet reports $725m loss. Google Research, 31 Mar 2026"
+  },
+  {
+    "id": "evt-bitcoin-0088",
+    "key": "bitcoin|Apr 2026|Ceasefire; bitcoin ~$80,000; discussion of the draft BIP-361 quantum-migration phases continues, with no activated sunset date; Michl at Bitcoin 2026: \"this is the future.\" BIP-361"
+  },
+  {
+    "id": "evt-bitcoin-0089",
+    "key": "bitcoin|May 2026|Pools with 75% of hashrate pledge Stratum V2 (11 May); Tether takes full control of Twenty One (20 May); nine-session $2.8bn ETF outflow and $1.29bn IBIT block sale; House bill drops the 1m-BTC purchase target (22 May); Bhutan disputes $1bn drawdown."
+  },
+  {
+    "id": "evt-bitcoin-0090",
+    "key": "bitcoin|29 Jun 2026|Strategy adopts \"Digital Credit Capital Framework,\" raises STRC coupon to 12%, begins first bitcoin sales since 2022."
+  },
+  {
+    "id": "evt-bitcoin-0091",
+    "key": "bitcoin|30 Jun 2026|Cycle low $58,562 (−53.5% from peak)."
+  },
+  {
+    "id": "evt-bitcoin-0092",
+    "key": "bitcoin|1 Jul 2026|MiCA grandfathering ends; Binance suspends EU services."
+  },
+  {
+    "id": "evt-bitcoin-0093",
+    "key": "bitcoin|13–14 Jul 2026|Iran declares Hormuz closed; bitcoin below $62,000; Warsh: \"no bailouts, including crypto.\" Gold tested the $4,000 level on several occasions during July, but this monthly account does not establish a sub-$4,000 price on these dates. WGC July 2026"
+  },
+  {
+    "id": "evt-bitcoin-0094",
+    "key": "bitcoin|15 Jul 2026|Japan's upper house passes the 20% flat crypto tax (from 2028)."
+  },
+  {
+    "id": "evt-bitcoin-0095",
+    "key": "bitcoin|4 Aug 2026|Russia signs crypto-exchange licensing law (effective 1 Sep)."
+  },
+  {
+    "id": "evt-bitcoin-0096",
+    "key": "bitcoin|Aug 2026|Bitcoin +26% for the month; ETFs +$3.5bn; correlation with gold 0.81; Trump Media abandons its treasury (17 Aug); Pakistan opens licensing."
+  },
+  {
+    "id": "evt-bitcoin-0097",
+    "key": "bitcoin|3–4 Sep 2026|IMF staff agreement with El Salvador: bitcoin added since 2025 came from \"private donations\"; Chivo majority privatised."
+  },
+  {
+    "id": "evt-bitcoin-0098",
+    "key": "bitcoin|6 Sep 2026|Difficulty 127.45T at block 965,664; hashrate ~950 EH/s; fees 0.43% of rewards."
+  },
+  {
+    "id": "evt-bitcoin-0099",
+    "key": "bitcoin|9 Sep 2026|Iran's central bank lets importers settle in stablecoins and bitcoin."
+  },
+  {
+    "id": "evt-bitcoin-0100",
+    "key": "bitcoin|11–13 Sep 2026|~20.08m BTC mined (95.6%); ETFs 1.251m BTC ($96.6bn); Strategy 845,050 BTC; price ~$77,000, −33% y/y; gold $4,407, +30% y/y; CLARITY Act cloture vote set for 15 Sep."
+  },
+  {
+    "id": "evt-bitcoin-0101",
+    "key": "bitcoin|~Apr 2028|Fifth halving expected at block 1,050,000: 3.125 → 1.5625 BTC."
+  }
+]

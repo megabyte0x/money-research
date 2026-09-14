@@ -1,11 +1,14 @@
-import { parseGlossary, parseMd } from './md.js';
+import { parseGlossary, parseMd, stripInline } from './md.js';
 import { indexObservations, resolveObservations } from './observations.js';
+import { indexTimelineEventIds, timelineReferenceKey } from './timeline-references.js';
 
-export function createContentModel(manifest, documents, observations) {
+export function createContentModel(manifest, documents, observations, timelineEventIds) {
   if (!Array.isArray(manifest) || !documents || typeof documents !== 'object') {
     throw new Error('Invalid content inputs');
   }
   const byObservationId = indexObservations(observations);
+  const byTimelineEventKey = indexTimelineEventIds(timelineEventIds);
+  const seenTimelineIds = new Set();
   const ids = new Set();
   const routes = new Set();
   const blocks = {};
@@ -26,6 +29,22 @@ export function createContentModel(manifest, documents, observations) {
     if (source.trim().split(/\s+/).length !== record.words) throw new Error(`Stale word count: ${record.id}`);
     const content = resolveObservations(source, byObservationId);
     const parsed = parseMd(content);
+    if (record.slug.includes('timeline')) {
+      const sourceTables = parseMd(source).filter(block => block.type === 'table');
+      const renderedTables = parsed.filter(block => block.type === 'table');
+      if (sourceTables.length !== renderedTables.length) throw new Error(`Timeline table mismatch: ${record.id}`);
+      sourceTables.forEach((table, tableIndex) => {
+        const rendered = renderedTables[tableIndex];
+        if (table.rows.length !== rendered.rows.length) throw new Error(`Timeline row mismatch: ${record.id}`);
+        rendered.eventIds = table.rows.map(row => {
+          const key = timelineReferenceKey(record.vol, stripInline(row[0] || ''), stripInline(row[1] || ''));
+          const id = byTimelineEventKey.get(key);
+          if (!id || seenTimelineIds.has(id)) throw new Error(`Missing or duplicate timeline event ID: ${key}`);
+          seenTimelineIds.add(id);
+          return id;
+        });
+      });
+    }
     const headings = parsed.filter(block => block.type === 'h2').map(block => block.text);
     if (JSON.stringify(headings) !== JSON.stringify(record.h2)) throw new Error(`Stale headings: ${record.id}`);
     blocks[key] = parsed;
@@ -35,6 +54,8 @@ export function createContentModel(manifest, documents, observations) {
       glossary = glossary.concat(parseGlossary(content).map(term => ({ ...term, vol: record.vol })));
     }
   }
+
+  if (seenTimelineIds.size !== byTimelineEventKey.size) throw new Error('Unreferenced timeline event ID');
 
   const seen = new Set();
   glossary = glossary.filter(term => {
