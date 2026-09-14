@@ -97,6 +97,20 @@ test('unrelated dated events are separate timeline rows', () => {
     ['31 Oct 2008', 'Bitcoin whitepaper published'],
     ['3 Jan 2009', 'Bitcoin genesis block mined']
   ]) assert.ok(rows.some(r => r[0] === date && r[1] === event), `${date}: ${event}`);
+  const gold = manifest.find(m => m.vol === 'gold' && m.num === '10');
+  const goldRows = parseMd(readFileSync(join(root, 'public', gold.path), 'utf8'))
+    .filter(b => b.type === 'table').flatMap(t => t.rows);
+  for (const [date, event] of [
+    ['1896', 'Bryan\'s "Cross of Gold" speech'],
+    ['1896', 'Klondike gold rush'],
+    ['1999', 'Gold bottoms around $252/oz'],
+    ['1999–2002', 'UK auctions about half its gold reserves'],
+    ['Sep 1999', 'Central Bank Gold Agreement'],
+    ['31 Jul 2026', 'Gold finishes July at ${{obs:gold-usd-2026-july-end}}/oz'],
+    ['31 Aug 2026', 'Gold finishes August at ${{obs:gold-usd-2026-august-end}}/oz'],
+    ['2026 Q1', 'IMF COFER dollar share is 57.13% of foreign-exchange reserves, excluding gold']
+  ]) assert.ok(goldRows.some(r => r[0] === date && r[1] === event), `${date}: ${event}`);
+  assert.doesNotMatch(goldRows.map(r => r[2]).join(' '), /Gold's official monetary role ends|Fiat era begins|Trigger for reserve diversification/);
 });
 
 test('all volumes retain a source list and a source timeline', () => {
