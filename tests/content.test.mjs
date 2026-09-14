@@ -350,6 +350,24 @@ test('E23 petrodollar copy distinguishes invoicing and recycling from redemption
   }
 });
 
+test('E25 payment comparisons keep authorization, messaging and settlement distinct', () => {
+  const after = readFileSync(join(root, 'public/content/after/08-innovation-cards-bitcoin-stablecoins-cbdcs.md'), 'utf8');
+  const origin = readFileSync(join(root, 'public/content/bitcoin/01-the-origin-what-2008-produced.md'), 'utf8');
+  const design = readFileSync(join(root, 'public/content/bitcoin/02-what-bitcoin-solved-and-what-it-did-not.md'), 'utf8');
+  const scale = readFileSync(join(root, 'public/content/bitcoin/11-defects-that-stop-bitcoin-from-being-a-global-currency.md'), 'utf8');
+  const ledger = readFileSync(join(root, 'EDITORIAL-SOURCES.md'), 'utf8');
+  assert.match(after, /Swift instruction is \*\*not\*\* a transfer of funds or final settlement/);
+  assert.match(after, /Neither gross nor adjusted volume is automatically equivalent/);
+  assert.match(origin, /gross blockchain transfer total is \*\*not\*\* a count or value of purchases/);
+  assert.match(design, /settlement\*\* stage of other systems, not a card authorization screen/);
+  assert.match(design, /total sender cost, recipient amount, elapsed time to usable funds/);
+  assert.match(scale, /public channel capacity does not measure completed payments/);
+  assert.match(ledger, /E25.*Visa Onchain Analytics/);
+  for (const article of [after, origin, design, scale]) {
+    assert.doesNotMatch(article, /settling more volume than Visa|processing more transaction volume than Visa|against Visa's average of (?:roughly |about )?10,000/);
+  }
+});
+
 test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {
   const dates = ['3 Jan 2009', '15 Aug 1971', 'c. 4600–4300 BCE', '1925', '31 Oct 2008'];
   assert.deepEqual(dates.sort((a, b) => eventSortValue(a) - eventSortValue(b)),

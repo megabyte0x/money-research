@@ -132,6 +132,8 @@ Basel Committee, *Basel III: A global regulatory framework* (2010, rev. 2011) an
 
 ## Innovation
 
+Payment-stage references reviewed 14 September 2026: [Swift, *What is Swift?*](https://www.swift.com/about-us/who-we-are/what-swift) identifies Swift as bank messaging, not a clearing or settlement operator; [Visa Developer glossary](https://developer.visa.com/pages/glossary) distinguishes card authorization, clearing and settlement; [Federal Reserve Financial Services, *About the FedNow Service*](https://www.frbservices.org/financial-services/fednow/about.html) describes instant payments through participating depository institutions with immediate funds availability. [Visa Onchain Analytics, *Transactions*, “Adjusted Transaction Methodology”](https://www.visaonchainanalytics.com/transactions) separates gross transfers from adjusted and use-case-labelled activity, including payments, trading, exchanges, minting and infrastructure. Its labels and heuristics do not make the entire adjusted series merchant purchases. [World Bank, *Remittance Prices Worldwide* methodology](https://remittanceprices.worldbank.org/node/20237) includes fee and FX margin for a defined amount and corridor; neither a blockchain fee nor a message time is an end-to-end remittance cost or delivery time. [BIS, *Project mBridge*](https://www.bis.org/project/mbridge) reports a cross-border CBDC MVP and real-value pilot, not universal production use.
+
 Donald MacKenzie, *An Engine, Not a Camera: How Financial Models Shape Markets* (2006) — options and derivatives
 
 Gillian Tett, *Fool's Gold* (2009) — credit default swaps
