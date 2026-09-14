@@ -10,7 +10,7 @@ Satoshi Nakamoto, *Bitcoin: A Peer-to-Peer Electronic Cash System* (31 October 2
 
 Bitcoin Developer Guide, *Payment Processing*, “Verifying Payment” and “Issuing Refunds” — https://developer.bitcoin.org/devguide/payment_processing.html#verifying-payment ; https://developer.bitcoin.org/devguide/payment_processing.html#issuing-refunds . Confirmations increase protection against replacement but do not make a transfer absolutely irreversible at a fixed time; a refund is a separate transfer. Accessed 13 September 2026; older numerical examples in the guide are not treated as current network statistics.
  
-White House, *Establishment of the Strategic Bitcoin Reserve and United States Digital Asset Stockpile* (Executive Order, 6 March 2025) — https://www.whitehouse.gov/presidential-actions/2025/03/establishment-of-the-strategic-bitcoin-reserve-and-united-states-digital-asset-stockpile/
+White House, *Establishment of the Strategic Bitcoin Reserve and United States Digital Asset Stockpile* (Executive Order, 6 March 2025), §§2–3 — https://www.whitehouse.gov/presidential-actions/2025/03/establishment-of-the-strategic-bitcoin-reserve-and-united-states-digital-asset-stockpile/ . This is an executive direction for eligible government-held BTC, not a statute or a Bitcoin unit-of-account mandate.
  
 White House, *Democratizing Access to Alternative Assets for 401(k) Investors* (7 August 2025) — https://www.federalregister.gov/documents/2025/08/12/2025-15340/democratizing-access-to-alternative-assets-for-401k-investors ; Department of Labor proposed rule (30 March 2026) — https://www.dol.gov/newsroom/releases/ebsa/ebsa20260330
  
@@ -18,7 +18,9 @@ Congress.gov, *S.954 — BITCOIN Act of 2025* — https://www.congress.gov/bill/
  
 SEC, Gensler statement on spot bitcoin ETPs (10 January 2024) — https://www.sec.gov/newsroom/speeches-statements/gensler-statement-spot-bitcoin-011023
  
-IMF, *Elements of Effective Policies for Crypto Assets* (23 February 2023) — https://www.imf.org/-/media/files/publications/pp/2023/english/ppea2023004.pdf ; *Global Financial Stability Report*, October 2021, ch. 2 "The Crypto Ecosystem and Financial Stability Challenges" — https://www.imf.org/-/media/Files/Publications/GFSR/2021/October/English/ch2.ashx
+IMF, *Elements of Effective Policies for Crypto Assets* (policy paper, 23 February 2023), paras. 33–39 — https://www.imf.org/-/media/files/publications/pp/2023/english/ppea2023004.pdf . Advice on official currency, legal tender and central-bank reserves is not domestic law for every member. *Global Financial Stability Report*, October 2021, ch. 2 "The Crypto Ecosystem and Financial Stability Challenges" — https://www.imf.org/-/media/Files/Publications/GFSR/2021/October/English/ch2.ashx
+
+Czech National Bank, *The CNB creates a test portfolio of digital assets* (press release, 13 November 2025) — https://www.cnb.cz/en/cnb-news/press-releases/The-CNB-creates-a-test-portfolio-of-digital-assets/ . The $1 million portfolio contains Bitcoin, a dollar stablecoin and a tokenized deposit and is outside the bank's international reserves; a test is not a reserve allocation.
  
 IMF, El Salvador 2021 Article IV (25 January 2022) — https://www.imf.org/en/News/Articles/2022/01/25/pr2213-el-salvador-imf-executive-board-concludes-2021-article-iv-consultation ; staff-level agreement on EFF (18 December 2024) — https://www.imf.org/en/news/articles/2024/12/18/pr-24485-el-salvador-imf-reaches-staff-level-agreement-on-an-eff-arrangement ; *El Salvador: Selected Issues* (2025) — https://www.elibrary.imf.org/view/journals/002/2025/068/article-A001-en.xml ; combined second and third review (3 September 2026) — https://www.imf.org/en/news/articles/2026/09/03/pr26285-el-salvador-imf-reaches-sla-on-combined-2nd-and-3rd-rev-under-eff-arrangement
 
@@ -56,9 +58,9 @@ Federal Reserve Board staff, *Taylor Rules* (2007), §2, equations (1)–(2) —
 
 Bank of England, *New forms of digital money* (2021), §1.1 and box A — https://www.bankofengland.co.uk/paper/2021/new-forms-of-digital-money . Deposit creation by banks differs from lending existing funds; fully backed payment instruments could shift credit funding rather than eliminate credit. Applying that distinction to Bitcoin is an inference, not a Bank of England Bitcoin forecast.
  
-Amol Amol and Erzo Luttmer, *Unique Implementation of Permanent Primary Deficits?*, Minneapolis Fed Working Paper 807 (October 2024) — https://www.minneapolisfed.org/research/working-papers/unique-implementation-of-permanent-primary-deficits
+Amol Amol and Erzo Luttmer, *Unique Implementation of Permanent Primary Deficits?*, Minneapolis Fed Working Paper 807 (October 2024) — https://www.minneapolisfed.org/research/working-papers/unique-implementation-of-permanent-primary-deficits . The abstract's prohibition/tax result holds within its stated incomplete-markets and strategy assumptions; an academic working paper is not Federal Reserve policy.
  
-Ulrich Bindseil and Jürgen Schaaf, *Bitcoin's last stand* (ECB blog, 30 November 2022) — https://www.ecb.europa.eu/press/blog/date/2022/html/ecb.blog221130~5301eecd19.en.html ; *ETF approval for bitcoin – the naked emperor's new clothes* (22 February 2024) — https://www.ecb.europa.eu/press/blog/date/2024/html/ecb.blog20240222~0929f86e23.en.html ; *The distributional consequences of Bitcoin* (SSRN, October 2024) — https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4985877
+Ulrich Bindseil and Jürgen Schaaf, *Bitcoin's last stand* (ECB blog, 30 November 2022) — https://www.ecb.europa.eu/press/blog/date/2022/html/ecb.blog221130~5301eecd19.en.html ; *ETF approval for bitcoin – the naked emperor's new clothes* (authors' ECB blog, 22 February 2024) — https://www.ecb.europa.eu/press/blog/date/2024/html/ecb.blog20240222~0929f86e23.en.html . The blog disclaims that authors' views necessarily represent the ECB or Eurosystem. *The distributional consequences of Bitcoin* (SSRN, October 2024) — https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4985877
  
 John Griffin and Amin Shams, *Is Bitcoin Really Un-Tethered?*, Journal of Finance (2020) — https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3195066
  

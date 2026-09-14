@@ -127,6 +127,17 @@ test('Bitcoin security and quantum copy distinguishes rewards, models and draft 
   }
 });
 
+test('Bitcoin institutional positions distinguish policy, research, speech and test portfolios', () => {
+  const record = manifest.find(m => m.id === 'bitcoin-05');
+  const article = readFileSync(join(root, 'public', record.path), 'utf8');
+  assert.match(article, /authors' assessment, not an adopted ECB regulation/);
+  assert.match(article, /policy guidance for members, not the domestic law/);
+  assert.match(article, /academic working paper, not a Federal Reserve Board decision/);
+  assert.match(article, /outside its international reserves/);
+  assert.match(article, /executive direction about government-held assets, not legislation/);
+  assert.doesNotMatch(article, /every international financial institution.*written its opposition into policy|— the Fed's actual position|one genuine collision is fiscal/);
+});
+
 test('reserve-share explanations name the incompatible COFER and gold denominators', () => {
   for (const path of [
     'content/gold/08-why-the-dollar-replaced-gold.md',
