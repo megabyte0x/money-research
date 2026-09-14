@@ -77,7 +77,7 @@
 | Jan 1980 | Gold peaks at $850 | Inflation-era high |
 | 1999 | Gold bottoms ~$252; UK sells half its reserves; Central Bank Gold Agreement | Low point of gold's monetary status |
 | 2008–2011 | Financial crisis; gold to ~$1,900 (Sept 2011) | Return as crisis hedge |
-| 2019–22 | Basel III NSFR rules phased in; allocated physical gold keeps its 0% risk weight, unallocated gold penalized | Regulatory nudge toward physical metal |
+| 2010s–22 | Basel III rules implemented on varying national schedules; conditional bullion credit-risk weight and separate stable-funding treatment | Neither a blanket zero-risk status nor a central-bank reserve-eligibility rule |
 | Feb 2022 | Russian central-bank reserves frozen | Trigger for reserve diversification |
 | 2022–24 | Central banks buy >1,000 t/year for three years | Record official demand |
 | 2025 | Average price $3,431; 53 record highs; demand ~5,000 t / $555 bn | Gold passes $3,000 and $4,000 |

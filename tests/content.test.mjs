@@ -368,6 +368,23 @@ test('E25 payment comparisons keep authorization, messaging and settlement disti
   }
 });
 
+test('E27 bank capital, funding and reserve eligibility stay distinct', () => {
+  const gold = readFileSync(join(root, 'public/content/gold/09-gold-today-what-still-holds-its-value.md'), 'utf8');
+  const goldTimeline = readFileSync(join(root, 'public/content/gold/10-master-timeline.md'), 'utf8');
+  const crisis = readFileSync(join(root, 'public/content/after/07-financial-crisis-and-the-age-of-qe-2007-2019.md'), 'utf8');
+  const rules = readFileSync(join(root, 'public/content/after/10-rules-treaties-and-institutions.md'), 'utf8');
+  const comparison = readFileSync(join(root, 'public/content/bitcoin/08-why-not-gold-again.md'), 'utf8');
+  const ledger = readFileSync(join(root, 'EDITORIAL-SOURCES.md'), 'utf8');
+  assert.match(gold, /to the extent backed by gold-bullion liabilities/);
+  assert.match(gold, /85% required-stable-funding factor/);
+  assert.match(comparison, /not central-bank reserve eligibility/);
+  assert.match(comparison, /1% of a bank's Tier 1 capital and must not exceed 2%/);
+  assert.match(ledger, /E27.*CRE20\.110/);
+  for (const article of [gold, goldTimeline, crisis, rules, comparison]) {
+    assert.doesNotMatch(article, /treated allocated physical gold as a zero-risk asset|gold is reserve-grade|physical gold 0% risk weight|unallocated gold penalized/);
+  }
+});
+
 test('connected timeline orders BCE, interwar, fiat and Bitcoin events', () => {
   const dates = ['3 Jan 2009', '15 Aug 1971', 'c. 4600–4300 BCE', '1925', '31 Oct 2008'];
   assert.deepEqual(dates.sort((a, b) => eventSortValue(a) - eventSortValue(b)),

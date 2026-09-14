@@ -65,7 +65,7 @@ The gold standard needed almost no rules: a currency was a weight of metal and c
 | 2004 | Basel II | Risk-model-based capital; blamed for under-capitalisation |
 | 2008 | TARP ($700 bn) | US bank bailout |
 | 2010 | Dodd–Frank Act | US financial reform; Volcker Rule; derivatives clearing; resolution powers |
-| 2010–19 | Basel III (NSFR from 2018–19) | Higher capital, leverage and liquidity ratios; physical gold 0% risk weight |
+| 2010–19 | Basel III reforms (national phase-ins varied) | Separate capital, leverage, liquidity and funding tests; a conditional bullion credit-risk weight is not a zero-risk or reserve-eligibility ruling |
 | 2012 | EU Fiscal Compact | Hardened deficit rules |
 | 2014 | EU Banking Union / Single Supervisory Mechanism | ECB supervises big banks |
 | 2024 | EU Markets in Crypto-Assets Regulation (MiCA) | First comprehensive crypto law |
