@@ -3,7 +3,8 @@
 | Date | Event | Significance |
 |---|---|---|
 | c. 4600–4300 BCE | Varna necropolis, Bulgaria: ~3,000 gold objects, ~6 kg | Oldest worked gold; gold as rank and burial treasure |
-| c. 3000 BCE | Egypt mines Nubian gold; Mesopotamia prices goods in silver shekels | Metal money by weight; silver as unit of account, gold as treasure |
+| c. 3000 BCE | Egypt mines Nubian gold | Royal and diplomatic treasure; Egyptian accounts also used weighed metal |
+| c. 3000 BCE | Mesopotamia prices goods in silver shekels | Silver by weight as a unit of account |
 | c. 2600 BCE | Royal Cemetery of Ur (Puabi's headdress) | Gold as royal/funerary display in Sumer |
 | c. 1750 BCE | Code of Hammurabi sets fines in silver | Silver-by-weight legal money |
 | c. 1550 BCE | Mycenaean shaft graves ("Mask of Agamemnon") | Aegean gold |
@@ -72,7 +73,8 @@
 | 1969 | IMF creates SDRs ("paper gold") | Synthetic reserve asset |
 | 15 Aug 1971 | Nixon closes the gold window | End of gold convertibility |
 | 1973 | Major currencies float | Fiat era begins |
-| 1974 | US–Saudi economic-cooperation commission established (8 Jun); US private gold ownership legal again (31 Dec) | Oil-revenue recycling, not dollar-for-oil redemption. [GAO, 1979](https://www.gao.gov/assets/id-79-7.pdf) |
+| 8 Jun 1974 | US–Saudi economic-cooperation commission established | Oil-revenue recycling, not dollar-for-oil redemption. [GAO, 1979](https://www.gao.gov/assets/id-79-7.pdf) |
+| 31 Dec 1974 | US private gold ownership legal again | A separate US domestic legal change |
 | 1976 | Jamaica Accords demonetize gold in IMF articles | Gold's official monetary role ends |
 | Jan 1980 | Gold peaks at $850 | Inflation-era high |
 | 1999 | Gold bottoms ~$252; UK sells half its reserves; Central Bank Gold Agreement | Low point of gold's monetary status |

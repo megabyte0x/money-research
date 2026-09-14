@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { parseMd } from '../src/md.js';
+import { parseMd, stripInline } from '../src/md.js';
 import { eventYear, eventSortValue, mergeSharedEvents, sharedEventId } from '../src/timeline.js';
 import { TIMELINE_SECTION_REFS, timelineReferenceKey } from '../src/timeline-references.js';
 import { indexObservations, resolveObservations } from '../src/observations.js';
@@ -66,7 +66,7 @@ test('explicit timeline references identify one source event and a real target s
     const source = manifest.find(m => m.vol === vol && m.slug.includes('timeline'));
     const tables = parseMd(readFileSync(join(root, 'public', source.path), 'utf8')).filter(b => b.type === 'table');
     for (const row of tables.flatMap(t => t.rows)) {
-      const key = timelineReferenceKey(vol, row[0], row[1]);
+      const key = timelineReferenceKey(vol, stripInline(row[0]), stripInline(row[1]));
       sourceRows.set(key, (sourceRows.get(key) || 0) + 1);
     }
   }
@@ -455,4 +455,6 @@ test('only reviewed duplicate monetary events combine their volume references', 
   assert.deepEqual(result[0].sources, ['gold', 'after']);
   assert.deepEqual(result[0].refs.map(r => r.href), ['#/gold', '#/after']);
   assert.equal(sharedEventId(1997, 'Bank of England independence'), null);
+  assert.equal(sharedEventId(1974, 'US–Saudi economic-cooperation commission established'),
+    sharedEventId(1974, 'US–Saudi Joint Commission established'));
 });

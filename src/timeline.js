@@ -24,6 +24,7 @@ export function sharedEventId(year, event) {
   const text = event.toLowerCase();
   if (year === 1971 && /nixon/.test(text) && /gold (window|convertibility)/.test(text)) return 'nixon-gold-window-1971';
   if (year === 1973 && /major currencies float/.test(text)) return 'major-currencies-float-1973';
+  if (year === 1974 && /us[–-]saudi/.test(text) && /(joint commission|economic.cooperation commission)/.test(text)) return 'us-saudi-joint-commission-1974';
   if (year === 1976 && /jamaica accords/.test(text)) return 'jamaica-accords-1976';
   if (year === 1980 && /gold peaks at \$850/.test(text)) return 'gold-peak-1980';
   if (year === 2026 && /gold peaks? (?:at |~)?(?:about )?\$5,590/.test(text)) return 'gold-peak-2026';
