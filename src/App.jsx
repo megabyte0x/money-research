@@ -5,14 +5,14 @@ import { eventYear, eventSortValue, mergeSharedEvents, SHARED_EVENT_PAIRS } from
 import { TIMELINE_SECTION_REFS } from './timeline-references.js';
 import MoneyMechanics from './MoneyMechanics.jsx';
 import Comparison from './features/comparison/Comparison.jsx';
-import { SearchView, GlossaryView, SynthesisView } from './features/discovery/DiscoveryViews.jsx';
+import { SearchView, GlossaryView, SourcesView, SynthesisView } from './features/discovery/DiscoveryViews.jsx';
 import { approvedSummaryCatalog } from './features/discovery/catalog.js';
 import { contentRole } from './features/discovery/catalog.js';
 import { HomePage, MethodsPage, ArticlePage } from './features/reader/ReaderViews.jsx';
 import HistoryView from './features/reader/HistoryView.jsx';
 import { searchDocuments, searchState, searchUrl } from './search.js';
 import { referenceSegments, shortTitle } from './references.js';
-import { articleHref, parseLocation, translateLegacyHash, viewPath } from './routes.js';
+import { articleHref, parseLocation, sharedViewForRecord, translateLegacyHash, viewPath } from './routes.js';
 import { applyClientMeta, resolvePage } from './seo.js';
 import { SITE } from './site-config.js';
 import { loadRoutePayload } from './content-load.js';
@@ -43,7 +43,7 @@ const MONO = "'IBM Plex Mono',monospace";
 const BODY_SIZE = 17.5;
 const GLOSSARY_INLINE = true;
 const SELECTION_ACTIONS = true;
-const VIEW_NAMES = { home: 'start here', compare: 'comparison', mechanics: 'money mechanics', methods: 'methods', arc: 'the arc', timeline: 'the master timeline', takeaways: 'the takeaways', glossary: 'the glossary', search: 'search results' };
+const VIEW_NAMES = { home: 'start here', compare: 'comparison', mechanics: 'money mechanics', methods: 'methods', sources: 'sources and further reading', arc: 'the arc', timeline: 'the master timeline', takeaways: 'the takeaways', glossary: 'the glossary', search: 'search results' };
 const CHATGPT_URL = 'https://chatgpt.com/?q=';
 const DEFAULT_QUESTION = 'Explain this passage: what is it claiming, and why does it matter?';
 const MAX_PASSAGE = 1200;
@@ -84,10 +84,6 @@ function GlossaryTerm({ term, label, definition }) {
       className={`glossary-panel glossary-panel-${alignment}`} hidden={!open}>
       <strong>{term.term}</strong><span>{definition}</span>
       <a href={'/glossary/#' + term.id}>Full glossary entry →</a>
-      <button type="button" className="glossary-close" onClick={() => {
-        setOpen(false);
-        trigger.current?.focus();
-      }}>Close definition</button>
     </span>
   </span>;
 }
@@ -105,7 +101,7 @@ export default class App extends React.Component {
       articleMetadata: initial.articleMetadata || {}, claims: initial.claims || {}, sources: initial.sources || {},
       searchIndexLoaded: !!initial.searchIndexLoaded, discoveryLoaded: !!initial.discoveryLoaded,
       route: props.initialRoute || { view: 'home' }, query: search.query, searchVol: search.volume,
-      tlq: '', glq: '', collapsed: {}, progress: 0, copied: false, quote: null, askOpen: false,
+      glq: '', collapsed: {}, progress: 0, copied: false, quote: null, askOpen: false,
       promptCopied: false, theme: null, loaded: !!initial.manifest?.length, headerH: 52, menuOpen: false,
     };
     if (initial.manifest?.length) this.prepareCorpus(initial);
@@ -298,8 +294,12 @@ export default class App extends React.Component {
       if (t.t === 'text') pushText(t.v);
       else if (t.t === 'b') out.push(R('strong', { key: k++, style: { fontWeight: 600 } }, t.v));
       else if (t.t === 'i') out.push(R('em', { key: k++ }, t.v));
-      else if (t.t === 'link') out.push(this.md.isSafeContentHref(t.href.trim())
-        ? R('a', { key: k++, href: t.href.trim(), target: '_blank', rel: 'noopener' }, t.v) : t.v);
+      else if (t.t === 'link') {
+        const href = t.href.trim();
+        const label = t.auto ? this.md.sourceUrlLabel(href) : t.v;
+        out.push(this.md.isSafeContentHref(href)
+          ? R('a', { key: k++, href, target: '_blank', rel: 'noopener', className: t.auto ? 'source-url' : undefined, title: t.auto ? href : undefined }, label) : label);
+      }
       else if (t.t === 'code') {
         const m = this.state.manifest.find(x => t.v.replace(/\.md$/, '').startsWith(x.slug.slice(0, 20)) && x.vol === ctx.vol);
         out.push(m ? R('a', { key: k++, href: this.href(m), style: { fontFamily: MONO, fontSize: '0.85em' } }, t.v) : R('code', { key: k++, style: { fontFamily: MONO, fontSize: '0.85em' } }, t.v));
@@ -315,21 +315,22 @@ export default class App extends React.Component {
     const R = React.createElement; const els = []; let section = null; let hidden = false;
     const c = () => ({ ...ctx, usedGloss: { set: ctx.usedGloss.set, done: false } });
     blocks.forEach((b, i) => {
+      const blockId = b.id ? `${opts.idPrefix || ''}${b.id}` : null;
       if (b.type === 'h1' && opts.skipH1 !== false) return;
       if (b.type === 'h2') {
-        section = b.id; hidden = !!this.state.collapsed[b.id];
-        const copied = this.state.copied === b.id;
-        for (const [oldId, newId] of Object.entries(ctx.sectionAliases || {})) {
+        section = blockId; hidden = !!this.state.collapsed[blockId];
+        const copied = this.state.copied === blockId;
+        if (!opts.idPrefix) for (const [oldId, newId] of Object.entries(ctx.sectionAliases || {})) {
           if (newId === b.id) els.push(R('span', { key: `alias-${i}-${oldId}`, id: oldId, 'aria-hidden': true, className: 'section-alias' }));
         }
-        els.push(R('h2', { key: i, id: b.id, style: { fontWeight: 500, fontSize: 23, lineHeight: 1.25, margin: '44px 0 14px', display: 'flex', alignItems: 'baseline', gap: 12, textWrap: 'pretty' } },
-          R('button', { type: 'button', 'aria-expanded': !hidden, 'aria-label': hidden ? 'Expand section' : 'Collapse section', onClick: () => this.setState(st => ({ collapsed: { ...st.collapsed, [b.id]: !st.collapsed[b.id] } })), title: hidden ? 'Expand section' : 'Collapse section', style: { fontFamily: MONO, fontSize: 12, color: 'var(--mut)', width: 14, flexShrink: 0 } }, hidden ? '+' : '−'),
+        els.push(R('h2', { key: i, id: blockId, style: { fontWeight: 500, fontSize: 23, lineHeight: 1.25, margin: '44px 0 14px', display: 'flex', alignItems: 'baseline', gap: 12, textWrap: 'pretty' } },
+          R('button', { type: 'button', 'aria-expanded': !hidden, 'aria-label': hidden ? 'Expand section' : 'Collapse section', onClick: () => this.setState(st => ({ collapsed: { ...st.collapsed, [blockId]: !st.collapsed[blockId] } })), title: hidden ? 'Expand section' : 'Collapse section', style: { fontFamily: MONO, fontSize: 12, color: 'var(--mut)', width: 14, flexShrink: 0 } }, hidden ? '+' : '−'),
           R('span', { style: { flex: 1 } }, this.inline(b.text, { ...ctx, gloss: false })),
-          R('button', { type: 'button', 'aria-label': 'Copy link to section', onClick: () => this.copyLink(b.id), title: 'Copy link to section', style: { fontFamily: MONO, fontSize: 11, color: 'var(--mut)', opacity: copied ? 1 : .6 } }, copied ? 'copied' : '§')));
+          R('button', { type: 'button', 'aria-label': 'Copy link to section', onClick: () => this.copyLink(blockId), title: 'Copy link to section', style: { fontFamily: MONO, fontSize: 11, color: 'var(--mut)', opacity: copied ? 1 : .6 } }, copied ? 'copied' : '§')));
         return;
       }
       if (hidden) return;
-      if (b.type === 'h3' || b.type === 'h4') { els.push(R(b.type, { key: i, id: b.id, style: { fontWeight: 600, fontSize: b.type === 'h4' ? 16 : 17, margin: '28px 0 8px' } }, b.text)); return; }
+      if (b.type === 'h3' || b.type === 'h4') { els.push(R(b.type, { key: i, id: blockId, style: { fontWeight: 600, fontSize: b.type === 'h4' ? 16 : 17, margin: '28px 0 8px' } }, b.text)); return; }
       if (b.type === 'p') { els.push(R('p', { key: i, style: { margin: '0 0 1.1em', textWrap: 'pretty' } }, this.inline(b.text, c()))); return; }
       if (b.type === 'quote') { els.push(R('blockquote', { key: i, style: { margin: '0 0 1.1em', padding: '0 0 0 18px', borderLeft: '1px solid var(--fg)', fontStyle: 'italic' } }, this.inline(b.text, c()))); return; }
       if (b.type === 'ul' || b.type === 'ol') { els.push(R(b.type, { key: i, style: { margin: '0 0 1.1em', paddingLeft: 22 } }, b.items.map((it, j) => R('li', { key: j, style: { marginBottom: 6 } }, this.inline(it, c()))))); return; }
@@ -367,7 +368,7 @@ export default class App extends React.Component {
   }
   timelineGroups() {
     this.refCache = this.refCache || {};
-    const q = this.state.tlq.trim().toLowerCase(); const events = [];
+    const events = [];
     const big = /Varna|Hammurabi|Lydia strikes|Croesus|Darius|Alexander coins|Denarius debased|Constantine|Abd al-Malik|Charlemagne|jiaozi|Florence strikes|Mansa Musa|Potosí|Newton|Bank of England|Britain (leaves|suspends|returns|adopts|formally)|California|Germany adopts|Coinage Act|Witwatersrand|Bretton Woods|Roosevelt|Gold Pool|Nixon suspends|Smithsonian|major currencies float|Yom Kippur|Herstatt|Jamaica|Volcker|Gold peaks|Mexico announces|Plaza|Black Monday|Basel I\b|Berlin Wall|Soviet Union dissolved|Maastricht|ERM crisis|Tequila|Thai baht|Asian|Russia defaults|LTCM|euro (launched|notes)|China joins WTO|9\/11|Iraq invaded|Lehman|QE1|Bitcoin genesis|Whatever it takes|Draghi|Tether|COVID|Russia invades|CPI 9\.1|Liberation Day|GENIUS|gold \$3,000|gold peaks|record|\$5,590|Basel III/i;
     const bitcoinBig = /whitepaper|genesis block|first transaction|two pizzas|Mt\. Gox|first halving|SegWit|Bitcoin Cash|MicroStrategy|El Salvador|China bans mining|Central African Republic|Terra\/UST|FTX|spot bitcoin ETFs|fourth halving|Strategic Bitcoin Reserve|GENIUS Act|all-time high|Iran war|cycle low|Chivo majority privatised|20\.08m BTC/i;
     const onlyBig = !this.state.tlAll;
@@ -375,11 +376,10 @@ export default class App extends React.Component {
       const m = this.state.manifest.find(x => x.vol === vol && x.slug.includes('timeline')); if (!m) continue;
       const tables = (this.state.blocks[m.slug + '@' + vol] || []).filter(b => b.type === 'table'); if (!tables.length) continue;
       tables.flatMap(t => t.rows.map((row, index) => ({ row, eventId: t.eventIds[index] }))).forEach(({ row: r, eventId }) => {
-        if (q && !r.join(' ').toLowerCase().includes(q)) return;
         const y = this.parseYear(r[0] || '');
         if (vol === 'bitcoin' && y > 2026) return;
         const isBig = (vol === 'bitcoin' ? bitcoinBig : big).test((r[1] || '') + ' ' + (r[2] || ''));
-        if (onlyBig && !isBig && !q) return;
+        if (onlyBig && !isBig) return;
         const refs = this.refCache[eventId] || (this.refCache[eventId] = this.rowRefs(vol, eventId));
         events.push({
           id: eventId, vol, year: y, sort: eventSortValue(r[0] || ''),
@@ -400,7 +400,7 @@ export default class App extends React.Component {
       [2020, '2008–2019', 'Financial crisis, QE and Bitcoin’s first decade.'],
       [9999, '2020–2026', 'Pandemic, sanctions and overlapping digital arrangements.']
     ];
-    const groups = periods.map(p => ({ id: 'period-' + p[1].toLowerCase().replace(/[^a-z0-9]+/g, '-'), vol: 'All volumes', label: p[1], gloss: p[2], rows: [] }));
+    const groups = periods.map(p => ({ id: 'period-' + p[1].toLowerCase().replace(/[^a-z0-9]+/g, '-'), label: p[1], gloss: p[2], rows: [] }));
     mergeSharedEvents(events).forEach(event => {
       const k = periods.findIndex(p => event.year < p[0]);
       const vol = event.vol;
@@ -411,7 +411,7 @@ export default class App extends React.Component {
         sigEl: this.inline(event.significance, { vol, gloss: false, usedGloss: { set: new Set() } })
       });
     });
-    return groups.filter(g => { g.count = g.rows.length; return g.count > 0; });
+    return groups.filter(g => g.rows.length > 0);
   }
   search() {
     return searchDocuments(this.state.manifest, this.state.blocks, this.state.query, this.state.searchVol).map(result => ({
@@ -505,7 +505,7 @@ export default class App extends React.Component {
       stageGap: mobile ? '10px' : '24px',
       selectDisplay: mobile ? 'none' : 'block',
       progressPct: (st.progress * 100).toFixed(1) + '%',
-      query: st.query, searchVol: st.searchVol, tlq: st.tlq, glq: st.glq,
+      query: st.query, searchVol: st.searchVol, glq: st.glq,
       bodyFontSize: BODY_SIZE + 'px'
     };
     vals.onQuery = e => {
@@ -525,7 +525,6 @@ export default class App extends React.Component {
       history.pushState(null, '', searchUrl(st.query, volume));
       this.setState({ searchVol: volume });
     };
-    vals.onTlq = e => this.setState({ tlq: e.target.value });
     vals.onGlq = e => this.setState({ glq: e.target.value });
     vals.toggleTheme = () => {
       const cur = document.body.dataset.theme || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
@@ -533,7 +532,7 @@ export default class App extends React.Component {
       document.body.dataset.theme = next; localStorage.setItem('mr-theme', next); this.setState({ theme: next });
     };
     vals.themeLabel = (st.theme || (typeof matchMedia !== 'undefined' && matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light')) === 'dark' ? '☾ dark' : '☀ light';
-    ['Home', 'Compare', 'Methods', 'Timeline', 'Takeaways', 'Glossary', 'Arc'].forEach(n => vals['nav' + n] = r.view === n.toLowerCase() ? 'var(--fg)' : 'var(--mut)');
+    ['Home', 'Compare', 'Methods', 'Sources', 'Timeline', 'Takeaways', 'Glossary', 'Arc'].forEach(n => vals['nav' + n] = r.view === n.toLowerCase() ? 'var(--fg)' : 'var(--mut)');
     const cur = r.view === 'article' || r.view === 'hub' ? this.chapter(r.vol, r.slug || '00-readme') : null;
     const homeNames = { gold: ['Vol. I · Gold', 'How did a metal become money and what role remains?'], after: ['Vol. II · After Gold', 'What changed when official gold conversion ended?'], bitcoin: ['Vol. III · Bitcoin', 'What did Bitcoin solve and what remains unsettled?'] };
     vals.homeVolumes = ['gold', 'after', 'bitcoin'].map(vol => {
@@ -542,7 +541,7 @@ export default class App extends React.Component {
         title: vol === 'after' ? 'After Gold' : vol === 'gold' ? 'Gold' : 'Bitcoin',
         question: homeNames[vol][1] };
     }).filter(Boolean);
-    vals.allChapters = st.manifest.map(m => ({ href: this.href(m), optLabel: ({ gold: 'I·', after: 'II·', bitcoin: 'III·' }[m.vol]) + m.num + ' ' + this.short(m) }));
+    vals.allChapters = st.manifest.filter(m => !sharedViewForRecord(m)).map(m => ({ href: this.href(m), optLabel: ({ gold: 'I·', after: 'II·', bitcoin: 'III·' }[m.vol]) + m.num + ' ' + this.short(m) }));
     vals.selectValue = cur ? this.href(cur) : '';
     vals.onSelect = e => { if (e.target.value) location.href = e.target.value; };
     vals.isHome = r.view === 'home'; vals.isCompare = r.view === 'compare'; vals.isMechanics = r.view === 'mechanics'; vals.isMethods = r.view === 'methods';
@@ -555,7 +554,7 @@ export default class App extends React.Component {
     vals.onCompareUse = e => { history.pushState(null, '', '/compare/?use=' + encodeURIComponent(e.target.value) + '&perspective=' + encodeURIComponent(vals.comparePerspective)); this.onNavigate(); };
     vals.onComparePerspective = e => { history.pushState(null, '', '/compare/?use=' + encodeURIComponent(vals.compareUse) + '&perspective=' + encodeURIComponent(e.target.value)); this.onNavigate(); };
     vals.isNotFound = r.view === 'notfound';
-    vals.isArticle = !!cur; vals.isTimeline = r.view === 'timeline'; vals.isGlossary = r.view === 'glossary';
+    vals.isArticle = !!cur; vals.isTimeline = r.view === 'timeline'; vals.isGlossary = r.view === 'glossary'; vals.isSources = r.view === 'sources';
     vals.isTakeaways = r.view === 'takeaways'; vals.isSearch = r.view === 'search';
     vals.toc = []; vals.tocLabel = 'Contents';
     if (vals.isMechanics) {
@@ -581,14 +580,13 @@ export default class App extends React.Component {
       vals.chapterNum = cur.num; vals.readTime = Math.max(1, Math.round(cur.words / 230)); vals.wordCount = cur.words.toLocaleString();
       vals.chapterTitle = cur.title.replace(/^\d+\s+—\s+/, '');
       vals.articleIsReference = contentRole(cur) !== 'topic';
-      vals.articleEvidence = st.articleEvidence[cur.id] || [];
       const metadata = st.articleMetadata[cur.id];
       vals.articleSummary = metadata?.summary || null;
-      vals.hubChapters = r.view === 'hub' ? st.manifest.filter(item => item.vol === cur.vol && item.slug !== '00-readme').map(item => ({ href: this.href(item), title: this.short(item) })) : [];
+      vals.hubChapters = r.view === 'hub' ? st.manifest.filter(item => item.vol === cur.vol && item.slug !== '00-readme' && !sharedViewForRecord(item)).map(item => ({ href: this.href(item), title: this.short(item) })) : [];
       vals.articleBody = R('div', null, this.blocksToEls(bl, { vol: cur.vol, usedGloss: { set: new Set() }, sectionAliases: cur.sectionAliases, sourcePage: ['gold-12', 'after-13', 'bitcoin-16'].includes(cur.id) }));
       vals.toc = bl.filter(b => b.type === 'h2' || b.type === 'h3').map(b => ({ text: this.md.stripInline(b.text), href: this.href(cur, b.id), indent: b.type === 'h3' ? '12px' : '0' }));
       vals.tocLabel = 'On this page';
-      const list = st.manifest.filter(m => m.vol === cur.vol); const i = list.indexOf(cur); const prev = list[i - 1], next = list[i + 1];
+      const list = st.manifest.filter(m => m.vol === cur.vol && !sharedViewForRecord(m)); const i = list.indexOf(cur); const prev = list[i - 1], next = list[i + 1];
       vals.hasPrev = !!prev; vals.prevHref = prev && this.href(prev); vals.prevTitle = prev && this.short(prev);
       vals.hasNext = !!next; vals.nextHref = next && this.href(next); vals.nextTitle = next && this.short(next);
     }
@@ -598,7 +596,7 @@ export default class App extends React.Component {
       vals.tlGroups = this.timelineGroups();
       vals.timelineCount = vals.tlGroups.reduce((n, g) => n + g.rows.length, 0);
       vals.tlCols = mobile ? '78px 20px minmax(0,1fr)' : '132px 24px minmax(0,1fr)';
-      vals.tlKind = st.tlAll || st.tlq ? 'entries' : 'turning points';
+      vals.tlKind = st.tlAll ? 'entries' : 'turning points';
       vals.tocLabel = 'Eras';
       vals.toc = vals.tlGroups.map(g => ({ text: g.label, href: '/timeline/#' + g.id, indent: '0' }));
     }
@@ -622,6 +620,36 @@ export default class App extends React.Component {
       vals.tocLabel = 'A–Z';
       const letters = [...new Set(rows.map(g => g.term[0].toUpperCase()))];
       vals.toc = letters.map(L => ({ text: L, href: '/glossary/#' + rows.find(g => g.term[0].toUpperCase() === L).id, indent: '0' }));
+    }
+    if (vals.isSources) {
+      const labels = { gold: 'Volume I · Gold', after: 'Volume II · After Gold', bitcoin: 'Volume III · Bitcoin' };
+      const sourceRecords = st.manifest.filter(record => sharedViewForRecord(record) === 'sources');
+      vals.sourceVolumes = sourceRecords.map(record => {
+        const blocks = st.blocks[`${record.slug}@${record.vol}`] || [];
+        return {
+          id: `sources-${record.vol}`,
+          label: labels[record.vol],
+          body: R('div', null, this.blocksToEls(blocks, {
+            vol: record.vol,
+            usedGloss: { set: new Set() },
+            sectionAliases: record.sectionAliases,
+            sourcePage: true,
+          }, { idPrefix: `sources-${record.vol}-` })),
+        };
+      });
+      vals.tocLabel = 'Volumes and sections';
+      vals.toc = sourceRecords.flatMap(record => {
+        const prefix = `sources-${record.vol}-`;
+        const blocks = st.blocks[`${record.slug}@${record.vol}`] || [];
+        return [
+          { text: labels[record.vol], href: `/sources/#sources-${record.vol}`, indent: '0' },
+          ...blocks.filter(block => block.type === 'h2' || block.type === 'h3').map(block => ({
+            text: this.md.stripInline(block.text),
+            href: `/sources/#${prefix}${block.id}`,
+            indent: block.type === 'h3' ? '24px' : '12px',
+          })),
+        ];
+      });
     }
     if (vals.isTakeaways) {
       const summaryParams = new URLSearchParams(location.search);
@@ -684,7 +712,7 @@ export default class App extends React.Component {
             <a href="/timeline/" style={s('text-decoration:none', { color: v.navTimeline })}>Timeline</a>
             <a href="/takeaways/" style={s('text-decoration:none', { color: v.navTakeaways })}>Takeaways</a>
             <a href="/glossary/" style={s('text-decoration:none', { color: v.navGlossary })}>Glossary</a>
-            <a href="/methods/" style={s('text-decoration:none', { color: v.navMethods })}>Sources</a>
+            <a href="/sources/" style={s('text-decoration:none', { color: v.navSources })}>Sources</a>
             <button type="button" onClick={v.toggleTheme} title="Toggle color mode" aria-label="Toggle color mode" style={s('color:var(--mut);font-size:12px')}>{v.themeLabel}</button>
           </nav>
         </header>
@@ -709,17 +737,15 @@ export default class App extends React.Component {
             {v.isTimeline && <>
               <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>Connected timeline · 4600 BCE – 2026 · {v.timelineCount} {v.tlKind}</div>
               <h1 style={s('font-weight:500;font-size:34px;line-height:1.15;letter-spacing:-.012em;margin:0 0 20px')}>A connected monetary timeline</h1>
-              <p style={s('font-size:17px;line-height:1.6;color:var(--mut);margin:0 0 28px;max-width:62ch;text-wrap:pretty')}>Events from all three volumes share one chronological view; {SHARED_EVENT_PAIRS.length} reviewed duplicate pairs are combined. The links distinguish checked chapter sections, reviewed source-timeline fallbacks and destination reviews still pending. Dates, quantities and composite rows need a separate editorial audit.</p>
-              <div style={s('display:flex;gap:12px;align-items:center;margin-bottom:8px')}>
-                <input type="search" placeholder="Filter events — e.g. Lydia, Volcker, Basel, 1980" value={v.tlq} onChange={v.onTlq} style={s('flex:1;min-width:0;box-sizing:border-box;padding:9px 12px;font-size:12px')} />
+              <p style={s('font-size:17px;line-height:1.6;color:var(--mut);margin:0 0 28px;max-width:62ch;text-wrap:pretty')}>Trace the key moments that shaped money—from early coins and gold standards to modern currencies and Bitcoin. The timeline brings these developments together in chronological order.</p>
+              <div style={s('display:flex;align-items:center;margin-bottom:8px')}>
                 <button onClick={v.toggleTlAll} className="hov-fg-border" style={s('font-size:11px;color:var(--mut);border:1px solid var(--rule);padding:8px 12px;white-space:nowrap')}>{v.tlAllLabel}</button>
               </div>
               {v.tlGroups.map(g => (
                 <div key={g.id} id={g.id} style={s('padding-top:40px')}>
                   <div style={s('display:grid;gap:0 16px;align-items:start', { gridTemplateColumns: v.tlCols })}>
-                    <div style={s("font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);padding-top:6px;line-height:1.5")}>{g.vol}<br />{g.count} events</div>
-                    <div style={s('display:flex;justify-content:center')}><div style={s('width:9px;height:9px;background:var(--fg);margin-top:8px')}></div></div>
-                    <div style={s('border-bottom:1px solid var(--fg);padding-bottom:12px')}>
+                    <div style={s('display:flex;justify-content:center', { gridColumn: '2' })}><div style={s('width:9px;height:9px;background:var(--fg);margin-top:8px')}></div></div>
+                    <div style={s('border-bottom:1px solid var(--fg);padding-bottom:12px', { gridColumn: '3' })}>
                       <div style={s('font-size:24px;font-weight:500;line-height:1.2')}>{g.label}</div>
                       <div style={s('font-size:15px;color:var(--mut);line-height:1.5;margin-top:6px;text-wrap:pretty')}>{g.gloss}</div>
                     </div>
@@ -748,6 +774,8 @@ export default class App extends React.Component {
             </>}
 
             {v.isGlossary && <GlossaryView v={v} />}
+
+            {v.isSources && <SourcesView v={v} />}
 
             {v.isTakeaways && <SynthesisView v={v} />}
 

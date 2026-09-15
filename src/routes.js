@@ -4,10 +4,18 @@ export const VOLUME_IDS = ['gold', 'after', 'bitcoin'];
 export const DISCOVERY_VIEWS = ['timeline', 'takeaways', 'mechanics', 'compare', 'arc'];
 export const UTILITY_VIEWS = ['search'];
 const VOLUME_SET = new Set(VOLUME_IDS);
-const VIEW_SET = new Set(['methods', 'glossary', ...DISCOVERY_VIEWS, ...UTILITY_VIEWS]);
+const VIEW_SET = new Set(['methods', 'glossary', 'sources', ...DISCOVERY_VIEWS, ...UTILITY_VIEWS]);
 
 export function isDirectoryRecord(record) {
   return !!record && record.slug === '00-readme';
+}
+
+export function sharedViewForRecord(record) {
+  if (!record) return null;
+  if (record.slug.includes('glossary')) return 'glossary';
+  if (record.slug.includes('sources')) return 'sources';
+  if (record.slug.includes('timeline')) return 'timeline';
+  return null;
 }
 
 export function shortTitle(record) {
@@ -17,6 +25,8 @@ export function shortTitle(record) {
 export function canonicalPath(record) {
   if (!record) return '/';
   if (isDirectoryRecord(record)) return `/${record.vol}/`;
+  const sharedView = sharedViewForRecord(record);
+  if (sharedView) return `/${sharedView}/`;
   return `/${record.vol}/${record.slug}/`;
 }
 
@@ -59,6 +69,7 @@ export function routeInventory(manifest = []) {
     { id: 'home', path: '/', kind: 'home', indexable: true, intent: 'Understand what the library covers and choose a volume or question.', question: 'How does money work, and where should I start?' },
     { id: 'methods', path: '/methods/', kind: 'methods', indexable: true, intent: 'See how claims, sources, corrections and crawlers are handled.', question: 'How is this research produced and limited?' },
     { id: 'glossary', path: '/glossary/', kind: 'glossary', indexable: true, intent: 'Look up a term used in the volumes.', question: 'What does this monetary term mean here?' },
+    { id: 'sources', path: '/sources/', kind: 'sources', indexable: true, intent: 'Browse the combined source lists and further reading for all three volumes.', question: 'What sources underpin this research?' },
     { id: 'timeline', path: '/timeline/', kind: 'timeline', indexable: false, intent: 'Scan dated events across the three volumes.', question: 'What happened, in order, across these monetary systems?' },
     { id: 'takeaways', path: '/takeaways/', kind: 'takeaways', indexable: false, intent: 'Browse approved chapter answers.', question: 'What short answer does each chapter give?' },
     { id: 'mechanics', path: '/mechanics/', kind: 'mechanics', indexable: false, intent: 'Separate a loan, a payment, a bond and QE.', question: 'How is money created and moved in these four transactions?' },
@@ -96,6 +107,20 @@ export function routeInventory(manifest = []) {
       });
       continue;
     }
+    const sharedView = sharedViewForRecord(record);
+    if (sharedView) {
+      pages.push({
+        id: `redirect-${record.id}`,
+        path: `/${record.vol}/${record.slug}/`,
+        kind: 'redirect',
+        record,
+        indexable: false,
+        intent: `Former volume-specific ${sharedView} page.`,
+        question: null,
+        redirectsTo: `/${sharedView}/`,
+      });
+      continue;
+    }
     pages.push({
       id: record.id,
       path: canonicalPath(record),
@@ -115,6 +140,9 @@ export function redirectRules(manifest = []) {
     const dest = canonicalPath(record);
     if (isDirectoryRecord(record)) {
       rules.push({ source: `/${record.vol}/00-readme/`, destination: dest, permanent: true });
+    }
+    if (sharedViewForRecord(record)) {
+      rules.push({ source: `/${record.vol}/${record.slug}/`, destination: dest, permanent: true });
     }
     for (const alias of record.aliases || []) {
       const from = `/${record.vol}/${alias}/`;
@@ -175,6 +203,8 @@ export function parseLocation(location, manifest = []) {
   if (parts.length >= 2 && VOLUME_SET.has(parts[0])) {
     const record = findRecord(manifest, parts[0], parts[1]);
     if (record && isDirectoryRecord(record)) return { view: 'hub', vol: parts[0], slug: record.slug, sec: section };
+    const sharedView = sharedViewForRecord(record);
+    if (sharedView) return { view: sharedView, sec: section };
     if (record) return { view: 'article', vol: record.vol, slug: record.slug, sec: section };
     if (!manifest.length) return { view: 'article', vol: parts[0], slug: parts[1], sec: section };
     return { view: 'notfound', sec: section };

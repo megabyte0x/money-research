@@ -43,7 +43,7 @@ export const METHODS_COPY = {
       title: 'What this library is',
       paragraphs: [
         'The library contains 44 research documents in three volumes: gold, the post-1971 monetary system, and Bitcoin. It presents their arguments while historical, legal and market claims remain under editorial review. Dated observations are not live figures, and a passing site build does not certify every chapter.',
-        'Each volume has a source page. Some entries still need exact document and passage locations; follow the links on those pages to inspect the material behind a claim.',
+        'The shared Sources page brings together the three volume bibliographies. Some entries still need exact document and passage locations; inspect the linked material behind a claim.',
       ],
     },
     {
@@ -86,9 +86,7 @@ export const METHODS_COPY = {
     },
   ],
   sourceLinks: [
-    { href: '/gold/12-sources/', label: 'Gold source page →' },
-    { href: '/after/13-sources/', label: 'After Gold source page →' },
-    { href: '/bitcoin/16-sources/', label: 'Bitcoin source page →' },
+    { href: '/sources/', label: 'Sources and further reading →' },
   ],
 };
 
@@ -126,6 +124,10 @@ export const DISCOVERY_COPY = {
   glossary: {
     title: 'Glossary',
     description: 'Definitions used across the Money Research volumes, with accepted cores, illustrations and links to related chapters where those have been reviewed.',
+  },
+  sources: {
+    title: 'Sources and further reading',
+    description: 'Combined bibliography and source locators from the Gold, After Gold and Bitcoin research volumes.',
   },
 };
 

@@ -11,7 +11,6 @@ const jobs = [
 
 export function HomePage({ v }) {
   return <div className="intro-page reader-home">
-    <p className="eyebrow">An evidence-led guide · three research volumes</p>
     <h1>How money works—and why it changes.</h1>
     <p className="lead">Explore gold, government currencies and Bitcoin through history, evidence and the trade-offs between saving, paying, pricing and settling.</p>
     <nav className="reader-actions" aria-label="Start reading"><a href="#volumes">Browse the volumes →</a><a href="/arc/">Read History →</a><a href="/compare/">Compare arrangements →</a></nav>
@@ -63,8 +62,6 @@ export function ArticlePage({ v }) {
     <div className="evidence-notice" role="note">This research chapter is under editorial review. Treat dated figures, legal status and broad conclusions as claims to verify against the <a href="/methods/">source lists and method</a>.</div>
     {!v.articleIsReference && <ReaderSummary summary={v.articleSummary} />}
     <div className="reader-article-body" style={{ fontSize: v.bodyFontSize }}>{v.articleBody}</div>
-    {(v.articleEvidence || []).length > 0 && <aside className="reader-dated-evidence" aria-label="Dated evidence"><h2>Dated evidence in this chapter</h2><ul>{v.articleEvidence.map(item =>
-      <li key={item.observationId}><a href={item.url} target="_blank" rel="noopener noreferrer">{item.publisher}: {item.title} ↗</a>, {item.locator}. Observation period: {item.period}. {item.uncertainty}</li>)}</ul></aside>}
     {(v.hubChapters || []).length > 0 && <section className="static-item-list"><h2>Chapters in this volume</h2><ol>{v.hubChapters.map(item => <li key={item.href}><a href={item.href}>{item.title}</a></li>)}</ol></section>}
     <nav className="reader-chapter-nav" aria-label="Adjacent chapters"><div>{v.hasPrev && <><span>← Previous</span><a href={v.prevHref}>{v.prevTitle}</a></>}</div><div>{v.hasNext && <><span>Next →</span><a href={v.nextHref}>{v.nextTitle}</a></>}</div></nav>
   </article>;

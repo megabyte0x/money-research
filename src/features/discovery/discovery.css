@@ -32,4 +32,7 @@
 .discovery-summary h2 a { color: var(--fg); text-decoration-color: var(--rule); }
 .discovery-summary h2 a:hover, .discovery-summary h2 a:focus-visible { text-decoration-color: var(--fg); }
 .discovery-summary p { margin: 0 0 10px; }
+.sources-volume { margin-top: 48px; }
+.sources-volume > h2 { padding-bottom: 12px; border-bottom: 1px solid var(--fg); }
+.sources-view .source-url { font-family: 'IBM Plex Mono', monospace; font-size: 0.78em; white-space: nowrap; text-decoration-color: currentColor; }
 @media (max-width: 620px) { .discovery-definition { grid-template-columns: 1fr; gap: 4px; } }

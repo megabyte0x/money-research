@@ -45,6 +45,5 @@ export default function Comparison({ v = {} }) {
         })}</tbody>
       </table>
     </div>
-    <p className="small-note">A missing cell is unknown here, not a negative score. Provider rules, legal protection, price behavior and settlement assurance can differ by place and date. <a href="/methods/">Research method and sources →</a></p>
   </section>;
 }

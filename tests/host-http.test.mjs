@@ -30,6 +30,15 @@ test('host config serves canonical pages, alias redirects, versioned cards, 404s
     const intro = await request(port, '/gold/00-readme/');
     assert.equal(intro.status, 308);
     assert.equal(intro.headers.location, '/gold/');
+    const glossary = await request(port, '/gold/11-glossary/');
+    assert.equal(glossary.status, 308);
+    assert.equal(glossary.headers.location, '/glossary/');
+    const sources = await request(port, '/after/13-sources/');
+    assert.equal(sources.status, 308);
+    assert.equal(sources.headers.location, '/sources/');
+    const timeline = await request(port, '/bitcoin/14-master-timeline-2008-2026/');
+    assert.equal(timeline.status, 308);
+    assert.equal(timeline.headers.location, '/timeline/');
     const missing = await request(port, '/not-a-published-page/');
     assert.equal(missing.status, 404);
     assert.match(missing.body, /Page not found/);

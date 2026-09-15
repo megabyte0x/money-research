@@ -3,11 +3,11 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE } from '../src/site-config.js';
 import {
-  canonicalPath, isDirectoryRecord, redirectRules, vercelConfig, VOLUME_IDS,
+  canonicalPath, isDirectoryRecord, redirectRules, sharedViewForRecord, vercelConfig, VOLUME_IDS,
 } from '../src/routes.js';
 import { applyDocumentMeta, indexablePages, resolvePage, robotsTxt, sitemapXml } from '../src/seo.js';
 import {
-  hubItemList, staticArc, staticArticle, staticCompare, staticGlossary, staticHome,
+  hubItemList, staticArc, staticArticle, staticCompare, staticGlossary, staticHome, staticSources,
   staticMechanics, staticMethods, staticNotFound, staticSearch, staticTakeaways,
   staticTimeline, wrapStatic,
 } from '../src/static-pages.js';
@@ -37,7 +37,7 @@ for (const vol of VOLUME_IDS) {
 }
 
 for (const record of model.manifest) {
-  if (isDirectoryRecord(record)) continue;
+  if (isDirectoryRecord(record) || sharedViewForRecord(record)) continue;
   const page = resolvePage({ kind: 'chapter', record, articleMetadata: model.articleMetadata });
   writePage(join(record.vol, record.slug), staticArticle(record, model, page), page);
 }
@@ -49,6 +49,9 @@ const glossaryPage = resolvePage({ kind: 'glossary' });
 writePage('glossary', staticGlossary(model.glossary, glossaryPage), glossaryPage, {
   itemList: model.glossary.slice(0, 40).map(term => ({ name: term.term, url: `${SITE.origin}/glossary/#${term.id}` })),
 });
+
+const sourcesPage = resolvePage({ kind: 'sources' });
+writePage('sources', staticSources(model, sourcesPage), sourcesPage);
 
 const timelinePage = resolvePage({ kind: 'timeline' });
 writePage('timeline', staticTimeline(model, timelinePage), timelinePage);
@@ -83,5 +86,5 @@ writeFileSync(join(dist, 'robots.txt'), robotsTxt());
 writeFileSync(join(root, 'vercel.json'), JSON.stringify(vercelConfig(model.manifest), null, 2) + '\n');
 writeFileSync(join(dist, 'redirects.json'), JSON.stringify(redirectRules(model.manifest), null, 2) + '\n');
 
-const articleCount = model.manifest.filter(record => !isDirectoryRecord(record)).length;
+const articleCount = model.manifest.filter(record => !isDirectoryRecord(record) && !sharedViewForRecord(record)).length;
 console.log(`Generated ${articleCount} chapter pages, hubs, discovery routes, robots.txt and sitemap.xml`);

@@ -4,6 +4,7 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { createContentModel } from '../src/content-model.js';
 import { SITE } from '../src/site-config.js';
+import { canonicalPath, sharedViewForRecord } from '../src/routes.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const manifest = JSON.parse(readFileSync(join(root, 'public/content/manifest.json'), 'utf8'));
@@ -28,7 +29,7 @@ test('built browser index and static pages use the same validated source model',
   const expected = createContentModel(manifest, documents, observations, timelineEventIds, { sources, claims }, articleMetadata, timelineReviewStatus, comparisonCells);
   const browserIndex = JSON.parse(readFileSync(join(root, 'dist/content/index.json'), 'utf8'));
   assert.deepEqual(browserIndex, expected);
-  const timeline = readFileSync(join(root, 'dist/gold/10-master-timeline/index.html'), 'utf8');
+  const timeline = readFileSync(join(root, 'dist/timeline/index.html'), 'utf8');
   assert.match(timeline, /Gold reaches \$5,405\/oz/);
   assert.doesNotMatch(timeline, /\{\{obs:/);
   const source = readFileSync(join(root, 'dist/content/resolved/gold/10-master-timeline.md'), 'utf8');
@@ -45,19 +46,34 @@ test('approved summaries appear in crawlable chapters without next-step panels',
   assert.doesNotMatch(after, /Where to read next/);
 });
 
-test('source chapters expose publisher URLs as links in crawlable HTML', () => {
-  const after = readFileSync(join(root, 'dist/after/13-sources/index.html'), 'utf8');
-  assert.match(after, /<a href="https:\/\/www\.bankofengland\.co\.uk\/-\/media\/boe\/files\/quarterly-bulletin\/2014\/money-creation-in-the-modern-economy\.pdf">/);
-  const bitcoin = readFileSync(join(root, 'dist/bitcoin/16-sources/index.html'), 'utf8');
-  assert.match(bitcoin, /<a href="https:\/\/www\.govinfo\.gov\/content\/pkg\/PLAW-119publ27\/html\/PLAW-119publ27\.htm">/);
+test('shared sources page exposes publisher URLs from every volume as links', () => {
+  const sources = readFileSync(join(root, 'dist/sources/index.html'), 'utf8');
+  assert.match(sources, /<a href="https:\/\/www\.bankofengland\.co\.uk\/-\/media\/boe\/files\/quarterly-bulletin\/2014\/money-creation-in-the-modern-economy\.pdf"[^>]*>bankofengland\.co\.uk ↗<\/a>/);
+  assert.match(sources, /<a href="https:\/\/bitcoin\.org\/bitcoin\.pdf"[^>]*>bitcoin\.org ↗<\/a>/);
+  assert.doesNotMatch(sources, />false</);
 });
 
-test('each article has a direct HTML page with unique canonical metadata', () => {
+test('chapter pages omit the dated-evidence panel', () => {
+  for (const page of [
+    'gold/09-gold-today-what-still-holds-its-value',
+    'after/07-financial-crisis-and-the-age-of-qe-2007-2019',
+    'bitcoin/03-how-bitcoin-is-actually-used-global-adoption',
+  ]) {
+    const html = readFileSync(join(root, 'dist', page, 'index.html'), 'utf8');
+    assert.doesNotMatch(html, /Dated evidence in this chapter/);
+  }
+});
+
+test('each non-shared article has a direct HTML page with unique canonical metadata', () => {
   for (const record of manifest) {
     if (record.slug === '00-readme') {
       assert.equal(existsSync(join(root, 'dist', record.vol, record.slug, 'index.html')), false, record.id);
       const hub = readFileSync(join(root, 'dist', record.vol, 'index.html'), 'utf8');
       assert.ok(hub.includes(`<link rel="canonical" href="${SITE.origin}/${record.vol}/">`), record.id);
+      continue;
+    }
+    if (sharedViewForRecord(record)) {
+      assert.equal(existsSync(join(root, 'dist', record.vol, record.slug, 'index.html')), false, record.id);
       continue;
     }
     const path = join(root, 'dist', record.vol, record.slug, 'index.html');
@@ -77,14 +93,15 @@ test('each article has a direct HTML page with unique canonical metadata', () =>
   }
 });
 
-test('sitemap covers the homepage and all 44 article routes', () => {
+test('sitemap covers the homepage, shared reference pages and each direct article route', () => {
   const xml = readFileSync(join(root, 'dist/sitemap.xml'), 'utf8');
-  const chapters = manifest.filter(record => record.slug !== '00-readme');
-  assert.equal((xml.match(/<url>/g) || []).length, 1 + 3 + 2 + chapters.length);
+  const chapters = manifest.filter(record => record.slug !== '00-readme' && !sharedViewForRecord(record));
+  assert.equal((xml.match(/<url>/g) || []).length, 1 + 3 + 3 + chapters.length);
   assert.ok(xml.includes(`${SITE.origin}/`));
   for (const vol of ['gold', 'after', 'bitcoin']) {
     assert.ok(xml.includes(`${SITE.origin}/${vol}/`), vol);
   }
+  for (const view of ['glossary', 'sources']) assert.ok(xml.includes(`/${view}/`), view);
   for (const record of chapters) assert.ok(xml.includes(`/${record.vol}/${record.slug}/`), record.id);
   assert.ok(!xml.includes('/search/'));
   assert.ok(!xml.includes('/00-readme/'));
@@ -99,16 +116,16 @@ test('generated SEO documents do not retain the removed production host', () => 
 test('generated internal article links and section targets resolve', () => {
   const pages = new Map([
     ['/', readFileSync(join(root, 'dist/index.html'), 'utf8')],
-    ...['gold', 'after', 'bitcoin', 'methods', 'glossary', 'timeline', 'takeaways', 'mechanics', 'compare', 'arc', 'search']
+    ...['gold', 'after', 'bitcoin', 'methods', 'glossary', 'sources', 'timeline', 'takeaways', 'mechanics', 'compare', 'arc', 'search']
       .map(path => [`/${path}/`, readFileSync(join(root, 'dist', path, 'index.html'), 'utf8')]),
-    ...manifest.filter(record => record.slug !== '00-readme').map(record => [
+    ...manifest.filter(record => record.slug !== '00-readme' && !sharedViewForRecord(record)).map(record => [
       `/${record.vol}/${record.slug}/`,
       readFileSync(join(root, 'dist', record.vol, record.slug, 'index.html'), 'utf8')
     ]),
   ]);
   const aliases = new Map([
     ...manifest.flatMap(record => record.aliases.map(alias =>
-      [`/${record.vol}/${alias}/`, record.slug === '00-readme' ? `/${record.vol}/` : `/${record.vol}/${record.slug}/`]
+      [`/${record.vol}/${alias}/`, record.slug === '00-readme' ? `/${record.vol}/` : canonicalPath(record)]
     )),
     ...manifest.filter(record => record.slug === '00-readme').map(record =>
       [`/${record.vol}/00-readme/`, `/${record.vol}/`]),

@@ -1,3 +1,5 @@
+import { sharedViewForRecord } from './routes.js';
+
 const BASE = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL) || '/';
 
 async function loadJson(path) {
@@ -43,6 +45,16 @@ export async function loadRoutePayload(route, state) {
       blocks[key] = await loadArticleBlocks(record.id);
       next.blocks = blocks;
     }
+  }
+  if (route.view === 'sources') {
+    const blocks = { ...(next.blocks || state.blocks || {}) };
+    const missing = manifest.filter(entry => sharedViewForRecord(entry) === 'sources' && !blocks[`${entry.slug}@${entry.vol}`]);
+    const loaded = await Promise.all(missing.map(item => loadArticleBlocks(item.id)));
+    missing.forEach((item, index) => {
+      const key = `${item.slug}@${item.vol}`;
+      blocks[key] = loaded[index];
+    });
+    next.blocks = blocks;
   }
   if (route.view === 'search' && !state.searchIndexLoaded) {
     next.blocks = { ...(next.blocks || state.blocks || {}), ...(await loadSearchIndex()) };

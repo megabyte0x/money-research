@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { SITE } from '../src/site-config.js';
+import { canonicalPath, sharedViewForRecord } from '../src/routes.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const dist = join(root, 'dist');
@@ -31,7 +32,7 @@ test('every direct destination and numeric alias has one canonical, unique artic
   const titles = new Set();
   const descriptions = new Set();
   const canonicals = new Set();
-  const chapters = manifest.filter(record => record.slug !== '00-readme');
+  const chapters = manifest.filter(record => record.slug !== '00-readme' && !sharedViewForRecord(record));
   for (const record of chapters) {
     const html = page(record);
     const canonical = `${origin}/${record.vol}/${record.slug}/`;
@@ -58,15 +59,26 @@ test('every direct destination and numeric alias has one canonical, unique artic
   assert.equal(canonicals.size, chapters.length);
 });
 
+test('shared glossary, sources and timelines replace their volume-specific pages', () => {
+  for (const record of manifest.filter(sharedViewForRecord)) {
+    assert.equal(existsSync(join(dist, record.vol, record.slug, 'index.html')), false, record.id);
+    assert.equal(canonicalPath(record), `/${sharedViewForRecord(record)}/`, record.id);
+  }
+  for (const view of ['glossary', 'sources', 'timeline']) {
+    assert.ok(existsSync(join(dist, view, 'index.html')), `${view}: missing shared page`);
+  }
+});
+
 test('crawlable section links land on their exact chapter section', () => {
-  const canonical = new Map(manifest.filter(record => record.slug !== '00-readme').map(record => [`/${record.vol}/${record.slug}/`, record]));
+  const chapters = manifest.filter(record => record.slug !== '00-readme' && !sharedViewForRecord(record));
+  const canonical = new Map(chapters.map(record => [`/${record.vol}/${record.slug}/`, record]));
   const alias = new Map([
     ...manifest.flatMap(record => record.aliases.map(slug =>
       [`/${record.vol}/${slug}/`, record.slug === '00-readme' ? `/${record.vol}/` : `/${record.vol}/${record.slug}/`])),
     ...manifest.filter(record => record.slug === '00-readme').map(record => [`/${record.vol}/00-readme/`, `/${record.vol}/`]),
   ]);
   let sectionLinks = 0;
-  for (const record of manifest.filter(item => item.slug !== '00-readme')) {
+  for (const record of chapters) {
     const html = page(record);
     for (const [, rawHref] of html.matchAll(/<a\s+[^>]*href="([^"]+)"/g)) {
       const href = rawHref.replaceAll('&amp;', '&');

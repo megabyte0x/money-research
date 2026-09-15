@@ -1,6 +1,6 @@
-import { tokenizeInline, isSafeContentHref, stripInline } from './md.js';
+import { tokenizeInline, isSafeContentHref, sourceUrlLabel, stripInline } from './md.js';
 import { referenceSegments } from './references.js';
-import { articleHref, canonicalPath, isDirectoryRecord, shortTitle, VOLUME_IDS } from './routes.js';
+import { articleHref, canonicalPath, isDirectoryRecord, sharedViewForRecord, shortTitle, VOLUME_IDS } from './routes.js';
 import { absoluteUrl } from './site-config.js';
 import { escapeHtml, uniqueCitations, VOLUME_NAME, VOLUME_ROMAN } from './seo.js';
 import { DISCOVERY_COPY, HOME_COPY, METHODS_COPY, NOT_FOUND_COPY, SEARCH_COPY } from './page-copy.js';
@@ -34,25 +34,28 @@ function linkedText(text, record, byVolumeNumber) {
 
 export function inlineHtml(text, record, byVolumeNumber) {
   return tokenizeInline(text, { linkifyUrls: ['gold-12', 'after-13', 'bitcoin-16'].includes(record?.id) }).map(token => {
-    const value = escapeHtml(token.v);
+    const value = escapeHtml(token.auto ? sourceUrlLabel(token.href) : token.v);
     if (token.t === 'b') return `<strong>${value}</strong>`;
     if (token.t === 'i') return `<em>${value}</em>`;
     if (token.t === 'code') return `<code>${value}</code>`;
     if (token.t === 'link') {
       const href = token.href.trim();
-      return isSafeContentHref(href) ? `<a href="${escapeHtml(href)}">${value}</a>` : value;
+      return isSafeContentHref(href) ? `<a href="${escapeHtml(href)}"${token.auto ? ` class="source-url" title="${escapeHtml(href)}"` : ''}>${value}</a>` : value;
     }
     if (token.t === 'text') return linkedText(token.v, record, byVolumeNumber);
     return value;
   }).join('');
 }
 
-export function blocksHtml(blocks, record, byVolumeNumber) {
+export function blocksHtml(blocks, record, byVolumeNumber, { idPrefix = '' } = {}) {
   return blocks.map(block => {
+    const id = idPrefix + block.id;
     if (/^h[1-4]$/.test(block.type)) {
-      const aliases = Object.entries(record.sectionAliases || {}).filter(([, target]) => target === block.id)
-        .map(([oldId]) => `<span id="${escapeHtml(oldId)}" aria-hidden="true" class="section-alias"></span>`).join('');
-      return `${aliases}<${block.type} id="${escapeHtml(block.id)}">${inlineHtml(block.text, record, byVolumeNumber)}</${block.type}>`;
+      const aliases = !idPrefix
+        ? Object.entries(record.sectionAliases || {}).filter(([, target]) => target === block.id)
+          .map(([oldId]) => `<span id="${escapeHtml(oldId)}" aria-hidden="true" class="section-alias"></span>`).join('')
+        : '';
+      return `${aliases}<${block.type} id="${escapeHtml(id)}">${inlineHtml(block.text, record, byVolumeNumber)}</${block.type}>`;
     }
     if (block.type === 'p') return `<p>${inlineHtml(block.text, record, byVolumeNumber)}</p>`;
     if (block.type === 'quote') return `<blockquote>${inlineHtml(block.text, record, byVolumeNumber)}</blockquote>`;
@@ -85,24 +88,22 @@ export function staticArticle(record, model, page) {
   const toc = sections.length
     ? `<nav class="static-toc" aria-label="Chapter contents"><p>On this page</p><ol>${sections.map(block => `<li><a href="${escapeHtml(articleHref(record, block.id))}">${inlineHtml(block.text, record, byVolumeNumber)}</a></li>`).join('')}</ol></nav>`
     : '';
-  const evidence = model.articleEvidence[record.id] || [];
-  const sourceList = evidence.length ? `<aside aria-label="Dated evidence" class="static-evidence"><h2>Dated evidence in this chapter</h2><ul>${evidence.map(item => `<li><a href="${escapeHtml(item.url)}">${escapeHtml(item.publisher)}: ${escapeHtml(item.title)}</a>, ${escapeHtml(item.locator)}. Observation period: ${escapeHtml(item.period)}. ${escapeHtml(item.uncertainty)}</li>`).join('')}</ul></aside>` : '';
   const heading = blocks.find(block => block.type === 'h1');
   const rest = blocks.filter(block => block !== heading);
   const h1 = heading
     ? `${Object.entries(record.sectionAliases || {}).filter(([, target]) => target === heading.id).map(([oldId]) => `<span id="${escapeHtml(oldId)}" aria-hidden="true" class="section-alias"></span>`).join('')}<h1 id="${escapeHtml(heading.id)}">${inlineHtml(heading.text, record, byVolumeNumber)}</h1>`
     : `<h1>${escapeHtml(shortTitle(record))}</h1>`;
   const chapterNav = volumeChapterList(record.vol, model.manifest);
-  return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}<p class="eyebrow">Volume ${VOLUME_ROMAN[record.vol]} · ${VOLUME_NAME[record.vol]} · <a href="/">Money Research</a></p><p class="evidence-notice">${EVIDENCE_NOTICE}</p>${h1}${toc}${contentRole(record) === 'topic' ? summaryHtml(metadata) : ''}${blocksHtml(rest, record, byVolumeNumber)}${sourceList}${isDirectoryRecord(record) ? chapterNav : ''}</main>`;
+  return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}<p class="eyebrow">Volume ${VOLUME_ROMAN[record.vol]} · ${VOLUME_NAME[record.vol]} · <a href="/">Money Research</a></p><p class="evidence-notice">${EVIDENCE_NOTICE}</p>${h1}${toc}${contentRole(record) === 'topic' ? summaryHtml(metadata) : ''}${blocksHtml(rest, record, byVolumeNumber)}${isDirectoryRecord(record) ? chapterNav : ''}</main>`;
 }
 
 export function volumeChapterList(vol, manifest, heading = 'Chapters in this volume') {
-  const chapters = manifest.filter(item => item.vol === vol && !isDirectoryRecord(item));
+  const chapters = manifest.filter(item => item.vol === vol && !isDirectoryRecord(item) && !sharedViewForRecord(item));
   return `<section class="static-item-list"><h2>${escapeHtml(heading)}</h2><ol>${chapters.map(item => `<li><a href="${escapeHtml(canonicalPath(item))}">${escapeHtml(shortTitle(item))}</a></li>`).join('')}</ol></section>`;
 }
 
 export function hubItemList(vol, manifest) {
-  return manifest.filter(item => item.vol === vol && !isDirectoryRecord(item))
+  return manifest.filter(item => item.vol === vol && !isDirectoryRecord(item) && !sharedViewForRecord(item))
     .map(item => ({ name: shortTitle(item), url: absoluteUrl(canonicalPath(item)) }));
 }
 
@@ -116,7 +117,6 @@ export function staticHome(manifest, page) {
     };
   });
   return `<main id="main-content" class="static-article intro-page reader-home">${breadcrumbHtml(page.breadcrumbs)}
-<p class="eyebrow">${escapeHtml(HOME_COPY.eyebrow)}</p>
 <h1>${escapeHtml(HOME_COPY.title)}</h1>
 <p class="lead">${escapeHtml(HOME_COPY.lead)}</p>
 <nav class="reader-actions" aria-label="Start reading"><a href="#volumes">Browse the volumes →</a><a href="/arc/">Read History →</a><a href="/compare/">Compare arrangements →</a></nav>
@@ -153,6 +153,18 @@ export function staticGlossary(glossary, page) {
 <p class="discovery-meta">Glossary · ${glossary.length} terms across three volumes</p>
 <h1>${escapeHtml(DISCOVERY_COPY.glossary.title)}</h1>
 <div class="discovery-glossary">${glossary.map(term => `<div id="${escapeHtml(term.id)}" class="discovery-definition"><strong>${escapeHtml(term.term)}</strong><div>${escapeHtml(stripInline(term.def || term.definition || ''))}</div></div>`).join('')}</div>
+</main>`;
+}
+
+export function staticSources(model, page) {
+  const labels = { gold: 'Volume I · Gold', after: 'Volume II · After Gold', bitcoin: 'Volume III · Bitcoin' };
+  const byVolumeNumber = new Map(model.manifest.map(item => [`${item.vol}/${item.num}`, item]));
+  const records = VOLUME_IDS.map(vol => model.manifest.find(item => item.vol === vol && sharedViewForRecord(item) === 'sources')).filter(Boolean);
+  return `<main id="main-content" class="static-article discovery-view">${breadcrumbHtml(page.breadcrumbs)}
+<p class="discovery-meta">Sources · three research volumes</p>
+<h1>${escapeHtml(DISCOVERY_COPY.sources.title)}</h1>
+<p>Source lists and further reading from all three volumes are collected here. Entries retain their original volume and editorial scope.</p>
+${records.map(record => `<section id="sources-${escapeHtml(record.vol)}" class="sources-volume"><h2>${escapeHtml(labels[record.vol])}</h2>${blocksHtml((model.blocks[`${record.slug}@${record.vol}`] || []).filter(block => block.type !== 'h1'), record, byVolumeNumber, { idPrefix: `sources-${record.vol}-` })}</section>`).join('\n')}
 </main>`;
 }
 
@@ -231,7 +243,6 @@ export function staticCompare(model, page) {
 <table><caption>${escapeHtml(use.label)} · ${escapeHtml(perspective.label)}. Evidence gaps are shown explicitly.</caption>
 <thead><tr><th scope="col">Arrangement</th><th scope="col">What the evidence supports</th><th scope="col">Limits and sources</th></tr></thead>
 <tbody>${rows}</tbody></table>
-<p class="small-note">A missing cell is unknown here, not a negative score. <a href="/methods/">Research method and sources →</a></p>
 </main>`;
 }
 
@@ -286,14 +297,14 @@ export function staticTimeline(model, page) {
   return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}
 <p class="eyebrow">Connected timeline · 4600 BCE – 2026 · ${merged.length} entries</p>
 <h1>${escapeHtml(DISCOVERY_COPY.timeline.title)}</h1>
-<p>Events from all three volumes share one chronological view. The links in the interactive timeline distinguish checked chapter sections, reviewed source-timeline fallbacks and destination reviews still pending. Dates, quantities and composite rows need a separate editorial audit.</p>
+<p>Trace the key moments that shaped money—from early coins and gold standards to modern currencies and Bitcoin. The timeline brings these developments together in chronological order.</p>
 <ol class="static-timeline">${merged.map(event => `<li id="${escapeHtml(event.id)}"><time>${escapeHtml(event.date)}</time> <strong>${escapeHtml(event.event)}</strong>${event.significance ? ` — ${escapeHtml(stripInline(event.significance))}` : ''}</li>`).join('')}</ol>
 </main>`;
 }
 
 export function siteChrome() {
   return `<header class="static-header"><a href="/">Money Research</a>
-<nav aria-label="Primary"><a href="/">Start here</a><a href="/compare/">Compare</a><a href="/arc/">History</a><a href="/timeline/">Timeline</a><a href="/takeaways/">Takeaways</a><a href="/glossary/">Glossary</a><a href="/methods/">Sources</a></nav></header>`;
+<nav aria-label="Primary"><a href="/">Start here</a><a href="/compare/">Compare</a><a href="/arc/">History</a><a href="/timeline/">Timeline</a><a href="/takeaways/">Takeaways</a><a href="/glossary/">Glossary</a><a href="/sources/">Sources</a></nav></header>`;
 }
 
 export function wrapStatic(inner) {

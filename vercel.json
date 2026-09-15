@@ -8,8 +8,38 @@
       "permanent": true
     },
     {
+      "source": "/gold/10-master-timeline/",
+      "destination": "/timeline/",
+      "permanent": true
+    },
+    {
+      "source": "/gold/11-glossary/",
+      "destination": "/glossary/",
+      "permanent": true
+    },
+    {
+      "source": "/gold/12-sources/",
+      "destination": "/sources/",
+      "permanent": true
+    },
+    {
       "source": "/after/00-readme/",
       "destination": "/after/",
+      "permanent": true
+    },
+    {
+      "source": "/after/11-master-timeline-1971-2026/",
+      "destination": "/timeline/",
+      "permanent": true
+    },
+    {
+      "source": "/after/12-glossary/",
+      "destination": "/glossary/",
+      "permanent": true
+    },
+    {
+      "source": "/after/13-sources/",
+      "destination": "/sources/",
       "permanent": true
     },
     {
@@ -88,18 +118,33 @@
       "permanent": true
     },
     {
+      "source": "/bitcoin/14-master-timeline-2008-2026/",
+      "destination": "/timeline/",
+      "permanent": true
+    },
+    {
       "source": "/bitcoin/14/",
-      "destination": "/bitcoin/14-master-timeline-2008-2026/",
+      "destination": "/timeline/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/15-glossary/",
+      "destination": "/glossary/",
       "permanent": true
     },
     {
       "source": "/bitcoin/15/",
-      "destination": "/bitcoin/15-glossary/",
+      "destination": "/glossary/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/16-sources/",
+      "destination": "/sources/",
       "permanent": true
     },
     {
       "source": "/bitcoin/16/",
-      "destination": "/bitcoin/16-sources/",
+      "destination": "/sources/",
       "permanent": true
     }
   ],

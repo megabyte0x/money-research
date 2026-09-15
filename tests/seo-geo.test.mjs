@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { hashToPath, parseLocation, redirectRules, vercelConfig } from '../src/routes.js';
+import { hashToPath, parseLocation, redirectRules, sharedViewForRecord, vercelConfig } from '../src/routes.js';
 import { SITE } from '../src/site-config.js';
 import { indexablePages, jsonLdGraph, resolvePage, robotsTxt } from '../src/seo.js';
 
@@ -38,7 +38,7 @@ test('static home and hubs have introduction text and ordinary volume/chapter li
 
 test('chapter pages keep unique canonicals, one H1, and specific descriptions', () => {
   const seen = new Set();
-  for (const record of manifest.filter(item => item.slug !== '00-readme')) {
+  for (const record of manifest.filter(item => item.slug !== '00-readme' && !sharedViewForRecord(item))) {
     const page = html(`${record.vol}/${record.slug}/index.html`);
     const canonical = `${SITE.origin}/${record.vol}/${record.slug}/`;
     assert.equal([...page.matchAll(/<link rel="canonical"/g)].length, 1, record.id);
@@ -66,6 +66,7 @@ test('JSON-LD types match page kinds from the shared resolver', () => {
   assert.match(liveHub, /"@type":"CollectionPage"/);
   assert.match(liveHub, /"@type":"ItemList"/);
   assert.match(html('methods/index.html'), /"@type":"AboutPage"/);
+  assert.match(html('sources/index.html'), /"@type":"CollectionPage"/);
 });
 
 test('sitemap and robots follow the indexability registry', () => {
@@ -90,6 +91,9 @@ test('aliases are redirects in host config, not duplicate copies', () => {
   assert.equal(vercel.rewrites, undefined);
   assert.ok(rules.some(rule => rule.source === '/gold/00-readme/' && rule.destination === '/gold/' && rule.permanent));
   assert.ok(rules.some(rule => rule.source === '/bitcoin/01/' && rule.destination === '/bitcoin/01-the-origin-what-2008-produced/'));
+  assert.ok(rules.some(rule => rule.source === '/gold/11-glossary/' && rule.destination === '/glossary/' && rule.permanent));
+  assert.ok(rules.some(rule => rule.source === '/after/13-sources/' && rule.destination === '/sources/' && rule.permanent));
+  assert.ok(rules.some(rule => rule.source === '/bitcoin/14-master-timeline-2008-2026/' && rule.destination === '/timeline/' && rule.permanent));
   assert.ok(existsSync(join(dist, '404.html')));
   assert.match(html('404.html'), /Page not found/);
 });
@@ -112,7 +116,7 @@ test('approved answers retain metadata provenance without rendering summary sour
 });
 
 test('prerendered chapter HTML contains no hash-route hrefs', () => {
-  for (const record of manifest.filter(item => item.slug !== '00-readme')) {
+  for (const record of manifest.filter(item => item.slug !== '00-readme' && !sharedViewForRecord(item))) {
     const page = html(`${record.vol}/${record.slug}/index.html`);
     assert.doesNotMatch(page, /href="\/#\//, record.id);
   }
@@ -124,7 +128,9 @@ test('legacy hashes translate to real paths while keeping destination and sectio
   assert.equal(hashToPath('#/gold/08-why-the-dollar-replaced-gold/the-nixon-shock'), '/gold/08-why-the-dollar-replaced-gold/#the-nixon-shock');
   assert.equal(hashToPath('#/search?q=QE&vol=after'), '/search/?q=QE&vol=after');
   assert.equal(hashToPath('#/bitcoin/00', manifest), '/bitcoin/');
+  assert.equal(hashToPath('#/gold/11-glossary', manifest), '/glossary/');
   const parsed = parseLocation({ pathname: '/gold/03-from-metal-to-money-weights-rings-coins/', search: '?section=stage-one-metal-by-weight-c-3000-650-bce', hash: '' }, manifest);
   assert.equal(parsed.view, 'article');
   assert.equal(parsed.sec, 'stage-one-metal-by-weight-c-3000-650-bce');
+  assert.equal(parseLocation({ pathname: '/after/13-sources/', search: '', hash: '' }, manifest).view, 'sources');
 });

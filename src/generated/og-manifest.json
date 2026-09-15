@@ -24,6 +24,13 @@
       "volume": "",
       "templateVersion": "title-card-v3"
     },
+    "/sources/": {
+      "image": "/og/sources.a48f16f51233.png",
+      "alt": "Sources and further reading. Money Research sharing card.",
+      "title": "Sources and further reading",
+      "volume": "",
+      "templateVersion": "title-card-v3"
+    },
     "/timeline/": {
       "image": "/og/timeline.e274293a002b.png",
       "alt": "A connected monetary timeline. Money Research sharing card.",
@@ -157,27 +164,6 @@
       "volume": "Volume I · Gold",
       "templateVersion": "title-card-v3"
     },
-    "/gold/10-master-timeline/": {
-      "image": "/og/gold-10-master-timeline.ae4e97f43872.png",
-      "alt": "Volume I · Gold — Master Timeline: Gold from 4600 BCE to 2026. Money Research sharing card.",
-      "title": "Master Timeline: Gold from 4600 BCE to 2026",
-      "volume": "Volume I · Gold",
-      "templateVersion": "title-card-v3"
-    },
-    "/gold/11-glossary/": {
-      "image": "/og/gold-11-glossary.0ad4881f3cc0.png",
-      "alt": "Volume I · Gold — Glossary. Money Research sharing card.",
-      "title": "Glossary",
-      "volume": "Volume I · Gold",
-      "templateVersion": "title-card-v3"
-    },
-    "/gold/12-sources/": {
-      "image": "/og/gold-12-sources.b08525930b70.png",
-      "alt": "Volume I · Gold — Sources and Further Reading. Money Research sharing card.",
-      "title": "Sources and Further Reading",
-      "volume": "Volume I · Gold",
-      "templateVersion": "title-card-v3"
-    },
     "/after/01-the-break-1971-1976/": {
       "image": "/og/after-01-the-break-1971-1976.c418234b92e8.png",
       "alt": "Volume II · After Gold — The Break, 1971–1976: From the Nixon Shock to Legalised Floating. Money Research sharing card.",
@@ -245,27 +231,6 @@
       "image": "/og/after-10-rules-treaties-and-institutions.c894c3675a06.png",
       "alt": "Volume II · After Gold — Rules, Treaties and Institutions of the Fiat Era: A Reference Table. Money Research sharing card.",
       "title": "Rules, Treaties and Institutions of the Fiat Era: A Reference Table",
-      "volume": "Volume II · After Gold",
-      "templateVersion": "title-card-v3"
-    },
-    "/after/11-master-timeline-1971-2026/": {
-      "image": "/og/after-11-master-timeline-1971-2026.54a29d11fef7.png",
-      "alt": "Volume II · After Gold — Master Timeline: The Fiat Era, 1971–2026. Money Research sharing card.",
-      "title": "Master Timeline: The Fiat Era, 1971–2026",
-      "volume": "Volume II · After Gold",
-      "templateVersion": "title-card-v3"
-    },
-    "/after/12-glossary/": {
-      "image": "/og/after-12-glossary.ee87b7ca992f.png",
-      "alt": "Volume II · After Gold — Glossary. Money Research sharing card.",
-      "title": "Glossary",
-      "volume": "Volume II · After Gold",
-      "templateVersion": "title-card-v3"
-    },
-    "/after/13-sources/": {
-      "image": "/og/after-13-sources.a7c0e2d43030.png",
-      "alt": "Volume II · After Gold — Sources and Further Reading. Money Research sharing card.",
-      "title": "Sources and Further Reading",
       "volume": "Volume II · After Gold",
       "templateVersion": "title-card-v3"
     },
@@ -357,27 +322,6 @@
       "image": "/og/bitcoin-13-is-bitcoin-the-answer.d4ed79a98c77.png",
       "alt": "Volume III · Bitcoin — Is Bitcoin the True Solution to Money After Gold?. Money Research sharing card.",
       "title": "Is Bitcoin the True Solution to Money After Gold?",
-      "volume": "Volume III · Bitcoin",
-      "templateVersion": "title-card-v3"
-    },
-    "/bitcoin/14-master-timeline-2008-2026/": {
-      "image": "/og/bitcoin-14-master-timeline-2008-2026.d476677f90d1.png",
-      "alt": "Volume III · Bitcoin — Master Timeline, 2008–2026. Money Research sharing card.",
-      "title": "Master Timeline, 2008–2026",
-      "volume": "Volume III · Bitcoin",
-      "templateVersion": "title-card-v3"
-    },
-    "/bitcoin/15-glossary/": {
-      "image": "/og/bitcoin-15-glossary.74c2d94d67d9.png",
-      "alt": "Volume III · Bitcoin — Glossary. Money Research sharing card.",
-      "title": "Glossary",
-      "volume": "Volume III · Bitcoin",
-      "templateVersion": "title-card-v3"
-    },
-    "/bitcoin/16-sources/": {
-      "image": "/og/bitcoin-16-sources.c7449793d46f.png",
-      "alt": "Volume III · Bitcoin — Sources and Further Reading. Money Research sharing card.",
-      "title": "Sources and Further Reading",
       "volume": "Volume III · Bitcoin",
       "templateVersion": "title-card-v3"
     }

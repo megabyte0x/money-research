@@ -45,6 +45,15 @@ export function parseMd(src) {
   return blocks;
 }
 // Inline tokenizer: returns [{t:'text'|'b'|'i'|'code'|'link', v, href}]
+export function sourceUrlLabel(href) {
+  try {
+    const host = new URL(href).hostname.replace(/^www\./i, '');
+    return host ? `${host} ↗` : 'Open source ↗';
+  } catch {
+    return 'Open source ↗';
+  }
+}
+
 export function tokenizeInline(text, { linkifyUrls = false } = {}) {
   const re = /(\*\*[^*]+\*\*|\*[^*\n]+\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g;
   const out = []; let last = 0; let m;
@@ -56,7 +65,7 @@ export function tokenizeInline(text, { linkifyUrls = false } = {}) {
       const candidate = found[0].replace(/[.,;:!?]+$/, '');
       if (!candidate || !isSafeContentHref(candidate)) continue;
       if (found.index > offset) out.push({ t: 'text', v: plain.slice(offset, found.index) });
-      out.push({ t: 'link', v: candidate, href: candidate });
+      out.push({ t: 'link', v: candidate, href: candidate, auto: true });
       offset = found.index + candidate.length;
     }
     if (offset < plain.length) out.push({ t: 'text', v: plain.slice(offset) });

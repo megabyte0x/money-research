@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { isSafeContentHref, tokenizeInline } from '../src/md.js';
+import { isSafeContentHref, sourceUrlLabel, tokenizeInline } from '../src/md.js';
 
 test('research Markdown links allow web and local routes without executable or protocol-relative URLs', () => {
   for (const href of ['https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm',
@@ -22,4 +22,5 @@ test('source-page bare citations become safe links without swallowing punctuatio
   ]);
   assert.ok(sourceTokens.some(t => t.t === 'text' && t.v.includes(' . ')));
   assert.deepEqual(tokenizeInline(line).filter(t => t.t === 'link').map(t => t.href), ['https://example.org/more']);
+  assert.equal(sourceUrlLabel('https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm'), 'govinfo.gov ↗');
 });

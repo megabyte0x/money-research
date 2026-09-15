@@ -95,6 +95,5 @@ input:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .glossary-panel-left{left:0}
 .glossary-panel-right{right:0}
 .glossary-panel strong{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500}
-.glossary-panel a,.glossary-close{font-family:'IBM Plex Mono',monospace;font-size:12px}
-.glossary-close{align-self:flex-start;text-decoration:underline;text-decoration-color:var(--rule)}
+.glossary-panel a{font-family:'IBM Plex Mono',monospace;font-size:12px}
 @media(max-width:639px){.glossary-panel{position:fixed;top:auto;bottom:16px;left:16px;right:16px;width:auto;max-width:none}}

@@ -44,6 +44,18 @@ export function GlossaryView({ v }) {
   </section>;
 }
 
+export function SourcesView({ v }) {
+  return <section className="discovery-view sources-view" aria-label="Sources and further reading">
+    <p className="discovery-meta">Sources · {v.sourceVolumes.length} research volumes</p>
+    <h1>Sources and further reading</h1>
+    <p>Source lists and further reading from all three volumes are collected here. Entries retain their original volume and editorial scope.</p>
+    {v.sourceVolumes.map(volume => <section key={volume.id} id={volume.id} className="sources-volume">
+      <h2>{volume.label}</h2>
+      {volume.body}
+    </section>)}
+  </section>;
+}
+
 export function SynthesisView({ v }) {
   // The coordinator supplies cross-volume paragraphs only after acceptance.
   // Until then, this view can browse approved chapter answers verbatim.

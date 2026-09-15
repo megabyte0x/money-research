@@ -2,7 +2,7 @@ import { SITE, METADATA_FIELDS, absoluteUrl, socialImageUrl } from './site-confi
 import OG_CARD_MANIFEST from './generated/og-manifest.json' with { type: 'json' };
 import { DISCOVERY_COPY, HOME_COPY, METHODS_COPY, NOT_FOUND_COPY, SEARCH_COPY, VOLUME_COPY } from './page-copy.js';
 import {
-  canonicalPath, isDirectoryRecord, publicationStatus, shortTitle, VOLUME_IDS,
+  canonicalPath, isDirectoryRecord, publicationStatus, sharedViewForRecord, shortTitle, VOLUME_IDS,
 } from './routes.js';
 
 export { METADATA_FIELDS };
@@ -373,9 +373,10 @@ export function indexablePages(manifest, articleMetadata) {
     ...VOLUME_IDS.map(vol => resolvePage({ kind: 'hub', vol })),
     resolvePage({ kind: 'methods' }),
     resolvePage({ kind: 'glossary' }),
+    resolvePage({ kind: 'sources' }),
   ];
   for (const record of manifest) {
-    if (isDirectoryRecord(record)) continue;
+    if (isDirectoryRecord(record) || sharedViewForRecord(record)) continue;
     pages.push(resolvePage({ kind: 'chapter', record, articleMetadata }));
   }
   return pages.filter(page => page.indexable);
