@@ -72,10 +72,7 @@ export function summaryHtml(metadata) {
   if (!metadata?.summary) return '';
   const summary = metadata.summary;
   const takeaways = summary.takeaways?.length ? `<ul>${summary.takeaways.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : '';
-  const limits = summary.evidenceAndUncertainty
-    ? `<p><strong>Evidence and limits:</strong> ${escapeHtml(summary.evidenceAndUncertainty)}</p>`
-    : `${summary.evidence ? `<p><strong>Evidence:</strong> ${escapeHtml(summary.evidence)}</p>` : ''}${summary.uncertainty ? `<p><strong>Still uncertain:</strong> ${escapeHtml(summary.uncertainty)}</p>` : ''}`;
-  return `<section class="static-summary" aria-label="Chapter summary">${summary.question ? `<h2>${escapeHtml(summary.question)}</h2>` : ''}<p>${escapeHtml(summary.answer)}</p>${citationLinksHtml(metadata.citations)}${takeaways}${limits}</section>`;
+  return `<section class="static-summary" aria-label="Chapter summary">${summary.question ? `<h2>${escapeHtml(summary.question)}</h2>` : ''}<p>${escapeHtml(summary.answer)}</p>${takeaways}</section>`;
 }
 
 export function staticArticle(record, model, page) {

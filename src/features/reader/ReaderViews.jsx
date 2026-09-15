@@ -51,9 +51,8 @@ function ReaderSummary({ summary }) {
   if (!summary) return null;
   return <section className="reader-summary" aria-label="Chapter summary">
     {summary.question && <><p className="reader-summary-label">The question</p><h2>{summary.question}</h2></>}
-    {summary.answer && <><p className="reader-summary-label">Short answer</p><p>{summary.answer}</p>{summary.citations?.length > 0 && <p className="answer-sources">Sources: {summary.citations.map((item, i) => <span key={`${item.claimId}-${i}`}><a href={item.url}>{item.publisher || item.title}</a>, {item.locator}{i < summary.citations.length - 1 ? '; ' : '.'}</span>)}</p>}</>}
+    {summary.answer && <><p className="reader-summary-label">Short answer</p><p>{summary.answer}</p></>}
     {summary.takeaways?.length > 0 && <><p className="reader-summary-label">Key takeaways</p><ul>{summary.takeaways.map((item, i) => <li key={i}>{item}</li>)}</ul></>}
-    {(summary.evidence || summary.uncertainty || summary.evidenceAndUncertainty) && <div className="reader-summary-evidence">{summary.evidence && <p><strong>Evidence:</strong> {summary.evidence}</p>}{summary.uncertainty && <p><strong>Still uncertain:</strong> {summary.uncertainty}</p>}{summary.evidenceAndUncertainty && <p><strong>Evidence and limits:</strong> {summary.evidenceAndUncertainty}</p>}</div>}
   </section>;
 }
 

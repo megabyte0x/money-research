@@ -588,7 +588,7 @@ export default class App extends React.Component {
       vals.articleIsReference = contentRole(cur) !== 'topic';
       vals.articleEvidence = st.articleEvidence[cur.id] || [];
       const metadata = st.articleMetadata[cur.id];
-      vals.articleSummary = metadata ? { ...metadata.summary, citations: metadata.citations } : null;
+      vals.articleSummary = metadata?.summary || null;
       vals.hubChapters = r.view === 'hub' ? st.manifest.filter(item => item.vol === cur.vol && item.slug !== '00-readme').map(item => ({ href: this.href(item), title: this.short(item) })) : [];
       vals.articleLinks = (metadata?.nextSteps || []).map(step => {
         const target = st.manifest.find(record => record.id === step.targetArticleId);

@@ -29,8 +29,6 @@
 .reader-summary-label{color:var(--mut);font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin:0 0 5px!important}
 .reader-summary ul{margin:0 0 20px;padding-left:24px}
 .reader-summary li{margin:6px 0}
-.reader-summary-evidence{border-top:1px solid var(--rule);padding-top:14px;font-size:14px}
-.reader-summary-evidence p:last-child{margin-bottom:0}
 .reader-article-body{line-height:1.6}
 .section-alias{display:block;height:0;overflow:hidden}
 .reader-dated-evidence{margin-top:52px;border-top:1px solid var(--rule);padding-top:20px;font-size:13px;line-height:1.55}

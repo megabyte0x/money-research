@@ -94,10 +94,10 @@ test('aliases are redirects in host config, not duplicate copies', () => {
   assert.match(html('404.html'), /Page not found/);
 });
 
-test('approved answers expose provenance from the evidence records', () => {
+test('approved answers retain metadata provenance without rendering summary sources', () => {
   const after = html('after/01-the-break-1971-1976/index.html');
-  assert.match(after, /class="answer-sources"/);
-  assert.match(after, /E31-official-gold-window-1971|Nixon|gold conversion|IMF/);
+  assert.doesNotMatch(after, /class="answer-sources"/);
+  assert.match(after, /"citation":\[/);
   const citations = modelMetadata['after-01'].citations;
   assert.ok(citations.length > 0);
   const claimIds = new Set(claims.filter(claim => claim.reviewState === 'accepted').map(claim => claim.id));
