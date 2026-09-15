@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { hashToPath, parseLocation, redirectRules, vercelConfig } from '../src/routes.js';
+import { SITE } from '../src/site-config.js';
 import { indexablePages, jsonLdGraph, resolvePage, robotsTxt } from '../src/seo.js';
 
 const root = new URL('../', import.meta.url).pathname;
@@ -16,6 +17,10 @@ function html(rel) {
   return readFileSync(join(dist, rel), 'utf8');
 }
 
+test('production origin is the goldtozcash Vercel deployment', () => {
+  assert.equal(SITE.origin, 'https://goldtozcash.vercel.app');
+});
+
 test('static home and hubs have introduction text and ordinary volume/chapter links', () => {
   const home = html('index.html');
   assert.match(home, /How money works/);
@@ -27,7 +32,7 @@ test('static home and hubs have introduction text and ordinary volume/chapter li
     const hub = html(`${vol}/index.html`);
     assert.match(hub, /<h1 id="/);
     assert.match(hub, /Chapters in this volume/);
-    assert.match(hub, new RegExp(`<link rel="canonical" href="https://money-research-iota.vercel.app/${vol}/">`));
+    assert.match(hub, new RegExp(`<link rel="canonical" href="${SITE.origin}/${vol}/">`));
   }
 });
 
@@ -35,7 +40,7 @@ test('chapter pages keep unique canonicals, one H1, and specific descriptions', 
   const seen = new Set();
   for (const record of manifest.filter(item => item.slug !== '00-readme')) {
     const page = html(`${record.vol}/${record.slug}/index.html`);
-    const canonical = `https://money-research-iota.vercel.app/${record.vol}/${record.slug}/`;
+    const canonical = `${SITE.origin}/${record.vol}/${record.slug}/`;
     assert.equal([...page.matchAll(/<link rel="canonical"/g)].length, 1, record.id);
     assert.ok(page.includes(`href="${canonical}"`), record.id);
     assert.equal([...page.matchAll(/<h1 /g)].length, 1, record.id);
@@ -72,7 +77,7 @@ test('sitemap and robots follow the indexability registry', () => {
   assert.ok(!xml.includes('/timeline/'));
   assert.ok(!xml.includes('/compare/'));
   assert.equal(robots, robotsTxt());
-  assert.match(robots, /Sitemap: https:\/\/money-research-iota\.vercel\.app\/sitemap\.xml/);
+  assert.ok(robots.includes(`Sitemap: ${SITE.origin}/sitemap.xml`));
   assert.match(html('search/index.html'), /content="noindex, follow"/);
   assert.ok(!html('search/index.html').includes('content="index, follow"'));
 });

@@ -4,7 +4,7 @@ Recorded 15 September 2026. These decisions are applied by `src/site-config.js` 
 
 ## Domain and URL convention
 
-- Production origin: `https://money-research-iota.vercel.app` (current live origin; no other permanent domain was decided).
+- Production origin: `https://goldtozcash.vercel.app`. The previous domain has been removed; this publication does not rely on old-host redirects.
 - Trailing slash on all canonical page paths.
 - English-language educational publisher; readers researching monetary history and comparing systems.
 

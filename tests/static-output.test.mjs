@@ -1,14 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { createContentModel } from '../src/content-model.js';
+import { SITE } from '../src/site-config.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const manifest = JSON.parse(readFileSync(join(root, 'public/content/manifest.json'), 'utf8'));
 const timelineEventIds = JSON.parse(readFileSync(join(root, 'public/content/timeline-event-ids.json'), 'utf8'));
 const timelineReviewStatus = JSON.parse(readFileSync(join(root, 'public/content/timeline-review-status.json'), 'utf8'));
 const comparisonCells = JSON.parse(readFileSync(join(root, 'public/content/comparison-cells.json'), 'utf8'));
+
+function outputFiles(directory) {
+  return readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
+    const path = join(directory, entry.name);
+    return entry.isDirectory() ? outputFiles(path) : [path];
+  });
+}
 
 test('built browser index and static pages use the same validated source model', () => {
   const documents = Object.fromEntries(manifest.map(record =>
@@ -49,13 +57,13 @@ test('each article has a direct HTML page with unique canonical metadata', () =>
     if (record.slug === '00-readme') {
       assert.equal(existsSync(join(root, 'dist', record.vol, record.slug, 'index.html')), false, record.id);
       const hub = readFileSync(join(root, 'dist', record.vol, 'index.html'), 'utf8');
-      assert.ok(hub.includes(`<link rel="canonical" href="https://money-research-iota.vercel.app/${record.vol}/">`), record.id);
+      assert.ok(hub.includes(`<link rel="canonical" href="${SITE.origin}/${record.vol}/">`), record.id);
       continue;
     }
     const path = join(root, 'dist', record.vol, record.slug, 'index.html');
     assert.ok(existsSync(path), record.id);
     const html = readFileSync(path, 'utf8');
-    const url = `https://money-research-iota.vercel.app/${record.vol}/${record.slug}/`;
+    const url = `${SITE.origin}/${record.vol}/${record.slug}/`;
     assert.ok(html.includes(`<link rel="canonical" href="${url}">`), record.id);
     assert.ok(html.includes(`<meta property="og:url" content="${url}">`), record.id);
     assert.ok(html.includes('<meta name="description"'), record.id);
@@ -73,13 +81,19 @@ test('sitemap covers the homepage and all 44 article routes', () => {
   const xml = readFileSync(join(root, 'dist/sitemap.xml'), 'utf8');
   const chapters = manifest.filter(record => record.slug !== '00-readme');
   assert.equal((xml.match(/<url>/g) || []).length, 1 + 3 + 2 + chapters.length);
-  assert.ok(xml.includes('https://money-research-iota.vercel.app/'));
+  assert.ok(xml.includes(`${SITE.origin}/`));
   for (const vol of ['gold', 'after', 'bitcoin']) {
-    assert.ok(xml.includes(`https://money-research-iota.vercel.app/${vol}/`), vol);
+    assert.ok(xml.includes(`${SITE.origin}/${vol}/`), vol);
   }
   for (const record of chapters) assert.ok(xml.includes(`/${record.vol}/${record.slug}/`), record.id);
   assert.ok(!xml.includes('/search/'));
   assert.ok(!xml.includes('/00-readme/'));
+});
+
+test('generated SEO documents do not retain the removed production host', () => {
+  for (const file of outputFiles(join(root, 'dist')).filter(path => /\.(?:html|xml|txt)$/.test(path))) {
+    assert.doesNotMatch(readFileSync(file, 'utf8'), /https:\/\/money-research-iota\.vercel\.app/, file);
+  }
 });
 
 test('generated internal article links and section targets resolve', () => {
@@ -106,8 +120,8 @@ test('generated internal article links and section targets resolve', () => {
     for (const [, rawHref] of html.matchAll(/<a\s+[^>]*href="([^"]+)"/g)) {
       const href = rawHref.replaceAll('&amp;', '&');
       if (href.startsWith('#/') || href.startsWith('mailto:')) continue;
-      const url = new URL(href, `https://money-research-iota.vercel.app${pagePath}`);
-      if (url.origin !== 'https://money-research-iota.vercel.app') continue;
+      const url = new URL(href, `${SITE.origin}${pagePath}`);
+      if (url.origin !== SITE.origin) continue;
       if (url.pathname === '/') { checked++; continue; }
       const canonical = aliases.get(url.pathname) || url.pathname;
       const target = pages.get(canonical);

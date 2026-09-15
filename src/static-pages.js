@@ -1,6 +1,7 @@
 import { tokenizeInline, isSafeContentHref, stripInline } from './md.js';
 import { referenceSegments } from './references.js';
 import { articleHref, canonicalPath, isDirectoryRecord, shortTitle, VOLUME_IDS } from './routes.js';
+import { absoluteUrl } from './site-config.js';
 import { escapeHtml, uniqueCitations, VOLUME_NAME, VOLUME_ROMAN } from './seo.js';
 import { DISCOVERY_COPY, HOME_COPY, METHODS_COPY, NOT_FOUND_COPY, SEARCH_COPY } from './page-copy.js';
 import { HISTORY_STAGES } from './history-stages.js';
@@ -112,7 +113,7 @@ export function volumeChapterList(vol, manifest, heading = 'Chapters in this vol
 
 export function hubItemList(vol, manifest) {
   return manifest.filter(item => item.vol === vol && !isDirectoryRecord(item))
-    .map(item => ({ name: shortTitle(item), url: `https://money-research-iota.vercel.app${canonicalPath(item)}` }));
+    .map(item => ({ name: shortTitle(item), url: absoluteUrl(canonicalPath(item)) }));
 }
 
 export function staticHome(manifest, page) {

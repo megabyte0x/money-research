@@ -1,11 +1,11 @@
 // Production origin, slash convention, social assets, and metadata field
 // definitions. Publication/indexability lives with the route registry.
-// Domain decision (15 September 2026): keep the current live origin until a
-// different permanent domain is recorded. Search Console / Bing ownership and
-// SERP volume data were not available in this environment.
+// Domain decision (15 September 2026): goldtozcash.vercel.app is the permanent
+// production origin. The previous domain has been removed, so this release
+// does not rely on redirects from it.
 
 export const SITE = {
-  origin: 'https://money-research-iota.vercel.app',
+  origin: 'https://goldtozcash.vercel.app',
   trailingSlash: true,
   language: 'en',
   name: 'Money Research',

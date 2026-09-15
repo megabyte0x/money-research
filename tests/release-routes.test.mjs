@@ -2,10 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { SITE } from '../src/site-config.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const dist = join(root, 'dist');
-const origin = 'https://money-research-iota.vercel.app';
+const origin = SITE.origin;
 const manifest = JSON.parse(readFileSync(join(root, 'public/content/manifest.json'), 'utf8'));
 
 function metadata(html, name, attribute = 'name') {
