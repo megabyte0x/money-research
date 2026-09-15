@@ -1,4 +1,5 @@
 import React from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import * as md from './md.js';
 import { eventYear, eventSortValue, mergeSharedEvents, SHARED_EVENT_PAIRS } from './timeline.js';
 import { TIMELINE_SECTION_REFS } from './timeline-references.js';
@@ -726,6 +727,7 @@ export default class App extends React.Component {
           </aside>
         </div>
         {this.renderSelection()}
+        <Analytics />
       </div>
     );
   }
