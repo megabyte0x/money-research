@@ -1,4 +1,5 @@
 import { SITE, METADATA_FIELDS, absoluteUrl, socialImageUrl } from './site-config.js';
+import OG_CARD_MANIFEST from './generated/og-manifest.json' with { type: 'json' };
 import { DISCOVERY_COPY, HOME_COPY, METHODS_COPY, NOT_FOUND_COPY, SEARCH_COPY, VOLUME_COPY } from './page-copy.js';
 import {
   canonicalPath, isDirectoryRecord, publicationStatus, shortTitle, VOLUME_IDS,
@@ -31,7 +32,7 @@ export function chapterDescription(record, articleMetadata = {}) {
   return role;
 }
 
-export function resolvePage(input) {
+export function resolvePageContent(input) {
   const kind = input.kind;
   const record = input.record;
   const articleMetadata = input.articleMetadata || {};
@@ -103,7 +104,6 @@ export function resolvePage(input) {
   const indexable = input.indexable ?? status.indexable;
   const robots = input.robots || (indexable ? 'index, follow' : 'noindex, follow');
   const canonical = kind === 'error' ? absoluteUrl('/') : absoluteUrl(path);
-  const image = socialImageUrl();
   return {
     kind,
     pageType,
@@ -114,16 +114,32 @@ export function resolvePage(input) {
     robots,
     indexable,
     socialType,
-    image,
-    imageAlt: SITE.socialImageAlt,
-    imageWidth: SITE.socialImageWidth,
-    imageHeight: SITE.socialImageHeight,
     breadcrumbs,
     schema,
     record,
     vol: input.vol || record?.vol || null,
-    headline: record ? shortTitle(record) : title.replace(` · ${SITE.name}`, ''),
+    headline: record ? shortTitle(record) : kind === 'home' ? SITE.tagline : title.replace(` · ${SITE.name}`, ''),
     citations: articleMetadata[record?.id]?.citations || [],
+  };
+}
+
+function socialCardFor(page) {
+  const card = OG_CARD_MANIFEST.cards?.[page.path];
+  if (!card) {
+    throw new Error(`Missing title sharing card for ${page.path}. Run scripts/build-og-cards.mjs before building metadata.`);
+  }
+  return card;
+}
+
+export function resolvePage(input) {
+  const page = resolvePageContent(input);
+  const card = socialCardFor(page);
+  return {
+    ...page,
+    image: socialImageUrl(card.image),
+    imageAlt: card.alt,
+    imageWidth: OG_CARD_MANIFEST.width,
+    imageHeight: OG_CARD_MANIFEST.height,
   };
 }
 
@@ -241,8 +257,10 @@ export function applyDocumentMeta(html, page, extras = {}) {
     [/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${escapeHtml(page.description)}">`],
     [/<meta property="og:type" content="[^"]*">/, `<meta property="og:type" content="${escapeHtml(page.socialType)}">`],
     [/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${escapeHtml(page.canonical)}">`],
+    [/<meta property="og:site_name" content="[^"]*">/, `<meta property="og:site_name" content="${escapeHtml(SITE.name)}">`],
     [/<meta property="og:image" content="[^"]*">/, `<meta property="og:image" content="${escapeHtml(page.image)}">`],
     [/<meta name="twitter:image" content="[^"]*">/, `<meta name="twitter:image" content="${escapeHtml(page.image)}">`],
+    [/<meta name="twitter:image:alt" content="[^"]*">/, `<meta name="twitter:image:alt" content="${escapeHtml(page.imageAlt)}">`],
     [/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${escapeHtml(page.canonical)}">`],
   ];
   let out = html;
@@ -262,16 +280,18 @@ export function applyDocumentMeta(html, page, extras = {}) {
     out = out.replace(/<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${escapeHtml(page.description)}">`);
   }
   const imageExtras = [
+    `<meta property="og:image:type" content="image/png">`,
     `<meta property="og:image:width" content="${page.imageWidth}">`,
     `<meta property="og:image:height" content="${page.imageHeight}">`,
     `<meta property="og:image:alt" content="${escapeHtml(page.imageAlt)}">`,
   ].join('\n');
   if (/<meta property="og:image:width"/.test(out)) {
+    out = out.replace(/<meta property="og:image:type" content="[^"]*">/, `<meta property="og:image:type" content="image/png">`);
     out = out.replace(/<meta property="og:image:width" content="[^"]*">/, `<meta property="og:image:width" content="${page.imageWidth}">`);
     out = out.replace(/<meta property="og:image:height" content="[^"]*">/, `<meta property="og:image:height" content="${page.imageHeight}">`);
     out = out.replace(/<meta property="og:image:alt" content="[^"]*">/, `<meta property="og:image:alt" content="${escapeHtml(page.imageAlt)}">`);
   } else {
-    out = out.replace('<meta property="og:image"', `${imageExtras}\n<meta property="og:image"`);
+    out = out.replace(/(<meta property="og:image" content="[^"]*">)/, `$1\n${imageExtras}`);
   }
   const jsonTag = `<script type="application/ld+json">${json}</script>`;
   if (/<script type="application\/ld\+json">[\s\S]*?<\/script>/.test(out)) {
@@ -291,13 +311,16 @@ export function applyClientMeta(page, extras = {}) {
   setMeta('property', 'og:description', page.description);
   setMeta('property', 'og:type', page.socialType);
   setMeta('property', 'og:url', page.canonical);
+  setMeta('property', 'og:site_name', SITE.name);
   setMeta('property', 'og:image', page.image);
+  setMeta('property', 'og:image:type', 'image/png');
   setMeta('property', 'og:image:width', String(page.imageWidth));
   setMeta('property', 'og:image:height', String(page.imageHeight));
   setMeta('property', 'og:image:alt', page.imageAlt);
   setMeta('name', 'twitter:title', page.title);
   setMeta('name', 'twitter:description', page.description);
   setMeta('name', 'twitter:image', page.image);
+  setMeta('name', 'twitter:image:alt', page.imageAlt);
   let canonical = document.querySelector('link[rel="canonical"]');
   if (!canonical) {
     canonical = document.createElement('link');

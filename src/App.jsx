@@ -14,6 +14,7 @@ import { searchDocuments, searchState, searchUrl } from './search.js';
 import { referenceSegments, shortTitle } from './references.js';
 import { articleHref, parseLocation, translateLegacyHash, viewPath } from './routes.js';
 import { applyClientMeta, resolvePage } from './seo.js';
+import { SITE } from './site-config.js';
 import { loadRoutePayload } from './content-load.js';
 import { HISTORY_STAGES } from './history-stages.js';
 
@@ -345,7 +346,7 @@ export default class App extends React.Component {
   copyLink(sec) {
     const r = this.state.route;
     const cur = r.view === 'article' && this.chapter(r.vol, r.slug);
-    const url = cur ? location.origin + this.href(cur, sec) : location.origin + viewPath(r.view, sec);
+    const url = cur ? SITE.origin + this.href(cur, sec) : SITE.origin + viewPath(r.view, sec);
     navigator.clipboard && navigator.clipboard.writeText(url);
     this.setState({ copied: sec || 'page' }); clearTimeout(this.ct); this.ct = setTimeout(() => this.setState({ copied: false }), 1600);
   }

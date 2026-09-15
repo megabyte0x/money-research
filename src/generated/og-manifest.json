@@ -1,0 +1,385 @@
+{
+  "templateVersion": "title-card-v3",
+  "width": 1200,
+  "height": 630,
+  "cards": {
+    "/": {
+      "image": "/og/home.1eb1ed7c0ca0.png",
+      "alt": "How money works—and why it changes. Money Research sharing card.",
+      "title": "How money works—and why it changes",
+      "volume": "",
+      "templateVersion": "title-card-v3"
+    },
+    "/methods/": {
+      "image": "/og/methods.5a01facf79d4.png",
+      "alt": "How this library is built and limited. Money Research sharing card.",
+      "title": "How this library is built and limited",
+      "volume": "",
+      "templateVersion": "title-card-v3"
+    },
+    "/glossary/": {
+      "image": "/og/glossary.b12162cd823c.png",
+      "alt": "Glossary. Money Research sharing card.",
+      "title": "Glossary",
+      "volume": "",
+      "templateVersion": "title-card-v3"
+    },
+    "/timeline/": {
+      "image": "/og/timeline.e274293a002b.png",
+      "alt": "A connected monetary timeline. Money Research sharing card.",
+      "title": "A connected monetary timeline",
+      "volume": "",
+      "templateVersion": "title-card-v3"
+    },
+    "/takeaways/": {
+      "image": "/og/takeaways.7bb8eb74c813.png",
+      "alt": "Explore the short answers. Money Research sharing card.",
+      "title": "Explore the short answers",
+      "volume": "",
+      "templateVersion": "title-card-v3"
+    },
+    "/mechanics/": {
+      "image": "/og/mechanics.ab7b1dd1b593.png",
+      "alt": "How money is created and moved. Money Research sharing card.",
+      "title": "How money is created and moved",
+      "volume": "",
+      "templateVersion": "title-card-v3"
+    },
+    "/compare/": {
+      "image": "/og/compare.4e8f10fe611a.png",
+      "alt": "Compare monetary arrangements by use. Money Research sharing card.",
+      "title": "Compare monetary arrangements by use",
+      "volume": "",
+      "templateVersion": "title-card-v3"
+    },
+    "/arc/": {
+      "image": "/og/arc.870db107ded9.png",
+      "alt": "Monetary arrangements overlap and change under pressure. Money Research sharing card.",
+      "title": "Monetary arrangements overlap and change under pressure",
+      "volume": "",
+      "templateVersion": "title-card-v3"
+    },
+    "/search/": {
+      "image": "/og/search.ac50af12c858.png",
+      "alt": "Search the research. Money Research sharing card.",
+      "title": "Search the research",
+      "volume": "",
+      "templateVersion": "title-card-v3"
+    },
+    "/404": {
+      "image": "/og/not-found.ff3d691d29bc.png",
+      "alt": "Page not found. Money Research sharing card.",
+      "title": "Page not found",
+      "volume": "",
+      "templateVersion": "title-card-v3"
+    },
+    "/gold/": {
+      "image": "/og/gold.ec4945e76eeb.png",
+      "alt": "Volume I · Gold — Gold: From Bare Metal to World Money and Back. Money Research sharing card.",
+      "title": "Gold: From Bare Metal to World Money and Back",
+      "volume": "Volume I · Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/after/": {
+      "image": "/og/after.4c4befc5bc33.png",
+      "alt": "Volume II · After Gold — After Gold: The Fiat World, 1971–2026. Money Research sharing card.",
+      "title": "After Gold: The Fiat World, 1971–2026",
+      "volume": "Volume II · After Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/": {
+      "image": "/og/bitcoin.a2e6c4fec9f2.png",
+      "alt": "Volume III · Bitcoin — Bitcoin: Money Without an Issuer, 2008–2026. Money Research sharing card.",
+      "title": "Bitcoin: Money Without an Issuer, 2008–2026",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/gold/01-the-metal-itself/": {
+      "image": "/og/gold-01-the-metal-itself.8ada89483a89.png",
+      "alt": "Volume I · Gold — The Metal Itself: Where Gold Came From and Why It Was Different. Money Research sharing card.",
+      "title": "The Metal Itself: Where Gold Came From and Why It Was Different",
+      "volume": "Volume I · Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/gold/02-before-money-ornament-ritual-power/": {
+      "image": "/og/gold-02-before-money-ornament-ritual-power.e09bfccbcd1e.png",
+      "alt": "Volume I · Gold — Before Money: Ornament, Ritual, Power and Other Uses. Money Research sharing card.",
+      "title": "Before Money: Ornament, Ritual, Power and Other Uses",
+      "volume": "Volume I · Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/gold/03-from-metal-to-money-weights-rings-coins/": {
+      "image": "/og/gold-03-from-metal-to-money-weights-rings-coins.06210726bfc0.png",
+      "alt": "Volume I · Gold — From Metal to Money: Dust, Rings, Bars and Early Coins. Money Research sharing card.",
+      "title": "From Metal to Money: Dust, Rings, Bars and Early Coins",
+      "volume": "Volume I · Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/gold/04-what-gives-gold-its-value/": {
+      "image": "/og/gold-04-what-gives-gold-its-value.808535ce3075.png",
+      "alt": "Volume I · Gold — What Gives Gold Its Value and When It Became an Account Unit. Money Research sharing card.",
+      "title": "What Gives Gold Its Value and When It Became an Account Unit",
+      "volume": "Volume I · Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/gold/05-silver-copper-bronze-and-bimetallism/": {
+      "image": "/og/gold-05-silver-copper-bronze-and-bimetallism.33120f5373b9.png",
+      "alt": "Volume I · Gold — Silver, Copper, Bronze and Bimetallism: Different Metal Roles. Money Research sharing card.",
+      "title": "Silver, Copper, Bronze and Bimetallism: Different Metal Roles",
+      "volume": "Volume I · Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/gold/06-rulers-and-empires-how-gold-was-used/": {
+      "image": "/og/gold-06-rulers-and-empires-how-gold-was-used.8c1578d3f54f.png",
+      "alt": "Volume I · Gold — Rulers and Empires: How Gold Was Worked and Used Across Time and Place. Money Research sharing card.",
+      "title": "Rulers and Empires: How Gold Was Worked and Used Across Time and Place",
+      "volume": "Volume I · Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/gold/07-the-gold-standard-era-1717-1971/": {
+      "image": "/og/gold-07-the-gold-standard-era-1717-1971.4383b4d21bc2.png",
+      "alt": "Volume I · Gold — The Gold Standard Era, 1717–1971: How Gold Became a Major Monetary Standard and Lost That Role. Money Research sharing card.",
+      "title": "The Gold Standard Era, 1717–1971: How Gold Became a Major Monetary Standard and Lost That Role",
+      "volume": "Volume I · Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/gold/08-why-the-dollar-replaced-gold/": {
+      "image": "/og/gold-08-why-the-dollar-replaced-gold.3f1b9c52aef9.png",
+      "alt": "Volume I · Gold — Why Dollar Use Survived Official Gold Conversion. Money Research sharing card.",
+      "title": "Why Dollar Use Survived Official Gold Conversion",
+      "volume": "Volume I · Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/gold/09-gold-today-what-still-holds-its-value/": {
+      "image": "/og/gold-09-gold-today-what-still-holds-its-value.0f1fb50e4024.png",
+      "alt": "Volume I · Gold — Gold Today (September 2026): What Still Holds Its Value. Money Research sharing card.",
+      "title": "Gold Today (September 2026): What Still Holds Its Value",
+      "volume": "Volume I · Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/gold/10-master-timeline/": {
+      "image": "/og/gold-10-master-timeline.ae4e97f43872.png",
+      "alt": "Volume I · Gold — Master Timeline: Gold from 4600 BCE to 2026. Money Research sharing card.",
+      "title": "Master Timeline: Gold from 4600 BCE to 2026",
+      "volume": "Volume I · Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/gold/11-glossary/": {
+      "image": "/og/gold-11-glossary.0ad4881f3cc0.png",
+      "alt": "Volume I · Gold — Glossary. Money Research sharing card.",
+      "title": "Glossary",
+      "volume": "Volume I · Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/gold/12-sources/": {
+      "image": "/og/gold-12-sources.b08525930b70.png",
+      "alt": "Volume I · Gold — Sources and Further Reading. Money Research sharing card.",
+      "title": "Sources and Further Reading",
+      "volume": "Volume I · Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/after/01-the-break-1971-1976/": {
+      "image": "/og/after-01-the-break-1971-1976.c418234b92e8.png",
+      "alt": "Volume II · After Gold — The Break, 1971–1976: From the Nixon Shock to Legalised Floating. Money Research sharing card.",
+      "title": "The Break, 1971–1976: From the Nixon Shock to Legalised Floating",
+      "volume": "Volume II · After Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/after/02-oil-petrodollars-and-stagflation-1973-1982/": {
+      "image": "/og/after-02-oil-petrodollars-and-stagflation-1973-1982.41ef103338d9.png",
+      "alt": "Volume II · After Gold — Oil, Petrodollars and Stagflation, 1973–1982: The First Decade Without an Anchor. Money Research sharing card.",
+      "title": "Oil, Petrodollars and Stagflation, 1973–1982: The First Decade Without an Anchor",
+      "volume": "Volume II · After Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/after/03-debt-crises-and-the-managed-dollar-1982-1990/": {
+      "image": "/og/after-03-debt-crises-and-the-managed-dollar-1982-1990.87de15af846c.png",
+      "alt": "Volume II · After Gold — Debt Crises and the Managed Dollar, 1982–1990. Money Research sharing card.",
+      "title": "Debt Crises and the Managed Dollar, 1982–1990",
+      "volume": "Volume II · After Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/after/04-cold-war-ends-new-nations-new-currencies-1989-2001/": {
+      "image": "/og/after-04-cold-war-ends-new-nations-new-currencies-1989-2001.2c9fffe6d222.png",
+      "alt": "Volume II · After Gold — The Cold War Ends: New Nations, New Currencies and the Euro, 1989–2001. Money Research sharing card.",
+      "title": "The Cold War Ends: New Nations, New Currencies and the Euro, 1989–2001",
+      "volume": "Volume II · After Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/after/05-globalization-and-emerging-market-crises-1990-2001/": {
+      "image": "/og/after-05-globalization-and-emerging-market-crises-1990-2001.f5b13d87c859.png",
+      "alt": "Volume II · After Gold — Globalization and the Emerging-Market Crises, 1990–2001. Money Research sharing card.",
+      "title": "Globalization and the Emerging-Market Crises, 1990–2001",
+      "volume": "Volume II · After Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/after/06-wars-invasions-and-money-1971-2026/": {
+      "image": "/og/after-06-wars-invasions-and-money-1971-2026.575c614f12e7.png",
+      "alt": "Volume II · After Gold — Wars, Invasions and Money, 1971–2026. Money Research sharing card.",
+      "title": "Wars, Invasions and Money, 1971–2026",
+      "volume": "Volume II · After Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/after/07-financial-crisis-and-the-age-of-qe-2007-2019/": {
+      "image": "/og/after-07-financial-crisis-and-the-age-of-qe-2007-2019.41dd0dd9445e.png",
+      "alt": "Volume II · After Gold — The Financial Crisis and the Age of Quantitative Easing, 2007–2019. Money Research sharing card.",
+      "title": "The Financial Crisis and the Age of Quantitative Easing, 2007–2019",
+      "volume": "Volume II · After Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/after/08-innovation-cards-bitcoin-stablecoins-cbdcs/": {
+      "image": "/og/after-08-innovation-cards-bitcoin-stablecoins-cbdcs.35c49e081fe6.png",
+      "alt": "Volume II · After Gold — Innovation: How Money Dematerialised, 1971–2026. Money Research sharing card.",
+      "title": "Innovation: How Money Dematerialised, 1971–2026",
+      "volume": "Volume II · After Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/after/09-pandemic-inflation-and-weaponized-reserves-2020-2026/": {
+      "image": "/og/after-09-pandemic-inflation-and-weaponized-reserves-2020-2026.5af6f1bfb0b1.png",
+      "alt": "Volume II · After Gold — Pandemic, Inflation and Weaponised Reserves, 2020–2026: Where the System Stands. Money Research sharing card.",
+      "title": "Pandemic, Inflation and Weaponised Reserves, 2020–2026: Where the System Stands",
+      "volume": "Volume II · After Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/after/10-rules-treaties-and-institutions/": {
+      "image": "/og/after-10-rules-treaties-and-institutions.c894c3675a06.png",
+      "alt": "Volume II · After Gold — Rules, Treaties and Institutions of the Fiat Era: A Reference Table. Money Research sharing card.",
+      "title": "Rules, Treaties and Institutions of the Fiat Era: A Reference Table",
+      "volume": "Volume II · After Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/after/11-master-timeline-1971-2026/": {
+      "image": "/og/after-11-master-timeline-1971-2026.54a29d11fef7.png",
+      "alt": "Volume II · After Gold — Master Timeline: The Fiat Era, 1971–2026. Money Research sharing card.",
+      "title": "Master Timeline: The Fiat Era, 1971–2026",
+      "volume": "Volume II · After Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/after/12-glossary/": {
+      "image": "/og/after-12-glossary.ee87b7ca992f.png",
+      "alt": "Volume II · After Gold — Glossary. Money Research sharing card.",
+      "title": "Glossary",
+      "volume": "Volume II · After Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/after/13-sources/": {
+      "image": "/og/after-13-sources.a7c0e2d43030.png",
+      "alt": "Volume II · After Gold — Sources and Further Reading. Money Research sharing card.",
+      "title": "Sources and Further Reading",
+      "volume": "Volume II · After Gold",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/01-the-origin-what-2008-produced/": {
+      "image": "/og/bitcoin-01-the-origin-what-2008-produced.e2b53c7a214d.png",
+      "alt": "Volume III · Bitcoin — The Origin: What 2008 Produced, and the Currency Structure That Grew Around It. Money Research sharing card.",
+      "title": "The Origin: What 2008 Produced, and the Currency Structure That Grew Around It",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/02-what-bitcoin-solved-and-what-it-did-not/": {
+      "image": "/og/bitcoin-02-what-bitcoin-solved-and-what-it-did-not.6ca5f76ee442.png",
+      "alt": "Volume III · Bitcoin — What Bitcoin Solved in Production, and What It Did Not. Money Research sharing card.",
+      "title": "What Bitcoin Solved in Production, and What It Did Not",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/03-how-bitcoin-is-actually-used-global-adoption/": {
+      "image": "/og/bitcoin-03-how-bitcoin-is-actually-used-global-adoption.16bd2fd15356.png",
+      "alt": "Volume III · Bitcoin — How Bitcoin Is Actually Used: Global Adoption, 2009–2026. Money Research sharing card.",
+      "title": "How Bitcoin Is Actually Used: Global Adoption, 2009–2026",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/04-countries-that-adopted-bitcoin-and-what-happened/": {
+      "image": "/og/bitcoin-04-countries-that-adopted-bitcoin-and-what-happened.8f1265b6ccd7.png",
+      "alt": "Volume III · Bitcoin — Countries That Adopted Bitcoin, in What Form, and What Happened. Money Research sharing card.",
+      "title": "Countries That Adopted Bitcoin, in What Form, and What Happened",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/05-supporters-and-opponents-and-their-reasoning/": {
+      "image": "/og/bitcoin-05-supporters-and-opponents-and-their-reasoning.2b83eed6785a.png",
+      "alt": "Volume III · Bitcoin — Who Favours a Bitcoin Standard, Who Opposes It, and Why. Money Research sharing card.",
+      "title": "Who Favours a Bitcoin Standard, Who Opposes It, and Why",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/06-what-legal-tender-requires-and-what-is-missing/": {
+      "image": "/og/bitcoin-06-what-legal-tender-requires-and-what-is-missing.c59dec0f71a7.png",
+      "alt": "Volume III · Bitcoin — What Legal Tender Requires, and What Bitcoin Still Lacks. Money Research sharing card.",
+      "title": "What Legal Tender Requires, and What Bitcoin Still Lacks",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/07-the-supply-system-fixed-rate-variable-rate-and-backing/": {
+      "image": "/og/bitcoin-07-the-supply-system-fixed-rate-variable-rate-and-backing.ff725e388315.png",
+      "alt": "Volume III · Bitcoin — If Bitcoin Were the Unit of the Economy. Money Research sharing card.",
+      "title": "If Bitcoin Were the Unit of the Economy",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/08-why-not-gold-again/": {
+      "image": "/og/bitcoin-08-why-not-gold-again.fe0308aab615.png",
+      "alt": "Volume III · Bitcoin — Why Not Gold Again? Bitcoin Against the Metal It Imitates. Money Research sharing card.",
+      "title": "Why Not Gold Again? Bitcoin Against the Metal It Imitates",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/09-supply-and-control-who-holds-bitcoin-and-who-benefits/": {
+      "image": "/og/bitcoin-09-supply-and-control-who-holds-bitcoin-and-who-benefits.df1a9a89c790.png",
+      "alt": "Volume III · Bitcoin — Supply and Control: Who Holds Bitcoin, Who Runs the Network, and Who Benefits. Money Research sharing card.",
+      "title": "Supply and Control: Who Holds Bitcoin, Who Runs the Network, and Who Benefits",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/10-the-path-for-large-economies/": {
+      "image": "/og/bitcoin-10-the-path-for-large-economies.76b538cc3a53.png",
+      "alt": "Volume III · Bitcoin — The Path for Large Economies: From Here to a Bitcoin Reserve or Standard. Money Research sharing card.",
+      "title": "The Path for Large Economies: From Here to a Bitcoin Reserve or Standard",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/11-defects-that-stop-bitcoin-from-being-a-global-currency/": {
+      "image": "/og/bitcoin-11-defects-that-stop-bitcoin-from-being-a-global-currency.16ef5df25c06.png",
+      "alt": "Volume III · Bitcoin — The Defects That Have Stopped Bitcoin From Becoming a Global Currency. Money Research sharing card.",
+      "title": "The Defects That Have Stopped Bitcoin From Becoming a Global Currency",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/12-how-bitcoin-could-reproduce-old-crises/": {
+      "image": "/og/bitcoin-12-how-bitcoin-could-reproduce-old-crises.2e6b2c887368.png",
+      "alt": "Volume III · Bitcoin — How Bitcoin Could Reproduce the Old Crises. Money Research sharing card.",
+      "title": "How Bitcoin Could Reproduce the Old Crises",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/13-is-bitcoin-the-answer/": {
+      "image": "/og/bitcoin-13-is-bitcoin-the-answer.d4ed79a98c77.png",
+      "alt": "Volume III · Bitcoin — Is Bitcoin the True Solution to Money After Gold?. Money Research sharing card.",
+      "title": "Is Bitcoin the True Solution to Money After Gold?",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/14-master-timeline-2008-2026/": {
+      "image": "/og/bitcoin-14-master-timeline-2008-2026.d476677f90d1.png",
+      "alt": "Volume III · Bitcoin — Master Timeline, 2008–2026. Money Research sharing card.",
+      "title": "Master Timeline, 2008–2026",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/15-glossary/": {
+      "image": "/og/bitcoin-15-glossary.74c2d94d67d9.png",
+      "alt": "Volume III · Bitcoin — Glossary. Money Research sharing card.",
+      "title": "Glossary",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/bitcoin/16-sources/": {
+      "image": "/og/bitcoin-16-sources.c7449793d46f.png",
+      "alt": "Volume III · Bitcoin — Sources and Further Reading. Money Research sharing card.",
+      "title": "Sources and Further Reading",
+      "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { SITE } from '../src/site-config.js';
 
@@ -8,6 +8,7 @@ const root = new URL('../', import.meta.url).pathname;
 const dist = join(root, 'dist');
 const origin = SITE.origin;
 const manifest = JSON.parse(readFileSync(join(root, 'public/content/manifest.json'), 'utf8'));
+const ogManifest = JSON.parse(readFileSync(join(root, 'src/generated/og-manifest.json'), 'utf8'));
 
 function metadata(html, name, attribute = 'name') {
   const tag = html.match(new RegExp(`<meta\\s+${attribute}="${name.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')}"\\s+content="([^"]*)"`));
@@ -84,15 +85,50 @@ test('crawlable section links land on their exact chapter section', () => {
   assert.ok(sectionLinks >= 100, `expected 100+ crawlable section links; found ${sectionLinks}`);
 });
 
-test('social previews use one public image for home and all article routes', () => {
-  const pages = [readFileSync(join(dist, 'index.html'), 'utf8'), ...manifest.map(record => page(record))];
-  for (const [index, html] of pages.entries()) {
-    const label = index === 0 ? 'home' : manifest[index - 1].id;
+function outputForPath(path) {
+  if (path === '/') return readFileSync(join(dist, 'index.html'), 'utf8');
+  if (path === '/404') return readFileSync(join(dist, '404.html'), 'utf8');
+  return readFileSync(join(dist, path.slice(1), 'index.html'), 'utf8');
+}
+
+function pngDimensions(file) {
+  const data = readFileSync(file);
+  assert.equal(data.subarray(0, 8).toString('hex'), '89504e470d0a1a0a', `${file}: not a PNG`);
+  return { width: data.readUInt32BE(16), height: data.readUInt32BE(20) };
+}
+
+test('every shareable route has a unique, versioned title-card PNG and complete static metadata', () => {
+  const cards = Object.entries(ogManifest.cards || {});
+  assert.ok(cards.length > manifest.length, 'expected cards for hubs, utilities and every chapter');
+  const images = new Set();
+  for (const [path, card] of cards) {
+    const html = outputForPath(path);
+    const label = path === '/' ? 'home' : path;
     const image = metadata(html, 'og:image', 'property');
     assert.ok(image, `${label}: missing og:image`);
     const url = new URL(image, origin);
     assert.equal(url.origin, origin, `${label}: social image must be on the canonical origin`);
-    assert.ok(existsSync(join(dist, url.pathname.slice(1))), `${label}: social image asset missing`);
+    assert.equal(url.pathname, card.image, `${label}: wrong title-card image`);
+    const imageFile = join(dist, url.pathname.slice(1));
+    assert.ok(existsSync(imageFile), `${label}: social image asset missing`);
+    assert.deepEqual(pngDimensions(imageFile), { width: 1200, height: 630 }, `${label}: wrong card dimensions`);
+    assert.ok(statSync(imageFile).size < 500 * 1024, `${label}: card exceeds the delivery budget`);
+    assert.ok(card.alt.length >= 20, `${label}: manifest alt text is too short`);
+    assert.equal(metadata(html, 'og:image:alt', 'property'), card.alt, `${label}: wrong OG image alt`);
     assert.equal(metadata(html, 'twitter:image'), image, `${label}: Twitter preview image differs`);
+    assert.equal(metadata(html, 'twitter:image:alt'), card.alt, `${label}: Twitter alt differs`);
+    assert.equal(metadata(html, 'og:image:type', 'property'), 'image/png', `${label}: wrong image type`);
+    assert.equal(metadata(html, 'og:image:width', 'property'), '1200', `${label}: wrong image width`);
+    assert.equal(metadata(html, 'og:image:height', 'property'), '630', `${label}: wrong image height`);
+    const imagePosition = html.indexOf('<meta property="og:image"');
+    assert.ok(imagePosition >= 0 && imagePosition < html.indexOf('<meta property="og:image:type"')
+      && imagePosition < html.indexOf('<meta property="og:image:width"')
+      && imagePosition < html.indexOf('<meta property="og:image:height"')
+      && imagePosition < html.indexOf('<meta property="og:image:alt"'), `${label}: image properties precede their declaration`);
+    assert.ok(html.includes(`<meta property="og:site_name" content="${SITE.name}">`), `${label}: missing site name`);
+    assert.doesNotMatch(html, /social-preview\.png/, `${label}: retained the single-image metadata`);
+    assert.ok(!images.has(image), `${label}: card image is shared with another route`);
+    images.add(image);
   }
+  assert.equal(images.size, cards.length);
 });

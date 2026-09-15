@@ -10,10 +10,12 @@ export const SITE = {
   language: 'en',
   name: 'Money Research',
   tagline: 'How money works—and why it changes',
-  socialImagePath: '/social-preview.png',
-  socialImageWidth: 1200,
-  socialImageHeight: 630,
-  socialImageAlt: 'Money Research: an evidence-led guide to gold, government currencies and Bitcoin',
+  socialCards: {
+    directory: '/og/',
+    fallbackPath: '/',
+    width: 1200,
+    height: 630,
+  },
 };
 
 export const METADATA_FIELDS = {
@@ -23,7 +25,7 @@ export const METADATA_FIELDS = {
   indexable: 'Whether the canonical URL may appear in the sitemap and initial robots index',
   robots: 'Initial-response robots directive',
   socialType: 'Open Graph type: article for chapters, website for hubs and directories',
-  socialImage: 'Absolute URL of the 1200×630 preview',
+  socialImage: 'Absolute URL of the page-specific 1200×630 PNG preview',
   pageType: 'home | hub | chapter | methods | glossary | discovery | search | error',
   datePublished: 'Included only when a verified publication date exists',
   dateModified: 'Included only for a documented substantive change, never the build date',
@@ -37,6 +39,7 @@ export function absoluteUrl(path) {
   return `${origin}${normalized}/`;
 }
 
-export function socialImageUrl() {
-  return SITE.origin.replace(/\/$/, '') + SITE.socialImagePath;
+export function socialImageUrl(imagePath) {
+  if (!imagePath) throw new Error('A versioned sharing-card path is required');
+  return SITE.origin.replace(/\/$/, '') + imagePath;
 }

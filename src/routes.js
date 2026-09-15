@@ -142,6 +142,10 @@ export function vercelConfig(manifest = []) {
         source: '/assets/(.*)',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
+      {
+        source: '/og/(.*)',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
     ],
   };
 }

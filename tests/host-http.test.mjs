@@ -7,6 +7,7 @@ import { listenHost } from '../scripts/host-server.mjs';
 const root = new URL('../', import.meta.url).pathname;
 const dist = join(root, 'dist');
 const vercel = JSON.parse(readFileSync(join(root, 'vercel.json'), 'utf8'));
+const ogManifest = JSON.parse(readFileSync(join(root, 'src/generated/og-manifest.json'), 'utf8'));
 
 async function request(port, path, method = 'GET') {
   const response = await fetch(`http://127.0.0.1:${port}${path}`, { method, redirect: 'manual' });
@@ -14,7 +15,7 @@ async function request(port, path, method = 'GET') {
   return { status: response.status, headers: Object.fromEntries(response.headers), body };
 }
 
-test('host config serves canonical pages, alias redirects, 404s and content headers', async () => {
+test('host config serves canonical pages, alias redirects, versioned cards, 404s and content headers', async () => {
   const { server, port } = await listenHost(dist, vercel);
   try {
     const home = await request(port, '/');
@@ -38,9 +39,14 @@ test('host config serves canonical pages, alias redirects, 404s and content head
     const sitemap = await request(port, '/sitemap.xml');
     assert.equal(sitemap.status, 200);
     assert.match(sitemap.headers['content-type'], /xml/);
-    const image = await request(port, '/social-preview.png');
+    const imagePath = ogManifest.cards['/'].image;
+    const image = await request(port, imagePath);
     assert.equal(image.status, 200);
     assert.match(image.headers['content-type'], /image\/png/);
+    assert.equal(image.headers['cache-control'], 'public, max-age=31536000, immutable');
+    const missingImage = await request(port, '/og/not-a-card.png');
+    assert.equal(missingImage.status, 404);
+    assert.notEqual(missingImage.status, 200);
     const raw = await request(port, '/content/index.json');
     assert.equal(raw.status, 200);
     assert.equal(raw.headers['x-robots-tag'], 'noindex');

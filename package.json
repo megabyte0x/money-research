@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/build-content.mjs",
+    "predev": "node scripts/build-content.mjs && node scripts/build-og-cards.mjs",
     "dev": "vite",
     "test": "node --test --test-isolation=none tests/*.test.mjs",
     "test:build": "node --test tests/static-output.test.mjs",
-    "build": "node scripts/build-content.mjs && vite build && node scripts/prerender.mjs",
+    "build": "node scripts/build-content.mjs && node scripts/build-og-cards.mjs && vite build && node scripts/prerender.mjs",
     "test:release": "npm run build && npm test",
     "preview": "vite preview"
   },
@@ -18,7 +18,10 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "@resvg/resvg-js": "^2.6.2",
     "@vitejs/plugin-react": "^4.3.4",
+    "satori": "^0.33.4",
     "vite": "^5.4.11"
   }
 }
