@@ -1,4 +1,5 @@
 import React from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import * as md from './md.js';
 
 // The prototype declared every rule as an inline CSS string. Keeping those strings
@@ -976,6 +977,7 @@ export default class App extends React.Component {
           </aside>
         </div>
         {this.renderSelection()}
+        <Analytics />
       </div>
     );
   }
