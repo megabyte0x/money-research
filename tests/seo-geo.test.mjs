@@ -111,6 +111,13 @@ test('approved answers expose provenance from the evidence records', () => {
   assert.ok(editorial['after-01'].citations.some(item => item.claimId === 'E31-official-gold-window-1971'));
 });
 
+test('prerendered chapter HTML contains no hash-route hrefs', () => {
+  for (const record of manifest.filter(item => item.slug !== '00-readme')) {
+    const page = html(`${record.vol}/${record.slug}/index.html`);
+    assert.doesNotMatch(page, /href="\/#\//, record.id);
+  }
+});
+
 test('legacy hashes translate to real paths while keeping destination and section', () => {
   assert.equal(hashToPath('#/home'), '/');
   assert.equal(hashToPath('#/methods'), '/methods/');

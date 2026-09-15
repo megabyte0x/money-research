@@ -119,6 +119,7 @@ test('generated internal article links and section targets resolve', () => {
   for (const [pagePath, html] of pages) {
     for (const [, rawHref] of html.matchAll(/<a\s+[^>]*href="([^"]+)"/g)) {
       const href = rawHref.replaceAll('&amp;', '&');
+      assert.ok(!href.startsWith('/#/'), `${pagePath} → ${href}: hash route`);
       if (href.startsWith('#/') || href.startsWith('mailto:')) continue;
       const url = new URL(href, `${SITE.origin}${pagePath}`);
       if (url.origin !== SITE.origin) continue;
