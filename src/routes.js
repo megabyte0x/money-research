@@ -1,6 +1,6 @@
 import { SITE, absoluteUrl } from './site-config.js';
 
-export const VOLUME_IDS = ['gold', 'after', 'bitcoin'];
+export const VOLUME_IDS = ['gold', 'after', 'bitcoin', 'zcash'];
 export const DISCOVERY_VIEWS = ['timeline', 'takeaways', 'mechanics', 'compare', 'arc'];
 export const UTILITY_VIEWS = ['search'];
 const VOLUME_SET = new Set(VOLUME_IDS);
@@ -69,8 +69,8 @@ export function routeInventory(manifest = []) {
     { id: 'home', path: '/', kind: 'home', indexable: true, intent: 'Understand what the library covers and choose a volume or question.', question: 'How does money work, and where should I start?' },
     { id: 'methods', path: '/methods/', kind: 'methods', indexable: true, intent: 'See how claims, sources, corrections and crawlers are handled.', question: 'How is this research produced and limited?' },
     { id: 'glossary', path: '/glossary/', kind: 'glossary', indexable: true, intent: 'Look up a term used in the volumes.', question: 'What does this monetary term mean here?' },
-    { id: 'sources', path: '/sources/', kind: 'sources', indexable: true, intent: 'Browse the combined source lists and further reading for all three volumes.', question: 'What sources underpin this research?' },
-    { id: 'timeline', path: '/timeline/', kind: 'timeline', indexable: false, intent: 'Scan dated events across the three volumes.', question: 'What happened, in order, across these monetary systems?' },
+    { id: 'sources', path: '/sources/', kind: 'sources', indexable: true, intent: 'Browse the combined source lists and further reading for all four volumes.', question: 'What sources underpin this research?' },
+    { id: 'timeline', path: '/timeline/', kind: 'timeline', indexable: false, intent: 'Scan dated events across the four volumes.', question: 'What happened, in order, across these monetary systems?' },
     { id: 'takeaways', path: '/takeaways/', kind: 'takeaways', indexable: false, intent: 'Browse approved chapter answers.', question: 'What short answer does each chapter give?' },
     { id: 'mechanics', path: '/mechanics/', kind: 'mechanics', indexable: false, intent: 'Separate a loan, a payment, a bond and QE.', question: 'How is money created and moved in these four transactions?' },
     { id: 'compare', path: '/compare/', kind: 'compare', indexable: false, intent: 'Compare arrangements by use after evidence review.', question: 'What does the accepted evidence support for this use?' },
@@ -90,7 +90,9 @@ export function routeInventory(manifest = []) {
         ? 'How did gold become money and what role remains?'
         : vol === 'after'
           ? 'What changed after official gold conversion ended?'
-          : 'What did Bitcoin solve and what remains unsettled?',
+          : vol === 'bitcoin'
+            ? 'What did Bitcoin solve and what remains unsettled?'
+            : 'What can private ZEC payments do, and what remains unproven?',
     });
   }
   for (const record of manifest) {

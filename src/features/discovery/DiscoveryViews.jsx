@@ -7,7 +7,7 @@ export function SearchView({ v }) {
     <p className="discovery-meta" aria-live="polite">{v.searchSummary}</p>
     <label className="search-filter">Volume <select aria-label="Filter search by volume" value={v.searchVol} onChange={v.onSearchVol}>
       <option value="">All volumes</option><option value="gold">I · Gold</option>
-      <option value="after">II · After Gold</option><option value="bitcoin">III · Bitcoin</option>
+      <option value="after">II · After Gold</option><option value="bitcoin">III · Bitcoin</option><option value="zcash">IV · Zcash</option>
     </select></label>
     {v.query.trim().length >= 2 && v.searchResults.length === 0 &&
       <p className="search-empty">No matching sections in {v.searchVol ? 'this volume' : 'the library'}. Try another term or choose All volumes. <a href="/#volumes">Browse the volumes →</a></p>}
@@ -22,7 +22,7 @@ export function SearchView({ v }) {
 
 export function GlossaryView({ v }) {
   return <section className="discovery-view" aria-label="Glossary">
-    <p className="discovery-meta">Glossary · {v.glossaryCount} terms across three volumes</p>
+    <p className="discovery-meta">Glossary · {v.glossaryCount} terms across four volumes</p>
     <h1>Glossary</h1>
     <input type="search" placeholder="Filter terms" aria-label="Filter glossary terms" value={v.glq} onChange={v.onGlq} />
     <div className="discovery-glossary">
@@ -48,7 +48,7 @@ export function SourcesView({ v }) {
   return <section className="discovery-view sources-view" aria-label="Sources and further reading">
     <p className="discovery-meta">Sources · {v.sourceVolumes.length} research volumes</p>
     <h1>Sources and further reading</h1>
-    <p>Source lists and further reading from all three volumes are collected here. Entries retain their original volume and editorial scope.</p>
+    <p>Source lists and further reading from all four volumes are collected here. Entries retain their original volume and editorial scope.</p>
     {v.sourceVolumes.map(volume => <section key={volume.id} id={volume.id} className="sources-volume">
       <h2>{volume.label}</h2>
       {volume.body}
@@ -76,7 +76,7 @@ export function SynthesisView({ v }) {
       <p>Browse the questions from individual chapters. Each answer keeps its own scope; follow the chapter for context and source links.</p>
       <div className="discovery-filters">
         <label>Volume <select value={v.summaryVolume || ''} onChange={v.onSummaryVolume}>
-          <option value="">All volumes</option><option value="gold">Gold</option><option value="after">After Gold</option><option value="bitcoin">Bitcoin</option>
+          <option value="">All volumes</option><option value="gold">Gold</option><option value="after">After Gold</option><option value="bitcoin">Bitcoin</option><option value="zcash">Zcash</option>
         </select></label>
         <label>Topic <select value={v.summaryTopic || ''} onChange={v.onSummaryTopic}>
           <option value="">All topics</option>{topics.map(topic => <option key={topic} value={topic}>{topic}</option>)}

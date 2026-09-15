@@ -419,5 +419,21 @@
   "evt-bitcoin-0098": "chapter_destination_checked",
   "evt-bitcoin-0099": "source_timeline_fallback_reviewed",
   "evt-bitcoin-0100": "chapter_destination_checked",
-  "evt-bitcoin-0101": "chapter_destination_checked"
+  "evt-bitcoin-0101": "chapter_destination_checked",
+  "evt-zcash-0001": "chapter_destination_checked",
+  "evt-zcash-0002": "chapter_destination_checked",
+  "evt-zcash-0003": "chapter_destination_checked",
+  "evt-zcash-0004": "chapter_destination_checked",
+  "evt-zcash-0005": "chapter_destination_checked",
+  "evt-zcash-0006": "chapter_destination_checked",
+  "evt-zcash-0007": "chapter_destination_checked",
+  "evt-zcash-0008": "chapter_destination_checked",
+  "evt-zcash-0009": "chapter_destination_checked",
+  "evt-zcash-0010": "chapter_destination_checked",
+  "evt-zcash-0011": "chapter_destination_checked",
+  "evt-zcash-0012": "chapter_destination_checked",
+  "evt-zcash-0013": "chapter_destination_checked",
+  "evt-zcash-0014": "chapter_destination_checked",
+  "evt-zcash-0015": "chapter_destination_checked",
+  "evt-zcash-0016": "source_timeline_fallback_reviewed"
 }

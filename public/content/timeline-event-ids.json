@@ -1682,5 +1682,69 @@
   {
     "id": "evt-bitcoin-0114",
     "key": "bitcoin|30 Jan 2025|At an ECB press conference, Christine Lagarde argues that central-bank reserves should meet liquidity and safety tests and expresses doubt about Bitcoin as an ECB/Eurosystem reserve asset. Her answer is a stated view, not a prohibition binding each national central bank. ECB press-conference Q&A"
+  },
+  {
+    "id": "evt-zcash-0001",
+    "key": "zcash|2014|Zerocash research published"
+  },
+  {
+    "id": "evt-zcash-0002",
+    "key": "zcash|28 October 2016|Zcash launch"
+  },
+  {
+    "id": "evt-zcash-0003",
+    "key": "zcash|28 October 2018|Sapling activation; remediation of the earlier counterfeiting vulnerability"
+  },
+  {
+    "id": "evt-zcash-0004",
+    "key": "zcash|5 February 2019|Public disclosure of that earlier vulnerability"
+  },
+  {
+    "id": "evt-zcash-0005",
+    "key": "zcash|March 2019|Turnstile enforcement explanation published"
+  },
+  {
+    "id": "evt-zcash-0006",
+    "key": "zcash|31 May 2022|NU5 activation at block 1,687,104"
+  },
+  {
+    "id": "evt-zcash-0007",
+    "key": "zcash|2022–2023|Network load and wallet-performance problems discussed in a later retrospective"
+  },
+  {
+    "id": "evt-zcash-0008",
+    "key": "zcash|November 2024|Second halving and NU6-era funding arrangement"
+  },
+  {
+    "id": "evt-zcash-0009",
+    "key": "zcash|24 November 2025|NU6.1 activation at block 3,146,400"
+  },
+  {
+    "id": "evt-zcash-0010",
+    "key": "zcash|29 May 2026|Orchard soundness vulnerability discovered"
+  },
+  {
+    "id": "evt-zcash-0011",
+    "key": "zcash|Early June 2026|Temporary Orchard restrictions and coordinated remediation"
+  },
+  {
+    "id": "evt-zcash-0012",
+    "key": "zcash|3 June 2026|NU6.2 activation at block 3,364,600"
+  },
+  {
+    "id": "evt-zcash-0013",
+    "key": "zcash|18 July 2026|Published zcashd end-of-support halt at block 3,417,100"
+  },
+  {
+    "id": "evt-zcash-0014",
+    "key": "zcash|28 July 2026|Ironwood/NU6.3 activation at block 3,428,143"
+  },
+  {
+    "id": "evt-zcash-0015",
+    "key": "zcash|11 August 2026|Foundation engineering report documents post-activation work"
+  },
+  {
+    "id": "evt-zcash-0016",
+    "key": "zcash|15 September 2026|This research snapshot"
   }
 ]

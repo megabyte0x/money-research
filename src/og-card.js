@@ -6,8 +6,8 @@ export const OG_CARD_TEMPLATE_VERSION = 'title-card-v3';
 export const OG_CARD_FONT_FAMILY = 'IBM Plex Sans';
 export const OG_CARD_DOMAIN = 'goldtozcash.vercel.app';
 
-const VOLUME_NAME = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin' };
-const VOLUME_ROMAN = { gold: 'I', after: 'II', bitcoin: 'III' };
+const VOLUME_NAME = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin', zcash: 'Zcash' };
+const VOLUME_ROMAN = { gold: 'I', after: 'II', bitcoin: 'III', zcash: 'IV' };
 
 // These are editorial shortenings for the only headings that cannot remain
 // legible within the card's three-line safe area. They preserve the question

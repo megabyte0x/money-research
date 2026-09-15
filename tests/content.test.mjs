@@ -18,8 +18,9 @@ test('validated content model resolves articles, glossary and related-file refer
     [record.path, readFileSync(join(root, 'public', record.path), 'utf8')]));
   const observations = JSON.parse(readFileSync(join(root, 'public/content/observations.json'), 'utf8'));
   const model = createContentModel(manifest, documents, observations, timelineEventIds);
-  assert.equal(Object.keys(model.blocks).length, 44);
-  assert.ok(model.glossary.length > 100);
+  assert.equal(Object.keys(model.blocks).length, 63);
+  assert.ok(model.glossary.length >= 178);
+  assert.equal(model.blocks['15-timeline-and-proposal-status@zcash'].find(block => block.type === 'table').eventIds.length, 16);
   assert.match(JSON.stringify(model.blocks['10-master-timeline@gold']), /Gold reaches \$5,405\/oz/);
   assert.doesNotMatch(JSON.stringify(model), /\{\{obs:/);
   assert.deepEqual(model.fileRefs['09-gold-today-what-still-holds-its-value@gold'],
@@ -51,16 +52,16 @@ test('validated content model resolves articles, glossary and related-file refer
   assert.deepEqual(reorderedTable.eventIds.slice(0, 2), ['evt-gold-0002', 'evt-gold-0001']);
 });
 
-test('the three-volume inventory has 44 unique, resolvable records', () => {
-  assert.deepEqual(Object.fromEntries(['gold', 'after', 'bitcoin'].map(vol =>
-    [vol, manifest.filter(record => record.vol === vol).length])), { gold: 13, after: 14, bitcoin: 17 });
+test('the four-volume inventory has 63 unique, resolvable records', () => {
+  assert.deepEqual(Object.fromEntries(['gold', 'after', 'bitcoin', 'zcash'].map(vol =>
+    [vol, manifest.filter(record => record.vol === vol).length])), { gold: 13, after: 14, bitcoin: 17, zcash: 19 });
   const ids = manifest.map(record => record.id);
-  assert.equal(new Set(ids).size, 44);
-  assert.equal(new Set(manifest.map(record => `${record.vol}/${record.slug}`)).size, 44);
+  assert.equal(new Set(ids).size, 63);
+  assert.equal(new Set(manifest.map(record => `${record.vol}/${record.slug}`)).size, 63);
   for (const record of manifest) {
-    assert.match(record.path, /^content\/(gold|after|bitcoin)\/[a-z0-9-]+\.md$/);
+    assert.match(record.path, /^content\/(gold|after|bitcoin|zcash)\/[a-z0-9-]+\.md$/);
     assert.equal(record.id, `${record.vol}-${record.num}`);
-    assert.match(record.source, /^(gold-research|after-gold|bitcoin)\/[a-zA-Z0-9-]+\.md$/);
+    assert.match(record.source, /^(gold-research|after-gold|bitcoin|zcash-research)\/[a-zA-Z0-9-]+\.md$/);
     assert.ok(Array.isArray(record.aliases));
     if (record.vol === 'bitcoin') assert.deepEqual(record.aliases, [record.num]);
     assert.ok(existsSync(join(root, 'public', record.path)), record.path);
@@ -88,9 +89,10 @@ test('reviewed timeline links point to relevant existing sections', () => {
 
 test('explicit timeline references identify one source event and a real target section', () => {
   const sourceRows = new Map();
-  for (const vol of ['gold', 'after', 'bitcoin']) {
+  for (const vol of ['gold', 'after', 'bitcoin', 'zcash']) {
     const source = manifest.find(m => m.vol === vol && m.slug.includes('timeline'));
-    const tables = parseMd(readFileSync(join(root, 'public', source.path), 'utf8')).filter(b => b.type === 'table');
+    const tables = parseMd(readFileSync(join(root, 'public', source.path), 'utf8'))
+      .filter(b => b.type === 'table' && /^date$/i.test(stripInline(b.header?.[0] || '')));
     for (const row of tables.flatMap(t => t.rows)) {
       const key = timelineReferenceKey(vol, stripInline(row[0]), stripInline(row[1]));
       sourceRows.set(key, (sourceRows.get(key) || 0) + 1);
@@ -192,7 +194,7 @@ test('unrelated dated events are separate timeline rows', () => {
 });
 
 test('all volumes retain a source list and a source timeline', () => {
-  for (const vol of ['gold', 'after', 'bitcoin']) {
+  for (const vol of ['gold', 'after', 'bitcoin', 'zcash']) {
     assert.ok(manifest.some(m => m.vol === vol && m.slug.includes('sources')));
     assert.ok(manifest.some(m => m.vol === vol && m.slug.includes('timeline')));
   }

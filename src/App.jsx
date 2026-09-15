@@ -12,7 +12,7 @@ import { HomePage, MethodsPage, ArticlePage } from './features/reader/ReaderView
 import HistoryView from './features/reader/HistoryView.jsx';
 import { searchDocuments, searchState, searchUrl } from './search.js';
 import { referenceSegments, shortTitle } from './references.js';
-import { articleHref, parseLocation, sharedViewForRecord, translateLegacyHash, viewPath } from './routes.js';
+import { articleHref, parseLocation, sharedViewForRecord, translateLegacyHash, viewPath, VOLUME_IDS } from './routes.js';
 import { applyClientMeta, resolvePage } from './seo.js';
 import { SITE } from './site-config.js';
 import { loadRoutePayload } from './content-load.js';
@@ -298,7 +298,7 @@ export default class App extends React.Component {
         const href = t.href.trim();
         const label = t.auto ? this.md.sourceUrlLabel(href) : t.v;
         out.push(this.md.isSafeContentHref(href)
-          ? R('a', { key: k++, href, target: '_blank', rel: 'noopener', className: t.auto ? 'source-url' : undefined, title: t.auto ? href : undefined }, label) : label);
+          ? R('a', { key: k++, href, ...(href.startsWith('/') || href.startsWith('#/') ? {} : { target: '_blank', rel: 'noopener' }), className: t.auto ? 'source-url' : undefined, title: t.auto ? href : undefined }, label) : label);
       }
       else if (t.t === 'code') {
         const m = this.state.manifest.find(x => t.v.replace(/\.md$/, '').startsWith(x.slug.slice(0, 20)) && x.vol === ctx.vol);
@@ -364,17 +364,17 @@ export default class App extends React.Component {
       if (section) return [{ href: this.href(m, section.id), label: 'Checked chapter section · ' + this.short(m) + ' · ' + this.md.stripInline(section.text) }];
     }
     const source = this.state.manifest.find(x => x.vol === vol && x.slug.includes('timeline'));
-    return source ? [{ href: this.href(source), label: (status === 'source_timeline_fallback_reviewed' ? 'Reviewed source fallback' : 'Destination review pending') + ' · Source timeline · Vol. ' + ({ gold: 'I', after: 'II', bitcoin: 'III' }[vol]) }] : [];
+    return source ? [{ href: this.href(source), label: (status === 'source_timeline_fallback_reviewed' ? 'Reviewed source fallback' : 'Destination review pending') + ' · Source timeline · Vol. ' + ({ gold: 'I', after: 'II', bitcoin: 'III', zcash: 'IV' }[vol]) }] : [];
   }
   timelineGroups() {
     this.refCache = this.refCache || {};
     const events = [];
-    const big = /Varna|Hammurabi|Lydia strikes|Croesus|Darius|Alexander coins|Denarius debased|Constantine|Abd al-Malik|Charlemagne|jiaozi|Florence strikes|Mansa Musa|Potosí|Newton|Bank of England|Britain (leaves|suspends|returns|adopts|formally)|California|Germany adopts|Coinage Act|Witwatersrand|Bretton Woods|Roosevelt|Gold Pool|Nixon suspends|Smithsonian|major currencies float|Yom Kippur|Herstatt|Jamaica|Volcker|Gold peaks|Mexico announces|Plaza|Black Monday|Basel I\b|Berlin Wall|Soviet Union dissolved|Maastricht|ERM crisis|Tequila|Thai baht|Asian|Russia defaults|LTCM|euro (launched|notes)|China joins WTO|9\/11|Iraq invaded|Lehman|QE1|Bitcoin genesis|Whatever it takes|Draghi|Tether|COVID|Russia invades|CPI 9\.1|Liberation Day|GENIUS|gold \$3,000|gold peaks|record|\$5,590|Basel III/i;
+    const big = /Varna|Hammurabi|Lydia strikes|Croesus|Darius|Alexander coins|Denarius debased|Constantine|Abd al-Malik|Charlemagne|jiaozi|Florence strikes|Mansa Musa|Potosí|Newton|Bank of England|Britain (leaves|suspends|returns|adopts|formally)|California|Germany adopts|Coinage Act|Witwatersrand|Bretton Woods|Roosevelt|Gold Pool|Nixon suspends|Smithsonian|major currencies float|Yom Kippur|Herstatt|Jamaica|Volcker|Gold peaks|Mexico announces|Plaza|Black Monday|Basel I\b|Berlin Wall|Soviet Union dissolved|Maastricht|ERM crisis|Tequila|Thai baht|Asian|Russia defaults|LTCM|euro (launched|notes)|China joins WTO|9\/11|Iraq invaded|Lehman|QE1|Bitcoin genesis|Whatever it takes|Draghi|Tether|COVID|Russia invades|CPI 9\.1|Liberation Day|GENIUS|gold \$3,000|gold peaks|record|\$5,590|Basel III|Zerocash|Zcash launch|Sapling|Orchard|NU6\.[123]|Ironwood/i;
     const bitcoinBig = /whitepaper|genesis block|first transaction|two pizzas|Mt\. Gox|first halving|SegWit|Bitcoin Cash|MicroStrategy|El Salvador|China bans mining|Central African Republic|Terra\/UST|FTX|spot bitcoin ETFs|fourth halving|Strategic Bitcoin Reserve|GENIUS Act|all-time high|Iran war|cycle low|Chivo majority privatised|20\.08m BTC/i;
     const onlyBig = !this.state.tlAll;
-    for (const vol of ['gold', 'after', 'bitcoin']) {
+    for (const vol of VOLUME_IDS) {
       const m = this.state.manifest.find(x => x.vol === vol && x.slug.includes('timeline')); if (!m) continue;
-      const tables = (this.state.blocks[m.slug + '@' + vol] || []).filter(b => b.type === 'table'); if (!tables.length) continue;
+      const tables = (this.state.blocks[m.slug + '@' + vol] || []).filter(b => b.type === 'table' && /^date$/i.test(this.md.stripInline(b.header?.[0] || ''))); if (!tables.length) continue;
       tables.flatMap(t => t.rows.map((row, index) => ({ row, eventId: t.eventIds[index] }))).forEach(({ row: r, eventId }) => {
         const y = this.parseYear(r[0] || '');
         if (vol === 'bitcoin' && y > 2026) return;
@@ -406,7 +406,7 @@ export default class App extends React.Component {
       const vol = event.vol;
       groups[k < 0 ? groups.length - 1 : k].rows.push({
         ...event, hasRefs: event.refs.length > 0, hasSig: !!event.significance,
-        sourceLabel: event.sources.map(v => ({ gold: 'I · Gold', after: 'II · After Gold', bitcoin: 'III · Bitcoin' }[v])).join(' + '),
+        sourceLabel: event.sources.map(v => ({ gold: 'I · Gold', after: 'II · After Gold', bitcoin: 'III · Bitcoin', zcash: 'IV · Zcash' }[v])).join(' + '),
         eventEl: this.inline(event.eventText, { vol, gloss: false, usedGloss: { set: new Set() } }),
         sigEl: this.inline(event.significance, { vol, gloss: false, usedGloss: { set: new Set() } })
       });
@@ -417,7 +417,7 @@ export default class App extends React.Component {
     return searchDocuments(this.state.manifest, this.state.blocks, this.state.query, this.state.searchVol).map(result => ({
       ...result, href: result.glossaryId ? '/glossary/#' + result.glossaryId : this.href(result.article, result.section),
       label: result.glossaryId ? 'Glossary · ' + result.glossaryTerm :
-        ({ gold: 'Vol. I · ', after: 'Vol. II · ', bitcoin: 'Vol. III · ' }[result.article.vol]) + this.short(result.article) + (result.sectionTitle ? ' · ' + result.sectionTitle : '')
+        ({ gold: 'Vol. I · ', after: 'Vol. II · ', bitcoin: 'Vol. III · ', zcash: 'Vol. IV · ' }[result.article.vol]) + this.short(result.article) + (result.sectionTitle ? ' · ' + result.sectionTitle : '')
     }));
   }
   // ---- selection → ask ChatGPT
@@ -534,14 +534,14 @@ export default class App extends React.Component {
     vals.themeLabel = (st.theme || (typeof matchMedia !== 'undefined' && matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light')) === 'dark' ? '☾ dark' : '☀ light';
     ['Home', 'Compare', 'Methods', 'Sources', 'Timeline', 'Takeaways', 'Glossary', 'Arc'].forEach(n => vals['nav' + n] = r.view === n.toLowerCase() ? 'var(--fg)' : 'var(--mut)');
     const cur = r.view === 'article' || r.view === 'hub' ? this.chapter(r.vol, r.slug || '00-readme') : null;
-    const homeNames = { gold: ['Vol. I · Gold', 'How did a metal become money and what role remains?'], after: ['Vol. II · After Gold', 'What changed when official gold conversion ended?'], bitcoin: ['Vol. III · Bitcoin', 'What did Bitcoin solve and what remains unsettled?'] };
-    vals.homeVolumes = ['gold', 'after', 'bitcoin'].map(vol => {
+    const homeNames = { gold: ['Vol. I · Gold', 'How did a metal become money and what role remains?'], after: ['Vol. II · After Gold', 'What changed when official gold conversion ended?'], bitcoin: ['Vol. III · Bitcoin', 'What did Bitcoin solve and what remains unsettled?'], zcash: ['Vol. IV · Zcash', 'What can private ZEC payments do, and what remains unproven?'] };
+    vals.homeVolumes = VOLUME_IDS.map(vol => {
       const directory = st.manifest.find(item => item.id === `${vol}-00`);
       return directory && { id: vol, label: homeNames[vol][0], href: this.href(directory),
-        title: vol === 'after' ? 'After Gold' : vol === 'gold' ? 'Gold' : 'Bitcoin',
+        title: vol === 'after' ? 'After Gold' : vol === 'gold' ? 'Gold' : vol === 'bitcoin' ? 'Bitcoin' : 'Zcash',
         question: homeNames[vol][1] };
     }).filter(Boolean);
-    vals.allChapters = st.manifest.filter(m => !sharedViewForRecord(m)).map(m => ({ href: this.href(m), optLabel: ({ gold: 'I·', after: 'II·', bitcoin: 'III·' }[m.vol]) + m.num + ' ' + this.short(m) }));
+    vals.allChapters = st.manifest.filter(m => !sharedViewForRecord(m)).map(m => ({ href: this.href(m), optLabel: ({ gold: 'I·', after: 'II·', bitcoin: 'III·', zcash: 'IV·' }[m.vol]) + m.num + ' ' + this.short(m) }));
     vals.selectValue = cur ? this.href(cur) : '';
     vals.onSelect = e => { if (e.target.value) location.href = e.target.value; };
     vals.isHome = r.view === 'home'; vals.isCompare = r.view === 'compare'; vals.isMechanics = r.view === 'mechanics'; vals.isMethods = r.view === 'methods';
@@ -576,14 +576,14 @@ export default class App extends React.Component {
     }
     if (cur) {
       const key = cur.slug + '@' + cur.vol; const bl = st.blocks[key] || [];
-      vals.volLabel = { gold: 'Vol. I — Gold', after: 'Vol. II — After Gold', bitcoin: 'Vol. III — Bitcoin' }[cur.vol];
+      vals.volLabel = { gold: 'Vol. I — Gold', after: 'Vol. II — After Gold', bitcoin: 'Vol. III — Bitcoin', zcash: 'Vol. IV — Zcash' }[cur.vol];
       vals.chapterNum = cur.num; vals.readTime = Math.max(1, Math.round(cur.words / 230)); vals.wordCount = cur.words.toLocaleString();
       vals.chapterTitle = cur.title.replace(/^\d+\s+—\s+/, '');
       vals.articleIsReference = contentRole(cur) !== 'topic';
       const metadata = st.articleMetadata[cur.id];
       vals.articleSummary = metadata?.summary || null;
       vals.hubChapters = r.view === 'hub' ? st.manifest.filter(item => item.vol === cur.vol && item.slug !== '00-readme' && !sharedViewForRecord(item)).map(item => ({ href: this.href(item), title: this.short(item) })) : [];
-      vals.articleBody = R('div', null, this.blocksToEls(bl, { vol: cur.vol, usedGloss: { set: new Set() }, sectionAliases: cur.sectionAliases, sourcePage: ['gold-12', 'after-13', 'bitcoin-16'].includes(cur.id) }));
+      vals.articleBody = R('div', null, this.blocksToEls(bl, { vol: cur.vol, usedGloss: { set: new Set() }, sectionAliases: cur.sectionAliases, sourcePage: ['gold-12', 'after-13', 'bitcoin-16', 'zcash-17'].includes(cur.id) }));
       vals.toc = bl.filter(b => b.type === 'h2' || b.type === 'h3').map(b => ({ text: this.md.stripInline(b.text), href: this.href(cur, b.id), indent: b.type === 'h3' ? '12px' : '0' }));
       vals.tocLabel = 'On this page';
       const list = st.manifest.filter(m => m.vol === cur.vol && !sharedViewForRecord(m)); const i = list.indexOf(cur); const prev = list[i - 1], next = list[i + 1];
@@ -622,7 +622,7 @@ export default class App extends React.Component {
       vals.toc = letters.map(L => ({ text: L, href: '/glossary/#' + rows.find(g => g.term[0].toUpperCase() === L).id, indent: '0' }));
     }
     if (vals.isSources) {
-      const labels = { gold: 'Volume I · Gold', after: 'Volume II · After Gold', bitcoin: 'Volume III · Bitcoin' };
+      const labels = { gold: 'Volume I · Gold', after: 'Volume II · After Gold', bitcoin: 'Volume III · Bitcoin', zcash: 'Volume IV · Zcash' };
       const sourceRecords = st.manifest.filter(record => sharedViewForRecord(record) === 'sources');
       vals.sourceVolumes = sourceRecords.map(record => {
         const blocks = st.blocks[`${record.slug}@${record.vol}`] || [];
@@ -676,7 +676,7 @@ export default class App extends React.Component {
       const secEl = sec && document.getElementById(sec);
       const secTitle = secEl ? secEl.innerText.replace(/^[−+]\s*/, '').replace(/\s*(§|copied)\s*$/, '').trim() : null;
       const label = cur
-        ? ({ gold: 'Vol. I — Gold', after: 'Vol. II — After Gold', bitcoin: 'Vol. III — Bitcoin' }[cur.vol]) + ', file ' + cur.num + ' — ' + cur.title.replace(/^\d+\s+—\s+/, '')
+        ? ({ gold: 'Vol. I — Gold', after: 'Vol. II — After Gold', bitcoin: 'Vol. III — Bitcoin', zcash: 'Vol. IV — Zcash' }[cur.vol]) + ', file ' + cur.num + ' — ' + cur.title.replace(/^\d+\s+—\s+/, '')
         : 'Gold → Dollar → Crypto · research notes, ' + (VIEW_NAMES[r.view] || r.view);
       const href = cur ? location.origin + this.href(cur, sec) : location.origin + viewPath(r.view, sec);
       this.setState({ quote: { text, x: rect.left + rect.width / 2, y: rect.top + window.scrollY - 40, label, secTitle, href }, askOpen: false, askQ: '', promptCopied: false });

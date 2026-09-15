@@ -146,6 +146,26 @@
       "source": "/bitcoin/16/",
       "destination": "/sources/",
       "permanent": true
+    },
+    {
+      "source": "/zcash/00-readme/",
+      "destination": "/zcash/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/15-timeline-and-proposal-status/",
+      "destination": "/timeline/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/16-glossary/",
+      "destination": "/glossary/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/17-sources-and-evidence-register/",
+      "destination": "/sources/",
+      "permanent": true
     }
   ],
   "headers": [

@@ -12,10 +12,11 @@ const blocks = Object.fromEntries(manifest.map(article => [article.slug + '@' + 
 
 test('discovery roles account for every document and retain late Bitcoin takeaways', () => {
   const catalog = researchCatalog(manifest);
-  assert.equal(catalog.length, 44);
-  assert.equal(new Set(catalog.map(row => row.id)).size, 44);
+  assert.equal(catalog.length, 63);
+  assert.equal(new Set(catalog.map(row => row.id)).size, 63);
   for (const row of catalog) assert.ok(['topic', 'directory', 'timeline', 'glossary', 'sources', 'reference'].includes(row.role));
   assert.equal(contentRole(manifest.find(row => row.id === 'after-10')), 'reference');
+  assert.equal(contentRole(manifest.find(row => row.id === 'zcash-18')), 'reference');
   const eligible = new Set(takeawayCandidates(manifest, blocks).map(row => row.id));
   for (const id of ['bitcoin-10', 'bitcoin-11', 'bitcoin-12', 'bitcoin-13']) assert.ok(eligible.has(id));
 });
@@ -32,14 +33,14 @@ test('five reading paths resolve, have computed times and explain branches', () 
   }
 });
 
-test('canonical proposals explicitly cover every duplicate source term', () => {
-  const raw = ['gold', 'after', 'bitcoin'].flatMap(vol => {
+test('canonical proposals govern reviewed duplicate terms while retaining other source definitions', () => {
+  const raw = ['gold', 'after', 'bitcoin', 'zcash'].flatMap(vol => {
     const article = manifest.find(row => row.vol === vol && contentRole(row) === 'glossary');
     return parseGlossary(readFileSync(new URL('../public/' + article.path, import.meta.url), 'utf8')).map(term => ({ ...term, vol }));
   });
   const duplicates = [...new Set(raw.map(term => term.id))].filter(id => raw.filter(term => term.id === id).length > 1);
-  assert.deepEqual(new Set(canonicalProposals.map(term => term.id)), new Set(duplicates));
-  assert.deepEqual(new Set(acceptedCanonicalIds), new Set(duplicates));
+  assert.ok(acceptedCanonicalIds.every(id => duplicates.includes(id)));
+  assert.deepEqual(new Set(canonicalProposals.map(term => term.id)), new Set(acceptedCanonicalIds));
   const governed = canonicalGlossary(raw);
   assert.equal(new Set(governed.map(term => term.id)).size, governed.length);
   assert.equal(governed.find(term => term.id === 'stablecoin').review, 'accepted');

@@ -7,8 +7,8 @@ import {
 
 export { METADATA_FIELDS };
 
-const VOLUME_NAME = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin' };
-const VOLUME_ROMAN = { gold: 'I', after: 'II', bitcoin: 'III' };
+const VOLUME_NAME = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin', zcash: 'Zcash' };
+const VOLUME_ROMAN = { gold: 'I', after: 'II', bitcoin: 'III', zcash: 'IV' };
 
 export function escapeHtml(text) {
   return String(text)

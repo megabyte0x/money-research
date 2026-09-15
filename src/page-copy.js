@@ -1,8 +1,8 @@
 export const HOME_COPY = {
-  eyebrow: 'An evidence-led guide · three research volumes',
+  eyebrow: 'An evidence-led guide · four research volumes',
   title: 'How money works—and why it changes.',
-  lead: 'Explore gold, government currencies and Bitcoin through history, evidence and the trade-offs between saving, paying, pricing and settling.',
-  description: 'An evidence-led research library on gold, post-1971 currencies and Bitcoin. Forty-four documents compare how money is issued, held, transferred and limited, with source locators and open editorial notices.',
+  lead: 'Explore gold, government currencies, Bitcoin and Zcash through history, evidence and the trade-offs between saving, paying, pricing, privacy and settling.',
+  description: 'An evidence-led research library on gold, post-1971 currencies, Bitcoin and Zcash. Sixty-three documents compare how money is issued, held, transferred, protected and limited, with source locators and open editorial notices.',
   jobs: [
     ['Store of value', 'Carries purchasing power through time.'],
     ['Medium of exchange', 'Helps people pay for goods and services.'],
@@ -25,11 +25,17 @@ export const HOME_COPY = {
       title: 'What did Bitcoin solve?',
       note: 'Transfer rules, custody and remaining risks · Vol. III',
     },
+    {
+      href: '/zcash/02-what-zcash-is-and-what-is-live/',
+      title: 'What does private digital cash change?',
+      note: 'Shielded payments, current deployment and open limits · Vol. IV',
+    },
   ],
   volumeQuestions: {
     gold: 'How did a metal become money and what role remains?',
     after: 'What changed when official gold conversion ended?',
     bitcoin: 'What did Bitcoin solve and what remains unsettled?',
+    zcash: 'What can private ZEC payments do, and what remains unproven?',
   },
 };
 
@@ -42,8 +48,8 @@ export const METHODS_COPY = {
       id: 'scope',
       title: 'What this library is',
       paragraphs: [
-        'The library contains 44 research documents in three volumes: gold, the post-1971 monetary system, and Bitcoin. It presents their arguments while historical, legal and market claims remain under editorial review. Dated observations are not live figures, and a passing site build does not certify every chapter.',
-        'The shared Sources page brings together the three volume bibliographies. Some entries still need exact document and passage locations; inspect the linked material behind a claim.',
+        'The library contains 63 research documents in four volumes: gold, the post-1971 monetary system, Bitcoin and Zcash. It presents their arguments while historical, legal, technical and market claims remain under editorial review. Dated observations are not live figures, and a passing site build does not certify every chapter.',
+        'The shared Sources page brings together the four volume bibliographies. Some entries still need exact document and passage locations; inspect the linked material behind a claim.',
       ],
     },
     {
@@ -103,7 +109,7 @@ export const NOT_FOUND_COPY = {
 export const DISCOVERY_COPY = {
   timeline: {
     title: 'A connected monetary timeline',
-    description: 'Events from the gold, after-gold and Bitcoin volumes in one chronological view. Dates, quantities and some destinations remain under editorial review.',
+    description: 'Events from the gold, after-gold, Bitcoin and Zcash volumes in one chronological view. Dates, quantities and some destinations remain under editorial review.',
   },
   takeaways: {
     title: 'Explore the short answers',
@@ -127,7 +133,7 @@ export const DISCOVERY_COPY = {
   },
   sources: {
     title: 'Sources and further reading',
-    description: 'Combined bibliography and source locators from the Gold, After Gold and Bitcoin research volumes.',
+    description: 'Combined bibliography and source locators from the Gold, After Gold, Bitcoin and Zcash research volumes.',
   },
 };
 
@@ -146,6 +152,11 @@ export const VOLUME_COPY = {
     title: 'Bitcoin',
     label: 'Vol. III · Bitcoin',
     description: 'Bitcoin volume hub: independent validation, custody, country acts, supply rules and the evidence still required for saving, paying or institutional use.',
+  },
+  zcash: {
+    title: 'Zcash',
+    label: 'Vol. IV · Zcash',
+    description: 'Zcash volume hub: shielded payments, ZEC denomination, the 2026 Orchard response, adoption constraints and testable economic hypotheses.',
   },
 };
 

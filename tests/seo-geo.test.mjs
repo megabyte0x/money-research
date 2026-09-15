@@ -27,8 +27,9 @@ test('static home and hubs have introduction text and ordinary volume/chapter li
   assert.match(home, /<a href="\/gold\/"/);
   assert.match(home, /<a href="\/after\/01-the-break-1971-1976\/"/);
   assert.match(home, /<a href="\/bitcoin\/02-what-bitcoin-solved-and-what-it-did-not\/"/);
+  assert.match(home, /<a href="\/zcash\/02-what-zcash-is-and-what-is-live\/"/);
   assert.doesNotMatch(home, /href="\/#\/home"/);
-  for (const vol of ['gold', 'after', 'bitcoin']) {
+  for (const vol of ['gold', 'after', 'bitcoin', 'zcash']) {
     const hub = html(`${vol}/index.html`);
     assert.match(hub, /<h1 id="/);
     assert.match(hub, /Chapters in this volume/);

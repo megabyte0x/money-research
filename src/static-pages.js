@@ -33,7 +33,7 @@ function linkedText(text, record, byVolumeNumber) {
 }
 
 export function inlineHtml(text, record, byVolumeNumber) {
-  return tokenizeInline(text, { linkifyUrls: ['gold-12', 'after-13', 'bitcoin-16'].includes(record?.id) }).map(token => {
+  return tokenizeInline(text, { linkifyUrls: ['gold-12', 'after-13', 'bitcoin-16', 'zcash-17'].includes(record?.id) }).map(token => {
     const value = escapeHtml(token.auto ? sourceUrlLabel(token.href) : token.v);
     if (token.t === 'b') return `<strong>${value}</strong>`;
     if (token.t === 'i') return `<em>${value}</em>`;
@@ -109,8 +109,8 @@ export function hubItemList(vol, manifest) {
 
 export function staticHome(manifest, page) {
   const volumes = VOLUME_IDS.map(vol => {
-    const names = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin' };
-    const labels = { gold: 'Vol. I · Gold', after: 'Vol. II · After Gold', bitcoin: 'Vol. III · Bitcoin' };
+    const names = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin', zcash: 'Zcash' };
+    const labels = { gold: 'Vol. I · Gold', after: 'Vol. II · After Gold', bitcoin: 'Vol. III · Bitcoin', zcash: 'Vol. IV · Zcash' };
     return {
       vol, title: names[vol], label: labels[vol], href: `/${vol}/`,
       question: HOME_COPY.volumeQuestions[vol],
@@ -129,12 +129,12 @@ export function staticHome(manifest, page) {
 <p>Cash is an issuer liability; a bank balance is a claim on a bank; physical gold is an asset held somewhere; self-custodied Bitcoin depends on key control. An exchange balance or stablecoin adds another issuer or custodian. <a href="/compare/">Compare these arrangements by use →</a></p>
 <p>To see why deposits, reserves and bonds are distinct, <a href="/mechanics/">follow four stylised £100 transactions →</a></p>
 <h2>History overlaps</h2>
-<p>Classical gold convertibility was interrupted by the First World War. Interwar attempts to restore it differed from the post-1944 Bretton Woods dollar system. Since the 1970s, fiat currencies, gold reserves, bank deposits and newer digital arrangements have coexisted. Bitcoin is one development within that overlap.</p>
+<p>Classical gold convertibility was interrupted by the First World War. Interwar attempts to restore it differed from the post-1944 Bretton Woods dollar system. Since the 1970s, fiat currencies, gold reserves, bank deposits and newer digital arrangements have coexisted. Bitcoin and Zcash are different developments within that overlap, with different transparency and operational trade-offs.</p>
 <nav class="reader-actions" aria-label="Explore history"><a href="/arc/">Read the eleven-stage arc →</a><a href="/timeline/">Explore the connected timeline →</a></nav>
-<h2 id="volumes">Three research volumes</h2>
+<h2 id="volumes">Four research volumes</h2>
 <div class="reader-volumes">${volumes.map(volume => `<div class="reader-volume reader-volume-${volume.vol}"><a href="${volume.href}"><span class="reader-volume-cue">${escapeHtml(volume.label)}</span><strong>${escapeHtml(volume.title)}</strong><span>${escapeHtml(volume.question)}</span></a></div>`).join('')}</div>
 <h2>What evidence can and cannot settle</h2>
-<p>Bitcoin permits transfer without a central account operator, yet broad use for wages, prices and debts remains uncertain. Claims about adoption, comparative returns and official reserves require populations, dates and precise source locations. Quantitative charts in the historical arc remain withheld while their datasets are checked.</p>
+<p>Bitcoin and Zcash permit transfer without a central account operator, yet broad use for wages, prices and debts remains uncertain. Claims about adoption, privacy, comparative returns and official reserves require populations, dates and precise source locations. Quantitative charts in the historical arc remain withheld while their datasets are checked.</p>
 <p class="small-note"><a href="/methods/">Read the research method →</a></p>
 </main>`;
 }
@@ -150,20 +150,20 @@ ${METHODS_COPY.sections.map(section => `<section id="${escapeHtml(section.id)}">
 
 export function staticGlossary(glossary, page) {
   return `<main id="main-content" class="static-article discovery-view">${breadcrumbHtml(page.breadcrumbs)}
-<p class="discovery-meta">Glossary · ${glossary.length} terms across three volumes</p>
+<p class="discovery-meta">Glossary · ${glossary.length} terms across four volumes</p>
 <h1>${escapeHtml(DISCOVERY_COPY.glossary.title)}</h1>
 <div class="discovery-glossary">${glossary.map(term => `<div id="${escapeHtml(term.id)}" class="discovery-definition"><strong>${escapeHtml(term.term)}</strong><div>${escapeHtml(stripInline(term.def || term.definition || ''))}</div></div>`).join('')}</div>
 </main>`;
 }
 
 export function staticSources(model, page) {
-  const labels = { gold: 'Volume I · Gold', after: 'Volume II · After Gold', bitcoin: 'Volume III · Bitcoin' };
+  const labels = { gold: 'Volume I · Gold', after: 'Volume II · After Gold', bitcoin: 'Volume III · Bitcoin', zcash: 'Volume IV · Zcash' };
   const byVolumeNumber = new Map(model.manifest.map(item => [`${item.vol}/${item.num}`, item]));
   const records = VOLUME_IDS.map(vol => model.manifest.find(item => item.vol === vol && sharedViewForRecord(item) === 'sources')).filter(Boolean);
   return `<main id="main-content" class="static-article discovery-view">${breadcrumbHtml(page.breadcrumbs)}
-<p class="discovery-meta">Sources · three research volumes</p>
+<p class="discovery-meta">Sources · four research volumes</p>
 <h1>${escapeHtml(DISCOVERY_COPY.sources.title)}</h1>
-<p>Source lists and further reading from all three volumes are collected here. Entries retain their original volume and editorial scope.</p>
+<p>Source lists and further reading from all four volumes are collected here. Entries retain their original volume and editorial scope.</p>
 ${records.map(record => `<section id="sources-${escapeHtml(record.vol)}" class="sources-volume"><h2>${escapeHtml(labels[record.vol])}</h2>${blocksHtml((model.blocks[`${record.slug}@${record.vol}`] || []).filter(block => block.type !== 'h1'), record, byVolumeNumber, { idPrefix: `sources-${record.vol}-` })}</section>`).join('\n')}
 </main>`;
 }
@@ -180,7 +180,7 @@ export function staticNotFound(page) {
   return `<main id="main-content" class="static-article intro-page">${breadcrumbHtml(page.breadcrumbs)}
 <h1>${escapeHtml(NOT_FOUND_COPY.title)}</h1>
 <p>This address is not a published Money Research page. It may have been typed incorrectly, or it may never have been a canonical URL.</p>
-<nav class="reader-actions" aria-label="Continue"><a href="/">Money Research home →</a><a href="/gold/">Gold volume →</a><a href="/after/">After Gold volume →</a><a href="/bitcoin/">Bitcoin volume →</a><a href="/methods/">Research method →</a></nav>
+<nav class="reader-actions" aria-label="Continue"><a href="/">Money Research home →</a><a href="/gold/">Gold volume →</a><a href="/after/">After Gold volume →</a><a href="/bitcoin/">Bitcoin volume →</a><a href="/zcash/">Zcash volume →</a><a href="/methods/">Research method →</a></nav>
 </main>`;
 }
 

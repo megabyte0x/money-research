@@ -101,6 +101,13 @@
       "volume": "Volume III · Bitcoin",
       "templateVersion": "title-card-v3"
     },
+    "/zcash/": {
+      "image": "/og/zcash.77756befb4a8.png",
+      "alt": "Volume IV · Zcash — Zcash: Private Money and the Possibility of a ZEC Economy. Money Research sharing card.",
+      "title": "Zcash: Private Money and the Possibility of a ZEC Economy",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
     "/gold/01-the-metal-itself/": {
       "image": "/og/gold-01-the-metal-itself.8ada89483a89.png",
       "alt": "Volume I · Gold — The Metal Itself: Where Gold Came From and Why It Was Different. Money Research sharing card.",
@@ -323,6 +330,111 @@
       "alt": "Volume III · Bitcoin — Is Bitcoin the True Solution to Money After Gold?. Money Research sharing card.",
       "title": "Is Bitcoin the True Solution to Money After Gold?",
       "volume": "Volume III · Bitcoin",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/01-lessons-from-gold-fiat-and-bitcoin/": {
+      "image": "/og/zcash-01-lessons-from-gold-fiat-and-bitcoin.0c53cab8fc69.png",
+      "alt": "Volume IV · Zcash — Lessons from Gold, Fiat, and Bitcoin. Money Research sharing card.",
+      "title": "Lessons from Gold, Fiat, and Bitcoin",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/02-what-zcash-is-and-what-is-live/": {
+      "image": "/og/zcash-02-what-zcash-is-and-what-is-live.2d16fcd48420.png",
+      "alt": "Volume IV · Zcash — What Zcash Is, and What Is Actually Live. Money Research sharing card.",
+      "title": "What Zcash Is, and What Is Actually Live",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/03-which-world-problems-zcash-can-address/": {
+      "image": "/og/zcash-03-which-world-problems-zcash-can-address.5b4afe597f11.png",
+      "alt": "Volume IV · Zcash — Which World Problems Can Zcash Address?. Money Research sharing card.",
+      "title": "Which World Problems Can Zcash Address?",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/04-privacy-fungibility-and-the-unique-case/": {
+      "image": "/og/zcash-04-privacy-fungibility-and-the-unique-case.a3dd11271506.png",
+      "alt": "Volume IV · Zcash — Privacy, Fungibility, and the Distinctive Case for Zcash. Money Research sharing card.",
+      "title": "Privacy, Fungibility, and the Distinctive Case for Zcash",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/05-can-zec-be-a-unit-of-account/": {
+      "image": "/og/zcash-05-can-zec-be-a-unit-of-account.2b8a870e1932.png",
+      "alt": "Volume IV · Zcash — Can ZEC Be a Unit of Account?. Money Research sharing card.",
+      "title": "Can ZEC Be a Unit of Account?",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/06-fixed-supply-credit-and-crisis-management/": {
+      "image": "/og/zcash-06-fixed-supply-credit-and-crisis-management.ffa4406b79a6.png",
+      "alt": "Volume IV · Zcash — Fixed Supply, Credit, and Crisis Management. Money Research sharing card.",
+      "title": "Fixed Supply, Credit, and Crisis Management",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/07-adoption-and-the-current-institutional-system/": {
+      "image": "/og/zcash-07-adoption-and-the-current-institutional-system.06968894521f.png",
+      "alt": "Volume IV · Zcash — Adoption and the Current Institutional System. Money Research sharing card.",
+      "title": "Adoption and the Current Institutional System",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/08-transition-from-fiat-to-zec/": {
+      "image": "/og/zcash-08-transition-from-fiat-to-zec.67ed9cac3c72.png",
+      "alt": "Volume IV · Zcash — What Would a Transition from Fiat to ZEC Look Like?. Money Research sharing card.",
+      "title": "What Would a Transition from Fiat to ZEC Look Like?",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/09-gold-to-fiat-to-bitcoin-to-zcash/": {
+      "image": "/og/zcash-09-gold-to-fiat-to-bitcoin-to-zcash.f8d1d820e0d8.png",
+      "alt": "Volume IV · Zcash — Gold → Fiat → Bitcoin → Zcash: Transition or Analogy?. Money Research sharing card.",
+      "title": "Gold → Fiat → Bitcoin → Zcash: Transition or Analogy?",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/10-zcash-specific-risks-and-governance/": {
+      "image": "/og/zcash-10-zcash-specific-risks-and-governance.52eda6fc7c1d.png",
+      "alt": "Volume IV · Zcash — Zcash-Specific Risks, Governance, and Future Changes. Money Research sharing card.",
+      "title": "Zcash-Specific Risks, Governance, and Future Changes",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/11-hypothesis-a-world-ready-for-zec/": {
+      "image": "/og/zcash-11-hypothesis-a-world-ready-for-zec.6a7a9929b69b.png",
+      "alt": "Volume IV · Zcash — Hypothesis: A World Politically Ready for ZEC. Money Research sharing card.",
+      "title": "Hypothesis: A World Politically Ready for ZEC",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/12-hypothesis-adoption-roadmap-and-worked-example/": {
+      "image": "/og/zcash-12-hypothesis-adoption-roadmap-and-worked-example.4efcc5d07bad.png",
+      "alt": "Volume IV · Zcash — Hypothetical Adoption Roadmap and Worked Example. Money Research sharing card.",
+      "title": "Hypothetical Adoption Roadmap and Worked Example",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/13-stress-tests-and-failure-paths/": {
+      "image": "/og/zcash-13-stress-tests-and-failure-paths.e407df31a0ad.png",
+      "alt": "Volume IV · Zcash — Stress Tests and Failure Paths. Money Research sharing card.",
+      "title": "Stress Tests and Failure Paths",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/14-measurement-falsification-and-research-agenda/": {
+      "image": "/og/zcash-14-measurement-falsification-and-research-agenda.02dc26b8dc90.png",
+      "alt": "Volume IV · Zcash — How to Test or Reject the ZEC-Economy Hypothesis. Money Research sharing card.",
+      "title": "How to Test or Reject the ZEC-Economy Hypothesis",
+      "volume": "Volume IV · Zcash",
+      "templateVersion": "title-card-v3"
+    },
+    "/zcash/18-prior-document-coverage/": {
+      "image": "/og/zcash-18-prior-document-coverage.674e8076f0b2.png",
+      "alt": "Volume IV · Zcash — Coverage of the Earlier Research. Money Research sharing card.",
+      "title": "Coverage of the Earlier Research",
+      "volume": "Volume IV · Zcash",
       "templateVersion": "title-card-v3"
     }
   }

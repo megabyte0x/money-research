@@ -12,7 +12,7 @@ const jobs = [
 export function HomePage({ v }) {
   return <div className="intro-page reader-home">
     <h1>How money works—and why it changes.</h1>
-    <p className="lead">Explore gold, government currencies and Bitcoin through history, evidence and the trade-offs between saving, paying, pricing and settling.</p>
+    <p className="lead">Explore gold, government currencies, Bitcoin and Zcash through history, evidence and the trade-offs between saving, paying, pricing, privacy and settling.</p>
     <nav className="reader-actions" aria-label="Start reading"><a href="#volumes">Browse the volumes →</a><a href="/arc/">Read History →</a><a href="/compare/">Compare arrangements →</a></nav>
     <h2>Four jobs, different arrangements</h2>
     <div className="reader-jobs">{jobs.map(([name, description]) => <div key={name}><h3>{name}</h3><p>{description}</p></div>)}</div>
@@ -22,17 +22,18 @@ export function HomePage({ v }) {
       <a href="/gold/08-why-the-dollar-replaced-gold/">Why did gold lose its monetary role?<small>Convertibility, crisis and the dollar network · Vol. I</small></a>
       <a href="/after/01-the-break-1971-1976/">What supports money today?<small>Institutions, bank liabilities and acceptance · Vol. II</small></a>
       <a href="/bitcoin/02-what-bitcoin-solved-and-what-it-did-not/">What did Bitcoin solve?<small>Transfer rules, custody and remaining risks · Vol. III</small></a>
+      <a href="/zcash/02-what-zcash-is-and-what-is-live/">What does private digital cash change?<small>Shielded payments, current deployment and open limits · Vol. IV</small></a>
     </div>
     <h2>Compare the claims</h2>
     <p>Cash is an issuer liability; a bank balance is a claim on a bank; physical gold is an asset held somewhere; self-custodied Bitcoin depends on key control. An exchange balance or stablecoin adds another issuer or custodian. <a href="/compare/">Compare these arrangements by use →</a></p>
     <p>To see why deposits, reserves and bonds are distinct, <a href="/mechanics/">follow four stylised £100 transactions →</a></p>
     <h2>History overlaps</h2>
-    <p>Classical gold convertibility was interrupted by the First World War. Interwar attempts to restore it differed from the post-1944 Bretton Woods dollar system. Since the 1970s, fiat currencies, gold reserves, bank deposits and newer digital arrangements have coexisted. Bitcoin is one development within that overlap.</p>
+    <p>Classical gold convertibility was interrupted by the First World War. Interwar attempts to restore it differed from the post-1944 Bretton Woods dollar system. Since the 1970s, fiat currencies, gold reserves, bank deposits and newer digital arrangements have coexisted. Bitcoin and Zcash are different developments within that overlap, with different transparency and operational trade-offs.</p>
     <nav className="reader-actions" aria-label="Explore history"><a href="/arc/">Read the eleven-stage arc →</a><a href="/timeline/">Explore the connected timeline →</a></nav>
-    <h2 id="volumes">Three research volumes</h2>
+    <h2 id="volumes">Four research volumes</h2>
     <div className="reader-volumes">{(v.homeVolumes || []).map(volume => <div key={volume.id} className={`reader-volume reader-volume-${volume.id}`}><a href={volume.href}><span className="reader-volume-cue">{volume.label}</span><strong>{volume.title}</strong><span>{volume.question}</span></a></div>)}</div>
     <h2>What evidence can and cannot settle</h2>
-    <p>Bitcoin permits transfer without a central account operator, yet broad use for wages, prices and debts remains uncertain. Claims about adoption, comparative returns and official reserves require populations, dates and precise source locations. Quantitative charts in the historical arc remain withheld while their datasets are checked.</p>
+    <p>Bitcoin and Zcash permit transfer without a central account operator, yet broad use for wages, prices and debts remains uncertain. Claims about adoption, privacy, comparative returns and official reserves require populations, dates and precise source locations. Quantitative charts in the historical arc remain withheld while their datasets are checked.</p>
     <p className="small-note"><a href="/methods/">Read the research method →</a></p>
   </div>;
 }

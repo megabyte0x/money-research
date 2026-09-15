@@ -28,7 +28,7 @@ function page(record, slug = record.slug) {
 }
 
 test('every direct destination and numeric alias has one canonical, unique article identity', () => {
-  assert.equal(manifest.length, 44, 'expected the reviewed 44-article inventory');
+  assert.equal(manifest.length, 63, 'expected the reviewed four-volume inventory');
   const titles = new Set();
   const descriptions = new Set();
   const canonicals = new Set();
@@ -111,7 +111,8 @@ function pngDimensions(file) {
 
 test('every shareable route has a unique, versioned title-card PNG and complete static metadata', () => {
   const cards = Object.entries(ogManifest.cards || {});
-  assert.ok(cards.length > manifest.length, 'expected cards for hubs, utilities and every chapter');
+  const chapters = manifest.filter(record => record.slug !== '00-readme' && !sharedViewForRecord(record));
+  assert.ok(cards.length > chapters.length, 'expected cards for hubs, utilities and every chapter');
   const images = new Set();
   for (const [path, card] of cards) {
     const html = outputForPath(path);

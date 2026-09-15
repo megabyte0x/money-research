@@ -22,8 +22,8 @@ export function createContentModel(manifest, documents, observations, timelineEv
 
   for (const record of manifest) {
     const key = `${record.slug}@${record.vol}`;
-    if (!/^(gold|after|bitcoin)-\d{2}$/.test(record.id) ||
-        !/^content\/(gold|after|bitcoin)\/[a-z0-9-]+\.md$/.test(record.path) ||
+    if (!/^(gold|after|bitcoin|zcash)-\d{2}$/.test(record.id) ||
+        !/^content\/(gold|after|bitcoin|zcash)\/[a-z0-9-]+\.md$/.test(record.path) ||
         record.path.split('/')[1] !== record.vol || ids.has(record.id) || routes.has(key)) {
       throw new Error(`Invalid or duplicate article: ${record.id}`);
     }
@@ -36,8 +36,9 @@ export function createContentModel(manifest, documents, observations, timelineEv
     const content = resolveObservations(source, byObservationId);
     const parsed = parseMd(content);
     if (record.slug.includes('timeline')) {
-      const sourceTables = parseMd(source).filter(block => block.type === 'table');
-      const renderedTables = parsed.filter(block => block.type === 'table');
+      const datedTable = block => block.type === 'table' && /^date$/i.test(stripInline(block.header?.[0] || ''));
+      const sourceTables = parseMd(source).filter(datedTable);
+      const renderedTables = parsed.filter(datedTable);
       if (sourceTables.length !== renderedTables.length) throw new Error(`Timeline table mismatch: ${record.id}`);
       sourceTables.forEach((table, tableIndex) => {
         const rendered = renderedTables[tableIndex];

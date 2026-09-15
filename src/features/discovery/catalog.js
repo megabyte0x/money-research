@@ -1,13 +1,19 @@
 // Discovery metadata is keyed by stable manifest IDs. No view guesses a role
 // from a slug or a leading file number.
 const REFERENCE_IDS = new Map([
-  ...['gold', 'after', 'bitcoin'].flatMap(vol => [
+  ...Object.entries({
+    gold: { timeline: '10', glossary: '11', sources: '12' },
+    after: { timeline: '11', glossary: '12', sources: '13' },
+    bitcoin: { timeline: '14', glossary: '15', sources: '16' },
+    zcash: { timeline: '15', glossary: '16', sources: '17' },
+  }).flatMap(([vol, refs]) => [
     [`${vol}-00`, 'directory'],
-    [`${vol}-${{ gold: '10', after: '11', bitcoin: '14' }[vol]}`, 'timeline'],
-    [`${vol}-${{ gold: '11', after: '12', bitcoin: '15' }[vol]}`, 'glossary'],
-    [`${vol}-${{ gold: '12', after: '13', bitcoin: '16' }[vol]}`, 'sources'],
+    [`${vol}-${refs.timeline}`, 'timeline'],
+    [`${vol}-${refs.glossary}`, 'glossary'],
+    [`${vol}-${refs.sources}`, 'sources'],
   ]),
   ['after-10', 'reference'],
+  ['zcash-18', 'reference'],
 ]);
 
 const TOPICS = {
@@ -28,6 +34,13 @@ const TOPICS = {
   'bitcoin-09': ['control', 'institutions'], 'bitcoin-10': ['institutions', 'adoption'],
   'bitcoin-11': ['crises', 'payments'], 'bitcoin-12': ['crises', 'safeguards'],
   'bitcoin-13': ['comparison', 'money basics'],
+  'zcash-01': ['history', 'money basics'], 'zcash-02': ['payments', 'privacy'],
+  'zcash-03': ['payments', 'adoption'], 'zcash-04': ['privacy', 'value'],
+  'zcash-05': ['unit of account', 'adoption'], 'zcash-06': ['money basics', 'crises'],
+  'zcash-07': ['adoption', 'law'], 'zcash-08': ['adoption', 'monetary rules'],
+  'zcash-09': ['comparison', 'history'], 'zcash-10': ['safeguards', 'institutions'],
+  'zcash-11': ['adoption', 'institutions'], 'zcash-12': ['adoption', 'money basics'],
+  'zcash-13': ['crises', 'safeguards'], 'zcash-14': ['adoption', 'research'],
 };
 
 export function contentRole(article) {

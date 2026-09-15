@@ -344,6 +344,21 @@ export const TIMELINE_SECTION_REFS = Object.freeze({
   'evt-bitcoin-0112': ['bitcoin', '05', 'the-opponents'],
   'evt-bitcoin-0113': ['bitcoin', '04', 'el-salvador-payment-law-and-amended-private-acceptance'],
   'evt-bitcoin-0114': ['bitcoin', '05', 'the-opponents'],
+  'evt-zcash-0001': ['zcash', '02', 'network-currency-and-technology-are-different-things'],
+  'evt-zcash-0002': ['zcash', '02', 'network-currency-and-technology-are-different-things'],
+  'evt-zcash-0003': ['zcash', '02', 'the-shielded-generations'],
+  'evt-zcash-0004': ['zcash', '10', '1-supply-integrity-and-the-2026-orchard-vulnerability'],
+  'evt-zcash-0005': ['zcash', '10', '1-supply-integrity-and-the-2026-orchard-vulnerability'],
+  'evt-zcash-0006': ['zcash', '02', 'the-shielded-generations'],
+  'evt-zcash-0007': ['zcash', '10', '5-scaling-and-operational-resilience'],
+  'evt-zcash-0008': ['zcash', '10', '3-governance-and-development-finance'],
+  'evt-zcash-0009': ['zcash', '10', '3-governance-and-development-finance'],
+  'evt-zcash-0010': ['zcash', '10', '1-supply-integrity-and-the-2026-orchard-vulnerability'],
+  'evt-zcash-0011': ['zcash', '10', '1-supply-integrity-and-the-2026-orchard-vulnerability'],
+  'evt-zcash-0012': ['zcash', '10', '1-supply-integrity-and-the-2026-orchard-vulnerability'],
+  'evt-zcash-0013': ['zcash', '10', '5-scaling-and-operational-resilience'],
+  'evt-zcash-0014': ['zcash', '10', '2-privacy-through-migrations-and-everyday-wallets'],
+  'evt-zcash-0015': ['zcash', '10', '2-privacy-through-migrations-and-everyday-wallets'],
 });
 
 export function timelineReferenceKey(vol, date, event) {
@@ -356,7 +371,7 @@ export function indexTimelineEventIds(records) {
   const ids = new Set();
   for (const record of records) {
     const vol = record?.key?.split('|')[0];
-    if (!/^(gold|after|bitcoin)$/.test(vol || '') ||
+    if (!/^(gold|after|bitcoin|zcash)$/.test(vol || '') ||
         !new RegExp(`^evt-${vol}-\\d{4}$`).test(record?.id || '') ||
         record.key.split('|').length !== 3 || byKey.has(record.key) || ids.has(record.id)) {
       throw new Error(`Invalid or duplicate timeline event ID: ${record?.id}`);

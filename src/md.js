@@ -103,7 +103,8 @@ export function parseGlossary(src) {
   const out = [];
   for (const b of parseMd(src)) {
     if (b.type !== 'p') continue;
-    const m = b.text.match(/^\*\*(.+?)\*\*\s*[—–-]\s*(.+)$/);
+    const m = b.text.match(/^\*\*(.+?)\*\*\s*[—–-]\s*(.+)$/) ||
+      b.text.match(/^\*\*(.+?):\*\*\s*(.+)$/);
     if (m) out.push({ term: m[1].trim(), def: m[2].trim(), id: slugify(m[1]) });
   }
   return out;

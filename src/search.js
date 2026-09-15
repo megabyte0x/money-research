@@ -1,6 +1,6 @@
 import { slugify, stripInline } from './md.js';
 
-const VOLUMES = new Set(['gold', 'after', 'bitcoin']);
+const VOLUMES = new Set(['gold', 'after', 'bitcoin', 'zcash']);
 
 export function searchState(href = '') {
   const queryString = href.includes('?') ? href.slice(href.indexOf('?')) : href.startsWith('#') ? '' : href;
