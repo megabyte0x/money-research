@@ -587,7 +587,6 @@ export default class App extends React.Component {
       vals.chapterTitle = cur.title.replace(/^\d+\s+—\s+/, '');
       vals.articleIsReference = contentRole(cur) !== 'topic';
       vals.articleEvidence = st.articleEvidence[cur.id] || [];
-      vals.articleClaims = st.articleClaims[cur.id] || [];
       const metadata = st.articleMetadata[cur.id];
       vals.articleSummary = metadata ? { ...metadata.summary, citations: metadata.citations } : null;
       vals.hubChapters = r.view === 'hub' ? st.manifest.filter(item => item.vol === cur.vol && item.slug !== '00-readme').map(item => ({ href: this.href(item), title: this.short(item) })) : [];
@@ -601,9 +600,6 @@ export default class App extends React.Component {
       const list = st.manifest.filter(m => m.vol === cur.vol); const i = list.indexOf(cur); const prev = list[i - 1], next = list[i + 1];
       vals.hasPrev = !!prev; vals.prevHref = prev && this.href(prev); vals.prevTitle = prev && this.short(prev);
       vals.hasNext = !!next; vals.nextHref = next && this.href(next); vals.nextTitle = next && this.short(next);
-      const refs = st.fileRefs[key] || [];
-      vals.related = refs.filter(n => n !== cur.num).sort().map(n => list.find(m => m.num === n)).filter(Boolean).map(m => ({ num: m.num, title: this.short(m), href: this.href(m) }));
-      vals.hasRelated = vals.related.length > 0;
       const allCollapsed = bl.filter(b => b.type === 'h2').every(b => st.collapsed[b.id]);
       vals.toggleAll = () => { const c = {}; if (!allCollapsed) bl.filter(b => b.type === 'h2').forEach(b => c[b.id] = true); this.setState({ collapsed: c }); };
       vals.toggleAllLabel = allCollapsed ? 'Expand all sections' : 'Collapse all sections';

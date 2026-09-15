@@ -67,11 +67,8 @@ export function ArticlePage({ v }) {
     <div className="reader-article-body" style={{ fontSize: v.bodyFontSize }}>{v.articleBody}</div>
     {(v.articleEvidence || []).length > 0 && <aside className="reader-dated-evidence" aria-label="Dated evidence"><h2>Dated evidence in this chapter</h2><ul>{v.articleEvidence.map(item =>
       <li key={item.observationId}><a href={item.url} target="_blank" rel="noopener noreferrer">{item.publisher}: {item.title} ↗</a>, {item.locator}. Observation period: {item.period}. {item.uncertainty}</li>)}</ul></aside>}
-    {(v.articleClaims || []).length > 0 && <aside className="reader-dated-evidence" aria-label="Reviewed claim sources"><h2>Sources for reviewed claims</h2><p>These locators support the stated claim and scope; they do not certify the whole chapter.</p><ul>{v.articleClaims.map(claim =>
-      <li key={claim.id}><strong>{claim.assertion}</strong> Scope: {claim.scope}. {claim.citations.map((citation, i) => <span key={`${claim.id}-${i}`}><a href={citation.url} target="_blank" rel="noopener noreferrer">{citation.publisher}: {citation.title} ↗</a>, {citation.locator}. </span>)}</li>)}</ul></aside>}
     {(v.hubChapters || []).length > 0 && <section className="static-item-list"><h2>Chapters in this volume</h2><ol>{v.hubChapters.map(item => <li key={item.href}><a href={item.href}>{item.title}</a></li>)}</ol></section>}
     {(v.articleLinks || []).length > 0 && <section className="reader-next-steps"><h2>Where to read next</h2>{v.articleLinks.map(link => <a key={link.href + link.kind} href={link.href}><span>{link.kind}</span><strong>{link.title}</strong><small>{link.reason}</small></a>)}</section>}
     <nav className="reader-chapter-nav" aria-label="Adjacent chapters"><div>{v.hasPrev && <><span>← Previous</span><a href={v.prevHref}>{v.prevTitle}</a></>}</div><div>{v.hasNext && <><span>Next →</span><a href={v.nextHref}>{v.nextTitle}</a></>}</div></nav>
-    {v.hasRelated && <section className="reader-related"><h2>Referenced in this file</h2>{v.related.map(item => <a key={item.href} href={item.href}><span>{item.num}</span>{item.title}</a>)}</section>}
   </article>;
 }

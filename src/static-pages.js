@@ -95,15 +95,13 @@ export function staticArticle(record, model, page) {
   }).join('')}</ul></section>` : '';
   const evidence = model.articleEvidence[record.id] || [];
   const sourceList = evidence.length ? `<aside aria-label="Dated evidence" class="static-evidence"><h2>Dated evidence in this chapter</h2><ul>${evidence.map(item => `<li><a href="${escapeHtml(item.url)}">${escapeHtml(item.publisher)}: ${escapeHtml(item.title)}</a>, ${escapeHtml(item.locator)}. Observation period: ${escapeHtml(item.period)}. ${escapeHtml(item.uncertainty)}</li>`).join('')}</ul></aside>` : '';
-  const claims = model.articleClaims[record.id] || [];
-  const claimList = claims.length ? `<aside aria-label="Reviewed claim sources" class="static-evidence"><h2>Sources for reviewed claims</h2><p>These locators support the stated claim and scope; they do not certify the whole chapter.</p><ul>${claims.map(claim => `<li><strong>${escapeHtml(claim.assertion)}</strong> Scope: ${escapeHtml(claim.scope)}. ${claim.citations.map(citation => `<a href="${escapeHtml(citation.url)}">${escapeHtml(citation.publisher)}: ${escapeHtml(citation.title)}</a>, ${escapeHtml(citation.locator)}.`).join(' ')}</li>`).join('')}</ul></aside>` : '';
   const heading = blocks.find(block => block.type === 'h1');
   const rest = blocks.filter(block => block !== heading);
   const h1 = heading
     ? `${Object.entries(record.sectionAliases || {}).filter(([, target]) => target === heading.id).map(([oldId]) => `<span id="${escapeHtml(oldId)}" aria-hidden="true" class="section-alias"></span>`).join('')}<h1 id="${escapeHtml(heading.id)}">${inlineHtml(heading.text, record, byVolumeNumber)}</h1>`
     : `<h1>${escapeHtml(shortTitle(record))}</h1>`;
   const chapterNav = volumeChapterList(record.vol, model.manifest);
-  return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}<p class="eyebrow">Volume ${VOLUME_ROMAN[record.vol]} · ${VOLUME_NAME[record.vol]} · <a href="/">Money Research</a></p><p class="evidence-notice">${EVIDENCE_NOTICE}</p>${h1}${toc}${contentRole(record) === 'topic' ? summaryHtml(metadata) : ''}${blocksHtml(rest, record, byVolumeNumber)}${sourceList}${claimList}${nextSteps}${isDirectoryRecord(record) ? chapterNav : ''}</main>`;
+  return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}<p class="eyebrow">Volume ${VOLUME_ROMAN[record.vol]} · ${VOLUME_NAME[record.vol]} · <a href="/">Money Research</a></p><p class="evidence-notice">${EVIDENCE_NOTICE}</p>${h1}${toc}${contentRole(record) === 'topic' ? summaryHtml(metadata) : ''}${blocksHtml(rest, record, byVolumeNumber)}${sourceList}${nextSteps}${isDirectoryRecord(record) ? chapterNav : ''}</main>`;
 }
 
 export function volumeChapterList(vol, manifest, heading = 'Chapters in this volume') {
