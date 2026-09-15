@@ -88,8 +88,8 @@ test('aliases are redirects in host config, not duplicate copies', () => {
   assert.deepEqual(config, rules);
   const vercel = vercelConfig(manifest);
   assert.equal(vercel.rewrites, undefined);
-  assert.ok(rules.some(rule => rule.source === '/gold/00-readme' && rule.destination === '/gold/' && rule.permanent));
-  assert.ok(rules.some(rule => rule.source === '/bitcoin/01' && rule.destination === '/bitcoin/01-the-origin-what-2008-produced/'));
+  assert.ok(rules.some(rule => rule.source === '/gold/00-readme/' && rule.destination === '/gold/' && rule.permanent));
+  assert.ok(rules.some(rule => rule.source === '/bitcoin/01/' && rule.destination === '/bitcoin/01-the-origin-what-2008-produced/'));
   assert.ok(existsSync(join(dist, '404.html')));
   assert.match(html('404.html'), /Page not found/);
 });

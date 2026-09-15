@@ -114,11 +114,11 @@ export function redirectRules(manifest = []) {
   for (const record of manifest) {
     const dest = canonicalPath(record);
     if (isDirectoryRecord(record)) {
-      rules.push({ source: `/${record.vol}/00-readme`, destination: dest, permanent: true });
+      rules.push({ source: `/${record.vol}/00-readme/`, destination: dest, permanent: true });
     }
     for (const alias of record.aliases || []) {
-      const from = `/${record.vol}/${alias}`;
-      if (`${from}/` === dest) continue;
+      const from = `/${record.vol}/${alias}/`;
+      if (from === dest) continue;
       rules.push({ source: from, destination: dest, permanent: true });
     }
   }
