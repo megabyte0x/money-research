@@ -39,7 +39,6 @@ function S(css) {
 const s = (css, extra) => (extra ? { ...S(css), ...extra } : S(css));
 
 const MONO = "'IBM Plex Mono',monospace";
-const BASE = import.meta.env.BASE_URL || '/';
 // Editor-exposed props in the design file; fixed here at their defaults.
 const BODY_SIZE = 17.5;
 const GLOSSARY_INLINE = true;
@@ -539,13 +538,9 @@ export default class App extends React.Component {
     const homeNames = { gold: ['Vol. I · Gold', 'How did a metal become money and what role remains?'], after: ['Vol. II · After Gold', 'What changed when official gold conversion ended?'], bitcoin: ['Vol. III · Bitcoin', 'What did Bitcoin solve and what remains unsettled?'] };
     vals.homeVolumes = ['gold', 'after', 'bitcoin'].map(vol => {
       const directory = st.manifest.find(item => item.id === `${vol}-00`);
-      const topics = st.manifest.filter(item => item.vol === vol && contentRole(item) === 'topic');
-      const chapters = st.manifest.filter(item => item.vol === vol && item.slug !== '00-readme').map(item => ({ href: this.href(item), title: this.short(item) }));
       return directory && { id: vol, label: homeNames[vol][0], href: this.href(directory),
         title: vol === 'after' ? 'After Gold' : vol === 'gold' ? 'Gold' : 'Bitcoin',
-        question: homeNames[vol][1],
-        chapters,
-        commitment: `${topics.length} topic chapters · about ${Math.round(topics.reduce((sum, item) => sum + item.words, 0) / 230)} minutes` };
+        question: homeNames[vol][1] };
     }).filter(Boolean);
     vals.allChapters = st.manifest.map(m => ({ href: this.href(m), optLabel: ({ gold: 'I·', after: 'II·', bitcoin: 'III·' }[m.vol]) + m.num + ' ' + this.short(m) }));
     vals.selectValue = cur ? this.href(cur) : '';
@@ -590,22 +585,12 @@ export default class App extends React.Component {
       const metadata = st.articleMetadata[cur.id];
       vals.articleSummary = metadata?.summary || null;
       vals.hubChapters = r.view === 'hub' ? st.manifest.filter(item => item.vol === cur.vol && item.slug !== '00-readme').map(item => ({ href: this.href(item), title: this.short(item) })) : [];
-      vals.articleLinks = (metadata?.nextSteps || []).map(step => {
-        const target = st.manifest.find(record => record.id === step.targetArticleId);
-        return { kind: step.kind, title: this.short(target), reason: step.reason, href: this.href(target, step.targetSectionId) };
-      });
       vals.articleBody = R('div', null, this.blocksToEls(bl, { vol: cur.vol, usedGloss: { set: new Set() }, sectionAliases: cur.sectionAliases, sourcePage: ['gold-12', 'after-13', 'bitcoin-16'].includes(cur.id) }));
       vals.toc = bl.filter(b => b.type === 'h2' || b.type === 'h3').map(b => ({ text: this.md.stripInline(b.text), href: this.href(cur, b.id), indent: b.type === 'h3' ? '12px' : '0' }));
       vals.tocLabel = 'On this page';
       const list = st.manifest.filter(m => m.vol === cur.vol); const i = list.indexOf(cur); const prev = list[i - 1], next = list[i + 1];
       vals.hasPrev = !!prev; vals.prevHref = prev && this.href(prev); vals.prevTitle = prev && this.short(prev);
       vals.hasNext = !!next; vals.nextHref = next && this.href(next); vals.nextTitle = next && this.short(next);
-      const allCollapsed = bl.filter(b => b.type === 'h2').every(b => st.collapsed[b.id]);
-      vals.toggleAll = () => { const c = {}; if (!allCollapsed) bl.filter(b => b.type === 'h2').forEach(b => c[b.id] = true); this.setState({ collapsed: c }); };
-      vals.toggleAllLabel = allCollapsed ? 'Expand all sections' : 'Collapse all sections';
-      vals.copyPageLink = () => this.copyLink(null);
-      vals.copyLabel = st.copied === 'page' ? 'Link copied' : 'Copy link to this file';
-      vals.rawHref = BASE + cur.path.replace(/^content\//, 'content/resolved/');
     }
     if (vals.isTimeline) {
       vals.toggleTlAll = () => this.setState(s2 => ({ tlAll: !s2.tlAll }));
@@ -777,13 +762,6 @@ export default class App extends React.Component {
                 <a key={t.href + i} href={t.href} className="hov-fg" style={s('text-decoration:none;color:var(--mut);display:block', { paddingLeft: t.indent })}>{t.text}</a>
               ))}
             </div>
-            {v.isArticle && (
-              <div style={s('margin-top:28px;padding-top:16px;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:8px;color:var(--mut)')}>
-                <button onClick={v.toggleAll} className="hov-fg" style={s('text-align:left;color:var(--mut);font-size:11.5px')}>{v.toggleAllLabel}</button>
-                <button onClick={v.copyPageLink} className="hov-fg" style={s('text-align:left;color:var(--mut);font-size:11.5px')}>{v.copyLabel}</button>
-                <a href={v.rawHref} target="_blank" rel="noopener" className="hov-fg" style={s('text-decoration:none;color:var(--mut)')}>View source .md ↗</a>
-              </div>
-            )}
           </aside>
         </div>
         {this.renderSelection()}

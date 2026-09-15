@@ -23,7 +23,6 @@ html{scroll-behavior:smooth;scroll-padding-top:72px;font-family:Georgia,serif}
 .answer-sources{font-size:14px;color:var(--mut);margin:.4rem 0 1rem}
 .static-item-list{margin:2rem 0}
 .static-item-list ol{padding-left:1.3rem}
-.reader-volume ol{margin:10px 0 0;padding-left:1.1rem;font-size:13px}
 .static-timeline{padding-left:1.2rem}
 .static-timeline li{margin:.45rem 0}
 img,svg,video{max-width:100%;height:auto}

@@ -31,7 +31,7 @@ export function HomePage({ v }) {
     <p>Classical gold convertibility was interrupted by the First World War. Interwar attempts to restore it differed from the post-1944 Bretton Woods dollar system. Since the 1970s, fiat currencies, gold reserves, bank deposits and newer digital arrangements have coexisted. Bitcoin is one development within that overlap.</p>
     <nav className="reader-actions" aria-label="Explore history"><a href="/arc/">Read the eleven-stage arc →</a><a href="/timeline/">Explore the connected timeline →</a></nav>
     <h2 id="volumes">Three research volumes</h2>
-    <div className="reader-volumes">{(v.homeVolumes || []).map(volume => <div key={volume.id} className={`reader-volume reader-volume-${volume.id}`}><a href={volume.href}><span className="reader-volume-cue">{volume.label}</span><strong>{volume.title}</strong><span>{volume.question}</span><small>{volume.commitment}</small></a><ol>{(volume.chapters || []).map(chapter => <li key={chapter.href}><a href={chapter.href}>{chapter.title}</a></li>)}</ol></div>)}</div>
+    <div className="reader-volumes">{(v.homeVolumes || []).map(volume => <div key={volume.id} className={`reader-volume reader-volume-${volume.id}`}><a href={volume.href}><span className="reader-volume-cue">{volume.label}</span><strong>{volume.title}</strong><span>{volume.question}</span></a></div>)}</div>
     <p className="small-note">Each volume begins with a directory and links to its source list. Choose a volume above to see its files.</p>
     <h2>What evidence can and cannot settle</h2>
     <p>Bitcoin permits transfer without a central account operator, yet broad use for wages, prices and debts remains uncertain. Claims about adoption, comparative returns and official reserves require populations, dates and precise source locations. Quantitative charts in the historical arc remain withheld while their datasets are checked.</p>
@@ -67,7 +67,6 @@ export function ArticlePage({ v }) {
     {(v.articleEvidence || []).length > 0 && <aside className="reader-dated-evidence" aria-label="Dated evidence"><h2>Dated evidence in this chapter</h2><ul>{v.articleEvidence.map(item =>
       <li key={item.observationId}><a href={item.url} target="_blank" rel="noopener noreferrer">{item.publisher}: {item.title} ↗</a>, {item.locator}. Observation period: {item.period}. {item.uncertainty}</li>)}</ul></aside>}
     {(v.hubChapters || []).length > 0 && <section className="static-item-list"><h2>Chapters in this volume</h2><ol>{v.hubChapters.map(item => <li key={item.href}><a href={item.href}>{item.title}</a></li>)}</ol></section>}
-    {(v.articleLinks || []).length > 0 && <section className="reader-next-steps"><h2>Where to read next</h2>{v.articleLinks.map(link => <a key={link.href + link.kind} href={link.href}><span>{link.kind}</span><strong>{link.title}</strong><small>{link.reason}</small></a>)}</section>}
     <nav className="reader-chapter-nav" aria-label="Adjacent chapters"><div>{v.hasPrev && <><span>← Previous</span><a href={v.prevHref}>{v.prevTitle}</a></>}</div><div>{v.hasNext && <><span>Next →</span><a href={v.nextHref}>{v.nextTitle}</a></>}</div></nav>
   </article>;
 }

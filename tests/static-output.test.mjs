@@ -36,13 +36,13 @@ test('built browser index and static pages use the same validated source model',
   assert.doesNotMatch(source, /\{\{obs:/);
 });
 
-test('approved summaries and curated section links appear in crawlable chapters', () => {
+test('approved summaries appear in crawlable chapters without next-step panels', () => {
   const gold = readFileSync(join(root, 'dist/gold/03-from-metal-to-money-weights-rings-coins/index.html'), 'utf8');
   assert.match(gold, /What changed when weighed metal became stamped coin\?/);
-  assert.match(gold, /gold\/05-silver-copper-bronze-and-bimetallism\/#the-gold-silver-ratio-through-time/);
+  assert.doesNotMatch(gold, /Where to read next/);
   const after = readFileSync(join(root, 'dist/after/07-financial-crisis-and-the-age-of-qe-2007-2019/index.html'), 'utf8');
   assert.match(after, /Housing-credit losses, leverage and fragile funding contributed to the crisis/);
-  assert.match(after, /after\/09-pandemic-inflation-and-weaponized-reserves-2020-2026\/#pandemic-fiscal-spending-and-central-bank-balance-sheets/);
+  assert.doesNotMatch(after, /Where to read next/);
 });
 
 test('source chapters expose publisher URLs as links in crawlable HTML', () => {

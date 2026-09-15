@@ -80,16 +80,11 @@ export function staticArticle(record, model, page) {
   const blocks = model.blocks[key];
   if (!blocks) throw new Error(`Missing indexed article: ${record.id}`);
   const byVolumeNumber = new Map(model.manifest.map(item => [`${item.vol}/${item.num}`, item]));
-  const byId = new Map(model.manifest.map(item => [item.id, item]));
   const metadata = model.articleMetadata[record.id];
   const sections = blocks.filter(block => block.type === 'h2');
   const toc = sections.length
     ? `<nav class="static-toc" aria-label="Chapter contents"><p>On this page</p><ol>${sections.map(block => `<li><a href="${escapeHtml(articleHref(record, block.id))}">${inlineHtml(block.text, record, byVolumeNumber)}</a></li>`).join('')}</ol></nav>`
     : '';
-  const nextSteps = metadata?.nextSteps?.length ? `<section class="static-next-steps"><h2>Where to read next</h2><ul>${metadata.nextSteps.map(step => {
-    const target = byId.get(step.targetArticleId);
-    return `<li><a href="${escapeHtml(articleHref(target, step.targetSectionId))}">${escapeHtml(step.kind)}: ${escapeHtml(shortTitle(target))}</a> — ${escapeHtml(step.reason)}</li>`;
-  }).join('')}</ul></section>` : '';
   const evidence = model.articleEvidence[record.id] || [];
   const sourceList = evidence.length ? `<aside aria-label="Dated evidence" class="static-evidence"><h2>Dated evidence in this chapter</h2><ul>${evidence.map(item => `<li><a href="${escapeHtml(item.url)}">${escapeHtml(item.publisher)}: ${escapeHtml(item.title)}</a>, ${escapeHtml(item.locator)}. Observation period: ${escapeHtml(item.period)}. ${escapeHtml(item.uncertainty)}</li>`).join('')}</ul></aside>` : '';
   const heading = blocks.find(block => block.type === 'h1');
@@ -98,7 +93,7 @@ export function staticArticle(record, model, page) {
     ? `${Object.entries(record.sectionAliases || {}).filter(([, target]) => target === heading.id).map(([oldId]) => `<span id="${escapeHtml(oldId)}" aria-hidden="true" class="section-alias"></span>`).join('')}<h1 id="${escapeHtml(heading.id)}">${inlineHtml(heading.text, record, byVolumeNumber)}</h1>`
     : `<h1>${escapeHtml(shortTitle(record))}</h1>`;
   const chapterNav = volumeChapterList(record.vol, model.manifest);
-  return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}<p class="eyebrow">Volume ${VOLUME_ROMAN[record.vol]} · ${VOLUME_NAME[record.vol]} · <a href="/">Money Research</a></p><p class="evidence-notice">${EVIDENCE_NOTICE}</p>${h1}${toc}${contentRole(record) === 'topic' ? summaryHtml(metadata) : ''}${blocksHtml(rest, record, byVolumeNumber)}${sourceList}${nextSteps}${isDirectoryRecord(record) ? chapterNav : ''}</main>`;
+  return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}<p class="eyebrow">Volume ${VOLUME_ROMAN[record.vol]} · ${VOLUME_NAME[record.vol]} · <a href="/">Money Research</a></p><p class="evidence-notice">${EVIDENCE_NOTICE}</p>${h1}${toc}${contentRole(record) === 'topic' ? summaryHtml(metadata) : ''}${blocksHtml(rest, record, byVolumeNumber)}${sourceList}${isDirectoryRecord(record) ? chapterNav : ''}</main>`;
 }
 
 export function volumeChapterList(vol, manifest, heading = 'Chapters in this volume') {
@@ -113,15 +108,11 @@ export function hubItemList(vol, manifest) {
 
 export function staticHome(manifest, page) {
   const volumes = VOLUME_IDS.map(vol => {
-    const topics = manifest.filter(item => item.vol === vol && contentRole(item) === 'topic');
-    const chapters = manifest.filter(item => item.vol === vol && !isDirectoryRecord(item));
     const names = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin' };
     const labels = { gold: 'Vol. I · Gold', after: 'Vol. II · After Gold', bitcoin: 'Vol. III · Bitcoin' };
     return {
       vol, title: names[vol], label: labels[vol], href: `/${vol}/`,
       question: HOME_COPY.volumeQuestions[vol],
-      commitment: `${topics.length} topic chapters · about ${Math.round(topics.reduce((sum, item) => sum + item.words, 0) / 230)} minutes`,
-      chapters,
     };
   });
   return `<main id="main-content" class="static-article intro-page reader-home">${breadcrumbHtml(page.breadcrumbs)}
@@ -141,7 +132,7 @@ export function staticHome(manifest, page) {
 <p>Classical gold convertibility was interrupted by the First World War. Interwar attempts to restore it differed from the post-1944 Bretton Woods dollar system. Since the 1970s, fiat currencies, gold reserves, bank deposits and newer digital arrangements have coexisted. Bitcoin is one development within that overlap.</p>
 <nav class="reader-actions" aria-label="Explore history"><a href="/arc/">Read the eleven-stage arc →</a><a href="/timeline/">Explore the connected timeline →</a></nav>
 <h2 id="volumes">Three research volumes</h2>
-<div class="reader-volumes">${volumes.map(volume => `<div class="reader-volume reader-volume-${volume.vol}"><a href="${volume.href}"><span class="reader-volume-cue">${escapeHtml(volume.label)}</span><strong>${escapeHtml(volume.title)}</strong><span>${escapeHtml(volume.question)}</span><small>${escapeHtml(volume.commitment)}</small></a><ol>${volume.chapters.map(item => `<li><a href="${escapeHtml(canonicalPath(item))}">${escapeHtml(shortTitle(item))}</a></li>`).join('')}</ol></div>`).join('')}</div>
+<div class="reader-volumes">${volumes.map(volume => `<div class="reader-volume reader-volume-${volume.vol}"><a href="${volume.href}"><span class="reader-volume-cue">${escapeHtml(volume.label)}</span><strong>${escapeHtml(volume.title)}</strong><span>${escapeHtml(volume.question)}</span></a></div>`).join('')}</div>
 <p class="small-note">Each volume begins with a directory and links to its source list. Choose a volume above to see its files.</p>
 <h2>What evidence can and cannot settle</h2>
 <p>Bitcoin permits transfer without a central account operator, yet broad use for wages, prices and debts remains uncertain. Claims about adoption, comparative returns and official reserves require populations, dates and precise source locations. Quantitative charts in the historical arc remain withheld while their datasets are checked.</p>
