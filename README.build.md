@@ -11,8 +11,7 @@ Vite + React 18, no router library. Article pages are prebuilt as crawlable HTML
 | `/#/home` | Short introduction |
 | `/#/compare` | Arrangement comparison with evidence-pending cells |
 | `/#/arc` | Historical arc; numerical charts withheld during source audit |
-| `/#/research` | Three-volume research index |
-| `/#/paths` | Five guided reading paths |
+| `/#/home/volumes` | Three volume directories |
 | `/#/timeline` | Connected chronology; turning points or all events |
 | `/#/takeaways?vol=<volume>&topic=<topic>` | Browse editor-approved chapter answers by volume/topic; cross-volume synthesis is withheld |
 | `/#/glossary` | Aggregated glossary |

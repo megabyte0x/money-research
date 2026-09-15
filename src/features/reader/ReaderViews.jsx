@@ -13,7 +13,7 @@ export function HomePage({ v }) {
     <p className="eyebrow">An evidence-led guide · three research volumes</p>
     <h1>How money works—and why it changes.</h1>
     <p className="lead">Explore gold, government currencies and Bitcoin through history, evidence and the trade-offs between saving, paying, pricing and settling.</p>
-    <nav className="reader-actions" aria-label="Start reading"><a href="/#/research">Browse the research →</a><a href="/#/arc">Read History →</a><a href="/#/compare">Compare arrangements →</a></nav>
+    <nav className="reader-actions" aria-label="Start reading"><a href="/#/home/volumes">Browse the volumes →</a><a href="/#/arc">Read History →</a><a href="/#/compare">Compare arrangements →</a></nav>
     <h2>Four jobs, different arrangements</h2>
     <div className="reader-jobs">{jobs.map(([name, description]) => <div key={name}><h3>{name}</h3><p>{description}</p></div>)}</div>
     <p>One arrangement need not do all four jobs. A useful comparison starts with what someone holds, who owes a claim and who controls its transfer.</p>
@@ -29,9 +29,9 @@ export function HomePage({ v }) {
     <h2>History overlaps</h2>
     <p>Classical gold convertibility was interrupted by the First World War. Interwar attempts to restore it differed from the post-1944 Bretton Woods dollar system. Since the 1970s, fiat currencies, gold reserves, bank deposits and newer digital arrangements have coexisted. Bitcoin is one development within that overlap.</p>
     <nav className="reader-actions" aria-label="Explore history"><a href="/#/arc">Read the eleven-stage arc →</a><a href="/#/timeline">Explore the connected timeline →</a></nav>
-    <h2>Three research volumes</h2>
+    <h2 id="volumes">Three research volumes</h2>
     <div className="reader-volumes">{(v.homeVolumes || []).map(volume => <a key={volume.id} href={volume.href} className={`reader-volume reader-volume-${volume.id}`}><span className="reader-volume-cue">{volume.label}</span><strong>{volume.title}</strong><span>{volume.question}</span><small>{volume.commitment}</small></a>)}</div>
-    <p className="small-note">Each volume begins with a directory and links to its source list. <a href="/#/research">See every file →</a></p>
+    <p className="small-note">Each volume begins with a directory and links to its source list. Choose a volume above to see its files.</p>
     <h2>What evidence can and cannot settle</h2>
     <p>Bitcoin permits transfer without a central account operator, yet broad use for wages, prices and debts remains uncertain. Claims about adoption, comparative returns and official reserves require populations, dates and precise source locations. Quantitative charts in the historical arc remain withheld while their datasets are checked.</p>
     <p className="small-note"><a href="/#/methods">Read the research method →</a></p>

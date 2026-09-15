@@ -40,7 +40,11 @@ export default function HistoryView({ v }) {
         {STAGES.map((stage, index) => <option key={stage.id} value={`/#/arc/${stage.id}`}>{index + 1}. {stage.title} · {stage.era}</option>)}
       </select>
     </label>
-    <nav className="reader-history-band" aria-label="History stages">{STAGES.map((stage, index) => <a key={stage.id} href={`/#/arc/${stage.id}`} aria-current={v.arcBand?.[index]?.bg === 'var(--fg)' ? 'location' : undefined}>{index + 1}. {stage.title}</a>)}</nav>
+    <nav className="reader-history-progress" aria-label="History progress" style={{ top: v.stickyTop }}>
+      <div className="reader-history-progress-label"><span>Stage {String(v.arcStage || 1).padStart(2, '0')} of {STAGES.length}</span><strong>{STAGES[(v.arcStage || 1) - 1].title}</strong></div>
+      <div className="reader-history-progress-track">{STAGES.map((stage, index) =>
+        <a key={stage.id} href={`/#/arc/${stage.id}`} title={`${index + 1}. ${stage.title}`} aria-label={`Stage ${index + 1} of ${STAGES.length}: ${stage.title}`} aria-current={v.arcStage === index + 1 ? 'location' : undefined} className={index + 1 <= (v.arcStage || 1) ? 'is-complete' : ''}><span>{index + 1}</span></a>)}</div>
+    </nav>
     <div className="reader-history-stages">{STAGES.map((stage, index) => <Stage key={stage.id} stage={stage} index={index} />)}</div>
     <div className="reader-history-end"><h2>What stays</h2><p>Metal, sovereign money, bank credit and digital networks coexist because users need different combinations of accessible payments, stable prices, credit, final settlement and control over custody. The comparative question is which arrangement works for which use, who can change its rules and who bears the risk when a promise fails.</p><a href="/#/timeline">Explore the connected timeline →</a></div>
   </div>;

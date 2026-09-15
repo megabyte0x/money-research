@@ -10,7 +10,7 @@ export function SearchView({ v }) {
       <option value="after">II · After Gold</option><option value="bitcoin">III · Bitcoin</option>
     </select></label>
     {v.query.trim().length >= 2 && v.searchResults.length === 0 &&
-      <p className="search-empty">No matching sections in {v.searchVol ? 'this volume' : 'the library'}. Try another term or choose All volumes. <a href="/#/research">Browse the research →</a></p>}
+      <p className="search-empty">No matching sections in {v.searchVol ? 'this volume' : 'the library'}. Try another term or choose All volumes. <a href="/#/home/volumes">Browse the volumes →</a></p>}
     <div className="discovery-results">
       {v.searchResults.map((result, i) => <a key={result.href + i} href={result.href} className="discovery-result">
         <span className="discovery-result-label">{result.label}{result.matches > 1 ? ` · ${result.matches} matching passages` : ''}</span>
@@ -39,46 +39,8 @@ export function GlossaryView({ v }) {
           </>}
         </div>
       </div>)}
-      {v.glossaryRows.length === 0 && <p className="search-empty">No matching glossary terms. Try a shorter word or <a href="/#/research">browse the research</a>.</p>}
+      {v.glossaryRows.length === 0 && <p className="search-empty">No matching glossary terms. Try a shorter word or <a href="/#/home/volumes">browse the volumes</a>.</p>}
     </div>
-  </section>;
-}
-
-// indexRows and paths are derived by App from the accepted manifest; these
-// components do not fetch, parse routes or infer article links.
-export function ResearchIndexView({ v }) {
-  const rows = v.indexRows || [];
-  return <section className="discovery-view" aria-label="Research index">
-    <p className="discovery-meta">Research · {rows.length} files in three volumes</p>
-    <h1>The research</h1>
-    <p>Browse topic chapters and the reference documents that support them.</p>
-    <div className="discovery-filters">
-      <label>Volume <select value={v.indexVolume || ''} onChange={v.onIndexVolume}>
-        <option value="">All volumes</option><option value="gold">Gold</option><option value="after">After gold</option><option value="bitcoin">Bitcoin</option>
-      </select></label>
-      <label>Category <select value={v.indexRole || ''} onChange={v.onIndexRole}>
-        <option value="">All categories</option><option value="topic">Topic chapters</option><option value="directory">Directories</option>
-        <option value="timeline">Timelines</option><option value="glossary">Glossaries</option><option value="sources">Sources</option><option value="reference">Other references</option>
-      </select></label>
-    </div>
-    <div className="discovery-index-list">{rows.filter(row => (!v.indexVolume || row.article.vol === v.indexVolume) && (!v.indexRole || row.role === v.indexRole)).map(row =>
-      <a key={row.id} href={row.href} className="discovery-result">
-        <span className="discovery-result-label">{row.article.vol} · {row.role} · {row.mins} min</span>
-        <span>{row.title}</span>{row.topics.length > 0 && <small>{row.topics.join(' · ')}</small>}
-      </a>)}
-    </div>
-  </section>;
-}
-
-export function PathsView({ v }) {
-  return <section className="discovery-view" aria-label="Learning paths">
-    <p className="discovery-meta">Five guided routes through the research</p><h1>Reading paths</h1>
-    {(v.paths || []).map(path => <article key={path.id} id={path.id} className="discovery-path">
-      <h2>{path.title}</h2><p>{path.outcome}</p>
-      <p className="discovery-meta">About {path.minutes} minutes · {path.steps.length} chapters</p>
-      <ol>{path.steps.map(article => <li key={article.id}><a href={v.hrefForArticle(article)}>{article.title}</a></li>)}</ol>
-      {path.branches.map(branch => <p key={branch.id} className="discovery-branch">Optional: <a href={v.hrefForArticle(branch.article)}>{branch.article.title}</a> — {branch.why}</p>)}
-    </article>)}
   </section>;
 }
 

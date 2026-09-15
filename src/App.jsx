@@ -4,8 +4,8 @@ import { eventYear, eventSortValue, mergeSharedEvents, SHARED_EVENT_PAIRS } from
 import { TIMELINE_SECTION_REFS } from './timeline-references.js';
 import MoneyMechanics from './MoneyMechanics.jsx';
 import Comparison from './features/comparison/Comparison.jsx';
-import { SearchView, GlossaryView, ResearchIndexView, PathsView, SynthesisView } from './features/discovery/DiscoveryViews.jsx';
-import { researchCatalog, learningPaths, approvedSummaryCatalog } from './features/discovery/catalog.js';
+import { SearchView, GlossaryView, SynthesisView } from './features/discovery/DiscoveryViews.jsx';
+import { approvedSummaryCatalog } from './features/discovery/catalog.js';
 import { contentRole } from './features/discovery/catalog.js';
 import { HomePage, MethodsPage, ArticlePage } from './features/reader/ReaderViews.jsx';
 import HistoryView from './features/reader/HistoryView.jsx';
@@ -38,12 +38,10 @@ const BASE = import.meta.env.BASE_URL || '/';
 const BODY_SIZE = 17.5;
 const GLOSSARY_INLINE = true;
 const SELECTION_ACTIONS = true;
-const VIEW_NAMES = { home: 'start here', compare: 'comparison', mechanics: 'money mechanics', methods: 'methods', arc: 'the arc', research: 'the research index', paths: 'reading paths', timeline: 'the master timeline', takeaways: 'the takeaways', glossary: 'the glossary', search: 'search results' };
+const VIEW_NAMES = { home: 'start here', compare: 'comparison', mechanics: 'money mechanics', methods: 'methods', arc: 'the arc', timeline: 'the master timeline', takeaways: 'the takeaways', glossary: 'the glossary', search: 'search results' };
 const CHATGPT_URL = 'https://chatgpt.com/?q=';
 const DEFAULT_QUESTION = 'Explain this passage: what is it claiming, and why does it matter?';
 const MAX_PASSAGE = 1200;
-
-const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'];
 
 function GlossaryTerm({ term, label, definition }) {
   const [open, setOpen] = React.useState(false);
@@ -90,7 +88,7 @@ function GlossaryTerm({ term, label, definition }) {
 }
 
 export default class App extends React.Component {
-  state = { manifest: [], fileRefs: {}, blocks: {}, glossary: [], timelineReviewStatus: {}, comparisonCells: {}, observations: {}, articleEvidence: {}, articleClaims: {}, articleMetadata: {}, claims: {}, sources: {}, route: { view: 'home' }, query: '', searchVol: '', indexVolume: '', indexRole: '', tlq: '', glq: '', collapsed: {}, progress: 0, copied: false, quote: null, askOpen: false, promptCopied: false, theme: null, loaded: false, headerH: 52, menuOpen: false };
+  state = { manifest: [], fileRefs: {}, blocks: {}, glossary: [], timelineReviewStatus: {}, comparisonCells: {}, observations: {}, articleEvidence: {}, articleClaims: {}, articleMetadata: {}, claims: {}, sources: {}, route: { view: 'home' }, query: '', searchVol: '', tlq: '', glq: '', collapsed: {}, progress: 0, copied: false, quote: null, askOpen: false, promptCopied: false, theme: null, loaded: false, headerH: 52, menuOpen: false };
   headerRef = React.createRef();
   menuButtonRef = React.createRef();
 
@@ -165,7 +163,11 @@ export default class App extends React.Component {
     }
     const h = (location.hash || '#/home').split('?')[0].replace(/^#\/?/, '');
     const seg = h.split('/').filter(Boolean);
-    if (['home', 'compare', 'mechanics', 'methods', 'timeline', 'glossary', 'takeaways', 'arc', 'research', 'paths'].includes(seg[0])) return { view: seg[0], sec: seg[1] || null };
+    if (['research', 'paths'].includes(seg[0])) {
+      history.replaceState(null, '', '/#/home');
+      return { view: 'home' };
+    }
+    if (['home', 'compare', 'mechanics', 'methods', 'timeline', 'glossary', 'takeaways', 'arc'].includes(seg[0])) return { view: seg[0], sec: seg[1] || null };
     if ((seg[0] || '').startsWith('search')) return { view: 'search' };
     if (seg[0] && seg[1]) return { view: 'article', vol: seg[0], slug: seg[1], sec: seg[2] || null };
     return { view: 'home' };
@@ -201,8 +203,8 @@ export default class App extends React.Component {
     requestAnimationFrame(() => {
       if (sec) {
         const el = document.getElementById(sec);
-        const arcBand = this.state.route.view === 'arc' ? document.querySelector('.arc-band')?.parentElement?.offsetHeight || 0 : 0;
-        const off = this.state.headerH + arcBand + 20;
+        const progressBar = this.state.route.view === 'arc' ? document.querySelector('.reader-history-progress')?.offsetHeight || 0 : 0;
+        const off = this.state.headerH + progressBar + 20;
         if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - off });
       }
       else window.scrollTo({ top: 0 });
@@ -473,7 +475,7 @@ export default class App extends React.Component {
       document.body.dataset.theme = next; localStorage.setItem('mr-theme', next); this.setState({ theme: next });
     };
     vals.themeLabel = (st.theme || (typeof matchMedia !== 'undefined' && matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light')) === 'dark' ? '☾ dark' : '☀ light';
-    ['Home', 'Compare', 'Methods', 'Timeline', 'Takeaways', 'Glossary', 'Arc', 'Research', 'Paths'].forEach(n => vals['nav' + n] = r.view === n.toLowerCase() ? 'var(--fg)' : 'var(--mut)');
+    ['Home', 'Compare', 'Methods', 'Timeline', 'Takeaways', 'Glossary', 'Arc'].forEach(n => vals['nav' + n] = r.view === n.toLowerCase() ? 'var(--fg)' : 'var(--mut)');
     const cur = r.view === 'article' ? this.chapter(r.vol, r.slug) : null;
     const homeNames = { gold: ['Vol. I · Gold', 'How did a metal become money and what role remains?'], after: ['Vol. II · After Gold', 'What changed when official gold conversion ended?'], bitcoin: ['Vol. III · Bitcoin', 'What did Bitcoin solve and what remains unsettled?'] };
     vals.homeVolumes = ['gold', 'after', 'bitcoin'].map(vol => {
@@ -488,7 +490,6 @@ export default class App extends React.Component {
     vals.selectValue = cur ? this.href(cur) : '';
     vals.onSelect = e => { if (e.target.value) location.href = e.target.value; };
     vals.isHome = r.view === 'home'; vals.isCompare = r.view === 'compare'; vals.isMechanics = r.view === 'mechanics'; vals.isMethods = r.view === 'methods';
-    vals.isPaths = r.view === 'paths';
     const compareParams = new URLSearchParams((location.hash.split('?')[1] || '').split('#')[0]);
     vals.compareUse = compareParams.get('use') || 'saving';
     vals.comparePerspective = compareParams.get('perspective') || 'household';
@@ -511,10 +512,11 @@ export default class App extends React.Component {
     vals.isArc = r.view === 'arc';
     if (vals.isArc) {
       const act = st.stage || 1; const A = App.ARC;
-      vals.arcBand = A.map((a, index) => ({ href: '/#/arc/arc-' + a.n, title: a.title, label: a.label, flex: a.flex, bg: index + 1 === act ? 'var(--fg)' : 'transparent', color: index + 1 === act ? 'var(--bg)' : 'var(--mut)' }));
+      vals.arcStage = act;
+      vals.arcBand = A.map((a, index) => ({ href: '/#/arc/arc-' + a.n, title: a.title, complete: index + 1 <= act }));
       const active = A[act - 1]; vals.arcActiveAnchor = active.anchor; vals.arcActivePower = active.power;
       vals.tocLabel = 'Regimes';
-      vals.toc = A.map((a, index) => ({ text: ROMAN[index] + ' · ' + a.title, href: '/#/arc/arc-' + a.n, indent: '0' }));
+      vals.toc = A.map((a, index) => ({ text: `${index + 1} · ${a.title}`, href: '/#/arc/arc-' + a.n, indent: '0' }));
     }
     if (cur) {
       const key = cur.slug + '@' + cur.vol; const bl = st.blocks[key] || [];
@@ -546,19 +548,6 @@ export default class App extends React.Component {
       vals.copyLabel = st.copied === 'page' ? 'Link copied' : 'Copy link to this file';
       vals.rawHref = BASE + cur.path.replace(/^content\//, 'content/resolved/');
     }
-    vals.isResearch = r.view === 'research';
-    vals.indexRows = researchCatalog(st.manifest).map(row => ({ ...row, href: this.href(row.article) }));
-    vals.indexVolume = st.indexVolume;
-    vals.indexRole = st.indexRole;
-    vals.onIndexVolume = e => this.setState({ indexVolume: e.target.value });
-    vals.onIndexRole = e => this.setState({ indexRole: e.target.value });
-    vals.paths = vals.isPaths ? learningPaths(st.manifest) : [];
-    vals.hrefForArticle = article => this.href(article);
-    if (vals.isPaths) {
-      vals.tocLabel = 'Reading paths';
-      vals.toc = vals.paths.map(path => ({ text: path.title, href: '/#/paths/' + path.id, indent: '0' }));
-    }
-    if (vals.isResearch) { vals.tocLabel = 'Browse'; vals.toc = []; }
     if (vals.isTimeline) {
       vals.toggleTlAll = () => this.setState(s2 => ({ tlAll: !s2.tlAll }));
       vals.tlAllLabel = st.tlAll ? 'Turning points only' : 'Show all events';
@@ -620,6 +609,11 @@ export default class App extends React.Component {
       const href = cur ? location.origin + this.href(cur, sec) : location.origin + '/' + location.hash;
       this.setState({ quote: { text, x: rect.left + rect.width / 2, y: rect.top + window.scrollY - 40, label, secTitle, href }, askOpen: false, askQ: '', promptCopied: false });
     };
+    vals.showContents = vals.toc.length > 0 || vals.isArticle;
+    if (!vals.showContents) {
+      vals.shellCols = 'minmax(0,1fr)';
+      vals.rightDisplay = 'none';
+    }
     return vals;
   }
   render() {
@@ -643,8 +637,6 @@ export default class App extends React.Component {
             <a href="/#/home" style={s('text-decoration:none', { color: v.navHome })}>Start here</a>
             <a href="/#/compare" style={s('text-decoration:none', { color: v.navCompare })}>Compare</a>
             <a href="/#/arc" style={s('text-decoration:none', { color: v.navArc })}>History</a>
-            <a href="/#/research" style={s('text-decoration:none', { color: v.navResearch })}>Research</a>
-            <a href="/#/paths" style={s('text-decoration:none', { color: v.navPaths })}>Paths</a>
             <a href="/#/timeline" style={s('text-decoration:none', { color: v.navTimeline })}>Timeline</a>
             <a href="/#/takeaways" style={s('text-decoration:none', { color: v.navTakeaways })}>Takeaways</a>
             <a href="/#/glossary" style={s('text-decoration:none', { color: v.navGlossary })}>Glossary</a>
@@ -667,8 +659,6 @@ export default class App extends React.Component {
 
             {v.isArc && <HistoryView v={v} />}
 
-            {v.isResearch && <ResearchIndexView v={v} />}
-            {v.isPaths && <PathsView v={v} />}
 
             {v.isTimeline && <>
               <div style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin-bottom:20px")}>Connected timeline · 4600 BCE – 2026 · {v.timelineCount} {v.tlKind}</div>
