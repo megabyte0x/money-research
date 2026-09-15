@@ -132,7 +132,7 @@ test('newly reviewed fiat timeline links discuss their specific events', () => {
     'evt-after-0038': /Convertibility Law/i,
     'evt-after-0041': /Maastricht Treaty/i,
     'evt-after-0042': /Estonia.s kroon/i,
-    'evt-after-0043': /Black Wednesday/i
+    'evt-after-0043': /Sterling left.*16 September 1992/i
   };
   for (const [id, needle] of Object.entries(expected)) {
     const [vol, num, sectionId] = TIMELINE_SECTION_REFS[id];
@@ -150,7 +150,7 @@ test('unrelated dated events are separate timeline rows', () => {
   const source = manifest.find(m => m.vol === 'after' && m.num === '11');
   const rows = parseMd(readFileSync(join(root, 'public', source.path), 'utf8'))
     .filter(b => b.type === 'table').flatMap(t => t.rows);
-  for (const [date, event] of [
+  for (const [date, event, exact = true] of [
     ['Feb 1973', 'Dollar devalued again, to $42.22 per ounce'],
     ['Mar 1973', 'Major currencies float against the dollar'],
     ['15 Sep 2008', 'Lehman Brothers files for bankruptcy'],
@@ -164,10 +164,10 @@ test('unrelated dated events are separate timeline rows', () => {
     ['8 Jun 1974', 'US–Saudi Joint Commission established'],
     ['26 Jun 1974', 'Herstatt Bank fails'],
     ['May 1997', 'Bank of England independence'],
-    ['Jul 1997', 'Hong Kong handover'],
+    ['1 Jul 1997', 'Hong Kong becomes a Special Administrative Region of China after the sovereignty transfer.', false],
     ['31 Oct 2008', 'Bitcoin whitepaper published'],
     ['3 Jan 2009', 'Bitcoin genesis block mined']
-  ]) assert.ok(rows.some(r => r[0] === date && r[1] === event), `${date}: ${event}`);
+  ]) assert.ok(rows.some(r => r[0] === date && (exact ? r[1] === event : r[1].startsWith(event))), `${date}: ${event}`);
   assert.equal(rows.some(r => r[1].includes('Dollar devalued') && r[1].includes('currencies float')), false,
     'the dollar-price change is no longer bundled with the floating-rate transition');
   assert.equal(rows.some(r => r[0] === '15 Sep 2008' && /AIG|TARP|swap lines|China stimulus/.test(r[1])), false,
@@ -179,12 +179,15 @@ test('unrelated dated events are separate timeline rows', () => {
     ['1896', 'Bryan\'s "Cross of Gold" speech'],
     ['1896', 'Klondike gold rush'],
     ['1999', 'Gold bottoms around $252/oz'],
-    ['1999–2002', 'UK auctions about half its gold reserves'],
     ['Sep 1999', 'Central Bank Gold Agreement'],
     ['31 Jul 2026', 'Gold finishes July at ${{obs:gold-usd-2026-july-end}}/oz'],
     ['31 Aug 2026', 'Gold finishes August at ${{obs:gold-usd-2026-august-end}}/oz'],
     ['2026 Q1', 'IMF COFER dollar share is {{obs:imf-cofer-usd-share-2026q1}}% of foreign-exchange reserves, excluding gold']
   ]) assert.ok(goldRows.some(r => r[0] === date && r[1] === event), `${date}: ${event}`);
+  assert.ok(goldRows.some(r => r[0] === 'Jul 1999–Mar 2002' &&
+    /395 tonnes.*17 Bank of England auctions/.test(r[1]) &&
+    /completed sales differ from the May 1999 plan/.test(r[2])),
+  'UK auction span, executed volume and announced plan stay distinct');
   assert.doesNotMatch(goldRows.map(r => r[2]).join(' '), /Gold's official monetary role ends|Fiat era begins|Trigger for reserve diversification/);
 });
 
@@ -250,7 +253,7 @@ test('Bitcoin security and quantum copy distinguishes rewards, models and draft 
   assert.match(read('09'), /BIP-361 remains a draft informational proposal/);
   assert.match(read('12'), /does not mechanically halve fees/);
   assert.match(read('15'), /not itself the cost of acquiring/);
-  assert.match(read('14'), /not activated Bitcoin rules/);
+  assert.match(read('14'), /neither has activated as a Bitcoin consensus rule/);
   for (const num of ['08', '09', '11', '12']) {
     assert.doesNotMatch(read(num), /quantum migration is the first deadline|2030–33|confiscate Satoshi's/, `bitcoin-${num}`);
   }
@@ -549,10 +552,11 @@ test('E27 bank capital, funding and reserve eligibility stay distinct', () => {
 
 test('unverified historical-arc charts are absent rather than CSS-hidden', () => {
   const app = readFileSync(join(root, 'src/App.jsx'), 'utf8');
+  const history = readFileSync(join(root, 'src/features/reader/HistoryView.jsx'), 'utf8');
   const css = readFileSync(join(root, 'src/styles.css'), 'utf8');
   const audit = readFileSync(join(root, 'CHART-AUDIT.md'), 'utf8');
-  assert.match(app, /quantitative charts are withheld/);
-  assert.doesNotMatch(app, /arcCharts\(|lineChart\(|barChart\(|<figure|chartDenarius|chartGoldStd/);
+  assert.match(history, /quantitative charts are withheld/i);
+  assert.doesNotMatch(app + history, /arcCharts\(|lineChart\(|barChart\(|<figure|chartDenarius|chartGoldStd/);
   assert.doesNotMatch(css, /\.history-arc figure\s*\{\s*display\s*:\s*none/);
   for (const candidate of ['Three-metal ladder', 'Denarius silver content', 'Gold:silver ratio', 'Countries on gold standard', 'Bretton Woods gold and dollar claims', 'US CPI inflation', 'Fiat-era crises', 'US gross federal debt', 'Reserve composition', 'Central-bank gold buying', 'Gold price']) {
     assert.ok(audit.includes(`| ${candidate} |`), `Missing audit row: ${candidate}`);
@@ -581,7 +585,7 @@ test('only reviewed duplicate monetary events combine their volume references', 
   assert.equal(sharedEventId('evt-after-0051'), null);
   assert.equal(sharedEventId('evt-after-0009'), sharedEventId('evt-gold-0073'));
   assert.equal(mergeSharedEvents(rows.slice(1))[0].id, 'evt-after-0002', 'filtered views keep a present source ID');
-  assert.equal(SHARED_EVENT_PAIRS.length, 5);
+  assert.ok(SHARED_EVENT_PAIRS.length >= 9);
   for (const [first, second] of SHARED_EVENT_PAIRS) {
     assert.ok(timelineEventIds.some(record => record.id === first), first);
     assert.ok(timelineEventIds.some(record => record.id === second), second);

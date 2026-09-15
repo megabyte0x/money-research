@@ -1,0 +1,286 @@
+[
+  {
+    "id": "gold-00",
+    "path": "public/content/gold/00-readme.md",
+    "oldWords": 731,
+    "proposedWords": 634,
+    "oldH2": [
+      "Reading order",
+      "The arc in one paragraph"
+    ],
+    "proposedH2": [
+      "Reading order",
+      "The arc in one paragraph"
+    ],
+    "changedH2": false
+  },
+  {
+    "id": "gold-01",
+    "path": "public/content/gold/01-the-metal-itself.md",
+    "oldWords": 908,
+    "proposedWords": 918,
+    "oldH2": [
+      "Cosmic and geological origin",
+      "Why gold is chemically unusual",
+      "Where humans first found it",
+      "Electrum: the natural alloy that started coinage",
+      "Key takeaways"
+    ],
+    "proposedH2": [
+      "Cosmic and geological origin",
+      "Why gold is chemically unusual",
+      "Where humans first found it",
+      "Electrum: the natural alloy that started coinage",
+      "Key takeaways"
+    ],
+    "changedH2": false
+  },
+  {
+    "id": "gold-02",
+    "path": "public/content/gold/02-before-money-ornament-ritual-power.md",
+    "oldWords": 903,
+    "proposedWords": 883,
+    "oldH2": [
+      "Ornament and status",
+      "Religion and the divine",
+      "Burial and the afterlife",
+      "Tribute, gifts and plunder",
+      "Practical and technical uses",
+      "A unit of weight before a unit of money",
+      "Key takeaways"
+    ],
+    "proposedH2": [
+      "Ornament and status",
+      "Religion and the divine",
+      "Burial and the afterlife",
+      "Tribute, gifts and plunder",
+      "Practical and technical uses",
+      "A unit of weight before a unit of money",
+      "Key takeaways"
+    ],
+    "changedH2": false
+  },
+  {
+    "id": "gold-03",
+    "path": "public/content/gold/03-from-metal-to-money-weights-rings-coins.md",
+    "oldWords": 1149,
+    "proposedWords": 1127,
+    "oldH2": [
+      "Stage one: metal by weight (c. 3000–650 BCE)",
+      "Stage two: the invention of the coin (c. 650–550 BCE)",
+      "Stage three: Croesus separates gold from silver (c. 550 BCE)",
+      "Stage four: coinage spreads (550–300 BCE)",
+      "What form gold money took after coinage",
+      "Was gold \"backed\" by anything?",
+      "Key takeaways"
+    ],
+    "proposedH2": [
+      "Stage one: metal by weight (c. 3000–650 BCE)",
+      "Stage two: the invention of the coin (c. 650–550 BCE)",
+      "Stage three: Croesus separates gold from silver (c. 550 BCE)",
+      "Stage four: coinage spreads (550–300 BCE)",
+      "What form gold money took after coinage",
+      "Was gold \"backed\" by anything?",
+      "Key takeaways"
+    ],
+    "changedH2": false
+  },
+  {
+    "id": "gold-04",
+    "path": "public/content/gold/04-what-gives-gold-its-value.md",
+    "oldWords": 1162,
+    "proposedWords": 1079,
+    "oldH2": [
+      "The question properly stated",
+      "Why one good becomes money at all",
+      "Why gold is the most saleable good",
+      "Why prices came to be denominated in gold",
+      "Is gold's value \"intrinsic\" or a social convention?",
+      "What gold's value is *not*",
+      "Key takeaways"
+    ],
+    "proposedH2": [
+      "The question properly stated",
+      "Why one good becomes money at all",
+      "Why gold could be saleable in some markets",
+      "Why prices came to be denominated in gold",
+      "Is gold's value \"intrinsic\" or a social convention?",
+      "What gold's value is *not*",
+      "Key takeaways"
+    ],
+    "changedH2": true
+  },
+  {
+    "id": "gold-05",
+    "path": "public/content/gold/05-silver-copper-bronze-and-bimetallism.md",
+    "oldWords": 1299,
+    "proposedWords": 1169,
+    "oldH2": [
+      "Silver was the workhorse, not the understudy",
+      "Copper and bronze: the oldest and the smallest",
+      "Bimetallism: the fixed ratio and why it kept failing",
+      "How silver and copper were \"backed\" by gold",
+      "The gold–silver ratio through time",
+      "Key takeaways"
+    ],
+    "proposedH2": [
+      "Silver was the workhorse, not the understudy",
+      "Copper and bronze in monetary systems",
+      "Bimetallism: the fixed ratio and why it kept failing",
+      "How silver and copper were \"backed\" by gold",
+      "The gold–silver ratio through time",
+      "Key takeaways"
+    ],
+    "changedH2": true
+  },
+  {
+    "id": "gold-06",
+    "path": "public/content/gold/06-rulers-and-empires-how-gold-was-used.md",
+    "oldWords": 2008,
+    "proposedWords": 1944,
+    "oldH2": [
+      "Egypt (c. 3000–30 BCE)",
+      "Mesopotamia and the Levant (c. 3000–500 BCE)",
+      "Lydia and Persia (c. 650–330 BCE)",
+      "Greece and the Hellenistic world (c. 600–30 BCE)",
+      "Rome (c. 300 BCE–476 CE)",
+      "Byzantium (330–1453)",
+      "The Islamic Caliphate (7th–13th centuries)",
+      "West Africa: Ghana, Mali and Songhai (8th–16th centuries)",
+      "Medieval Europe (c. 500–1500)",
+      "India (c. 600 BCE–1947)",
+      "China (c. 1000 BCE–1935)",
+      "Spain and the Americas (1492–1800)",
+      "Japan (1600–1870)",
+      "Recurring patterns",
+      "Key takeaways"
+    ],
+    "proposedH2": [
+      "Egypt (c. 3000–30 BCE)",
+      "Mesopotamia and the Levant (c. 3000–500 BCE)",
+      "Lydia and Persia (c. 650–330 BCE)",
+      "Greece and the Hellenistic world (c. 600–30 BCE)",
+      "Rome (c. 300 BCE–476 CE)",
+      "Byzantium (330–1453)",
+      "The Islamic Caliphate (7th–13th centuries)",
+      "West Africa: Ghana, Mali and Songhai (8th–16th centuries)",
+      "Medieval Europe (c. 500–1500)",
+      "India (c. 600 BCE–1947)",
+      "China (c. 1000 BCE–1935)",
+      "Spain and the Americas (1492–1800)",
+      "Japan (1600–1870)",
+      "Recurring patterns",
+      "Key takeaways"
+    ],
+    "changedH2": false
+  },
+  {
+    "id": "gold-07",
+    "path": "public/content/gold/07-the-gold-standard-era-1717-1971.md",
+    "oldWords": 1644,
+    "proposedWords": 1644,
+    "oldH2": [
+      "Newton's accident (1717)",
+      "The gold rushes (1848–1900)",
+      "The classical gold standard (1871–1914)",
+      "The wars break it (1914–1944)",
+      "Bretton Woods (1944–1971)",
+      "The Nixon shock (15 August 1971)",
+      "Why the system failed: the underlying tension",
+      "Key takeaways"
+    ],
+    "proposedH2": [
+      "Newton's accident (1717)",
+      "The gold rushes (1848–1900)",
+      "The classical gold standard (1871–1914)",
+      "The wars break it (1914–1944)",
+      "Bretton Woods (1944–1971)",
+      "The Nixon shock (15 August 1971)",
+      "Why the system failed: the underlying tension",
+      "Key takeaways"
+    ],
+    "changedH2": false
+  },
+  {
+    "id": "gold-08",
+    "path": "public/content/gold/08-why-the-dollar-replaced-gold.md",
+    "oldWords": 1449,
+    "proposedWords": 1402,
+    "oldH2": [
+      "The short answer",
+      "Step one: the dollar becomes gold's proxy (1944–1971)",
+      "Step two: oil and the petrodollar (1974 onward)",
+      "Step three: the infrastructure of dollar dominance",
+      "Step four: why gold could not do the job",
+      "What replaced gold's function, precisely",
+      "Is the dollar's position weakening?",
+      "Key takeaways"
+    ],
+    "proposedH2": [
+      "The short answer",
+      "Step one: the dollar becomes gold's proxy (1944–1971)",
+      "Step two: oil and the petrodollar (1974 onward)",
+      "Step three: the infrastructure of dollar dominance",
+      "Step four: why gold could not do the job",
+      "What replaced gold's function, precisely",
+      "Is the dollar's position weakening?",
+      "Key takeaways"
+    ],
+    "changedH2": false
+  },
+  {
+    "id": "gold-09",
+    "path": "public/content/gold/09-gold-today-what-still-holds-its-value.md",
+    "oldWords": 1323,
+    "proposedWords": 1315,
+    "oldH2": [
+      "The numbers",
+      "The last four years in one paragraph",
+      "What still gives gold value",
+      "What gold does *not* do today",
+      "Why it is still not \"the\" unit of economy",
+      "Key takeaways"
+    ],
+    "proposedH2": [
+      "The numbers",
+      "The last four years in one paragraph",
+      "What still gives gold value",
+      "What gold does *not* do today",
+      "Why it is still not \"the\" unit of economy",
+      "Key takeaways"
+    ],
+    "changedH2": false
+  },
+  {
+    "id": "gold-11",
+    "path": "public/content/gold/11-glossary.md",
+    "oldWords": 997,
+    "proposedWords": 1099,
+    "oldH2": [],
+    "proposedH2": [],
+    "changedH2": false
+  },
+  {
+    "id": "gold-12",
+    "path": "public/content/gold/12-sources.md",
+    "oldWords": 834,
+    "proposedWords": 1025,
+    "oldH2": [
+      "Gold's post-1978 monetary role (reviewed 13 September 2026)",
+      "Present-day data (consulted 7 September 2026)",
+      "Ancient and medieval history",
+      "Theory of money",
+      "Gold standard and modern era",
+      "Note on reliability"
+    ],
+    "proposedH2": [
+      "Gold's post-1978 monetary role (reviewed 13 September 2026)",
+      "Present-day data (consulted 7 September 2026)",
+      "Ancient and medieval history",
+      "Theory of money",
+      "Gold standard and modern era",
+      "Note on reliability"
+    ],
+    "changedH2": false
+  }
+]

@@ -1,0 +1,7 @@
+# 11 optional expansion selection — deferred
+
+Packages 11-A through 11-F are P2 additions in the original backlog, explicitly scheduled after P0/P1 evidence and release gates in `plans/11-optional-expansion.md`. None is a first-release prerequisite. At this editing checkpoint, the core timeline still has pending event review; named country laws/holdings, crisis outcome measures, dataset reuse rights, and moderated reader needs are not established. Product selection and implementation therefore remain deferred rather than appearing as unsupported views.
+
+11-A needs accepted country instrument/status records plus event geography/type metadata before case pages and shareable timeline filters. 11-B needs reviewed mechanism packets across volumes. 11-C needs accepted dated indicators, a maintenance owner and a separate Zcash privacy research agenda; no Zcash verdict is warranted from the current volumes. 11-D needs reviewed bimetallic statutory ratios and economic balance-sheet assumptions. 11-E can follow reader and path usability results for local resume, print and comprehension checks. 11-F is withheld until matched, reusable datasets and a reproducible method exist. Each future package keeps its own `workstreams/11-<letter>/HANDOFF.md` and isolated feature directory, with coordinator leases for routing/model changes.
+
+This records the current P2 decision and precise prerequisites. No P2 feature, test, build or browser check was started during the core editing wave.

@@ -1,0 +1,931 @@
+[
+  {
+    "id": "after-01",
+    "status": "approved",
+    "summary": {
+      "answer": "The United States suspended official dollar-to-gold conversion in 1971. Major currencies later floated against the dollar, and the IMF's Second Amendment took effect in 1978; these were separate steps.",
+      "question": "What changed when the dollar's gold window closed?",
+      "takeaways": [
+        "Gold conversion, exchange-rate parities and IMF legal rules changed at different times.",
+        "Floating rates did not remove the need for settlement and counterparty protections.",
+        "Herstatt's failure exposed the risk between two currency-payment legs.",
+        "The Great Inflation began before the 1971 suspension, so chronology alone cannot assign its cause to the gold break."
+      ],
+      "evidenceAndUncertainty": "The legal and settlement distinctions are supported by the IMF amendment history, BIS Herstatt account and Federal Reserve Great Inflation account cited in chapters 01–02. The chapter's precise gold-stock ratio, oil-shock causal counterfactual, turnover series and other 1970s magnitudes are not approved here; a single explanation of inflation or permanent floating remains an interpretation."
+    },
+    "nextSteps": [
+      {
+        "kind": "Continue",
+        "targetArticleId": "after-02",
+        "targetSectionId": "inflation-before-and-after-the-gold-break",
+        "reason": "Follow inflation before official gold conversion ended."
+      },
+      {
+        "kind": "Institution",
+        "targetArticleId": "after-10",
+        "targetSectionId": "international-monetary-agreements",
+        "reason": "See how the IMF agreement changed legal rules."
+      }
+    ]
+  },
+  {
+    "id": "after-02",
+    "status": "approved",
+    "summary": {
+      "answer": "Oil shocks intensified price pressure in the 1970s, while policy, expectations and fiscal pressures also mattered. Dollar oil invoicing and recycling were financial practices, not dollar redemption for oil.",
+      "question": "How did oil shocks interact with an inflation already under way?",
+      "takeaways": [
+        "US inflation predated the gold-window closure and had multiple channels.",
+        "The public US–Saudi commission established cooperation, not an exclusive oil-pricing or redemption treaty.",
+        "Oil exporters could invest receipts in dollar assets; banks could lend part of those funds onward.",
+        "The Volcker disinflation came with severe recessions and borrowing costs."
+      ],
+      "evidenceAndUncertainty": "Federal Reserve History, the 1975 Federal Reserve staff memo and GAO's 1979 commission audit support the distinctions. IMF's roughly 2½% **OECD GDP** direct terms-of-trade loss is a different denominator from world GDP. UK IMF stand-by approval, letter and drawing dates are separate. Neither an exclusive pricing contract, a $500 billion recycling total nor weights for inflation channels is established. Avoid the chapter body's broad “nearly every country” central-bank-model claim without country records."
+    },
+    "nextSteps": [
+      {
+        "kind": "Consequence",
+        "targetArticleId": "after-03",
+        "targetSectionId": "the-latin-american-debt-crisis-1982-89",
+        "reason": "Trace dollar borrowing under higher interest rates."
+      },
+      {
+        "kind": "Context",
+        "targetArticleId": "after-06",
+        "targetSectionId": "vietnam-and-the-yom-kippur-war-1965-74",
+        "reason": "Separate energy shocks from other wartime channels."
+      }
+    ]
+  },
+  {
+    "id": "after-03",
+    "status": "approved",
+    "summary": {
+      "answer": "Higher dollar interest rates and weaker export earnings strained borrowers; workouts and the Brady restructuring followed. The Basel Committee agreed bank-capital standards whose effects depended on national implementation.",
+      "question": "How did dollar debt and bank risks reshape the 1980s?",
+      "takeaways": [
+        "A dollar loan's servicing burden can change with rates and the exchange rate.",
+        "Brady bonds restructured claims; they did not restore fixed exchange rates.",
+        "Plaza and Louvre were coordination efforts, not a renewed gold or parity system.",
+        "Bank lending creates deposits while credit, funding, capital, liquidity and policy constrain it."
+      ],
+      "evidenceAndUncertainty": "Bank of England's 2014 money-creation paper, pp. 16–20, supports the mechanics; the Basel 1988 text supports an international bank standard. The exact 27-country/$240 billion debt count, Brady loss percentage, S&L fiscal cost, national Basel adoption and Plaza-to-Japan-bubble causal share still need matched primary locators. The July 1986 **U.S. crude first-purchase monthly average** is not WTI spot; do not turn its $9.25 observation into a generic global price or Saudi-to-USSR causal estimate."
+    },
+    "nextSteps": [
+      {
+        "kind": "Later crisis",
+        "targetArticleId": "after-05",
+        "targetSectionId": "the-asian-financial-crisis-1997-98",
+        "reason": "Compare later currency and borrowing risks."
+      },
+      {
+        "kind": "Rulebook",
+        "targetArticleId": "after-07",
+        "targetSectionId": "the-new-rulebook",
+        "reason": "See how post-2008 supervision differs from Basel I."
+      }
+    ]
+  },
+  {
+    "id": "after-04",
+    "status": "approved",
+    "summary": {
+      "answer": "No. New states used different currencies, pegs and monetary frameworks; the Federal Republic of Yugoslavia's January 1994 hyperinflation was an extreme case, not a universal outcome.",
+      "question": "Did post-Cold-War currencies follow one stabilisation path?",
+      "takeaways": [
+        "New currencies and stabilisation choices varied across countries and initial conditions.",
+        "German monetary-union 1:1 conversion applied to specified payments and capped personal cash/deposits, not all consumer prices.",
+        "The ERM crisis exposed tensions among pegs and different national policy needs.",
+        "Inflation targeting and central-bank independence spread unevenly; a universal 2% target did not exist by 2000."
+      ],
+      "evidenceAndUncertainty": "Bundesregierung's 2 May agreed terms, items 2 and 5–6, locate conversion classes/caps; the IMF inflation-targeting table locates adoption variation. IMF Country Report 01/07, para. 7 and Figure 1 note 2, reports **more than 300 billion percent monthly inflation in the Federal Republic of Yugoslavia in January 1994**. The old 313-million figure, “second-worst” rank and 34-hour doubling interval are withheld. Country-by-country price series, German transfer/industrial effects and the ERM causal share need separate source review. No summary number should propagate from the Yugoslav case."
+    },
+    "nextSteps": [
+      {
+        "kind": "Other paths",
+        "targetArticleId": "after-05",
+        "targetSectionId": "brazil-and-argentina-1999-2002",
+        "reason": "Compare currency choices outside Europe."
+      },
+      {
+        "kind": "Shared money",
+        "targetArticleId": "after-07",
+        "targetSectionId": "the-eurozone-crisis-2010-15",
+        "reason": "Follow the euro arrangement into a later crisis."
+      }
+    ]
+  },
+  {
+    "id": "after-05",
+    "status": "approved",
+    "summary": {
+      "answer": "Trade agreements and freer capital flows developed alongside distinct currency crises. Pegs and short-term foreign borrowing could make economies vulnerable to outflows, but the sequence had no single uniform mechanism.",
+      "question": "What did trade liberalisation leave exposed to capital flows?",
+      "takeaways": [
+        "NAFTA reduced North American trade barriers; the EU single market has a wider four-freedom scope.",
+        "Currency pegs create different risks when capital moves freely and liabilities are in foreign currency.",
+        "IMF programmes and national responses differed by country and crisis.",
+        "Later reserve accumulation and the US housing boom cannot be joined by an asserted one-step causal chain."
+      ],
+      "evidenceAndUncertainty": "Council of the EU's single-market overview supports the agreement distinction; the Argentina statute/BCRA locators in chapter 05 separate austral and peso dates. HM Treasury and Bank of England directly locate the completed UK gold-auction programme: approximately 395 tonnes in 17 auctions, July 1999–March 2002, at a weighted average $274.92/oz; a prior 365-tonne plan is not the completed-auction measure. Export/job/Treasury totals, programme commitments versus actual disbursements, national reserve-series denominators and the “saving glut caused the housing bubble” claim still require matched primary evidence. Chapter 05's remaining crisis superlatives and gold-cycle rhetoric are outside copy approval."
+    },
+    "nextSteps": [
+      {
+        "kind": "Later credit",
+        "targetArticleId": "after-07",
+        "targetSectionId": "the-bubble",
+        "reason": "Examine housing credit without a single-cause inference."
+      },
+      {
+        "kind": "Europe",
+        "targetArticleId": "after-04",
+        "targetSectionId": "maastricht-the-erm-crisis-and-black-wednesday-1992-93",
+        "reason": "Contrast European currency arrangements with trade."
+      }
+    ]
+  },
+  {
+    "id": "after-06",
+    "status": "approved",
+    "summary": {
+      "answer": "Wars can affect public borrowing, energy prices and access to financial claims or services. The combination and scale vary by conflict; an asset freeze does not itself transfer ownership.",
+      "question": "Through which channels can conflict affect monetary arrangements?",
+      "takeaways": [
+        "Taxes, borrowing and monetary expansion have financed wars in differing proportions.",
+        "Gulf War incremental-cost estimates, allied pledges and received contributions are separate measures.",
+        "Swift messaging restrictions and reserve immobilisation operate at different financial layers.",
+        "Russian sovereign-asset principal was immobilised in sanctioning jurisdictions; G7 ERA loans use future extraordinary revenues and commitments must not be reported as full disbursements."
+      ],
+      "evidenceAndUncertainty": "GAO testimonies T-NSIAD-91-34/52 locate Gulf War estimates and 31 July 1991 contribution status; Council of the EU's October 2024 ERA release locates the principal/revenue/loan distinction. The IEA's 11 March 2026 supply and stock-release findings are **dated observations**, not a September series or gold-causation estimate. Numerous 2025–26 event, national-effect, war-cost and sanctions-to-gold claims in the body remain unverified or withheld. Avoid a universal “war raises gold/inflation/the dollar” rule."
+    },
+    "nextSteps": [
+      {
+        "kind": "Reserves",
+        "targetArticleId": "after-09",
+        "targetSectionId": "the-weaponisation-of-reserves-and-the-return-of-gold-2022-26",
+        "reason": "Follow custody and access for official reserves."
+      },
+      {
+        "kind": "Payments",
+        "targetArticleId": "after-08",
+        "targetSectionId": "moving-money-from-swift-to-real-time-payments-1973-2023",
+        "reason": "Separate messaging from the claim being transferred."
+      }
+    ]
+  },
+  {
+    "id": "after-07",
+    "status": "approved",
+    "summary": {
+      "answer": "Housing-credit losses, leverage and fragile funding contributed to the crisis. Rate cuts, lending, dollar swaps and asset purchases were distinct responses with different balance-sheet entries.",
+      "question": "How did the 2008 credit crash and central-bank responses differ?",
+      "takeaways": [
+        "Policy-rate targets, mortgage-debt ratios, security ratings and derivatives notional measure different things.",
+        "A QE purchase creates bank reserves; purchase from a non-bank also credits that seller's deposit.",
+        "Reserves alone do not determine subsequent bank lending or consumer-price inflation.",
+        "Basel III credit-risk, leverage, liquidity and funding rules must be read by exposure and jurisdiction."
+      ],
+      "evidenceAndUncertainty": "FOMC statements, Federal Reserve History, FCIC printed pp. 72/101, BIS Basel 1988 para. 41 and Bank of England Figure 3 support the bounded opening/mechanics. Rescue authorisations, disbursements, recoveries and net fiscal costs are not interchangeable. National Basel effects, eurozone support totals, distributional consequences of QE and the chapter's broad political causal chains need further evidence. The summary does not approve “QE caused” a named outcome by itself."
+    },
+    "nextSteps": [
+      {
+        "kind": "Later response",
+        "targetArticleId": "after-09",
+        "targetSectionId": "pandemic-fiscal-spending-and-central-bank-balance-sheets",
+        "reason": "Compare pandemic spending with asset purchases."
+      },
+      {
+        "kind": "Earlier rules",
+        "targetArticleId": "after-03",
+        "targetSectionId": "basel-i-1988-the-first-global-banking-rule",
+        "reason": "See the first Basel standard before the new rulebook."
+      }
+    ]
+  },
+  {
+    "id": "after-08",
+    "status": "approved",
+    "summary": {
+      "answer": "No. Authorisation, clearing, settlement, currency conversion and access to usable funds are different stages, and institutions and rights vary by rail and token.",
+      "question": "Does faster messaging mean faster or cheaper final payment?",
+      "takeaways": [
+        "Swift carries bank instructions; settlement of the underlying claims happens elsewhere.",
+        "A card authorisation, instant bank transfer and blockchain transfer have different measures of completion.",
+        "Stablecoin reserves, redemption rights and eligible holders depend on the named issuer and token.",
+        "A CBDC's access, privacy, remuneration and limits depend on its design; the digital euro remains a conditional proposal."
+      ],
+      "evidenceAndUncertainty": "Swift's network description, Visa's analytics methodology, FedNow overview and ECB's digital-euro progress/FAQ support the conceptual distinctions and conditional project status. ASX, GLD fund/prospectus and WGC locators support the scoped gold-ETF example: a tradeable trust share with expenses and custody terms, a November 2020 global holdings peak of 3,929 tonnes and **801.2 tonnes net holdings growth** in the “ETFs & Similar Products” sector during 2025. Neither amount is retail purchases or GLD-only inflow; fastest-growing/largest-private-holder superlatives and the banknote analogy are withheld. Gross on-chain transfers are not retail purchase volume, and one transfer speed cannot establish corridor-wide remittance cost. Named stablecoin backing, eNaira/e-CNY designs, derivative-history causal claims and current CBDC legislation require product-specific or official-source checks. Do not use the chapter's broad Bitcoin/gold value judgments as factual takeaway copy."
+    },
+    "nextSteps": [
+      {
+        "kind": "Restrictions",
+        "targetArticleId": "after-06",
+        "targetSectionId": "ukraine-2022-present",
+        "reason": "See how restrictions affect different payment layers."
+      },
+      {
+        "kind": "Current roles",
+        "targetArticleId": "after-09",
+        "targetSectionId": "where-money-stands-in-september-2026",
+        "reason": "Compare payment instruments with official reserves."
+      }
+    ]
+  },
+  {
+    "id": "after-09",
+    "status": "approved",
+    "summary": {
+      "answer": "Pandemic fiscal measures, central-bank purchases, bank lending, supply disruption and later rate rises were distinct channels. The 2022 Russian reserve restrictions highlighted access risk, while gold's measured share also rose through valuation.",
+      "question": "What changed in inflation and reserve-access risk during the 2020s?",
+      "takeaways": [
+        "Government borrowing/spending, bank credit and QE are different transactions.",
+        "Inflation after the pandemic had demand, supply and policy channels whose weights require analysis.",
+        "Immobilising foreign reserves differs from confiscating their principal.",
+        "Gold's ECB official-reserves share and the dollar's IMF COFER foreign-exchange-reserves share use different denominators and dates."
+      ],
+      "evidenceAndUncertainty": "ECB June 2026 chart 7 identifies valuation as most of gold's share gain at end-2025 prices; IMF COFER excludes gold, SDRs and IMF positions. The IEA/IMF July 2026 observations and forecasts are dated, not final outcomes. Most current US legal, political, debt, tariff, Fed, country and energy details in the chapter body lack paragraph-level primary verification in this packet. Do not propagate those dated facts or infer that reserve freezes caused each gold purchase or that money growth alone caused 2021–23 inflation."
+    },
+    "nextSteps": [
+      {
+        "kind": "Mechanism",
+        "targetArticleId": "after-07",
+        "targetSectionId": "quantitative-easing-the-invention-of-a-new-instrument",
+        "reason": "Review the balance sheet behind an asset purchase."
+      },
+      {
+        "kind": "Energy",
+        "targetArticleId": "after-06",
+        "targetSectionId": "the-2026-iran-war-and-the-closure-of-hormuz",
+        "reason": "Separate energy disruption from policy decisions."
+      }
+    ]
+  },
+  {
+    "id": "after-10",
+    "status": "approved",
+    "summary": {
+      "answer": "IMF agreements, national law, central banks and bank-supervision standards have different mandates and legal effects; selected rules evolved after 1971 without one common trigger.",
+      "question": "Which rules and institutions govern the post-1971 monetary system?",
+      "takeaways": [
+        "IMF reform ended the official dollar-gold parity framework but did not eliminate every monetary role for gold.",
+        "Basel standards concern bank exposures and require national implementation; they are not central-bank reserve law.",
+        "An announced rescue loan, its disbursement and its net fiscal cost are separate measures.",
+        "The GENIUS Act is an enacted framework for defined payment stablecoins, with delayed general effectiveness; enactment does not approve or insure a named token."
+      ],
+      "evidenceAndUncertainty": "IMF Articles, Basel texts, Council of the EU's ERA implementation and GPO Public Law 119-27 §§2–4, 7(e), 20 support the limited distinctions. The reference table is selective: many historical first/only/effect claims, national implementation rows, current US/EU law entries, regulatory effectiveness and named issuer compliance still require exact official-source checks. Proposed digital-euro issuance remains conditional on legislation and a later ECB decision. Do not repeat the former “nearly every rule followed a crisis” or “seized reserves” phrasing."
+    },
+    "nextSteps": [
+      {
+        "kind": "IMF reform",
+        "targetArticleId": "after-01",
+        "targetSectionId": "legalising-the-accident-the-jamaica-accords-1976",
+        "reason": "Read the timing and effect of the gold reform."
+      },
+      {
+        "kind": "Bank rules",
+        "targetArticleId": "after-07",
+        "targetSectionId": "the-new-rulebook",
+        "reason": "Follow bank supervision after the 2008 crisis."
+      }
+    ]
+  },
+  {
+    "id": "gold-01",
+    "status": "approved",
+    "summary": {
+      "question": "What about gold made it usable, and where does the earliest evidence come from?",
+      "answer": "Gold is durable, workable and sometimes found in native form. The Varna cemetery is an important early known gold assemblage, but physical properties alone did not make gold money.",
+      "takeaways": [
+        "Gold's chemistry helps explain preservation and working.",
+        "Placer and lode sources involve different extraction.",
+        "Varna is an early securely dated gold assemblage, not proof that gold was the first worked metal.",
+        "Above-ground stock estimates depend on the World Gold Council's stock definition and report vintage."
+      ],
+      "evidenceAndUncertainty": "The Varna municipal archaeological guide, pp. 1–2, supports the cemetery's dating and object-count range. The buried metal's precise provenance and early electrum fineness still need scholarship. Stock estimates require a dated observation with its category definition."
+    },
+    "nextSteps": [
+      {
+        "kind": "Case",
+        "targetArticleId": "gold-02",
+        "targetSectionId": "ornament-and-status",
+        "reason": "Varna objects show a documented use before coinage, without inferring a universal monetary origin."
+      },
+      {
+        "kind": "Deeper",
+        "targetArticleId": "gold-03",
+        "targetSectionId": "stage-two-the-invention-of-the-coin-c-650-550-bce",
+        "reason": "The stamp/authority discussion adds the institutional step missing from chemistry alone."
+      }
+    ]
+  },
+  {
+    "id": "gold-02",
+    "status": "approved",
+    "summary": {
+      "question": "What was gold used for before coins?",
+      "answer": "Archaeological objects and historical records show ornament, ritual, royal treasure, diplomatic gifts and some weighed-metal use in particular societies.",
+      "takeaways": [
+        "Grave goods establish objects; motives require interpretation.",
+        "Temple storage and lending roles varied rather than following one first-bank model.",
+        "Ancient treasure totals are chronicle claims, not audited datasets.",
+        "Weighed metal and coinage are different transactions."
+      ],
+      "evidenceAndUncertainty": "World Gold Council full-year 2025 table 1 distinguishes jewellery consumption from fabrication and records greater investment demand than either jewellery measure that year. Exact archaeological or textual locators remain missing for Tutankhamun weights, Alexander's talents, Trajan's payouts, ancient metal ratios and medical firsts. The modern category comparison does not verify those ancient claims or a timeless ranking."
+    },
+    "nextSteps": [
+      {
+        "kind": "Prerequisite",
+        "targetArticleId": "gold-01",
+        "targetSectionId": "where-humans-first-found-it",
+        "reason": "Locates Varna and the difference between early assemblage and an absolute first."
+      },
+      {
+        "kind": "Deeper",
+        "targetArticleId": "gold-03",
+        "targetSectionId": "stage-one-metal-by-weight-c-3000-650-bce",
+        "reason": "Moves from ornament and treasure to the narrower weighed-metal transaction."
+      }
+    ]
+  },
+  {
+    "id": "gold-03",
+    "status": "approved",
+    "summary": {
+      "question": "What changed when weighed metal became stamped coin?",
+      "answer": "A stamp identified an issuer and denomination and could lower verification costs, but early electrum composition varied and a coin's purchasing power still depended on acceptance.",
+      "takeaways": [
+        "Units of account existed before coins.",
+        "Weighed bullion could require scales or testing to establish its quantity and quality.",
+        "Croesus' separate gold and silver issues were an important change.",
+        "A legal exchange ratio differs from redemption and market value."
+      ],
+      "evidenceAndUncertainty": "A numismatic catalogue or excavated-issue locator is still needed for coin dates, weights, purity and exact equivalences. The Croeseid ten-for-one relation, daric/siglos equivalence and a first-bimetallic-standard claim are withheld; this note does not verify them."
+    },
+    "nextSteps": [
+      {
+        "kind": "Deeper",
+        "targetArticleId": "gold-05",
+        "targetSectionId": "the-gold-silver-ratio-through-time",
+        "reason": "Explicitly explains why ancient reconstructions, legal ratios and market series cannot be joined."
+      },
+      {
+        "kind": "Counterargument",
+        "targetArticleId": "gold-04",
+        "targetSectionId": "why-one-good-becomes-money-at-all",
+        "reason": "Presents Menger and competing credit/state accounts as interpretations, not an inevitable coinage path."
+      }
+    ]
+  },
+  {
+    "id": "gold-04",
+    "status": "approved",
+    "summary": {
+      "question": "Why does gold have value?",
+      "answer": "Physical uses and monetary properties matter, but its price also reflects social acceptance, institutions, expectations and market conditions.",
+      "takeaways": [
+        "Menger's saleability theory is one interpretation of money's emergence.",
+        "Credit and state-account theories offer competing interpretations, without settling the archaeological record.",
+        "A physical bar held outright is not an issuer's liability, but it has custody and price risk.",
+        "Gold's monetary use was never universal across societies."
+      ],
+      "evidenceAndUncertainty": "Direct locators for the competing theory texts and matched inflation, crisis and return data are still missing. The theories are interpretations, not verified evidence badges or a guarantee of future hedging."
+    },
+    "nextSteps": [
+      {
+        "kind": "Counterargument",
+        "targetArticleId": "gold-05",
+        "targetSectionId": "silver-was-the-workhorse-not-the-understudy",
+        "reason": "The silver examples limit claims that gold was everywhere the account unit."
+      },
+      {
+        "kind": "Deeper",
+        "targetArticleId": "gold-09",
+        "targetSectionId": "what-gold-does-not-do-today",
+        "reason": "Tests value claims against current payment, storage and price-risk limits."
+      }
+    ]
+  },
+  {
+    "id": "gold-05",
+    "status": "approved",
+    "summary": {
+      "question": "Were other metals always backed by gold?",
+      "answer": "No. Silver, copper and bronze could be full-bodied money, account units or subsidiary tokens under different laws; a mint ratio is not automatically a redemption promise.",
+      "takeaways": [
+        "Smaller transactions often used lower-value metals.",
+        "Legal mint ratios and market exchange ratios answer different questions.",
+        "A mismatch under a bimetallic rule could cause one coin type to disappear from ordinary circulation.",
+        "Ancient reconstructed ratios and modern market quotes cannot be published as one measured series."
+      ],
+      "evidenceAndUncertainty": "Exact statute locators are still needed for the US and Latin Monetary Union mint ratios. Ancient reconstructed ratios and a consistently defined modern market series remain unverified. No ancient legal-ratio fact badge or continuous silver-demotion trend is approved."
+    },
+    "nextSteps": [
+      {
+        "kind": "Prerequisite",
+        "targetArticleId": "gold-03",
+        "targetSectionId": "was-gold-backed-by-anything",
+        "reason": "Distinguishes a full-bodied coin from a redeemable claim while keeping local laws open."
+      },
+      {
+        "kind": "Deeper",
+        "targetArticleId": "gold-07",
+        "targetSectionId": "the-classical-gold-standard-1871-1914",
+        "reason": "Shows one later legal/gold-conversion arrangement rather than a universal metal ladder."
+      }
+    ]
+  },
+  {
+    "id": "gold-06",
+    "status": "approved",
+    "summary": {
+      "question": "Did empires use gold in the same way?",
+      "answer": "No. Gold served coin, treasury, gift and wealth roles in different states, while silver, copper, paper and credit often handled accounting or payments.",
+      "takeaways": [
+        "India and China do not fit a universal European sequence of metallic money.",
+        "Ancient treasure totals and reported price effects do not establish one causal rule across empires.",
+        "A coin, treasury holding and gift can give gold different roles within one polity."
+      ],
+      "evidenceAndUncertainty": "Issue and assay catalogues, medieval quantity sources, Mansa Musa price evidence and country-specific coin laws still need dated exact locators. Persian/Byzantine trading extent and a numerical third-century Roman fineness series are withheld from reader takeaways."
+    },
+    "nextSteps": [
+      {
+        "kind": "Prerequisite",
+        "targetArticleId": "gold-03",
+        "targetSectionId": "stage-four-coinage-spreads-550-300-bce",
+        "reason": "Places the regional coinage cases after the early issuing mechanism."
+      },
+      {
+        "kind": "Deeper",
+        "targetArticleId": "gold-07",
+        "targetSectionId": "the-classical-gold-standard-1871-1914",
+        "reason": "Contrasts ancient/regional practices with the later international system."
+      }
+    ]
+  },
+  {
+    "id": "gold-07",
+    "status": "approved",
+    "summary": {
+      "question": "Which gold standards existed, and what changed in 1971?",
+      "answer": "Britain's adoption, the classical international standard, interwar restorations and Bretton Woods had distinct convertibility rules; the US suspended official dollar-to-gold conversion in 1971.",
+      "takeaways": [
+        "A gold definition did not eliminate bank credit.",
+        "Scholarship associates earlier departure from gold with earlier Depression recovery; this is not a complete one-cause explanation.",
+        "Bretton Woods official conversion differed from domestic gold-coin circulation.",
+        "The IMF's 1978 reform did not abolish official reserve gold."
+      ],
+      "evidenceAndUncertainty": "NBER Eichengreen/Sachs W1498 and Bernanke W4814 support the scoped interwar association. IMF *Financial Organization and Operations*, ch. III p. 91, and the 1964 US policy task-force “Money” report, printed pp. 44–47, support a conditional Bretton Woods liquidity and official gold-conversion tension. Country counts, historical gold-stock comparisons and a required trade-deficit or inevitable-run claim are not established."
+    },
+    "nextSteps": [
+      {
+        "kind": "Deeper",
+        "targetArticleId": "gold-08",
+        "targetSectionId": "step-one-the-dollar-becomes-gold-s-proxy-1944-1971",
+        "reason": "Carries the Bretton Woods official-conversion mechanism into dollar reserve use."
+      },
+      {
+        "kind": "Deeper",
+        "targetArticleId": "gold-09",
+        "targetSectionId": "why-it-is-still-not-the-unit-of-economy",
+        "reason": "Separates ended convertibility from continuing reserve holdings."
+      }
+    ]
+  },
+  {
+    "id": "gold-08",
+    "status": "approved",
+    "summary": {
+      "question": "Why did dollar use survive official gold conversion?",
+      "answer": "The dollar had established reserve, trade, banking and securities-market uses; oil invoicing and recycling contributed, but no reviewed 1974 document supplies a universal oil-redemption clause.",
+      "takeaways": [
+        "Oil invoicing is not gold convertibility.",
+        "The US–Saudi joint commission addressed economic cooperation; it did not begin dollar oil quotations.",
+        "IMF COFER's foreign-exchange-reserve denominator excludes gold.",
+        "The ECB's broad-reserve gold-share increase was largely a valuation effect, not proof of active purchases."
+      ],
+      "evidenceAndUncertainty": "GAO ID-79-7, printed pp. 1–2, and the 1975 FRBNY staff memo, pp. 1–2, support the limited commission and invoicing claims. ECB June 2026 §1.1 chart 7 and IMF COFER metadata support the distinct denominator and valuation readings. A universal oil-pricing agreement, exact oil-recycling contribution and Treasury-market-size comparison remain unsupported."
+    },
+    "nextSteps": [
+      {
+        "kind": "Prerequisite",
+        "targetArticleId": "gold-07",
+        "targetSectionId": "the-nixon-shock-15-august-1971",
+        "reason": "Establishes which official dollar–gold promise ended."
+      },
+      {
+        "kind": "Deeper",
+        "targetArticleId": "gold-09",
+        "targetSectionId": "the-numbers",
+        "reason": "Shows reserve denominators and market-value conventions side by side."
+      }
+    ]
+  },
+  {
+    "id": "gold-09",
+    "status": "approved",
+    "summary": {
+      "question": "What can 2026 gold data actually establish?",
+      "answer": "Dated World Gold Council, ECB and IMF observations establish prices, estimated flows and measured shares under specified conventions; they do not guarantee hedging or reveal every reserve manager's motives.",
+      "takeaways": [
+        "World Gold Council demand excluding OTC/other differs from its total-demand measure.",
+        "The Council revised its central-bank-and-other-official-institutions net-demand estimate for the first quarter of 2026; the first release and revised vintage should not be conflated.",
+        "The ECB broad-reserve gold share and IMF COFER dollar foreign-exchange-reserve share use different denominators.",
+        "Basel bank credit and funding standards do not establish local central-bank reserve law or risk-free status.",
+        "A higher gold market-value share can result from price appreciation without proving active purchases."
+      ],
+      "evidenceAndUncertainty": "World Gold Council full-year 2025 table 1 and the first-quarter 2026 erratum support the category and revision distinctions; its full-year 2024 “Central banks” Notes and Definitions define the net-demand category to include other official-sector institutions. ECB June 2026 §1.1 chart 7, IMF COFER metadata and BIS CRE20.110/NSF30.31(4) support the scoped reserve and bank-rule claims. Use the existing observation records for quantities, dates and vintages in chapter body text; a revised second-quarter flow series, September spot quote, country holdings, asset-stock mix and matched return relationships still need primary-series review."
+    },
+    "nextSteps": [
+      {
+        "kind": "Prerequisite",
+        "targetArticleId": "gold-08",
+        "targetSectionId": "is-the-dollar-s-position-weakening",
+        "reason": "Explains why ECB broad-reserve and IMF FX-reserve shares answer different questions."
+      },
+      {
+        "kind": "Counterargument",
+        "targetArticleId": "gold-04",
+        "targetSectionId": "is-gold-s-value-intrinsic-or-a-social-convention",
+        "reason": "The social-pricing account limits a deterministic hedge or scarcity narrative."
+      }
+    ]
+  },
+  {
+    "id": "bitcoin-01",
+    "status": "approved",
+    "summary": {
+      "question": "What did Bitcoin's design add after the 2008 crisis?",
+      "answer": "It let participants verify issuance and transfers without a central ledger operator; dollar-priced exchanges, funds and custodians later formed around it.",
+      "takeaways": [
+        "Participants can validate issuance and transfers under chosen rules.",
+        "Confirmations lower replacement risk without a fixed finality hour.",
+        "Later exchange and custody layers require separate trust."
+      ],
+      "evidence": "Whitepaper; Bitcoin Developer Guide, “Verifying Payment.”",
+      "uncertainty": "Genesis headline does not prove full author intent; dated node, price and market counts need accepted observations."
+    },
+    "nextSteps": [
+      {
+        "kind": "Continue",
+        "targetArticleId": "bitcoin-02",
+        "targetSectionId": "solved-and-demonstrated",
+        "reason": "Test what independent verification delivers and where confirmation risk remains."
+      },
+      {
+        "kind": "Mechanism",
+        "targetArticleId": "bitcoin-09",
+        "targetSectionId": "two-different-kinds-of-control",
+        "reason": "Separate validity rules from custody and market access."
+      }
+    ]
+  },
+  {
+    "id": "bitcoin-02",
+    "status": "approved",
+    "summary": {
+      "question": "Which trust problems does Bitcoin solve for a self-custodied user?",
+      "answer": "Independent validation and key-controlled transfer reduce reliance on an account provider, while confirmation risk, access, custody choices and price risk remain.",
+      "takeaways": [
+        "Validation checks rules; a key authorizes spending under an output's conditions.",
+        "Self-custody removes an account provider's freeze power but leaves inclusion, access and coercion risks.",
+        "Payment use needs a Bitcoin-specific denominator."
+      ],
+      "evidence": "Bitcoin Developer Guide; Bitcoin Core UTXO RPC.",
+      "uncertainty": "Event amounts, global Bitcoin payment share and comparable remittance costs remain open."
+    },
+    "nextSteps": [
+      {
+        "kind": "Continue",
+        "targetArticleId": "bitcoin-03",
+        "targetSectionId": "payments-the-small-real-corner",
+        "reason": "Move from technical possibility to the narrower question of measured payment use."
+      },
+      {
+        "kind": "Mechanism",
+        "targetArticleId": "bitcoin-09",
+        "targetSectionId": "two-different-kinds-of-control",
+        "reason": "See which actors can validate, include, hold or restrict a transfer."
+      }
+    ]
+  },
+  {
+    "id": "bitcoin-03",
+    "status": "approved",
+    "summary": {
+      "question": "How can Bitcoin's uses be measured without mixing populations?",
+      "answer": "Investment, custody and some payments are observed, but surveys, exchange purchases, on-chain flows and Lightning capacity answer different questions.",
+      "takeaways": [
+        "A cryptocurrency survey is not a Bitcoin owner census.",
+        "Exchange purchases, cross-border flows and payments measure distinct channels.",
+        "Lightning public capacity does not measure spending."
+      ],
+      "evidence": "Federal Reserve 2025 SHED table 33; Chainalysis Nigeria purchase comparison; IMF Nigeria annex VII.",
+      "uncertainty": "Global Bitcoin owner/payment shares and overlapping fund, custody and company totals need same-date definitions."
+    },
+    "nextSteps": [
+      {
+        "kind": "Application",
+        "targetArticleId": "bitcoin-04",
+        "targetSectionId": "four-forms-of-adoption",
+        "reason": "Apply the population/channel distinction to public-sector adoption labels."
+      },
+      {
+        "kind": "Counterargument",
+        "targetArticleId": "bitcoin-02",
+        "targetSectionId": "solved-in-principle-not-in-practice",
+        "reason": "Compare observed use with what the payment design could enable."
+      }
+    ]
+  },
+  {
+    "id": "bitcoin-04",
+    "status": "approved",
+    "summary": {
+      "question": "What can a country mean when it says it has adopted Bitcoin?",
+      "answer": "A law on payments, a public asset holding, state-linked mining and regulated private access are different acts; none alone makes Bitcoin the national pricing unit.",
+      "takeaways": [
+        "Payment law, public holding, state-linked mining and private access are different policies.",
+        "El Salvador amended mandatory private acceptance while retaining statutory “curso legal” wording.",
+        "A seizure or complaint is not a finally forfeited reserve asset."
+      ],
+      "evidence": "El Salvador Decree 199 and IMF CR 25/58; U.S. reserve order and DOJ complaint; DHI mining announcement.",
+      "uncertainty": "Country outcomes, current holdings, sale/disposition and post-schedule CLARITY status need primary records."
+    },
+    "nextSteps": [
+      {
+        "kind": "Mechanism",
+        "targetArticleId": "bitcoin-06",
+        "targetSectionId": "what-legal-tender-actually-means",
+        "reason": "Distinguish a statutory label from acceptance, tax and pricing rules."
+      },
+      {
+        "kind": "Mechanism",
+        "targetArticleId": "bitcoin-09",
+        "targetSectionId": "two-different-kinds-of-control",
+        "reason": "Keep public ownership, custody and protocol control separate."
+      }
+    ]
+  },
+  {
+    "id": "bitcoin-05",
+    "status": "approved",
+    "summary": {
+      "question": "Who is speaking for or against a Bitcoin standard?",
+      "answer": "A named official, staff author, policy paper, executive order and bank standard have different authority and address different proposed uses.",
+      "takeaways": [
+        "Identify a speaker's role and document before treating a view as institutional policy.",
+        "Staff research, a policy paper and a binding rule carry different authority.",
+        "A reserve-order argument is narrower than a Bitcoin-standard argument."
+      ],
+      "evidence": "ECB blog byline/disclaimer; IMF policy paper; Minneapolis Fed working-paper abstract; CNB test release.",
+      "uncertainty": "Individual quotations, office dates and exact transcripts outside the reviewed core remain open."
+    },
+    "nextSteps": [
+      {
+        "kind": "Continue",
+        "targetArticleId": "bitcoin-06",
+        "targetSectionId": "what-legal-tender-actually-means",
+        "reason": "Test institutional arguments against a defined legal use."
+      },
+      {
+        "kind": "Counterargument",
+        "targetArticleId": "bitcoin-08",
+        "targetSectionId": "the-question-stated-precisely",
+        "reason": "Compare a proposed monetary standard with an ordinary reserve holding."
+      }
+    ]
+  },
+  {
+    "id": "bitcoin-06",
+    "status": "approved",
+    "summary": {
+      "question": "Does calling Bitcoin legal tender make it the unit of account?",
+      "answer": "No. Debt-discharge rules, tax denomination, private acceptance, prices and reserve authority depend on the country's own law and actual use.",
+      "takeaways": [
+        "Tender labels do not settle private acceptance, taxes or pricing.",
+        "Domestic law determines debt discharge and public reserve authority.",
+        "Bank exposure standards require local implementation checks."
+      ],
+      "evidence": "El Salvador Decree 199; Basel SCO60.",
+      "uncertainty": "Other domestic statutes, local Basel adoption and analyst-defined economic thresholds remain open."
+    },
+    "nextSteps": [
+      {
+        "kind": "Mechanism",
+        "targetArticleId": "bitcoin-07",
+        "targetSectionId": "three-things-people-mean-by-a-bitcoin-standard",
+        "reason": "Identify which monetary arrangement a legal change would create."
+      },
+      {
+        "kind": "Application",
+        "targetArticleId": "bitcoin-04",
+        "targetSectionId": "four-forms-of-adoption",
+        "reason": "Return to country cases without treating one statute as every form of adoption."
+      }
+    ]
+  },
+  {
+    "id": "bitcoin-07",
+    "status": "approved",
+    "summary": {
+      "question": "Does a fixed Bitcoin base fix the whole money supply?",
+      "answer": "No. Deposits, lending, velocity and prices depend on the banking and redemption arrangement built around the base asset.",
+      "takeaways": [
+        "Bitcoin's fixed base does not fix deposits or credit.",
+        "Monetary effects depend on conversion promises, lending, velocity and output.",
+        "A Gresham-style claim needs an enforceable ratio and an actual circulation arrangement."
+      ],
+      "evidence": "Weber's conditional model; Bank of England money-creation work.",
+      "uncertainty": "No observed Bitcoin-denominated national credit economy tests the forecast; dollar-stablecoin effects need native-contract measures."
+    },
+    "nextSteps": [
+      {
+        "kind": "Application",
+        "targetArticleId": "bitcoin-12",
+        "targetSectionId": "5-deflation-the-1930s-in-a-fixed-supply-economy-analogue-192",
+        "reason": "Apply base-versus-credit distinctions to a conditional debt-deflation channel."
+      },
+      {
+        "kind": "Counterargument",
+        "targetArticleId": "bitcoin-08",
+        "targetSectionId": "the-question-stated-precisely",
+        "reason": "Contrast a redeemable monetary regime with asset holding beside fiat."
+      }
+    ]
+  },
+  {
+    "id": "bitcoin-08",
+    "status": "approved",
+    "summary": {
+      "question": "How should gold and Bitcoin be compared as reserve assets?",
+      "answer": "By the reserve holder's law, custody, liquidity, loss horizon and mandate, with the same dates and units for performance claims.",
+      "takeaways": [
+        "Reserve comparisons require the holder's mandate, law and custody.",
+        "COFER foreign-exchange reserves and broad official reserves use different denominators.",
+        "No universal return or crisis-hedge rank follows from unmatched windows."
+      ],
+      "evidence": "IMF COFER; ECB international-role report; scoped SEC valuation window.",
+      "uncertainty": "Matched after-cost returns and reserve-stress evidence are not accepted; custody and coercion outcomes depend on arrangement."
+    },
+    "nextSteps": [
+      {
+        "kind": "Mechanism",
+        "targetArticleId": "bitcoin-07",
+        "targetSectionId": "three-things-people-mean-by-a-bitcoin-standard",
+        "reason": "Clarify reserve asset, backing and conversion promises."
+      },
+      {
+        "kind": "Mechanism",
+        "targetArticleId": "bitcoin-09",
+        "targetSectionId": "two-different-kinds-of-control",
+        "reason": "Examine who can restrict an asset held under each custody arrangement."
+      }
+    ]
+  },
+  {
+    "id": "bitcoin-09",
+    "status": "approved",
+    "summary": {
+      "question": "Who controls Bitcoin's rules, transfers and holdings?",
+      "answer": "Validators enforce their chosen rules, while miners, custodians, key holders, exchanges and law affect different steps in using the asset.",
+      "takeaways": [
+        "Validators enforce chosen validity rules; miners propose blocks and influence inclusion.",
+        "Custodians, keys, exchanges and law affect different uses of a coin.",
+        "Dormancy does not prove a key is lost."
+      ],
+      "evidence": "Bitcoin Developer Guide; Bitcoin Core UTXO RPC; SEC trust structure.",
+      "uncertainty": "Owner, pool, chip and company totals overlap or change with date; a control map is not measured censorship."
+    },
+    "nextSteps": [
+      {
+        "kind": "Application",
+        "targetArticleId": "bitcoin-11",
+        "targetSectionId": "sorting-the-defects",
+        "reason": "Turn a control map into questions about practical barriers."
+      },
+      {
+        "kind": "Counterargument",
+        "targetArticleId": "bitcoin-02",
+        "targetSectionId": "solved-and-demonstrated",
+        "reason": "Keep protocol verification visible while discussing concentrated intermediaries."
+      }
+    ]
+  },
+  {
+    "id": "bitcoin-10",
+    "status": "approved",
+    "summary": {
+      "question": "Is there one path from regulated access to a Bitcoin standard?",
+      "answer": "No. Private access, public investment, central-bank reserves, settlement and native invoicing need separate decisions and evidence.",
+      "takeaways": [
+        "Private access, public investment and central-bank reserve use need separate authority.",
+        "A forfeited-asset reserve order is not a purchase order.",
+        "A retirement-plan review order does not require Bitcoin access in every 401(k) plan.",
+        "Native invoicing is a further empirical step, not a necessary adoption ladder."
+      ],
+      "evidence": "U.S. reserve order; Executive Order 14330 §§2–3 and Labor's March 2026 proposed rule; CNB mixed-asset test release.",
+      "uncertainty": "Country rankings, future sequence, actual public inventory and actual plan offerings need separate records."
+    },
+    "nextSteps": [
+      {
+        "kind": "Application",
+        "targetArticleId": "bitcoin-04",
+        "targetSectionId": "four-forms-of-adoption",
+        "reason": "Check scenarios against legally distinct country acts."
+      },
+      {
+        "kind": "Mechanism",
+        "targetArticleId": "bitcoin-06",
+        "targetSectionId": "what-legal-tender-actually-means",
+        "reason": "See why public investment does not make Bitcoin a national pricing unit."
+      }
+    ]
+  },
+  {
+    "id": "bitcoin-11",
+    "status": "approved",
+    "summary": {
+      "question": "Which limits come from Bitcoin's design and which can change?",
+      "answer": "Fixed base issuance is a protocol constraint; payment use, price stability, miner participation, credit and custody outcomes must be measured under an actual arrangement.",
+      "takeaways": [
+        "Fixed base issuance is a protocol constraint.",
+        "Fee-funded mining security is a scenario requiring revenue and attack assumptions.",
+        "Draft BIPs are proposals, not activation deadlines."
+      ],
+      "evidence": "Bitcoin Developer Guide; BIP-360/361 headers; dated miner report.",
+      "uncertainty": "Live concentration, security-budget and local-law metrics need dated primary observations; Lightning capacity is not use."
+    },
+    "nextSteps": [
+      {
+        "kind": "Application",
+        "targetArticleId": "bitcoin-12",
+        "targetSectionId": "the-thesis",
+        "reason": "Test which barriers can transmit financial stress and which are analogies."
+      },
+      {
+        "kind": "Mechanism",
+        "targetArticleId": "bitcoin-09",
+        "targetSectionId": "two-different-kinds-of-control",
+        "reason": "Separate protocol constraints from concentrated market control."
+      }
+    ]
+  },
+  {
+    "id": "bitcoin-12",
+    "status": "approved",
+    "summary": {
+      "question": "Could familiar financial runs form around Bitcoin?",
+      "answer": "Custodians, leverage and redeemable claims can transmit run or forced-sale risks, but analogies do not prove identical national crises.",
+      "takeaways": [
+        "Redeemable custodial claims and leverage can transmit run risks.",
+        "Debt deflation depends on a specified monetary and credit regime.",
+        "Historical analogies identify channels without proving identical national outcomes."
+      ],
+      "evidence": "Weber model; historical and crypto-intermediary mechanism sources; BIP draft headers.",
+      "uncertainty": "Spillover size, protections, issuer solvency and Bitcoin-denominated macro outcomes remain unmeasured."
+    },
+    "nextSteps": [
+      {
+        "kind": "Mechanism",
+        "targetArticleId": "bitcoin-07",
+        "targetSectionId": "the-supply-system-what-a-fixed-base-does-to-an-economy",
+        "reason": "Revisit assumptions about base money, deposits and credit."
+      },
+      {
+        "kind": "Counterargument",
+        "targetArticleId": "bitcoin-11",
+        "targetSectionId": "the-pattern",
+        "reason": "Distinguish an observed risk channel from a permanent design verdict."
+      }
+    ]
+  },
+  {
+    "id": "bitcoin-13",
+    "status": "approved",
+    "summary": {
+      "question": "What does the reviewed evidence show about saving, paying and institutional trust?",
+      "answer": "Bitcoin addresses some issuer and intermediary trust problems; broad native denomination and a reliable inflation or crisis hedge are not established here.",
+      "takeaways": [
+        "Auditable issuance addresses one issuer-trust problem.",
+        "Investment and settlement use does not establish native national denomination.",
+        "A reliable inflation or crisis hedge needs matched, user-relevant comparisons."
+      ],
+      "evidence": "Bitcoin Developer Guide; scoped SEC valuation; IMF staff correlation research.",
+      "uncertainty": "Native wages/prices/debts, end-to-end payments, after-cost returns, state holdings and Zcash-specific evidence remain open."
+    },
+    "nextSteps": [
+      {
+        "kind": "Mechanism",
+        "targetArticleId": "bitcoin-07",
+        "targetSectionId": "three-things-people-mean-by-a-bitcoin-standard",
+        "reason": "Split “solution” into store, payment and denomination arrangements."
+      },
+      {
+        "kind": "Counterargument",
+        "targetArticleId": "bitcoin-11",
+        "targetSectionId": "the-pattern",
+        "reason": "Keep changeable outcomes and protocol constraints separate in the verdict."
+      }
+    ]
+  }
+]

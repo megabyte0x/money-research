@@ -1,0 +1,637 @@
+[
+  {
+    "id": "E04",
+    "assertion": "The IMF dollar share and ECB gold share use different reserve denominators and periods and must not be combined as complements.",
+    "assertionType": "fact",
+    "scope": "IMF COFER world foreign-exchange aggregate, 2026 Q1; ECB broader official-reserve measure, end-2025",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "imf-cofer-brief-2026-q1",
+        "locator": "World Official Foreign Currency Reserves Largely Unchanged in the First Quarter of 2026, paragraph beginning 'The share of US dollar holdings'"
+      },
+      {
+        "sourceId": "ecb-international-role-euro-2026",
+        "locator": "Section 1.1, paragraphs immediately before Chart 7 and Chart 7 panel a, current-gold-price column"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [],
+    "views": [
+      "history"
+    ],
+    "reviewedBy": "editorial source ledger",
+    "reviewedAt": "2026-09-14",
+    "revision": 1
+  },
+  {
+    "id": "E10",
+    "assertion": "The World Gold Council USD series gives a 29 January 2026 record of $5,405 per troy ounce, $4,027 at July month-end and $4,563 at August month-end; none is an intraday spot quote or a continuous price floor.",
+    "assertionType": "fact",
+    "scope": "World Gold Council USD series, 2026 record date and July/August month-end observations",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "wgc-gold-commentary-2026-07",
+        "locator": "Table 1, USD column, record high price and date"
+      },
+      {
+        "sourceId": "wgc-gold-commentary-2026-07",
+        "locator": "Table 1, USD column, July month-end price"
+      },
+      {
+        "sourceId": "wgc-gold-commentary-2026-08",
+        "locator": "Table 1, USD column, August month-end price"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [],
+    "views": [
+      "history"
+    ],
+    "reviewedBy": "editorial source ledger",
+    "reviewedAt": "2026-09-14",
+    "revision": 1
+  },
+  {
+    "id": "E29-wgc-2025-categories",
+    "assertion": "WGC’s 2025 gold demand excluding OTC and other, total demand including it, jewellery consumption, jewellery fabrication and investment demand are distinct estimated measures; investment demand exceeded both jewellery measures in that report vintage.",
+    "assertionType": "estimate",
+    "scope": "World Gold Council/Metals Focus global demand estimates, calendar 2025, tonnes",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "wgc-gold-demand-fy2025",
+        "locator": "Executive summary, Table 1, 2025 Gold Demand row"
+      },
+      {
+        "sourceId": "wgc-gold-demand-fy2025",
+        "locator": "Executive summary, Table 1, 2025 Total Demand row"
+      },
+      {
+        "sourceId": "wgc-gold-demand-fy2025",
+        "locator": "Executive summary, Table 1, 2025 Jewellery Consumption row"
+      },
+      {
+        "sourceId": "wgc-gold-demand-fy2025",
+        "locator": "Executive summary, Table 1, 2025 Jewellery Fabrication row"
+      },
+      {
+        "sourceId": "wgc-gold-demand-fy2025",
+        "locator": "Executive summary, Table 1, 2025 Investment row, compared with Jewellery Consumption and Jewellery Fabrication rows"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "gold-02",
+      "gold-09",
+      "gold-12"
+    ],
+    "views": [],
+    "reviewedBy": "package 02 and coordinator primary-source review",
+    "reviewedAt": "2026-09-15",
+    "revision": 2
+  },
+  {
+    "id": "E29-wgc-q1-revision",
+    "assertion": "WGC/Metals Focus revised its Q1 2026 “Central banks” sector net-demand estimate from 244 tonnes to 57 tonnes and reclassified the 187-tonne difference to OTC and other demand. The WGC sector definition includes central banks and other official-sector institutions, not central banks alone.",
+    "assertionType": "estimate",
+    "scope": "WGC/Metals Focus global official-sector net-demand estimate for 2026 Q1, July 2026 erratum vintage; central banks plus other official-sector institutions under WGC category definitions",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "wgc-gold-demand-q1-2026",
+        "locator": "Erratum notice, issued July 2026, paragraph beginning 'Based on newly available market data'"
+      },
+      {
+        "sourceId": "wgc-gdt-fy2024-definitions",
+        "locator": "Notes and Definitions, Central banks definition: net purchases by central banks and other official-sector institutions, including supranational entities"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "gold-09",
+      "gold-12"
+    ],
+    "views": [],
+    "reviewedBy": "package 02 and coordinator primary-source review",
+    "reviewedAt": "2026-09-15",
+    "revision": 2
+  },
+  {
+    "id": "E29-black-scholes-date",
+    "assertion": "The Black–Scholes paper appeared in the Journal of Political Economy on 1 May 1973, after the April opening of listed Cboe options.",
+    "assertionType": "fact",
+    "scope": "Original journal publication record and the April/May 1973 chronology",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "jpe-black-scholes-1973",
+        "locator": "Journal of Political Economy, volume 81, number 3, publication date 1 May 1973"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "after-01",
+      "after-08",
+      "after-11"
+    ],
+    "views": [
+      "timeline"
+    ],
+    "reviewedBy": "package 05 and coordinator primary-source review",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "E26-genius-enacted-scope",
+    "assertion": "The enacted GENIUS Act defines a specified payment-stablecoin and permitted-issuer category; it states at least one-to-one identifiable reserves from listed asset classes, monthly reserve-report examination, a conditional annual financial-statement audit for certain issuers above $50 billion, no federal deposit or share insurance, and a conditional general effective-date rule. The statute alone does not establish a named issuer's approval or the present implementation status.",
+    "assertionType": "fact",
+    "scope": "U.S. Public Law 119-27 enacted text, approved 18 July 2025; statutory provisions only, not current rulemaking or named-issuer compliance",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "us-genius-public-law-119-27",
+        "locator": "§2(22)–(23), payment stablecoin and permitted issuer definitions"
+      },
+      {
+        "sourceId": "us-genius-public-law-119-27",
+        "locator": "§3(a), issuer limitation; §4(a)(1)(A)–(C), reserves and redemption-policy provisions"
+      },
+      {
+        "sourceId": "us-genius-public-law-119-27",
+        "locator": "§4(a)(3), monthly reserve-report examination; §4(a)(10), conditional annual audited financial statement"
+      },
+      {
+        "sourceId": "us-genius-public-law-119-27",
+        "locator": "§7(e), misrepresentation of insured status; §20, conditional general effective date"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "bitcoin-07",
+      "bitcoin-10",
+      "bitcoin-11",
+      "bitcoin-12",
+      "bitcoin-15"
+    ],
+    "views": [
+      "glossary"
+    ],
+    "reviewedBy": "package 04 and coordinator primary-statute review",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "C09-monzo-fps-payment",
+    "assertion": "A UK-resident holder of a Monzo Bank Limited personal Current Account can approve an app bank transfer with listed credentials and recipient details, subject to available balance and Monzo checks. Monzo identifies Faster Payments as a bank-transfer type and says it usually goes through promptly but can take longer; this describes approval and provider processing, not interbank final settlement.",
+    "assertionType": "fact",
+    "scope": "Monzo Bank Limited UK personal Current Account, version 2.11 dated 18 August 2026; household outgoing Faster Payment, not card payment or universal bank-deposit behavior",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "09-monzo-current-terms-2026-08",
+        "locator": "Current Account Terms & Conditions v2.11, “These terms and using your Monzo Current Account”; “Making payments” → available balance / “When we won’t make a payment”; “Payment types” → “Bank transfer” → recipient information, ways to approve, withdrawing approval, how long the payment takes"
+      },
+      {
+        "sourceId": "09-payuk-fps-how",
+        "locator": "How Faster Payments work, paragraphs beginning “Where both the sending and receiving bank...” and “Due to their real-time nature...”"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [],
+    "views": [
+      "comparison"
+    ],
+    "reviewedBy": "package 09 and coordinator primary-source review",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "C09-btc-mainchain-payment",
+    "assertion": "A holder of spending keys can construct and broadcast a valid Bitcoin main-chain transaction spending an unspent output to a recipient output. Broadcast alone does not assure payment; inclusion in a validated block and subsequent confirmations raise confidence against replacement without giving absolute finality.",
+    "assertionType": "fact",
+    "scope": "Self-custodied Bitcoin main-chain transfer by a household key holder; authorization, inclusion and confirmation only, with no particular wallet, fee, legal recourse or cash-out promise",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "09-bitcoin-dev-wallets",
+        "locator": "Wallets, “Introductions” and “Wallet Programs”, paragraphs on private-key spending, signing and network broadcast"
+      },
+      {
+        "sourceId": "09-bitcoin-dev-transactions",
+        "locator": "Transactions, “The Parts Of A Transaction” and “Unlocking A P2PKH Output For Spending”, UTXO reference, signature and broadcast paragraphs; P2PKH as an example rather than every output type"
+      },
+      {
+        "sourceId": "09-bitcoin-dev-payment-processing",
+        "locator": "Payment Processing, “Verifying Payment”, paragraphs beginning “broadcasting a transaction...” through “higher confirmation scores...”"
+      },
+      {
+        "sourceId": "09-bitcoin-core-gettransaction-29",
+        "locator": "Bitcoin Core 29.0.0 gettransaction RPC result, confirmations, negative-conflict count and blockhash fields"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [],
+    "views": [
+      "comparison"
+    ],
+    "reviewedBy": "package 09 and coordinator primary-source review",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "E31-official-gold-window-1971",
+    "assertion": "On 15 August 1971 the United States announced suspension of dollar conversion into gold or other reserve assets, with the address describing conditional exceptions; the foreign-official Bretton Woods gold window was closed. Later exchange-rate realignment and the IMF gold-rule amendment were separate changes.",
+    "assertionType": "fact",
+    "scope": "U.S. August 1971 policy announcement and foreign-official Bretton Woods conversion only; not a claim that all domestic money became paper or that every gold-linked rule ended instantly",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "nixon-new-economic-policy-1971-08-15",
+        "locator": "15 August 1971 address, paragraph beginning “I have directed Secretary Connally to suspend temporarily the convertibility...” including stated exception conditions"
+      },
+      {
+        "sourceId": "fed-history-gold-convertibility-ends",
+        "locator": "“Nixon Ends Convertibility of U.S. Dollars to Gold”, paragraphs beginning “On the evening of August 15, 1971” and “The first order was for the gold window to be closed”; following Smithsonian-agreement sentence"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "gold-07",
+      "gold-08",
+      "after-01",
+      "after-11"
+    ],
+    "views": [
+      "history",
+      "timeline"
+    ],
+    "reviewedBy": "package 02/03 chronology packet and coordinator original-address/Federal Reserve review",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "C09-boe-note-retail-acceptance",
+    "assertion": "In England and Wales, current Bank of England notes count as legal tender, but a shop owner may choose whether to accept a note for a retail purchase. Legal-tender status does not require merchant acceptance.",
+    "assertionType": "fact",
+    "scope": "Bank of England legal-tender explainer updated 26 February 2025; current Bank of England notes in England and Wales, household offering a note to a shop; no claim about all UK notes, coins, debt contracts, or completed payment",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "09-boe-legal-tender-2025-02",
+        "locator": "What does “legal tender” mean?, shop-owner acceptance paragraphs; So, what counts as legal tender?, England and Wales Bank of England notes paragraph"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [],
+    "views": [
+      "comparison"
+    ],
+    "reviewedBy": "package 09 and coordinator Bank of England primary-source review",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "C09-circle-usdc-type-b-redemption",
+    "assertion": "Circle’s non-EEA USDC terms classify a holder without a Circle Mint account as User Type B and do not permit direct redemption with Circle unless the holder opens an eligible Mint account. The July 2026 Mint agreement states that Mint currently serves institutions in supported jurisdictions. Circle describes $1 as the token’s intended value and issuer redemption as conditional; these contracts do not prove a household wallet holder’s market cash-out value or the reserves’ independent sufficiency.",
+    "assertionType": "fact",
+    "scope": "Circle Internet Financial, LLC issuer contract text, US non-EEA household without Mint account, native Ethereum USDC listing; terms dated 12 December 2025 and Mint agreement dated 24 July 2026, accessed 15 September 2026",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "09-circle-usdc-terms-2025-12",
+        "locator": "Preamble, User Type A/B and non-EEA scope; §2, User Type B direct-redemption paragraph and eligible-holder assignment; §2, intended $1 value and conditional issuer redemption paragraph"
+      },
+      {
+        "sourceId": "09-circle-mint-agreement-2026-07",
+        "locator": "§1, Eligibility; Limitations, paragraph stating Circle Mint and services are currently available only to institutions in supported jurisdictions"
+      },
+      {
+        "sourceId": "09-circle-ethereum-usdc",
+        "locator": "USDC on Ethereum listing, ERC-20 token standard section"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [],
+    "views": [
+      "comparison"
+    ],
+    "reviewedBy": "package 09 and coordinator issuer-primary-contract review",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "E29-uk-gold-auctions-completed",
+    "assertion": "HM Treasury and the Bank of England report approximately 395 tonnes of UK government gold sold at 17 auctions from July 1999 through March 2002; Treasury’s 2019 FOI response gives a weighted average price of $274.92 per ounce. The Bank of England describes around 715 tonnes held at the May 1999 announcement, so the completed sale was roughly half that starting government stock. A 365-tonne proposal was a plan, not completed sales.",
+    "assertionType": "fact",
+    "scope": "UK government gold-reserve auction programme, completed 1999–2002, reported in official Treasury/Bank of England disclosures; no present performance or lowest-real-price claim",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "hmt-uk-gold-sale-disclosure-2010",
+        "locator": "Details, Disclosure paragraph beginning “A total of approximately 395 tonnes...”"
+      },
+      {
+        "sourceId": "hmt-uk-gold-foi-2019",
+        "locator": "FOI2019/01985, p. 1, paragraph beginning “395 tonnes of the UK Government’s gold reserves...”"
+      },
+      {
+        "sourceId": "boe-uk-gold-auctions-2003",
+        "locator": "Quarterly Bulletin Summer 2003, Introduction, first paragraph and note 3, initial stock, auction count/period, tonnes and average price"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "after-05"
+    ],
+    "views": [
+      "timeline"
+    ],
+    "reviewedBy": "package 03 and coordinator HM Treasury/Bank of England primary-source review",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "E29-fry-inflation-1994",
+    "assertion": "IMF Country Report 01/07 reports that monthly inflation in the Federal Republic of Yugoslavia reached more than 300 billion percent by January 1994; its cited figure is not a global rank or a verified 34-hour doubling interval.",
+    "assertionType": "fact",
+    "scope": "Federal Republic of Yugoslavia January 1994 monthly inflation as described by IMF staff in Country Report 01/07; historical report, no claim about successor states or cross-country ranking",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "imf-fry-cr-2001-007",
+        "locator": "Country Report 01/07, para. 7 and Figure 1 note 2, January 1994 monthly inflation"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "after-04"
+    ],
+    "views": [
+      "timeline"
+    ],
+    "reviewedBy": "package 03/05 primary IMF report review and coordinator official search-record cross-check",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "E29-401k-eo-14330-scope",
+    "assertion": "Executive Order 14330 makes access to alternative-asset funds conditional on a plan fiduciary’s appropriate determination and directs Labor/SEC review; it does not itself require every 401(k) plan to offer Bitcoin. Labor’s 31 March 2026 Federal Register item is a proposed rule, not final implementation.",
+    "assertionType": "fact",
+    "scope": "U.S. Executive Order 14330 signed 7 August 2025, §§2–3, and Department of Labor proposed rule published 31 March 2026; no claim about current individual plan offerings or final rule status after that proposal",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "us-eo-14330-2025",
+        "locator": "Executive Order 14330, §2 policy/fiduciary condition; §3(a)(iii) digital-asset vehicles and §3(b)–(e) Labor/SEC review directives"
+      },
+      {
+        "sourceId": "us-dol-alternative-assets-proposal-2026",
+        "locator": "Federal Register 91 FR 16088, 31 March 2026, Proposed Rules header and discussion of E.O. 14330/fiduciary condition in pp. 16092–16093"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "bitcoin-03",
+      "bitcoin-10"
+    ],
+    "views": [
+      "timeline"
+    ],
+    "reviewedBy": "package 04/05 and coordinator original EO/Federal Register review",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "E31-triffin-conditional-bretton-woods",
+    "assertion": "Under Bretton Woods, relying on foreign official dollar claims for additional reserves could provide international liquidity while raising gold-conversion confidence questions as those claims grew. Reducing US balance-of-payments deficits without alternative reserve creation could constrain dollar-reserve growth. This is a conditional diagnosis, not a required trade-deficit law, measured claims/gold ratio, or inevitable run.",
+    "assertionType": "interpretation",
+    "scope": "Bretton Woods foreign-official dollar reserve and US official gold-conversion arrangements, as discussed by a 1964 U.S. policy task force and IMF institutional history; no present currency or Bitcoin analogy",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "us-frus-money-task-force-1964",
+        "locator": "Document 18, “Improvement of the International Monetary System,” printed pp. 44–47, official dollar liabilities/conversion, reserve-growth pressure and proposed multilateral alternatives"
+      },
+      {
+        "sourceId": "imf-financial-organization-ch3-2001",
+        "locator": "Chapter III, printed p. 91, Bretton Woods reserve-currency/convertibility dilemma"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "gold-07"
+    ],
+    "views": [
+      "glossary"
+    ],
+    "reviewedBy": "package 02 and coordinator U.S. task-force primary-source review; IMF locator in editorial ledger",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "E29-russia-cpi-1992-dec-dec",
+    "assertion": "Rosstat’s overall consumer-price index for Russia in December 1992 is 2608.8 with December 1991 = 100, corresponding to a 2,508.8% December-to-December price increase; this is not the inflation rate on the 2 January 1992 liberalisation date or a calendar-average rate.",
+    "assertionType": "fact",
+    "scope": "Russian Federation overall consumer-price index, December 1991 to December 1992, official historical table; no sole-cause attribution to price liberalisation or saver-level return estimate",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "rosstat-russia-cpi-1991-2011",
+        "locator": "Bottom row “December versus December of previous year” / “Декабрь в % к декабрю предыдущего года”, 1992 column 2608.8 (previous December = 100)"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "after-04"
+    ],
+    "views": [
+      "reader",
+      "timeline"
+    ],
+    "reviewedBy": "package 03 primary IMF/Rosstat editorial review and coordinator Rosstat official search-record cross-check",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "E31-proof-reserves-report-scope",
+    "assertion": "The PCAOB investor-advocate staff advises that proof-of-reserve reports commonly purport to verify selected assets at a point in time under their stated procedures and may omit liabilities, holder rights or temporary borrowing; such reports are not automatically financial-statement audits or assurance of future solvency.",
+    "assertionType": "fact",
+    "scope": "PCAOB Office of the Investor Advocate staff advisory dated 8 March 2023 about crypto-entity proof-of-reserve reports; a staff view, not a PCAOB Board rule, not a conclusion about a named current issuer report",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "pcaob-por-investor-advisory-2023",
+        "locator": "Investor Advisory, paragraphs beginning “This document represents...” and “As a general matter, these PoR Reports...” through “For agreed-upon procedures...”"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "bitcoin-09",
+      "bitcoin-12"
+    ],
+    "views": [
+      "reader",
+      "synthesis"
+    ],
+    "reviewedBy": "package 04 volume editor and coordinator PCAOB primary staff-advisory review",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "E31-uk-payment-instruction-settlement",
+    "assertion": "In the Bank of England’s UK payment-system example, a customer payment instruction and the final interbank settlement of provider obligations are separate steps; Faster Payments customer transactions generate net obligations settled through RTGS cycles.",
+    "assertionType": "fact",
+    "scope": "UK payment-system architecture described by the Bank of England, with Faster Payments net settlement; not a claim that one Monzo transfer reached a beneficiary or that all jurisdictions use this architecture",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "boe-payment-settlement-uk",
+        "locator": "“What is a payment system?”; “Why is a settlement agent necessary?”; “Net settlement” and “Faster Payments Service” paragraphs"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "after-08"
+    ],
+    "views": [
+      "reader",
+      "synthesis",
+      "mechanics"
+    ],
+    "reviewedBy": "package 01 synthesis evidence review and coordinator Bank of England official source-page check",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "E31-us-1792-smaller-denominations",
+    "assertion": "Section 9 of the 1792 U.S. Coinage Act specified gold coin denominations of $10, $5 and $2.50 alongside lower-denomination silver fractions and copper cents/half-cents, permitting a narrower-coin payment design; the act alone does not measure how often those coins circulated.",
+    "assertionType": "interpretation",
+    "scope": "U.S. 1792 statutory coin denomination design only, not a claim about every gold/silver/copper monetary system, observed transaction counts or all eras",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "usmint-coinage-act-1792",
+        "locator": "SEC. 9, Eagles/Half eagles/Quarter Eagles; silver Quarter Dollars/Dismes/Half Dismes; copper Cents/Half Cents denomination list"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "gold-05"
+    ],
+    "views": [
+      "reader",
+      "synthesis"
+    ],
+    "reviewedBy": "package 02 Gold editor and coordinator U.S. Mint official Act transcription review",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "E31-bitcoin-node-permitted-subsidy",
+    "assertion": "A Bitcoin Core fully validating node independently checks blocks under its chosen consensus rules, including the permitted block subsidy and finite-issuance limit; this validation rule does not measure lost keys, spendable float or every subsidy actually claimed.",
+    "assertionType": "fact",
+    "scope": "Bitcoin Core full validation and project documentation accessed 15 September 2026; not a claim that all wallets fully validate, all users follow the same rule set, or current liquid/owned supply equals permitted issuance",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "bitcoin-dev-block-chain-guide",
+        "locator": "“Introduction” paragraph beginning “Each full node...”; “Transaction Data” first coinbase/block-reward paragraphs; “Consensus Rule Changes” first paragraphs"
+      },
+      {
+        "sourceId": "bitcoin-core-validation-feature",
+        "locator": "“Bitcoin Core Validation” opening paragraphs on checking each block and preventing blocks that violate the 21-million rule; “How Validation Protects Your Bitcoins”, chain-hijacking row"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "bitcoin-01",
+      "bitcoin-07"
+    ],
+    "views": [
+      "reader",
+      "synthesis"
+    ],
+    "reviewedBy": "package 04 Bitcoin editor and coordinator primary Bitcoin project documentation review",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "E31-imf-1978-gold-par-value-scope",
+    "assertion": "The IMF’s Second Amendment, effective in April 1978, removed gold as the common denominator of the Fund par-value system and the basis of SDR valuation; the current Articles still prohibit gold as the common denominator for Fund par values. This Fund rule does not itself ban domestic gold-linked contracts or gold holdings.",
+    "assertionType": "fact",
+    "scope": "IMF Articles/Second Amendment for Fund par-value and SDR purposes; not a claim that all domestic monetary obligations or private gold use ended in 1978",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "imf-pam45-gold-second-amendment",
+        "locator": "Chapter II “Gold in the Articles of Agreement,” paragraph beginning “Before the Second Amendment...” and first two bullets on common denominator/SDR and official gold price"
+      },
+      {
+        "sourceId": "imf-articles-current-schedule-c",
+        "locator": "Current Articles of Agreement, Schedule C: Par Values, paragraph 1, “The common denominator shall not be gold or a currency”"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "gold-08",
+      "after-01"
+    ],
+    "views": [
+      "reader",
+      "synthesis",
+      "history"
+    ],
+    "reviewedBy": "packages 02/03 IMF scope editorial review and coordinator official IMF pamphlet/search-record and current Articles review",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "E31-argentina-esf-2025-agreement-draw",
+    "assertion": "Treasury reports an 18 October 2025 Exchange Stabilization Agreement with Argentina’s central bank for up to $20 billion, an October 2025 executed $2.5 billion draw against pesos, and full repayment/closure in December 2025; the agreement ceiling was not the amount disbursed.",
+    "assertionType": "fact",
+    "scope": "U.S. Treasury ESF–BCRA October–December 2025 agreement and transaction in Treasury FY2025 Agency Financial Report note on subsequent events; no inference about other bilateral funding, market effect or Argentina reserve adequacy",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "ustreasury-fy2025-afr-argentina",
+        "locator": "FY2025 Agency Financial Report, Financial Section p. 136 (PDF page 136), “Exchange Stabilization Agreements” paragraph beginning “On October 18, 2025...”"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "after-09"
+    ],
+    "views": [
+      "reader",
+      "timeline"
+    ],
+    "reviewedBy": "package 05 timeline primary-source review and coordinator U.S. Treasury FY2025 AFR exact-note check",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  },
+  {
+    "id": "C09-boe-note-retail-merchant-discretion",
+    "assertion": "The Bank of England explains that a shop owner in England or Wales may choose whether to accept current Bank of England notes for a purchase; legal-tender status does not require a retailer to accept them.",
+    "assertionType": "fact",
+    "scope": "Merchant retail acceptance choice for current Bank of England notes offered in England or Wales, under Bank of England explainer updated 26 February 2025; not completed-payment, debt-discharge, coin or other-jurisdiction rule",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "09-boe-legal-tender-2025-02",
+        "locator": "What does “legal tender” mean?, shop-owner acceptance paragraphs; So, what counts as legal tender?, England and Wales Bank of England notes paragraph"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "after-08"
+    ],
+    "views": [
+      "comparison"
+    ],
+    "reviewedBy": "coordinator Bank of England official explainer review",
+    "reviewedAt": "2026-09-15",
+    "revision": 1
+  }
+]

@@ -15,9 +15,20 @@ export function searchUrl(query, volume = '') {
   return '/#/search' + (params.size ? '?' + params.toString() : '');
 }
 
-function phrases(query) {
-  const q = query.trim().toLowerCase();
-  return q === 'qe' || q === 'quantitative easing' ? ['quantitative easing', 'qe'] : [q];
+// Expand only exact, reviewed vocabulary. Substring expansion (for example
+// treating every occurrence of "pow" as proof of work) produces false hits.
+const ALIAS_GROUPS = [
+  ['quantitative easing', 'qe'],
+  ['central bank digital currency', 'cbdc'],
+  ['unspent transaction output', 'utxo'],
+  ['proof of work', 'pow'],
+  ['bitcoin improvement proposal', 'bip'],
+  ['federal reserve', 'the fed'],
+];
+
+export function searchPhrases(query) {
+  const q = query.trim().toLowerCase().replace(/\s+/g, ' ');
+  return ALIAS_GROUPS.find(group => group.includes(q)) || [q];
 }
 
 function firstMatch(text, terms) {
@@ -26,7 +37,7 @@ function firstMatch(text, terms) {
   for (const term of terms) {
     let from = 0, at;
     while ((at = lower.indexOf(term, from)) >= 0) {
-      if (term !== 'qe' || (!/[a-z]/.test(lower[at - 1] || '') && !/[a-z]/.test(lower[at + 2] || ''))) {
+      if (term.length > 3 || (!/[a-z]/.test(lower[at - 1] || '') && !/[a-z]/.test(lower[at + term.length] || ''))) {
         if (!best || at < best.index) best = { index: at, length: term.length };
         break;
       }
@@ -48,7 +59,7 @@ function blockText(block) {
 export function searchDocuments(manifest, blocks, query, volume = '') {
   const q = query.trim();
   if (q.length < 2) return [];
-  const terms = phrases(q);
+  const terms = searchPhrases(q);
   const results = [];
   const seenGlossaryTerms = new Set();
   for (const article of manifest) {

@@ -49,7 +49,7 @@
   },
   {
     "id": "evt-gold-0013",
-    "key": "gold|c. 550 BCE|Croesus issues pure gold and silver Croeseids at ~13.3:1"
+    "key": "gold|c. 550 BCE|Croesus issues separate gold and silver Croeseids; their precise legal exchange rate remains under review."
   },
   {
     "id": "evt-gold-0014",
@@ -73,7 +73,7 @@
   },
   {
     "id": "evt-gold-0019",
-    "key": "gold|331–323 BCE|Alexander coins Persian treasuries (~180,000 talents)"
+    "key": "gold|331–323 BCE|Alexander captures Persian treasuries and strikes substantial gold and silver coinage; ancient talent totals are uncertain."
   },
   {
     "id": "evt-gold-0020",
@@ -101,7 +101,7 @@
   },
   {
     "id": "evt-gold-0026",
-    "key": "gold|3rd century|Denarius debased from ~95% to <5% silver"
+    "key": "gold|3rd century|Roman silver coinage loses fineness; later low-silver issues are principally antoniniani, a denomination distinct from the denarius. A single denarius-fineness series from ~95% to <5% is not established here."
   },
   {
     "id": "evt-gold-0027",
@@ -137,7 +137,7 @@
   },
   {
     "id": "evt-gold-0035",
-    "key": "gold|1324|Mansa Musa's hajj depresses Cairo gold prices"
+    "key": "gold|1324|Mansa Musa's hajj brings substantial Mali gold through Cairo; medieval accounts describe a change in its local value, but the tonnage and duration of any price effect are uncertain."
   },
   {
     "id": "evt-gold-0036",
@@ -265,7 +265,7 @@
   },
   {
     "id": "evt-gold-0067",
-    "key": "gold|1960|Triffin dilemma articulated"
+    "key": "gold|1960|Triffin analyzes a conditional reserve-liquidity and dollar–gold conversion tension within Bretton Woods."
   },
   {
     "id": "evt-gold-0068",
@@ -309,7 +309,7 @@
   },
   {
     "id": "evt-gold-0078",
-    "key": "gold|1999–2002|UK auctions about half its gold reserves"
+    "key": "gold|Jul 1999–Mar 2002|HM Treasury sells about 395 tonnes of UK gold at 17 Bank of England auctions, roughly half the initial ~715-tonne government stock."
   },
   {
     "id": "evt-gold-0079",
@@ -317,7 +317,7 @@
   },
   {
     "id": "evt-gold-0080",
-    "key": "gold|2008–2011|Financial crisis; gold to ~$1,900 (Sept 2011)"
+    "key": "gold|5–6 Sep 2011|LBMA Gold Price PM reaches $1,895/oz after the crisis-era rise. This price convention differs from the $1,921.2 intraday high reported for 6 September; neither figure by itself proves a reliable hedge in every stress. WGC 2011 report; WGC 2020 retrospective"
   },
   {
     "id": "evt-gold-0081",
@@ -329,7 +329,7 @@
   },
   {
     "id": "evt-gold-0083",
-    "key": "gold|2022–24|Central banks buy >1,000 t/year for three years"
+    "key": "gold|2022–24|WGC's central-bank-and-other-official-sector net gold demand exceeds 1,000 tonnes in each year."
   },
   {
     "id": "evt-gold-0084",
@@ -361,7 +361,7 @@
   },
   {
     "id": "evt-after-0001",
-    "key": "after|Feb 1971|Nasdaq opens; Intel 4004 ships (Nov)"
+    "key": "after|8 Feb 1971|The NASD Automated Quotations system (Nasdaq) launches as an electronic market-quotation network. Nasdaq history"
   },
   {
     "id": "evt-after-0002",
@@ -369,7 +369,7 @@
   },
   {
     "id": "evt-after-0003",
-    "key": "after|Dec 1971|Smithsonian Agreement: dollar to $38/oz, bands ±2.25%"
+    "key": "after|Dec 1971|Smithsonian Agreement realigns the dollar's official gold price to $38/oz and adopts ±2.25% currency bands."
   },
   {
     "id": "evt-after-0004",
@@ -377,7 +377,7 @@
   },
   {
     "id": "evt-after-0005",
-    "key": "after|Apr–May 1972|European \"snake\"; CME launches currency futures"
+    "key": "after|24 Apr 1972|European central banks introduce the “snake in the tunnel” intervention mechanism, narrowing participating currencies' exchange-rate bands. ECB archives, CoG 3.2"
   },
   {
     "id": "evt-after-0006",
@@ -385,11 +385,11 @@
   },
   {
     "id": "evt-after-0007",
-    "key": "after|Apr 1973|CBOE opens; Black–Scholes published; SWIFT founded (May)"
+    "key": "after|26 Apr 1973|Chicago Board Options Exchange opens for listed stock-options trading. Cboe history"
   },
   {
     "id": "evt-after-0008",
-    "key": "after|Oct 1973|Yom Kippur War; OPEC embargo; oil quadruples"
+    "key": "after|Oct 1973|The Yom Kippur War and an Arab-oil-exporter embargo begin an oil-supply shock."
   },
   {
     "id": "evt-after-0009",
@@ -401,11 +401,11 @@
   },
   {
     "id": "evt-after-0011",
-    "key": "after|Dec 1974|Basel Committee created; US private gold legal again (31 Dec)"
+    "key": "after|Dec 1974|G10 central-bank governors create the Committee on Banking Regulations and Supervisory Practices, later called the Basel Committee, after the Herstatt and Franklin National failures. BIS history"
   },
   {
     "id": "evt-after-0012",
-    "key": "after|1975|UK inflation 24%; Angola, Mozambique, Suriname independent"
+    "key": "after|1975|The UK's Retail Prices Index long-run series records 24.2% annual inflation. ONS series CDSI"
   },
   {
     "id": "evt-after-0013",
@@ -413,11 +413,11 @@
   },
   {
     "id": "evt-after-0014",
-    "key": "after|Jan 1976|Jamaica Accords (in force Apr 1978)"
+    "key": "after|Jan 1976|IMF members agree on the Jamaica reforms; the Second Amendment takes effect in April 1978."
   },
   {
     "id": "evt-after-0015",
-    "key": "after|1976|Britain takes IMF loan; Visa named"
+    "key": "after|May 1976|The UK draws SDR 700 million under its December 1975 IMF stand-by arrangement. IMF Annual Report 1976"
   },
   {
     "id": "evt-after-0016",
@@ -445,11 +445,11 @@
   },
   {
     "id": "evt-after-0022",
-    "key": "after|1980|Zimbabwe independent; Iran–Iraq War begins (Sep); US deregulation act"
+    "key": "after|18 Apr 1980|Zimbabwe becomes independent. UN special committee report"
   },
   {
     "id": "evt-after-0023",
-    "key": "after|1981|Reagan tax cuts; first interest-rate swap (IBM–World Bank); fed funds ~20%"
+    "key": "after|13 Aug 1981|Reagan signs the Economic Recovery Tax Act, Public Law 97-34. Original statute"
   },
   {
     "id": "evt-after-0024",
@@ -461,7 +461,7 @@
   },
   {
     "id": "evt-after-0026",
-    "key": "after|Oct 1983|Hong Kong dollar currency board"
+    "key": "after|17 Oct 1983|Hong Kong introduces its linked exchange-rate system, fixing the Hong Kong dollar at HK$7.80 per US$1. HKMA history"
   },
   {
     "id": "evt-after-0027",
@@ -469,7 +469,7 @@
   },
   {
     "id": "evt-after-0028",
-    "key": "after|1986|Oil collapses under $10; UK Big Bang; Single European Act"
+    "key": "after|Jul 1986|EIA's U.S. crude-oil first-purchase monthly average falls to $9.25 per barrel amid the oil-price collapse. EIA historical series"
   },
   {
     "id": "evt-after-0029",
@@ -485,11 +485,11 @@
   },
   {
     "id": "evt-after-0032",
-    "key": "after|Mar 1989|Brady Plan; Delors Report (Apr); Washington Consensus"
+    "key": "after|Mar 1989|U.S. Treasury Secretary Nicholas Brady announces a debt-reduction approach for heavily indebted countries; actual Brady-bond exchanges follow later. IMF history"
   },
   {
     "id": "evt-after-0033",
-    "key": "after|Nov 1989|Berlin Wall opens; NZ Reserve Bank Act (Dec)"
+    "key": "after|9 Nov 1989|East German border crossings open to West Berlin after the announcement that evening. German federal chronology"
   },
   {
     "id": "evt-after-0034",
@@ -501,7 +501,7 @@
   },
   {
     "id": "evt-after-0036",
-    "key": "after|Jul–Oct 1990|German monetary union 1:1; reunification; Namibia independent (Mar)"
+    "key": "after|1 Jul 1990|The Deutsche Mark becomes legal tender in East Germany. Recurring wages, pensions and rents convert 1:1; cash and deposits convert 1:1 only within age-based caps, then 2:1. German government chronology"
   },
   {
     "id": "evt-after-0037",
@@ -509,15 +509,15 @@
   },
   {
     "id": "evt-after-0038",
-    "key": "after|Apr 1991|Argentina Convertibility Law (peso = dollar)"
+    "key": "after|1 Apr 1991|Argentina's Convertibility Law takes effect at 10,000 australes per U.S. dollar; the peso does not replace the austral until 1 January 1992. Argentina Law 23,928; IMF event chronology"
   },
   {
     "id": "evt-after-0039",
-    "key": "after|Jun–Dec 1991|Slovenia, Croatia, Baltics independent; USSR dissolves (26 Dec)"
+    "key": "after|26 Dec 1991|The Soviet Union formally dissolves."
   },
   {
     "id": "evt-after-0040",
-    "key": "after|Jan 1992|Russian price liberalisation; 2,500% inflation"
+    "key": "after|2 Jan 1992|Russia lifts controls on most consumer prices as part of its early transition reform."
   },
   {
     "id": "evt-after-0041",
@@ -533,15 +533,15 @@
   },
   {
     "id": "evt-after-0044",
-    "key": "after|Jan–Feb 1993|Czechoslovakia and its currency split; Eritrea independent (May)"
+    "key": "after|1 Jan 1993|Czechoslovakia dissolves into the Czech and Slovak republics."
   },
   {
     "id": "evt-after-0045",
-    "key": "after|Jul–Aug 1993|Russia expels ruble zone; ERM bands widened to ±15%"
+    "key": "after|Late Jul 1993|Russia announces the withdrawal of pre-1993 ruble notes, fracturing the shared ruble area."
   },
   {
     "id": "evt-after-0046",
-    "key": "after|Jan 1994|NAFTA; CFA franc devalued 50%; Yugoslav hyperinflation peaks (313 million %/month)"
+    "key": "after|1 Jan 1994|The North American Free Trade Agreement enters into force among Canada, Mexico and the United States."
   },
   {
     "id": "evt-after-0047",
@@ -553,11 +553,11 @@
   },
   {
     "id": "evt-after-0049",
-    "key": "after|1994–97|China unifies its exchange rate at 8.7 yuan/$ (Jan 1994), then pegs at 8.28 (1997–2005)"
+    "key": "after|1 Jan 1994|China unifies its official and swap-market exchange rates at about 8.7 yuan per U.S. dollar."
   },
   {
     "id": "evt-after-0050",
-    "key": "after|1996|Ukrainian hryvnia issued"
+    "key": "after|Sep 1996|Ukraine introduces the hryvnia during its 2–16 September monetary reform. National Bank of Ukraine"
   },
   {
     "id": "evt-after-0051",
@@ -565,7 +565,7 @@
   },
   {
     "id": "evt-after-0052",
-    "key": "after|Jul 1997|Hong Kong handover"
+    "key": "after|1 Jul 1997|Hong Kong becomes a Special Administrative Region of China after the sovereignty transfer. HKSAR yearbook"
   },
   {
     "id": "evt-after-0053",
@@ -577,27 +577,27 @@
   },
   {
     "id": "evt-after-0055",
-    "key": "after|Jun 1998|ECB established"
+    "key": "after|1 Jun 1998|The European Central Bank is established, replacing the European Monetary Institute. ECB archives"
   },
   {
     "id": "evt-after-0056",
-    "key": "after|Aug 1998|Russia defaults and devalues"
+    "key": "after|17 Aug 1998|Russia announces a restructuring of specified short-term ruble GKO/OFZ government debt and a wider 6–9.5 rubles-per-dollar exchange-rate corridor."
   },
   {
     "id": "evt-after-0057",
-    "key": "after|Sep 1998|LTCM rescued; Malaysia imposes capital controls"
+    "key": "after|23 Sep 1998|The New York Fed convenes LTCM’s counterparties; a private consortium agrees to recapitalize the fund. New York Fed, 1998 annual report"
   },
   {
     "id": "evt-after-0058",
-    "key": "after|1 Jan 1999|Euro launched (11 members); Brazil floats real (Jan)"
+    "key": "after|1 Jan 1999|The euro launches as the common currency for 11 participating countries and the Eurosystem takes responsibility for their shared monetary policy; euro cash follows in 2002. ECB contemporaneous account"
   },
   {
     "id": "evt-after-0059",
-    "key": "after|1999|Gold bottoms ~$252; UK sells half its gold; Central Bank Gold Agreement (Sep); Gramm–Leach–Bliley (Nov); G20 created"
+    "key": "after|1999|Gold trades near its post-1971 low, but this row does not establish the precise $252 quote or benchmark."
   },
   {
     "id": "evt-after-0060",
-    "key": "after|Jan 2000|Ecuador dollarises; Nasdaq peaks 5,048 (10 Mar)"
+    "key": "after|9 Jan 2000|Ecuador's executive announces a plan to adopt the U.S. dollar as legal tender; the implementing economic-transition law follows in March. Ecuador central-bank history; government IMF letter"
   },
   {
     "id": "evt-after-0061",
@@ -605,11 +605,11 @@
   },
   {
     "id": "evt-after-0062",
-    "key": "after|2001|El Salvador dollarises; Argentina defaults ~$100 bn (Dec); 9/11; Afghanistan war (Oct); China joins WTO (Dec)"
+    "key": "after|1 Jan 2001|The U.S. dollar becomes legal tender in El Salvador."
   },
   {
     "id": "evt-after-0063",
-    "key": "after|Jan 2002|Euro notes and coins; Argentine peso floats; East Timor independent (May)"
+    "key": "after|1 Jan 2002|Euro banknotes and coins enter circulation in twelve euro-area states."
   },
   {
     "id": "evt-after-0064",
@@ -617,7 +617,7 @@
   },
   {
     "id": "evt-after-0065",
-    "key": "after|Jun 2003|Fed funds 1%"
+    "key": "after|25 Jun 2003|The FOMC lowers its target federal funds rate by 25 basis points to 1%. FOMC statement"
   },
   {
     "id": "evt-after-0066",
@@ -625,7 +625,7 @@
   },
   {
     "id": "evt-after-0067",
-    "key": "after|Nov 2004|GLD gold ETF launched"
+    "key": "after|18 Nov 2004|SPDR Gold Shares (GLD) begins trading in New York. Fund sponsor"
   },
   {
     "id": "evt-after-0068",
@@ -633,11 +633,11 @@
   },
   {
     "id": "evt-after-0069",
-    "key": "after|2007|M-Pesa (Mar); iPhone (Jun); BNP Paribas freezes funds (Aug); Northern Rock run (Sep)"
+    "key": "after|Mar 2007|Safaricom launches M-Pesa mobile-money transfers in Kenya."
   },
   {
     "id": "evt-after-0070",
-    "key": "after|Mar 2008|Bear Stearns rescued; Georgia war (Aug); oil $147 (Jul)"
+    "key": "after|Mar 2008|Bear Stearns is acquired by JPMorgan with Federal Reserve support."
   },
   {
     "id": "evt-after-0071",
@@ -657,7 +657,7 @@
   },
   {
     "id": "evt-after-0075",
-    "key": "after|Apr 2009|G20 London $1.1 tn; FSB created"
+    "key": "after|2 Apr 2009|G20 leaders announce a package of roughly $1.1 trillion in additional crisis-support commitments at the London summit."
   },
   {
     "id": "evt-after-0076",
@@ -673,7 +673,7 @@
   },
   {
     "id": "evt-after-0079",
-    "key": "after|2011|Arab Spring; S&P downgrades US (5 Aug); gold $1,921 (6 Sep); South Sudan independent (Jul); SNB franc floor (Sep)"
+    "key": "after|2011|The Arab Spring protest wave spreads across North Africa and the Middle East."
   },
   {
     "id": "evt-after-0080",
@@ -681,43 +681,43 @@
   },
   {
     "id": "evt-after-0081",
-    "key": "after|26 Jul 2012|Draghi: \"whatever it takes\"; ESM (Oct)"
+    "key": "after|26 Jul 2012|ECB President Mario Draghi says that, within its mandate, the ECB is ready to do “whatever it takes” to preserve the euro. ECB verbatim"
   },
   {
     "id": "evt-after-0082",
-    "key": "after|2013|Abenomics QE; Cyprus bail-in (Mar); taper tantrum (May); Belt and Road; WeChat Pay"
+    "key": "after|Mar 2013|Cyprus's bank-resolution programme imposes losses on uninsured bank depositors."
   },
   {
     "id": "evt-after-0083",
-    "key": "after|Mar 2014|Crimea annexed; first Russia sanctions; Russia begins gold build-up; ECB negative rates (Jun)"
+    "key": "after|Mar 2014|Russia annexes Crimea; Western governments begin targeted sanctions."
   },
   {
     "id": "evt-after-0084",
-    "key": "after|2015|SNB abandons floor (Jan); Greek referendum (Jul); China devaluation (Aug); CIPS (Oct); Fed first hike (Dec); Ethereum"
+    "key": "after|15 Jan 2015|The Swiss National Bank ends its CHF 1.20-per-euro minimum exchange rate."
   },
   {
     "id": "evt-after-0085",
-    "key": "after|2016|BoJ negative rates (Jan); Brexit vote (23 Jun); yuan joins SDR (Oct); Trump elected (Nov); India's UPI"
+    "key": "after|29 Jan 2016|The Bank of Japan announces a −0.1% rate on specified policy-rate balances in its tiered reserve system."
   },
   {
     "id": "evt-after-0086",
-    "key": "after|2018–19|US–China tariff war; Basel III NSFR in force; Libra announced (Jun 2019); repo spike (Sep 2019)"
+    "key": "after|2018–19|The United States and China impose successive tariffs on each other's goods."
   },
   {
     "id": "evt-after-0087",
-    "key": "after|Mar 2020|COVID: Fed to zero, unlimited QE, CARES $2.2 tn; ECB PEPP"
+    "key": "after|15 Mar 2020|The FOMC cuts its federal-funds target range to 0–0.25% in an emergency decision."
   },
   {
     "id": "evt-after-0088",
-    "key": "after|Jul 2020|NextGenerationEU €750 bn; USMCA"
+    "key": "after|Jul 2020|EU leaders agree on a €750 billion NextGenerationEU recovery instrument financed by common borrowing."
   },
   {
     "id": "evt-after-0089",
-    "key": "after|Oct–Nov 2020|Bahamas Sand Dollar (first CBDC); Brazil Pix"
+    "key": "after|Oct 2020|The Central Bank of The Bahamas launches the Sand Dollar retail CBDC."
   },
   {
     "id": "evt-after-0090",
-    "key": "after|2021|El Salvador adopts Bitcoin; Evergrande defaults; inflation \"transitory\"; Afghanistan withdrawal (Aug)"
+    "key": "after|7 Sep 2021|El Salvador's Bitcoin Law takes effect, requiring private acceptance of Bitcoin alongside the U.S. dollar subject to statutory exceptions."
   },
   {
     "id": "evt-after-0091",
@@ -725,51 +725,51 @@
   },
   {
     "id": "evt-after-0092",
-    "key": "after|Mar 2022|Fed begins fastest hikes since 1979"
+    "key": "after|16 Mar 2022|The FOMC raises its federal-funds target range by 0.25 percentage point to 0.25–0.50%, beginning the 2022 tightening cycle."
   },
   {
     "id": "evt-after-0093",
-    "key": "after|Jun–Oct 2022|US CPI 9.1%; TTF gas €340/MWh (Aug); UK gilt crisis (Sep); eurozone CPI 10.6% (Oct); FTX collapses (Nov); oil price cap (Dec)"
+    "key": "after|Jun 2022|The U.S. all-items Consumer Price Index rises 9.1% over twelve months, measured June 2021 to June 2022."
   },
   {
     "id": "evt-after-0094",
-    "key": "after|2022–24|Central banks buy >1,000 t gold a year"
+    "key": "after|2022–24|WGC's central-bank-and-other-official-sector net gold demand exceeds 1,000 tonnes in each year."
   },
   {
     "id": "evt-after-0095",
-    "key": "after|Mar 2023|SVB fails; Credit Suisse absorbed by UBS; FedNow (Jul)"
+    "key": "after|10 Mar 2023|California closes Silicon Valley Bank and appoints the FDIC receiver."
   },
   {
     "id": "evt-after-0096",
-    "key": "after|Jul 2023|Fed at 5.25–5.50%"
+    "key": "after|26 Jul 2023|The FOMC raises its federal-funds target range to 5.25–5.50%."
   },
   {
     "id": "evt-after-0097",
-    "key": "after|Oct–Nov 2023|Gaza war; Houthi Red Sea attacks"
+    "key": "after|7 Oct 2023|Hamas attacks Israel; Israel's war in Gaza follows."
   },
   {
     "id": "evt-after-0098",
-    "key": "after|Jan 2024|Bitcoin ETFs approved; BRICS expands; Zimbabwe ZiG (Apr); BoJ ends negative rates (Mar); MiCA; G7 ERA loans (Jun); BIS leaves mBridge"
+    "key": "after|10 Jan 2024|The U.S. SEC approves exchange rule changes to list and trade spot Bitcoin exchange-traded products."
   },
   {
     "id": "evt-after-0099",
-    "key": "after|Sep–Dec 2024|Fed cuts three times"
+    "key": "after|18 Sep–18 Dec 2024|The FOMC lowers its federal-funds target range at the September, November and December 2024 meetings."
   },
   {
     "id": "evt-after-0100",
-    "key": "after|Jan–Mar 2025|El Salvador adopts and publishes Decree 199 in January, amending—not repealing—the Bitcoin Law; voluntary private acceptance takes effect 90 days after publication. US Strategic Bitcoin Reserve (Mar); Germany reforms debt brake (Mar); gold reaches $3,000"
+    "key": "after|29–30 Jan 2025|El Salvador adopts and publishes Decree 199, amending rather than repealing its Bitcoin Law; private acceptance becomes voluntary after its 90-day commencement period."
   },
   {
     "id": "evt-after-0101",
-    "key": "after|2 Apr 2025|\"Liberation Day\" IEEPA tariffs"
+    "key": "after|2 Apr 2025|The White House announces reciprocal import tariffs under an IEEPA national-emergency order."
   },
   {
     "id": "evt-after-0102",
-    "key": "after|May–Jul 2025|Moody's downgrades US (May); Israel–Iran twelve-day war and US strikes (Jun); NATO 5% target; OBBBA (4 Jul); GENIUS Act (18 Jul); CLARITY Act passes House"
+    "key": "after|16 May 2025|Moody's lowers its U.S. long-term issuer and senior-unsecured ratings from Aaa to Aa1."
   },
   {
     "id": "evt-after-0103",
-    "key": "after|Sep–Dec 2025|Fed cuts three times to 3.50–3.75%; 43-day shutdown (Oct–Nov); Gaza ceasefire (Oct); US–China truce (Nov); gold $4,000; Bitcoin >$120k (Oct); Argentina $20 bn swap; Bulgaria adopts euro (1 Jan 2026)"
+    "key": "after|10 Dec 2025|The FOMC lowers its federal-funds target range to 3.50–3.75%."
   },
   {
     "id": "evt-after-0104",
@@ -777,39 +777,39 @@
   },
   {
     "id": "evt-after-0105",
-    "key": "after|20 Feb 2026|Supreme Court strikes down IEEPA tariffs 6–3; Section 122 10% tariff from 24 Feb"
+    "key": "after|20 Feb 2026|The U.S. Supreme Court holds that IEEPA does not authorize the President to impose tariffs."
   },
   {
     "id": "evt-after-0106",
-    "key": "after|Late Feb 2026|US–Israel war on Iran; Strait of Hormuz closed"
+    "key": "after|28 Feb 2026|U.S. and Israeli strikes on Iran begin a new armed conflict."
   },
   {
     "id": "evt-after-0107",
-    "key": "after|Mar 2026|Qatar force majeure; Ras Laffan hit (18 Mar); IEA 400 mb release; Philippines energy emergency; Brent $118 (31 Mar)"
+    "key": "after|11 Mar 2026|IEA members agree to make 400 million barrels from emergency oil stocks available to address the Middle East disruption."
   },
   {
     "id": "evt-after-0108",
-    "key": "after|Apr 2026|US–Iran ceasefire (8 Apr); Hormuz stays mostly shut; Easter truce in Ukraine"
+    "key": "after|7–8 Apr 2026|The United States and Iran announce a two-week ceasefire."
   },
   {
     "id": "evt-after-0109",
-    "key": "after|May 2026|Kevin Warsh becomes Fed chair; Victory Day truce in Ukraine; Spirit Airlines fails; stablecoins ~$320 bn"
+    "key": "after|22 May 2026|Kevin Warsh takes office as chair of the Federal Reserve Board."
   },
   {
     "id": "evt-after-0110",
-    "key": "after|Jun 2026|ECB reports gold at {{obs:ecb-gold-share-2025-end}}% of end-2025 official reserves including gold, largely reflecting valuation effects; Fed holds at 3.50–3.75%"
+    "key": "after|Jun 2026|The ECB reports gold at {{obs:ecb-gold-share-2025-end}}% of end-2025 broad official reserves including gold, largely because of valuation changes."
   },
   {
     "id": "evt-after-0111",
-    "key": "after|Jul 2026|IMF cuts 2026 growth to 3.0%; Fed holds with three hawkish dissents; Brent $72 then $97"
+    "key": "after|8 Jul 2026|The IMF projects 3.0% global growth for 2026 in its July World Economic Outlook update."
   },
   {
     "id": "evt-after-0112",
-    "key": "after|31 Jul–31 Aug 2026|Gold finishes July at ${{obs:gold-usd-2026-july-end}}/oz and August at ${{obs:gold-usd-2026-august-end}}/oz"
+    "key": "after|31 Jul 2026|Gold ends July at ${{obs:gold-usd-2026-july-end}}/oz in the WGC USD series."
   },
   {
     "id": "evt-after-0113",
-    "key": "after|Sep 2026|US–Iran strikes in Hormuz resume; Brent ~$97; gold ~$4,490; latest cited IMF COFER dollar share is {{obs:imf-cofer-usd-share-2026q1}}% of 2026 Q1 foreign-exchange reserves; Putin says Ukraine deal \"possible\""
+    "key": "after|Sep 2026|As of September, the latest cited IMF COFER dollar share is {{obs:imf-cofer-usd-share-2026q1}}% for 2026 Q1 foreign-exchange reserves."
   },
   {
     "id": "evt-after-0114",
@@ -838,6 +838,118 @@
   {
     "id": "evt-after-0120",
     "key": "after|16 Dec 2008|Federal Reserve cuts its policy rate near zero"
+  },
+  {
+    "id": "evt-after-0121",
+    "key": "after|15 Nov 1971|Intel announces the 4004 programmable microprocessor as an available product. Intel history"
+  },
+  {
+    "id": "evt-after-0122",
+    "key": "after|16 May 1972|CME's International Monetary Market launches seven currency-futures contracts. CME product history"
+  },
+  {
+    "id": "evt-after-0123",
+    "key": "after|1 May 1973|Fischer Black and Myron Scholes' “The Pricing of Options and Corporate Liabilities” is published in the Journal of Political Economy. Original journal record"
+  },
+  {
+    "id": "evt-after-0124",
+    "key": "after|3 May 1973|SWIFT is incorporated in Brussels as a bank-owned cooperative; its messaging service goes live in 1977. Swift By-laws, p. 1; Swift history"
+  },
+  {
+    "id": "evt-after-0125",
+    "key": "after|31 Dec 1974|U.S. restrictions on private gold purchase and ownership cease under Public Law 93-373. Federal Register, 18 Dec 1974, FDIC policy statement"
+  },
+  {
+    "id": "evt-after-0126",
+    "key": "after|1 Sep 1998|Malaysia introduces capital and exchange controls after the Asian crisis, with restrictions centered on offshore ringgit and short-term portfolio flows. IMF Selected Issues, 1999"
+  },
+  {
+    "id": "evt-after-0127",
+    "key": "after|15 Jan 1999|Brazil allows the real to float after widening its exchange-rate band on 13 January. Brazil central-bank history; Brazil’s IMF letter"
+  },
+  {
+    "id": "evt-after-0128",
+    "key": "after|10 Mar 2000|Nasdaq Composite closes around 5,048 at its dot-com-era peak. Nasdaq Composite index history"
+  },
+  {
+    "id": "evt-after-0129",
+    "key": "after|8 Oct 2012|The European Stability Mechanism is formally inaugurated after its treaty entered into force on 27 September. ESM inauguration notice"
+  },
+  {
+    "id": "evt-after-0130",
+    "key": "after|Aug 1981|IBM and the World Bank enter an early formal currency swap; the World Bank dates its first interest-rate swaps to 1985. World Bank Treasury history; World Bank August-date account"
+  },
+  {
+    "id": "evt-after-0131",
+    "key": "after|2 Jan 1981|The effective federal funds rate is 20.05% in the Federal Reserve's daily series, following the 1979 operating-framework shift. St. Louis Fed daily data"
+  },
+  {
+    "id": "evt-after-0132",
+    "key": "after|25 Jun 1975|Mozambique becomes independent of Portugal. UN report"
+  },
+  {
+    "id": "evt-after-0133",
+    "key": "after|11 Nov 1975|Angola's independence from Portugal takes effect. Original proclamation in UN records"
+  },
+  {
+    "id": "evt-after-0134",
+    "key": "after|25 Nov 1975|Suriname becomes independent of the Netherlands. UN country report"
+  },
+  {
+    "id": "evt-after-0135",
+    "key": "after|31 Dec 1975|The IMF approves a UK stand-by arrangement of SDR 700 million. IMF lending history"
+  },
+  {
+    "id": "evt-after-0136",
+    "key": "after|1976|BankAmericard adopts the Visa brand name. Visa history"
+  },
+  {
+    "id": "evt-after-0137",
+    "key": "after|15 Dec 1976|The UK Chancellor sends the IMF a letter of intent describing a stabilisation program. IMF account"
+  },
+  {
+    "id": "evt-after-0138",
+    "key": "after|3 Jan 1977|The IMF approves a two-year UK stand-by arrangement of SDR 3.36 billion. IMF lending history"
+  },
+  {
+    "id": "evt-after-0139",
+    "key": "after|31 Mar 1980|President Carter signs the U.S. Depository Institutions Deregulation and Monetary Control Act. Original statute; Federal Reserve history"
+  },
+  {
+    "id": "evt-after-0140",
+    "key": "after|Sep 1980|Armed conflict between Iran and Iraq escalates into war; the UN Security Council calls on both sides to cease force on 28 September. Resolution 479"
+  },
+  {
+    "id": "evt-after-0141",
+    "key": "after|27 Oct 1986|London's stock-market “Big Bang” reforms take effect. Bank of England Annual Report 1987"
+  },
+  {
+    "id": "evt-after-0142",
+    "key": "after|Feb 1986|The Single European Act is signed by EC members on 17 and 28 February; it enters into force on 1 July 1987. Council treaty record"
+  },
+  {
+    "id": "evt-after-0143",
+    "key": "after|Apr 1989|The Delors Committee submits its report on economic and monetary union in the European Community. ECB archives"
+  },
+  {
+    "id": "evt-after-0144",
+    "key": "after|1989|John Williamson coins “Washington Consensus” for a ten-topic account of policy advice directed at Latin America. Williamson's retrospective; original paper"
+  },
+  {
+    "id": "evt-after-0145",
+    "key": "after|20 Dec 1989|The Reserve Bank of New Zealand Act 1989 receives assent; the statute commences on 1 February 1990. Official law, historical version; RBNZ history"
+  },
+  {
+    "id": "evt-after-0146",
+    "key": "after|2 Mar 1990|New Zealand's first Policy Targets Agreement sets a path to 0–2% inflation by 1992. Reserve Bank of New Zealand"
+  },
+  {
+    "id": "evt-after-0147",
+    "key": "after|21 Mar 1990|Namibia becomes independent after a UN-supervised transition. UN Namibia"
+  },
+  {
+    "id": "evt-after-0148",
+    "key": "after|3 Oct 1990|East and West Germany reunify politically as the Unification Treaty takes effect. German government chronology"
   },
   {
     "id": "evt-bitcoin-0001",
@@ -881,7 +993,7 @@
   },
   {
     "id": "evt-bitcoin-0011",
-    "key": "bitcoin|Mar 2013|Chain split (versions 0.7/0.8); the second and last outage in Bitcoin's history."
+    "key": "bitcoin|11–12 Mar 2013|A block accepted by Bitcoin 0.8 but rejected by earlier nodes triggers a chain fork; mining pools downgrade to 0.7 and the network reconverges. The incident does not establish a “last outage” claim. Bitcoin.org incident notice; BIP-50 post-mortem"
   },
   {
     "id": "evt-bitcoin-0012",
@@ -889,7 +1001,7 @@
   },
   {
     "id": "evt-bitcoin-0013",
-    "key": "bitcoin|Dec 2013|People's Bank of China bars banks from bitcoin."
+    "key": "bitcoin|5 Dec 2013|China's central bank and four other agencies issue a Bitcoin risk notice restricting financial and payment institutions' Bitcoin-related business; it does not make all private possession unlawful. PBoC financial-stability review"
   },
   {
     "id": "evt-bitcoin-0014",
@@ -897,11 +1009,11 @@
   },
   {
     "id": "evt-bitcoin-0015",
-    "key": "bitcoin|2014|Tether issues the first dollar stablecoin on Bitcoin's Omni layer; IRS Notice 2014-21 makes bitcoin property for US tax."
+    "key": "bitcoin|25 Mar 2014|IRS Notice 2014-21 states that convertible virtual currency is treated as property for U.S. federal tax purposes. IRS original notice"
   },
   {
     "id": "evt-bitcoin-0016",
-    "key": "bitcoin|2015|Ethereum launches; price bottoms ~$152 (−87% from 2013 peak)."
+    "key": "bitcoin|2015|Bitcoin price trades near a cycle low around $152; the date, venue and return-from-2013-peak convention need independent price-series review."
   },
   {
     "id": "evt-bitcoin-0017",
@@ -913,7 +1025,7 @@
   },
   {
     "id": "evt-bitcoin-0019",
-    "key": "bitcoin|2017|Griffin & Shams later find Tether issuance timed to prop up the price; China bans exchanges and token offerings (Sep)."
+    "key": "bitcoin|4 Sep 2017|Chinese agencies prohibit fundraising through token offerings (ICOs); this does not prohibit every form of private coin possession. Joint agency notice"
   },
   {
     "id": "evt-bitcoin-0020",
@@ -921,7 +1033,7 @@
   },
   {
     "id": "evt-bitcoin-0021",
-    "key": "bitcoin|24 Aug 2017|SegWit activates after user-activated soft-fork threat; the \"block-size war.\""
+    "key": "bitcoin|24 Aug 2017|Segregated Witness (BIP-141) activates at Bitcoin block 481,824, after the 2017 governance dispute over activation and block size. Bitcoin developer guide"
   },
   {
     "id": "evt-bitcoin-0022",
@@ -929,11 +1041,11 @@
   },
   {
     "id": "evt-bitcoin-0023",
-    "key": "bitcoin|Dec 2017|CME lists bitcoin futures; price peaks at $19,783."
+    "key": "bitcoin|18 Dec 2017|CME's cash-settled bitcoin futures begin with a 17 December evening trading session for the 18 December trade date. CME notice"
   },
   {
     "id": "evt-bitcoin-0024",
-    "key": "bitcoin|2018|Price falls 84% to $3,122; Tether trades at $0.88 (Oct); CVE-2018-17144 inflation bug patched before disclosure (Sep)."
+    "key": "bitcoin|2018|Bitcoin's U.S.-dollar market price falls sharply from its 2017 peak; the old −84%/$3,122 pair needs one matched price series and endpoint convention."
   },
   {
     "id": "evt-bitcoin-0025",
@@ -945,7 +1057,7 @@
   },
   {
     "id": "evt-bitcoin-0027",
-    "key": "bitcoin|2019|Bhutan's state holding company begins mining with surplus hydropower (disclosed 2023)."
+    "key": "bitcoin|2023|Bhutan's state-owned Druk Holding and Investments publicly announces a hydropower-backed bitcoin-mining partnership; this announcement does not establish mining began in 2019 or an audited sovereign balance. DHI announcement"
   },
   {
     "id": "evt-bitcoin-0028",
@@ -965,7 +1077,7 @@
   },
   {
     "id": "evt-bitcoin-0032",
-    "key": "bitcoin|Feb 2021|Central Bank of Nigeria bars banks from crypto (reversed Dec 2023); New York AG settles with Tether/Bitfinex ($18.5m)."
+    "key": "bitcoin|Feb 2021|Central Bank of Nigeria restricts banks' dealings with cryptocurrency firms; the later 2023 policy revision requires separate legal scope review."
   },
   {
     "id": "evt-bitcoin-0033",
@@ -981,23 +1093,23 @@
   },
   {
     "id": "evt-bitcoin-0036",
-    "key": "bitcoin|24 Sep 2021|China bans all crypto trading and mining."
+    "key": "bitcoin|24 Sep 2021|Chinese agencies publish a notice treating virtual-currency trading services as illegal financial activity; the document is dated 15 September, and mining restrictions follow a separate policy track. Joint notice"
   },
   {
     "id": "evt-bitcoin-0037",
-    "key": "bitcoin|Oct 2021|IMF GFSR chapter warns of \"cryptoization\" in emerging markets; CFTC fines Tether $41m (fully backed 27.6% of days)."
+    "key": "bitcoin|12 Oct 2021|Chapter 2 of the IMF's Global Financial Stability Report discusses macro-financial risks of “cryptoization” in emerging markets; it is an analytical warning, not a binding policy order. IMF GFSR report"
   },
   {
     "id": "evt-bitcoin-0038",
-    "key": "bitcoin|Nov 2021|Taproot activates; price peaks at $69,000."
+    "key": "bitcoin|14 Nov 2021|Taproot consensus rules activate at Bitcoin block 709,632. The quoted November $69,000 price peak needs a named venue and timestamp. Bitcoin Core activation specification"
   },
   {
     "id": "evt-bitcoin-0039",
-    "key": "bitcoin|Jan 2022|IMF Article IV tells El Salvador to remove legal-tender status."
+    "key": "bitcoin|25 Jan 2022|The IMF publishes its El Salvador Article IV conclusion: Executive Directors urge narrowing the Bitcoin Law by removing Bitcoin's legal-tender status; this is advice, not a binding amendment. IMF release, Executive Board Assessment"
   },
   {
     "id": "evt-bitcoin-0040",
-    "key": "bitcoin|Feb 2022|Canada freezes protest donors' accounts and lists 34 crypto wallets; 14.6 BTC already distributed in person. Russia invades Ukraine; Ukraine raises $54m in crypto in a week."
+    "key": "bitcoin|14–15 Feb 2022|Canada invokes the Emergencies Act and implements financial measures targeting property linked to unlawful blockades, including digital-asset service providers. The number of frozen accounts or wallets requires official enforcement records. Finance Canada release"
   },
   {
     "id": "evt-bitcoin-0041",
@@ -1005,11 +1117,11 @@
   },
   {
     "id": "evt-bitcoin-0042",
-    "key": "bitcoin|May 2022|Terra/UST collapses ($40–60bn); Tether trades at $0.945 with $7bn redeemed in five days."
+    "key": "bitcoin|May 2022|The TerraUSD algorithmic stablecoin loses its dollar peg and the Terra/Luna mechanism unravels. The old $40–60 billion aggregate needs a defined asset and valuation window. BIS 2022 analysis, box A"
   },
   {
     "id": "evt-bitcoin-0043",
-    "key": "bitcoin|13 Jun 2022|Celsius freezes withdrawals ($4.7bn liabilities); Three Arrows Capital fails (>$4bn losses); Voyager follows."
+    "key": "bitcoin|13 Jun 2022|Crypto lender Celsius pauses customer withdrawals and transfers. Liability totals and later creditor recoveries require the bankruptcy schedules. SEC-filed Celsius estate history"
   },
   {
     "id": "evt-bitcoin-0044",
@@ -1017,19 +1129,19 @@
   },
   {
     "id": "evt-bitcoin-0045",
-    "key": "bitcoin|30 Nov 2022|ECB blog \"Bitcoin's last stand.\""
+    "key": "bitcoin|30 Nov 2022|Ulrich Bindseil and Jürgen Schaaf publish “Bitcoin's last stand” on the ECB Blog; the page disclaims necessary representation of ECB/Eurosystem views, and the argument is not a monetary-policy decision. ECB Blog"
   },
   {
     "id": "evt-bitcoin-0046",
-    "key": "bitcoin|Dec 2022|Basel Committee publishes its cryptoasset prudential standard (later revised, with international implementation date 1 Jan 2026); price bottoms ~$16,500 (−78%); Core Scientific files for bankruptcy."
+    "key": "bitcoin|16 Dec 2022|The Basel Committee publishes a bank-exposure prudential standard for cryptoassets, subsequently revised with an international implementation date of 1 January 2026. BCBS 2022 standard; BCBS 2024 revision"
   },
   {
     "id": "evt-bitcoin-0047",
-    "key": "bitcoin|Feb 2023|IMF \"Elements of Effective Policies for Crypto Assets\": do not grant legal tender, do not hold in reserves; BIS's Carstens: \"the battle has been won.\""
+    "key": "bitcoin|23 Feb 2023|The IMF publishes its Executive Board discussion of policy guidance recommending against granting cryptoassets official-currency or legal-tender status. IMF release"
   },
   {
     "id": "evt-bitcoin-0048",
-    "key": "bitcoin|8–12 Mar 2023|Silvergate liquidates; USDC depegs to $0.87 on SVB exposure; Signature Bank closed; bitcoin rises 21% in the month."
+    "key": "bitcoin|8 Mar 2023|Silvergate Capital announces an orderly wind-down and voluntary liquidation of Silvergate Bank; this is not a regulator-ordered closure on that date. SEC Form 8-K"
   },
   {
     "id": "evt-bitcoin-0049",
@@ -1037,15 +1149,15 @@
   },
   {
     "id": "evt-bitcoin-0050",
-    "key": "bitcoin|Aug 2023|DC Circuit rules for Grayscale against the SEC."
+    "key": "bitcoin|29 Aug 2023|The U.S. Court of Appeals for the D.C. Circuit vacates the SEC's disapproval of Grayscale's spot-Bitcoin ETF proposal and remands for a new explanation; it does not itself approve an ETF. Court opinion"
   },
   {
     "id": "evt-bitcoin-0051",
-    "key": "bitcoin|Nov 2023|Binance pleads guilty and pays $4.3bn; Wallet of Satoshi exits the US."
+    "key": "bitcoin|21 Nov 2023|Binance and its founder plead guilty in a U.S. resolution with more than $4 billion in agreed penalties; payment timing and combined agency totals differ. Justice Department release"
   },
   {
     "id": "evt-bitcoin-0052",
-    "key": "bitcoin|Dec 2023|FASB fair-value accounting standard for crypto (effective 2025); fees spike to $38 on Ordinals demand."
+    "key": "bitcoin|Dec 2023|FASB issues ASU 2023-08 requiring fair-value treatment for qualifying cryptoassets in fiscal years beginning after 15 December 2024, with early adoption permitted. FASB standard"
   },
   {
     "id": "evt-bitcoin-0053",
@@ -1053,15 +1165,15 @@
   },
   {
     "id": "evt-bitcoin-0054",
-    "key": "bitcoin|22 Feb 2024|ECB blog \"The naked emperor's new clothes.\""
+    "key": "bitcoin|22 Feb 2024|Ulrich Bindseil and Jürgen Schaaf publish the ECB Blog post “ETF approval for bitcoin – the naked emperor’s new clothes”; the page says its authors' views do not necessarily represent the ECB. ECB Blog"
   },
   {
     "id": "evt-bitcoin-0055",
-    "key": "bitcoin|19–20 Apr 2024|Fourth halving: 6.25 → 3.125 BTC; average fee $128 on the day."
+    "key": "bitcoin|20 Apr 2024|Bitcoin block 840,000 starts the fourth subsidy epoch: the block subsidy falls from 6.25 to 3.125 BTC. The old daily-average $128 transaction-fee claim needs a specified fee series. Block 840,000"
   },
   {
     "id": "evt-bitcoin-0056",
-    "key": "bitcoin|29–30 Apr 2024|Hong Kong lists spot bitcoin ETFs."
+    "key": "bitcoin|30 Apr 2024|Hong Kong Exchanges and Clearing lists spot Bitcoin ETFs as regulated private-market products, not public Bitcoin reserves. HKEX launch release"
   },
   {
     "id": "evt-bitcoin-0057",
@@ -1073,11 +1185,11 @@
   },
   {
     "id": "evt-bitcoin-0059",
-    "key": "bitcoin|27 Jul 2024|Trump at Nashville: \"Never sell your Bitcoin\"; strategic stockpile promised."
+    "key": "bitcoin|27 Jul 2024|At the Nashville Bitcoin conference, presidential candidate Donald Trump proposes keeping federal Bitcoin holdings in a strategic stockpile; a campaign proposal is not a reserve order or a purchase. The exact “never sell” quotation needs the original speech transcript."
   },
   {
     "id": "evt-bitcoin-0060",
-    "key": "bitcoin|Oct 2024|ECB paper on the distributional consequences of bitcoin; Minneapolis Fed paper recommends taxing or banning a fixed-supply asset to preserve deficit finance; Bhutan's holdings peak at 13,295 BTC."
+    "key": "bitcoin|Oct 2024|Ulrich Bindseil and Jürgen Schaaf publish an ECB-hosted draft on Bitcoin's distributional consequences. It is the authors' analysis, not a Governing Council decision. The Bhutan 13,295-BTC peak needs an audited holding-date source. Authors' paper"
   },
   {
     "id": "evt-bitcoin-0061",
@@ -1085,15 +1197,15 @@
   },
   {
     "id": "evt-bitcoin-0062",
-    "key": "bitcoin|18 Dec 2024|Powell: \"We're not allowed to own bitcoin\"; IMF staff agreement with El Salvador ($1.4bn) requiring legal-tender rollback."
+    "key": "bitcoin|18 Dec 2024|Federal Reserve Chair Jerome Powell says “we're not allowed to own Bitcoin,” describing the Federal Reserve's own statutory powers rather than a ban on all U.S. public holdings. FOMC press-conference transcript"
   },
   {
     "id": "evt-bitcoin-0063",
-    "key": "bitcoin|Dec 2024|Japan's government rejects a bitcoin reserve; MiCA fully in force in the EU."
+    "key": "bitcoin|30 Dec 2024|Most remaining provisions of the EU Markets in Crypto-Assets Regulation begin applying. The earlier stablecoin titles applied from 30 June; qualifying service providers could have an Article 143 transition, so this is not a universal licence-completion date. Japan's reserve objection needs its original government response. MiCA regulation; ESMA Article 143"
   },
   {
     "id": "evt-bitcoin-0064",
-    "key": "bitcoin|Jan 2025|Tether moves HQ to El Salvador; Nagel: \"digital tulips\"; Fink at Davos on sovereign 2–5% allocations; Lagarde: no EU central bank will hold bitcoin."
+    "key": "bitcoin|13 Jan 2025|Tether announces an El Salvador digital-asset licence and plans to relocate its group operations there; this announcement alone does not certify completed headquarters relocation. Tether announcement"
   },
   {
     "id": "evt-bitcoin-0065",
@@ -1105,7 +1217,7 @@
   },
   {
     "id": "evt-bitcoin-0067",
-    "key": "bitcoin|6 Mar 2025|US executive order creates the Strategic Bitcoin Reserve and Digital Asset Stockpile from forfeited coins."
+    "key": "bitcoin|6 Mar 2025|A U.S. executive order directs a Strategic Bitcoin Reserve capitalized from Treasury-held, finally forfeited Bitcoin that is otherwise unneeded for specified legal uses, and a separate stockpile for other digital assets. Original order, §3"
   },
   {
     "id": "evt-bitcoin-0068",
@@ -1117,35 +1229,35 @@
   },
   {
     "id": "evt-bitcoin-0070",
-    "key": "bitcoin|7 Apr 2025|Price falls to $74,508 on the tariff shock; recovers above $100,000 by May."
+    "key": "bitcoin|7 Apr 2025|Bitcoin falls during the April tariff-driven market selloff. The old $74,508 low and subsequent $100,000 recovery need a named trading venue, time zone, and price series before publication as exact milestones."
   },
   {
     "id": "evt-bitcoin-0071",
-    "key": "bitcoin|Apr 2025|Swiss National Bank rejects bitcoin reserves; 0xB10C shows nine pools relaying AntPool's block templates."
+    "key": "bitcoin|Apr 2025|Swiss National Bank officials oppose adding Bitcoin to national reserves. The April statement needs its original central-bank locator; a separate nine-pool template-relay finding needs the research publication and sample definition."
   },
   {
     "id": "evt-bitcoin-0072",
-    "key": "bitcoin|May 2025|New Hampshire (HB302) and Arizona (HB2749) reserve laws; Pakistan announces a strategic reserve and 2,000 MW for mining (29 May); IMF objects; Steak 'n Shake accepts bitcoin."
+    "key": "bitcoin|6 May 2025|New Hampshire's governor signs HB 302, permitting the state treasurer to invest within statutory limits in qualifying digital assets and precious metals; the law does not itself document a Bitcoin purchase. The former Arizona/Pakistan/merchant bundle involves separate actions requiring independent dates. New Hampshire bill history"
   },
   {
     "id": "evt-bitcoin-0073",
-    "key": "bitcoin|22 Jun 2025|Texas SB21 creates a $10m state reserve."
+    "key": "bitcoin|20 Jun 2025|Texas's governor signs SB 21, authorizing a state-managed strategic Bitcoin reserve as a special fund; an enacted authority is not evidence of a $10 million completed purchase. Texas bill history; enrolled bill"
   },
   {
     "id": "evt-bitcoin-0074",
-    "key": "bitcoin|18 Jul 2025|GENIUS Act signed: federal licensing of dollar stablecoins."
+    "key": "bitcoin|18 Jul 2025|The GENIUS Act becomes U.S. Public Law 119-27, establishing a framework for specified payment-stablecoin issuers with a separate conditional effective date; enactment itself did not license every dollar token. GPO enacted text, §§2–4 and 20"
   },
   {
     "id": "evt-bitcoin-0075",
-    "key": "bitcoin|7 Aug 2025|Executive order opens 401(k) plans to digital assets."
+    "key": "bitcoin|7 Aug 2025|A U.S. executive order directs a review of access to alternative assets, including digital assets, in 401(k) plans; it does not require every plan to offer Bitcoin. White House order"
   },
   {
     "id": "evt-bitcoin-0076",
-    "key": "bitcoin|Aug 2025|Lightning public capacity falls to ~3,850 BTC; Bessent rules out reserve purchases."
+    "key": "bitcoin|Aug 2025|Public Lightning-network channel capacity is reported to have declined; the ~3,850-BTC level requires a dated network snapshot and definition of public channels. A separate Treasury purchase-policy quotation needs its original context."
   },
   {
     "id": "evt-bitcoin-0077",
-    "key": "bitcoin|Sep 2025|Chainalysis 2025 index: India, US, Pakistan, Vietnam, Brazil lead; hashrate crosses 1 ZH/s; Kazakhstan launches Alem Crypto Fund."
+    "key": "bitcoin|Sep 2025|Chainalysis ranks India, the United States, Pakistan, Vietnam and Brazil highest in its 2025 crypto adoption index. The ranking follows its methodology and is not a Bitcoin-only holder count; a 1-ZH/s hashrate crossing and Kazakhstan fund launch need their own dated sources. Chainalysis index"
   },
   {
     "id": "evt-bitcoin-0078",
@@ -1165,35 +1277,35 @@
   },
   {
     "id": "evt-bitcoin-0082",
-    "key": "bitcoin|Nov 2025|Strategy's market value falls below the value of its bitcoin; Texas buys ~$5m of IBIT; Czech National Bank buys a $1m test portfolio (13 Nov); fees fall below 1% of miner revenue; PBoC restates the ban."
+    "key": "bitcoin|13 Nov 2025|The Czech National Bank announces a $1 million experimental portfolio including Bitcoin, a USD stablecoin and a tokenised deposit, held outside its existing foreign-exchange reserves. Board approval was 30 October; this announcement is not a national reserve allocation. CNB release"
   },
   {
     "id": "evt-bitcoin-0083",
-    "key": "bitcoin|Dec 2025|Twenty One Capital lists on NYSE with 43,500 BTC; Bhutan pledges up to 10,000 BTC to Gelephu; Fed note: dollar stablecoins reinforce dollar internationalisation."
+    "key": "bitcoin|9 Dec 2025|Twenty One Capital's Class A shares begin NYSE trading as “XXI” following its combination. The former 43,500-BTC holding figure requires a separately dated SEC balance filing; Bhutan pledges and Federal Reserve stablecoin analysis are separate events. SEC-filed company notice"
   },
   {
     "id": "evt-bitcoin-0084",
-    "key": "bitcoin|29 Jan 2026|Gold reaches ${{obs:gold-usd-2026-record-high}}/oz in the World Gold Council's USD series; IBIT record daily outflow $528m (30 Jan); bitcoin −10% for the month. WGC July 2026, table 1"
+    "key": "bitcoin|29 Jan 2026|Gold reaches ${{obs:gold-usd-2026-record-high}}/oz in the World Gold Council's USD series. WGC July 2026, table 1"
   },
   {
     "id": "evt-bitcoin-0085",
-    "key": "bitcoin|Feb 2026|Price falls ~52% from peak to ~$60,000 (6 Feb); RESBit reserve bill reintroduced in Brazil; BIP-360's draft P2MR design is revised and BIP-361 is assigned as a draft informational migration proposal (11 Feb), not activated Bitcoin rules. BIP-360; BIP-361"
+    "key": "bitcoin|11 Feb 2026|Draft BIP-360's Pay-to-Merkle-Root design and draft BIP-361's migration proposal are revised or assigned for discussion; neither has activated as a Bitcoin consensus rule. The former price-drawdown and Brazil-bill clauses need separate primary locators. BIP-360; BIP-361"
   },
   {
     "id": "evt-bitcoin-0086",
-    "key": "bitcoin|28 Feb 2026|Iran war begins; bitcoin dips to $63,106. Gold later retreats from its pre-war January record; the WGC reports ${{obs:gold-usd-2026-july-end}}/oz at July month-end, about a quarter below that record. WGC July 2026, table 1"
+    "key": "bitcoin|28 Feb 2026|U.S. and Israeli strikes on Iran begin a new armed conflict. A same-day $63,106 Bitcoin quote needs a named venue and UTC window; the WGC's July-end gold observation belongs to a later month. UN Security Council letter"
   },
   {
     "id": "evt-bitcoin-0087",
-    "key": "bitcoin|Mar 2026|Pakistan's Virtual Assets Act (6 Mar); Google researchers estimate that a future, error-corrected machine could attack 256-bit elliptic-curve cryptography with under 500,000 physical qubits under stated superconducting-hardware assumptions—a resource model, not a demonstrated attack or Bitcoin deadline (31 Mar); Fidelity \"Getting Off Zero\"; USDT launches on Lightning; Labor Department 401(k) rule (30 Mar); Metaplanet reports $725m loss. Google Research, 31 Mar 2026"
+    "key": "bitcoin|31 Mar 2026|Google researchers publish a model of future quantum resources needed to attack 256-bit elliptic-curve cryptography under stated superconducting-hardware and error-correction assumptions. It is a resource estimate, not a demonstrated Bitcoin attack or an activated migration deadline. Google Research"
   },
   {
     "id": "evt-bitcoin-0088",
-    "key": "bitcoin|Apr 2026|Ceasefire; bitcoin ~$80,000; discussion of the draft BIP-361 quantum-migration phases continues, with no activated sunset date; Michl at Bitcoin 2026: \"this is the future.\" BIP-361"
+    "key": "bitcoin|7–8 Apr 2026|The United States and Iran announce a two-week ceasefire; lasting peace and restoration of normal Hormuz shipping remain open. The former $80,000 Bitcoin quote and central-bank speech need independent venue and transcript locators. UN briefing; IEA April oil report"
   },
   {
     "id": "evt-bitcoin-0089",
-    "key": "bitcoin|May 2026|Pools with 75% of hashrate pledge Stratum V2 (11 May); Tether takes full control of Twenty One (20 May); nine-session $2.8bn ETF outflow and $1.29bn IBIT block sale; House bill drops the 1m-BTC purchase target (22 May); Bhutan disputes $1bn drawdown."
+    "key": "bitcoin|7 May 2026|The Stratum V2 Working Group welcomes ANTPOOL, Block, DMND, F2Pool, Foundry, MARA Foundation and SpiderPool to develop the open mining protocol. Membership is a development commitment, not evidence that every pool has deployed miner-selected templates. The former 75% hashrate estimate needs a dated denominator; unrelated corporate, ETF, bill and Bhutan claims are withheld. Working Group announcement"
   },
   {
     "id": "evt-bitcoin-0090",
@@ -1205,15 +1317,15 @@
   },
   {
     "id": "evt-bitcoin-0092",
-    "key": "bitcoin|1 Jul 2026|MiCA grandfathering ends; Binance suspends EU services."
+    "key": "bitcoin|1 Jul 2026|MiCA Article 143's maximum transitional period expires for qualifying crypto-asset service providers, unless authorisation was granted or refused sooner or a Member State shortened the period. The old blanket claim that Binance suspended EU services needs an operator announcement. ESMA Article 143"
   },
   {
     "id": "evt-bitcoin-0093",
-    "key": "bitcoin|13–14 Jul 2026|Iran declares Hormuz closed; bitcoin below $62,000; Warsh: \"no bailouts, including crypto.\" Gold tested the $4,000 level on several occasions during July, but this monthly account does not establish a sub-$4,000 price on these dates. WGC July 2026"
+    "key": "bitcoin|Jul 2026|The World Gold Council reports that its USD gold series tested $4,000/oz several times during July; its monthly account does not assign those tests to the 13–14 July Hormuz events. Bitcoin and gold event-time prices and Kevin Warsh's quotation need matched primary timestamps. WGC July 2026"
   },
   {
     "id": "evt-bitcoin-0094",
-    "key": "bitcoin|15 Jul 2026|Japan's upper house passes the 20% flat crypto tax (from 2028)."
+    "key": "bitcoin|15 Jul 2026|Japan's House of Councillors passes Cabinet Bill 57, moving specified crypto-asset trading into the Financial Instruments and Exchange Act's regulatory framework. Promulgated as Law 64 on 23 July; the vote itself does not establish a flat 20% tax or its effective date. Diet bill record"
   },
   {
     "id": "evt-bitcoin-0095",
@@ -1221,26 +1333,354 @@
   },
   {
     "id": "evt-bitcoin-0096",
-    "key": "bitcoin|Aug 2026|Bitcoin +26% for the month; ETFs +$3.5bn; correlation with gold 0.81; Trump Media abandons its treasury (17 Aug); Pakistan opens licensing."
+    "key": "bitcoin|Aug 2026|Bitcoin market activity and ETF flows rise in some reported August series, but the prior +26%, +$3.5 billion and 0.81 Bitcoin-gold correlation require aligned primary series and observation windows. Corporate treasury and Pakistan licensing claims are separate events with unresolved primary locators."
   },
   {
     "id": "evt-bitcoin-0097",
-    "key": "bitcoin|3–4 Sep 2026|IMF staff agreement with El Salvador: bitcoin added since 2025 came from \"private donations\"; Chivo majority privatised."
+    "key": "bitcoin|3 Sep 2026|IMF staff and El Salvador reach a staff-level agreement on combined reviews, subject to Executive Board approval. The IMF says documentation shows Bitcoin accumulation since the first review came from private donations without public resources, and that Chivo's majority ownership and operational control passed to a private operator while the government kept a minority stake and customer-asset custody. This is the IMF's programme finding, not an independently audited wallet balance. IMF release"
   },
   {
     "id": "evt-bitcoin-0098",
-    "key": "bitcoin|6 Sep 2026|Difficulty 127.45T at block 965,664; hashrate ~950 EH/s; fees 0.43% of rewards."
+    "key": "bitcoin|5 Sep 2026|Bitcoin difficulty adjusts to 127.45T at block 965,664. The block is timestamped 20:32:47 UTC; the 14 September mining report confirms the adjustment date and value. Hashrate Index; HashXP block 965,664"
   },
   {
     "id": "evt-bitcoin-0099",
-    "key": "bitcoin|9 Sep 2026|Iran's central bank lets importers settle in stablecoins and bitcoin."
+    "key": "bitcoin|9 Sep 2026|The Financial Times reports that Iranian businesses and other sources describe a quiet relaxation of foreign-exchange controls over recent months, with some cross-border trade settled through domestic exchanges in Tether or bitcoin. The central bank declined comment; a dated formal authorization is not established. FT report"
   },
   {
     "id": "evt-bitcoin-0100",
-    "key": "bitcoin|11–13 Sep 2026|~20.08m BTC mined (95.6%); ETFs 1.251m BTC ($96.6bn); Strategy 845,050 BTC; price ~$77,000, −33% y/y; gold $4,407, +30% y/y; CLARITY Act cloture vote set for 15 Sep."
+    "key": "bitcoin|10 Sep 2026|Senate Daily Press says the cloture motion for H.R. 3633, the Digital Asset Market Clarity Act, is scheduled to ripen at 2:15 p.m. Eastern on 15 September. It does not report a vote result; the former supply, ETF, treasury and cross-asset figures use unmatched measurement dates. Senate Daily Press"
   },
   {
     "id": "evt-bitcoin-0101",
-    "key": "bitcoin|~Apr 2028|Fifth halving expected at block 1,050,000: 3.125 → 1.5625 BTC."
+    "key": "bitcoin|~Apr 2028|Fifth subsidy halving is expected at block 1,050,000: 3.125 → 1.5625 BTC per block. The height follows the 210,000-block schedule; April 2028 is only a block-time estimate, not a scheduled calendar date."
+  },
+  {
+    "id": "evt-after-0149",
+    "key": "after|Aug 1993|European ERM currency fluctuation bands widen to ±15% after renewed pressure."
+  },
+  {
+    "id": "evt-after-0150",
+    "key": "after|Dec 2001|Argentina defaults on roughly $100 billion of public debt after deposit restrictions and political crisis."
+  },
+  {
+    "id": "evt-after-0151",
+    "key": "after|11 Dec 2001|China becomes a member of the World Trade Organization."
+  },
+  {
+    "id": "evt-after-0152",
+    "key": "after|Jan 2002|Argentina abandons its dollar peg and the peso depreciates; the precise sequence of conversion and floating needs a separate legal chronology."
+  },
+  {
+    "id": "evt-after-0153",
+    "key": "after|20 May 2002|East Timor becomes independent."
+  },
+  {
+    "id": "evt-after-0154",
+    "key": "after|8 Feb 1993|The Czech and Slovak currency union ends; the two korunas become separate currencies."
+  },
+  {
+    "id": "evt-after-0155",
+    "key": "after|24 May 1993|Eritrea celebrates independence after its referendum and proclamation."
+  },
+  {
+    "id": "evt-after-0156",
+    "key": "after|12 Jan 1994|The two CFA francs are devalued by 50% in foreign-currency terms against the French franc."
+  },
+  {
+    "id": "evt-after-0157",
+    "key": "after|Jan 1994|Federal Republic of Yugoslavia monthly inflation exceeds 300 billion percent in the IMF account."
+  },
+  {
+    "id": "evt-after-0158",
+    "key": "after|Jul 1999–Mar 2002|HM Treasury sells about 395 tonnes of UK gold at 17 Bank of England auctions, at a weighted average $274.92/oz."
+  },
+  {
+    "id": "evt-after-0159",
+    "key": "after|26 Sep 1999|Fifteen European central banks announce the first Central Bank Gold Agreement, limiting collective official gold sales for five years."
+  },
+  {
+    "id": "evt-after-0160",
+    "key": "after|Sep 1999|G7 finance ministers create an informal forum that becomes the G20, initially for finance ministers and central-bank governors."
+  },
+  {
+    "id": "evt-after-0161",
+    "key": "after|12 Nov 1999|The U.S. Gramm–Leach–Bliley Act becomes Public Law 106-102."
+  },
+  {
+    "id": "evt-bitcoin-0102",
+    "key": "bitcoin|6 Oct 2014|Tether says it first launched USD₮ on Bitcoin's Omni layer; the “first dollar stablecoin” superlative is withheld. Tether retrospective"
+  },
+  {
+    "id": "evt-bitcoin-0103",
+    "key": "bitcoin|30 Jul 2015|Ethereum's mainnet launches, separately from the Bitcoin price cycle. Ethereum history"
+  },
+  {
+    "id": "evt-bitcoin-0104",
+    "key": "bitcoin|23 Feb 2021|New York's attorney general announces an $18.5 million settlement with Tether and Bitfinex, with New York trading restrictions and reserve disclosures. NYAG release"
+  },
+  {
+    "id": "evt-bitcoin-0105",
+    "key": "bitcoin|15 Oct 2021|The CFTC orders Tether to pay $41 million over misstatements about dollar backing; its order finds sufficient fiat reserves on 27.6% of days in a sampled 2016–18 period, not throughout Tether's history. CFTC order release"
+  },
+  {
+    "id": "evt-after-0162",
+    "key": "after|May 1999|HM Treasury announces a plan for partial sales of official UK gold; the 365-tonne planned amount in a WGC historical account is separate from the eventual sale total."
+  },
+  {
+    "id": "evt-after-0163",
+    "key": "after|29 Jun 2007|Apple begins selling its first iPhone in the United States."
+  },
+  {
+    "id": "evt-after-0164",
+    "key": "after|9 Aug 2007|BNP Paribas suspends dealings in three investment funds as subprime-linked assets become difficult to value."
+  },
+  {
+    "id": "evt-after-0165",
+    "key": "after|14 Sep 2007|Depositors begin a run on Northern Rock after its Bank of England liquidity support becomes public."
+  },
+  {
+    "id": "evt-after-0166",
+    "key": "after|Aug 2008|Russia and Georgia fight a five-day war."
+  },
+  {
+    "id": "evt-after-0167",
+    "key": "after|Jul 2008|Oil prices rise near their 2008 peak; this row does not establish the exact $147 benchmark, date or venue."
+  },
+  {
+    "id": "evt-after-0168",
+    "key": "after|2 Apr 2009|The Financial Stability Board is re-established as successor to the Financial Stability Forum."
+  },
+  {
+    "id": "evt-after-0169",
+    "key": "after|1992|Russia's overall consumer-price inflation increases 2,508.8% from December 1991 to December 1992."
+  },
+  {
+    "id": "evt-after-0170",
+    "key": "after|5 Aug 2011|Standard & Poor's lowers its long-term U.S. sovereign rating from AAA to AA+."
+  },
+  {
+    "id": "evt-after-0171",
+    "key": "after|9 Jul 2011|South Sudan becomes independent."
+  },
+  {
+    "id": "evt-after-0172",
+    "key": "after|6 Sep 2011|The Swiss National Bank introduces a minimum rate of CHF 1.20 per euro."
+  },
+  {
+    "id": "evt-after-0173",
+    "key": "after|Apr 2013|The Bank of Japan introduces its quantitative and qualitative monetary easing programme."
+  },
+  {
+    "id": "evt-after-0174",
+    "key": "after|May 2013|Federal Reserve communications about eventual asset-purchase tapering help trigger a bond-market sell-off known as the taper tantrum."
+  },
+  {
+    "id": "evt-after-0175",
+    "key": "after|2013|China announces the overland and maritime initiatives later grouped as the Belt and Road Initiative."
+  },
+  {
+    "id": "evt-after-0176",
+    "key": "after|11 Jun 2014|The ECB's deposit-facility rate becomes −0.10%, following its 5 June decision."
+  },
+  {
+    "id": "evt-after-0177",
+    "key": "after|5 Jul 2015|Greek voters reject the bailout creditors' terms in a referendum."
+  },
+  {
+    "id": "evt-after-0178",
+    "key": "after|11 Aug 2015|China's central bank changes the daily renminbi central-parity setting mechanism, allowing an immediate depreciation."
+  },
+  {
+    "id": "evt-after-0179",
+    "key": "after|Oct 2015|China's Cross-Border Interbank Payment System (CIPS) begins operation."
+  },
+  {
+    "id": "evt-after-0180",
+    "key": "after|16 Dec 2015|The FOMC raises its federal-funds target range to 0.25–0.50%."
+  },
+  {
+    "id": "evt-after-0181",
+    "key": "after|30 Jul 2015|Ethereum's mainnet launches."
+  },
+  {
+    "id": "evt-after-0182",
+    "key": "after|23 Jun 2016|UK voters choose to leave the European Union in a referendum."
+  },
+  {
+    "id": "evt-after-0183",
+    "key": "after|1 Oct 2016|The IMF's revised SDR valuation basket takes effect with the Chinese renminbi included."
+  },
+  {
+    "id": "evt-after-0184",
+    "key": "after|8 Nov 2016|Donald Trump wins the U.S. presidential election."
+  },
+  {
+    "id": "evt-after-0185",
+    "key": "after|2016|India's Unified Payments Interface (UPI) begins operation."
+  },
+  {
+    "id": "evt-after-0186",
+    "key": "after|Jun 2019|Facebook announces its proposed Libra digital-currency project."
+  },
+  {
+    "id": "evt-after-0187",
+    "key": "after|Sep 2019|U.S. overnight repo rates spike amid short-term funding-market stress."
+  },
+  {
+    "id": "evt-after-0188",
+    "key": "after|18 Mar 2020|The ECB announces a €750 billion envelope for its Pandemic Emergency Purchase Programme."
+  },
+  {
+    "id": "evt-after-0189",
+    "key": "after|23 Mar 2020|The Federal Reserve announces that Treasury and agency mortgage-security purchases will be made in amounts needed to support market functioning."
+  },
+  {
+    "id": "evt-after-0190",
+    "key": "after|27 Mar 2020|The U.S. CARES Act becomes Public Law 116-136."
+  },
+  {
+    "id": "evt-after-0191",
+    "key": "after|1 Jul 2020|The United States–Mexico–Canada Agreement enters into force, replacing NAFTA."
+  },
+  {
+    "id": "evt-after-0192",
+    "key": "after|Nov 2020|Brazil's central bank begins operating Pix instant payments."
+  },
+  {
+    "id": "evt-bitcoin-0106",
+    "key": "bitcoin|Sep 2017|Chinese authorities order domestic crypto exchanges to wind down local trading, a separate measure from the 4 September ICO-financing notice. Xinhua account of Beijing regulator notice"
+  },
+  {
+    "id": "evt-bitcoin-0107",
+    "key": "bitcoin|2020|John Griffin and Amin Shams publish a study finding 2017 Tether flows associated with bitcoin price support; it is a retrospective research result, not a 2017 regulator finding. Journal record"
+  },
+  {
+    "id": "evt-bitcoin-0108",
+    "key": "bitcoin|18 Sep 2018|Bitcoin Core publishes a fix for CVE-2018-17144, an inflation vulnerability, before publicly disclosing its full impact on 20 September. Bitcoin Core disclosure"
+  },
+  {
+    "id": "evt-after-0193",
+    "key": "after|Dec 2021|China's Evergrande defaults on offshore bond obligations."
+  },
+  {
+    "id": "evt-after-0194",
+    "key": "after|Aug 2021|The United States completes the withdrawal of its military forces from Afghanistan."
+  },
+  {
+    "id": "evt-after-0195",
+    "key": "after|Sep 2022|UK gilt-market dysfunction prompts temporary Bank of England purchases of long-dated government bonds."
+  },
+  {
+    "id": "evt-after-0196",
+    "key": "after|Dec 2022|The G7-led price-cap coalition implements a $60-per-barrel cap on covered seaborne Russian crude oil."
+  },
+  {
+    "id": "evt-after-0197",
+    "key": "after|19 Mar 2023|UBS agrees to acquire Credit Suisse under Swiss authorities' emergency resolution framework."
+  },
+  {
+    "id": "evt-after-0198",
+    "key": "after|20 Jul 2023|The Federal Reserve launches its FedNow instant-payment service for participating institutions."
+  },
+  {
+    "id": "evt-after-0199",
+    "key": "after|Nov 2023|Houthi attacks on Red Sea shipping begin."
+  },
+  {
+    "id": "evt-after-0200",
+    "key": "after|19 Mar 2024|The Bank of Japan decides to end its negative-interest-rate framework, with the new operating guideline effective 21 March."
+  },
+  {
+    "id": "evt-after-0201",
+    "key": "after|Apr 2024|Zimbabwe introduces the ZiG unit in a monetary reform; an announced reserve basket does not establish a fixed gold redemption right."
+  },
+  {
+    "id": "evt-after-0202",
+    "key": "after|6 Mar 2025|A U.S. executive order directs a Strategic Bitcoin Reserve capitalized from Treasury-held, finally forfeited Bitcoin that is otherwise unneeded for specified legal uses, and a separate stockpile for other digital assets."
+  },
+  {
+    "id": "evt-after-0203",
+    "key": "after|Mar 2025|Germany amends its constitutional debt-brake rules for defence spending and a €500 billion infrastructure fund."
+  },
+  {
+    "id": "evt-after-0204",
+    "key": "after|21–22 Jun 2025|U.S. forces strike three Iranian nuclear facilities during the twelve-day Israel–Iran conflict."
+  },
+  {
+    "id": "evt-after-0205",
+    "key": "after|25 Jun 2025|NATO allies commit to a 5%-of-GDP defence-and-security spending benchmark by 2035."
+  },
+  {
+    "id": "evt-after-0206",
+    "key": "after|4 Jul 2025|The U.S. One Big Beautiful Bill Act becomes Public Law 119-21."
+  },
+  {
+    "id": "evt-after-0207",
+    "key": "after|18 Jul 2025|The U.S. GENIUS Act becomes Public Law 119-27, setting a framework for specified payment-stablecoin issuers with conditional later effectiveness."
+  },
+  {
+    "id": "evt-after-0208",
+    "key": "after|1 Oct–12 Nov 2025|A U.S. appropriations lapse interrupts many federal-agency operations until funding is enacted on 12 November."
+  },
+  {
+    "id": "evt-after-0209",
+    "key": "after|10 Oct 2025|A Gaza ceasefire takes effect under an agreement reached earlier that month."
+  },
+  {
+    "id": "evt-after-0210",
+    "key": "after|18 Oct 2025|The U.S. Exchange Stabilization Fund agrees to a swap facility of up to $20 billion with Argentina's central bank; an initial $2.5 billion transaction is executed in October and repaid by December."
+  },
+  {
+    "id": "evt-after-0211",
+    "key": "after|1 Jan 2026|Bulgaria adopts the euro and its central bank joins the Eurosystem."
+  },
+  {
+    "id": "evt-after-0212",
+    "key": "after|24 Feb 2026|A U.S. presidential proclamation begins a temporary 10% import surcharge under Trade Act §122, subject to listed exceptions and a statutory time limit."
+  },
+  {
+    "id": "evt-after-0213",
+    "key": "after|Mar 2026|War-related threats and disruption sharply reduce oil traffic through the Strait of Hormuz."
+  },
+  {
+    "id": "evt-after-0214",
+    "key": "after|Mar 2026|QatarEnergy halts LNG production and declares force majeure after attacks on Ras Laffan."
+  },
+  {
+    "id": "evt-after-0215",
+    "key": "after|17 Jun 2026|The FOMC maintains its federal-funds target range at 3.50–3.75%."
+  },
+  {
+    "id": "evt-after-0216",
+    "key": "after|29 Jul 2026|The FOMC keeps its target at 3.50–3.75% by a 9–3 vote; the three dissenters prefer a quarter-point increase."
+  },
+  {
+    "id": "evt-after-0217",
+    "key": "after|31 Aug 2026|Gold ends August at ${{obs:gold-usd-2026-august-end}}/oz in the WGC USD series."
+  },
+  {
+    "id": "evt-bitcoin-0109",
+    "key": "bitcoin|22 Feb 2023|BIS General Manager Agustín Carstens gives an analytical speech about crypto's limits for money; his “battle has been won” view is not a binding bank rule. BIS speech"
+  },
+  {
+    "id": "evt-bitcoin-0110",
+    "key": "bitcoin|11–12 Mar 2023|USDC temporarily trades below its dollar target after issuer Circle discloses $3.3 billion of reserves at failed Silicon Valley Bank. The old $0.87 low needs an exchange and time convention. Circle reserve release"
+  },
+  {
+    "id": "evt-bitcoin-0111",
+    "key": "bitcoin|12 Mar 2023|New York regulators close Signature Bank and appoint the FDIC receiver. FDIC failure record"
+  },
+  {
+    "id": "evt-bitcoin-0112",
+    "key": "bitcoin|17 Oct 2024|A Federal Reserve Bank of Minneapolis working paper models permanent primary deficits under stated assumptions and examines fixed-supply private assets; its conditional tax/prohibition discussion is research, not Federal Reserve policy. Working paper 807"
+  },
+  {
+    "id": "evt-bitcoin-0113",
+    "key": "bitcoin|18 Dec 2024|IMF staff and El Salvador reach a staff-level agreement for an Extended Fund Facility of about $1.4 billion, subject to Executive Board approval; proposed Bitcoin-law changes would make private acceptance voluntary. IMF staff-level release"
+  },
+  {
+    "id": "evt-bitcoin-0114",
+    "key": "bitcoin|30 Jan 2025|At an ECB press conference, Christine Lagarde argues that central-bank reserves should meet liquidity and safety tests and expresses doubt about Bitcoin as an ECB/Eurosystem reserve asset. Her answer is a stated view, not a prohibition binding each national central bank. ECB press-conference Q&A"
   }
 ]

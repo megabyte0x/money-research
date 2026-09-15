@@ -7,12 +7,17 @@ import { createContentModel } from '../src/content-model.js';
 const root = new URL('../', import.meta.url).pathname;
 const manifest = JSON.parse(readFileSync(join(root, 'public/content/manifest.json'), 'utf8'));
 const timelineEventIds = JSON.parse(readFileSync(join(root, 'public/content/timeline-event-ids.json'), 'utf8'));
+const timelineReviewStatus = JSON.parse(readFileSync(join(root, 'public/content/timeline-review-status.json'), 'utf8'));
+const comparisonCells = JSON.parse(readFileSync(join(root, 'public/content/comparison-cells.json'), 'utf8'));
 
 test('built browser index and static pages use the same validated source model', () => {
   const documents = Object.fromEntries(manifest.map(record =>
     [record.path, readFileSync(join(root, 'public', record.path), 'utf8')]));
   const observations = JSON.parse(readFileSync(join(root, 'public/content/observations.json'), 'utf8'));
-  const expected = createContentModel(manifest, documents, observations, timelineEventIds);
+  const sources = JSON.parse(readFileSync(join(root, 'public/content/sources.json'), 'utf8'));
+  const claims = JSON.parse(readFileSync(join(root, 'public/content/claims.json'), 'utf8'));
+  const articleMetadata = JSON.parse(readFileSync(join(root, 'public/content/article-metadata.json'), 'utf8'));
+  const expected = createContentModel(manifest, documents, observations, timelineEventIds, { sources, claims }, articleMetadata, timelineReviewStatus, comparisonCells);
   const browserIndex = JSON.parse(readFileSync(join(root, 'dist/content/index.json'), 'utf8'));
   assert.deepEqual(browserIndex, expected);
   const timeline = readFileSync(join(root, 'dist/gold/10-master-timeline/index.html'), 'utf8');
@@ -21,6 +26,22 @@ test('built browser index and static pages use the same validated source model',
   const source = readFileSync(join(root, 'dist/content/resolved/gold/10-master-timeline.md'), 'utf8');
   assert.match(source, /Gold reaches \$5,405\/oz/);
   assert.doesNotMatch(source, /\{\{obs:/);
+});
+
+test('approved summaries and curated section links appear in crawlable chapters', () => {
+  const gold = readFileSync(join(root, 'dist/gold/03-from-metal-to-money-weights-rings-coins/index.html'), 'utf8');
+  assert.match(gold, /What changed when weighed metal became stamped coin\?/);
+  assert.match(gold, /gold\/05-silver-copper-bronze-and-bimetallism\/\?section=the-gold-silver-ratio-through-time/);
+  const after = readFileSync(join(root, 'dist/after/07-financial-crisis-and-the-age-of-qe-2007-2019/index.html'), 'utf8');
+  assert.match(after, /Housing-credit losses, leverage and fragile funding contributed to the crisis/);
+  assert.match(after, /after\/09-pandemic-inflation-and-weaponized-reserves-2020-2026\/\?section=pandemic-fiscal-spending-and-central-bank-balance-sheets/);
+});
+
+test('source chapters expose publisher URLs as links in crawlable HTML', () => {
+  const after = readFileSync(join(root, 'dist/after/13-sources/index.html'), 'utf8');
+  assert.match(after, /<a href="https:\/\/www\.bankofengland\.co\.uk\/-\/media\/boe\/files\/quarterly-bulletin\/2014\/money-creation-in-the-modern-economy\.pdf">/);
+  const bitcoin = readFileSync(join(root, 'dist/bitcoin/16-sources/index.html'), 'utf8');
+  assert.match(bitcoin, /<a href="https:\/\/www\.govinfo\.gov\/content\/pkg\/PLAW-119publ27\/html\/PLAW-119publ27\.htm">/);
 });
 
 test('each article has a direct HTML page with unique canonical metadata', () => {

@@ -1,0 +1,35 @@
+.discovery-view { max-width: 72ch; }
+.discovery-view h1 { font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 500; line-height: 1.15; margin: 0 0 1.5rem; }
+.discovery-view h2 { font-size: 1.35rem; font-weight: 500; }
+.discovery-view > input[type="search"] { width: 100%; box-sizing: border-box; padding: 9px 12px; margin-bottom: 24px; }
+.discovery-meta, .discovery-result-label { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--mut); }
+.discovery-meta { margin: 0 0 20px; }
+.discovery-filters { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
+.discovery-filters label { display: flex; gap: 8px; align-items: center; }
+.discovery-result { display: block; padding: 16px 0; border-top: 1px solid var(--rule); color: var(--fg); text-decoration: none; line-height: 1.5; }
+.discovery-result:hover span:nth-child(2), .discovery-result:focus-visible span:nth-child(2) { text-decoration: underline; }
+.discovery-result span { display: block; }
+.discovery-result small { display: block; color: var(--mut); margin-top: 4px; }
+.discovery-result mark { background: var(--mark); color: inherit; }
+.discovery-definition { display: grid; grid-template-columns: minmax(0, 200px) 1fr; gap: 24px; padding: 12px 0; border-top: 1px solid var(--rule); line-height: 1.5; }
+.discovery-definition strong { font-weight: 500; }
+.discovery-example { margin: 10px 0 0; font-size: 0.92em; color: var(--mut); }
+.discovery-example span, .discovery-term-links span { font-family: 'IBM Plex Mono', monospace; font-size: 0.78em; }
+.discovery-term-links { display: grid; gap: 9px; margin-top: 10px; color: var(--mut); font-size: 0.88em; }
+.discovery-link-group { display: grid; gap: 3px; }
+.discovery-link-list { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0; padding: 0; list-style: none; }
+.discovery-link-list li { min-width: 0; }
+.discovery-term-links a { display: inline-block; color: var(--fg); text-decoration-color: var(--rule); overflow-wrap: anywhere; }
+.discovery-term-links a:hover, .discovery-term-links a:focus-visible { text-decoration-color: var(--fg); }
+.discovery-path { padding: 24px 0; border-top: 1px solid var(--rule); }
+.discovery-path h2 { margin: 0 0 8px; }
+.discovery-path ol { padding-left: 1.5rem; }
+.discovery-path li { margin: 8px 0; }
+.discovery-branch { color: var(--mut); }
+.discovery-synthesis-links { display: flex; flex-wrap: wrap; gap: 14px; }
+.discovery-summary { padding: 20px 0; border-top: 1px solid var(--rule); line-height: 1.55; }
+.discovery-summary h2 { margin: 0 0 8px; }
+.discovery-summary h2 a { color: var(--fg); text-decoration-color: var(--rule); }
+.discovery-summary h2 a:hover, .discovery-summary h2 a:focus-visible { text-decoration-color: var(--fg); }
+.discovery-summary p { margin: 0 0 10px; }
+@media (max-width: 620px) { .discovery-definition { grid-template-columns: 1fr; gap: 4px; } }

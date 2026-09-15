@@ -1,0 +1,15 @@
+# Cross-volume glossary publication decision · 15 September 2026
+
+The public connected Glossary now uses seven deliberately chosen **conceptual** definitions rather than whichever duplicate appeared first in volume order. `src/features/discovery/canonical.js` records the exact core copy, examples, aliases, related IDs, topics, source volume files and chapter destinations. `acceptedCanonicalIds` is an explicit coordinator allowlist; new proposals do not publish automatically. Unique terms retain their volume wording as `source-only`.
+
+| Term | Copy review and accepted scope | Separate evidence limit |
+|---|---|---|
+| Fiat money | Gold 02 and After Gold 03 reviewed a **state-issued monetary unit** without a fixed commodity redemption promise; reserves may still contain gold. | Country transition dates, private bank/token liabilities and complete value theories stay outside the core. |
+| Legal tender | Gold 02 and Bitcoin 04 accepted the debt-discharge/jurisdiction core. | El Salvador 2025 amendment and any other national acceptance/refusal rules stay case-specific. |
+| Petrodollar | Gold 02 and After Gold 03 accepted dollar oil-export receipts and contingent recycling, excluding oil redemption and every-sale-dollar claims. | 1974/75 history and flow quantities require separate dated source notes. |
+| Triffin dilemma | Gold 02's exact qualification was applied: **foreign official dollar claims held as reserves** versus official gold-conversion confidence under Bretton Woods. Bitcoin 04 narrowed its analogy. | Historical stock ratios, inevitable deficits/runs and Bitcoin-backed-fiat forecasts are withheld. |
+| Unit of account | Gold 02's exact qualification was applied: a unit for obligations in a **specified arrangement**. Bitcoin 04 distinguished native denomination from translated payment. | Prevalence of native Bitcoin pricing/contracts is an empirical question. |
+| Stablecoin | After Gold 03 and Bitcoin 04 reviewed the target-value category and asset-backed/algorithmic distinction. | Named holder redemption rights, reserve audits, market totals and bill-market effects remain unaccepted. |
+| GENIUS Act | After Gold 03 and Bitcoin 04 approved an **enacted-framework** core after correcting both volume glossaries. The coordinator accepted only the enacted-statute scope in `E26-genius-enacted-scope` against [GPO Public Law 119-27](https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm). | Current effective date, final implementing rules across regulators, named issuer approval/compliance and deposit-insurance implications for a named product remain open. |
+
+Packages [02](../02/HANDOFF.md), [03](../03/HANDOFF.md), [04](../04/HANDOFF.md) and [08](../08/CANONICAL-REVIEW.md) give the exact source-definition comparisons and copy limits. These bounded reviews authorize the seven core definitions only; they do not certify every glossary paragraph, linked chapter or dated legal claim. The short cross-volume synthesis remains withheld pending verbatim editorial review and separate claim propagation. Model/build and browser acceptance checks follow at the next frozen timeline/editorial checkpoint.

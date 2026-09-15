@@ -1,6 +1,6 @@
 # 10 — Rules, Treaties and Institutions of the Fiat Era: A Reference Table
 
-The gold standard needed almost no rules: a currency was a weight of metal and convertibility did the rest. A fiat system needs rules for everything the metal used to do — who may create money, how much capital a bank must hold, how exchange rates are set, who lends in a crisis, who may be cut off. This table lists the agreements and institutions that do that work, in order.
+Gold-linked systems also depended on laws, banks, reserves and rules for convertibility; a metal definition alone did not settle bank credit or crisis lending. The post-1971 system uses monetary agreements, national law and supervision to govern currencies, bank capital, exchange rates and crisis finance. The table lists selected agreements and institutions in order; each entry has a different legal scope and national implementation history.
 
 ## International monetary agreements
 
@@ -12,8 +12,8 @@ The gold standard needed almost no rules: a currency was a weight of metal and c
 | Mar 1973 | Generalised floating | Europe and Japan stop defending dollar parities | De facto floating ever since |
 | Jun 1974 | US–Saudi Joint Commission on Economic Cooperation | Development and financial cooperation; petrodollar recycling described by a later GAO audit | Not a dollar-for-oil redemption or verified exclusive-pricing treaty. [GAO, 1979, pp. 1–2](https://www.gao.gov/assets/id-79-7.pdf) |
 | Dec 1974 | Basel Committee on Banking Supervision created | G10 central banks coordinate bank supervision after Herstatt | Source of all capital rules |
-| Nov 1975 | Rambouillet summit (first G6) | Leaders bless floating and Jamaica terms | Annual G7 summits since |
-| Jan 1976 | Jamaica Accords (IMF Second Amendment, in force Apr 1978) | Floating legalised; gold demonetised; SDR nominal reserve asset; IMF surveillance | Legal basis of the current system |
+| Nov 1975 | Rambouillet summit (first G6) | Leaders discussed monetary stability and reform before the January 1976 Jamaica agreement. [Élysée, 17 November declaration](https://www.elysee.fr/valery-giscard-d-estaing/1975/11/17/declaration-commune-des-chefs-detat-et-de-gouvernement-de-la-republique-federale-dallemagne-des-etats-unis-damerique-de-france-du-royaume-uni-de-grande-bretagne-et-dirlande-du-nord-d-italie-et-du-japon-reunis-pour-le-premier-sommet-des-pays-ind) | Economic-policy coordination among the six leaders |
+| Jan 1976 | Jamaica Accords (IMF Second Amendment, in force Apr 1978) | Allowed members to choose floating or other permitted exchange arrangements; removed gold as the IMF par-value common denominator and SDR valuation basis, abolished its official price and obligatory IMF gold payments; strengthened exchange-policy surveillance. [IMF, *Financial Organization and Operations*, ch. II, “Gold in the Articles”](https://www.elibrary.imf.org/display/book/9781589060678/ch02.xml) | Changed IMF monetary rules; official gold reserves continued |
 | Mar 1979 | European Monetary System / ERM | European currencies fixed within bands around the ECU | Broke 1992–93; led to euro |
 | Sep 1985 | Plaza Accord (G5) | Coordinated intervention to lower the dollar | Dollar −40% vs yen/DM; Japan bubble |
 | Feb 1987 | Louvre Accord (G6) | Stabilise currencies at current levels | Last managed-rate attempt |
@@ -28,9 +28,9 @@ The gold standard needed almost no rules: a currency was a weight of metal and c
 | Mar 2012 | SWIFT disconnects Iranian banks | First use of payments network as sanction | Template for 2022 |
 | Oct 2016 | Yuan joins the SDR basket | IMF recognises renminbi as reserve currency | Symbolic; yuan share ~2% |
 | Jul 2020 | NextGenerationEU €750 bn | First common EU borrowing | Fiscal union in embryo |
-| Feb 2022 | Freezing of Russian central-bank reserves (~$300 bn) | Reserve assets seized by issuers | Central banks turn to gold |
+| Feb 2022 | Immobilisation of Russian central-bank reserves (estimated ~$300 bn) | Access to assets in sanctioning jurisdictions restricted; ownership and confiscation are separate questions | Reserve-access risk highlighted; a causal effect on global gold buying needs evidence |
 | Dec 2022 | G7 oil price cap ($60, lowered 2025) | Sanctions via shipping insurance | Russian oil rerouted to Asia |
-| Jun 2024 | G7 $50 bn ERA loans to Ukraine | Serviced by profits on frozen Russian assets | Precedent for using seized reserves |
+| Jun 2024 | G7 ~$50 bn ERA loan commitment to Ukraine | Future extraordinary revenues associated with immobilised Russian sovereign assets are to service and repay loans | Distinct from confiscating principal or proof of full disbursement. [Council of the EU, October 2024 ERA mechanism](https://www.consilium.europa.eu/en/press/press-releases/2024/10/23/immobilised-assets-council-greenlights-up-to-35-billion-in-macro-financial-assistance-to-ukraine-and-new-loan-mechanism-implementing-g7-commitment/) |
 | Jan 2026 | Bulgaria adopts the euro | Eurozone reaches 21 members | Continued enlargement |
 
 ## Trade agreements
@@ -38,7 +38,7 @@ The gold standard needed almost no rules: a currency was a weight of metal and c
 | Date | Agreement | Effect |
 |---|---|---|
 | 1986–94 | Uruguay Round of GATT | Created the WTO (Jan 1995); rules for services, IP, agriculture; dispute settlement |
-| Jan 1994 | NAFTA (replaced by USMCA, Jul 2020) | North American single market |
+| Jan 1994 | NAFTA (replaced by USMCA, Jul 2020) | Reduced North American trade barriers; unlike the EU single market, did not provide four-freedom integration |
 | Jan 1993 | EU single market | Free movement of goods, capital, services, people |
 | Dec 2001 | China joins the WTO | The "China shock"; Bretton Woods II |
 | 2018–20 | US Section 301 tariffs on China; Phase One deal | First trade war since 1930s |
@@ -69,11 +69,11 @@ The gold standard needed almost no rules: a currency was a weight of metal and c
 | 2012 | EU Fiscal Compact | Hardened deficit rules |
 | 2014 | EU Banking Union / Single Supervisory Mechanism | ECB supervises big banks |
 | 2024 | EU Markets in Crypto-Assets Regulation (MiCA) | First comprehensive crypto law |
-| Jan 2025 | US executive order against a retail CBDC; Mar 2025 Strategic Bitcoin Reserve | US chooses private stablecoins |
+| Jan 2025 | US executive order against a retail CBDC; Mar 2025 Strategic Bitcoin Reserve | Separate executive actions on CBDC policy and forfeited Bitcoin; neither approves a named stablecoin issuer |
 | Mar 2025 | Germany reforms constitutional debt brake | Defence and €500 bn infrastructure exempt |
-| Jul 2025 | US GENIUS Act | Federal stablecoin regime: 100% reserves in cash and Treasuries |
+| Jul 2025 | GENIUS Act, Pub. L. 119-27, approved 18 Jul | Defines *payment stablecoins* and permitted US issuers (§§2–3); requires at least one-to-one identifiable reserves from a broader allowed list, published redemption terms, monthly reserve reports/accounting-firm examination and a conditional annual audit for certain issuers above $50 bn (§4). Tokens are not federally deposit/share-insured (§7(e)). General effectiveness follows §20's delayed trigger; enactment alone does not establish present effectiveness or named issuer approval. [GPO enacted text](https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm) |
 | Jul 2025 | US One Big Beautiful Bill Act | Tax cuts; debt ceiling +$5 trillion |
-| 2026 | European Parliament position on digital euro regulation | Pilot 2027, possible issuance 2029 |
+| Jul 2026 | European Parliament position on proposed digital-euro regulation | Legislative negotiations continued; ECB pilot planned for second half of 2027, possible issuance in 2029 conditional on law and decision |
 
 ## Institutions created or transformed since 1971
 
@@ -89,12 +89,12 @@ The gold standard needed almost no rules: a currency was a weight of metal and c
 | European Stability Mechanism | 2012 | Eurozone rescue fund |
 | CIPS (China) | 2015 | Yuan cross-border payments outside SWIFT |
 | AIIB / Belt and Road | 2015 / 2013 | Chinese alternatives to Bretton Woods institutions |
-| Central-bank digital-currency projects | 2020– | State digital money; e-CNY largest, digital euro planned 2029 |
+| Central-bank digital-currency projects | 2020– | Named projects differ; digital euro remains proposed, with possible 2029 issuance conditional on law and a later ECB decision |
 
 ## The pattern
 
-The rules of the fiat era have been written almost entirely after crises: Basel after Herstatt, the IMF's conditionality after Mexico, the Plaza Accord after the dollar spike, Basel I after Latin America, Maastricht after the ERM's earlier troubles, Dodd–Frank and Basel III after 2008, the ESM after Greece, MiCA and the GENIUS Act after FTX. Each rule replaces something gold had done automatically — limiting bank leverage, forcing adjustment on deficit countries, anchoring expectations — with a committee, a treaty or a statute. The system's stability therefore depends on those institutions being trusted, which is why the reserve freeze of 2022, the attacks on Fed independence in 2025–26 and the Supreme Court's tariff ruling of 2026 are monetary events as much as political ones.
+Many post-1971 rules followed episodes that exposed specific risks: Basel supervision developed after Herstatt, bank-capital reforms followed debt and credit crises, and the European Stability Mechanism followed the eurozone crisis. Other laws have different origins and should not be assigned one crisis trigger without legislative evidence. The GENIUS Act, for example, defines an issuer and reserve framework for a specified payment-stablecoin category; it does not certify every existing token or replace bank-deposit insurance. Institutional rules and their actual implementation matter to monetary stability, but no metal standard had automatically performed all these functions.
 
 ## Key takeaways
 
-Since 1971 the functions of gold have been replaced by a growing body of rules — international agreements (Jamaica, Plaza, Maastricht, Basel), national laws (deregulation in the 1980s and 1990s, re-regulation after 2008, crypto law in the 2020s) and new institutions (an interventionist IMF, the G20, the ECB, the ESM, the FSB). Nearly every one was written after a crisis and each is only as strong as the trust placed in it.
+The post-1971 monetary system uses agreements, national law and bank-supervision standards with different scopes. IMF gold reform changed official convertibility rules but did not end every reserve or investment role for gold; Basel standards govern banks and require national implementation. Crisis episodes prompted some reforms, while other laws had different origins and cannot be assigned one trigger without legislative evidence. Announced rescue commitments must be separated from disbursements and fiscal costs, and immobilised reserves from confiscated principal.

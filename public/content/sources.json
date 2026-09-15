@@ -1,0 +1,344 @@
+[
+  {
+    "id": "wgc-gold-commentary-2026-07",
+    "publisher": "World Gold Council",
+    "title": "Gold Market Commentary: Making waves",
+    "url": "https://www.gold.org/goldhub/research/gold-market-commentary-july-2026",
+    "sourceType": "industry market commentary and data table",
+    "publicationDate": "2026-08-06",
+    "accessed": "2026-09-13"
+  },
+  {
+    "id": "wgc-gold-commentary-2026-08",
+    "publisher": "World Gold Council",
+    "title": "Gold Market Commentary: Paved with good interventions",
+    "url": "https://www.gold.org/goldhub/research/gold-market-commentary-august-2026",
+    "sourceType": "industry market commentary and data table",
+    "publicationDate": "2026-09-09",
+    "accessed": "2026-09-13"
+  },
+  {
+    "id": "imf-cofer-brief-2026-q1",
+    "publisher": "International Monetary Fund",
+    "title": "IMF Data Brief: Currency Composition of Official Foreign Exchange Reserves, First Quarter of 2026",
+    "url": "https://data.imf.org/en/news/imf%20data%20brief%20july%201",
+    "sourceType": "official statistical data brief",
+    "publicationDate": "2026-07-01",
+    "accessed": "2026-09-14"
+  },
+  {
+    "id": "ecb-international-role-euro-2026",
+    "publisher": "European Central Bank",
+    "title": "The international role of the euro, June 2026",
+    "url": "https://www.ecb.europa.eu/press/other-publications/ire/html/ecb.ire202606.en.html",
+    "sourceType": "official central-bank research report",
+    "publicationDate": "2026-06-02",
+    "accessed": "2026-09-14"
+  },
+  {
+    "id": "wgc-gold-demand-fy2025",
+    "publisher": "World Gold Council and Metals Focus",
+    "title": "Gold Demand Trends: Q4 and Full Year 2025",
+    "url": "https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-full-year-2025",
+    "sourceType": "industry demand estimate and sector table",
+    "publicationDate": "2026-01-29",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "wgc-gold-demand-q1-2026",
+    "publisher": "World Gold Council and Metals Focus",
+    "title": "Gold Demand Trends: Q1 2026, July 2026 erratum",
+    "url": "https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-q1-2026",
+    "sourceType": "industry demand estimate and revision notice",
+    "publicationDate": "2026-04-29",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "jpe-black-scholes-1973",
+    "publisher": "University of Chicago Press",
+    "title": "The Pricing of Options and Corporate Liabilities",
+    "url": "https://www.journals.uchicago.edu/doi/10.1086/260062",
+    "sourceType": "original scholarly journal publication record",
+    "publicationDate": "1973-05-01",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "us-genius-public-law-119-27",
+    "publisher": "U.S. Government Publishing Office",
+    "title": "Public Law 119-27, GENIUS Act",
+    "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+    "sourceType": "enacted U.S. federal statute",
+    "publicationDate": "2025-07-18",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "09-monzo-current-terms-2026-08",
+    "publisher": "Monzo Bank Limited",
+    "title": "Current Account Terms & Conditions, version 2.11",
+    "url": "https://monzo.com/legal/terms-and-conditions",
+    "sourceType": "UK personal current-account product terms",
+    "publicationDate": "2026-08-18",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "09-payuk-fps-how",
+    "publisher": "Pay.UK",
+    "title": "How Faster Payments work",
+    "url": "https://www.wearepay.uk/what-we-do/payment-systems/faster-payment-system/how-faster-payments-work/",
+    "sourceType": "UK payment-system operator explanation",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "09-bitcoin-dev-wallets",
+    "publisher": "Bitcoin Developer Documentation",
+    "title": "Bitcoin Developer Guide: Wallets",
+    "url": "https://developer.bitcoin.org/devguide/wallets.html",
+    "sourceType": "open-source protocol developer guide",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "09-bitcoin-dev-transactions",
+    "publisher": "Bitcoin Developer Documentation",
+    "title": "Bitcoin Developer Guide: Transactions",
+    "url": "https://developer.bitcoin.org/devguide/transactions.html",
+    "sourceType": "open-source protocol developer guide",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "09-bitcoin-dev-payment-processing",
+    "publisher": "Bitcoin Developer Documentation",
+    "title": "Bitcoin Developer Guide: Payment Processing",
+    "url": "https://developer.bitcoin.org/devguide/payment_processing.html",
+    "sourceType": "open-source protocol developer guide",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "09-bitcoin-core-gettransaction-29",
+    "publisher": "Bitcoin Core",
+    "title": "Bitcoin Core 29.0.0 RPC: gettransaction",
+    "url": "https://bitcoincore.org/en/doc/29.0.0/rpc/wallet/gettransaction/",
+    "sourceType": "open-source node software RPC documentation",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "nixon-new-economic-policy-1971-08-15",
+    "publisher": "Richard Nixon, archived by the American Presidency Project",
+    "title": "Address to the Nation Outlining a New Economic Policy: The Challenge of Peace",
+    "url": "https://www.presidency.ucsb.edu/documents/address-the-nation-outlining-new-economic-policy-the-challenge-peace",
+    "sourceType": "original presidential policy address transcript in academic archive",
+    "publicationDate": "1971-08-15",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "fed-history-gold-convertibility-ends",
+    "publisher": "Federal Reserve History",
+    "title": "Nixon Ends Convertibility of U.S. Dollars to Gold and Announces Wage/Price Controls",
+    "url": "https://www.federalreservehistory.org/essays/gold-convertibility-ends",
+    "sourceType": "official central-bank historical account",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "09-boe-legal-tender-2025-02",
+    "publisher": "Bank of England",
+    "title": "What is legal tender?",
+    "url": "https://www.bankofengland.co.uk/explainers/what-is-legal-tender",
+    "sourceType": "official central-bank legal-tender explainer",
+    "publicationDate": "2025-02-26",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "09-circle-usdc-terms-2025-12",
+    "publisher": "Circle Internet Financial, LLC",
+    "title": "USDC Terms",
+    "url": "https://www.circle.com/legal/usdc-terms",
+    "sourceType": "issuer legal and product terms for non-EEA holders",
+    "publicationDate": "2025-12-12",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "09-circle-mint-agreement-2026-07",
+    "publisher": "Circle Internet Financial, LLC",
+    "title": "Circle Mint User Agreement",
+    "url": "https://www.circle.com/legal/user-agreement",
+    "sourceType": "issuer institutional account agreement",
+    "publicationDate": "2026-07-24",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "09-circle-ethereum-usdc",
+    "publisher": "Circle",
+    "title": "Multi-chain USDC: Ethereum listing",
+    "url": "https://www.circle.com/multi-chain-usdc",
+    "sourceType": "issuer supported-blockchain listing",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "hmt-uk-gold-sale-disclosure-2010",
+    "publisher": "HM Treasury",
+    "title": "The sale of part of the UK gold reserves 1999–2002",
+    "url": "https://www.gov.uk/government/publications/the-sale-of-part-of-the-uk-gold-reserves-1999-2002",
+    "sourceType": "official freedom-of-information disclosure",
+    "publicationDate": "2010-03-31",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "hmt-uk-gold-foi-2019",
+    "publisher": "HM Treasury",
+    "title": "Gold reserves, FOI response FOI2019/01985",
+    "url": "https://assets.publishing.service.gov.uk/media/5ca35a3de5274a77e39d4b35/FOI2019-01985_gold_reserves.pdf",
+    "sourceType": "official freedom-of-information response",
+    "publicationDate": "2019-03-04",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "boe-uk-gold-auctions-2003",
+    "publisher": "Bank of England",
+    "title": "An analysis of the UK gold auctions 1999–2002",
+    "url": "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2003/an-analysis-of-the-uk-gold-auctions-1999-2002.pdf",
+    "sourceType": "official central-bank auction analysis",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "imf-fry-cr-2001-007",
+    "publisher": "International Monetary Fund",
+    "title": "Federal Republic of Yugoslavia: Membership and Use of Fund Resources—Request for Emergency Post-Conflict Assistance, Country Report 01/07",
+    "url": "https://www.imf.org/external/pubs/ft/scr/2001/cr0107.pdf",
+    "sourceType": "official IMF staff country report",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "us-eo-14330-2025",
+    "publisher": "The White House",
+    "title": "Executive Order 14330, Democratizing Access to Alternative Assets for 401(k) Investors",
+    "url": "https://www.whitehouse.gov/presidential-actions/2025/08/democratizing-access-to-alternative-assets-for-401k-investors/",
+    "sourceType": "original U.S. presidential executive order",
+    "publicationDate": "2025-08-07",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "us-dol-alternative-assets-proposal-2026",
+    "publisher": "U.S. Department of Labor, Federal Register",
+    "title": "Fiduciary Duties in Selecting Designated Investment Alternatives",
+    "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-31/pdf/2026-06178.pdf",
+    "sourceType": "proposed U.S. federal regulation, not final rule",
+    "publicationDate": "2026-03-31",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "wgc-gdt-fy2024-definitions",
+    "publisher": "World Gold Council",
+    "title": "Gold Demand Trends: Full Year 2024, Notes and Definitions",
+    "url": "https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-full-year-2024/notes-and-definitions",
+    "sourceType": "industry demand-series definition",
+    "publicationDate": "2025-02-05",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "us-frus-money-task-force-1964",
+    "publisher": "U.S. Department of State, Office of the Historian",
+    "title": "Foreign Relations of the United States 1964–1968, Volume VIII, document 18, Money task-force chapter",
+    "url": "https://history.state.gov/historicaldocuments/frus1964-68v08/d18",
+    "sourceType": "archived original U.S. policy task-force document",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "imf-financial-organization-ch3-2001",
+    "publisher": "International Monetary Fund",
+    "title": "Financial Organization and Operations of the IMF, sixth edition, chapter III",
+    "url": "https://www.imf.org/external/pubs/ft/pam/pam45/pdf/chap3.pdf",
+    "sourceType": "official IMF institutional history pamphlet",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "rosstat-russia-cpi-1991-2011",
+    "publisher": "Federal State Statistics Service (Rosstat)",
+    "title": "Consumer price indices for goods and services in the Russian Federation, 1991–2011",
+    "url": "https://rosstat.gov.ru/free_doc/new_site/prices/potr/2011/i-ipc.htm",
+    "sourceType": "official historical consumer-price index table",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "pcaob-por-investor-advisory-2023",
+    "publisher": "PCAOB Office of the Investor Advocate staff",
+    "title": "Investor Advisory: Exercise Caution With Third-Party Verification/Proof of Reserve Reports",
+    "url": "https://pcaobus.org/resources/information-for-investors/investor-advisories/investor-advisory-exercise-caution-with-third-party-verification-proof-of-reserve-reports",
+    "sourceType": "staff investor advisory, not PCAOB Board rule or audit standard",
+    "publicationDate": "2023-03-08",
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "boe-payment-settlement-uk",
+    "publisher": "Bank of England",
+    "title": "Payment and settlement",
+    "url": "https://www.bankofengland.co.uk/payments/payment-settlement",
+    "sourceType": "official payment and RTGS settlement explanation",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "usmint-coinage-act-1792",
+    "publisher": "United States Mint (archival transcription)",
+    "title": "Coinage Act of April 2, 1792",
+    "url": "https://www.usmint.gov/learn/history/historical-documents/coinage-act-of-april-2-1792",
+    "sourceType": "official transcription of enacted U.S. coinage law",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "bitcoin-dev-block-chain-guide",
+    "publisher": "Bitcoin.org Developer Documentation",
+    "title": "Developer Guide: Block Chain",
+    "url": "https://developer.bitcoin.org/devguide/block_chain.html",
+    "sourceType": "project technical documentation",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "bitcoin-core-validation-feature",
+    "publisher": "Bitcoin Core documentation on Bitcoin.org",
+    "title": "Bitcoin Core Validation",
+    "url": "https://bitcoin.org/en/bitcoin-core/features/validation",
+    "sourceType": "project software feature explanation",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "imf-pam45-gold-second-amendment",
+    "publisher": "International Monetary Fund",
+    "title": "Financial Organization and Operations of the IMF, Pamphlet No. 45, Chapter II",
+    "url": "https://www.imf.org/external/pubs/ft/pam/pam45/pdf/chap2.pdf",
+    "sourceType": "official IMF institutional/legal history pamphlet",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "imf-articles-current-schedule-c",
+    "publisher": "International Monetary Fund",
+    "title": "Articles of Agreement, Schedule C: Par Values",
+    "url": "https://www.imf.org/en/publications/ft/aa/index",
+    "sourceType": "current official treaty text",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  },
+  {
+    "id": "ustreasury-fy2025-afr-argentina",
+    "publisher": "U.S. Department of the Treasury",
+    "title": "Agency Financial Report, Fiscal Year 2025",
+    "url": "https://home.treasury.gov/system/files/266/Treasury-FY-2025-AFR.pdf",
+    "sourceType": "official agency financial report and subsequent-event note",
+    "publicationDate": null,
+    "accessed": "2026-09-15"
+  }
+]

@@ -10,7 +10,7 @@ function rebuildContentOnEdit() {
       let pending = false;
       server.watcher.on('change', changed => {
         const path = relative(server.config.root, changed).replaceAll('\\', '/');
-        if (!/^public\/content\/(?:manifest\.json|observations\.json|(?:gold|after|bitcoin)\/[^/]+\.md)$/.test(path) || pending) return;
+        if (!/^public\/content\/(?:manifest\.json|observations\.json|sources\.json|claims\.json|comparison-cells\.json|article-metadata\.json|timeline-event-ids\.json|timeline-review-status\.json|(?:gold|after|bitcoin)\/[^/]+\.md)$/.test(path) || pending) return;
         pending = true;
         execFile(process.execPath, ['scripts/build-content.mjs'], { cwd: server.config.root }, error => {
           pending = false;

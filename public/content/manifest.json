@@ -7,7 +7,7 @@
   "source": "gold-research/00-README.md",
   "aliases": [],
   "title": "Gold: From Bare Metal to World Money and Back — Research Directory",
-  "words": 731,
+  "words": 607,
   "h2": [
    "Reading order",
    "The arc in one paragraph"
@@ -22,7 +22,7 @@
   "source": "gold-research/01-the-metal-itself.md",
   "aliases": [],
   "title": "01 — The Metal Itself: Where Gold Came From and Why It Was Different",
-  "words": 908,
+  "words": 854,
   "h2": [
    "Cosmic and geological origin",
    "Why gold is chemically unusual",
@@ -40,7 +40,7 @@
   "source": "gold-research/02-before-money-ornament-ritual-power.md",
   "aliases": [],
   "title": "02 — Before Money: Ornament, Ritual, Power and Other Uses",
-  "words": 903,
+  "words": 781,
   "h2": [
    "Ornament and status",
    "Religion and the divine",
@@ -59,8 +59,8 @@
   "id": "gold-03",
   "source": "gold-research/03-from-metal-to-money-weights-rings-coins.md",
   "aliases": [],
-  "title": "03 — From Metal to Money: Dust, Rings, Bars and the First Coins",
-  "words": 1149,
+  "title": "03 — From Metal to Money: Dust, Rings, Bars and Early Coins",
+  "words": 1126,
   "h2": [
    "Stage one: metal by weight (c. 3000–650 BCE)",
    "Stage two: the invention of the coin (c. 650–550 BCE)",
@@ -79,17 +79,20 @@
   "id": "gold-04",
   "source": "gold-research/04-what-gives-gold-its-value.md",
   "aliases": [],
-  "title": "04 — What Gives Gold Its Value, and Why Everything Was Denominated in It",
-  "words": 1162,
+  "title": "04 — What Gives Gold Its Value and When It Became an Account Unit",
+  "words": 967,
   "h2": [
    "The question properly stated",
    "Why one good becomes money at all",
-   "Why gold is the most saleable good",
+   "Why gold could be saleable in some markets",
    "Why prices came to be denominated in gold",
    "Is gold's value \"intrinsic\" or a social convention?",
    "What gold's value is *not*",
    "Key takeaways"
   ],
+  "sectionAliases": {
+   "why-gold-is-the-most-saleable-good": "why-gold-could-be-saleable-in-some-markets"
+  },
   "num": "04"
  },
  {
@@ -99,16 +102,19 @@
   "id": "gold-05",
   "source": "gold-research/05-silver-copper-bronze-and-bimetallism.md",
   "aliases": [],
-  "title": "05 — Silver, Copper, Bronze and Bimetallism: How the Other Metals Fit Under Gold",
-  "words": 1299,
+  "title": "05 — Silver, Copper, Bronze and Bimetallism: Different Metal Roles",
+  "words": 1080,
   "h2": [
    "Silver was the workhorse, not the understudy",
-   "Copper and bronze: the oldest and the smallest",
+   "Copper and bronze in monetary systems",
    "Bimetallism: the fixed ratio and why it kept failing",
    "How silver and copper were \"backed\" by gold",
    "The gold–silver ratio through time",
    "Key takeaways"
   ],
+  "sectionAliases": {
+   "copper-and-bronze-the-oldest-and-the-smallest": "copper-and-bronze-in-monetary-systems"
+  },
   "num": "05"
  },
  {
@@ -119,7 +125,7 @@
   "source": "gold-research/06-rulers-and-empires-how-gold-was-used.md",
   "aliases": [],
   "title": "06 — Rulers and Empires: How Gold Was Worked and Used Across Time and Place",
-  "words": 2008,
+  "words": 1888,
   "h2": [
    "Egypt (c. 3000–30 BCE)",
    "Mesopotamia and the Levant (c. 3000–500 BCE)",
@@ -147,7 +153,7 @@
   "source": "gold-research/07-the-gold-standard-era-1717-1971.md",
   "aliases": [],
   "title": "07 — The Gold Standard Era, 1717–1971: How Gold Became a Major Monetary Standard and Lost That Role",
-  "words": 1644,
+  "words": 1674,
   "h2": [
    "Newton's accident (1717)",
    "The gold rushes (1848–1900)",
@@ -167,8 +173,8 @@
   "id": "gold-08",
   "source": "gold-research/08-why-the-dollar-replaced-gold.md",
   "aliases": [],
-  "title": "08 — Why the Dollar, Not Gold, Is the World's Unit of Account",
-  "words": 1449,
+  "title": "08 — Why Dollar Use Survived Official Gold Conversion",
+  "words": 1419,
   "h2": [
    "The short answer",
    "Step one: the dollar becomes gold's proxy (1944–1971)",
@@ -189,7 +195,7 @@
   "source": "gold-research/09-gold-today-what-still-holds-its-value.md",
   "aliases": [],
   "title": "09 — Gold Today (September 2026): What Still Holds Its Value",
-  "words": 1323,
+  "words": 1375,
   "h2": [
    "The numbers",
    "The last four years in one paragraph",
@@ -208,7 +214,7 @@
   "source": "gold-research/10-master-timeline.md",
   "aliases": [],
   "title": "10 — Master Timeline: Gold from 4600 BCE to 2026",
-  "words": 1551,
+  "words": 1732,
   "h2": [],
   "num": "10"
  },
@@ -220,7 +226,7 @@
   "source": "gold-research/11-glossary.md",
   "aliases": [],
   "title": "11 — Glossary",
-  "words": 997,
+  "words": 1185,
   "h2": [],
   "num": "11"
  },
@@ -232,7 +238,7 @@
   "source": "gold-research/12-sources.md",
   "aliases": [],
   "title": "12 — Sources and Further Reading",
-  "words": 834,
+  "words": 1306,
   "h2": [
    "Gold's post-1978 monetary role (reviewed 13 September 2026)",
    "Present-day data (consulted 7 September 2026)",
@@ -266,7 +272,7 @@
   "source": "after-gold/01-the-break-1971-1976.md",
   "aliases": [],
   "title": "01 — The Break, 1971–1976: From the Nixon Shock to Legalised Floating",
-  "words": 1353,
+  "words": 1250,
   "h2": [
    "What actually happened on 15 August 1971",
    "The Smithsonian Agreement (December 1971)",
@@ -287,7 +293,7 @@
   "source": "after-gold/02-oil-petrodollars-and-stagflation-1973-1982.md",
   "aliases": [],
   "title": "02 — Oil, Petrodollars and Stagflation, 1973–1982: The First Decade Without an Anchor",
-  "words": 1434,
+  "words": 1615,
   "h2": [
    "Inflation before and after the gold break",
    "The first oil shock (1973–74)",
@@ -329,12 +335,15 @@
   "id": "after-04",
   "source": "after-gold/04-cold-war-ends-new-nations-new-currencies-1989-2001.md",
   "aliases": [],
+  "sectionAliases": {
+   "central-europe-yugoslavia-and-the-worst-hyperinflation-of-th": "central-europe-yugoslavia-and-an-extreme-hyperinflation"
+  },
   "title": "04 — The Cold War Ends: New Nations, New Currencies and the Euro, 1989–2001",
-  "words": 1693,
+  "words": 1764,
   "h2": [
    "German reunification and the price of a 1:1 conversion",
    "The Soviet collapse: fifteen new states, fifteen new currencies",
-   "Central Europe, Yugoslavia and the worst hyperinflation of the era",
+   "Central Europe, Yugoslavia and an extreme hyperinflation",
    "Other independences and new currencies",
    "Maastricht, the ERM crisis and Black Wednesday (1992–93)",
    "The euro (1999–2002)",
@@ -351,7 +360,7 @@
   "source": "after-gold/05-globalization-and-emerging-market-crises-1990-2001.md",
   "aliases": [],
   "title": "05 — Globalization and the Emerging-Market Crises, 1990–2001",
-  "words": 1580,
+  "words": 1644,
   "h2": [
    "The trade treaties",
    "The Tequila crisis (1994–95)",
@@ -372,7 +381,7 @@
   "source": "after-gold/06-wars-invasions-and-money-1971-2026.md",
   "aliases": [],
   "title": "06 — Wars, Invasions and Money, 1971–2026",
-  "words": 2273,
+  "words": 1872,
   "h2": [
    "How the fiat era changed the financing of war",
    "Vietnam and the Yom Kippur War (1965–74)",
@@ -397,7 +406,7 @@
   "source": "after-gold/07-financial-crisis-and-the-age-of-qe-2007-2019.md",
   "aliases": [],
   "title": "07 — The Financial Crisis and the Age of Quantitative Easing, 2007–2019",
-  "words": 1710,
+  "words": 1954,
   "h2": [
    "The bubble",
    "The crash (2007–09)",
@@ -419,9 +428,9 @@
   "source": "after-gold/08-innovation-cards-bitcoin-stablecoins-cbdcs.md",
   "aliases": [],
   "title": "08 — Innovation: How Money Dematerialised, 1971–2026",
-  "words": 1497,
+  "words": 1627,
   "h2": [
-   "Why 1971 was also a technological turning point",
+   "Parallel monetary and technological changes",
    "Managing the new risks: derivatives (1972–2000)",
    "Moving money: from SWIFT to real-time payments (1973–2023)",
    "Financialising gold: the ETF (2003–04)",
@@ -431,6 +440,9 @@
    "Innovation's effect on the monetary system",
    "Key takeaways"
   ],
+  "sectionAliases": {
+   "why-1971-was-also-a-technological-turning-point": "parallel-monetary-and-technological-changes"
+  },
   "num": "08"
  },
  {
@@ -441,9 +453,9 @@
   "source": "after-gold/09-pandemic-inflation-and-weaponized-reserves-2020-2026.md",
   "aliases": [],
   "title": "09 — Pandemic, Inflation and Weaponised Reserves, 2020–2026: Where the System Stands",
-  "words": 1708,
+  "words": 1382,
   "h2": [
-   "The pandemic response: the largest money creation in history",
+   "Pandemic fiscal spending and central-bank balance sheets",
    "The inflation (2021–23)",
    "The weaponisation of reserves and the return of gold (2022–26)",
    "American debt, the Fed and the tariffs (2025–26)",
@@ -452,6 +464,9 @@
    "Where money stands in September 2026",
    "Key takeaways"
   ],
+  "sectionAliases": {
+   "the-pandemic-response-the-largest-money-creation-in-history": "pandemic-fiscal-spending-and-central-bank-balance-sheets"
+  },
   "num": "09"
  },
  {
@@ -462,7 +477,7 @@
   "source": "after-gold/10-rules-treaties-and-institutions.md",
   "aliases": [],
   "title": "10 — Rules, Treaties and Institutions of the Fiat Era: A Reference Table",
-  "words": 1627,
+  "words": 1787,
   "h2": [
    "International monetary agreements",
    "Trade agreements",
@@ -481,7 +496,7 @@
   "source": "after-gold/11-master-timeline-1971-2026.md",
   "aliases": [],
   "title": "11 — Master Timeline: The Fiat Era, 1971–2026",
-  "words": 2201,
+  "words": 6537,
   "h2": [],
   "num": "11"
  },
@@ -493,7 +508,7 @@
   "source": "after-gold/12-glossary.md",
   "aliases": [],
   "title": "12 — Glossary",
-  "words": 1026,
+  "words": 1344,
   "h2": [],
   "num": "12"
  },
@@ -505,11 +520,11 @@
   "source": "after-gold/13-sources.md",
   "aliases": [],
   "title": "13 — Sources and Further Reading",
-  "words": 1736,
+  "words": 4132,
   "h2": [
    "Gold and reserve-basket currencies (reviewed 13 September 2026)",
    "Money creation and asset purchases (reviewed 13 September 2026)",
-   "Present-day data and events (consulted 8 September 2026)",
+   "Present-day data and events (focused primary review, 15 September 2026)",
    "1971–1976: the break",
    "1973–1982: oil, petrodollars, stagflation",
    "1982–1990: debt, Plaza, Japan, Basel",
@@ -520,6 +535,9 @@
    "2020–2026",
    "Note on reliability"
   ],
+  "sectionAliases": {
+   "present-day-data-and-events-consulted-8-september-2026": "present-day-data-and-events-focused-primary-review-15-septem"
+  },
   "num": "13"
  },
  {
@@ -528,9 +546,11 @@
   "path": "content/bitcoin/00-readme.md",
   "id": "bitcoin-00",
   "source": "bitcoin/00.md",
-  "aliases": ["00"],
+  "aliases": [
+   "00"
+  ],
   "title": "Bitcoin: Money Without an Issuer, 2008–2026 — Research Directory",
-  "words": 947,
+  "words": 687,
   "h2": [
    "Reading order",
    "The arc in one paragraph"
@@ -543,9 +563,11 @@
   "path": "content/bitcoin/01-the-origin-what-2008-produced.md",
   "id": "bitcoin-01",
   "source": "bitcoin/01.md",
-  "aliases": ["01"],
+  "aliases": [
+   "01"
+  ],
   "title": "01 — The Origin: What 2008 Produced, and the Currency Structure That Grew Around It",
-  "words": 1710,
+  "words": 1436,
   "h2": [
    "Where this volume starts",
    "The moment of birth",
@@ -562,9 +584,11 @@
   "path": "content/bitcoin/02-what-bitcoin-solved-and-what-it-did-not.md",
   "id": "bitcoin-02",
   "source": "bitcoin/02.md",
-  "aliases": ["02"],
+  "aliases": [
+   "02"
+  ],
   "title": "02 — What Bitcoin Solved in Production, and What It Did Not",
-  "words": 1842,
+  "words": 1711,
   "h2": [
    "The claim, tested against use",
    "Solved and demonstrated",
@@ -581,12 +605,14 @@
   "path": "content/bitcoin/03-how-bitcoin-is-actually-used-global-adoption.md",
   "id": "bitcoin-03",
   "source": "bitcoin/03.md",
-  "aliases": ["03"],
+  "aliases": [
+   "03"
+  ],
   "title": "03 — How Bitcoin Is Actually Used: Global Adoption, 2009–2026",
-  "words": 1862,
+  "words": 1556,
   "h2": [
    "The headline numbers",
-   "The dominant use: a savings and speculative asset",
+   "Survey use and Bitcoin-specific limits",
    "Who adopts it, and where",
    "Institutional and sovereign adoption",
    "The industry behind it",
@@ -594,6 +620,9 @@
    "How bitcoin has behaved when it mattered",
    "Key takeaways"
   ],
+  "sectionAliases": {
+   "the-dominant-use-a-savings-and-speculative-asset": "survey-use-and-bitcoin-specific-limits"
+  },
   "num": "03"
  },
  {
@@ -602,13 +631,15 @@
   "path": "content/bitcoin/04-countries-that-adopted-bitcoin-and-what-happened.md",
   "id": "bitcoin-04",
   "source": "bitcoin/04.md",
-  "aliases": ["04"],
+  "aliases": [
+   "04"
+  ],
   "title": "04 — Countries That Adopted Bitcoin, in What Form, and What Happened",
-  "words": 2781,
+  "words": 2517,
   "h2": [
    "Four forms of adoption",
-   "El Salvador: the only full experiment",
-   "Central African Republic: the second experiment, in twelve months",
+   "El Salvador: payment law and amended private acceptance",
+   "Central African Republic: reported policy and legal questions",
    "The United States: a reserve with a legal-status test",
    "Bhutan: state-linked mining, uncertain disposition",
    "The rest: announcements, tests and regimes",
@@ -616,6 +647,10 @@
    "What the record shows",
    "Key takeaways"
   ],
+  "sectionAliases": {
+   "el-salvador-the-only-full-experiment": "el-salvador-payment-law-and-amended-private-acceptance",
+   "central-african-republic-the-second-experiment-in-twelve-mon": "central-african-republic-reported-policy-and-legal-questions"
+  },
   "num": "04"
  },
  {
@@ -624,9 +659,11 @@
   "path": "content/bitcoin/05-supporters-and-opponents-and-their-reasoning.md",
   "id": "bitcoin-05",
   "source": "bitcoin/05.md",
-  "aliases": ["05"],
+  "aliases": [
+   "05"
+  ],
   "title": "05 — Who Favours a Bitcoin Standard, Who Opposes It, and Why",
-  "words": 1704,
+  "words": 1498,
   "h2": [
    "The shape of the argument",
    "The opponents",
@@ -643,9 +680,11 @@
   "path": "content/bitcoin/06-what-legal-tender-requires-and-what-is-missing.md",
   "id": "bitcoin-06",
   "source": "bitcoin/06.md",
-  "aliases": ["06"],
+  "aliases": [
+   "06"
+  ],
   "title": "06 — What Legal Tender Requires, and What Bitcoin Still Lacks",
-  "words": 1536,
+  "words": 1485,
   "h2": [
    "What \"legal tender\" actually means",
    "The legal architecture",
@@ -663,9 +702,11 @@
   "path": "content/bitcoin/07-the-supply-system-fixed-rate-variable-rate-and-backing.md",
   "id": "bitcoin-07",
   "source": "bitcoin/07.md",
-  "aliases": ["07"],
+  "aliases": [
+   "07"
+  ],
   "title": "07 — If Bitcoin Were the Unit of the Economy: The Supply System, Fixed Versus Variable Rates, Backing, and How Denomination Would Shift",
-  "words": 2691,
+  "words": 2407,
   "h2": [
    "Three things people mean by \"a Bitcoin standard\"",
    "The supply system: what a fixed base does to an economy",
@@ -681,9 +722,11 @@
   "path": "content/bitcoin/08-why-not-gold-again.md",
   "id": "bitcoin-08",
   "source": "bitcoin/08.md",
-  "aliases": ["08"],
+  "aliases": [
+   "08"
+  ],
   "title": "08 — Why Not Gold Again? Bitcoin Against the Metal It Imitates",
-  "words": 1829,
+  "words": 1775,
   "h2": [
    "The question, stated precisely",
    "First, what the world is actually doing: going back to gold as an asset, not as a standard",
@@ -700,9 +743,11 @@
   "path": "content/bitcoin/09-supply-and-control-who-holds-bitcoin-and-who-benefits.md",
   "id": "bitcoin-09",
   "source": "bitcoin/09.md",
-  "aliases": ["09"],
+  "aliases": [
+   "09"
+  ],
   "title": "09 — Supply and Control: Who Holds Bitcoin, Who Runs the Network, and Who Benefits",
-  "words": 2587,
+  "words": 1929,
   "h2": [
    "Two different kinds of control",
    "The supply, September 2026",
@@ -719,20 +764,30 @@
   "path": "content/bitcoin/10-the-path-for-large-economies.md",
   "id": "bitcoin-10",
   "source": "bitcoin/10.md",
-  "aliases": ["10"],
+  "aliases": [
+   "10"
+  ],
   "title": "10 — The Path for Large Economies: How the United States, China, Europe, Japan, India and the Rest Would Get From Here to a Bitcoin Reserve — or a Bitcoin Standard",
-  "words": 1669,
+  "words": 1095,
   "h2": [
-   "The ladder",
-   "The United States: the leader, by executive order",
-   "China: off the ladder, holding the hardware",
-   "The European Union: regulated, and closed to reserves",
-   "Japan, Korea, India: tax first",
+   "Forms of possible adoption",
+   "The United States: distinct executive, market and legislative acts",
+   "China: legal restrictions and separate market measures",
+   "The European Union: regulated private access and reserve authority",
+   "Japan, Korea, India: different tax and reserve rules",
    "The rest: Russia, Brazil, the Gulf, Switzerland",
    "What would push a large economy up the ladder",
-   "A realistic sequence",
+   "One conditional sequence",
    "Key takeaways"
   ],
+  "sectionAliases": {
+   "the-ladder": "forms-of-possible-adoption",
+   "the-united-states-the-leader-by-executive-order": "the-united-states-distinct-executive-market-and-legislative-",
+   "china-off-the-ladder-holding-the-hardware": "china-legal-restrictions-and-separate-market-measures",
+   "the-european-union-regulated-and-closed-to-reserves": "the-european-union-regulated-private-access-and-reserve-auth",
+   "japan-korea-india-tax-first": "japan-korea-india-different-tax-and-reserve-rules",
+   "a-realistic-sequence": "one-conditional-sequence"
+  },
   "num": "10"
  },
  {
@@ -741,9 +796,11 @@
   "path": "content/bitcoin/11-defects-that-stop-bitcoin-from-being-a-global-currency.md",
   "id": "bitcoin-11",
   "source": "bitcoin/11.md",
-  "aliases": ["11"],
+  "aliases": [
+   "11"
+  ],
   "title": "11 — The Defects That Have Stopped Bitcoin From Becoming a Global Currency",
-  "words": 1750,
+  "words": 1675,
   "h2": [
    "Sorting the defects",
    "1. Legal and regulatory perimeter — being fixed",
@@ -767,9 +824,11 @@
   "path": "content/bitcoin/12-how-bitcoin-could-reproduce-old-crises.md",
   "id": "bitcoin-12",
   "source": "bitcoin/12.md",
-  "aliases": ["12"],
+  "aliases": [
+   "12"
+  ],
   "title": "12 — How Bitcoin Could Reproduce the Old Crises",
-  "words": 2019,
+  "words": 1611,
   "h2": [
    "The thesis",
    "1. Custodians: the bank run without a central bank (analogue: 1907, 1930–33)",
@@ -792,9 +851,11 @@
   "path": "content/bitcoin/13-is-bitcoin-the-answer.md",
   "id": "bitcoin-13",
   "source": "bitcoin/13.md",
-  "aliases": ["13"],
+  "aliases": [
+   "13"
+  ],
   "title": "13 — Is Bitcoin the True Solution to Money After Gold?",
-  "words": 1067,
+  "words": 1027,
   "h2": [
    "The question the whole project has been building toward",
    "Is bitcoin a solution to the store-of-value problem fiat created?",
@@ -813,9 +874,11 @@
   "path": "content/bitcoin/14-master-timeline-2008-2026.md",
   "id": "bitcoin-14",
   "source": "bitcoin/14.md",
-  "aliases": ["14"],
+  "aliases": [
+   "14"
+  ],
   "title": "14 — Master Timeline, 2008–2026",
-  "words": 2092,
+  "words": 3436,
   "h2": [
    "Origins and the first structure, 2008–2013",
    "Exchanges, forks and the first state responses, 2014–2020",
@@ -831,9 +894,11 @@
   "path": "content/bitcoin/15-glossary.md",
   "id": "bitcoin-15",
   "source": "bitcoin/15.md",
-  "aliases": ["15"],
+  "aliases": [
+   "15"
+  ],
   "title": "15 — Glossary",
-  "words": 1762,
+  "words": 2361,
   "h2": [],
   "num": "15"
  },
@@ -843,9 +908,11 @@
   "path": "content/bitcoin/16-sources.md",
   "id": "bitcoin-16",
   "source": "bitcoin/16.md",
-  "aliases": ["16"],
+  "aliases": [
+   "16"
+  ],
   "title": "16 — Sources and Further Reading",
-  "words": 3188,
+  "words": 4122,
   "h2": [
    "Primary documents",
    "Academic and think-tank",

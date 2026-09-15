@@ -45,11 +45,24 @@ export function parseMd(src) {
   return blocks;
 }
 // Inline tokenizer: returns [{t:'text'|'b'|'i'|'code'|'link', v, href}]
-export function tokenizeInline(text) {
+export function tokenizeInline(text, { linkifyUrls = false } = {}) {
   const re = /(\*\*[^*]+\*\*|\*[^*\n]+\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g;
   const out = []; let last = 0; let m;
+  const pushPlain = (plain) => {
+    if (!linkifyUrls) { if (plain) out.push({ t: 'text', v: plain }); return; }
+    const urls = /https?:\/\/[^\s<>()\[\]{}"']+/gi;
+    let offset = 0; let found;
+    while ((found = urls.exec(plain))) {
+      const candidate = found[0].replace(/[.,;:!?]+$/, '');
+      if (!candidate || !isSafeContentHref(candidate)) continue;
+      if (found.index > offset) out.push({ t: 'text', v: plain.slice(offset, found.index) });
+      out.push({ t: 'link', v: candidate, href: candidate });
+      offset = found.index + candidate.length;
+    }
+    if (offset < plain.length) out.push({ t: 'text', v: plain.slice(offset) });
+  };
   while ((m = re.exec(text))) {
-    if (m.index > last) out.push({ t: 'text', v: text.slice(last, m.index) });
+    if (m.index > last) pushPlain(text.slice(last, m.index));
     const s = m[0];
     if (s.startsWith('**')) out.push({ t: 'b', v: s.slice(2, -2) });
     else if (s.startsWith('`')) out.push({ t: 'code', v: s.slice(1, -1) });
@@ -57,8 +70,21 @@ export function tokenizeInline(text) {
     else out.push({ t: 'i', v: s.slice(1, -1) });
     last = m.index + s.length;
   }
-  if (last < text.length) out.push({ t: 'text', v: text.slice(last) });
+  if (last < text.length) pushPlain(text.slice(last));
   return out;
+}
+// Links in supplied research Markdown are rendered only for explicit web or
+// local research routes. Both the browser and static renderer use this rule.
+export function isSafeContentHref(href) {
+  if (typeof href !== 'string' || /[\u0000-\u0020\u007f\\]/.test(href)) return false;
+  if (/^\/(?!\/)/.test(href) || /^#\//.test(href)) return true;
+  if (!/^https?:\/\//i.test(href)) return false;
+  try {
+    const parsed = new URL(href);
+    return (parsed.protocol === 'https:' || parsed.protocol === 'http:') && !!parsed.hostname;
+  } catch {
+    return false;
+  }
 }
 export function stripInline(text) {
   return text.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\*([^*]+)\*/g, '$1').replace(/`([^`]+)`/g, '$1').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');

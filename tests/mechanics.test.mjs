@@ -11,10 +11,10 @@ test('four money-mechanics transactions are reachable and sourced', () => {
   assert.match(app, /\{v\.isMechanics && <MoneyMechanics \/>\}/);
   for (const id of ['loan', 'payment', 'bond', 'qe']) {
     assert.ok(page.includes(`id="mechanics-${id}"`), id);
-    assert.ok(page.includes(`href="#/mechanics/mechanics-${id}"`), id);
+    assert.ok(page.includes(`href="/#/mechanics/mechanics-${id}"`), id);
   }
   for (const host of ['bankofengland.co.uk', 'dmo.gov.uk']) assert.ok(page.includes(host), host);
-  assert.equal((page.match(/<Changes caption=/g) || []).length, 3);
+  assert.equal((page.match(/<Changes caption=/g) || []).length, 4);
 });
 
 test('corrected QE chapter distinguishes asset purchases from loans and borrowing', () => {

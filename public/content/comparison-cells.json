@@ -1,0 +1,113 @@
+[
+  {
+    "id": "bank-deposit:payment:household",
+    "claimId": "C09-monzo-fps-payment",
+    "text": "A UK-resident Monzo personal current-account holder can approve an outgoing bank transfer in the app when the required details and available balance are in place. Monzo supports Faster Payments, subject to its checks and processing.",
+    "scope": "Monzo Bank Limited personal Current Account in the UK; outgoing Faster Payment for a household, under terms dated 18 August 2026",
+    "uncertainty": "Approval can have an undo window; Monzo may refuse or delay a transfer. This account example does not establish interbank final settlement, universal bank behavior or card-payment rules.",
+    "citations": [
+      {
+        "sourceId": "09-monzo-current-terms-2026-08",
+        "href": "https://monzo.com/legal/terms-and-conditions",
+        "title": "Current Account Terms & Conditions, version 2.11",
+        "locator": "Current Account Terms & Conditions v2.11, “These terms and using your Monzo Current Account”; “Making payments” → available balance / “When we won’t make a payment”; “Payment types” → “Bank transfer” → recipient information, ways to approve, withdrawing approval, how long the payment takes"
+      },
+      {
+        "sourceId": "09-payuk-fps-how",
+        "href": "https://www.wearepay.uk/what-we-do/payment-systems/faster-payment-system/how-faster-payments-work/",
+        "title": "How Faster Payments work",
+        "locator": "How Faster Payments work, paragraphs beginning “Where both the sending and receiving bank...” and “Due to their real-time nature...”"
+      }
+    ]
+  },
+  {
+    "id": "self-custodied-btc:payment:household",
+    "claimId": "C09-btc-mainchain-payment",
+    "text": "A person controlling spending keys can authorize and broadcast a Bitcoin main-chain transaction to a recipient output. Inclusion in a validated block and further confirmations increase confidence against replacement.",
+    "scope": "Self-custodied Bitcoin main-chain output and household key holder; transaction authorization, block inclusion and confirmations only",
+    "uncertainty": "Broadcast does not assure payment and confirmations are not absolute finality. Fees, inclusion timing, key loss, merchant acceptance, refunds, legal recourse and cash-out are separate questions.",
+    "citations": [
+      {
+        "sourceId": "09-bitcoin-dev-wallets",
+        "href": "https://developer.bitcoin.org/devguide/wallets.html",
+        "title": "Bitcoin Developer Guide: Wallets",
+        "locator": "Wallets, “Introductions” and “Wallet Programs”, paragraphs on private-key spending, signing and network broadcast"
+      },
+      {
+        "sourceId": "09-bitcoin-dev-transactions",
+        "href": "https://developer.bitcoin.org/devguide/transactions.html",
+        "title": "Bitcoin Developer Guide: Transactions",
+        "locator": "Transactions, “The Parts Of A Transaction” and “Unlocking A P2PKH Output For Spending”, UTXO reference, signature and broadcast paragraphs; P2PKH as an example rather than every output type"
+      },
+      {
+        "sourceId": "09-bitcoin-dev-payment-processing",
+        "href": "https://developer.bitcoin.org/devguide/payment_processing.html",
+        "title": "Bitcoin Developer Guide: Payment Processing",
+        "locator": "Payment Processing, “Verifying Payment”, paragraphs beginning “broadcasting a transaction...” through “higher confirmation scores...”"
+      },
+      {
+        "sourceId": "09-bitcoin-core-gettransaction-29",
+        "href": "https://bitcoincore.org/en/doc/29.0.0/rpc/wallet/gettransaction/",
+        "title": "Bitcoin Core 29.0.0 RPC: gettransaction",
+        "locator": "Bitcoin Core 29.0.0 gettransaction RPC result, confirmations, negative-conflict count and blockhash fields"
+      }
+    ]
+  },
+  {
+    "id": "fiat-cash:payment:household",
+    "claimId": "C09-boe-note-retail-acceptance",
+    "text": "A household may offer a current Bank of England note for an in-person purchase in England or Wales. The shop can choose whether to accept it; legal-tender status does not compel retail acceptance.",
+    "scope": "Current Bank of England note; England and Wales; household offering it to a merchant, under the Bank of England explainer updated 26 February 2025",
+    "uncertainty": "This source does not establish a particular shop’s policy, whether a purchase is completed, counterfeit handling, cash costs, privacy in a specific transaction, or rules for other UK notes and coins.",
+    "citations": [
+      {
+        "sourceId": "09-boe-legal-tender-2025-02",
+        "href": "https://www.bankofengland.co.uk/explainers/what-is-legal-tender",
+        "title": "What is legal tender?",
+        "locator": "What does “legal tender” mean?, shop-owner acceptance paragraphs; So, what counts as legal tender?, England and Wales Bank of England notes paragraph"
+      }
+    ]
+  },
+  {
+    "id": "fiat-backed-stablecoin:saving:household",
+    "claimId": "C09-circle-usdc-type-b-redemption",
+    "text": "Circle’s terms give a US household holding native Ethereum USDC without a Mint account no direct redemption route with Circle. Mint eligibility is currently institutional, and $1 is an intended issuer value subject to its terms.",
+    "scope": "Circle LLC native Ethereum USDC; US non-EEA household wallet holder without Circle Mint; issuer terms dated 12 December 2025 and Mint agreement dated 24 July 2026",
+    "uncertainty": "This is a contract-rights description only. It does not establish market cash-out price, USD purchasing-power preservation, independent reserve sufficiency, third-party wallet protection or named-issuer regulatory compliance.",
+    "citations": [
+      {
+        "sourceId": "09-circle-usdc-terms-2025-12",
+        "href": "https://www.circle.com/legal/usdc-terms",
+        "title": "USDC Terms",
+        "locator": "Preamble, User Type A/B and non-EEA scope; §2, User Type B direct-redemption paragraph and eligible-holder assignment; §2, intended $1 value and conditional issuer redemption paragraph"
+      },
+      {
+        "sourceId": "09-circle-mint-agreement-2026-07",
+        "href": "https://www.circle.com/legal/user-agreement",
+        "title": "Circle Mint User Agreement",
+        "locator": "§1, Eligibility; Limitations, paragraph stating Circle Mint and services are currently available only to institutions in supported jurisdictions"
+      },
+      {
+        "sourceId": "09-circle-ethereum-usdc",
+        "href": "https://www.circle.com/multi-chain-usdc",
+        "title": "Multi-chain USDC: Ethereum listing",
+        "locator": "USDC on Ethereum listing, ERC-20 token standard section"
+      }
+    ]
+  },
+  {
+    "id": "fiat-cash:payment:merchant",
+    "claimId": "C09-boe-note-retail-merchant-discretion",
+    "text": "An England or Wales shop may choose whether to accept a current Bank of England note offered for a purchase. Legal tender does not force retail acceptance.",
+    "scope": "Retail merchant in England or Wales; current Bank of England notes under the Bank of England explainer updated 26 February 2025",
+    "uncertainty": "The source does not establish a particular shop’s cash policy, handling cost, counterfeit checks, whether a purchase completes, debt-discharge rules or other UK notes and coins.",
+    "citations": [
+      {
+        "sourceId": "09-boe-legal-tender-2025-02",
+        "href": "https://www.bankofengland.co.uk/explainers/what-is-legal-tender",
+        "title": "What is legal tender?",
+        "locator": "What does “legal tender” mean?, shop-owner acceptance paragraphs; So, what counts as legal tender?, England and Wales Bank of England notes paragraph"
+      }
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+# Reader metadata merge · 15 September 2026
+
+`public/content/article-metadata.json` holds coordinator-accepted reader copy for the 32 topic records (`gold-01`–`09`, `after-01`–`10`, `bitcoin-01`–`13`). The editorial inputs are package [02 Gold summaries](../02/summaries-and-links.md), [03 After Gold summaries](../03/SUMMARIES.md) and [04 Bitcoin summaries](../04/SUMMARIES.md). The editors approved conceptual question/answer wording and the relevance of 64 next-step targets against corrected chapter bodies. Their packets explicitly do not sign off every dated amount, legal outcome or causal assertion in those chapters.
+
+The shared metadata schema uses stable manifest article IDs and parsed section IDs, not text matching or row position. `src/article-metadata.js` rejects duplicate/unknown records, reference-file summaries and missing next-step sections. The build embeds the validated metadata in `content/index.json`; React and static article generation render the same copy and links. The review notice remains adjacent to each summary. The local build and `npm test` passed 63/63 at the 181/316 timeline-review checkpoint; CUA showed Gold 03, After Gold 07 and Bitcoin 13 summaries and next steps on direct routes.
+
+For a later prose or heading revision, recheck the accepted summary against the chapter and recheck each target section's actual topic. If a target heading ID changes, retain an alias or update this metadata only after editorial routing review. Refresh derived manifest word/heading fields and rebuild. The metadata JSON is an accepted editorial artifact; it is not generated from unreviewed Markdown or from the longer brainstorming tables in the packets.
+
+Open: evidence sign-off and cross-view propagation for dated assertions, canonical glossary governance, short synthesis, comparison cells, and human/browser/performance release gates.

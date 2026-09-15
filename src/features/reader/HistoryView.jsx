@@ -1,0 +1,49 @@
+import React from 'react';
+import './reader.css';
+
+// Stage identifiers are stable deep-link targets. This selective arc deliberately
+// avoids an unverified continuous numerical series across different regimes.
+const STAGES = [
+  { id: 'arc-1', era: 'c. 3000–650 BCE', title: 'Metal by weight', anchor: 'In parts of the ancient Near East, silver was weighed and used to state obligations.', power: 'Authorities and traders set weights, terms and acceptance; gold, copper and credit had different regional roles.', change: 'Recognisable coin issues later made some payments easier to count.', limit: 'No single metal-origin story describes every society.', href: '/gold/02-before-money-ornament-ritual-power/' },
+  { id: 'arc-2', era: 'c. 650 BCE–1252 CE', title: 'The sovereign’s stamp', anchor: 'A ruler’s mark could certify a coin’s specified metal and weight.', power: 'Mints set standards, while merchants and creditors influenced circulation.', change: 'Lydian electrum and later separate gold and silver issues illustrate coin design.', limit: 'Coinage did not replace weighed metal or credit everywhere; Roman denominations must not be treated as one continuous debasement series.', href: '/gold/03-from-metal-to-money-weights-rings-coins/' },
+  { id: 'arc-3', era: '1252–1717', title: 'Gold, silver and legal ratios', anchor: 'Some mints gave gold and silver coins defined legal values.', power: 'Mint laws, trade and market prices interacted; a legal ratio was not a universal market ratio.', change: 'Changes in supply and coin standards could alter which coins circulated.', limit: 'A single 2,500-year gold–silver ratio curve remains withheld pending a matched dataset.', href: '/gold/05-silver-copper-bronze-and-bimetallism/' },
+  { id: 'arc-4', era: '1717–1914', title: 'The classical gold standard', anchor: 'Participating currencies were defined in gold under specified conversion rules.', power: 'Governments, central banks, banks and markets shared influence; bank deposits and credit remained.', change: 'Official parities limited some exchange-rate movements, while prices, output and credit still fluctuated.', limit: 'The arrangement varied by country and period; gold supply alone does not explain every downturn.', href: '/gold/07-the-gold-standard-era-1717-1971/' },
+  { id: 'arc-interwar', era: '1914–1944', title: 'War, attempted restoration and Depression', anchor: 'The First World War interrupted the international gold standard; restoration attempts used different national rules.', power: 'Governments and central banks weighed domestic policy against external conversion commitments.', change: 'Britain’s 1925 return and 1931 suspension differed from the United States’ 1933–34 changes.', limit: 'These two countries illustrate different paths; Bretton Woods was a new post-war design, not an immediate or universal restart.', href: '/gold/07-the-gold-standard-era-1717-1971/' },
+  { id: 'arc-5', era: '1944–1971', title: 'Bretton Woods', anchor: 'The dollar’s official gold conversion applied to foreign monetary authorities; other participating currencies used adjustable dollar pegs.', power: 'The US Treasury and participating states set commitments, while the IMF helped manage balance-of-payments stress.', change: 'Growing external dollar claims put pressure on the official conversion promise.', limit: 'Treasury holdings, bank credit and every domestic dollar were not all direct gold-redemption claims.', href: '/gold/08-why-the-dollar-replaced-gold/' },
+  { id: 'arc-6', era: '1971–1982', title: 'Floating dollars and inflation', anchor: 'Official dollar–gold conversion ended in 1971 and major currencies floated by 1973.', power: 'Governments, central banks, banks, oil producers and markets influenced different channels.', change: 'US inflation predated the gold-window closure; oil shocks and policy choices added pressure.', limit: 'Oil invoicing in dollars was not oil redemption, and a 1974 treaty alone cannot explain the monetary system.', href: '/after/02-oil-petrodollars-and-stagflation-1973-1982/' },
+  { id: 'arc-7', era: '1982–2008', title: 'Credibility and credit', anchor: 'Many central banks adopted more explicit policy frameworks.', power: 'Central banks set policy, commercial banks created deposits through lending, and governments and regulators defined boundaries.', change: 'Crises exposed different borrowing, peg, maturity, leverage and supervision risks.', limit: 'Those crises cannot all be attributed to the absence of gold or to unlimited bank lending.', href: '/after/05-globalization-and-emerging-market-crises-1990-2001/' },
+  { id: 'arc-8', era: '2008–2021', title: 'Crisis balance sheets', anchor: 'Central banks expanded liquidity support and bought assets using newly created reserves.', power: 'Central banks, fiscal authorities and commercial banks made distinct decisions.', change: 'Asset purchases, low rates and public borrowing interacted with later shocks.', limit: 'Reserves are not household deposits; QE did not mechanically force new bank loans.', href: '/after/07-financial-crisis-and-the-age-of-qe-2007-2019/' },
+  { id: 'arc-9', era: '2022–2026', title: 'Reserve custody and the continuing dollar', anchor: 'Official reserve choices reflect custody, legal access, liquidity and mandate as well as the asset held.', power: 'Issuers, custodians and reserve managers hold different controls.', change: 'Some gold buying and gold-price valuation contributed to measured reserve value; dollar networks continued.', limit: 'Gold’s share of broad reserves and the dollar’s share of foreign-exchange reserves have different denominators and dates.', href: '/after/09-pandemic-inflation-and-weaponized-reserves-2020-2026/' },
+  { id: 'arc-digital', era: '2008 onward · overlaps stages IX–X', title: 'Bitcoin and dollar stablecoins', anchor: 'Bitcoin has auditable issuance and transfer rules; dollar stablecoins are issuer claims with redemption terms.', power: 'Key holders, validators, miners, intermediaries, issuers and custodians control different parts.', change: 'Both developed alongside sovereign currencies and bank deposits.', limit: 'Confirmations reduce but do not erase replacement risk; self-custody does not remove access or coercion risk; transfer activity is not evidence of broad wage or price denomination.', href: '/bitcoin/02-what-bitcoin-solved-and-what-it-did-not/' }
+];
+
+function Stage({ stage, index }) {
+  return <section className="reader-history-stage" id={stage.id} data-stage={index + 1} aria-labelledby={`${stage.id}-title`}>
+    <div className="reader-history-era"><span>{String(index + 1).padStart(2, '0')}</span>{stage.era}</div>
+    <div className="reader-history-copy"><h2 id={`${stage.id}-title`}>{stage.title}</h2>
+      <dl><div><dt>Anchor</dt><dd>{stage.anchor}</dd></div><div><dt>Who held power</dt><dd>{stage.power}</dd></div><div><dt>What changed</dt><dd>{stage.change}</dd></div></dl>
+      <p className="reader-history-limit"><strong>Scope and uncertainty:</strong> {stage.limit}</p>
+      <a href={stage.href}>Read the related chapter →</a>
+    </div>
+  </section>;
+}
+
+export default function HistoryView({ v }) {
+  return <div className="history-arc reader-history">
+    <div className="evidence-notice" role="note">This selective historical arc is under editorial review. Quantitative charts are withheld until their series, definitions and source locations are verified. <a href="/#/methods">Read the research method →</a></div>
+    <p className="eyebrow">History · eleven arrangements and turning points</p>
+    <h1>Monetary arrangements overlap and change under pressure.</h1>
+    <p className="reader-history-intro">This arc follows selected uses of metal, coin, redeemable notes, bank deposits, central-bank reserves and digital systems. Each stage has a different geographic and legal scope. The interwar bridge separates the classical gold standard from Bretton Woods; Bitcoin and dollar stablecoins developed alongside fiat systems.</p>
+    <label className="reader-history-picker">Jump to a regime
+      <select aria-label="Jump to a History regime" value="" onChange={e => { if (e.target.value) location.href = e.target.value; }}>
+        <option value="">Choose a regime or turning point…</option>
+        {STAGES.map((stage, index) => <option key={stage.id} value={`/#/arc/${stage.id}`}>{index + 1}. {stage.title} · {stage.era}</option>)}
+      </select>
+    </label>
+    <nav className="reader-history-band" aria-label="History stages">{STAGES.map((stage, index) => <a key={stage.id} href={`/#/arc/${stage.id}`} aria-current={v.arcBand?.[index]?.bg === 'var(--fg)' ? 'location' : undefined}>{index + 1}. {stage.title}</a>)}</nav>
+    <div className="reader-history-stages">{STAGES.map((stage, index) => <Stage key={stage.id} stage={stage} index={index} />)}</div>
+    <div className="reader-history-end"><h2>What stays</h2><p>Metal, sovereign money, bank credit and digital networks coexist because users need different combinations of accessible payments, stable prices, credit, final settlement and control over custody. The comparative question is which arrangement works for which use, who can change its rules and who bears the risk when a promise fails.</p><a href="/#/timeline">Explore the connected timeline →</a></div>
+  </div>;
+}
+
+export { STAGES as HISTORY_STAGES };

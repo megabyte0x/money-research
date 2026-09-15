@@ -1,0 +1,9 @@
+# UI feature boundary
+
+The current app is a React class in `src/App.jsx`. It owns route parsing, browser history, load state, content-model access, inline Markdown rendering, glossary lookup, header height, theme and selection actions. Workers write owned feature components under `src/features/reader/`, `discovery/`, and `comparison/`; only the coordinator edits `App.jsx` and global styles while integrating them.
+
+Each feature receives already-derived view data through a single `v` prop from `renderVals()`. That object contains display strings, records, links, current query/filter values, and callbacks. It must not independently fetch the content index or parse routes. `App` remains responsible for `href(record, section)`, article/section navigation, URL-restorable search state, and `blocksToEls()`/`inline()` glossary-enabled rendering. Components render real anchors and use the callbacks supplied in `v`; selection and focus stay in the existing shell.
+
+Reader owns home, History arc, article presentation, article summaries, navigation and mechanics presentation in `src/features/reader/`. Discovery owns search, glossary, research index, paths and short synthesis in `src/features/discovery/`. Comparison owns the arrangement matrix in `src/features/comparison/`. All shared evidence is passed from the accepted generated model. Feature-local styles can accompany each module; global typography, shell layout and responsive breakpoints remain a coordinator lease.
+
+Initial extraction is deliberately one view at a time. A new component can be imported while `App` still computes its props and renders the rest of the site. The coordinator checks route/section links and browser focus after each integration, and applies lazy loading only after measuring initial bundle impact and providing a visible loading/error state.

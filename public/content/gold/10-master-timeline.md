@@ -14,20 +14,20 @@
 | c. 700 BCE | Etruscan gold dental work | Non-monetary technical use |
 | c. 650–600 BCE | Lydia strikes first coins, in electrum | Invention of coinage |
 | c. 610–560 BCE | Alyattes' lion-head electrum coins | First sovereign mark on money |
-| c. 550 BCE | Croesus issues pure gold and silver Croeseids at ~13.3:1 | First bimetallic standard |
+| c. 550 BCE | Croesus issues separate gold and silver Croeseids; their precise legal exchange rate remains under review. | Early paired coinage, with mint relationship requiring numismatic evidence |
 | 546 BCE | Persia conquers Lydia, keeps coinage | Coinage becomes imperial |
 | c. 515 BCE | Darius I's gold daric and silver siglos | First empire-wide gold coin |
 | c. 6th c. BCE | Punch-marked silver coins in India | South Asian coinage begins |
 | 407 BCE | Athens melts temple gold for emergency coins | Greek gold coin as emergency issue |
 | c. 356 BCE | Philip II's gold staters from Pangaion | Macedonian gold |
-| 331–323 BCE | Alexander coins Persian treasuries (~180,000 talents) | Largest monetary injection of antiquity; inflation |
+| 331–323 BCE | Alexander captures Persian treasuries and strikes substantial gold and silver coinage; ancient talent totals are uncertain. | Expanded coin supply; size and price effects remain uncertain |
 | 221 BCE | Qin unifies China; round bronze *ban liang* cash | China's bronze-cash path; gold as ingot not coin |
 | 211 BCE | Roman silver denarius introduced | Rome's everyday money |
 | c. 46 BCE | Julius Caesar regularizes the gold aureus | Rome's gold coin |
 | c. 23 BCE | Augustus: 1 aureus = 25 denarii = 100 sestertii | Roman tri-metallic system |
 | c. 100 CE | Kushan gold dinaras in India | Indian gold coinage |
 | 106 CE | Trajan conquers Dacian gold | Roman mining boom |
-| 3rd century | Denarius debased from ~95% to <5% silver | Hyperinflation; lesson of debasement |
+| 3rd century | Roman silver coinage loses fineness; later low-silver issues are principally *antoniniani*, a denomination distinct from the denarius. A single denarius-fineness series from ~95% to <5% is not established here. | Debasement and currency instability, with scale and price effects requiring period-matched evidence |
 | 309–312 | Constantine's gold solidus, 4.5 g | Seven centuries of stable gold coin |
 | 5th–11th c. | Solidus/bezant as Mediterranean world money | "Dollar of the Middle Ages" |
 | 696–697 | Abd al-Malik's Islamic dinar (4.25 g) and dirham | Aniconic Islamic gold coinage |
@@ -36,7 +36,7 @@
 | 1040s–1090s | Byzantine solidus debased; hyperpyron reform 1092 | Reserve currency lost through debasement |
 | 1252 | Florence strikes the gold florin | Gold returns to Western Europe |
 | 1284 | Venice strikes the gold ducat (unchanged to 1797) | Longest-lived European gold coin |
-| 1324 | Mansa Musa's hajj depresses Cairo gold prices | West African gold dominance |
+| 1324 | Mansa Musa's hajj brings substantial Mali gold through Cairo; medieval accounts describe a change in its local value, but the tonnage and duration of any price effect are uncertain. | West African gold enters Mediterranean exchange; wider market effect unverified |
 | 1344 | England's gold noble | English gold coinage |
 | 1489 | English gold sovereign | Ancestor of the modern sovereign |
 | 1492–1533 | Spanish conquest; Atahualpa's ransom (~6 t gold) | American gold plunder |
@@ -68,7 +68,7 @@
 | 1934 | US Gold Reserve Act: $35/oz | 41% dollar devaluation |
 | 1935 | China leaves silver | Last major silver-standard country |
 | 1944 | Bretton Woods: dollar at $35, others pegged to dollar | Dollar becomes gold's proxy |
-| 1960 | Triffin dilemma articulated | Flaw in Bretton Woods identified |
+| 1960 | Triffin analyzes a conditional reserve-liquidity and dollar–gold conversion tension within Bretton Woods. | Additional foreign-held dollars could support reserves while increasing official conversion claims; alternative liquidity arrangements and outcomes remained possible |
 | 1961–68 | London Gold Pool | Failed attempt to cap gold price |
 | 1968 | Two-tier gold market | Official vs market price split |
 | 1969 | IMF creates SDRs ("paper gold") | Synthetic reserve asset |
@@ -79,12 +79,12 @@
 | 1976 | Jamaica Accords agree IMF gold-rule changes (in force 1978) | Gold ceases to be the common denominator of IMF par values, not an official reserve asset everywhere |
 | Jan 1980 | Gold peaks at $850 | Inflation-era high |
 | 1999 | Gold bottoms around $252/oz | Low nominal gold price |
-| 1999–2002 | UK auctions about half its gold reserves | Central-bank sales during gold's low-price period |
+| Jul 1999–Mar 2002 | HM Treasury sells about 395 tonnes of UK gold at 17 Bank of England auctions, roughly half the initial ~715-tonne government stock. | The programme spans nearly three years; completed sales differ from the May 1999 plan. [HM Treasury](https://www.gov.uk/government/publications/the-sale-of-part-of-the-uk-gold-reserves-1999-2002); [Bank of England](https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2003/an-analysis-of-the-uk-gold-auctions-1999-2002.pdf) |
 | Sep 1999 | Central Bank Gold Agreement | European central banks coordinate gold-sale limits |
-| 2008–2011 | Financial crisis; gold to ~$1,900 (Sept 2011) | Price rise coincided with crisis aftermath; not proof of a reliable hedge in every stress |
+| 5–6 Sep 2011 | LBMA Gold Price PM reaches $1,895/oz after the crisis-era rise. This price convention differs from the $1,921.2 intraday high reported for 6 September; neither figure by itself proves a reliable hedge in every stress. [WGC 2011 report](https://www.gold.org/news-and-events/press-releases/record-investment-demand-boosts-global-gold-demand-all-time-high); [WGC 2020 retrospective](https://www.gold.org/goldhub/research/investment-update-gold-hits-record-high-sprint-or-marathon) | Price convention and crisis-period behavior must be distinguished |
 | 2010s–22 | Basel III rules implemented on varying national schedules; conditional bullion credit-risk weight and separate stable-funding treatment | Neither a blanket zero-risk status nor a central-bank reserve-eligibility rule |
 | Feb 2022 | Russian central-bank reserves frozen | Raised custody and sanctions questions; gold-buying motives vary by central bank |
-| 2022–24 | Central banks buy >1,000 t/year for three years | Record official demand |
+| 2022–24 | WGC's central-bank-and-other-official-sector net gold demand exceeds 1,000 tonnes in each year. | A named net-demand series, not gross central-bank purchases alone. [WGC Full Year 2024, Central Banks and other institutions](https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-full-year-2024/central-banks) |
 | 2025 | Average price $3,431; 53 record highs; demand ~5,000 t / $555 bn | Gold passes $3,000 and $4,000 |
 | 29 Jan 2026 | Gold reaches ${{obs:gold-usd-2026-record-high}}/oz in the WGC USD series | Record high in that series; [WGC July 2026, table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |
 | 31 Jul 2026 | Gold finishes July at ${{obs:gold-usd-2026-july-end}}/oz | WGC month-end USD observation, not a continuous price; [July table 1](https://www.gold.org/goldhub/research/gold-market-commentary-july-2026) |

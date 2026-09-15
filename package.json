@@ -6,9 +6,10 @@
   "scripts": {
     "predev": "node scripts/build-content.mjs",
     "dev": "vite",
-    "test": "node --test tests/content.test.mjs",
+    "test": "node --test --test-isolation=none tests/*.test.mjs",
     "test:build": "node --test tests/static-output.test.mjs",
     "build": "node scripts/build-content.mjs && vite build && node scripts/prerender.mjs",
+    "test:release": "npm run build && npm test",
     "preview": "vite preview"
   },
   "dependencies": {
