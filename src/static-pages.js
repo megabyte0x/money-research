@@ -133,7 +133,6 @@ export function staticHome(manifest, page) {
 <nav class="reader-actions" aria-label="Explore history"><a href="/arc/">Read the eleven-stage arc →</a><a href="/timeline/">Explore the connected timeline →</a></nav>
 <h2 id="volumes">Three research volumes</h2>
 <div class="reader-volumes">${volumes.map(volume => `<div class="reader-volume reader-volume-${volume.vol}"><a href="${volume.href}"><span class="reader-volume-cue">${escapeHtml(volume.label)}</span><strong>${escapeHtml(volume.title)}</strong><span>${escapeHtml(volume.question)}</span></a></div>`).join('')}</div>
-<p class="small-note">Each volume begins with a directory and links to its source list. Choose a volume above to see its files.</p>
 <h2>What evidence can and cannot settle</h2>
 <p>Bitcoin permits transfer without a central account operator, yet broad use for wages, prices and debts remains uncertain. Claims about adoption, comparative returns and official reserves require populations, dates and precise source locations. Quantitative charts in the historical arc remain withheld while their datasets are checked.</p>
 <p class="small-note"><a href="/methods/">Read the research method →</a></p>

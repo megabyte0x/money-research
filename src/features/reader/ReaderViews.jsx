@@ -32,7 +32,6 @@ export function HomePage({ v }) {
     <nav className="reader-actions" aria-label="Explore history"><a href="/arc/">Read the eleven-stage arc →</a><a href="/timeline/">Explore the connected timeline →</a></nav>
     <h2 id="volumes">Three research volumes</h2>
     <div className="reader-volumes">{(v.homeVolumes || []).map(volume => <div key={volume.id} className={`reader-volume reader-volume-${volume.id}`}><a href={volume.href}><span className="reader-volume-cue">{volume.label}</span><strong>{volume.title}</strong><span>{volume.question}</span></a></div>)}</div>
-    <p className="small-note">Each volume begins with a directory and links to its source list. Choose a volume above to see its files.</p>
     <h2>What evidence can and cannot settle</h2>
     <p>Bitcoin permits transfer without a central account operator, yet broad use for wages, prices and debts remains uncertain. Claims about adoption, comparative returns and official reserves require populations, dates and precise source locations. Quantitative charts in the historical arc remain withheld while their datasets are checked.</p>
     <p className="small-note"><a href="/methods/">Read the research method →</a></p>
