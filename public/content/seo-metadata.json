@@ -1,0 +1,18 @@
+{
+  "origin": "https://money-research-iota.vercel.app",
+  "trailingSlash": true,
+  "pages": {
+    "home": {
+      "title": "Money Research · How money works—and why it changes",
+      "description": "An evidence-led research library on gold, post-1971 currencies and Bitcoin. Forty-four documents compare how money is issued, held, transferred and limited, with source locators and open editorial notices."
+    },
+    "methods": {
+      "title": "How this library is built and limited · Money Research",
+      "description": "Money Research explains its source selection, evidence statuses, correction practice, citation format and crawler policy. Names, roles and a public contact are omitted by preference; that is a trust limitation, not a completed attribution page."
+    },
+    "glossary": {
+      "title": "Glossary · Money Research",
+      "description": "Definitions used across the Money Research volumes, with accepted cores, illustrations and links to related chapters where those have been reviewed."
+    }
+  }
+}

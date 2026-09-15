@@ -12,6 +12,10 @@ import { HomePage, MethodsPage, ArticlePage } from './features/reader/ReaderView
 import HistoryView from './features/reader/HistoryView.jsx';
 import { searchDocuments, searchState, searchUrl } from './search.js';
 import { referenceSegments, shortTitle } from './references.js';
+import { articleHref, parseLocation, translateLegacyHash, viewPath } from './routes.js';
+import { applyClientMeta, resolvePage } from './seo.js';
+import { loadRoutePayload } from './content-load.js';
+import { HISTORY_STAGES } from './history-stages.js';
 
 // The prototype declared every rule as an inline CSS string. Keeping those strings
 // verbatim and parsing them once keeps the port pixel-identical to the design file.
@@ -79,7 +83,7 @@ function GlossaryTerm({ term, label, definition }) {
     <span id={id} role="group" aria-label={`${term.term} definition`}
       className={`glossary-panel glossary-panel-${alignment}`} hidden={!open}>
       <strong>{term.term}</strong><span>{definition}</span>
-      <a href={'/#/glossary/' + term.id}>Full glossary entry →</a>
+      <a href={'/glossary/#' + term.id}>Full glossary entry →</a>
       <button type="button" className="glossary-close" onClick={() => {
         setOpen(false);
         trigger.current?.focus();
@@ -89,9 +93,26 @@ function GlossaryTerm({ term, label, definition }) {
 }
 
 export default class App extends React.Component {
-  state = { manifest: [], fileRefs: {}, blocks: {}, glossary: [], timelineReviewStatus: {}, comparisonCells: {}, observations: {}, articleEvidence: {}, articleClaims: {}, articleMetadata: {}, claims: {}, sources: {}, route: { view: 'home' }, query: '', searchVol: '', tlq: '', glq: '', collapsed: {}, progress: 0, copied: false, quote: null, askOpen: false, promptCopied: false, theme: null, loaded: false, headerH: 52, menuOpen: false };
+  constructor(props) {
+    super(props);
+    const initial = props.initialData || {};
+    const search = typeof location !== 'undefined' ? searchState(location.search || location.hash) : { query: '', volume: '' };
+    this.state = {
+      manifest: initial.manifest || [], fileRefs: initial.fileRefs || {}, blocks: initial.blocks || {},
+      glossary: initial.glossary || [], timelineReviewStatus: initial.timelineReviewStatus || {},
+      comparisonCells: initial.comparisonCells || {}, observations: initial.observations || {},
+      articleEvidence: initial.articleEvidence || {}, articleClaims: initial.articleClaims || {},
+      articleMetadata: initial.articleMetadata || {}, claims: initial.claims || {}, sources: initial.sources || {},
+      searchIndexLoaded: !!initial.searchIndexLoaded, discoveryLoaded: !!initial.discoveryLoaded,
+      route: props.initialRoute || { view: 'home' }, query: search.query, searchVol: search.volume,
+      tlq: '', glq: '', collapsed: {}, progress: 0, copied: false, quote: null, askOpen: false,
+      promptCopied: false, theme: null, loaded: !!initial.manifest?.length, headerH: 52, menuOpen: false,
+    };
+    if (initial.manifest?.length) this.prepareCorpus(initial);
+  }
   headerRef = React.createRef();
   menuButtonRef = React.createRef();
+  stageObserver = null;
 
   // The header is one 52px row on desktop and wraps to two rows on a phone; every
   // sticky offset (band, aside, anchor scrolling) is measured off it rather than fixed.
@@ -104,16 +125,17 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    this.onHash = () => {
-      if (location.pathname !== '/' && location.hash.startsWith('#/')) { location.assign('/' + location.hash); return; }
-      const search = searchState(location.hash);
-      this.setState({ route: this.parseHash(), collapsed: {}, quote: null, menuOpen: false, query: search.query, searchVol: search.volume }, () => this.scrollToSection());
-    };
+    this.onHash = () => { this.onNavigate(); };
     window.addEventListener('hashchange', this.onHash);
     window.addEventListener('popstate', this.onHash);
     this.onScroll = () => {
-      const h = document.documentElement; const max = h.scrollHeight - h.clientHeight; const stage = this.currentStage();
-      this.setState(st => ({ progress: max > 0 ? window.scrollY / max : 0, stage: stage !== st.stage ? stage : st.stage }));
+      if (this.scrollTick) return;
+      this.scrollTick = requestAnimationFrame(() => {
+        this.scrollTick = 0;
+        const h = document.documentElement; const max = h.scrollHeight - h.clientHeight;
+        const progress = max > 0 ? window.scrollY / max : 0;
+        this.setState(st => st.progress === progress ? null : { progress });
+      });
     };
     window.addEventListener('scroll', this.onScroll, { passive: true });
     this.onDown = (e) => { if (this.state.quote && !e.target.closest('[data-quote-btn]')) this.setState({ quote: null }); };
@@ -133,45 +155,77 @@ export default class App extends React.Component {
     window.addEventListener('resize', this.onFontResize);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.measureHeader());
     const saved = localStorage.getItem('mr-theme'); if (saved) { document.body.dataset.theme = saved; this.setState({ theme: saved }); }
-    this.load();
+    this.observeStages();
+    this.applySeo();
+    if (!this.state.loaded) this.load();
+    else this.scrollToSection();
   }
-  componentDidUpdate() { this.measureHeader(); }
+  componentDidUpdate(prevProps, prevState) {
+    this.measureHeader();
+    if (prevState.route !== this.state.route || prevState.loaded !== this.state.loaded) {
+      this.observeStages();
+      this.applySeo();
+    }
+  }
   componentWillUnmount() {
     window.removeEventListener('hashchange', this.onHash); window.removeEventListener('popstate', this.onHash); window.removeEventListener('scroll', this.onScroll);
     window.removeEventListener('mousedown', this.onDown); window.removeEventListener('resize', this.onResize);
     window.removeEventListener('resize', this.onFontResize);
     document.removeEventListener('keydown', this.onMenuEscape);
+    this.stageObserver?.disconnect();
+    if (this.scrollTick) cancelAnimationFrame(this.scrollTick);
+  }
+  prepareCorpus(data) {
+    this.md = md;
+    this.byVolumeNumber = new Map((data.manifest || []).map(record => [`${record.vol}/${record.num}`, record]));
+    const glossary = data.glossary || [];
+    const terms = glossary.map(g => g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim()).filter(t => t.length > 3)
+      .sort((a, b) => b.length - a.length).map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    this.glossRe = terms.length ? new RegExp('\\b(' + terms.join('|') + ')\\b', 'i') : null;
+    this.glossMap = {};
+    glossary.forEach(g => { this.glossMap[g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim().toLowerCase()] = g; });
   }
   async load() {
-    this.md = md;
-    const response = await fetch(BASE + 'content/index.json');
-    if (!response.ok) throw new Error(`Content index unavailable: ${response.status}`);
-    const { manifest, blocks, fileRefs, glossary, timelineReviewStatus = {}, comparisonCells = {}, observations, articleEvidence = {}, articleClaims = {}, articleMetadata = {}, claims = {}, sources = {} } = await response.json();
-    this.byVolumeNumber = new Map(manifest.map(record => [`${record.vol}/${record.num}`, record]));
-    this.glossRe = new RegExp('\\b(' + glossary.map(g => g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim()).filter(t => t.length > 3).sort((a, b) => b.length - a.length).map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')\\b', 'i');
-    this.glossMap = {}; glossary.forEach(g => { this.glossMap[g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim().toLowerCase()] = g; });
-    const search = searchState(location.hash);
-    this.setState({ manifest, blocks, fileRefs, glossary, timelineReviewStatus, comparisonCells, observations, articleEvidence, articleClaims, articleMetadata, claims, sources, loaded: true, route: this.parseHash(), query: search.query, searchVol: search.volume }, () => this.scrollToSection());
+    const { loadShell } = await import('./content-load.js');
+    const shell = await loadShell();
+    this.prepareCorpus(shell);
+    translateLegacyHash(location, history, shell.manifest);
+    const route = parseLocation(location, shell.manifest);
+    const extra = await loadRoutePayload(route, shell);
+    const search = searchState(location.search || location.hash);
+    this.setState({ ...shell, ...extra, loaded: true, route, query: search.query, searchVol: search.volume }, () => this.scrollToSection());
   }
-  parseHash() {
-    // #/<view>[/<section>] for the standalone views, #/<vol>/<slug>[/<section>] for a file.
-    // The prototype only read a section off a third segment, which sent every jump link
-    // (#/arc/arc-5, #/timeline/<era>, #/glossary/<term>) down the article branch and blanked the page.
-    const direct = location.pathname.match(/^\/(gold|after|bitcoin)\/([a-z0-9-]+)\/?$/);
-    if (direct && !location.hash.startsWith('#/')) {
-      const section = location.hash ? decodeURIComponent(location.hash.slice(1)) : new URLSearchParams(location.search).get('section');
-      return { view: 'article', vol: direct[1], slug: direct[2], sec: section || null };
+  async onNavigate() {
+    translateLegacyHash(location, history, this.state.manifest);
+    const route = parseLocation(location, this.state.manifest);
+    const search = searchState(location.search || location.hash);
+    const extra = await loadRoutePayload(route, this.state);
+    this.setState({ route, ...extra, collapsed: {}, quote: null, menuOpen: false, query: search.query, searchVol: search.volume }, () => this.scrollToSection());
+  }
+  pageFromRoute(route = this.state.route) {
+    if (route.view === 'home') return resolvePage({ kind: 'home' });
+    if (route.view === 'hub') return resolvePage({ kind: 'hub', vol: route.vol });
+    if (route.view === 'article') {
+      const record = this.chapter(route.vol, route.slug);
+      return record ? resolvePage({ kind: 'chapter', record, articleMetadata: this.state.articleMetadata }) : resolvePage({ kind: 'error' });
     }
-    const h = (location.hash || '#/home').split('?')[0].replace(/^#\/?/, '');
-    const seg = h.split('/').filter(Boolean);
-    if (['research', 'paths'].includes(seg[0])) {
-      history.replaceState(null, '', '/#/home');
-      return { view: 'home' };
-    }
-    if (['home', 'compare', 'mechanics', 'methods', 'timeline', 'glossary', 'takeaways', 'arc'].includes(seg[0])) return { view: seg[0], sec: seg[1] || null };
-    if ((seg[0] || '').startsWith('search')) return { view: 'search' };
-    if (seg[0] && seg[1]) return { view: 'article', vol: seg[0], slug: seg[1], sec: seg[2] || null };
-    return { view: 'home' };
+    if (route.view === 'notfound') return resolvePage({ kind: 'error' });
+    return resolvePage({ kind: route.view });
+  }
+  applySeo() {
+    if (!this.state.loaded) return;
+    applyClientMeta(this.pageFromRoute());
+  }
+  observeStages() {
+    this.stageObserver?.disconnect();
+    if (this.state.route.view !== 'arc' || typeof IntersectionObserver === 'undefined') return;
+    this.stageObserver = new IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (!visible) return;
+      const stage = +visible.target.dataset.stage;
+      this.setState(st => st.stage === stage ? null : { stage });
+    }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+    document.querySelectorAll('[data-stage]').forEach(el => this.stageObserver.observe(el));
   }
   // ---- Arc: regimes
   static ARC = [
@@ -201,18 +255,19 @@ export default class App extends React.Component {
   }
   scrollToSection() {
     const sec = this.state.route.sec;
+    const reduced = typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
     requestAnimationFrame(() => {
       if (sec) {
-        const el = document.getElementById(sec);
+        const el = document.getElementById(decodeURIComponent(sec));
         const progressBar = this.state.route.view === 'arc' ? document.querySelector('.reader-history-progress')?.offsetHeight || 0 : 0;
         const off = this.state.headerH + progressBar + 20;
-        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - off });
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - off, behavior: reduced ? 'auto' : 'smooth' });
       }
-      else window.scrollTo({ top: 0 });
+      else window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'auto' });
     });
   }
   chapter(vol, slug) { return this.state.manifest.find(m => m.vol === vol && (m.slug === slug || m.aliases?.includes(slug))); }
-  href(m, sec) { return '/' + m.vol + '/' + m.slug + '/' + (sec ? '?section=' + encodeURIComponent(sec) : ''); }
+  href(m, sec) { return articleHref(m, sec); }
   short(m) { return shortTitle(m); }
   // ---- inline rendering with glossary hover + file refs
   inline(text, ctx) {
@@ -268,13 +323,13 @@ export default class App extends React.Component {
           if (newId === b.id) els.push(R('span', { key: `alias-${i}-${oldId}`, id: oldId, 'aria-hidden': true, className: 'section-alias' }));
         }
         els.push(R('h2', { key: i, id: b.id, style: { fontWeight: 500, fontSize: 23, lineHeight: 1.25, margin: '44px 0 14px', display: 'flex', alignItems: 'baseline', gap: 12, textWrap: 'pretty' } },
-          R('button', { onClick: () => this.setState(st => ({ collapsed: { ...st.collapsed, [b.id]: !st.collapsed[b.id] } })), title: hidden ? 'Expand section' : 'Collapse section', style: { fontFamily: MONO, fontSize: 12, color: 'var(--mut)', width: 14, flexShrink: 0 } }, hidden ? '+' : '−'),
+          R('button', { type: 'button', 'aria-expanded': !hidden, 'aria-label': hidden ? 'Expand section' : 'Collapse section', onClick: () => this.setState(st => ({ collapsed: { ...st.collapsed, [b.id]: !st.collapsed[b.id] } })), title: hidden ? 'Expand section' : 'Collapse section', style: { fontFamily: MONO, fontSize: 12, color: 'var(--mut)', width: 14, flexShrink: 0 } }, hidden ? '+' : '−'),
           R('span', { style: { flex: 1 } }, this.inline(b.text, { ...ctx, gloss: false })),
-          R('button', { onClick: () => this.copyLink(b.id), title: 'Copy link to section', style: { fontFamily: MONO, fontSize: 11, color: 'var(--mut)', opacity: copied ? 1 : .6 } }, copied ? 'copied' : '§')));
+          R('button', { type: 'button', 'aria-label': 'Copy link to section', onClick: () => this.copyLink(b.id), title: 'Copy link to section', style: { fontFamily: MONO, fontSize: 11, color: 'var(--mut)', opacity: copied ? 1 : .6 } }, copied ? 'copied' : '§')));
         return;
       }
       if (hidden) return;
-      if (b.type === 'h3' || b.type === 'h4') { els.push(R('h3', { key: i, id: b.id, style: { fontWeight: 600, fontSize: 17, margin: '28px 0 8px' } }, b.text)); return; }
+      if (b.type === 'h3' || b.type === 'h4') { els.push(R(b.type, { key: i, id: b.id, style: { fontWeight: 600, fontSize: b.type === 'h4' ? 16 : 17, margin: '28px 0 8px' } }, b.text)); return; }
       if (b.type === 'p') { els.push(R('p', { key: i, style: { margin: '0 0 1.1em', textWrap: 'pretty' } }, this.inline(b.text, c()))); return; }
       if (b.type === 'quote') { els.push(R('blockquote', { key: i, style: { margin: '0 0 1.1em', padding: '0 0 0 18px', borderLeft: '1px solid var(--fg)', fontStyle: 'italic' } }, this.inline(b.text, c()))); return; }
       if (b.type === 'ul' || b.type === 'ol') { els.push(R(b.type, { key: i, style: { margin: '0 0 1.1em', paddingLeft: 22 } }, b.items.map((it, j) => R('li', { key: j, style: { marginBottom: 6 } }, this.inline(it, c()))))); return; }
@@ -290,7 +345,7 @@ export default class App extends React.Component {
   copyLink(sec) {
     const r = this.state.route;
     const cur = r.view === 'article' && this.chapter(r.vol, r.slug);
-    const url = cur ? location.origin + this.href(cur, sec) : location.origin + '/#/' + r.view + (sec ? '/' + sec : '');
+    const url = cur ? location.origin + this.href(cur, sec) : location.origin + viewPath(r.view, sec);
     navigator.clipboard && navigator.clipboard.writeText(url);
     this.setState({ copied: sec || 'page' }); clearTimeout(this.ct); this.ct = setTimeout(() => this.setState({ copied: false }), 1600);
   }
@@ -360,7 +415,7 @@ export default class App extends React.Component {
   }
   search() {
     return searchDocuments(this.state.manifest, this.state.blocks, this.state.query, this.state.searchVol).map(result => ({
-      ...result, href: result.glossaryId ? '/#/glossary/' + result.glossaryId : this.href(result.article, result.section),
+      ...result, href: result.glossaryId ? '/glossary/#' + result.glossaryId : this.href(result.article, result.section),
       label: result.glossaryId ? 'Glossary · ' + result.glossaryTerm :
         ({ gold: 'Vol. I · ', after: 'Vol. II · ', bitcoin: 'Vol. III · ' }[result.article.vol]) + this.short(result.article) + (result.sectionTitle ? ' · ' + result.sectionTitle : '')
     }));
@@ -460,8 +515,10 @@ export default class App extends React.Component {
           this.prevUrl = location.href;
           history.pushState(null, '', searchUrl(v, st.searchVol));
         } else history.replaceState(null, '', searchUrl(v, st.searchVol));
-        if (r.view !== 'search') this.setState({ route: { view: 'search' } });
-      } else if (r.view === 'search') location.href = this.prevUrl || '/#/home';
+        if (r.view !== 'search') {
+          this.setState({ route: { view: 'search' } }, () => this.onNavigate());
+        }
+      } else if (r.view === 'search') location.href = this.prevUrl || '/';
     };
     vals.onSearchVol = e => {
       const volume = e.target.value;
@@ -477,28 +534,31 @@ export default class App extends React.Component {
     };
     vals.themeLabel = (st.theme || (typeof matchMedia !== 'undefined' && matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light')) === 'dark' ? '☾ dark' : '☀ light';
     ['Home', 'Compare', 'Methods', 'Timeline', 'Takeaways', 'Glossary', 'Arc'].forEach(n => vals['nav' + n] = r.view === n.toLowerCase() ? 'var(--fg)' : 'var(--mut)');
-    const cur = r.view === 'article' ? this.chapter(r.vol, r.slug) : null;
+    const cur = r.view === 'article' || r.view === 'hub' ? this.chapter(r.vol, r.slug || '00-readme') : null;
     const homeNames = { gold: ['Vol. I · Gold', 'How did a metal become money and what role remains?'], after: ['Vol. II · After Gold', 'What changed when official gold conversion ended?'], bitcoin: ['Vol. III · Bitcoin', 'What did Bitcoin solve and what remains unsettled?'] };
     vals.homeVolumes = ['gold', 'after', 'bitcoin'].map(vol => {
       const directory = st.manifest.find(item => item.id === `${vol}-00`);
       const topics = st.manifest.filter(item => item.vol === vol && contentRole(item) === 'topic');
+      const chapters = st.manifest.filter(item => item.vol === vol && item.slug !== '00-readme').map(item => ({ href: this.href(item), title: this.short(item) }));
       return directory && { id: vol, label: homeNames[vol][0], href: this.href(directory),
         title: vol === 'after' ? 'After Gold' : vol === 'gold' ? 'Gold' : 'Bitcoin',
         question: homeNames[vol][1],
+        chapters,
         commitment: `${topics.length} topic chapters · about ${Math.round(topics.reduce((sum, item) => sum + item.words, 0) / 230)} minutes` };
     }).filter(Boolean);
     vals.allChapters = st.manifest.map(m => ({ href: this.href(m), optLabel: ({ gold: 'I·', after: 'II·', bitcoin: 'III·' }[m.vol]) + m.num + ' ' + this.short(m) }));
     vals.selectValue = cur ? this.href(cur) : '';
     vals.onSelect = e => { if (e.target.value) location.href = e.target.value; };
     vals.isHome = r.view === 'home'; vals.isCompare = r.view === 'compare'; vals.isMechanics = r.view === 'mechanics'; vals.isMethods = r.view === 'methods';
-    const compareParams = new URLSearchParams((location.hash.split('?')[1] || '').split('#')[0]);
-    vals.compareUse = compareParams.get('use') || 'saving';
-    vals.comparePerspective = compareParams.get('perspective') || 'household';
+    const compareParams = new URLSearchParams(location.search);
+    vals.compareUse = compareParams.get('use') || r.compareUse || 'saving';
+    vals.comparePerspective = compareParams.get('perspective') || r.comparePerspective || 'household';
     vals.comparisonClaims = st.claims;
     vals.comparisonSources = st.sources;
     vals.comparisonCells = st.comparisonCells;
-    vals.onCompareUse = e => { location.hash = '#/compare?use=' + encodeURIComponent(e.target.value) + '&perspective=' + encodeURIComponent(vals.comparePerspective); };
-    vals.onComparePerspective = e => { location.hash = '#/compare?use=' + encodeURIComponent(vals.compareUse) + '&perspective=' + encodeURIComponent(e.target.value); };
+    vals.onCompareUse = e => { history.pushState(null, '', '/compare/?use=' + encodeURIComponent(e.target.value) + '&perspective=' + encodeURIComponent(vals.comparePerspective)); this.onNavigate(); };
+    vals.onComparePerspective = e => { history.pushState(null, '', '/compare/?use=' + encodeURIComponent(vals.compareUse) + '&perspective=' + encodeURIComponent(e.target.value)); this.onNavigate(); };
+    vals.isNotFound = r.view === 'notfound';
     vals.isArticle = !!cur; vals.isTimeline = r.view === 'timeline'; vals.isGlossary = r.view === 'glossary';
     vals.isTakeaways = r.view === 'takeaways'; vals.isSearch = r.view === 'search';
     vals.toc = []; vals.tocLabel = 'Contents';
@@ -508,16 +568,16 @@ export default class App extends React.Component {
         ['loan', '1 · Bank loan'], ['payment', '2 · Interbank payment'],
         ['bond', '3 · New government bond'], ['qe', '4 · Asset purchase'],
         ['takeaway', 'What stays distinct']
-      ].map(([id, text]) => ({ text, href: '/#/mechanics/mechanics-' + id, indent: '0' }));
+      ].map(([id, text]) => ({ text, href: '/mechanics/#mechanics-' + id, indent: '0' }));
     }
     vals.isArc = r.view === 'arc';
     if (vals.isArc) {
       const act = st.stage || 1; const A = App.ARC;
       vals.arcStage = act;
-      vals.arcBand = A.map((a, index) => ({ href: '/#/arc/arc-' + a.n, title: a.title, complete: index + 1 <= act }));
+      vals.arcBand = HISTORY_STAGES.map((a, index) => ({ href: '/arc/#' + a.id, title: a.title, complete: index + 1 <= act }));
       const active = A[act - 1]; vals.arcActiveAnchor = active.anchor; vals.arcActivePower = active.power;
       vals.tocLabel = 'Regimes';
-      vals.toc = A.map((a, index) => ({ text: `${index + 1} · ${a.title}`, href: '/#/arc/arc-' + a.n, indent: '0' }));
+      vals.toc = A.map((a, index) => ({ text: `${index + 1} · ${a.title}`, href: '/arc/#arc-' + a.n, indent: '0' }));
     }
     if (cur) {
       const key = cur.slug + '@' + cur.vol; const bl = st.blocks[key] || [];
@@ -528,7 +588,8 @@ export default class App extends React.Component {
       vals.articleEvidence = st.articleEvidence[cur.id] || [];
       vals.articleClaims = st.articleClaims[cur.id] || [];
       const metadata = st.articleMetadata[cur.id];
-      vals.articleSummary = metadata?.summary || null;
+      vals.articleSummary = metadata ? { ...metadata.summary, citations: metadata.citations } : null;
+      vals.hubChapters = r.view === 'hub' ? st.manifest.filter(item => item.vol === cur.vol && item.slug !== '00-readme').map(item => ({ href: this.href(item), title: this.short(item) })) : [];
       vals.articleLinks = (metadata?.nextSteps || []).map(step => {
         const target = st.manifest.find(record => record.id === step.targetArticleId);
         return { kind: step.kind, title: this.short(target), reason: step.reason, href: this.href(target, step.targetSectionId) };
@@ -557,7 +618,7 @@ export default class App extends React.Component {
       vals.tlCols = mobile ? '78px 20px minmax(0,1fr)' : '132px 24px minmax(0,1fr)';
       vals.tlKind = st.tlAll || st.tlq ? 'entries' : 'turning points';
       vals.tocLabel = 'Eras';
-      vals.toc = vals.tlGroups.map(g => ({ text: g.label, href: '/#/timeline/' + g.id, indent: '0' }));
+      vals.toc = vals.tlGroups.map(g => ({ text: g.label, href: '/timeline/#' + g.id, indent: '0' }));
     }
     if (vals.isGlossary) {
       const q = st.glq.trim().toLowerCase();
@@ -568,7 +629,7 @@ export default class App extends React.Component {
         exampleEl: g.review === 'accepted' && g.example ? this.inline(g.example, { vol: g.vol, gloss: false, usedGloss: { set: new Set() } }) : null,
         relatedLinks: g.review === 'accepted' ? (g.related || []).map(id => {
           const target = st.glossary.find(term => term.id === id);
-          return target ? { id, label: target.term, href: '/#/glossary/' + id } : null;
+          return target ? { id, label: target.term, href: '/glossary/#' + id } : null;
         }).filter(Boolean) : [],
         chapterLinks: g.review === 'accepted' ? (g.chapters || []).map(id => {
           const article = st.manifest.find(record => record.id === id);
@@ -578,15 +639,15 @@ export default class App extends React.Component {
       vals.glossaryCount = st.glossary.length;
       vals.tocLabel = 'A–Z';
       const letters = [...new Set(rows.map(g => g.term[0].toUpperCase()))];
-      vals.toc = letters.map(L => ({ text: L, href: '/#/glossary/' + rows.find(g => g.term[0].toUpperCase() === L).id, indent: '0' }));
+      vals.toc = letters.map(L => ({ text: L, href: '/glossary/#' + rows.find(g => g.term[0].toUpperCase() === L).id, indent: '0' }));
     }
     if (vals.isTakeaways) {
-      const summaryParams = new URLSearchParams((location.hash.split('?')[1] || '').split('#')[0]);
-      vals.summaryRows = approvedSummaryCatalog(st.manifest, st.articleMetadata).map(row => ({ ...row, href: this.href(row.article) }));
+      const summaryParams = new URLSearchParams(location.search);
+      vals.summaryRows = approvedSummaryCatalog(st.manifest, st.articleMetadata).map(row => ({ ...row, href: this.href(row.article), citations: row.summary?.citations || st.articleMetadata[row.id]?.citations || [] }));
       vals.summaryVolume = summaryParams.get('vol') || '';
       vals.summaryTopic = summaryParams.get('topic') || '';
-      vals.onSummaryVolume = e => { location.hash = '#/takeaways?vol=' + encodeURIComponent(e.target.value) + '&topic=' + encodeURIComponent(vals.summaryTopic); };
-      vals.onSummaryTopic = e => { location.hash = '#/takeaways?vol=' + encodeURIComponent(vals.summaryVolume) + '&topic=' + encodeURIComponent(e.target.value); };
+      vals.onSummaryVolume = e => { history.pushState(null, '', '/takeaways/?vol=' + encodeURIComponent(e.target.value) + '&topic=' + encodeURIComponent(vals.summaryTopic)); this.onNavigate(); };
+      vals.onSummaryTopic = e => { history.pushState(null, '', '/takeaways/?vol=' + encodeURIComponent(vals.summaryVolume) + '&topic=' + encodeURIComponent(e.target.value)); this.onNavigate(); };
       vals.tocLabel = 'Short answers';
     }
     if (vals.isSearch) {
@@ -607,7 +668,7 @@ export default class App extends React.Component {
       const label = cur
         ? ({ gold: 'Vol. I — Gold', after: 'Vol. II — After Gold', bitcoin: 'Vol. III — Bitcoin' }[cur.vol]) + ', file ' + cur.num + ' — ' + cur.title.replace(/^\d+\s+—\s+/, '')
         : 'Gold → Dollar → Crypto · research notes, ' + (VIEW_NAMES[r.view] || r.view);
-      const href = cur ? location.origin + this.href(cur, sec) : location.origin + '/' + location.hash;
+      const href = cur ? location.origin + this.href(cur, sec) : location.origin + viewPath(r.view, sec);
       this.setState({ quote: { text, x: rect.left + rect.width / 2, y: rect.top + window.scrollY - 40, label, secTitle, href }, askOpen: false, askQ: '', promptCopied: false });
     };
     vals.showContents = vals.toc.length > 0 || vals.isArticle;
@@ -623,7 +684,7 @@ export default class App extends React.Component {
       <div style={s('min-height:100vh;display:flex;flex-direction:column')}>
         <div style={s('position:fixed;top:0;left:0;height:2px;background:var(--fg);z-index:20', { width: v.progressPct })}></div>
         <header ref={this.headerRef} style={s("position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--rule);display:flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px", { columnGap: v.headerGap, rowGap: '8px', padding: v.headerPad, height: v.headerHeight, minHeight: '52px', flexWrap: v.headerWrap })}>
-          <a href="/#/home" style={s('text-decoration:none;white-space:nowrap;display:flex;gap:10px;align-items:center')}>
+          <a href="/" style={s('text-decoration:none;white-space:nowrap;display:flex;gap:10px;align-items:center')}>
             <span style={s('width:7px;height:7px;border:1px solid var(--fg);display:inline-block')}></span>{v.brand}
           </a>
           <select value={v.selectValue} onChange={v.onSelect} style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;background:transparent;color:var(--fg);border:1px solid var(--rule);padding:6px 8px;min-width:0", { display: v.selectDisplay, maxWidth: v.selectMax })}>
@@ -635,18 +696,20 @@ export default class App extends React.Component {
           <div style={s('flex:1')}></div>
           {v.mobile && <button ref={this.menuButtonRef} aria-expanded={!!this.state.menuOpen} aria-controls="main-navigation" onClick={() => this.setState(st => ({ menuOpen: !st.menuOpen }))} style={s('border:1px solid var(--rule);padding:7px 10px')}>Menu</button>}
           <nav id="main-navigation" className="nav-scroll" style={s('display:flex;color:var(--mut);white-space:nowrap;align-items:center;min-width:0', { gap: v.navGap, flex: v.navFlex, overflowX: v.navOverflow, display: v.mobile && !this.state.menuOpen ? 'none' : 'flex', flexWrap: v.mobile ? 'wrap' : 'nowrap' })}>
-            <a href="/#/home" style={s('text-decoration:none', { color: v.navHome })}>Start here</a>
-            <a href="/#/compare" style={s('text-decoration:none', { color: v.navCompare })}>Compare</a>
-            <a href="/#/arc" style={s('text-decoration:none', { color: v.navArc })}>History</a>
-            <a href="/#/timeline" style={s('text-decoration:none', { color: v.navTimeline })}>Timeline</a>
-            <a href="/#/takeaways" style={s('text-decoration:none', { color: v.navTakeaways })}>Takeaways</a>
-            <a href="/#/glossary" style={s('text-decoration:none', { color: v.navGlossary })}>Glossary</a>
-            <a href="/#/methods" style={s('text-decoration:none', { color: v.navMethods })}>Sources</a>
-            <button onClick={v.toggleTheme} title="Toggle color mode" style={s('color:var(--mut);font-size:12px')}>{v.themeLabel}</button>
+            <a href="/" style={s('text-decoration:none', { color: v.navHome })}>Start here</a>
+            <a href="/compare/" style={s('text-decoration:none', { color: v.navCompare })}>Compare</a>
+            <a href="/arc/" style={s('text-decoration:none', { color: v.navArc })}>History</a>
+            <a href="/timeline/" style={s('text-decoration:none', { color: v.navTimeline })}>Timeline</a>
+            <a href="/takeaways/" style={s('text-decoration:none', { color: v.navTakeaways })}>Takeaways</a>
+            <a href="/glossary/" style={s('text-decoration:none', { color: v.navGlossary })}>Glossary</a>
+            <a href="/methods/" style={s('text-decoration:none', { color: v.navMethods })}>Sources</a>
+            <button type="button" onClick={v.toggleTheme} title="Toggle color mode" aria-label="Toggle color mode" style={s('color:var(--mut);font-size:12px')}>{v.themeLabel}</button>
           </nav>
         </header>
         <div style={s('display:grid;gap:0;flex:1', { gridTemplateColumns: v.shellCols })}>
-          <main style={s('padding:40px clamp(16px,4vw,56px) 120px;max-width:820px;width:100%;box-sizing:border-box;justify-self:center;min-width:0')} onMouseUp={v.onArticleMouseUp}>
+          <main id="main-content" style={s('padding:40px clamp(16px,4vw,56px) 120px;max-width:820px;width:100%;box-sizing:border-box;justify-self:center;min-width:0')} onMouseUp={v.onArticleMouseUp}>
+
+            {v.isNotFound && <div className="intro-page"><h1>Page not found</h1><p>This address is not a published Money Research page.</p><nav className="reader-actions"><a href="/">Money Research home →</a></nav></div>}
 
             {v.isHome && <HomePage v={v} />}
 

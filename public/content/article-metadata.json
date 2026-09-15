@@ -11,7 +11,7 @@
         "Herstatt's failure exposed the risk between two currency-payment legs.",
         "The Great Inflation began before the 1971 suspension, so chronology alone cannot assign its cause to the gold break."
       ],
-      "evidenceAndUncertainty": "The legal and settlement distinctions are supported by the IMF amendment history, BIS Herstatt account and Federal Reserve Great Inflation account cited in chapters 01–02. The chapter's precise gold-stock ratio, oil-shock causal counterfactual, turnover series and other 1970s magnitudes are not approved here; a single explanation of inflation or permanent floating remains an interpretation."
+      "evidenceAndUncertainty": "The legal and settlement distinctions are supported by the IMF amendment history, BIS Herstatt account and Federal Reserve Great Inflation account cited in chapters 01\u201302. The chapter's precise gold-stock ratio, oil-shock causal counterfactual, turnover series and other 1970s magnitudes are not approved here; a single explanation of inflation or permanent floating remains an interpretation."
     },
     "nextSteps": [
       {
@@ -26,6 +26,14 @@
         "targetSectionId": "international-monetary-agreements",
         "reason": "See how the IMF agreement changed legal rules."
       }
+    ],
+    "citations": [
+      {
+        "claimId": "E31-official-gold-window-1971"
+      },
+      {
+        "claimId": "E31-imf-1978-gold-par-value-scope"
+      }
     ]
   },
   {
@@ -36,11 +44,11 @@
       "question": "How did oil shocks interact with an inflation already under way?",
       "takeaways": [
         "US inflation predated the gold-window closure and had multiple channels.",
-        "The public US–Saudi commission established cooperation, not an exclusive oil-pricing or redemption treaty.",
+        "The public US\u2013Saudi commission established cooperation, not an exclusive oil-pricing or redemption treaty.",
         "Oil exporters could invest receipts in dollar assets; banks could lend part of those funds onward.",
         "The Volcker disinflation came with severe recessions and borrowing costs."
       ],
-      "evidenceAndUncertainty": "Federal Reserve History, the 1975 Federal Reserve staff memo and GAO's 1979 commission audit support the distinctions. IMF's roughly 2½% **OECD GDP** direct terms-of-trade loss is a different denominator from world GDP. UK IMF stand-by approval, letter and drawing dates are separate. Neither an exclusive pricing contract, a $500 billion recycling total nor weights for inflation channels is established. Avoid the chapter body's broad “nearly every country” central-bank-model claim without country records."
+      "evidenceAndUncertainty": "Federal Reserve History, the 1975 Federal Reserve staff memo and GAO's 1979 commission audit support the distinctions. IMF's roughly 2\u00bd% **OECD GDP** direct terms-of-trade loss is a different denominator from world GDP. UK IMF stand-by approval, letter and drawing dates are separate. Neither an exclusive pricing contract, a $500 billion recycling total nor weights for inflation channels is established. Avoid the chapter body's broad \u201cnearly every country\u201d central-bank-model claim without country records."
     },
     "nextSteps": [
       {
@@ -69,7 +77,7 @@
         "Plaza and Louvre were coordination efforts, not a renewed gold or parity system.",
         "Bank lending creates deposits while credit, funding, capital, liquidity and policy constrain it."
       ],
-      "evidenceAndUncertainty": "Bank of England's 2014 money-creation paper, pp. 16–20, supports the mechanics; the Basel 1988 text supports an international bank standard. The exact 27-country/$240 billion debt count, Brady loss percentage, S&L fiscal cost, national Basel adoption and Plaza-to-Japan-bubble causal share still need matched primary locators. The July 1986 **U.S. crude first-purchase monthly average** is not WTI spot; do not turn its $9.25 observation into a generic global price or Saudi-to-USSR causal estimate."
+      "evidenceAndUncertainty": "Bank of England's 2014 money-creation paper, pp. 16\u201320, supports the mechanics; the Basel 1988 text supports an international bank standard. The exact 27-country/$240 billion debt count, Brady loss percentage, S&L fiscal cost, national Basel adoption and Plaza-to-Japan-bubble causal share still need matched primary locators. The July 1986 **U.S. crude first-purchase monthly average** is not WTI spot; do not turn its $9.25 observation into a generic global price or Saudi-to-USSR causal estimate."
     },
     "nextSteps": [
       {
@@ -98,7 +106,7 @@
         "The ERM crisis exposed tensions among pegs and different national policy needs.",
         "Inflation targeting and central-bank independence spread unevenly; a universal 2% target did not exist by 2000."
       ],
-      "evidenceAndUncertainty": "Bundesregierung's 2 May agreed terms, items 2 and 5–6, locate conversion classes/caps; the IMF inflation-targeting table locates adoption variation. IMF Country Report 01/07, para. 7 and Figure 1 note 2, reports **more than 300 billion percent monthly inflation in the Federal Republic of Yugoslavia in January 1994**. The old 313-million figure, “second-worst” rank and 34-hour doubling interval are withheld. Country-by-country price series, German transfer/industrial effects and the ERM causal share need separate source review. No summary number should propagate from the Yugoslav case."
+      "evidenceAndUncertainty": "Bundesregierung's 2 May agreed terms, items 2 and 5\u20136, locate conversion classes/caps; the IMF inflation-targeting table locates adoption variation. IMF Country Report 01/07, para. 7 and Figure 1 note 2, reports **more than 300 billion percent monthly inflation in the Federal Republic of Yugoslavia in January 1994**. The old 313-million figure, \u201csecond-worst\u201d rank and 34-hour doubling interval are withheld. Country-by-country price series, German transfer/industrial effects and the ERM causal share need separate source review. No summary number should propagate from the Yugoslav case."
     },
     "nextSteps": [
       {
@@ -112,6 +120,11 @@
         "targetArticleId": "after-07",
         "targetSectionId": "the-eurozone-crisis-2010-15",
         "reason": "Follow the euro arrangement into a later crisis."
+      }
+    ],
+    "citations": [
+      {
+        "claimId": "E29-fry-inflation-1994"
       }
     ]
   },
@@ -127,7 +140,7 @@
         "IMF programmes and national responses differed by country and crisis.",
         "Later reserve accumulation and the US housing boom cannot be joined by an asserted one-step causal chain."
       ],
-      "evidenceAndUncertainty": "Council of the EU's single-market overview supports the agreement distinction; the Argentina statute/BCRA locators in chapter 05 separate austral and peso dates. HM Treasury and Bank of England directly locate the completed UK gold-auction programme: approximately 395 tonnes in 17 auctions, July 1999–March 2002, at a weighted average $274.92/oz; a prior 365-tonne plan is not the completed-auction measure. Export/job/Treasury totals, programme commitments versus actual disbursements, national reserve-series denominators and the “saving glut caused the housing bubble” claim still require matched primary evidence. Chapter 05's remaining crisis superlatives and gold-cycle rhetoric are outside copy approval."
+      "evidenceAndUncertainty": "Council of the EU's single-market overview supports the agreement distinction; the Argentina statute/BCRA locators in chapter 05 separate austral and peso dates. HM Treasury and Bank of England directly locate the completed UK gold-auction programme: approximately 395 tonnes in 17 auctions, July 1999\u2013March 2002, at a weighted average $274.92/oz; a prior 365-tonne plan is not the completed-auction measure. Export/job/Treasury totals, programme commitments versus actual disbursements, national reserve-series denominators and the \u201csaving glut caused the housing bubble\u201d claim still require matched primary evidence. Chapter 05's remaining crisis superlatives and gold-cycle rhetoric are outside copy approval."
     },
     "nextSteps": [
       {
@@ -156,7 +169,7 @@
         "Swift messaging restrictions and reserve immobilisation operate at different financial layers.",
         "Russian sovereign-asset principal was immobilised in sanctioning jurisdictions; G7 ERA loans use future extraordinary revenues and commitments must not be reported as full disbursements."
       ],
-      "evidenceAndUncertainty": "GAO testimonies T-NSIAD-91-34/52 locate Gulf War estimates and 31 July 1991 contribution status; Council of the EU's October 2024 ERA release locates the principal/revenue/loan distinction. The IEA's 11 March 2026 supply and stock-release findings are **dated observations**, not a September series or gold-causation estimate. Numerous 2025–26 event, national-effect, war-cost and sanctions-to-gold claims in the body remain unverified or withheld. Avoid a universal “war raises gold/inflation/the dollar” rule."
+      "evidenceAndUncertainty": "GAO testimonies T-NSIAD-91-34/52 locate Gulf War estimates and 31 July 1991 contribution status; Council of the EU's October 2024 ERA release locates the principal/revenue/loan distinction. The IEA's 11 March 2026 supply and stock-release findings are **dated observations**, not a September series or gold-causation estimate. Numerous 2025\u201326 event, national-effect, war-cost and sanctions-to-gold claims in the body remain unverified or withheld. Avoid a universal \u201cwar raises gold/inflation/the dollar\u201d rule."
     },
     "nextSteps": [
       {
@@ -185,7 +198,7 @@
         "Reserves alone do not determine subsequent bank lending or consumer-price inflation.",
         "Basel III credit-risk, leverage, liquidity and funding rules must be read by exposure and jurisdiction."
       ],
-      "evidenceAndUncertainty": "FOMC statements, Federal Reserve History, FCIC printed pp. 72/101, BIS Basel 1988 para. 41 and Bank of England Figure 3 support the bounded opening/mechanics. Rescue authorisations, disbursements, recoveries and net fiscal costs are not interchangeable. National Basel effects, eurozone support totals, distributional consequences of QE and the chapter's broad political causal chains need further evidence. The summary does not approve “QE caused” a named outcome by itself."
+      "evidenceAndUncertainty": "FOMC statements, Federal Reserve History, FCIC printed pp. 72/101, BIS Basel 1988 para. 41 and Bank of England Figure 3 support the bounded opening/mechanics. Rescue authorisations, disbursements, recoveries and net fiscal costs are not interchangeable. National Basel effects, eurozone support totals, distributional consequences of QE and the chapter's broad political causal chains need further evidence. The summary does not approve \u201cQE caused\u201d a named outcome by itself."
     },
     "nextSteps": [
       {
@@ -214,7 +227,7 @@
         "Stablecoin reserves, redemption rights and eligible holders depend on the named issuer and token.",
         "A CBDC's access, privacy, remuneration and limits depend on its design; the digital euro remains a conditional proposal."
       ],
-      "evidenceAndUncertainty": "Swift's network description, Visa's analytics methodology, FedNow overview and ECB's digital-euro progress/FAQ support the conceptual distinctions and conditional project status. ASX, GLD fund/prospectus and WGC locators support the scoped gold-ETF example: a tradeable trust share with expenses and custody terms, a November 2020 global holdings peak of 3,929 tonnes and **801.2 tonnes net holdings growth** in the “ETFs & Similar Products” sector during 2025. Neither amount is retail purchases or GLD-only inflow; fastest-growing/largest-private-holder superlatives and the banknote analogy are withheld. Gross on-chain transfers are not retail purchase volume, and one transfer speed cannot establish corridor-wide remittance cost. Named stablecoin backing, eNaira/e-CNY designs, derivative-history causal claims and current CBDC legislation require product-specific or official-source checks. Do not use the chapter's broad Bitcoin/gold value judgments as factual takeaway copy."
+      "evidenceAndUncertainty": "Swift's network description, Visa's analytics methodology, FedNow overview and ECB's digital-euro progress/FAQ support the conceptual distinctions and conditional project status. ASX, GLD fund/prospectus and WGC locators support the scoped gold-ETF example: a tradeable trust share with expenses and custody terms, a November 2020 global holdings peak of 3,929 tonnes and **801.2 tonnes net holdings growth** in the \u201cETFs & Similar Products\u201d sector during 2025. Neither amount is retail purchases or GLD-only inflow; fastest-growing/largest-private-holder superlatives and the banknote analogy are withheld. Gross on-chain transfers are not retail purchase volume, and one transfer speed cannot establish corridor-wide remittance cost. Named stablecoin backing, eNaira/e-CNY designs, derivative-history causal claims and current CBDC legislation require product-specific or official-source checks. Do not use the chapter's broad Bitcoin/gold value judgments as factual takeaway copy."
     },
     "nextSteps": [
       {
@@ -228,6 +241,11 @@
         "targetArticleId": "after-09",
         "targetSectionId": "where-money-stands-in-september-2026",
         "reason": "Compare payment instruments with official reserves."
+      }
+    ],
+    "citations": [
+      {
+        "claimId": "E31-uk-payment-instruction-settlement"
       }
     ]
   },
@@ -243,7 +261,7 @@
         "Immobilising foreign reserves differs from confiscating their principal.",
         "Gold's ECB official-reserves share and the dollar's IMF COFER foreign-exchange-reserves share use different denominators and dates."
       ],
-      "evidenceAndUncertainty": "ECB June 2026 chart 7 identifies valuation as most of gold's share gain at end-2025 prices; IMF COFER excludes gold, SDRs and IMF positions. The IEA/IMF July 2026 observations and forecasts are dated, not final outcomes. Most current US legal, political, debt, tariff, Fed, country and energy details in the chapter body lack paragraph-level primary verification in this packet. Do not propagate those dated facts or infer that reserve freezes caused each gold purchase or that money growth alone caused 2021–23 inflation."
+      "evidenceAndUncertainty": "ECB June 2026 chart 7 identifies valuation as most of gold's share gain at end-2025 prices; IMF COFER excludes gold, SDRs and IMF positions. The IEA/IMF July 2026 observations and forecasts are dated, not final outcomes. Most current US legal, political, debt, tariff, Fed, country and energy details in the chapter body lack paragraph-level primary verification in this packet. Do not propagate those dated facts or infer that reserve freezes caused each gold purchase or that money growth alone caused 2021\u201323 inflation."
     },
     "nextSteps": [
       {
@@ -272,7 +290,7 @@
         "An announced rescue loan, its disbursement and its net fiscal cost are separate measures.",
         "The GENIUS Act is an enacted framework for defined payment stablecoins, with delayed general effectiveness; enactment does not approve or insure a named token."
       ],
-      "evidenceAndUncertainty": "IMF Articles, Basel texts, Council of the EU's ERA implementation and GPO Public Law 119-27 §§2–4, 7(e), 20 support the limited distinctions. The reference table is selective: many historical first/only/effect claims, national implementation rows, current US/EU law entries, regulatory effectiveness and named issuer compliance still require exact official-source checks. Proposed digital-euro issuance remains conditional on legislation and a later ECB decision. Do not repeat the former “nearly every rule followed a crisis” or “seized reserves” phrasing."
+      "evidenceAndUncertainty": "IMF Articles, Basel texts, Council of the EU's ERA implementation and GPO Public Law 119-27 \u00a7\u00a72\u20134, 7(e), 20 support the limited distinctions. The reference table is selective: many historical first/only/effect claims, national implementation rows, current US/EU law entries, regulatory effectiveness and named issuer compliance still require exact official-source checks. Proposed digital-euro issuance remains conditional on legislation and a later ECB decision. Do not repeat the former \u201cnearly every rule followed a crisis\u201d or \u201cseized reserves\u201d phrasing."
     },
     "nextSteps": [
       {
@@ -301,7 +319,7 @@
         "Varna is an early securely dated gold assemblage, not proof that gold was the first worked metal.",
         "Above-ground stock estimates depend on the World Gold Council's stock definition and report vintage."
       ],
-      "evidenceAndUncertainty": "The Varna municipal archaeological guide, pp. 1–2, supports the cemetery's dating and object-count range. The buried metal's precise provenance and early electrum fineness still need scholarship. Stock estimates require a dated observation with its category definition."
+      "evidenceAndUncertainty": "The Varna municipal archaeological guide, pp. 1\u20132, supports the cemetery's dating and object-count range. The buried metal's precise provenance and early electrum fineness still need scholarship. Stock estimates require a dated observation with its category definition."
     },
     "nextSteps": [
       {
@@ -432,6 +450,11 @@
         "targetSectionId": "the-classical-gold-standard-1871-1914",
         "reason": "Shows one later legal/gold-conversion arrangement rather than a universal metal ladder."
       }
+    ],
+    "citations": [
+      {
+        "claimId": "E31-us-1792-smaller-denominations"
+      }
     ]
   },
   {
@@ -474,7 +497,7 @@
         "Bretton Woods official conversion differed from domestic gold-coin circulation.",
         "The IMF's 1978 reform did not abolish official reserve gold."
       ],
-      "evidenceAndUncertainty": "NBER Eichengreen/Sachs W1498 and Bernanke W4814 support the scoped interwar association. IMF *Financial Organization and Operations*, ch. III p. 91, and the 1964 US policy task-force “Money” report, printed pp. 44–47, support a conditional Bretton Woods liquidity and official gold-conversion tension. Country counts, historical gold-stock comparisons and a required trade-deficit or inevitable-run claim are not established."
+      "evidenceAndUncertainty": "NBER Eichengreen/Sachs W1498 and Bernanke W4814 support the scoped interwar association. IMF *Financial Organization and Operations*, ch. III p. 91, and the 1964 US policy task-force \u201cMoney\u201d report, printed pp. 44\u201347, support a conditional Bretton Woods liquidity and official gold-conversion tension. Country counts, historical gold-stock comparisons and a required trade-deficit or inevitable-run claim are not established."
     },
     "nextSteps": [
       {
@@ -489,6 +512,14 @@
         "targetSectionId": "why-it-is-still-not-the-unit-of-economy",
         "reason": "Separates ended convertibility from continuing reserve holdings."
       }
+    ],
+    "citations": [
+      {
+        "claimId": "E31-official-gold-window-1971"
+      },
+      {
+        "claimId": "E31-triffin-conditional-bretton-woods"
+      }
     ]
   },
   {
@@ -499,24 +530,32 @@
       "answer": "The dollar had established reserve, trade, banking and securities-market uses; oil invoicing and recycling contributed, but no reviewed 1974 document supplies a universal oil-redemption clause.",
       "takeaways": [
         "Oil invoicing is not gold convertibility.",
-        "The US–Saudi joint commission addressed economic cooperation; it did not begin dollar oil quotations.",
+        "The US\u2013Saudi joint commission addressed economic cooperation; it did not begin dollar oil quotations.",
         "IMF COFER's foreign-exchange-reserve denominator excludes gold.",
         "The ECB's broad-reserve gold-share increase was largely a valuation effect, not proof of active purchases."
       ],
-      "evidenceAndUncertainty": "GAO ID-79-7, printed pp. 1–2, and the 1975 FRBNY staff memo, pp. 1–2, support the limited commission and invoicing claims. ECB June 2026 §1.1 chart 7 and IMF COFER metadata support the distinct denominator and valuation readings. A universal oil-pricing agreement, exact oil-recycling contribution and Treasury-market-size comparison remain unsupported."
+      "evidenceAndUncertainty": "GAO ID-79-7, printed pp. 1\u20132, and the 1975 FRBNY staff memo, pp. 1\u20132, support the limited commission and invoicing claims. ECB June 2026 \u00a71.1 chart 7 and IMF COFER metadata support the distinct denominator and valuation readings. A universal oil-pricing agreement, exact oil-recycling contribution and Treasury-market-size comparison remain unsupported."
     },
     "nextSteps": [
       {
         "kind": "Prerequisite",
         "targetArticleId": "gold-07",
         "targetSectionId": "the-nixon-shock-15-august-1971",
-        "reason": "Establishes which official dollar–gold promise ended."
+        "reason": "Establishes which official dollar\u2013gold promise ended."
       },
       {
         "kind": "Deeper",
         "targetArticleId": "gold-09",
         "targetSectionId": "the-numbers",
         "reason": "Shows reserve denominators and market-value conventions side by side."
+      }
+    ],
+    "citations": [
+      {
+        "claimId": "E31-official-gold-window-1971"
+      },
+      {
+        "claimId": "E31-imf-1978-gold-par-value-scope"
       }
     ]
   },
@@ -533,7 +572,7 @@
         "Basel bank credit and funding standards do not establish local central-bank reserve law or risk-free status.",
         "A higher gold market-value share can result from price appreciation without proving active purchases."
       ],
-      "evidenceAndUncertainty": "World Gold Council full-year 2025 table 1 and the first-quarter 2026 erratum support the category and revision distinctions; its full-year 2024 “Central banks” Notes and Definitions define the net-demand category to include other official-sector institutions. ECB June 2026 §1.1 chart 7, IMF COFER metadata and BIS CRE20.110/NSF30.31(4) support the scoped reserve and bank-rule claims. Use the existing observation records for quantities, dates and vintages in chapter body text; a revised second-quarter flow series, September spot quote, country holdings, asset-stock mix and matched return relationships still need primary-series review."
+      "evidenceAndUncertainty": "World Gold Council full-year 2025 table 1 and the first-quarter 2026 erratum support the category and revision distinctions; its full-year 2024 \u201cCentral banks\u201d Notes and Definitions define the net-demand category to include other official-sector institutions. ECB June 2026 \u00a71.1 chart 7, IMF COFER metadata and BIS CRE20.110/NSF30.31(4) support the scoped reserve and bank-rule claims. Use the existing observation records for quantities, dates and vintages in chapter body text; a revised second-quarter flow series, September spot quote, country holdings, asset-stock mix and matched return relationships still need primary-series review."
     },
     "nextSteps": [
       {
@@ -548,6 +587,14 @@
         "targetSectionId": "is-gold-s-value-intrinsic-or-a-social-convention",
         "reason": "The social-pricing account limits a deterministic hedge or scarcity narrative."
       }
+    ],
+    "citations": [
+      {
+        "claimId": "E10"
+      },
+      {
+        "claimId": "E04"
+      }
     ]
   },
   {
@@ -561,7 +608,7 @@
         "Confirmations lower replacement risk without a fixed finality hour.",
         "Later exchange and custody layers require separate trust."
       ],
-      "evidence": "Whitepaper; Bitcoin Developer Guide, “Verifying Payment.”",
+      "evidence": "Whitepaper; Bitcoin Developer Guide, \u201cVerifying Payment.\u201d",
       "uncertainty": "Genesis headline does not prove full author intent; dated node, price and market counts need accepted observations."
     },
     "nextSteps": [
@@ -576,6 +623,11 @@
         "targetArticleId": "bitcoin-09",
         "targetSectionId": "two-different-kinds-of-control",
         "reason": "Separate validity rules from custody and market access."
+      }
+    ],
+    "citations": [
+      {
+        "claimId": "E31-bitcoin-node-permitted-subsidy"
       }
     ]
   },
@@ -645,7 +697,7 @@
       "answer": "A law on payments, a public asset holding, state-linked mining and regulated private access are different acts; none alone makes Bitcoin the national pricing unit.",
       "takeaways": [
         "Payment law, public holding, state-linked mining and private access are different policies.",
-        "El Salvador amended mandatory private acceptance while retaining statutory “curso legal” wording.",
+        "El Salvador amended mandatory private acceptance while retaining statutory \u201ccurso legal\u201d wording.",
         "A seizure or complaint is not a finally forfeited reserve asset."
       ],
       "evidence": "El Salvador Decree 199 and IMF CR 25/58; U.S. reserve order and DOJ complaint; DHI mining announcement.",
@@ -751,6 +803,11 @@
         "targetSectionId": "the-question-stated-precisely",
         "reason": "Contrast a redeemable monetary regime with asset holding beside fiat."
       }
+    ],
+    "citations": [
+      {
+        "claimId": "E31-bitcoin-node-permitted-subsidy"
+      }
     ]
   },
   {
@@ -809,6 +866,11 @@
         "targetSectionId": "solved-and-demonstrated",
         "reason": "Keep protocol verification visible while discussing concentrated intermediaries."
       }
+    ],
+    "citations": [
+      {
+        "claimId": "E31-proof-reserves-report-scope"
+      }
     ]
   },
   {
@@ -823,7 +885,7 @@
         "A retirement-plan review order does not require Bitcoin access in every 401(k) plan.",
         "Native invoicing is a further empirical step, not a necessary adoption ladder."
       ],
-      "evidence": "U.S. reserve order; Executive Order 14330 §§2–3 and Labor's March 2026 proposed rule; CNB mixed-asset test release.",
+      "evidence": "U.S. reserve order; Executive Order 14330 \u00a7\u00a72\u20133 and Labor's March 2026 proposed rule; CNB mixed-asset test release.",
       "uncertainty": "Country rankings, future sequence, actual public inventory and actual plan offerings need separate records."
     },
     "nextSteps": [
@@ -838,6 +900,11 @@
         "targetArticleId": "bitcoin-06",
         "targetSectionId": "what-legal-tender-actually-means",
         "reason": "See why public investment does not make Bitcoin a national pricing unit."
+      }
+    ],
+    "citations": [
+      {
+        "claimId": "E29-401k-eo-14330-scope"
       }
     ]
   },
@@ -918,7 +985,7 @@
         "kind": "Mechanism",
         "targetArticleId": "bitcoin-07",
         "targetSectionId": "three-things-people-mean-by-a-bitcoin-standard",
-        "reason": "Split “solution” into store, payment and denomination arrangements."
+        "reason": "Split \u201csolution\u201d into store, payment and denomination arrangements."
       },
       {
         "kind": "Counterargument",

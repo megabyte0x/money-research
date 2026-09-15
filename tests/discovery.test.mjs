@@ -54,5 +54,5 @@ test('exact aliases expand without substring collisions; links preserve filters'
   assert.ok(searchDocuments(manifest, blocks, 'UTXO').length > 0);
   assert.deepEqual(searchDocuments(manifest, blocks, 'zzzz-no-result', 'bitcoin'), []);
   const url = searchUrl('stablecoin', 'bitcoin');
-  assert.deepEqual(searchState(url.slice(1)), { query: 'stablecoin', volume: 'bitcoin' });
+  assert.deepEqual(searchState(url), { query: 'stablecoin', volume: 'bitcoin' });
 });

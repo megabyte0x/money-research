@@ -70,4 +70,4 @@ See [the parallel agent plan](plans/README.md) for a local implementation audit,
 
 ## Release blockers before production promotion
 
-Editorial review of P0 claims and the source registry (F01–F04), chart datasets (F05), every timeline relationship and composite event (F06/D07), fuller comparison evidence (V01), social/indexing validation (T02), and accessibility/performance checks (T04/T05). The site should not imply these are complete merely because this preview builds.
+Editorial review of P0 claims and the source registry (F01–F04), chart datasets (F05), every timeline relationship and composite event (F06/D07), fuller comparison evidence (V01), social/indexing validation (T02), and accessibility/performance checks (T04/T05). The site should not imply these are complete merely because this preview builds. SEO/GEO crawlability, metadata and host-routing work does not close these editorial or release blockers.

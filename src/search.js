@@ -2,8 +2,9 @@ import { slugify, stripInline } from './md.js';
 
 const VOLUMES = new Set(['gold', 'after', 'bitcoin']);
 
-export function searchState(hash) {
-  const params = new URLSearchParams((hash.split('?')[1] || ''));
+export function searchState(href = '') {
+  const queryString = href.includes('?') ? href.slice(href.indexOf('?')) : href.startsWith('#') ? '' : href;
+  const params = new URLSearchParams(queryString.startsWith('?') ? queryString : (href.split('?')[1] || ''));
   const vol = params.get('vol') || '';
   return { query: params.get('q') || '', volume: VOLUMES.has(vol) ? vol : '' };
 }
@@ -12,7 +13,7 @@ export function searchUrl(query, volume = '') {
   const params = new URLSearchParams();
   if (query) params.set('q', query);
   if (VOLUMES.has(volume)) params.set('vol', volume);
-  return '/#/search' + (params.size ? '?' + params.toString() : '');
+  return '/search/' + (params.size ? '?' + params.toString() : '');
 }
 
 // Expand only exact, reviewed vocabulary. Substring expansion (for example

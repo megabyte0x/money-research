@@ -1,14 +1,130 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [{ "source": "/((?!content/|assets/|gold/|after/|bitcoin/).*)", "destination": "/index.html" }],
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/gold/00-readme",
+      "destination": "/gold/",
+      "permanent": true
+    },
+    {
+      "source": "/after/00-readme",
+      "destination": "/after/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/00-readme",
+      "destination": "/bitcoin/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/00",
+      "destination": "/bitcoin/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/01",
+      "destination": "/bitcoin/01-the-origin-what-2008-produced/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/02",
+      "destination": "/bitcoin/02-what-bitcoin-solved-and-what-it-did-not/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/03",
+      "destination": "/bitcoin/03-how-bitcoin-is-actually-used-global-adoption/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/04",
+      "destination": "/bitcoin/04-countries-that-adopted-bitcoin-and-what-happened/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/05",
+      "destination": "/bitcoin/05-supporters-and-opponents-and-their-reasoning/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/06",
+      "destination": "/bitcoin/06-what-legal-tender-requires-and-what-is-missing/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/07",
+      "destination": "/bitcoin/07-the-supply-system-fixed-rate-variable-rate-and-backing/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/08",
+      "destination": "/bitcoin/08-why-not-gold-again/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/09",
+      "destination": "/bitcoin/09-supply-and-control-who-holds-bitcoin-and-who-benefits/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/10",
+      "destination": "/bitcoin/10-the-path-for-large-economies/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/11",
+      "destination": "/bitcoin/11-defects-that-stop-bitcoin-from-being-a-global-currency/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/12",
+      "destination": "/bitcoin/12-how-bitcoin-could-reproduce-old-crises/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/13",
+      "destination": "/bitcoin/13-is-bitcoin-the-answer/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/14",
+      "destination": "/bitcoin/14-master-timeline-2008-2026/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/15",
+      "destination": "/bitcoin/15-glossary/",
+      "permanent": true
+    },
+    {
+      "source": "/bitcoin/16",
+      "destination": "/bitcoin/16-sources/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/content/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
     },
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ]
 }

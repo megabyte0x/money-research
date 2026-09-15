@@ -24,4 +24,27 @@ for (const record of manifest) {
   writeFileSync(output, resolveObservations(documents[record.path], byObservationId));
 }
 writeFileSync(join(content, 'index.json'), JSON.stringify(model));
+writeFileSync(join(content, 'shell.json'), JSON.stringify({
+  manifest: model.manifest,
+  fileRefs: model.fileRefs,
+  glossary: model.glossary,
+  articleMetadata: model.articleMetadata,
+  articleEvidence: model.articleEvidence,
+  articleClaims: model.articleClaims,
+  sources: model.sources || {},
+  claims: model.claims || {},
+}));
+mkdirSync(join(content, 'articles'), { recursive: true });
+for (const record of manifest) {
+  writeFileSync(join(content, 'articles', `${record.id}.json`), JSON.stringify({
+    id: record.id,
+    blocks: model.blocks[`${record.slug}@${record.vol}`],
+  }));
+}
+writeFileSync(join(content, 'search-index.json'), JSON.stringify({ blocks: model.blocks }));
+writeFileSync(join(content, 'discovery.json'), JSON.stringify({
+  timelineReviewStatus: model.timelineReviewStatus,
+  comparisonCells: model.comparisonCells,
+  observations: model.observations,
+}));
 console.log(`Indexed ${manifest.length} articles and ${model.glossary.length} glossary terms`);

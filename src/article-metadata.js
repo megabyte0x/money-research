@@ -37,7 +37,13 @@ export function indexArticleMetadata(rows, manifest, blocks) {
       }
       return { kind: step.kind, reason: step.reason, targetArticleId: target.id, targetSectionId: section };
     });
-    published[row.id] = { summary, nextSteps };
+    const citations = Array.isArray(row.citations) ? row.citations.map(item => {
+      if (!item || typeof item.claimId !== 'string' || !/^[A-Za-z][A-Za-z0-9-]*$/.test(item.claimId)) {
+        throw new Error(`Invalid answer citation: ${row.id}`);
+      }
+      return { claimId: item.claimId };
+    }) : [];
+    published[row.id] = { summary, nextSteps, citations };
   }
   return published;
 }

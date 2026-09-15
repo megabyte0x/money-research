@@ -1,97 +1,87 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { tokenizeInline, isSafeContentHref } from '../src/md.js';
-import { referenceSegments } from '../src/references.js';
+import { SITE } from '../src/site-config.js';
+import {
+  canonicalPath, isDirectoryRecord, redirectRules, vercelConfig, VOLUME_IDS,
+} from '../src/routes.js';
+import { applyDocumentMeta, indexablePages, resolvePage, robotsTxt, sitemapXml } from '../src/seo.js';
+import {
+  hubItemList, staticArc, staticArticle, staticCompare, staticGlossary, staticHome,
+  staticMechanics, staticMethods, staticNotFound, staticSearch, staticTakeaways,
+  staticTimeline, wrapStatic,
+} from '../src/static-pages.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = join(root, 'dist');
-const { manifest, blocks: articleBlocks, articleEvidence = {}, articleClaims = {}, articleMetadata = {} } = JSON.parse(readFileSync(join(root, 'public/content/index.json'), 'utf8'));
-const byId = new Map(manifest.map(record => [record.id, record]));
-const byVolumeNumber = new Map(manifest.map(record => [`${record.vol}/${record.num}`, record]));
+const model = JSON.parse(readFileSync(join(root, 'public/content/index.json'), 'utf8'));
 const template = readFileSync(join(dist, 'index.html'), 'utf8');
-const origin = 'https://money-research-iota.vercel.app';
-const escape = text => String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const volumeName = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin' };
-const urls = [`${origin}/`];
 
-function linkedText(text, record) {
-  return referenceSegments(text, record.vol, byVolumeNumber).map(part => part.type === 'ref'
-    ? `<a href="/${part.record.vol}/${part.record.slug}/" title="${escape(part.record.vol.toUpperCase() + ' · file ' + part.record.num)}">${escape(part.text)}</a>`
-    : escape(part.text)).join('');
-}
-
-function inline(text, record) {
-  return tokenizeInline(text, { linkifyUrls: ['gold-12', 'after-13', 'bitcoin-16'].includes(record.id) }).map(token => {
-    const value = escape(token.v);
-    if (token.t === 'b') return `<strong>${value}</strong>`;
-    if (token.t === 'i') return `<em>${value}</em>`;
-    if (token.t === 'code') return `<code>${value}</code>`;
-    if (token.t === 'link') {
-      const href = token.href.trim();
-      return isSafeContentHref(href) ? `<a href="${escape(href)}">${value}</a>` : value;
-    }
-    if (token.t === 'text') return linkedText(token.v, record);
-    return value;
-  }).join('');
-}
-
-function staticArticle(record) {
-  const blocks = articleBlocks[`${record.slug}@${record.vol}`];
-  if (!blocks) throw new Error(`Missing indexed article: ${record.id}`);
-  const metadata = articleMetadata[record.id];
-  const summary = metadata ? `<section class="static-summary" aria-label="Chapter summary">${metadata.summary.question ? `<h2>${escape(metadata.summary.question)}</h2>` : ''}<p>${escape(metadata.summary.answer)}</p>${metadata.summary.takeaways?.length ? `<ul>${metadata.summary.takeaways.map(item => `<li>${escape(item)}</li>`).join('')}</ul>` : ''}${metadata.summary.evidenceAndUncertainty ? `<p><strong>Evidence and limits:</strong> ${escape(metadata.summary.evidenceAndUncertainty)}</p>` : ''}${metadata.summary.evidence ? `<p><strong>Evidence:</strong> ${escape(metadata.summary.evidence)}</p>` : ''}${metadata.summary.uncertainty ? `<p><strong>Still uncertain:</strong> ${escape(metadata.summary.uncertainty)}</p>` : ''}</section>` : '';
-  const nextSteps = metadata?.nextSteps?.length ? `<section class="static-next-steps"><h2>Where to read next</h2><ul>${metadata.nextSteps.map(step => {
-    const target = byId.get(step.targetArticleId);
-    const path = `/${target.vol}/${target.slug}/${step.targetSectionId ? `?section=${encodeURIComponent(step.targetSectionId)}` : ''}`;
-    return `<li><a href="${escape(path)}">${escape(step.kind)}: ${escape(target.title.replace(/^\d+\s+—\s+/, ''))}</a> — ${escape(step.reason)}</li>`;
-  }).join('')}</ul></section>` : '';
-  const sections = blocks.filter(block => block.type === 'h2');
-  const toc = sections.length ? `<nav class="static-toc" aria-label="Chapter contents"><p>On this page</p><ol>${sections.map(block => `<li><a href="/${record.vol}/${record.slug}/?section=${encodeURIComponent(block.id)}">${inline(block.text, record)}</a></li>`).join('')}</ol></nav>` : '';
-  const body = blocks.map(block => {
-    if (/^h[1-4]$/.test(block.type)) {
-      const aliases = Object.entries(record.sectionAliases || {}).filter(([, target]) => target === block.id)
-        .map(([oldId]) => `<span id="${escape(oldId)}" aria-hidden="true" class="section-alias"></span>`).join('');
-      return `${aliases}<${block.type} id="${escape(block.id)}">${inline(block.text, record)}</${block.type}>${block.type === 'h1' ? toc + summary : ''}`;
-    }
-    if (block.type === 'p') return `<p>${inline(block.text, record)}</p>`;
-    if (block.type === 'quote') return `<blockquote>${inline(block.text, record)}</blockquote>`;
-    if (block.type === 'ul' || block.type === 'ol') return `<${block.type}>${block.items.map(item => `<li>${inline(item, record)}</li>`).join('')}</${block.type}>`;
-    if (block.type === 'hr') return '<hr>';
-    if (block.type === 'table') return `<div class="static-table-wrap"><table><thead><tr>${block.header.map(cell => `<th>${inline(cell, record)}</th>`).join('')}</tr></thead><tbody>${block.rows.map(row => `<tr>${row.map(cell => `<td>${inline(cell, record)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
-    return '';
-  }).join('\n');
-  const evidence = articleEvidence[record.id] || [];
-  const sourceList = evidence.length ? `<aside aria-label="Dated evidence" class="static-evidence"><h2>Dated evidence in this chapter</h2><ul>${evidence.map(item => `<li><a href="${escape(item.url)}">${escape(item.publisher)}: ${escape(item.title)}</a>, ${escape(item.locator)}. Observation period: ${escape(item.period)}. ${escape(item.uncertainty)}</li>`).join('')}</ul></aside>` : '';
-  const claims = articleClaims[record.id] || [];
-  const claimList = claims.length ? `<aside aria-label="Reviewed claim sources" class="static-evidence"><h2>Sources for reviewed claims</h2><p>These locators support the stated claim and scope; they do not certify the whole chapter.</p><ul>${claims.map(claim => `<li><strong>${escape(claim.assertion)}</strong> Scope: ${escape(claim.scope)}. ${claim.citations.map(citation => `<a href="${escape(citation.url)}">${escape(citation.publisher)}: ${escape(citation.title)}</a>, ${escape(citation.locator)}.`).join(' ')}</li>`).join('')}</ul></aside>` : '';
-  return `<main class="static-article"><p class="eyebrow">Volume ${ { gold: 'I', after: 'II', bitcoin: 'III' }[record.vol] } · ${volumeName[record.vol]} · <a href="/">Money Research</a></p><p class="evidence-notice">This research chapter is under editorial review. Dated figures, legal status and broad conclusions require source verification.</p>${body}${sourceList}${claimList}${nextSteps}</main>`;
-}
-
-for (const record of manifest) {
-  const path = `/${record.vol}/${record.slug}/`;
-  const url = origin + path;
-  const shortTitle = record.title.replace(/^\d+\s+—\s+/, '');
-  const title = `${shortTitle} · ${volumeName[record.vol]} · Money Research`;
-  const description = `${shortTitle}. A research chapter in Volume ${ { gold: 'I', after: 'II', bitcoin: 'III' }[record.vol] } — ${volumeName[record.vol]} — Money Research.`;
-  const html = template
-    .replace(/<title>[^<]*<\/title>/, `<title>${escape(title)}</title>`)
-    .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${escape(description)}">`)
-    .replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${escape(title)}">`)
-    .replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${escape(description)}">`)
-    .replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${escape(url)}">`)
-    .replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${escape(url)}">`)
-    .replace('<div id="root"></div>', `<div id="root">${staticArticle(record)}</div>`);
-  const output = join(dist, record.vol, record.slug);
+function writePage(relDir, inner, page, extras = {}) {
+  const html = applyDocumentMeta(template, page, extras)
+    .replace('<div id="root"></div>', `<div id="root">${wrapStatic(inner)}</div>`);
+  const output = relDir ? join(dist, relDir) : dist;
   mkdirSync(output, { recursive: true });
   writeFileSync(join(output, 'index.html'), html);
-  for (const alias of record.aliases) {
-    const aliasOutput = join(dist, record.vol, alias);
-    mkdirSync(aliasOutput, { recursive: true });
-    writeFileSync(join(aliasOutput, 'index.html'), html);
-  }
-  urls.push(url);
 }
 
-writeFileSync(join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(url => `  <url><loc>${escape(url)}</loc></url>`).join('\n')}\n</urlset>\n`);
-console.log(`Generated ${manifest.length} article pages and sitemap.xml`);
+writePage('', staticHome(model.manifest, resolvePage({ kind: 'home' })), resolvePage({ kind: 'home' }), {
+  itemList: VOLUME_IDS.map(vol => ({ name: vol, url: `${SITE.origin}/${vol}/` })),
+});
+
+for (const vol of VOLUME_IDS) {
+  const record = model.manifest.find(item => item.vol === vol && isDirectoryRecord(item));
+  const page = resolvePage({ kind: 'hub', vol, record, articleMetadata: model.articleMetadata });
+  const extras = { itemList: hubItemList(vol, model.manifest) };
+  writePage(vol, staticArticle(record, model, page), page, extras);
+}
+
+for (const record of model.manifest) {
+  if (isDirectoryRecord(record)) continue;
+  const page = resolvePage({ kind: 'chapter', record, articleMetadata: model.articleMetadata });
+  writePage(join(record.vol, record.slug), staticArticle(record, model, page), page);
+}
+
+const methodsPage = resolvePage({ kind: 'methods' });
+writePage('methods', staticMethods(methodsPage), methodsPage);
+
+const glossaryPage = resolvePage({ kind: 'glossary' });
+writePage('glossary', staticGlossary(model.glossary, glossaryPage), glossaryPage, {
+  itemList: model.glossary.slice(0, 40).map(term => ({ name: term.term, url: `${SITE.origin}/glossary/#${term.id}` })),
+});
+
+const timelinePage = resolvePage({ kind: 'timeline' });
+writePage('timeline', staticTimeline(model, timelinePage), timelinePage);
+
+const takeawaysPage = resolvePage({ kind: 'takeaways' });
+writePage('takeaways', staticTakeaways(model.manifest, model.articleMetadata, takeawaysPage), takeawaysPage, {
+  itemList: Object.entries(model.articleMetadata).map(([id, meta]) => {
+    const article = model.manifest.find(item => item.id === id);
+    return article && meta.summary?.question ? { name: meta.summary.question, url: `${SITE.origin}${canonicalPath(article)}` } : null;
+  }).filter(Boolean),
+});
+
+const mechanicsPage = resolvePage({ kind: 'mechanics' });
+writePage('mechanics', staticMechanics(mechanicsPage), mechanicsPage);
+
+const comparePage = resolvePage({ kind: 'compare' });
+writePage('compare', staticCompare(model, comparePage), comparePage);
+
+const arcPage = resolvePage({ kind: 'arc' });
+writePage('arc', staticArc(arcPage), arcPage);
+
+const searchPage = resolvePage({ kind: 'search' });
+writePage('search', staticSearch(searchPage), searchPage);
+
+const notFoundPage = resolvePage({ kind: 'error' });
+const notFoundHtml = applyDocumentMeta(template, notFoundPage)
+  .replace('<div id="root"></div>', `<div id="root">${wrapStatic(staticNotFound(notFoundPage))}</div>`);
+writeFileSync(join(dist, '404.html'), notFoundHtml);
+
+writeFileSync(join(dist, 'sitemap.xml'), sitemapXml(indexablePages(model.manifest, model.articleMetadata)));
+writeFileSync(join(dist, 'robots.txt'), robotsTxt());
+writeFileSync(join(root, 'vercel.json'), JSON.stringify(vercelConfig(model.manifest), null, 2) + '\n');
+writeFileSync(join(dist, 'redirects.json'), JSON.stringify(redirectRules(model.manifest), null, 2) + '\n');
+
+const articleCount = model.manifest.filter(record => !isDirectoryRecord(record)).length;
+console.log(`Generated ${articleCount} chapter pages, hubs, discovery routes, robots.txt and sitemap.xml`);

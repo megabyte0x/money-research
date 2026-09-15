@@ -10,7 +10,7 @@ export function SearchView({ v }) {
       <option value="after">II · After Gold</option><option value="bitcoin">III · Bitcoin</option>
     </select></label>
     {v.query.trim().length >= 2 && v.searchResults.length === 0 &&
-      <p className="search-empty">No matching sections in {v.searchVol ? 'this volume' : 'the library'}. Try another term or choose All volumes. <a href="/#/home/volumes">Browse the volumes →</a></p>}
+      <p className="search-empty">No matching sections in {v.searchVol ? 'this volume' : 'the library'}. Try another term or choose All volumes. <a href="/#volumes">Browse the volumes →</a></p>}
     <div className="discovery-results">
       {v.searchResults.map((result, i) => <a key={result.href + i} href={result.href} className="discovery-result">
         <span className="discovery-result-label">{result.label}{result.matches > 1 ? ` · ${result.matches} matching passages` : ''}</span>
@@ -39,7 +39,7 @@ export function GlossaryView({ v }) {
           </>}
         </div>
       </div>)}
-      {v.glossaryRows.length === 0 && <p className="search-empty">No matching glossary terms. Try a shorter word or <a href="/#/home/volumes">browse the volumes</a>.</p>}
+      {v.glossaryRows.length === 0 && <p className="search-empty">No matching glossary terms. Try a shorter word or <a href="/#volumes">browse the volumes</a>.</p>}
     </div>
   </section>;
 }
@@ -74,6 +74,7 @@ export function SynthesisView({ v }) {
       <div className="discovery-summary-list">{shown.map(row => <article key={row.id} className="discovery-summary">
         <p className="discovery-meta">{row.article.vol} · {row.role === 'topic' ? row.topics.join(' · ') : 'reference'}</p>
         <h2><a href={row.href}>{row.summary.question || row.title}</a></h2><p>{row.summary.answer}</p>
+        {(row.citations || row.summary.citations || []).length > 0 && <p className="answer-sources">Sources: {(row.citations || row.summary.citations).map((item, i, list) => <span key={`${item.claimId}-${i}`}><a href={item.url}>{item.publisher || item.title}</a>, {item.locator}{i < list.length - 1 ? '; ' : '.'}</span>)}</p>}
         {(row.summary.evidence || row.summary.uncertainty || row.summary.evidenceAndUncertainty) && <p className="discovery-meta">{row.summary.evidence && <>Evidence: {row.summary.evidence} </>}{row.summary.uncertainty && <>Still uncertain: {row.summary.uncertainty} </>}{row.summary.evidenceAndUncertainty && <>Evidence and limits: {row.summary.evidenceAndUncertainty}</>}</p>}
       </article>)}</div>
       {shown.length === 0 && <p className="search-empty">No approved chapter answers match these filters. Choose All volumes or All topics.</p>}

@@ -13,9 +13,10 @@ const blocks = Object.fromEntries(manifest.map(article => [
 test('search URL restores query and volume, including a zero-result query', () => {
   for (const query of ['Triffin dilemma', 'zzzz-no-result']) {
     const url = searchUrl(query, 'after');
-    assert.deepEqual(searchState(url.slice(1)), { query, volume: 'after' });
+    assert.deepEqual(searchState(url), { query, volume: 'after' });
   }
-  assert.deepEqual(searchState('#/search?q=QE&vol=unexpected'), { query: 'QE', volume: '' });
+  assert.deepEqual(searchState('/search/?q=QE&vol=unexpected'), { query: 'QE', volume: '' });
+  assert.deepEqual(searchState('#/search?q=QE&vol=bitcoin'), { query: 'QE', volume: 'bitcoin' });
 });
 
 test('Triffin ranks the canonical glossary definition above directories', () => {

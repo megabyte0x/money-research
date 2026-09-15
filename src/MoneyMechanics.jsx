@@ -20,7 +20,7 @@ export default function MoneyMechanics() {
     <h1>How money is created and moved</h1>
     <p className="lead">A loan, a payment, a government bond and a central-bank asset purchase are four different transactions. Following who gains an asset and who owes a liability prevents “money printing” from standing in for all of them.</p>
     <p className="small-note">These examples omit interest, fees, taxes and later transactions. A “+£100” is a change, not an account's total balance. They explain mechanics, not the net effect of a policy on inflation or welfare.</p>
-    <nav className="mechanics-jump" aria-label="Explainer contents"><a href="/#/mechanics/mechanics-loan">Bank loan</a><a href="/#/mechanics/mechanics-payment">Payment</a><a href="/#/mechanics/mechanics-bond">Bond issue</a><a href="/#/mechanics/mechanics-qe">QE purchase</a></nav>
+    <nav className="mechanics-jump" aria-label="Explainer contents"><a href="/mechanics/#mechanics-loan">Bank loan</a><a href="/mechanics/#mechanics-payment">Payment</a><a href="/mechanics/#mechanics-bond">Bond issue</a><a href="/mechanics/#mechanics-qe">QE purchase</a></nav>
 
     <section id="mechanics-loan">
       <h2>1. A bank makes a £100 loan</h2>
@@ -69,7 +69,7 @@ export default function MoneyMechanics() {
     <section id="mechanics-takeaway">
       <h2>What to keep distinct</h2>
       <p><strong>Deposits</strong> are commercial banks' promises to customers. <strong>Reserves</strong> are central-bank promises to eligible institutions. <strong>Government bonds</strong> are borrowing obligations. <strong>QE</strong> swaps an existing asset for newly created reserves and, when the seller is a non-bank, a matching customer deposit. These balance-sheet mechanics are a starting point; the macroeconomic effects still depend on behavior and policy.</p>
-      <div className="actions"><a href="/after/07-financial-crisis-and-the-age-of-qe-2007-2019/">The crisis and QE chapter →</a><a href="/#/compare">Compare monetary arrangements →</a></div>
+      <div className="actions"><a href="/after/07-financial-crisis-and-the-age-of-qe-2007-2019/">The crisis and QE chapter →</a><a href="/compare/">Compare monetary arrangements →</a></div>
     </section>
   </article>;
 }

@@ -90,7 +90,10 @@ export function createContentModel(manifest, documents, observations, timelineEv
 
   const evidenceIndex = evidence ? createEvidenceIndex(evidence.sources, evidence.claims, observations, ids) : {};
   const comparisonCells = indexComparisonCells(comparisonCellRecords, evidenceIndex.claims || {}, evidenceIndex.sources || {});
-  const publishedMetadata = indexArticleMetadata(articleMetadata, manifest, blocks);
+  const publishedMetadata = resolveAnswerCitations(
+    indexArticleMetadata(articleMetadata, manifest, blocks),
+    evidenceIndex,
+  );
   const articleEvidence = evidence ? Object.fromEntries(manifest.map(record => [record.id,
     observationRefs[record.id].map(id => {
       const observation = byObservationId.get(id);
@@ -111,4 +114,28 @@ export function createContentModel(manifest, documents, observations, timelineEv
 
   glossary = canonicalGlossary(glossary);
   return { manifest, blocks, fileRefs, glossary, timelineReviewStatus: timelineReviewStatus || {}, comparisonCells, observations: Object.fromEntries(byObservationId), articleEvidence, articleClaims, articleMetadata: publishedMetadata, ...evidenceIndex };
+}
+
+function resolveAnswerCitations(publishedMetadata, evidenceIndex) {
+  const claims = evidenceIndex.claims || {};
+  const sources = evidenceIndex.sources || {};
+  return Object.fromEntries(Object.entries(publishedMetadata).map(([id, row]) => {
+    const citations = (row.citations || []).flatMap(item => {
+      const claim = claims[item.claimId];
+      if (!claim) throw new Error(`Unknown answer citation claim: ${id} ${item.claimId}`);
+      return claim.supporting.map(locator => {
+        const source = sources[locator.sourceId];
+        if (!source) throw new Error(`Missing citation source: ${id} ${locator.sourceId}`);
+        return {
+          claimId: claim.id,
+          sourceId: locator.sourceId,
+          publisher: source.publisher,
+          title: source.title,
+          url: source.url,
+          locator: locator.locator,
+        };
+      });
+    });
+    return [id, { ...row, citations }];
+  }));
 }

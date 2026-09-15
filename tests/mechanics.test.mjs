@@ -7,11 +7,10 @@ const page = readFileSync(new URL('src/MoneyMechanics.jsx', root), 'utf8');
 const app = readFileSync(new URL('src/App.jsx', root), 'utf8');
 
 test('four money-mechanics transactions are reachable and sourced', () => {
-  assert.match(app, /'mechanics'.*\.includes\(seg\[0\]\)/);
-  assert.match(app, /\{v\.isMechanics && <MoneyMechanics \/>\}/);
+  assert.match(app, /isMechanics && <MoneyMechanics/);
   for (const id of ['loan', 'payment', 'bond', 'qe']) {
     assert.ok(page.includes(`id="mechanics-${id}"`), id);
-    assert.ok(page.includes(`href="/#/mechanics/mechanics-${id}"`), id);
+    assert.ok(page.includes(`href="/mechanics/#mechanics-${id}"`), id);
   }
   for (const host of ['bankofengland.co.uk', 'dmo.gov.uk']) assert.ok(page.includes(host), host);
   assert.equal((page.match(/<Changes caption=/g) || []).length, 4);

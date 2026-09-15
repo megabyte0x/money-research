@@ -4,7 +4,8 @@ import { readFileSync } from 'node:fs';
 
 const root = new URL('../', import.meta.url);
 const source = readFileSync(new URL('src/App.jsx', root), 'utf8');
-const history = readFileSync(new URL('src/features/reader/HistoryView.jsx', root), 'utf8');
+const history = readFileSync(new URL('src/history-stages.js', root), 'utf8');
+const historyView = readFileSync(new URL('src/features/reader/HistoryView.jsx', root), 'utf8');
 const manifest = JSON.parse(readFileSync(new URL('public/content/manifest.json', root), 'utf8'));
 const arc = source.match(/static ARC = \[([\s\S]*?)\];/)[1];
 
@@ -30,6 +31,6 @@ test('published arc does not collapse gold-standard credit or universalise regio
   assert.match(history, /bank deposits and credit remained/i);
   assert.match(history, /different regional roles/i);
   assert.match(history, /Many central banks adopted more explicit policy frameworks/i);
-  assert.match(history, /Quantitative charts are withheld/i);
-  assert.doesNotMatch(history, /money supply grew as fast as gold was mined|first inflation|first bimetallic standard|silver pennies only|almost everyone by 2000/i);
+  assert.match(historyView, /Quantitative charts are withheld/i);
+  assert.doesNotMatch(history + historyView, /money supply grew as fast as gold was mined|first inflation|first bimetallic standard|silver pennies only|almost everyone by 2000/i);
 });

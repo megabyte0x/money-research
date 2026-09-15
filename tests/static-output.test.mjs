@@ -31,10 +31,10 @@ test('built browser index and static pages use the same validated source model',
 test('approved summaries and curated section links appear in crawlable chapters', () => {
   const gold = readFileSync(join(root, 'dist/gold/03-from-metal-to-money-weights-rings-coins/index.html'), 'utf8');
   assert.match(gold, /What changed when weighed metal became stamped coin\?/);
-  assert.match(gold, /gold\/05-silver-copper-bronze-and-bimetallism\/\?section=the-gold-silver-ratio-through-time/);
+  assert.match(gold, /gold\/05-silver-copper-bronze-and-bimetallism\/#the-gold-silver-ratio-through-time/);
   const after = readFileSync(join(root, 'dist/after/07-financial-crisis-and-the-age-of-qe-2007-2019/index.html'), 'utf8');
   assert.match(after, /Housing-credit losses, leverage and fragile funding contributed to the crisis/);
-  assert.match(after, /after\/09-pandemic-inflation-and-weaponized-reserves-2020-2026\/\?section=pandemic-fiscal-spending-and-central-bank-balance-sheets/);
+  assert.match(after, /after\/09-pandemic-inflation-and-weaponized-reserves-2020-2026\/#pandemic-fiscal-spending-and-central-bank-balance-sheets/);
 });
 
 test('source chapters expose publisher URLs as links in crawlable HTML', () => {
@@ -46,6 +46,12 @@ test('source chapters expose publisher URLs as links in crawlable HTML', () => {
 
 test('each article has a direct HTML page with unique canonical metadata', () => {
   for (const record of manifest) {
+    if (record.slug === '00-readme') {
+      assert.equal(existsSync(join(root, 'dist', record.vol, record.slug, 'index.html')), false, record.id);
+      const hub = readFileSync(join(root, 'dist', record.vol, 'index.html'), 'utf8');
+      assert.ok(hub.includes(`<link rel="canonical" href="https://money-research-iota.vercel.app/${record.vol}/">`), record.id);
+      continue;
+    }
     const path = join(root, 'dist', record.vol, record.slug, 'index.html');
     assert.ok(existsSync(path), record.id);
     const html = readFileSync(path, 'utf8');
@@ -53,31 +59,46 @@ test('each article has a direct HTML page with unique canonical metadata', () =>
     assert.ok(html.includes(`<link rel="canonical" href="${url}">`), record.id);
     assert.ok(html.includes(`<meta property="og:url" content="${url}">`), record.id);
     assert.ok(html.includes('<meta name="description"'), record.id);
-    assert.ok(html.includes('<main class="static-article">'), record.id);
+    assert.ok(html.includes('<main id="main-content" class="static-article">'), record.id);
     assert.ok(html.includes('<h1 id="'), record.id);
     if (record.h2.length) assert.ok(html.includes('<nav class="static-toc" aria-label="Chapter contents">'), record.id);
     for (const alias of record.aliases) {
       const aliasPath = join(root, 'dist', record.vol, alias, 'index.html');
-      assert.ok(existsSync(aliasPath), `${record.id} alias ${alias}`);
-      assert.ok(readFileSync(aliasPath, 'utf8').includes(`<link rel="canonical" href="${url}">`));
+      assert.equal(existsSync(aliasPath), false, `${record.id} alias ${alias} must not copy chapter HTML`);
     }
   }
 });
 
 test('sitemap covers the homepage and all 44 article routes', () => {
   const xml = readFileSync(join(root, 'dist/sitemap.xml'), 'utf8');
-  assert.equal((xml.match(/<url>/g) || []).length, 45);
-  for (const record of manifest) assert.ok(xml.includes(`/${record.vol}/${record.slug}/`), record.id);
+  const chapters = manifest.filter(record => record.slug !== '00-readme');
+  assert.equal((xml.match(/<url>/g) || []).length, 1 + 3 + 2 + chapters.length);
+  assert.ok(xml.includes('https://money-research-iota.vercel.app/'));
+  for (const vol of ['gold', 'after', 'bitcoin']) {
+    assert.ok(xml.includes(`https://money-research-iota.vercel.app/${vol}/`), vol);
+  }
+  for (const record of chapters) assert.ok(xml.includes(`/${record.vol}/${record.slug}/`), record.id);
+  assert.ok(!xml.includes('/search/'));
+  assert.ok(!xml.includes('/00-readme/'));
 });
 
 test('generated internal article links and section targets resolve', () => {
-  const pages = new Map(manifest.map(record => [
-    `/${record.vol}/${record.slug}/`,
-    readFileSync(join(root, 'dist', record.vol, record.slug, 'index.html'), 'utf8')
-  ]));
-  const aliases = new Map(manifest.flatMap(record => record.aliases.map(alias =>
-    [`/${record.vol}/${alias}/`, `/${record.vol}/${record.slug}/`]
-  )));
+  const pages = new Map([
+    ['/', readFileSync(join(root, 'dist/index.html'), 'utf8')],
+    ...['gold', 'after', 'bitcoin', 'methods', 'glossary', 'timeline', 'takeaways', 'mechanics', 'compare', 'arc', 'search']
+      .map(path => [`/${path}/`, readFileSync(join(root, 'dist', path, 'index.html'), 'utf8')]),
+    ...manifest.filter(record => record.slug !== '00-readme').map(record => [
+      `/${record.vol}/${record.slug}/`,
+      readFileSync(join(root, 'dist', record.vol, record.slug, 'index.html'), 'utf8')
+    ]),
+  ]);
+  const aliases = new Map([
+    ...manifest.flatMap(record => record.aliases.map(alias =>
+      [`/${record.vol}/${alias}/`, record.slug === '00-readme' ? `/${record.vol}/` : `/${record.vol}/${record.slug}/`]
+    )),
+    ...manifest.filter(record => record.slug === '00-readme').map(record =>
+      [`/${record.vol}/00-readme/`, `/${record.vol}/`]),
+  ]);
   let checked = 0;
   let chapterLinks = 0;
   let sectionLinks = 0;

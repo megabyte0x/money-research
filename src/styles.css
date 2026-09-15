@@ -12,7 +12,21 @@ body[data-theme="dark"] select{color-scheme:dark}
 @media (prefers-color-scheme:dark){body:not([data-theme="light"]) select{color-scheme:dark}}
 button{font-family:'IBM Plex Mono',monospace;background:none;border:0;color:var(--fg);cursor:pointer;padding:0}
 ::selection{background:var(--mark)}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
+html{scroll-behavior:smooth;scroll-padding-top:72px;font-family:Georgia,serif}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}}
+.skip-link{position:absolute;left:-999px;top:8px;z-index:30;background:var(--fg);color:var(--bg);padding:8px 12px;font-family:'IBM Plex Mono',monospace;font-size:12px}
+.skip-link:focus,.skip-link:focus-visible{left:8px}
+.static-header{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--rule);font-family:'IBM Plex Mono',monospace;font-size:12px}
+.static-header nav{display:flex;flex-wrap:wrap;gap:12px}
+.static-breadcrumbs ol{display:flex;flex-wrap:wrap;gap:6px 10px;list-style:none;margin:0 0 18px;padding:0;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+.static-breadcrumbs li:not(:last-child)::after{content:'/';margin-left:10px;color:var(--rule)}
+.answer-sources{font-size:14px;color:var(--mut);margin:.4rem 0 1rem}
+.static-item-list{margin:2rem 0}
+.static-item-list ol{padding-left:1.3rem}
+.reader-volume ol{margin:10px 0 0;padding-left:1.1rem;font-size:13px}
+.static-timeline{padding-left:1.2rem}
+.static-timeline li{margin:.45rem 0}
+img,svg,video{max-width:100%;height:auto}
 :focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 input:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .intro-page{font-size:18px;line-height:1.58;max-width:68ch}
@@ -62,6 +76,7 @@ input:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 @media(max-width:620px){.static-article .static-toc ol{columns:1}}
 .static-article .static-table-wrap{overflow-x:auto}
 .static-article table{border-collapse:collapse;min-width:480px}
+.static-article caption{text-align:left;color:var(--mut);font-size:13px;margin-bottom:8px}
 .static-article th,.static-article td{text-align:left;vertical-align:top;padding:8px;border-bottom:1px solid var(--rule)}
 @media(max-width:639px){.intro-page{font-size:17px}.comparison{font-size:14px}.evidence-notice{font-size:14px}}
 
