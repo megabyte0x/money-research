@@ -1,4 +1,4 @@
-# 10 — Zcash-Specific Risks, Governance, and Future Changes
+# 09 — Zcash-Specific Risks, Governance, and Future Changes
 
 **Evidence snapshot: 15 September 2026.** This chapter is particularly important because the current security picture differs materially from pre-2026 descriptions.
 

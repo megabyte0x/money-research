@@ -40,7 +40,7 @@ Sources: [Z04](/sources/#sources-zcash-z04), [Z11](/sources/#sources-zcash-z11),
 
 Shielded Labs reports discovery on 29 May 2026 of a flaw that could create counterfeit claims inside Orchard, and explicitly says historical non-exploitation cannot be proved from that pool's private contents. The emergency upgrade fixed the vulnerable rules. Ironwood then introduced a new pool and restricted entry and cross-address activity in the old one. A dated Foundation engineering report confirms NU6.3 went live. [Z12](/sources/#sources-zcash-z12), [Z15](/sources/#sources-zcash-z15), [Z16](/sources/#sources-zcash-z16)
 
-This volume does not repeat the overly strong claim that a nonnegative public pool balance proves no counterfeit private notes ever existed. See [10](/zcash/10-zcash-specific-risks-and-governance/) for the difference between containing supply risk and establishing the absence of hidden claims.
+This volume does not repeat the overly strong claim that a nonnegative public pool balance proves no counterfeit private notes ever existed. See [09](/zcash/09-zcash-specific-risks-and-governance/) for the difference between containing supply risk and establishing the absence of hidden claims.
 
 ### What quantum recoverability means
 

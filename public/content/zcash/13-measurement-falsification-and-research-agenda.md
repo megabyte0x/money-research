@@ -1,4 +1,4 @@
-# 14 — How to Test or Reject the ZEC-Economy Hypothesis
+# 13 — How to Test or Reject the ZEC-Economy Hypothesis
 
 ## What this research establishes, and what it does not
 
@@ -32,7 +32,7 @@ For national adoption, a high share among a volunteer pilot is not the share of 
 
 ## A falsifiable version of the main hypothesis
 
-The broad hypothesis in [11](/zcash/11-hypothesis-a-world-ready-for-zec/) can be separated into three claims:
+The broad hypothesis in [10](/zcash/10-hypothesis-a-world-ready-for-zec/) can be separated into three claims:
 
 **H1 — Privacy demand:** some users obtain enough additional confidentiality or independence to prefer Zcash over available alternatives after total costs and risks are included.
 

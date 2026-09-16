@@ -45,6 +45,9 @@ test('host config serves canonical pages, alias redirects, versioned cards, 404s
     const removed = await request(port, '/zcash/08-transition-from-fiat-to-zec/');
     assert.equal(removed.status, 404);
     assert.match(removed.body, /Page not found/);
+    const renumbered = await request(port, '/zcash/09-gold-to-fiat-to-bitcoin-to-zcash/');
+    assert.equal(renumbered.status, 308);
+    assert.equal(renumbered.headers.location, '/zcash/08-gold-to-fiat-to-bitcoin-to-zcash/');
     const robots = await request(port, '/robots.txt');
     assert.equal(robots.status, 200);
     assert.match(robots.body, /Sitemap:/);

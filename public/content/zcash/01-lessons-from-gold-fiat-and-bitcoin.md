@@ -4,7 +4,7 @@
 
 The gold volume explains durability, scarcity, standardisation, money by weight, coinage, official ratios, convertibility, and the separation of reserve assets from everyday payments. The fiat volume follows monetary discretion, banking, debt crises, financial infrastructure, state capacity, and geopolitical dependence. The Bitcoin volume asks whether a scarce digital bearer asset can take on the broader functions of money.
 
-Together they produce a better question than “Which coin is best?”: **which arrangement performs which monetary function, who guarantees its promises, and who takes the loss when it fails?** The [coverage map](/zcash/18-prior-document-coverage/) links every prior document to this volume.
+Together they produce a better question than “Which coin is best?”: **which arrangement performs which monetary function, who guarantees its promises, and who takes the loss when it fails?** The [coverage map](/zcash/14-prior-document-coverage/) links every prior document to this volume.
 
 | Earlier lesson | Question carried into Zcash |
 |---|---|

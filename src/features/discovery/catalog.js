@@ -13,7 +13,7 @@ const REFERENCE_IDS = new Map([
     [`${vol}-${refs.sources}`, 'sources'],
   ]),
   ['after-10', 'reference'],
-  ['zcash-18', 'reference'],
+  ['zcash-14', 'reference'],
 ]);
 
 const TOPICS = {
@@ -37,10 +37,10 @@ const TOPICS = {
   'zcash-01': ['history', 'money basics'], 'zcash-02': ['payments', 'privacy'],
   'zcash-03': ['payments', 'adoption'], 'zcash-04': ['privacy', 'value'],
   'zcash-05': ['unit of account', 'adoption'], 'zcash-06': ['money basics', 'crises'],
-  'zcash-07': ['adoption', 'law'], 'zcash-08': ['adoption', 'monetary rules'],
-  'zcash-09': ['comparison', 'history'], 'zcash-10': ['safeguards', 'institutions'],
-  'zcash-11': ['adoption', 'institutions'], 'zcash-12': ['adoption', 'money basics'],
-  'zcash-13': ['crises', 'safeguards'], 'zcash-14': ['adoption', 'research'],
+  'zcash-07': ['adoption', 'law'], 'zcash-08': ['comparison', 'history'],
+  'zcash-09': ['safeguards', 'institutions'], 'zcash-10': ['adoption', 'institutions'],
+  'zcash-11': ['adoption', 'money basics'], 'zcash-12': ['crises', 'safeguards'],
+  'zcash-13': ['adoption', 'research'],
 };
 
 export function contentRole(article) {

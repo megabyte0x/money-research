@@ -6,7 +6,7 @@
 
 Protocol specifications describe intended rules. A dated deployment announcement and engineering report establish stronger evidence of activation than a proposal alone. Developer reports provide first-party incident evidence, but cannot independently establish the absence of an undiscovered exploit. Institutional papers describe their authors' analysis; working papers do not necessarily represent official policy.
 
-The invented society, institutional design, adoption thresholds, and numerical stress tests in chapters 11–13 are the author's **hypotheses and illustrations**. Sources inform their constraints; no source is presented as documenting those fictional events. Legal material is jurisdiction-specific and distinguishes enacted rules, application dates, and international recommendations.
+The invented society, institutional design, adoption thresholds, and numerical stress tests in chapters 10–12 are the author's **hypotheses and illustrations**. Sources inform their constraints; no source is presented as documenting those fictional events. Legal material is jurisdiction-specific and distinguishes enacted rules, application dates, and international recommendations.
 
 Most sources were inspected through live web retrieval. Where retrieval was restricted, official indexed excerpts or a primary-source alternative were used; material cases are identified below. No original transaction census, cryptographic audit, market-depth study, or household survey was performed.
 
@@ -325,8 +325,8 @@ Used to identify an alternative combining private payment interfaces with federa
 3. **Privacy versus complete secrecy:** proof privacy is only one layer. Counterparties, viewing permissions, public crossings, timing, network metadata, custody, and compromised devices can still matter.
 4. **Private settlement versus a new measuring unit:** a merchant converting a dollar invoice into ZEC has adopted a payment method. That observation alone does not establish ZEC price formation.
 5. **International rules versus local law:** Basel and FATF frameworks, EU application dates, US tax treatment, and El Salvador's statute have different scopes.
-6. **Scenario design versus prediction:** political willingness is stipulated in chapter 11. Stable purchasing power, sound credit, complete privacy, and successful adoption are not stipulated as already achieved.
+6. **Scenario design versus prediction:** political willingness is stipulated in chapter 10. Stable purchasing power, sound credit, complete privacy, and successful adoption are not stipulated as already achieved.
 
 ## Local foundations
 
-The [prior-document coverage map](/zcash/18-prior-document-coverage/) links all 44 original files. Two additional local editorial records were consulted: [Editorial change register](../editorial-change-register.md) and [Editorial sources](../money-research/EDITORIAL-SOURCES.md). They identify corrections to carry forward; they are not substitutes for the primary sources above.
+The [prior-document coverage map](/zcash/14-prior-document-coverage/) links all 44 original files. Two additional local editorial records were consulted: [Editorial change register](../editorial-change-register.md) and [Editorial sources](../money-research/EDITORIAL-SOURCES.md). They identify corrections to carry forward; they are not substitutes for the primary sources above.

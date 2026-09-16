@@ -9944,7 +9944,7 @@
     "approximate": false,
     "event": "Public disclosure of that earlier vulnerability",
     "compositeStatus": "single milestone; no cross-volume merge proposed",
-    "destination": "zcash-10#1-supply-integrity-and-the-2026-orchard-vulnerability",
+    "destination": "zcash-09#1-supply-integrity-and-the-2026-orchard-vulnerability",
     "destinationStatus": "destination body checked",
     "relevanceRationale": "The linked Zcash chapter explicitly provides the relevant protocol, funding, security, migration, or operational context.",
     "evidence": [
@@ -9967,7 +9967,7 @@
     "approximate": false,
     "event": "Turnstile enforcement explanation published",
     "compositeStatus": "single milestone; no cross-volume merge proposed",
-    "destination": "zcash-10#1-supply-integrity-and-the-2026-orchard-vulnerability",
+    "destination": "zcash-09#1-supply-integrity-and-the-2026-orchard-vulnerability",
     "destinationStatus": "destination body checked",
     "relevanceRationale": "The linked Zcash chapter explicitly provides the relevant protocol, funding, security, migration, or operational context.",
     "evidence": [
@@ -10013,7 +10013,7 @@
     "approximate": false,
     "event": "Network load and wallet-performance problems discussed in a later retrospective",
     "compositeStatus": "single milestone; no cross-volume merge proposed",
-    "destination": "zcash-10#5-scaling-and-operational-resilience",
+    "destination": "zcash-09#5-scaling-and-operational-resilience",
     "destinationStatus": "destination body checked",
     "relevanceRationale": "The linked Zcash chapter explicitly provides the relevant protocol, funding, security, migration, or operational context.",
     "evidence": [
@@ -10036,7 +10036,7 @@
     "approximate": false,
     "event": "Second halving and NU6-era funding arrangement",
     "compositeStatus": "single milestone; no cross-volume merge proposed",
-    "destination": "zcash-10#3-governance-and-development-finance",
+    "destination": "zcash-09#3-governance-and-development-finance",
     "destinationStatus": "destination body checked",
     "relevanceRationale": "The linked Zcash chapter explicitly provides the relevant protocol, funding, security, migration, or operational context.",
     "evidence": [
@@ -10059,7 +10059,7 @@
     "approximate": false,
     "event": "NU6.1 activation at block 3,146,400",
     "compositeStatus": "single milestone; no cross-volume merge proposed",
-    "destination": "zcash-10#3-governance-and-development-finance",
+    "destination": "zcash-09#3-governance-and-development-finance",
     "destinationStatus": "destination body checked",
     "relevanceRationale": "The linked Zcash chapter explicitly provides the relevant protocol, funding, security, migration, or operational context.",
     "evidence": [
@@ -10082,7 +10082,7 @@
     "approximate": false,
     "event": "Orchard soundness vulnerability discovered",
     "compositeStatus": "single milestone; no cross-volume merge proposed",
-    "destination": "zcash-10#1-supply-integrity-and-the-2026-orchard-vulnerability",
+    "destination": "zcash-09#1-supply-integrity-and-the-2026-orchard-vulnerability",
     "destinationStatus": "destination body checked",
     "relevanceRationale": "The linked Zcash chapter explicitly provides the relevant protocol, funding, security, migration, or operational context.",
     "evidence": [
@@ -10105,7 +10105,7 @@
     "approximate": false,
     "event": "Temporary Orchard restrictions and coordinated remediation",
     "compositeStatus": "single milestone; no cross-volume merge proposed",
-    "destination": "zcash-10#1-supply-integrity-and-the-2026-orchard-vulnerability",
+    "destination": "zcash-09#1-supply-integrity-and-the-2026-orchard-vulnerability",
     "destinationStatus": "destination body checked",
     "relevanceRationale": "The linked Zcash chapter explicitly provides the relevant protocol, funding, security, migration, or operational context.",
     "evidence": [
@@ -10128,7 +10128,7 @@
     "approximate": false,
     "event": "NU6.2 activation at block 3,364,600",
     "compositeStatus": "single milestone; no cross-volume merge proposed",
-    "destination": "zcash-10#1-supply-integrity-and-the-2026-orchard-vulnerability",
+    "destination": "zcash-09#1-supply-integrity-and-the-2026-orchard-vulnerability",
     "destinationStatus": "destination body checked",
     "relevanceRationale": "The linked Zcash chapter explicitly provides the relevant protocol, funding, security, migration, or operational context.",
     "evidence": [
@@ -10151,7 +10151,7 @@
     "approximate": false,
     "event": "Published zcashd end-of-support halt at block 3,417,100",
     "compositeStatus": "single milestone; no cross-volume merge proposed",
-    "destination": "zcash-10#5-scaling-and-operational-resilience",
+    "destination": "zcash-09#5-scaling-and-operational-resilience",
     "destinationStatus": "destination body checked",
     "relevanceRationale": "The linked Zcash chapter explicitly provides the relevant protocol, funding, security, migration, or operational context.",
     "evidence": [
@@ -10174,7 +10174,7 @@
     "approximate": false,
     "event": "Ironwood/NU6.3 activation at block 3,428,143",
     "compositeStatus": "single milestone; no cross-volume merge proposed",
-    "destination": "zcash-10#2-privacy-through-migrations-and-everyday-wallets",
+    "destination": "zcash-09#2-privacy-through-migrations-and-everyday-wallets",
     "destinationStatus": "destination body checked",
     "relevanceRationale": "The linked Zcash chapter explicitly provides the relevant protocol, funding, security, migration, or operational context.",
     "evidence": [
@@ -10197,7 +10197,7 @@
     "approximate": false,
     "event": "Foundation engineering report documents post-activation work",
     "compositeStatus": "single milestone; no cross-volume merge proposed",
-    "destination": "zcash-10#2-privacy-through-migrations-and-everyday-wallets",
+    "destination": "zcash-09#2-privacy-through-migrations-and-everyday-wallets",
     "destinationStatus": "destination body checked",
     "relevanceRationale": "The linked Zcash chapter explicitly provides the relevant protocol, funding, security, migration, or operational context.",
     "evidence": [

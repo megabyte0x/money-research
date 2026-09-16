@@ -1,4 +1,4 @@
-# 09 — Gold → Fiat → Bitcoin → Zcash: Transition or Analogy?
+# 08 — Gold → Fiat → Bitcoin → Zcash: Transition or Analogy?
 
 ## The sequence has two meanings
 

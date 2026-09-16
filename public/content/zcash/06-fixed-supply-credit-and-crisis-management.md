@@ -16,7 +16,7 @@ Present banking illustrates the distinction: a new loan can create a matching de
 | Fully reserved payment services plus separate investment funds | A segregated claim backed by native ZEC; investment claims are separate | Term savings and equity fund loans | Fraud, operational failure, maturity mismatch if contracts are misrepresented |
 | Fractional-reserve ZEC banks | Redeemable deposits exceeding immediately available ZEC | Lending can create new deposit liabilities | Runs, credit losses, interbank contagion, limited base-money backstop |
 
-All three permit lending. The second design is used for the central hypothesis in [11](/zcash/11-hypothesis-a-world-ready-for-zec/), because it makes the difference between spendable money and risky investment especially explicit. It is a proposed institutional choice, not a description of today's Zcash ecosystem.
+All three permit lending. The second design is used for the central hypothesis in [10](/zcash/10-hypothesis-a-world-ready-for-zec/), because it makes the difference between spendable money and risky investment especially explicit. It is a proposed institutional choice, not a description of today's Zcash ecosystem.
 
 ## Fully reserved payments do not eliminate credit
 

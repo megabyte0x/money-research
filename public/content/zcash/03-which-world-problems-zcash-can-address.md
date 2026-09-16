@@ -19,7 +19,7 @@ The following assessment is an **inference** from Zcash's verified capabilities 
 | Debt and banking crises | Promises can exceed liquid assets under gold, fiat, or crypto | Self-custodied native ZEC is not a bank deposit | ZEC lenders and custodians can still fail; private ledgers may complicate oversight |
 | War, poverty, corruption, climate shocks | Allocation, production, coercion, and institutions matter | Could protect some lawful payments and reduce some data exposure | Does not abolish conflict, create resources, distribute income fairly, or verify honest procurement |
 
-The technical basis and qualifications are in [02](/zcash/02-what-zcash-is-and-what-is-live/), [04](/zcash/04-privacy-fungibility-and-the-unique-case/), and [10](/zcash/10-zcash-specific-risks-and-governance/). Banking mechanisms are in [06](/zcash/06-fixed-supply-credit-and-crisis-management/).
+The technical basis and qualifications are in [02](/zcash/02-what-zcash-is-and-what-is-live/), [04](/zcash/04-privacy-fungibility-and-the-unique-case/), and [09](/zcash/09-zcash-specific-risks-and-governance/). Banking mechanisms are in [06](/zcash/06-fixed-supply-credit-and-crisis-management/).
 
 ## Where the practical case is strongest
 
@@ -62,7 +62,7 @@ The relevant comparator is the best service actually available to that user, inc
 
 Financial privacy can protect bargaining power and prevent unwanted exposure. The same capability can make some investigations and public audits more difficult. It is inconsistent to count all privacy benefits as technological achievements while dismissing all oversight costs as merely political obstruction.
 
-A workable system would need proportionate disclosure rules, good business records, judicial procedures, and public-sector accountability. It need not publish every individual's transactions to everyone. But it must explain how obligations are enforced when parties dispute them. See [07](/zcash/07-adoption-and-the-current-institutional-system/) and the hypothetical arrangement in [11](/zcash/11-hypothesis-a-world-ready-for-zec/).
+A workable system would need proportionate disclosure rules, good business records, judicial procedures, and public-sector accountability. It need not publish every individual's transactions to everyone. But it must explain how obligations are enforced when parties dispute them. See [07](/zcash/07-adoption-and-the-current-institutional-system/) and the hypothetical arrangement in [10](/zcash/10-hypothesis-a-world-ready-for-zec/).
 
 ## Problems a change of money does not remove
 

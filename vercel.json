@@ -153,6 +153,41 @@
       "permanent": true
     },
     {
+      "source": "/zcash/09-gold-to-fiat-to-bitcoin-to-zcash/",
+      "destination": "/zcash/08-gold-to-fiat-to-bitcoin-to-zcash/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/10-zcash-specific-risks-and-governance/",
+      "destination": "/zcash/09-zcash-specific-risks-and-governance/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/11-hypothesis-a-world-ready-for-zec/",
+      "destination": "/zcash/10-hypothesis-a-world-ready-for-zec/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/12-hypothesis-adoption-roadmap-and-worked-example/",
+      "destination": "/zcash/11-hypothesis-adoption-roadmap-and-worked-example/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/13-stress-tests-and-failure-paths/",
+      "destination": "/zcash/12-stress-tests-and-failure-paths/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/14-measurement-falsification-and-research-agenda/",
+      "destination": "/zcash/13-measurement-falsification-and-research-agenda/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/18-prior-document-coverage/",
+      "destination": "/zcash/14-prior-document-coverage/",
+      "permanent": true
+    },
+    {
       "source": "/zcash/15-timeline-and-proposal-status/",
       "destination": "/timeline/",
       "permanent": true

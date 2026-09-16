@@ -1,6 +1,6 @@
-# 13 — Stress Tests and Failure Paths
+# 12 — Stress Tests and Failure Paths
 
-**All numerical shocks below are invented stress scenarios.** They are not forecasts, observed ZEC returns, or estimates of failure probability. The purpose is to test whether the system in [11](/zcash/11-hypothesis-a-world-ready-for-zec/) and [12](/zcash/12-hypothesis-adoption-roadmap-and-worked-example/) can keep its promises.
+**All numerical shocks below are invented stress scenarios.** They are not forecasts, observed ZEC returns, or estimates of failure probability. The purpose is to test whether the system in [10](/zcash/10-hypothesis-a-world-ready-for-zec/) and [11](/zcash/11-hypothesis-adoption-roadmap-and-worked-example/) can keep its promises.
 
 ## 1. ZEC loses half its external value
 
@@ -56,7 +56,7 @@ If demand depositors request 150 ZEC immediately, reserves fall short by 50 ZEC.
 
 ## 7. A critical proof-circuit flaw is discovered
 
-**Scenario:** parts of the shielded system must be paused, patched, or migrated while payroll and business payments are due. The historical 2026 response shows why this category deserves explicit planning; the scenario does not assert a new flaw. See [10](/zcash/10-zcash-specific-risks-and-governance/).
+**Scenario:** parts of the shielded system must be paused, patched, or migrated while payroll and business payments are due. The historical 2026 response shows why this category deserves explicit planning; the scenario does not assert a new flaw. See [09](/zcash/09-zcash-specific-risks-and-governance/).
 
 **Response:** rehearsed incident governance, alternate contractual payment arrangements, time extensions, independently reviewed fixes, and clear disclosure of what supply checks do and do not establish.
 

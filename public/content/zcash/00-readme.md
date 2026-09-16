@@ -25,18 +25,18 @@ The evidence does not justify either “Zcash will replace fiat” or “Zcash c
 | [05 — Unit of account](/zcash/05-can-zec-be-a-unit-of-account/) | What would count as a ZEC economy, and is one possible? |
 | [06 — Money and credit](/zcash/06-fixed-supply-credit-and-crisis-management/) | What happens to inflation, lending, banks, and emergency liquidity? |
 | [07 — Current-system barriers](/zcash/07-adoption-and-the-current-institutional-system/) | What legal, commercial, and institutional obstacles exist now? |
-| [09 — The longer transition](/zcash/09-gold-to-fiat-to-bitcoin-to-zcash/) | What does the gold → fiat → BTC → ZEC sequence mean, and where does the analogy fail? |
-| [10 — Zcash-specific risks](/zcash/10-zcash-specific-risks-and-governance/) | What could fail in cryptography, governance, mining, wallets, and future upgrades? |
-| [11 — Hypothetical system](/zcash/11-hypothesis-a-world-ready-for-zec/) | Assuming political willingness, what kind of new system could support ZEC denomination? |
-| [12 — Hypothetical adoption path](/zcash/12-hypothesis-adoption-roadmap-and-worked-example/) | How would that society introduce ZEC, with concrete accounting examples? |
-| [13 — Stress tests](/zcash/13-stress-tests-and-failure-paths/) | How would it handle recessions, runs, deflation, failures, and external shocks? |
-| [14 — Tests of the thesis](/zcash/14-measurement-falsification-and-research-agenda/) | What evidence would support or reject the economic hypothesis? |
+| [08 — The longer transition](/zcash/08-gold-to-fiat-to-bitcoin-to-zcash/) | What does the gold → fiat → BTC → ZEC sequence mean, and where does the analogy fail? |
+| [09 — Zcash-specific risks](/zcash/09-zcash-specific-risks-and-governance/) | What could fail in cryptography, governance, mining, wallets, and future upgrades? |
+| [10 — Hypothetical system](/zcash/10-hypothesis-a-world-ready-for-zec/) | Assuming political willingness, what kind of new system could support ZEC denomination? |
+| [11 — Hypothetical adoption path](/zcash/11-hypothesis-adoption-roadmap-and-worked-example/) | How would that society introduce ZEC, with concrete accounting examples? |
+| [12 — Stress tests](/zcash/12-stress-tests-and-failure-paths/) | How would it handle recessions, runs, deflation, failures, and external shocks? |
+| [13 — Tests of the thesis](/zcash/13-measurement-falsification-and-research-agenda/) | What evidence would support or reject the economic hypothesis? |
+| [14 — Prior-document map](/zcash/14-prior-document-coverage/) | How were all 44 documents in the earlier volumes incorporated? |
 | [15 — Timeline](/timeline/) | What happened, what is proposed, and what is purely hypothetical? |
 | [16 — Glossary](/glossary/) | What do the monetary and technical terms mean? |
 | [17 — Sources](/sources/) | Which sources support each claim, and what are their limits? |
-| [18 — Prior-document map](/zcash/18-prior-document-coverage/) | How were all 44 documents in the earlier volumes incorporated? |
 
-**Short route:** 01 → 03 → 05 → 11 → 12 → 13. Read 02 and 10 before relying on technical claims about current Zcash.
+**Short route:** 01 → 03 → 05 → 10 → 11 → 12. Read 02 and 09 before relying on technical claims about current Zcash.
 
 ## Evidence labels
 

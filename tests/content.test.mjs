@@ -55,6 +55,9 @@ test('validated content model resolves articles, glossary and related-file refer
 test('the four-volume inventory has 62 unique, resolvable records', () => {
   assert.deepEqual(Object.fromEntries(['gold', 'after', 'bitcoin', 'zcash'].map(vol =>
     [vol, manifest.filter(record => record.vol === vol).length])), { gold: 13, after: 14, bitcoin: 17, zcash: 18 });
+  assert.deepEqual(manifest.filter(record => record.vol === 'zcash').map(record => record.num),
+    Array.from({ length: 18 }, (_, index) => String(index).padStart(2, '0')),
+    'Zcash directory, chapters, and references must remain consecutively numbered');
   const ids = manifest.map(record => record.id);
   assert.equal(new Set(ids).size, 62);
   assert.equal(new Set(manifest.map(record => `${record.vol}/${record.slug}`)).size, 62);

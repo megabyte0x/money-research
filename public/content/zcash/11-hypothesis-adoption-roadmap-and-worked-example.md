@@ -1,4 +1,4 @@
-# 12 — Hypothetical Adoption Roadmap and Worked Example
+# 11 — Hypothetical Adoption Roadmap and Worked Example
 
 > **Everything in this chapter is a constructed scenario.** “Harbor” is an invented jurisdiction. Population, amounts, conversion rates, schedules, and thresholds are illustrations, not empirical facts or recommended public policy. The objective is to make the hypothesis concrete and reviewable.
 

@@ -1,4 +1,4 @@
-# 11 — Hypothesis: A World Politically Ready for ZEC
+# 10 — Hypothesis: A World Politically Ready for ZEC
 
 > **This chapter is deliberately hypothetical.** The institutions below are invented to answer the user's question. They are not facts about an existing country, an official Zcash plan, or a prediction. Political willingness is assumed; economic success is not.
 

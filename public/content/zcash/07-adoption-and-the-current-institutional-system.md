@@ -66,7 +66,7 @@ The IMF's 2023 framework advises against granting cryptoassets official currency
 | Distribution | Existing holders and new entrants do not begin with equal resources |
 | Confidence | A decree does not resolve doubts about historical or future software failures |
 
-These are the reasons the counterfactual in [11](/zcash/11-hypothesis-a-world-ready-for-zec/) is not allowed to assume success merely by removing political opposition.
+These are the reasons the counterfactual in [10](/zcash/10-hypothesis-a-world-ready-for-zec/) is not allowed to assume success merely by removing political opposition.
 
 ## Where progress within the present system is plausible
 
