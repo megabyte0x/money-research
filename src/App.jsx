@@ -290,15 +290,28 @@ export default class App extends React.Component {
         out.push(value);
       });
     };
-    toks.forEach(t => {
-      if (t.t === 'text') pushText(t.v);
+    toks.forEach((t, index) => {
+      if (t.t === 'text') {
+        const previous = toks[index - 1];
+        const next = toks[index + 1];
+        const betweenCitations = previous?.t === 'link' && next?.t === 'link' &&
+          this.md.sourceCitation(previous.v, previous.href.trim()) && this.md.sourceCitation(next.v, next.href.trim()) &&
+          /^\s*,\s*$/.test(t.v);
+        pushText(betweenCitations ? ' ' : t.v);
+      }
       else if (t.t === 'b') out.push(R('strong', { key: k++, style: { fontWeight: 600 } }, t.v));
       else if (t.t === 'i') out.push(R('em', { key: k++ }, t.v));
       else if (t.t === 'link') {
         const href = t.href.trim();
         const label = t.auto ? this.md.sourceUrlLabel(href) : t.v;
-        out.push(this.md.isSafeContentHref(href)
-          ? R('a', { key: k++, href, ...(href.startsWith('/') || href.startsWith('#/') ? {} : { target: '_blank', rel: 'noopener' }), className: t.auto ? 'source-url' : undefined, title: t.auto ? href : undefined }, label) : label);
+        const citation = this.md.sourceCitation(t.v, href);
+        if (citation && this.md.isSafeContentHref(href)) {
+          out.push(R('sup', { key: k++, className: 'source-citation' },
+            R('a', { href, 'aria-label': `Source ${citation.sourceId}`, title: `Source ${citation.sourceId} — view entry in Sources` }, `[${citation.number}]`)));
+        } else {
+          out.push(this.md.isSafeContentHref(href)
+            ? R('a', { key: k++, href, ...(href.startsWith('/') || href.startsWith('#/') ? {} : { target: '_blank', rel: 'noopener' }), className: t.auto ? 'source-url' : undefined, title: t.auto ? href : undefined }, label) : label);
+        }
       }
       else if (t.t === 'code') {
         const m = this.state.manifest.find(x => t.v.replace(/\.md$/, '').startsWith(x.slug.slice(0, 20)) && x.vol === ctx.vol);

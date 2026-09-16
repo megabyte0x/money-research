@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { isSafeContentHref, sourceUrlLabel, tokenizeInline } from '../src/md.js';
+import { isSafeContentHref, sourceCitation, sourceUrlLabel, tokenizeInline } from '../src/md.js';
 
 test('research Markdown links allow web and local routes without executable or protocol-relative URLs', () => {
   for (const href of ['https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm',
@@ -23,4 +23,11 @@ test('source-page bare citations become safe links without swallowing punctuatio
   assert.ok(sourceTokens.some(t => t.t === 'text' && t.v.includes(' . ')));
   assert.deepEqual(tokenizeInline(line).filter(t => t.t === 'link').map(t => t.href), ['https://example.org/more']);
   assert.equal(sourceUrlLabel('https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm'), 'govinfo.gov ↗');
+});
+
+test('source-register shorthand becomes an accessible numbered citation', () => {
+  assert.deepEqual(sourceCitation('Z01', '/sources/#sources-zcash-z01'), { sourceId: 'Z01', number: '1' });
+  assert.deepEqual(sourceCitation('M18', '/sources/#sources-zcash-m18'), { sourceId: 'M18', number: '18' });
+  assert.equal(sourceCitation('Z01', '/zcash/01-lessons-from-gold-fiat-and-bitcoin/'), null);
+  assert.equal(sourceCitation('Source method', '/sources/'), null);
 });

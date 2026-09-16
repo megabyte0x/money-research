@@ -64,6 +64,14 @@ test('chapter pages omit the dated-evidence panel', () => {
   }
 });
 
+test('source-register links render as concise numbered citations in chapters', () => {
+  const zcash = readFileSync(join(root, 'dist/zcash/02-what-zcash-is-and-what-is-live/index.html'), 'utf8');
+  assert.match(zcash, /<sup class="source-citation"><a href="\/sources\/#sources-zcash-z01" aria-label="Source Z01"[^>]*>\[1\]<\/a><\/sup>/);
+  assert.match(zcash, /<\/sup> <sup class="source-citation"><a href="\/sources\/#sources-zcash-z02"/);
+  assert.doesNotMatch(zcash, /<\/sup>, <sup class="source-citation">/);
+  assert.doesNotMatch(zcash, />Z01<\/a>/);
+});
+
 test('each non-shared article has a direct HTML page with unique canonical metadata', () => {
   for (const record of manifest) {
     if (record.slug === '00-readme') {

@@ -1,4 +1,4 @@
-import { tokenizeInline, isSafeContentHref, sourceUrlLabel, stripInline } from './md.js';
+import { tokenizeInline, isSafeContentHref, sourceCitation, sourceUrlLabel, stripInline } from './md.js';
 import { referenceSegments } from './references.js';
 import { articleHref, canonicalPath, isDirectoryRecord, sharedViewForRecord, shortTitle, VOLUME_IDS } from './routes.js';
 import { absoluteUrl } from './site-config.js';
@@ -33,16 +33,28 @@ function linkedText(text, record, byVolumeNumber) {
 }
 
 export function inlineHtml(text, record, byVolumeNumber) {
-  return tokenizeInline(text, { linkifyUrls: ['gold-12', 'after-13', 'bitcoin-16', 'zcash-17'].includes(record?.id) }).map(token => {
+  const tokens = tokenizeInline(text, { linkifyUrls: ['gold-12', 'after-13', 'bitcoin-16', 'zcash-17'].includes(record?.id) });
+  return tokens.map((token, index) => {
     const value = escapeHtml(token.auto ? sourceUrlLabel(token.href) : token.v);
     if (token.t === 'b') return `<strong>${value}</strong>`;
     if (token.t === 'i') return `<em>${value}</em>`;
     if (token.t === 'code') return `<code>${value}</code>`;
     if (token.t === 'link') {
       const href = token.href.trim();
+      const citation = sourceCitation(token.v, href);
+      if (citation && isSafeContentHref(href)) {
+        return `<sup class="source-citation"><a href="${escapeHtml(href)}" aria-label="Source ${escapeHtml(citation.sourceId)}" title="Source ${escapeHtml(citation.sourceId)} — view entry in Sources">[${escapeHtml(citation.number)}]</a></sup>`;
+      }
       return isSafeContentHref(href) ? `<a href="${escapeHtml(href)}"${token.auto ? ` class="source-url" title="${escapeHtml(href)}"` : ''}>${value}</a>` : value;
     }
-    if (token.t === 'text') return linkedText(token.v, record, byVolumeNumber);
+    if (token.t === 'text') {
+      const previous = tokens[index - 1];
+      const next = tokens[index + 1];
+      const betweenCitations = previous?.t === 'link' && next?.t === 'link' &&
+        sourceCitation(previous.v, previous.href.trim()) && sourceCitation(next.v, next.href.trim()) &&
+        /^\s*,\s*$/.test(token.v);
+      return linkedText(betweenCitations ? ' ' : token.v, record, byVolumeNumber);
+    }
     return value;
   }).join('');
 }

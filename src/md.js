@@ -54,6 +54,18 @@ export function sourceUrlLabel(href) {
   }
 }
 
+// Research chapters use stable source-register anchors internally. Render the
+// shorthand as a conventional numbered citation while preserving the exact
+// register identifier for assistive technology and link destinations.
+export function sourceCitation(label, href) {
+  if (typeof label !== 'string' || typeof href !== 'string') return null;
+  const match = href.trim().match(/^\/sources\/#sources-[a-z0-9-]+-([a-z]+)(\d+)$/i);
+  if (!match) return null;
+  const sourceId = `${match[1]}${match[2]}`.toUpperCase();
+  if (label.trim().toUpperCase() !== sourceId) return null;
+  return { sourceId, number: String(Number(match[2])) };
+}
+
 export function tokenizeInline(text, { linkifyUrls = false } = {}) {
   const re = /(\*\*[^*]+\*\*|\*[^*\n]+\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g;
   const out = []; let last = 0; let m;
