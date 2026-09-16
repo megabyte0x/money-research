@@ -2,6 +2,8 @@
 
 > **This chapter is deliberately hypothetical.** The institutions below are invented to answer the user's question. They are not facts about an existing country, an official Zcash plan, or a prediction. Political willingness is assumed; economic success is not.
 
+The argument proceeds as one testable sequence: define the hypothesis, specify the institutions it would require, show how a willing society might adopt it, expose that system to failure, and identify the evidence that would support or reject it.
+
 ## The hypothesis
 
 **H:** A society that values confidential bearer money could sustain ZEC as a substantial unit of account if it coordinates recurring ZEC income and expenditure, separates payment custody from risky credit, establishes credible fiscal and legal institutions, and accepts explicit limits on emergency base-money creation.
@@ -105,21 +107,19 @@ Even unanimous support cannot simultaneously guarantee a rigid base cap, unlimit
 
 The strongest version of the hypothesis is therefore not “everyone agrees to Zcash.” It is “a willing society builds institutions compatible with ZEC's limits, and repeated evidence shows that the benefits exceed the costs.”
 
-## Key takeaways
-
 A hypothetical ZEC economy requires a coherent legal, banking, fiscal, and operational system. The world does not have to become stateless or debt-free. It does have to stop making unlimited promises against a base asset it cannot issue on demand—and demonstrate that the resulting trade-offs are tolerable.
 
----
+## A staged adoption path
 
 > **Everything in this chapter is a constructed scenario.** “Harbor” is an invented jurisdiction. Population, amounts, conversion rates, schedules, and thresholds are illustrations, not empirical facts or recommended public policy. The objective is to make the hypothesis concrete and reviewable.
 
-## The starting point
+### The starting point
 
 Harbor has 10,000 residents. Its current unit is H. It trades with neighbours that continue to use other currencies. Its government and residents are politically willing to test ZEC. They have not assumed ZEC will become stable or that every resident should bear unlimited risk.
 
 The objective is initially to create a useful ZEC-denominated commercial network. A national transition proceeds only if that network performs well through ordinary and adverse conditions.
 
-## Step 1 — Set the terms before moving balances
+### Step 1 — Set the terms before moving balances
 
 Harbor passes a framework that:
 
@@ -132,7 +132,7 @@ Harbor passes a framework that:
 
 There is no mandatory conversion of all household wealth. If the pilot fails, existing contracts and essential services have a known fallback.
 
-## Step 2 — Acquire resources without pretending conversion is free
+### Step 2 — Acquire resources without pretending conversion is free
 
 The government budgets actual resources for wallets, assistance, audits, and a modest reserve. It acquires ZEC through transparent purchases, voluntary tax prepayments, or borrowing from willing holders. Any transfer from outside supporters is recorded as a transfer, not free economic output.
 
@@ -140,7 +140,7 @@ Acquisitions use competitive processes and execution limits. A spot quotation is
 
 An access programme may provide small working balances to residents, but they are bought or transferred existing ZEC. The government does not mint them. Education subsidies are separated from measurements of unsubsidised demand.
 
-## Step 3 — Create a complete small spending circuit
+### Step 3 — Create a complete small spending circuit
 
 Recruit independent employers, suppliers, merchants, and service providers with compatible needs. A single government wallet plus hundreds of merchants who immediately convert does not create a ZEC economy.
 
@@ -154,7 +154,7 @@ Recruit independent employers, suppliers, merchants, and service providers with 
 
 The cooperative's flows sum to 100 ZEC. The same coins can circulate through several transactions; the network need not acquire a separate permanent coin for every payment. The example does not assume every worker spends all income or that all taxes are recycled immediately.
 
-## Step 4 — Match contractual units, not only payment methods
+### Step 4 — Match contractual units, not only payment methods
 
 Workers can initially choose a limited ZEC-denominated wage component. Businesses identify which inputs remain in H or foreign currency and cap their exposure. Native prices are offered for short durations and renewed voluntarily.
 
@@ -162,7 +162,7 @@ A worker paid “10 ZEC or the H equivalent” has a different contract from one
 
 Harbor publishes real-wage and essential-basket measures. Success means households can plan and obtain goods, not that their account displays more impressive ZEC valuations.
 
-## Step 5 — Build payment custody and term finance
+### Step 5 — Build payment custody and term finance
 
 **Illustrative payment provider:**
 
@@ -185,13 +185,13 @@ The fund's assets and financing both total 100 ZEC. If loan values fall to 85 ZE
 
 The arrangement permits credit while identifying who bears risk. Real financial statements would also include interest, expenses, cash timing, taxes, and valuation uncertainty.
 
-## Step 6 — Introduce fiscal denomination with matched funding
+### Step 6 — Introduce fiscal denomination with matched funding
 
 Selected public obligations are prospectively assessed in ZEC, and related procurement is budgeted in ZEC. During coexistence, Harbor publishes both H and ZEC accounts and separates translation gains from operating revenue.
 
 The government keeps a defined emergency reserve. It publishes contingent obligations and a loss-allocation order: designated reserves, approved borrowing, temporary taxes or expenditure changes, then negotiated restructuring where necessary. There is no uncapped promise to buy back everybody's ZEC at an old H price.
 
-## Step 7 — Handle legacy contracts by explicit agreement
+### Step 7 — Handle legacy contracts by explicit agreement
 
 Assume solely for explanation that a negotiated transition reference is **100 H per ZEC**.
 
@@ -207,7 +207,7 @@ Suppose a bank has 1,000 H in deposits and loans worth only 800 H. Converting bo
 
 Redenomination changes the measuring unit. It does not recapitalise an insolvent institution.
 
-## Step 8 — Expand only after observable performance
+### Step 8 — Expand only after observable performance
 
 The following thresholds are **illustrative experimental choices**, not economic laws:
 
@@ -224,27 +224,25 @@ A possible pilot could target 20% native invoice denomination and 10% native wag
 
 Calendar dates do not determine expansion. A stage can take several years, remain permanently limited, or stop.
 
-## Step 9 — Broader domestic adoption, then international coordination
+### Step 9 — Broader domestic adoption, then international coordination
 
 If the results remain favourable, more contracts and public accounts can migrate as existing obligations mature. International partners may adopt ZEC invoicing where revenues and costs match, build liquidity arrangements, and negotiate common dispute rules.
 
 At a global scale, mutual disaster support and debt-resolution arrangements become more important because no participating region can devalue its own version of native ZEC. A shared unit does not make every regional economy equally productive.
 
-## Exit and partial-success paths
+### Exit and partial-success paths
 
 If native denomination performs poorly, Harbor can retain private Zcash payments while returning new wage and tax obligations to another unit. Existing ZEC contracts are settled, renegotiated, or restructured under published rules; they are not silently rewritten at an arbitrary rate.
 
 If the payment network works but most users prefer stable-value accounting, the experiment has demonstrated a demand for privacy, not the full ZEC-unit hypothesis. That is an informative outcome.
 
-## Adoption-roadmap takeaways
-
 The adoption path is a sequence of funded, testable institutional changes. It creates complete spending circuits, separates payment money from investment risk, converts legacy promises carefully, and keeps a transparent exit path. Political support allows the experiment; evidence decides how far it should go.
 
----
+## Stress tests and failure paths
 
 **All numerical shocks below are invented stress scenarios.** They are not forecasts, observed ZEC returns, or estimates of failure probability. The purpose is to test whether the system and adoption path developed in this chapter can keep their promises.
 
-## 1. ZEC loses half its external value
+### 1. ZEC loses half its external value
 
 **Scenario:** a firm earns 100 ZEC a month but owes 5,000 dollars in imported inputs. At $100/ZEC those inputs cost 50 ZEC. At $50/ZEC they cost 100 ZEC, leaving nothing from the same revenue for wages or other expenses.
 
@@ -252,7 +250,7 @@ The adoption path is a sequence of funded, testable institutional changes. It cr
 
 **Failure signal:** firms can stay solvent only by automatically restoring dollar-denominated prices and wages. This would weaken the claim that native ZEC denomination is durable.
 
-## 2. ZEC appreciates sharply during adoption
+### 2. ZEC appreciates sharply during adoption
 
 **Scenario:** rapid new demand doubles ZEC's purchasing power before wages and debts adjust. Existing holders gain purchasing power; new entrants need to acquire balances at higher prices. Fixed ZEC debt becomes harder for borrowers whose revenues do not rise correspondingly.
 
@@ -260,7 +258,7 @@ The adoption path is a sequence of funded, testable institutional changes. It cr
 
 **Failure signal:** the transition depends on perpetual price appreciation or systematically transfers losses to residents who did not choose the exposure.
 
-## 3. A fractional-reserve institution faces a run
+### 3. A fractional-reserve institution faces a run
 
 **Illustrative balance sheet:** assets are 100 ZEC of reserves and 300 ZEC of loans; liabilities are 300 ZEC of demand deposits, 80 ZEC of term claims, and 20 ZEC of equity.
 
@@ -270,7 +268,7 @@ If demand depositors request 150 ZEC immediately, reserves fall short by 50 ZEC.
 
 **Failure signal:** supervisors conceal shortfalls, merge investment losses into payment balances, or promise native coins they cannot obtain.
 
-## 4. A fully reserved payment provider fails
+### 4. A fully reserved payment provider fails
 
 **Scenario:** the provider becomes insolvent because its business expenses exceed fee revenue. Properly segregated client ZEC still exists, but users cannot access the app or keys promptly.
 
@@ -280,7 +278,7 @@ If demand depositors request 150 ZEC immediately, reserves fall short by 50 ZEC.
 
 **Failure signal:** “100% backed” was only a marketing claim, or client funds were legally available to ordinary creditors.
 
-## 5. Recession increases demand for liquid ZEC
+### 5. Recession increases demand for liquid ZEC
 
 **Scenario:** households and firms delay spending and seek liquidity. Receipts fall while nominal debts and wages adjust slowly. Asset sales depress collateral values and lenders shorten maturities.
 
@@ -288,7 +286,7 @@ If demand depositors request 150 ZEC immediately, reserves fall short by 50 ZEC.
 
 **Failure signal:** protecting nominal claims requires unemployment or defaults that the society finds intolerable, causing emergency IOUs to become the actual circulating money.
 
-## 6. Energy or food supply collapses
+### 6. Energy or food supply collapses
 
 **Scenario:** a port closure or crop failure reduces available goods. Their ZEC prices rise despite unchanged issuance.
 
@@ -296,7 +294,7 @@ If demand depositors request 150 ZEC immediately, reserves fall short by 50 ZEC.
 
 **Failure signal:** officials treat the supply cap as proof inflation cannot occur and fail to address the real shortage.
 
-## 7. A critical proof-circuit flaw is discovered
+### 7. A critical proof-circuit flaw is discovered
 
 **Scenario:** parts of the shielded system must be paused, patched, or migrated while payroll and business payments are due. The historical 2026 response shows why this category deserves explicit planning; the scenario does not assert a new flaw. See [09](/zcash/09-zcash-specific-risks-and-governance/).
 
@@ -304,7 +302,7 @@ If demand depositors request 150 ZEC immediately, reserves fall short by 50 ZEC.
 
 **Failure signal:** the economy needs constant unplanned intervention, cannot identify authoritative contract treatment, or confuses reassuring statements with verified security properties.
 
-## 8. Privacy is lost at the operational layer
+### 8. Privacy is lost at the operational layer
 
 **Scenario:** a payroll exporter, cloud backup, remote prover, or auditor leaks transaction information. The chain's proof system remains sound.
 
@@ -312,7 +310,7 @@ If demand depositors request 150 ZEC immediately, reserves fall short by 50 ZEC.
 
 **Failure signal:** routine users obtain no material privacy advantage over the available alternative despite accepting greater monetary or custody risk.
 
-## 9. Large holders, venues, or infrastructure providers withdraw
+### 9. Large holders, venues, or infrastructure providers withdraw
 
 **Scenario:** a major liquidity provider exits, spreads widen, and treasury sales move prices sharply. Mining or wallet infrastructure also becomes concentrated in a few operators.
 
@@ -320,7 +318,7 @@ If demand depositors request 150 ZEC immediately, reserves fall short by 50 ZEC.
 
 **Failure signal:** the supposed issuer-independent system becomes economically dependent on one exchange, custodian, maintainer group, or subsidising benefactor.
 
-## 10. A shared world unit meets unequal regional shocks
+### 10. A shared world unit meets unequal regional shocks
 
 **Scenario:** one region loses export demand while others grow. The affected region cannot devalue its own ZEC. Debt remains fixed and workers cannot easily move.
 
@@ -328,25 +326,23 @@ If demand depositors request 150 ZEC immediately, reserves fall short by 50 ZEC.
 
 **Failure signal:** the region introduces a separate circulating claim at a discount or breaks the common accounting convention to restore flexibility.
 
-## The combined shock matters most
+### The combined shock matters most
 
 A plausible severe test combines falling ZEC external value, declining tax receipts, a bank run, and a wallet outage. Testing each separately can overstate safety because the same emergency reserve cannot be counted as available in full for every simultaneous promise.
 
 The evaluation should consolidate public, banking, insurance, and payment commitments. It should show who absorbs the final shortfall after all reserves and borrowing capacity are exhausted.
 
-## Stress-test takeaways
-
 The hypothesis survives only if the institutions can withstand adverse conditions without hiding losses or silently changing the monetary promise. A system that offers useful private payments but repeatedly abandons native denomination has succeeded at the narrower payment goal, not the full unit-of-account goal.
 
----
+## Testing the hypothesis
 
-## What this research establishes, and what it does not
+### What this research establishes, and what it does not
 
 The sources establish relevant protocol capabilities, documented failures and responses, institutional constraints, and historical comparisons. The economic chapters construct a conditional path. They do not estimate the probability of global adoption or demonstrate that a national ZEC economy would improve welfare.
 
 A stronger conclusion needs evidence of **native economic denomination and performance**, not merely evidence that coins move.
 
-## A measurement framework
+### A measurement framework
 
 | Question | Useful measure | Misleading substitute |
 |---|---|---|
@@ -362,7 +358,7 @@ A stronger conclusion needs evidence of **native economic denomination and perfo
 | Can credit withstand stress? | Defaults, maturity mismatches, recoveries, liquidity coverage, and loss incidence | A high advertised ZEC yield |
 | Is development resilient? | Funding runway, independent review, dependency concentration, upgrade completion | Number of organisations with different names |
 
-## Define denominators carefully
+### Define denominators carefully
 
 For invoice denomination, report both invoice **count** and **value**, because many tiny purchases can obscure the unit used for large obligations. Separate firms, households, employees, and wallets. Sample nonusers and people who abandoned the service. Report the geography and dates.
 
@@ -370,9 +366,9 @@ For privacy, do not infer user counts or beneficial ownership from shielded bala
 
 For national adoption, a high share among a volunteer pilot is not the share of the whole economy. The pilot's selection effects are part of the result.
 
-## A falsifiable version of the main hypothesis
+### A falsifiable version of the main hypothesis
 
-The broad hypothesis in [10](/zcash/10-hypothesis-a-world-ready-for-zec/) can be separated into three claims:
+The hypothesis at the beginning of this chapter can be separated into three claims:
 
 **H1 — Privacy demand:** some users obtain enough additional confidentiality or independence to prefer Zcash over available alternatives after total costs and risks are included.
 
@@ -382,7 +378,7 @@ The broad hypothesis in [10](/zcash/10-hypothesis-a-world-ready-for-zec/) can be
 
 H1 can be true while H2 or H3 is false. Evidence of H1 therefore must not be marketed as confirmation of the entire thesis.
 
-## What would support the thesis?
+### What would support the thesis?
 
 - Independent firms renew native ZEC invoices and employment contracts after incentives end.
 - A growing share of operating costs and revenues is naturally matched in ZEC.
@@ -392,7 +388,7 @@ H1 can be true while H2 or H3 is false. Evidence of H1 therefore must not be mar
 - Institutions maintain payment continuity through upgrades and recover from operational failures.
 - Participation improves welfare for ordinary users as well as existing holders.
 
-## What would weaken or reject it?
+### What would weaken or reject it?
 
 - Every major expansion in payments still relies on prices formed in another unit.
 - Merchants and workers consistently convert receipts immediately when not subsidised.
@@ -404,7 +400,7 @@ H1 can be true while H2 or H3 is false. Evidence of H1 therefore must not be mar
 
 One failed small pilot would not prove permanent impossibility. Repeated failures across well-designed, varied experiments would narrow the plausible case substantially.
 
-## How to run an informative study
+### How to run an informative study
 
 Start with consent-based surveys and contract sampling across more than one provider. Compare users with similar firms or households using the best available alternative. If feasible, randomise access to assistance or a time-limited incentive rather than exposing people randomly to large unchosen currency risks.
 
@@ -412,7 +408,7 @@ Measure outcomes before adoption, during incentives, after incentives, and throu
 
 Collect the minimum sensitive data needed. Aggregate publication, independent auditors, and sampled contract evidence can establish denomination without publishing everybody's complete wallet history. Viewing keys should not be collected indiscriminately as a convenient shortcut.
 
-## Reproducible quantitative work that remains
+### Reproducible quantitative work that remains
 
 This volume deliberately avoids invented current volatility or market-depth estimates. A follow-on empirical study should:
 
@@ -431,6 +427,6 @@ The evidence-backed conclusion is strongest at the level of payment design: Zcas
 
 The hypothetical conclusion is that a willing society can construct a coherent path to ZEC denomination. It must accept finite base liquidity, transparent loss allocation, careful debt conversion, and operational risks. Whether that path is preferable to a mixed system remains open to testing.
 
-## Research takeaways
+## Key takeaways
 
 The thesis should be judged by contracts, real economic outcomes, and resilience through stress. The decisive observation is sustained voluntary ZEC denomination—not popularity, holdings, or price alone.
