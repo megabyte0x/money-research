@@ -42,6 +42,9 @@ test('host config serves canonical pages, alias redirects, versioned cards, 404s
     const missing = await request(port, '/not-a-published-page/');
     assert.equal(missing.status, 404);
     assert.match(missing.body, /Page not found/);
+    const removed = await request(port, '/zcash/08-transition-from-fiat-to-zec/');
+    assert.equal(removed.status, 404);
+    assert.match(removed.body, /Page not found/);
     const robots = await request(port, '/robots.txt');
     assert.equal(robots.status, 200);
     assert.match(robots.body, /Sitemap:/);

@@ -932,7 +932,7 @@
   "source": "zcash-research/00-README.md",
   "aliases": [],
   "title": "Zcash: Private Money and the Possibility of a ZEC Economy",
-  "words": 958,
+  "words": 943,
   "h2": ["The answer in brief", "Reading order", "Evidence labels", "Scope and limits"],
   "num": "00"
  },
@@ -1019,18 +1019,6 @@
   "words": 1044,
   "h2": ["Four kinds of adoption must be counted separately", "Tax assessment can keep fiat central", "Accounting is more than displaying a wallet balance", "Prudential rules affect the banking route", "Privacy-specific market-access constraints", "Economic obstacles remain if every law becomes favourable", "Where progress within the present system is plausible", "Key takeaways"],
   "num": "07"
- },
- {
-  "vol": "zcash",
-  "slug": "08-transition-from-fiat-to-zec",
-  "path": "content/zcash/08-transition-from-fiat-to-zec.md",
-  "id": "zcash-08",
-  "source": "zcash-research/08-transition-from-fiat-to-zec.md",
-  "aliases": [],
-  "title": "08 — What Would a Transition from Fiat to ZEC Look Like?",
-  "words": 1114,
-  "h2": ["First choose what is being adopted", "Phase A — Make lawful private settlement usable", "Phase B — Develop retained working balances", "Phase C — Offer genuinely ZEC-denominated contracts", "Phase D — Build accounting and finance around the unit", "Phase E — Public-sector denomination", "Phase F — Broader standard, if the evidence supports it", "The difficult part: legacy balance sheets", "What not to do with exchange rates", "Distribution and timing", "Key takeaways"],
-  "num": "08"
  },
  {
   "vol": "zcash",
@@ -1148,7 +1136,7 @@
   "source": "zcash-research/18-prior-document-coverage.md",
   "aliases": [],
   "title": "18 — Coverage of the Earlier Research",
-  "words": 1662,
+  "words": 1652,
   "h2": ["Scope and method", "Gold: 13 documents", "After Gold: 14 documents", "Bitcoin: 17 documents", "Additional local editorial records", "What this volume adds"],
   "num": "18"
  }

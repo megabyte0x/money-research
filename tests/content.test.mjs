@@ -18,7 +18,7 @@ test('validated content model resolves articles, glossary and related-file refer
     [record.path, readFileSync(join(root, 'public', record.path), 'utf8')]));
   const observations = JSON.parse(readFileSync(join(root, 'public/content/observations.json'), 'utf8'));
   const model = createContentModel(manifest, documents, observations, timelineEventIds);
-  assert.equal(Object.keys(model.blocks).length, 63);
+  assert.equal(Object.keys(model.blocks).length, 62);
   assert.ok(model.glossary.length >= 178);
   assert.equal(model.blocks['15-timeline-and-proposal-status@zcash'].find(block => block.type === 'table').eventIds.length, 16);
   assert.match(JSON.stringify(model.blocks['10-master-timeline@gold']), /Gold reaches \$5,405\/oz/);
@@ -52,12 +52,12 @@ test('validated content model resolves articles, glossary and related-file refer
   assert.deepEqual(reorderedTable.eventIds.slice(0, 2), ['evt-gold-0002', 'evt-gold-0001']);
 });
 
-test('the four-volume inventory has 63 unique, resolvable records', () => {
+test('the four-volume inventory has 62 unique, resolvable records', () => {
   assert.deepEqual(Object.fromEntries(['gold', 'after', 'bitcoin', 'zcash'].map(vol =>
-    [vol, manifest.filter(record => record.vol === vol).length])), { gold: 13, after: 14, bitcoin: 17, zcash: 19 });
+    [vol, manifest.filter(record => record.vol === vol).length])), { gold: 13, after: 14, bitcoin: 17, zcash: 18 });
   const ids = manifest.map(record => record.id);
-  assert.equal(new Set(ids).size, 63);
-  assert.equal(new Set(manifest.map(record => `${record.vol}/${record.slug}`)).size, 63);
+  assert.equal(new Set(ids).size, 62);
+  assert.equal(new Set(manifest.map(record => `${record.vol}/${record.slug}`)).size, 62);
   for (const record of manifest) {
     assert.match(record.path, /^content\/(gold|after|bitcoin|zcash)\/[a-z0-9-]+\.md$/);
     assert.equal(record.id, `${record.vol}-${record.num}`);

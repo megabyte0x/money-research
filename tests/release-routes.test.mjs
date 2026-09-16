@@ -28,7 +28,7 @@ function page(record, slug = record.slug) {
 }
 
 test('every direct destination and numeric alias has one canonical, unique article identity', () => {
-  assert.equal(manifest.length, 63, 'expected the reviewed four-volume inventory');
+  assert.equal(manifest.length, 62, 'expected the reviewed four-volume inventory');
   const titles = new Set();
   const descriptions = new Set();
   const canonicals = new Set();

@@ -25,7 +25,6 @@ The evidence does not justify either “Zcash will replace fiat” or “Zcash c
 | [05 — Unit of account](/zcash/05-can-zec-be-a-unit-of-account/) | What would count as a ZEC economy, and is one possible? |
 | [06 — Money and credit](/zcash/06-fixed-supply-credit-and-crisis-management/) | What happens to inflation, lending, banks, and emergency liquidity? |
 | [07 — Current-system barriers](/zcash/07-adoption-and-the-current-institutional-system/) | What legal, commercial, and institutional obstacles exist now? |
-| [08 — Fiat to ZEC](/zcash/08-transition-from-fiat-to-zec/) | What would a gradual transition actually require? |
 | [09 — The longer transition](/zcash/09-gold-to-fiat-to-bitcoin-to-zcash/) | What does the gold → fiat → BTC → ZEC sequence mean, and where does the analogy fail? |
 | [10 — Zcash-specific risks](/zcash/10-zcash-specific-risks-and-governance/) | What could fail in cryptography, governance, mining, wallets, and future upgrades? |
 | [11 — Hypothetical system](/zcash/11-hypothesis-a-world-ready-for-zec/) | Assuming political willingness, what kind of new system could support ZEC denomination? |
