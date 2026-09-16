@@ -1,4 +1,4 @@
-# 16 — Glossary
+# 12 — Glossary
 
 ## Monetary and institutional terms
 
@@ -117,3 +117,4 @@
 **Illustration:** fabricated numbers used to demonstrate a mechanism.
 
 **Falsification criterion:** an observation that would contradict a hypothesis or materially weaken its stated conditions.
+

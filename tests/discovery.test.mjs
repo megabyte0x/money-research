@@ -12,11 +12,10 @@ const blocks = Object.fromEntries(manifest.map(article => [article.slug + '@' + 
 
 test('discovery roles account for every document and retain late Bitcoin takeaways', () => {
   const catalog = researchCatalog(manifest);
-  assert.equal(catalog.length, 62);
-  assert.equal(new Set(catalog.map(row => row.id)).size, 62);
+  assert.equal(catalog.length, 58);
+  assert.equal(new Set(catalog.map(row => row.id)).size, 58);
   for (const row of catalog) assert.ok(['topic', 'directory', 'timeline', 'glossary', 'sources', 'reference'].includes(row.role));
   assert.equal(contentRole(manifest.find(row => row.id === 'after-10')), 'reference');
-  assert.equal(contentRole(manifest.find(row => row.id === 'zcash-14')), 'reference');
   const eligible = new Set(takeawayCandidates(manifest, blocks).map(row => row.id));
   for (const id of ['bitcoin-10', 'bitcoin-11', 'bitcoin-12', 'bitcoin-13']) assert.ok(eligible.has(id));
 });

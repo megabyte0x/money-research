@@ -168,23 +168,43 @@
       "permanent": true
     },
     {
+      "source": "/zcash/11-hypothesis-adoption-roadmap-and-worked-example/",
+      "destination": "/zcash/10-hypothesis-a-world-ready-for-zec/",
+      "permanent": true
+    },
+    {
       "source": "/zcash/12-hypothesis-adoption-roadmap-and-worked-example/",
-      "destination": "/zcash/11-hypothesis-adoption-roadmap-and-worked-example/",
+      "destination": "/zcash/10-hypothesis-a-world-ready-for-zec/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/12-stress-tests-and-failure-paths/",
+      "destination": "/zcash/10-hypothesis-a-world-ready-for-zec/",
       "permanent": true
     },
     {
       "source": "/zcash/13-stress-tests-and-failure-paths/",
-      "destination": "/zcash/12-stress-tests-and-failure-paths/",
+      "destination": "/zcash/10-hypothesis-a-world-ready-for-zec/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/13-measurement-falsification-and-research-agenda/",
+      "destination": "/zcash/10-hypothesis-a-world-ready-for-zec/",
       "permanent": true
     },
     {
       "source": "/zcash/14-measurement-falsification-and-research-agenda/",
-      "destination": "/zcash/13-measurement-falsification-and-research-agenda/",
+      "destination": "/zcash/10-hypothesis-a-world-ready-for-zec/",
       "permanent": true
     },
     {
-      "source": "/zcash/18-prior-document-coverage/",
-      "destination": "/zcash/14-prior-document-coverage/",
+      "source": "/zcash/11-timeline-and-proposal-status/",
+      "destination": "/timeline/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/12-timeline-and-proposal-status/",
+      "destination": "/timeline/",
       "permanent": true
     },
     {
@@ -193,8 +213,28 @@
       "permanent": true
     },
     {
+      "source": "/zcash/12-glossary/",
+      "destination": "/glossary/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/13-glossary/",
+      "destination": "/glossary/",
+      "permanent": true
+    },
+    {
       "source": "/zcash/16-glossary/",
       "destination": "/glossary/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/13-sources-and-evidence-register/",
+      "destination": "/sources/",
+      "permanent": true
+    },
+    {
+      "source": "/zcash/14-sources-and-evidence-register/",
+      "destination": "/sources/",
       "permanent": true
     },
     {

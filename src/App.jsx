@@ -596,7 +596,7 @@ export default class App extends React.Component {
       const metadata = st.articleMetadata[cur.id];
       vals.articleSummary = metadata?.summary || null;
       vals.hubChapters = r.view === 'hub' ? st.manifest.filter(item => item.vol === cur.vol && item.slug !== '00-readme' && !sharedViewForRecord(item)).map(item => ({ href: this.href(item), title: this.short(item) })) : [];
-      vals.articleBody = R('div', null, this.blocksToEls(bl, { vol: cur.vol, usedGloss: { set: new Set() }, sectionAliases: cur.sectionAliases, sourcePage: ['gold-12', 'after-13', 'bitcoin-16', 'zcash-17'].includes(cur.id) }));
+      vals.articleBody = R('div', null, this.blocksToEls(bl, { vol: cur.vol, usedGloss: { set: new Set() }, sectionAliases: cur.sectionAliases, sourcePage: ['gold-12', 'after-13', 'bitcoin-16', 'zcash-13'].includes(cur.id) }));
       vals.toc = bl.filter(b => b.type === 'h2' || b.type === 'h3').map(b => ({ text: this.md.stripInline(b.text), href: this.href(cur, b.id), indent: b.type === 'h3' ? '12px' : '0' }));
       vals.tocLabel = 'On this page';
       const list = st.manifest.filter(m => m.vol === cur.vol && !sharedViewForRecord(m)); const i = list.indexOf(cur); const prev = list[i - 1], next = list[i + 1];

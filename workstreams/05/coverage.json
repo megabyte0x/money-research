@@ -10220,7 +10220,7 @@
     "approximate": false,
     "event": "This research snapshot",
     "compositeStatus": "single milestone; no cross-volume merge proposed",
-    "destination": "zcash-15",
+    "destination": "zcash-11",
     "destinationStatus": "reviewed source-timeline fallback",
     "relevanceRationale": "This dated research-snapshot marker belongs to the reviewed Zcash source timeline rather than a substantive chapter section.",
     "evidence": [

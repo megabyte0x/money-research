@@ -5,7 +5,7 @@ const REFERENCE_IDS = new Map([
     gold: { timeline: '10', glossary: '11', sources: '12' },
     after: { timeline: '11', glossary: '12', sources: '13' },
     bitcoin: { timeline: '14', glossary: '15', sources: '16' },
-    zcash: { timeline: '15', glossary: '16', sources: '17' },
+    zcash: { timeline: '11', glossary: '12', sources: '13' },
   }).flatMap(([vol, refs]) => [
     [`${vol}-00`, 'directory'],
     [`${vol}-${refs.timeline}`, 'timeline'],
@@ -13,7 +13,6 @@ const REFERENCE_IDS = new Map([
     [`${vol}-${refs.sources}`, 'sources'],
   ]),
   ['after-10', 'reference'],
-  ['zcash-14', 'reference'],
 ]);
 
 const TOPICS = {
@@ -38,9 +37,8 @@ const TOPICS = {
   'zcash-03': ['payments', 'adoption'], 'zcash-04': ['privacy', 'value'],
   'zcash-05': ['unit of account', 'adoption'], 'zcash-06': ['money basics', 'crises'],
   'zcash-07': ['adoption', 'law'], 'zcash-08': ['comparison', 'history'],
-  'zcash-09': ['safeguards', 'institutions'], 'zcash-10': ['adoption', 'institutions'],
-  'zcash-11': ['adoption', 'money basics'], 'zcash-12': ['crises', 'safeguards'],
-  'zcash-13': ['adoption', 'research'],
+  'zcash-09': ['safeguards', 'institutions'],
+  'zcash-10': ['adoption', 'institutions', 'money basics', 'crises', 'safeguards', 'research'],
 };
 
 export function contentRole(article) {

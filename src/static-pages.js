@@ -33,7 +33,7 @@ function linkedText(text, record, byVolumeNumber) {
 }
 
 export function inlineHtml(text, record, byVolumeNumber) {
-  const tokens = tokenizeInline(text, { linkifyUrls: ['gold-12', 'after-13', 'bitcoin-16', 'zcash-17'].includes(record?.id) });
+  const tokens = tokenizeInline(text, { linkifyUrls: ['gold-12', 'after-13', 'bitcoin-16', 'zcash-13'].includes(record?.id) });
   return tokens.map((token, index) => {
     const value = escapeHtml(token.auto ? sourceUrlLabel(token.href) : token.v);
     if (token.t === 'b') return `<strong>${value}</strong>`;

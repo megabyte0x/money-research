@@ -401,34 +401,6 @@
       "title": "Hypothesis: A World Politically Ready for ZEC",
       "volume": "Volume IV · Zcash",
       "templateVersion": "title-card-v3"
-    },
-    "/zcash/11-hypothesis-adoption-roadmap-and-worked-example/": {
-      "image": "/og/zcash-11-hypothesis-adoption-roadmap-and-worked-example.4efcc5d07bad.png",
-      "alt": "Volume IV · Zcash — Hypothetical Adoption Roadmap and Worked Example. Money Research sharing card.",
-      "title": "Hypothetical Adoption Roadmap and Worked Example",
-      "volume": "Volume IV · Zcash",
-      "templateVersion": "title-card-v3"
-    },
-    "/zcash/12-stress-tests-and-failure-paths/": {
-      "image": "/og/zcash-12-stress-tests-and-failure-paths.e407df31a0ad.png",
-      "alt": "Volume IV · Zcash — Stress Tests and Failure Paths. Money Research sharing card.",
-      "title": "Stress Tests and Failure Paths",
-      "volume": "Volume IV · Zcash",
-      "templateVersion": "title-card-v3"
-    },
-    "/zcash/13-measurement-falsification-and-research-agenda/": {
-      "image": "/og/zcash-13-measurement-falsification-and-research-agenda.02dc26b8dc90.png",
-      "alt": "Volume IV · Zcash — How to Test or Reject the ZEC-Economy Hypothesis. Money Research sharing card.",
-      "title": "How to Test or Reject the ZEC-Economy Hypothesis",
-      "volume": "Volume IV · Zcash",
-      "templateVersion": "title-card-v3"
-    },
-    "/zcash/14-prior-document-coverage/": {
-      "image": "/og/zcash-14-prior-document-coverage.674e8076f0b2.png",
-      "alt": "Volume IV · Zcash — Coverage of the Earlier Research. Money Research sharing card.",
-      "title": "Coverage of the Earlier Research",
-      "volume": "Volume IV · Zcash",
-      "templateVersion": "title-card-v3"
     }
   }
 }

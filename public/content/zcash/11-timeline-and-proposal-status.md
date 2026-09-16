@@ -1,4 +1,4 @@
-# 15 — Timeline and Proposal Status
+# 11 — Timeline and Proposal Status
 
 **Checked 15 September 2026.** Dates refer to the stated event, not necessarily the date of a later disclosure. Hypothetical adoption stages have no assigned real-world completion dates.
 
@@ -50,3 +50,4 @@ Every arrow is conditional. A society can pause indefinitely, adopt only some fu
 ## Key takeaways
 
 Use event dates and deployment records. Treat roadmaps, live status, and hypothetical adoption as separate categories, especially after the rapid 2026 security changes.
+

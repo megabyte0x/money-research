@@ -43,7 +43,7 @@ After an approved chapter edit, run `node scripts/refresh-manifest.mjs` to inspe
 npm ci
 npm test
 npm run dev      # http://localhost:5173
-npm run build    # -> dist/, including 46 static article pages
+npm run build    # -> dist/, including 42 static article pages
 npm run test:build
 npm run preview
 ```

@@ -1,4 +1,4 @@
-# Sources and Evidence Register
+# 13 — Sources and Evidence Register
 
 **Research cutoff and access date: 15 September 2026.** Source identifiers in the other chapters link here. Sources are predominantly original research, protocol specifications, project engineering reports, statutes, and institutional publications. This is a critical synthesis, not an endorsement of a project or an investment recommendation.
 
@@ -329,4 +329,4 @@ Used to identify an alternative combining private payment interfaces with federa
 
 ## Local foundations
 
-The [prior-document coverage map](/zcash/14-prior-document-coverage/) links all 44 original files. Two additional local editorial records were consulted: [Editorial change register](../editorial-change-register.md) and [Editorial sources](../money-research/EDITORIAL-SOURCES.md). They identify corrections to carry forward; they are not substitutes for the primary sources above.
+Two additional local editorial records were consulted: [Editorial change register](../editorial-change-register.md) and [Editorial sources](../money-research/EDITORIAL-SOURCES.md). They identify corrections to carry forward; they are not substitutes for the primary sources above.

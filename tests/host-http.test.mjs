@@ -48,6 +48,13 @@ test('host config serves canonical pages, alias redirects, versioned cards, 404s
     const renumbered = await request(port, '/zcash/09-gold-to-fiat-to-bitcoin-to-zcash/');
     assert.equal(renumbered.status, 308);
     assert.equal(renumbered.headers.location, '/zcash/08-gold-to-fiat-to-bitcoin-to-zcash/');
+    const mergedHypothesis = await request(port, '/zcash/11-hypothesis-adoption-roadmap-and-worked-example/');
+    assert.equal(mergedHypothesis.status, 308);
+    assert.equal(mergedHypothesis.headers.location, '/zcash/10-hypothesis-a-world-ready-for-zec/');
+    const removedCoverage = await request(port, '/zcash/14-prior-document-coverage/');
+    assert.equal(removedCoverage.status, 404);
+    const removedRenumberedCoverage = await request(port, '/zcash/11-prior-document-coverage/');
+    assert.equal(removedRenumberedCoverage.status, 404);
     const robots = await request(port, '/robots.txt');
     assert.equal(robots.status, 200);
     assert.match(robots.body, /Sitemap:/);

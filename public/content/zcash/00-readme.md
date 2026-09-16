@@ -27,16 +27,12 @@ The evidence does not justify either “Zcash will replace fiat” or “Zcash c
 | [07 — Current-system barriers](/zcash/07-adoption-and-the-current-institutional-system/) | What legal, commercial, and institutional obstacles exist now? |
 | [08 — The longer transition](/zcash/08-gold-to-fiat-to-bitcoin-to-zcash/) | What does the gold → fiat → BTC → ZEC sequence mean, and where does the analogy fail? |
 | [09 — Zcash-specific risks](/zcash/09-zcash-specific-risks-and-governance/) | What could fail in cryptography, governance, mining, wallets, and future upgrades? |
-| [10 — Hypothetical system](/zcash/10-hypothesis-a-world-ready-for-zec/) | Assuming political willingness, what kind of new system could support ZEC denomination? |
-| [11 — Hypothetical adoption path](/zcash/11-hypothesis-adoption-roadmap-and-worked-example/) | How would that society introduce ZEC, with concrete accounting examples? |
-| [12 — Stress tests](/zcash/12-stress-tests-and-failure-paths/) | How would it handle recessions, runs, deflation, failures, and external shocks? |
-| [13 — Tests of the thesis](/zcash/13-measurement-falsification-and-research-agenda/) | What evidence would support or reject the economic hypothesis? |
-| [14 — Prior-document map](/zcash/14-prior-document-coverage/) | How were all 44 documents in the earlier volumes incorporated? |
-| [15 — Timeline](/timeline/) | What happened, what is proposed, and what is purely hypothetical? |
-| [16 — Glossary](/glossary/) | What do the monetary and technical terms mean? |
-| [17 — Sources](/sources/) | Which sources support each claim, and what are their limits? |
+| [10 — Hypothesis](/zcash/10-hypothesis-a-world-ready-for-zec/) | What system could support ZEC denomination, how might it be adopted, how would it handle stress, and what evidence could reject the thesis? |
+| [11 — Timeline](/timeline/) | What happened, what is proposed, and what is purely hypothetical? |
+| [12 — Glossary](/glossary/) | What do the monetary and technical terms mean? |
+| [13 — Sources](/sources/) | Which sources support each claim, and what are their limits? |
 
-**Short route:** 01 → 03 → 05 → 10 → 11 → 12. Read 02 and 09 before relying on technical claims about current Zcash.
+**Short route:** 01 → 03 → 05 → 10. Read 02 and 09 before relying on technical claims about current Zcash.
 
 ## Evidence labels
 
