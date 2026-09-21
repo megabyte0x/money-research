@@ -60,8 +60,8 @@ export function ArticlePage({ v }) {
     {v.mobile && <label className="reader-mobile-contents">Contents and chapters<select aria-label="Reading contents and chapters" value="" onChange={e => { if (e.target.value) location.href = e.target.value; }}><option value="">Choose a section or chapter…</option>{v.toc.map(t => <option key={t.href} value={t.href}>{t.text}</option>)}<option disabled>— Other chapters —</option>{v.allChapters.map(t => <option key={t.href} value={t.href}>{t.optLabel}</option>)}</select></label>}
     <div className="reader-article-meta"><span>{v.volLabel}</span><span>File {v.chapterNum}</span><span>{v.readTime} min read</span><span>{v.wordCount} words</span></div>
     <h1>{v.chapterTitle}</h1>
-    <div className="evidence-notice" role="note">This research chapter is under editorial review. Treat dated figures, legal status and broad conclusions as claims to verify against the <a href="/methods/">source lists and method</a>.</div>
     {!v.articleIsReference && <ReaderSummary summary={v.articleSummary} />}
+    <div className="evidence-notice" role="note">This research chapter is under editorial review. Treat dated figures, legal status and broad conclusions as claims to verify against the <a href="/methods/">source lists and method</a>.</div>
     <div className="reader-article-body" style={{ fontSize: v.bodyFontSize }}>{v.articleBody}</div>
     {(v.hubChapters || []).length > 0 && <section className="static-item-list"><h2>Chapters in this volume</h2><ol>{v.hubChapters.map(item => <li key={item.href}><a href={item.href}>{item.title}</a></li>)}</ol></section>}
     <nav className="reader-chapter-nav" aria-label="Adjacent chapters"><div>{v.hasPrev && <><span>← Previous</span><a href={v.prevHref}>{v.prevTitle}</a></>}</div><div>{v.hasNext && <><span>Next →</span><a href={v.nextHref}>{v.nextTitle}</a></>}</div></nav>

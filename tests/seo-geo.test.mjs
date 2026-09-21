@@ -4,6 +4,8 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { hashToPath, parseLocation, redirectRules, sharedViewForRecord, vercelConfig } from '../src/routes.js';
 import { SITE } from '../src/site-config.js';
+import { HOME_COPY, METHODS_COPY } from '../src/page-copy.js';
+import { staticArticle } from '../src/static-pages.js';
 import { indexablePages, jsonLdGraph, resolvePage, robotsTxt } from '../src/seo.js';
 
 const root = new URL('../', import.meta.url).pathname;
@@ -121,6 +123,57 @@ test('prerendered chapter HTML contains no hash-route hrefs', () => {
     const page = html(`${record.vol}/${record.slug}/index.html`);
     assert.doesNotMatch(page, /href="\/#\//, record.id);
   }
+});
+
+test('crawlable chapter HTML leads with the title and answer before the review notice', () => {
+  const record = {
+    id: 'gold-01',
+    vol: 'gold',
+    slug: '01-the-metal-itself',
+    num: '01',
+    title: '01 — The Metal Itself',
+    sectionAliases: {},
+  };
+  const html = staticArticle(record, {
+    manifest: [record],
+    blocks: {
+      '01-the-metal-itself@gold': [
+        { type: 'h1', id: 'title', text: '01 — The Metal Itself' },
+        { type: 'h2', id: 'origin', text: 'Origin' },
+        { type: 'p', text: 'Body paragraph.' },
+      ],
+    },
+    articleMetadata: {
+      'gold-01': { summary: { question: 'What about gold?', answer: 'Gold is durable and workable.' } },
+    },
+  }, { breadcrumbs: [{ name: 'Money Research', path: '/' }] });
+  const h1 = html.indexOf('<h1');
+  const answer = html.indexOf('Gold is durable and workable.');
+  const notice = html.indexOf('This research chapter is under editorial review');
+  assert.ok(h1 >= 0 && answer >= 0 && notice >= 0);
+  assert.ok(h1 < notice, 'H1 must precede the editorial notice for search snippets');
+  assert.ok(answer < notice, 'chapter answer must precede the editorial notice for search snippets');
+});
+
+test('library size in SEO copy matches the manifest', () => {
+  assert.match(HOME_COPY.description, new RegExp(`${manifest.length} documents`));
+  assert.match(METHODS_COPY.sections[0].paragraphs[0], new RegExp(`${manifest.length} research documents`));
+});
+
+test('index.html fallback metadata matches the shared home description', () => {
+  const shell = readFileSync(join(root, 'index.html'), 'utf8');
+  assert.ok(shell.includes(`content="${HOME_COPY.description}"`));
+});
+
+test('prerendered chapters lead with the title and answer before the review notice', () => {
+  const page = html('gold/01-the-metal-itself/index.html');
+  const main = page.slice(page.indexOf('<main'));
+  const h1 = main.indexOf('<h1');
+  const answer = main.indexOf('Gold is durable, workable and sometimes found in native form');
+  const notice = main.indexOf('This research chapter is under editorial review');
+  assert.ok(h1 >= 0 && answer >= 0 && notice >= 0);
+  assert.ok(h1 < answer);
+  assert.ok(answer < notice);
 });
 
 test('legacy hashes translate to real paths while keeping destination and section', () => {

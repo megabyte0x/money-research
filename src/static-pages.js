@@ -106,7 +106,8 @@ export function staticArticle(record, model, page) {
     ? `${Object.entries(record.sectionAliases || {}).filter(([, target]) => target === heading.id).map(([oldId]) => `<span id="${escapeHtml(oldId)}" aria-hidden="true" class="section-alias"></span>`).join('')}<h1 id="${escapeHtml(heading.id)}">${inlineHtml(heading.text, record, byVolumeNumber)}</h1>`
     : `<h1>${escapeHtml(shortTitle(record))}</h1>`;
   const chapterNav = volumeChapterList(record.vol, model.manifest);
-  return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}<p class="eyebrow">Volume ${VOLUME_ROMAN[record.vol]} · ${VOLUME_NAME[record.vol]} · <a href="/">Money Research</a></p><p class="evidence-notice">${EVIDENCE_NOTICE}</p>${h1}${toc}${contentRole(record) === 'topic' ? summaryHtml(metadata) : ''}${blocksHtml(rest, record, byVolumeNumber)}${isDirectoryRecord(record) ? chapterNav : ''}</main>`;
+  const summary = contentRole(record) === 'topic' ? summaryHtml(metadata) : '';
+  return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}<p class="eyebrow">Volume ${VOLUME_ROMAN[record.vol]} · ${VOLUME_NAME[record.vol]} · <a href="/">Money Research</a></p>${h1}${summary}<p class="evidence-notice" role="note">${EVIDENCE_NOTICE}</p>${toc}${blocksHtml(rest, record, byVolumeNumber)}${isDirectoryRecord(record) ? chapterNav : ''}</main>`;
 }
 
 export function volumeChapterList(vol, manifest, heading = 'Chapters in this volume') {

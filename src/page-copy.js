@@ -2,7 +2,7 @@ export const HOME_COPY = {
   eyebrow: 'An evidence-led guide · four research volumes',
   title: 'How money works—and why it changes.',
   lead: 'Explore gold, government currencies, Bitcoin and Zcash through history, evidence and the trade-offs between saving, paying, pricing, privacy and settling.',
-  description: 'An evidence-led research library on gold, post-1971 currencies, Bitcoin and Zcash. Sixty-three documents compare how money is issued, held, transferred, protected and limited, with source locators and open editorial notices.',
+  description: 'An evidence-led research library on gold, post-1971 currencies, Bitcoin and Zcash. 58 documents compare how money is issued, held, transferred, protected and limited, with source locators and open editorial notices.',
   jobs: [
     ['Store of value', 'Carries purchasing power through time.'],
     ['Medium of exchange', 'Helps people pay for goods and services.'],
@@ -48,7 +48,7 @@ export const METHODS_COPY = {
       id: 'scope',
       title: 'What this library is',
       paragraphs: [
-        'The library contains 63 research documents in four volumes: gold, the post-1971 monetary system, Bitcoin and Zcash. It presents their arguments while historical, legal, technical and market claims remain under editorial review. Dated observations are not live figures, and a passing site build does not certify every chapter.',
+        'The library contains 58 research documents in four volumes: gold, the post-1971 monetary system, Bitcoin and Zcash. It presents their arguments while historical, legal, technical and market claims remain under editorial review. Dated observations are not live figures, and a passing site build does not certify every chapter.',
         'The shared Sources page brings together the four volume bibliographies. Some entries still need exact document and passage locations; inspect the linked material behind a claim.',
       ],
     },
