@@ -2,7 +2,7 @@ export const HOME_COPY = {
   eyebrow: 'An evidence-led guide · four research volumes',
   title: 'How money works—and why it changes.',
   lead: 'Explore gold, government currencies, Bitcoin and Zcash through history, evidence and the trade-offs between saving, paying, pricing, privacy and settling.',
-  description: 'An evidence-led research library on gold, post-1971 currencies, Bitcoin and Zcash. 58 documents compare how money is issued, held, transferred, protected and limited, with source locators and open editorial notices.',
+  description: 'An evidence-led library on gold, post-1971 currencies, Bitcoin and Zcash: 58 documents on how money is issued, held, moved and limited, with sources.',
   jobs: [
     ['Store of value', 'Carries purchasing power through time.'],
     ['Medium of exchange', 'Helps people pay for goods and services.'],
@@ -42,13 +42,13 @@ export const HOME_COPY = {
 export const METHODS_COPY = {
   eyebrow: 'Research method',
   title: 'How this library is built and limited',
-  description: 'Money Research explains its source selection, evidence statuses, correction practice, citation format and crawler policy. Names, roles and a public contact are omitted by preference; that is a trust limitation, not a completed attribution page.',
+  description: 'How Money Research selects sources, records evidence, handles corrections and should be cited.',
   sections: [
     {
       id: 'scope',
       title: 'What this library is',
       paragraphs: [
-        'The library contains 58 research documents in four volumes: gold, the post-1971 monetary system, Bitcoin and Zcash. It presents their arguments while historical, legal, technical and market claims remain under editorial review. Dated observations are not live figures, and a passing site build does not certify every chapter.',
+        'The library contains 58 research documents in four volumes: gold, the post-1971 monetary system, Bitcoin and Zcash. Each chapter opens with a short answer and cites its sources. Dated observations are point-in-time figures, not live data.',
         'The shared Sources page brings together the four volume bibliographies. Some entries still need exact document and passage locations; inspect the linked material behind a claim.',
       ],
     },
@@ -109,7 +109,7 @@ export const NOT_FOUND_COPY = {
 export const DISCOVERY_COPY = {
   timeline: {
     title: 'A connected monetary timeline',
-    description: 'Events from the gold, after-gold, Bitcoin and Zcash volumes in one chronological view. Dates, quantities and some destinations remain under editorial review.',
+    description: 'Dated monetary events from ancient gold to Bitcoin and Zcash in one chronology, linked to the chapters that explain them.',
   },
   takeaways: {
     title: 'Explore the short answers',
@@ -125,7 +125,7 @@ export const DISCOVERY_COPY = {
   },
   arc: {
     title: 'Monetary arrangements overlap and change under pressure.',
-    description: 'Eleven selected monetary arrangements from weighed metal to Bitcoin and dollar stablecoins, with scope limits and withheld quantitative charts.',
+    description: 'Eleven monetary arrangements from weighed metal to Bitcoin and dollar stablecoins, with who held power and what changed at each turning point.',
   },
   glossary: {
     title: 'Glossary',

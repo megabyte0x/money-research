@@ -31,6 +31,5 @@ test('published arc does not collapse gold-standard credit or universalise regio
   assert.match(history, /bank deposits and credit remained/i);
   assert.match(history, /different regional roles/i);
   assert.match(history, /Many central banks adopted more explicit policy frameworks/i);
-  assert.match(historyView, /Quantitative charts are withheld/i);
   assert.doesNotMatch(history + historyView, /money supply grew as fast as gold was mined|first inflation|first bimetallic standard|silver pennies only|almost everyone by 2000/i);
 });

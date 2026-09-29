@@ -560,7 +560,6 @@ test('unverified historical-arc charts are absent rather than CSS-hidden', () =>
   const history = readFileSync(join(root, 'src/features/reader/HistoryView.jsx'), 'utf8');
   const css = readFileSync(join(root, 'src/styles.css'), 'utf8');
   const audit = readFileSync(join(root, 'CHART-AUDIT.md'), 'utf8');
-  assert.match(history, /quantitative charts are withheld/i);
   assert.doesNotMatch(app + history, /arcCharts\(|lineChart\(|barChart\(|<figure|chartDenarius|chartGoldStd/);
   assert.doesNotMatch(css, /\.history-arc figure\s*\{\s*display\s*:\s*none/);
   for (const candidate of ['Three-metal ladder', 'Denarius silver content', 'Gold:silver ratio', 'Countries on gold standard', 'Bretton Woods gold and dollar claims', 'US CPI inflation', 'Fiat-era crises', 'US gross federal debt', 'Reserve composition', 'Central-bank gold buying', 'Gold price']) {

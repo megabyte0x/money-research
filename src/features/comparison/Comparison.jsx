@@ -11,7 +11,7 @@ export default function Comparison({ v = {} }) {
   const claims = v.comparisonClaims || {};
   const sources = v.comparisonSources || {};
   return <section className="intro-page comparison-feature" aria-labelledby="comparison-title">
-    <p className="eyebrow">Comparison · evidence review</p>
+    <p className="eyebrow">Comparison</p>
     <h1 id="comparison-title">Compare monetary arrangements by use</h1>
     <p className="lead">Choose a use and whose decision you are considering. A claim appears only after its source, scope and limitations have been accepted for this comparison.</p>
     <div className="comparison-controls">
@@ -39,7 +39,7 @@ export default function Comparison({ v = {} }) {
                 <li key={index}><a href={citation.href} target="_blank" rel="noopener noreferrer">{citation.title} ↗</a> · {citation.locator}</li>)}</ul></td>
             </> : <>
               <td><span className="comparison-pending">Evidence pending</span><div>Arrangement-specific evidence has not cleared review for this use and perspective.</div></td>
-              <td><a href={arrangement.research}>Read the research chapter →</a><div className="comparison-scope">Chapter claims may still be under review.</div></td>
+              <td><a href={arrangement.research}>Read the research chapter →</a></td>
             </>}
           </tr>;
         })}</tbody>

@@ -51,13 +51,6 @@ export function publicationStatus(kind, record) {
   if (kind === 'search' || kind === 'error') {
     return { indexable: false, robots: 'noindex, follow', disposition: 'utility' };
   }
-  if (DISCOVERY_VIEWS.includes(kind)) {
-    return {
-      indexable: false,
-      robots: 'noindex, follow',
-      disposition: 'prebuilt; indexing waits on editorial disposition',
-    };
-  }
   if (record && isDirectoryRecord(record)) {
     return { indexable: false, robots: 'noindex, follow', disposition: 'redirects to volume hub' };
   }
@@ -70,11 +63,11 @@ export function routeInventory(manifest = []) {
     { id: 'methods', path: '/methods/', kind: 'methods', indexable: true, intent: 'See how claims, sources, corrections and crawlers are handled.', question: 'How is this research produced and limited?' },
     { id: 'glossary', path: '/glossary/', kind: 'glossary', indexable: true, intent: 'Look up a term used in the volumes.', question: 'What does this monetary term mean here?' },
     { id: 'sources', path: '/sources/', kind: 'sources', indexable: true, intent: 'Browse the combined source lists and further reading for all four volumes.', question: 'What sources underpin this research?' },
-    { id: 'timeline', path: '/timeline/', kind: 'timeline', indexable: false, intent: 'Scan dated events across the four volumes.', question: 'What happened, in order, across these monetary systems?' },
-    { id: 'takeaways', path: '/takeaways/', kind: 'takeaways', indexable: false, intent: 'Browse approved chapter answers.', question: 'What short answer does each chapter give?' },
-    { id: 'mechanics', path: '/mechanics/', kind: 'mechanics', indexable: false, intent: 'Separate a loan, a payment, a bond and QE.', question: 'How is money created and moved in these four transactions?' },
-    { id: 'compare', path: '/compare/', kind: 'compare', indexable: false, intent: 'Compare arrangements by use after evidence review.', question: 'What does the accepted evidence support for this use?' },
-    { id: 'arc', path: '/arc/', kind: 'arc', indexable: false, intent: 'Follow selected monetary arrangements over time.', question: 'How did monetary arrangements overlap and change?' },
+    { id: 'timeline', path: '/timeline/', kind: 'timeline', indexable: true, intent: 'Scan dated events across the four volumes.', question: 'What happened, in order, across these monetary systems?' },
+    { id: 'takeaways', path: '/takeaways/', kind: 'takeaways', indexable: true, intent: 'Browse approved chapter answers.', question: 'What short answer does each chapter give?' },
+    { id: 'mechanics', path: '/mechanics/', kind: 'mechanics', indexable: true, intent: 'Separate a loan, a payment, a bond and QE.', question: 'How is money created and moved in these four transactions?' },
+    { id: 'compare', path: '/compare/', kind: 'compare', indexable: true, intent: 'Compare arrangements by use after evidence review.', question: 'What does the accepted evidence support for this use?' },
+    { id: 'arc', path: '/arc/', kind: 'arc', indexable: true, intent: 'Follow selected monetary arrangements over time.', question: 'How did monetary arrangements overlap and change?' },
     { id: 'search', path: '/search/', kind: 'search', indexable: false, intent: 'Find a passage or glossary term.', question: 'Where is this term discussed?' },
     { id: 'notfound', path: '/404', kind: 'error', indexable: false, intent: 'Recover from a missing URL.', question: 'Is this a Money Research page?' },
   ];

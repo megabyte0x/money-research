@@ -2,11 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { hashToPath, parseLocation, redirectRules, sharedViewForRecord, vercelConfig } from '../src/routes.js';
+import { DISCOVERY_VIEWS, hashToPath, parseLocation, redirectRules, sharedViewForRecord, vercelConfig } from '../src/routes.js';
 import { SITE } from '../src/site-config.js';
 import { HOME_COPY, METHODS_COPY } from '../src/page-copy.js';
 import { staticArticle } from '../src/static-pages.js';
-import { indexablePages, jsonLdGraph, resolvePage, robotsTxt } from '../src/seo.js';
+import { indexablePages, jsonLdGraph, resolvePage, robotsTxt, seoTitle, snippet } from '../src/seo.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const dist = join(root, 'dist');
@@ -78,8 +78,12 @@ test('sitemap and robots follow the indexability registry', () => {
   const indexable = indexablePages(manifest, {});
   for (const page of indexable) assert.ok(xml.includes(`<loc>${page.canonical}</loc>`), page.path);
   assert.ok(!xml.includes('/search/'));
-  assert.ok(!xml.includes('/timeline/'));
-  assert.ok(!xml.includes('/compare/'));
+  for (const view of DISCOVERY_VIEWS) {
+    assert.ok(xml.includes(`/${view}/</loc>`), view);
+    assert.match(html(`${view}/index.html`), /content="index, follow"/, view);
+  }
+  assert.match(xml, /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/);
+  assert.match(html('llms.txt'), /^# Money Research\n\n> /);
   assert.equal(robots, robotsTxt());
   assert.ok(robots.includes(`Sitemap: ${SITE.origin}/sitemap.xml`));
   assert.match(html('search/index.html'), /content="noindex, follow"/);
@@ -149,10 +153,22 @@ test('crawlable chapter HTML leads with the title and answer before the review n
   }, { breadcrumbs: [{ name: 'Money Research', path: '/' }] });
   const h1 = html.indexOf('<h1');
   const answer = html.indexOf('Gold is durable and workable.');
-  const notice = html.indexOf('This research chapter is under editorial review');
-  assert.ok(h1 >= 0 && answer >= 0 && notice >= 0);
-  assert.ok(h1 < notice, 'H1 must precede the editorial notice for search snippets');
-  assert.ok(answer < notice, 'chapter answer must precede the editorial notice for search snippets');
+  assert.ok(h1 >= 0 && answer > h1, 'H1 then answer lead the chapter for search snippets');
+  assert.doesNotMatch(html, /editorial review/);
+});
+
+test('titles and descriptions fit search result limits', () => {
+  assert.equal(seoTitle('Short'), 'Short · Money Research');
+  assert.equal(seoTitle('Oil, Petrodollars and Stagflation, 1973–1982: The First Decade Without an Anchor'), 'Oil, Petrodollars and Stagflation, 1973–1982 · Money Research');
+  assert.equal(snippet('One. Two.'), 'One. Two.');
+  assert.ok(snippet('a '.repeat(200)).length <= 160);
+  for (const page of indexablePages(manifest, articleMetadata)) {
+    // Brand suffix may truncate in SERPs; the chapter name itself must fit.
+    assert.ok(page.title.replace(' · Money Research', '').length <= 70, `${page.path}: ${page.title}`);
+    assert.ok(page.description.length <= 160, `${page.path}: ${page.description.length}`);
+  }
+  const article = jsonLdGraph(resolvePage({ kind: 'chapter', record: manifest.find(r => r.id === 'gold-01'), articleMetadata }))['@graph'][0];
+  assert.ok(article.datePublished && article.dateModified && article.image && article.author && article.publisher);
 });
 
 test('library size in SEO copy matches the manifest', () => {
@@ -170,10 +186,8 @@ test('prerendered chapters lead with the title and answer before the review noti
   const main = page.slice(page.indexOf('<main'));
   const h1 = main.indexOf('<h1');
   const answer = main.indexOf('Gold is durable, workable and sometimes found in native form');
-  const notice = main.indexOf('This research chapter is under editorial review');
-  assert.ok(h1 >= 0 && answer >= 0 && notice >= 0);
-  assert.ok(h1 < answer);
-  assert.ok(answer < notice);
+  assert.ok(h1 >= 0 && answer > h1);
+  assert.doesNotMatch(main, /under (editorial )?review/);
 });
 
 test('legacy hashes translate to real paths while keeping destination and section', () => {

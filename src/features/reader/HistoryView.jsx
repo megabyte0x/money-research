@@ -15,7 +15,6 @@ function Stage({ stage, index }) {
 
 export default function HistoryView({ v }) {
   return <div className="history-arc reader-history">
-    <div className="evidence-notice" role="note">This selective historical arc is under editorial review. Quantitative charts are withheld until their series, definitions and source locations are verified. <a href="/methods/">Read the research method →</a></div>
     <p className="eyebrow">History · eleven arrangements and turning points</p>
     <h1>Monetary arrangements overlap and change under pressure.</h1>
     <p className="reader-history-intro">This arc follows selected uses of metal, coin, redeemable notes, bank deposits, central-bank reserves and digital systems. Each stage has a different geographic and legal scope. The interwar bridge separates the classical gold standard from Bretton Woods; Bitcoin and dollar stablecoins developed alongside fiat systems.</p>

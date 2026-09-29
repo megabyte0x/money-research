@@ -104,7 +104,7 @@ test('each non-shared article has a direct HTML page with unique canonical metad
 test('sitemap covers the homepage, shared reference pages and each direct article route', () => {
   const xml = readFileSync(join(root, 'dist/sitemap.xml'), 'utf8');
   const chapters = manifest.filter(record => record.slug !== '00-readme' && !sharedViewForRecord(record));
-  assert.equal((xml.match(/<url>/g) || []).length, 1 + 4 + 3 + chapters.length);
+  assert.equal((xml.match(/<url>/g) || []).length, 1 + 4 + 3 + 5 + chapters.length);
   assert.ok(xml.includes(`${SITE.origin}/`));
   for (const vol of ['gold', 'after', 'bitcoin', 'zcash']) {
     assert.ok(xml.includes(`${SITE.origin}/${vol}/`), vol);

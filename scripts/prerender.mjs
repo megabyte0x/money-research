@@ -5,7 +5,7 @@ import { SITE } from '../src/site-config.js';
 import {
   canonicalPath, isDirectoryRecord, redirectRules, sharedViewForRecord, vercelConfig, VOLUME_IDS,
 } from '../src/routes.js';
-import { applyDocumentMeta, indexablePages, resolvePage, robotsTxt, sitemapXml } from '../src/seo.js';
+import { applyDocumentMeta, indexablePages, llmsTxt, resolvePage, robotsTxt, sitemapXml } from '../src/seo.js';
 import {
   hubItemList, staticArc, staticArticle, staticCompare, staticGlossary, staticHome, staticSources,
   staticMechanics, staticMethods, staticNotFound, staticSearch, staticTakeaways,
@@ -81,7 +81,9 @@ const notFoundHtml = applyDocumentMeta(template, notFoundPage)
   .replace('<div id="root"></div>', `<div id="root">${wrapStatic(staticNotFound(notFoundPage))}</div>`);
 writeFileSync(join(dist, '404.html'), notFoundHtml);
 
-writeFileSync(join(dist, 'sitemap.xml'), sitemapXml(indexablePages(model.manifest, model.articleMetadata)));
+const indexed = indexablePages(model.manifest, model.articleMetadata);
+writeFileSync(join(dist, 'sitemap.xml'), sitemapXml(indexed));
+writeFileSync(join(dist, 'llms.txt'), llmsTxt(indexed));
 writeFileSync(join(dist, 'robots.txt'), robotsTxt());
 writeFileSync(join(root, 'vercel.json'), JSON.stringify(vercelConfig(model.manifest), null, 2) + '\n');
 writeFileSync(join(dist, 'redirects.json'), JSON.stringify(redirectRules(model.manifest), null, 2) + '\n');

@@ -9,7 +9,6 @@ import { ARRANGEMENTS, PERSPECTIVES, USES, publishableCell } from './features/co
 import { eventSortValue, eventYear, mergeSharedEvents } from './timeline.js';
 import { contentRole } from './features/discovery/catalog.js';
 
-const EVIDENCE_NOTICE = 'This research chapter is under editorial review. Dated figures, legal status and broad conclusions require source verification.';
 
 export function breadcrumbHtml(crumbs) {
   if (!crumbs?.length) return '';
@@ -76,7 +75,7 @@ export function blocksHtml(blocks, record, byVolumeNumber, { idPrefix = '' } = {
     }
     if (block.type === 'hr') return '<hr>';
     if (block.type === 'table') {
-      const caption = record.slug.includes('timeline') ? `<caption>Dated events in this chapter. Quantities remain under review.</caption>` : '';
+      const caption = record.slug.includes('timeline') ? `<caption>Dated events in this chapter.</caption>` : '';
       return `<div class="static-table-wrap"><table>${caption}<thead><tr>${block.header.map(cell => `<th scope="col">${inlineHtml(cell, record, byVolumeNumber)}</th>`).join('')}</tr></thead><tbody>${block.rows.map(row => `<tr>${row.map((cell, index) => index === 0 ? `<th scope="row">${inlineHtml(cell, record, byVolumeNumber)}</th>` : `<td>${inlineHtml(cell, record, byVolumeNumber)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
     }
     return '';
@@ -107,7 +106,7 @@ export function staticArticle(record, model, page) {
     : `<h1>${escapeHtml(shortTitle(record))}</h1>`;
   const chapterNav = volumeChapterList(record.vol, model.manifest);
   const summary = contentRole(record) === 'topic' ? summaryHtml(metadata) : '';
-  return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}<p class="eyebrow">Volume ${VOLUME_ROMAN[record.vol]} · ${VOLUME_NAME[record.vol]} · <a href="/">Money Research</a></p>${h1}${summary}<p class="evidence-notice" role="note">${EVIDENCE_NOTICE}</p>${toc}${blocksHtml(rest, record, byVolumeNumber)}${isDirectoryRecord(record) ? chapterNav : ''}</main>`;
+  return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}<p class="eyebrow">Volume ${VOLUME_ROMAN[record.vol]} · ${VOLUME_NAME[record.vol]} · <a href="/">Money Research</a></p>${h1}${summary}${toc}${blocksHtml(rest, record, byVolumeNumber)}${isDirectoryRecord(record) ? chapterNav : ''}</main>`;
 }
 
 export function volumeChapterList(vol, manifest, heading = 'Chapters in this volume') {
@@ -219,7 +218,6 @@ ${row.metadata.summary.evidenceAndUncertainty ? `<p class="discovery-meta">Evide
 
 export function staticArc(page) {
   return `<main id="main-content" class="static-article history-arc reader-history">${breadcrumbHtml(page.breadcrumbs)}
-<div class="evidence-notice" role="note">This selective historical arc is under editorial review. Quantitative charts are withheld until their series, definitions and source locations are verified. <a href="/methods/">Read the research method →</a></div>
 <p class="eyebrow">History · eleven arrangements and turning points</p>
 <h1>${escapeHtml(DISCOVERY_COPY.arc.title)}</h1>
 <p class="reader-history-intro">This arc follows selected uses of metal, coin, redeemable notes, bank deposits, central-bank reserves and digital systems. Each stage has a different geographic and legal scope. The interwar bridge separates the classical gold standard from Bretton Woods; Bitcoin and dollar stablecoins developed alongside fiat systems.</p>
@@ -250,7 +248,7 @@ export function staticCompare(model, page) {
     return `<tr><th scope="row">${escapeHtml(arrangement.label)}</th><td><span class="comparison-pending">Evidence pending</span><div>Arrangement-specific evidence has not cleared review for this use and perspective.</div></td><td><a href="${escapeHtml(arrangement.research)}">Read the research chapter →</a></td></tr>`;
   }).join('');
   return `<main id="main-content" class="static-article intro-page comparison-feature">${breadcrumbHtml(page.breadcrumbs)}
-<p class="eyebrow">Comparison · evidence review</p>
+<p class="eyebrow">Comparison</p>
 <h1>${escapeHtml(DISCOVERY_COPY.compare.title)}</h1>
 <p class="lead">A claim appears only after its source, scope and limitations have been accepted for this comparison. The static table shows the household / saving-purchasing-power view; other uses are available in the interactive page.</p>
 <table><caption>${escapeHtml(use.label)} · ${escapeHtml(perspective.label)}. Evidence gaps are shown explicitly.</caption>

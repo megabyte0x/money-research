@@ -2,13 +2,14 @@ import { SITE, METADATA_FIELDS, absoluteUrl, socialImageUrl } from './site-confi
 import OG_CARD_MANIFEST from './generated/og-manifest.json' with { type: 'json' };
 import { DISCOVERY_COPY, HOME_COPY, METHODS_COPY, NOT_FOUND_COPY, SEARCH_COPY, VOLUME_COPY } from './page-copy.js';
 import {
-  canonicalPath, isDirectoryRecord, publicationStatus, sharedViewForRecord, shortTitle, VOLUME_IDS,
+  canonicalPath, DISCOVERY_VIEWS, isDirectoryRecord, publicationStatus, sharedViewForRecord, shortTitle, VOLUME_IDS,
 } from './routes.js';
 
 export { METADATA_FIELDS };
 
 const VOLUME_NAME = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin', zcash: 'Zcash' };
 const VOLUME_ROMAN = { gold: 'I', after: 'II', bitcoin: 'III', zcash: 'IV' };
+const PUBLISHER = { '@type': 'Organization', name: SITE.name, url: absoluteUrl('/') };
 
 export function escapeHtml(text) {
   return String(text)
@@ -23,13 +24,31 @@ export function chapterDescription(record, articleMetadata = {}) {
   if (summary?.answer) return summary.answer;
   const name = shortTitle(record);
   const role = record.slug.includes('timeline')
-    ? `A chronology for Volume ${VOLUME_ROMAN[record.vol]} — ${VOLUME_NAME[record.vol]} — with dated events that still require source review.`
+    ? `A chronology for Volume ${VOLUME_ROMAN[record.vol]} — ${VOLUME_NAME[record.vol]} — of Money Research.`
     : record.slug.includes('glossary')
       ? `Terms used in Volume ${VOLUME_ROMAN[record.vol]} — ${VOLUME_NAME[record.vol]} — of Money Research.`
       : record.slug.includes('sources')
-        ? `Bibliography and locators for Volume ${VOLUME_ROMAN[record.vol]} — ${VOLUME_NAME[record.vol]}. Entries remain under editorial review.`
-        : `${name} in Volume ${VOLUME_ROMAN[record.vol]} — ${VOLUME_NAME[record.vol]} — Money Research. Claims in this chapter remain under editorial review.`;
+        ? `Bibliography and locators for Volume ${VOLUME_ROMAN[record.vol]} — ${VOLUME_NAME[record.vol]}.`
+        : `${name} in Volume ${VOLUME_ROMAN[record.vol]} — ${VOLUME_NAME[record.vol]} — Money Research.`;
   return role;
+}
+
+// Search results show ~60 title chars and ~160 description chars.
+export function seoTitle(name) {
+  const suffix = ` · ${SITE.name}`;
+  if (name.length + suffix.length <= 60) return name + suffix;
+  return name.split(/:\s/)[0] + suffix;
+}
+
+export function snippet(text, max = 160) {
+  if (text.length <= max) return text;
+  let out = '';
+  for (const sentence of text.match(/[^.!?]+[.!?]+(\s|$)/g) || []) {
+    if ((out + sentence).trim().length > max) break;
+    out += sentence;
+  }
+  if (out.trim().length >= 70) return out.trim();
+  return text.slice(0, max - 1).replace(/\s+\S*$/, '') + '…';
 }
 
 export function resolvePageContent(input) {
@@ -61,7 +80,7 @@ export function resolvePageContent(input) {
   } else if (kind === 'chapter' && record) {
     path = canonicalPath(record);
     const name = shortTitle(record);
-    title = `${name} · ${VOLUME_NAME[record.vol]} · ${SITE.name}`;
+    title = seoTitle(name);
     description = chapterDescription(record, articleMetadata);
     socialType = 'article';
     breadcrumbs.push({ name: VOLUME_NAME[record.vol], path: `/${record.vol}/` });
@@ -110,7 +129,7 @@ export function resolvePageContent(input) {
     path: kind === 'error' ? '/404' : path,
     canonical,
     title,
-    description,
+    description: snippet(description),
     robots,
     indexable,
     socialType,
@@ -193,8 +212,13 @@ export function jsonLdGraph(page, extras = {}) {
       inLanguage: SITE.language,
       url: page.canonical,
     };
-    if (extras.datePublished) article.datePublished = extras.datePublished;
-    if (extras.dateModified) article.dateModified = extras.dateModified;
+    const datePublished = extras.datePublished || page.record?.published;
+    const dateModified = extras.dateModified || page.record?.modified;
+    if (datePublished) article.datePublished = datePublished;
+    if (dateModified) article.dateModified = dateModified;
+    if (page.image) article.image = page.image;
+    article.author = PUBLISHER;
+    article.publisher = PUBLISHER;
     if (page.citations?.length) {
       article.citation = uniqueCitations(page.citations).map(citation => ({
         '@type': 'CreativeWork',
@@ -350,7 +374,7 @@ function setMeta(attribute, name, content) {
 
 export function sitemapXml(pages) {
   const urls = pages.filter(page => page.indexable && page.kind !== 'redirect' && page.kind !== 'error')
-    .map(page => `  <url><loc>${escapeHtml(page.canonical)}</loc></url>`);
+    .map(page => `  <url><loc>${escapeHtml(page.canonical)}</loc>${page.record?.modified ? `<lastmod>${page.record.modified}</lastmod>` : ''}</url>`);
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
 }
 
@@ -374,12 +398,18 @@ export function indexablePages(manifest, articleMetadata) {
     resolvePage({ kind: 'methods' }),
     resolvePage({ kind: 'glossary' }),
     resolvePage({ kind: 'sources' }),
+    ...DISCOVERY_VIEWS.map(kind => resolvePage({ kind })),
   ];
   for (const record of manifest) {
     if (isDirectoryRecord(record) || sharedViewForRecord(record)) continue;
     pages.push(resolvePage({ kind: 'chapter', record, articleMetadata }));
   }
   return pages.filter(page => page.indexable);
+}
+
+export function llmsTxt(pages) {
+  const lines = pages.map(page => `- [${page.headline}](${page.canonical}): ${page.description}`);
+  return `# ${SITE.name}\n\n> ${HOME_COPY.description}\n\n## Pages\n\n${lines.join('\n')}\n`;
 }
 
 export { VOLUME_NAME, VOLUME_ROMAN };
