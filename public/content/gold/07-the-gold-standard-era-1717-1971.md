@@ -1,5 +1,13 @@
 # 07 — The Gold Standard Era, 1717–1971: How Gold Became a Major Monetary Standard and Lost That Role
 
+| Arrangement | What ended | Evidence |
+| --- | --- | --- |
+| Britain's restored gold standard | Sterling's gold link was suspended in September 1931 after a confidence crisis and reserve losses. | [Bank of England, history: 1931](https://www.bankofengland.co.uk/about/history) |
+| US domestic conversion | Roosevelt's 1933 measures halted conversion of currency and deposits into gold; this differed from later international arrangements. | [Federal Reserve History, Roosevelt's Gold Program: first policy phase](https://www.federalreservehistory.org/essays/roosevelts-gold-program) |
+| Bretton Woods official conversion | Nixon announced suspension on 15 August 1971; foreign governments could no longer obtain gold for dollars. | [Nixon's address](https://www.presidency.ucsb.edu/documents/address-the-nation-outlining-new-economic-policy-the-challenge-peace); [Federal Reserve History, gold window](https://www.federalreservehistory.org/essays/gold-convertibility-ends) |
+
+For subsequent exchange-rate and IMF changes, read [The Break, 1971–1976](/after/01-the-break-1971-1976/). For continuing dollar use, read [Why Dollar Use Survived Official Gold Conversion](/gold/08-why-the-dollar-replaced-gold/).
+
 ## Newton's accident (1717)
 
 Britain in 1700 was bimetallic and losing its silver: the Continent and India valued silver more highly, so English silver coins were exported and melted. Isaac Newton, as Master of the Mint, was asked to fix the guinea's silver price. He set it at 21 shillings, which at the market rates of the day slightly *overvalued* gold (about 15.2:1). The predictable result — Gresham's law — was that gold flowed into Britain, mostly Brazilian gold via Portugal, and silver continued to flow out. Newton had not intended a gold standard, but by the 1770s Britain was on one in practice. Parliament limited silver's legal-tender status in 1774, and the Coinage Act of 1816 made it official: gold was the sole standard, the new *sovereign* was defined as 7.32 g of fine gold (about £3 17s 10½d per ounce, a price that would hold, with wartime interruptions, until 1931), and silver became subsidiary token coinage. After the Napoleonic wars' paper-money interlude (1797–1821), the Bank of England resumed gold payments in 1821.

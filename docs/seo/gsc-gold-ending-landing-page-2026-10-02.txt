@@ -1,0 +1,213 @@
+- banner:
+  - button "Main menu":
+  - link "Google Search Console":
+    - /url: ./search-console?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+  - search:
+    - textbox [disabled]: Inspect any URL in "https://goldtozcash.vercel.app/"
+    - combobox "Inspect any URL in https://goldtozcash.vercel.app/"
+    - button "Search":
+  - button "Help":
+    - generic: help_outline
+  - tooltip: Help
+  - button "User settings":
+    - generic: manage_accounts
+  - tooltip: User settings
+  - 'button "Unread messages: 2"':
+    - generic: notifications
+  - tooltip: Messages
+  - generic: "2"
+  - button "Google apps":
+  - 'button "Google Account: Mega Byte (megabyte0x@gmail.com)"':
+- dialog "navigational drawer":
+  - navigation "Primary":
+    - button "Search property":
+      - img "favicon"
+      - combobox "https://goldtozcash.vercel.app/"
+      - generic: 
+    - link "Overview":
+      - /url: ./search-console?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: home
+      - generic: Overview
+    - link "Insights":
+      - /url: ./search-console/performance/insights?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: lightbulb_2
+      - generic: Insights
+    - link "Performance":
+      - /url: ./search-console/performance/search-analytics?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: trending_up
+      - generic: Performance
+    - button "URL inspection":
+      - generic: search
+      - generic: URL inspection
+    - generic: Indexing
+    - button "Indexing report section" [expanded]:
+      - generic: keyboard_arrow_up
+    - link "Pages":
+      - /url: ./search-console/index?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: file_copy
+      - generic: Pages
+    - link "Sitemaps":
+      - /url: ./search-console/sitemaps?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: account_tree
+      - generic: Sitemaps
+    - link "Removals":
+      - /url: ./search-console/removals?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: visibility_off
+      - generic: Removals
+    - generic: Experience
+    - button "Experience report section" [expanded]:
+      - generic: keyboard_arrow_up
+    - link "Core Web Vitals":
+      - /url: ./search-console/core-web-vitals?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: speed
+      - generic: Core Web Vitals
+    - generic: Security & Manual Actions
+    - button "Security & Manual Actions report section":
+      - generic: keyboard_arrow_down
+    - link "Links report":
+      - /url: ./search-console/links?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: link_2
+      - generic: Links
+    - link "Achievements":
+      - /url: ./search-console/achievements?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: trophy
+      - generic: Achievements
+    - link "Settings":
+      - /url: ./search-console/settings?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: settings
+      - generic: Settings
+    - button "Submit feedback":
+      - generic: feedback
+      - generic: Submit feedback
+    - button "About Search Console":
+      - generic: info
+      - generic: About Search Console
+    - link "Privacy":
+      - /url: https://myaccount.google.com/privacypolicy?hl=en
+    - link "Terms":
+      - /url: https://myaccount.google.com/termsofservice?hl=en
+- navigation "Breadcrumbs":
+  - heading "Performance" [level=1]
+- button "EXPORT":
+  - generic: 
+  - generic: EXPORT
+- radiogroup "Select time range":
+  - radio "24 hours":
+    - generic: 24 hours
+  - radio "7 days":
+    - generic: 7 days
+  - radio "28 days" [checked]:
+    - generic: 28 days
+  - radio "3 months":
+    - generic: 3 months
+- button "More time ranges":
+  - generic: More
+  - generic: arrow_drop_down
+- list:
+  - 'button "Search type: Web (text)"':
+    - generic: "Search type: Web (text)"
+    - generic: arrow_drop_down
+  - tooltip: "Search type: Web (text)"
+  - 'button "Query: why gold standard ended"':
+    - generic: "Query: why gold standard ended"
+  - tooltip: "Query: why gold standard ended"
+  - 'button "Remove Query: why gold standard ended"':
+    - generic: close
+  - button "Add filter":
+    - generic: add
+    - generic: Add filter
+  - tooltip: Add filter
+  - button "Customize your Performance report using AI":
+    - generic: filter_list_spark
+  - tooltip: Customize your Performance report using AI
+  - button "Reset filters":
+    - generic: Reset filters
+  - tooltip: Reset filters
+- generic: "Last update: 10 hours ago"
+- main:
+  - button "Total clicks 0":
+    - generic "Total clicks":
+      - generic: 
+      - generic: Total clicks
+    - generic "0"
+  - button "null":
+    - generic: 
+  - button "Total impressions 4":
+    - generic "Total impressions":
+      - generic: 
+      - generic: Total impressions
+    - generic "4"
+  - button "null":
+    - generic: 
+  - button "Average CTR 0%":
+    - generic "Average CTR":
+      - generic: Average CTR
+    - generic "0%"
+  - button "null":
+    - generic: 
+  - button "Average position 76":
+    - generic "Average position":
+      - generic: 
+      - generic: Average position
+    - generic "76"
+  - button "null":
+    - generic: 
+  - 'button "Selected Time Granularity: Daily"':
+    - generic: Daily
+  - application "chart":
+    - generic: Chart, containing counts of Total clicks, Total impressions, Average CTR, and Average position from September 18, 2026 to September 28, 2026
+  - tablist:
+    - tab "Queries":
+      - generic: Queries
+    - tab "Pages" [selected]:
+      - generic: Pages
+    - tab "Countries":
+      - generic: Countries
+    - tab "Devices":
+      - generic: Devices
+    - tab "Search appearance":
+      - generic: Search appearance
+    - tab "Days":
+      - generic: Days
+  - tabpanel:
+    - button "Filter table rows":
+      - generic: 
+    - table:
+      - rowgroup:
+        - row "Top pages Sort Top pages Sort Clicks Clicks Sort Impressions Impressions Sort Position Position":
+          - columnheader "Top pages Sort Top pages":
+            - generic: Top pages
+            - button "Sort Top pages":
+          - columnheader "Sort Clicks Clicks":
+            - button "Sort Clicks":
+            - generic: Clicks
+          - columnheader "Sort Impressions Impressions":
+            - button "Sort Impressions":
+            - generic: Impressions
+          - columnheader "Sort Position Position":
+            - button "Sort Position":
+            - generic: Position
+      - rowgroup:
+        - row "https://goldtozcash.vercel.app/gold/07-the-gold-standard-era-1717-1971/ 0 4 76.0":
+          - cell "https://goldtozcash.vercel.app/gold/07-the-gold-standard-era-1717-1971/":
+            - generic: https://goldtozcash.vercel.app/gold/07-the-gold-standard-era-1717-1971/
+          - cell "0":
+            - generic: "0"
+          - cell "4":
+            - generic: "4"
+          - cell "76.0":
+            - generic: "76.0"
+    - generic: "Rows per page:"
+    - listbox "Number of rows per page":
+      - option "5"
+      - option "10" [selected]
+      - option "25"
+      - option "50"
+      - option "100"
+      - option "250"
+      - option "500"
+    - generic: 1-1 of 1
+    - button "Previous page" [disabled]:
+    - tooltip: Previous page
+    - button "Next page" [disabled]:
+    - tooltip: Next page

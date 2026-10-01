@@ -1,4 +1,4 @@
-import { sharedViewForRecord } from './routes.js';
+import { findRecord, sharedViewForRecord } from './routes.js';
 
 const BASE = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL) || '/';
 
@@ -29,7 +29,7 @@ export function loadDiscovery() {
 export function recordForRoute(route, manifest = []) {
   if (route.view === 'hub') return manifest.find(item => item.vol === route.vol && item.slug === '00-readme') || null;
   if (route.view === 'article') {
-    return manifest.find(item => item.vol === route.vol && (item.slug === route.slug || item.aliases?.includes(route.slug))) || null;
+    return findRecord(manifest, route.vol, route.slug);
   }
   return null;
 }
@@ -46,9 +46,9 @@ export async function loadRoutePayload(route, state) {
       next.blocks = blocks;
     }
   }
-  if (route.view === 'sources') {
+  if (route.view === 'sources' || route.view === 'timeline') {
     const blocks = { ...(next.blocks || state.blocks || {}) };
-    const missing = manifest.filter(entry => sharedViewForRecord(entry) === 'sources' && !blocks[`${entry.slug}@${entry.vol}`]);
+    const missing = manifest.filter(entry => sharedViewForRecord(entry) === route.view && !blocks[`${entry.slug}@${entry.vol}`]);
     const loaded = await Promise.all(missing.map(item => loadArticleBlocks(item.id)));
     missing.forEach((item, index) => {
       const key = `${item.slug}@${item.vol}`;
@@ -66,14 +66,6 @@ export async function loadRoutePayload(route, state) {
     next.comparisonCells = discovery.comparisonCells || {};
     next.observations = discovery.observations || {};
     next.discoveryLoaded = true;
-    if (route.view === 'timeline') {
-      const blocks = { ...(next.blocks || state.blocks || {}) };
-      for (const item of manifest.filter(entry => entry.slug.includes('timeline'))) {
-        const key = `${item.slug}@${item.vol}`;
-        if (!blocks[key]) blocks[key] = await loadArticleBlocks(item.id);
-      }
-      next.blocks = blocks;
-    }
   }
   return next;
 }

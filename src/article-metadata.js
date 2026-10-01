@@ -11,7 +11,7 @@ export function indexArticleMetadata(rows, manifest, blocks) {
     const record = byId.get(row.id);
     if (/timeline|glossary|sources|readme/.test(record.slug)) throw new Error(`Reference article cannot have topic metadata: ${row.id}`);
     const summary = row.summary || {};
-    if (!textField(summary.answer) || !textField(summary.question) ||
+    if ((summary.searchDescription !== undefined && (!textField(summary.searchDescription) || summary.searchDescription.length > 160)) || !textField(summary.answer) || !textField(summary.question) ||
         !Array.isArray(summary.takeaways) || summary.takeaways.length < 3 ||
         summary.takeaways.length > 5 || !summary.takeaways.every(textField) ||
         !(summary.evidenceAndUncertainty || (summary.evidence && summary.uncertainty)) ||

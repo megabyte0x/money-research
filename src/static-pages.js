@@ -18,11 +18,11 @@ export function breadcrumbHtml(crumbs) {
   }).join('')}</ol></nav>`;
 }
 
-export function citationLinksHtml(citations = []) {
+export function citationLinksHtml(citations = [], label = 'Sources') {
   const items = uniqueCitations(citations);
   if (!items.length) return '';
-  return `<p class="answer-sources">Sources: ${items.map(item =>
-    `<a href="${escapeHtml(item.url)}">${escapeHtml(item.publisher || item.title)}</a>, ${escapeHtml(item.locator)}`).join('; ')}.</p>`;
+  return `<p class="answer-sources">${escapeHtml(label)}: ${items.map(item =>
+    `<a href="${escapeHtml(item.url)}">${escapeHtml(item.title || item.publisher)}</a>, ${escapeHtml(item.locator)}`).join('; ')}.</p>`;
 }
 
 function linkedText(text, record, byVolumeNumber) {
@@ -86,7 +86,7 @@ export function summaryHtml(metadata) {
   if (!metadata?.summary) return '';
   const summary = metadata.summary;
   const takeaways = summary.takeaways?.length ? `<ul>${summary.takeaways.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : '';
-  return `<section class="static-summary" aria-label="Chapter summary">${summary.question ? `<h2>${escapeHtml(summary.question)}</h2>` : ''}<p>${escapeHtml(summary.answer)}</p>${takeaways}</section>`;
+  return `<section class="static-summary" aria-label="Chapter summary">${summary.question ? `<h2>${escapeHtml(summary.question)}</h2>` : ''}<p>${escapeHtml(summary.answer)}</p>${takeaways}${citationLinksHtml(metadata.citations, 'Sources for specific chapter claims')}</section>`;
 }
 
 export function staticArticle(record, model, page) {
@@ -101,12 +101,16 @@ export function staticArticle(record, model, page) {
     : '';
   const heading = blocks.find(block => block.type === 'h1');
   const rest = blocks.filter(block => block !== heading);
+  const firstSection = rest.findIndex(block => block.type === 'h2');
+  const openingLength = firstSection < 0 ? rest.length : firstSection;
+  const opening = rest.slice(0, openingLength);
+  const body = rest.slice(openingLength);
   const h1 = heading
     ? `${Object.entries(record.sectionAliases || {}).filter(([, target]) => target === heading.id).map(([oldId]) => `<span id="${escapeHtml(oldId)}" aria-hidden="true" class="section-alias"></span>`).join('')}<h1 id="${escapeHtml(heading.id)}">${inlineHtml(heading.text, record, byVolumeNumber)}</h1>`
     : `<h1>${escapeHtml(shortTitle(record))}</h1>`;
   const chapterNav = volumeChapterList(record.vol, model.manifest);
   const summary = contentRole(record) === 'topic' ? summaryHtml(metadata) : '';
-  return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}<p class="eyebrow">Volume ${VOLUME_ROMAN[record.vol]} · ${VOLUME_NAME[record.vol]} · <a href="/">Money Research</a></p>${h1}${summary}${toc}${blocksHtml(rest, record, byVolumeNumber)}${isDirectoryRecord(record) ? chapterNav : ''}</main>`;
+  return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}<p class="eyebrow">Volume ${VOLUME_ROMAN[record.vol]} · ${VOLUME_NAME[record.vol]} · <a href="/">Money Research</a></p>${h1}${summary}${blocksHtml(opening, record, byVolumeNumber)}${toc}${blocksHtml(body, record, byVolumeNumber)}${isDirectoryRecord(record) ? chapterNav : ''}</main>`;
 }
 
 export function volumeChapterList(vol, manifest, heading = 'Chapters in this volume') {

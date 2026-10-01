@@ -1,0 +1,99 @@
+{
+  "canonical": "https://goldtozcash.vercel.app/gold/07-the-gold-standard-era-1717-1971/",
+  "structuredData": [
+    {
+      "graph": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@id": "https://goldtozcash.vercel.app/gold/07-the-gold-standard-era-1717-1971/#article",
+            "@type": "Article",
+            "author": {
+              "@type": "Organization",
+              "name": "Money Research",
+              "url": "https://goldtozcash.vercel.app/"
+            },
+            "citation": [
+              {
+                "@type": "CreativeWork",
+                "name": "Address to the Nation Outlining a New Economic Policy: The Challenge of Peace",
+                "url": "https://www.presidency.ucsb.edu/documents/address-the-nation-outlining-new-economic-policy-the-challenge-peace"
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "Nixon Ends Convertibility of U.S. Dollars to Gold and Announces Wage/Price Controls",
+                "url": "https://www.federalreservehistory.org/essays/gold-convertibility-ends"
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "Foreign Relations of the United States 1964–1968, Volume VIII, document 18, Money task-force chapter",
+                "url": "https://history.state.gov/historicaldocuments/frus1964-68v08/d18"
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "Financial Organization and Operations of the IMF, sixth edition, chapter III",
+                "url": "https://www.imf.org/external/pubs/ft/pam/pam45/pdf/chap3.pdf"
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "History — 1931: Gold standard suspended",
+                "url": "https://www.bankofengland.co.uk/about/history"
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "Roosevelt's Gold Program",
+                "url": "https://www.federalreservehistory.org/essays/roosevelts-gold-program"
+              },
+              {
+                "@type": "CreativeWork",
+                "name": "Nixon Ends Convertibility of U.S. Dollars to Gold and Announces Wage/Price Controls",
+                "url": "https://www.federalreservehistory.org/essays/gold-convertibility-ends"
+              }
+            ],
+            "dateModified": "2026-10-02",
+            "datePublished": "2026-09-08",
+            "description": "Gold-standard departures differed: Britain's sterling crisis in 1931, US domestic conversion in 1933 and the official dollar–gold window in 1971.",
+            "headline": "The Gold Standard Era, 1717–1971: How Gold Became a Major Monetary Standard and Lost That Role",
+            "image": "https://goldtozcash.vercel.app/og/gold-07-the-gold-standard-era-1717-1971.4383b4d21bc2.png",
+            "inLanguage": "en",
+            "mainEntityOfPage": {
+              "@id": "https://goldtozcash.vercel.app/gold/07-the-gold-standard-era-1717-1971/",
+              "@type": "WebPage"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Money Research",
+              "url": "https://goldtozcash.vercel.app/"
+            },
+            "url": "https://goldtozcash.vercel.app/gold/07-the-gold-standard-era-1717-1971/"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "item": "https://goldtozcash.vercel.app/",
+                "name": "Money Research",
+                "position": 1
+              },
+              {
+                "@type": "ListItem",
+                "item": "https://goldtozcash.vercel.app/gold/",
+                "name": "Gold",
+                "position": 2
+              },
+              {
+                "@type": "ListItem",
+                "item": "https://goldtozcash.vercel.app/gold/07-the-gold-standard-era-1717-1971/",
+                "name": "The Gold Standard Era, 1717–1971: How Gold Became a Major Monetary Standard and Lost That Role",
+                "position": 3
+              }
+            ]
+          }
+        ]
+      },
+      "marker": "page"
+    }
+  ],
+  "title": "The Gold Standard Era, 1717–1971 · Money Research"
+}

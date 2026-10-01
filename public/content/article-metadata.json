@@ -489,15 +489,16 @@
     "id": "gold-07",
     "status": "approved",
     "summary": {
-      "question": "Which gold standards existed, and what changed in 1971?",
-      "answer": "Britain's adoption, the classical international standard, interwar restorations and Bretton Woods had distinct convertibility rules; the US suspended official dollar-to-gold conversion in 1971.",
+      "question": "Why did the gold standard end?",
+      "answer": "Gold standards ended at different times under different pressures. In Britain, a run on sterling drained reserves before suspension in September 1931. In the United States, a banking crisis and gold outflows preceded Roosevelt's 1933 suspension of domestic dollar\u2013gold conversion. In 1971, Nixon suspended official conversion for foreign governments amid pressure on US gold reserves and inflation. These were different promises and policy decisions, not one worldwide event.",
       "takeaways": [
         "A gold definition did not eliminate bank credit.",
         "Scholarship associates earlier departure from gold with earlier Depression recovery; this is not a complete one-cause explanation.",
         "Bretton Woods official conversion differed from domestic gold-coin circulation.",
         "The IMF's 1978 reform did not abolish official reserve gold."
       ],
-      "evidenceAndUncertainty": "NBER Eichengreen/Sachs W1498 and Bernanke W4814 support the scoped interwar association. IMF *Financial Organization and Operations*, ch. III p. 91, and the 1964 US policy task-force \u201cMoney\u201d report, printed pp. 44\u201347, support a conditional Bretton Woods liquidity and official gold-conversion tension. Country counts, historical gold-stock comparisons and a required trade-deficit or inevitable-run claim are not established."
+      "evidenceAndUncertainty": "NBER Eichengreen/Sachs W1498 and Bernanke W4814 support the scoped interwar association. IMF *Financial Organization and Operations*, ch. III p. 91, and the 1964 US policy task-force \u201cMoney\u201d report, printed pp. 44\u201347, support a conditional Bretton Woods liquidity and official gold-conversion tension. Country counts, historical gold-stock comparisons and a required trade-deficit or inevitable-run claim are not established. The owner-approved 2 October 2026 opening distinguishes the Bank of England\u2019s 1931 suspension account, Federal Reserve History\u2019s first phase of Roosevelt\u2019s 1933 policy and the original 1971 Nixon announcement. These sources establish scoped events and reported pressures, not one universal cause or every legal exception.",
+      "searchDescription": "Gold-standard departures differed: Britain's sterling crisis in 1931, US domestic conversion in 1933 and the official dollar\u2013gold window in 1971."
     },
     "nextSteps": [
       {
@@ -519,6 +520,15 @@
       },
       {
         "claimId": "E31-triffin-conditional-bretton-woods"
+      },
+      {
+        "claimId": "SEO-gold-uk-suspension-1931"
+      },
+      {
+        "claimId": "SEO-gold-us-domestic-suspension-1933"
+      },
+      {
+        "claimId": "SEO-gold-window-pressure-1971"
       }
     ]
   },

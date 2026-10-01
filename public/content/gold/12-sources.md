@@ -98,6 +98,10 @@ Jeffrey Garten, *Three Days at Camp David* (2021) — the 1971 decision
 
 Federal Reserve History, *Gold Reserve Act of 1934* and *Nixon Ends Convertibility of US Dollars to Gold* — https://www.federalreservehistory.org
 
+Bank of England, *History*, 1931 entry — https://www.bankofengland.co.uk/about/history — sterling confidence, reserve losses and September suspension.
+
+Federal Reserve History, *Roosevelt's Gold Program* — https://www.federalreservehistory.org/essays/roosevelts-gold-program — the 1933 crisis and first policy phase.
+
 ## Note on reliability
 
 Varna municipal archaeological guide, *Varna’s Golden Necropolis*, https://visit.varna.bg/download/pages/217/Dipliana_en479.pdf , pp. 1–2: cemetery dated 4600–4300 BCE; more than 3,000 gold artefacts exceed six kilograms; the guide also describes copper-age metallurgy. This establishes an important early known gold assemblage, not gold as the first worked metal anywhere. NBER, Eichengreen and Sachs, *Exchange Rates and Economic Recovery in the 1930s*, https://www.nber.org/papers/w1498 , abstract; and Bernanke, *The Macroeconomics of the Great Depression*, https://www.nber.org/system/files/working_papers/w4814/w4814.pdf , introduction: earlier departure from gold is associated with earlier recovery, not a complete one-cause history. Ancient dates (Lydian coinage, Varna) carry uncertainties of decades to a century and are given as scholarly consensus ranges. Ancient gold–silver ratios and treasure quantities (Alexander's 180,000 talents, Mansa Musa's tonnage, Atahualpa's ransom) are from ancient or medieval chroniclers and should be read as orders of magnitude. All 2025–2026 market figures are as reported at the dates cited and will move.

@@ -633,5 +633,77 @@
     "reviewedBy": "coordinator Bank of England official explainer review",
     "reviewedAt": "2026-09-15",
     "revision": 1
+  },
+  {
+    "id": "SEO-gold-uk-suspension-1931",
+    "assertion": "The UK suspended its gold standard in September 1931 after confidence in sterling collapsed and a run on sterling depleted Bank of England reserves.",
+    "assertionType": "fact",
+    "scope": "Britain's restored gold standard in September 1931; not a worldwide end to gold convertibility.",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "boe-history-gold-standard-1931",
+        "locator": "History, entry “1931 — Gold standard suspended,” paragraphs on the sterling gold link, confidence collapse and reserve losses"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "gold-07"
+    ],
+    "views": [
+      "reader",
+      "synthesis"
+    ],
+    "reviewedBy": "Codex direct source check; owner approved the review draft on 2 October 2026",
+    "reviewedAt": "2026-10-02",
+    "revision": 1
+  },
+  {
+    "id": "SEO-gold-us-domestic-suspension-1933",
+    "assertion": "The US banking crisis and domestic and external gold drains preceded Roosevelt's 1933 suspension of gold conversion; the April proclamation prohibited currency and deposit conversion into gold coins and ingots.",
+    "assertionType": "fact",
+    "scope": "US domestic conversion during the first phase of Roosevelt's 1933 gold policy; not an assertion that subsequent official international conversion ended in 1933.",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "fed-history-roosevelts-gold-program",
+        "locator": "Paragraphs on the financial crisis of 1933 and domestic/external drains; first policy phase, April 20 proclamation and conversion prohibitions"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "gold-07"
+    ],
+    "views": [
+      "reader",
+      "synthesis"
+    ],
+    "reviewedBy": "Codex direct source check; owner approved the review draft on 2 October 2026",
+    "reviewedAt": "2026-10-02",
+    "revision": 1
+  },
+  {
+    "id": "SEO-gold-window-pressure-1971",
+    "assertion": "Federal Reserve History describes pressure on US gold reserves and domestic inflation as context for Nixon's August 1971 gold-window suspension.",
+    "assertionType": "fact",
+    "scope": "Institutional historical account of the 1971 decision; not a universal explanation for all gold-standard departures or an inevitability claim.",
+    "reviewState": "accepted",
+    "supporting": [
+      {
+        "sourceId": "fed-history-gold-convertibility-ends",
+        "locator": "Opening paragraphs and paragraph beginning “With inflation on the rise and a gold run looming”"
+      }
+    ],
+    "contrary": [],
+    "articleIds": [
+      "gold-07"
+    ],
+    "views": [
+      "reader",
+      "synthesis"
+    ],
+    "reviewedBy": "Codex direct source check; owner approved the review draft on 2 October 2026",
+    "reviewedAt": "2026-10-02",
+    "revision": 1
   }
 ]

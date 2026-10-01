@@ -6,7 +6,7 @@ import { DISCOVERY_VIEWS, hashToPath, parseLocation, redirectRules, sharedViewFo
 import { SITE } from '../src/site-config.js';
 import { HOME_COPY, METHODS_COPY } from '../src/page-copy.js';
 import { staticArticle } from '../src/static-pages.js';
-import { indexablePages, jsonLdGraph, resolvePage, robotsTxt, seoTitle, snippet } from '../src/seo.js';
+import { applyDocumentMeta, indexablePages, jsonLdGraph, resolvePage, robotsTxt, seoTitle, snippet } from '../src/seo.js';
 
 const root = new URL('../', import.meta.url).pathname;
 const dist = join(root, 'dist');
@@ -51,9 +51,17 @@ test('chapter pages keep unique canonicals, one H1, and specific descriptions', 
     assert.ok(description && !description.startsWith(`${record.title.replace(/^\d+\s+—\s+/, '')}. A research chapter`), record.id);
     assert.ok(!seen.has(description), record.id);
     seen.add(description);
-    const graph = JSON.parse(page.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+    const graph = JSON.parse(page.match(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)[1]);
     assert.ok(graph['@graph'].some(node => node['@type'] === 'Article'), record.id);
   }
+});
+
+test('prerendered structured data is owned by the client page updater', () => {
+  const output = applyDocumentMeta('<html><head></head><body></body></html>', resolvePage({ kind: 'home' }));
+  const scripts = [...output.matchAll(/<script type="application\/ld\+json"([^>]*)>([\s\S]*?)<\/script>/g)];
+  assert.equal(scripts.length, 1);
+  assert.match(scripts[0][1], /data-seo="page"/, 'The client updater must reuse the static graph rather than append a second one');
+  assert.equal(JSON.parse(scripts[0][2])['@graph'][0].url, 'https://goldtozcash.vercel.app/');
 });
 
 test('JSON-LD types match page kinds from the shared resolver', () => {
@@ -105,9 +113,9 @@ test('aliases are redirects in host config, not duplicate copies', () => {
   assert.match(html('404.html'), /Page not found/);
 });
 
-test('approved answers retain metadata provenance without rendering summary sources', () => {
+test('approved answers expose source locators from accepted claims', () => {
   const after = html('after/01-the-break-1971-1976/index.html');
-  assert.doesNotMatch(after, /class="answer-sources"/);
+  assert.match(after, /class="answer-sources"/);
   assert.match(after, /"citation":\[/);
   const citations = modelMetadata['after-01'].citations;
   assert.ok(citations.length > 0);
@@ -116,6 +124,8 @@ test('approved answers retain metadata provenance without rendering summary sour
     assert.ok(claimIds.has(citation.claimId), citation.claimId);
     assert.match(citation.url, /^https:\/\//);
     assert.ok(citation.locator);
+    assert.ok(after.includes(citation.url), 'Readers can follow the same source used in metadata');
+    assert.ok(after.includes(citation.locator.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;')), 'Readers can locate the supporting passage');
   }
   assert.equal((modelMetadata['gold-01'].citations || []).length, 0);
   const editorial = Object.fromEntries(articleMetadata.map(row => [row.id, row]));

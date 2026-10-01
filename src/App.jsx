@@ -1,21 +1,20 @@
 import React from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import * as md from './md.js';
-import { eventYear, eventSortValue, mergeSharedEvents, SHARED_EVENT_PAIRS } from './timeline.js';
+import { eventYear, eventSortValue, mergeSharedEvents } from './timeline.js';
 import { TIMELINE_SECTION_REFS } from './timeline-references.js';
 import MoneyMechanics from './MoneyMechanics.jsx';
 import Comparison from './features/comparison/Comparison.jsx';
 import { SearchView, GlossaryView, SourcesView, SynthesisView } from './features/discovery/DiscoveryViews.jsx';
-import { approvedSummaryCatalog } from './features/discovery/catalog.js';
-import { contentRole } from './features/discovery/catalog.js';
+import { approvedSummaryCatalog, contentRole } from './features/discovery/catalog.js';
 import { HomePage, MethodsPage, ArticlePage } from './features/reader/ReaderViews.jsx';
 import HistoryView from './features/reader/HistoryView.jsx';
 import { searchDocuments, searchState, searchUrl } from './search.js';
 import { referenceSegments, shortTitle } from './references.js';
-import { articleHref, parseLocation, sharedViewForRecord, translateLegacyHash, viewPath, VOLUME_IDS } from './routes.js';
+import { articleHref, findRecord, parseLocation, sharedViewForRecord, translateLegacyHash, viewPath, VOLUME_IDS } from './routes.js';
 import { applyClientMeta, resolvePage } from './seo.js';
 import { SITE } from './site-config.js';
-import { loadRoutePayload } from './content-load.js';
+import { loadRoutePayload, loadShell } from './content-load.js';
 import { HISTORY_STAGES } from './history-stages.js';
 
 // The prototype declared every rule as an inline CSS string. Keeping those strings
@@ -39,10 +38,7 @@ function S(css) {
 const s = (css, extra) => (extra ? { ...S(css), ...extra } : S(css));
 
 const MONO = "'IBM Plex Mono',monospace";
-// Editor-exposed props in the design file; fixed here at their defaults.
 const BODY_SIZE = 17.5;
-const GLOSSARY_INLINE = true;
-const SELECTION_ACTIONS = true;
 const VIEW_NAMES = { home: 'start here', compare: 'comparison', mechanics: 'money mechanics', methods: 'methods', sources: 'sources and further reading', arc: 'the arc', timeline: 'the master timeline', takeaways: 'the takeaways', glossary: 'the glossary', search: 'search results' };
 const CHATGPT_URL = 'https://chatgpt.com/?q=';
 const DEFAULT_QUESTION = 'Explain this passage: what is it claiming, and why does it matter?';
@@ -182,7 +178,6 @@ export default class App extends React.Component {
     glossary.forEach(g => { this.glossMap[g.term.replace(/\s*\(.*?\)\s*/g, '').split('/')[0].trim().toLowerCase()] = g; });
   }
   async load() {
-    const { loadShell } = await import('./content-load.js');
     const shell = await loadShell();
     this.prepareCorpus(shell);
     translateLegacyHash(location, history, shell.manifest);
@@ -223,32 +218,6 @@ export default class App extends React.Component {
     }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
     document.querySelectorAll('[data-stage]').forEach(el => this.stageObserver.observe(el));
   }
-  // ---- Arc: regimes
-  static ARC = [
-    { n: 1, label: 'Weight', title: 'Metal by weight', flex: 10, anchor: 'Silver by weight, in the Near East', power: 'Temples and palaces' },
-    { n: 2, label: 'Coin', title: "The sovereign's stamp", flex: 12, anchor: "Ruler's stamp on metal", power: 'Whoever held the mint' },
-    { n: 3, label: 'Bimetal', title: 'Bimetallism', flex: 9, anchor: 'Gold and silver at a legal ratio', power: 'Mints, merchants and bankers' },
-    { n: 4, label: 'Gold std', title: 'The classical gold standard', flex: 9, anchor: 'Gold convertibility in participating countries', power: 'Governments and central banks' },
-    { n: 'interwar', label: 'Interwar', title: 'War, return and Depression', flex: 9, anchor: 'Contested gold parities, then suspensions', power: 'National governments and central banks' },
-    { n: 5, label: 'BW', title: 'Bretton Woods', flex: 7, anchor: 'Dollar–gold convertibility for foreign officials', power: 'US Treasury and participating states' },
-    { n: 6, label: 'Float', title: 'Floating dollars and inflation', flex: 7, anchor: 'Policy and institutions, not oil redemption', power: 'Governments, central banks and markets' },
-    { n: 7, label: 'Credibility', title: 'Central-bank credibility', flex: 9, anchor: 'Policy frameworks and financial regulation', power: 'Central banks, banks and regulators' },
-    { n: 8, label: 'QE', title: 'Crisis balance sheets', flex: 7, anchor: 'Central-bank reserves and bank credit are distinct', power: 'Central banks, governments and banks' },
-    { n: 9, label: 'Reserves', title: 'Reserve custody and the dollar', flex: 8, anchor: 'Dollar networks alongside gold reserves', power: 'Issuers, custodians and reserve managers' },
-    { n: 'digital', label: 'Digital', title: 'Bitcoin and dollar stablecoins', flex: 10, anchor: 'Bitcoin issuance rules; stablecoin issuer claims', power: 'Key holders, networks, issuers and custodians' }];
-
-  arcStage(id) {
-    const index = App.ARC.findIndex(stage => `arc-${stage.n}` === id);
-    if (index < 0) throw new Error(`Unknown arc stage: ${id}`);
-    return index + 1;
-  }
-
-  currentStage() {
-    if (this.state.route.view !== 'arc') return 0;
-    const els = [...document.querySelectorAll('[data-stage]')]; let act = 1; const mid = window.innerHeight * 0.4;
-    els.forEach(el => { if (el.getBoundingClientRect().top <= mid) act = +el.dataset.stage; });
-    return act;
-  }
   scrollToSection() {
     const sec = this.state.route.sec;
     const reduced = typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -259,16 +228,16 @@ export default class App extends React.Component {
         const off = this.state.headerH + progressBar + 20;
         if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - off, behavior: reduced ? 'auto' : 'smooth' });
       }
-      else window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'auto' });
+      else window.scrollTo({ top: 0, behavior: 'auto' });
     });
   }
-  chapter(vol, slug) { return this.state.manifest.find(m => m.vol === vol && (m.slug === slug || m.aliases?.includes(slug))); }
+  chapter(vol, slug) { return findRecord(this.state.manifest, vol, slug); }
   href(m, sec) { return articleHref(m, sec); }
   short(m) { return shortTitle(m); }
   // ---- inline rendering with glossary hover + file refs
   inline(text, ctx) {
     const R = React.createElement; const toks = this.md.tokenizeInline(text, { linkifyUrls: ctx.sourcePage === true }); const out = []; let k = 0;
-    const gloss = ctx.gloss !== false && GLOSSARY_INLINE;
+    const gloss = ctx.gloss !== false;
     const pushText = (str) => {
       const parts = ctx.vol ? referenceSegments(str, ctx.vol, this.byVolumeNumber) : [{ type: 'text', text: str }];
       parts.forEach(part => {
@@ -514,8 +483,6 @@ export default class App extends React.Component {
       stickyTop: st.headerH + 'px',
       asideHeight: 'calc(100vh - ' + st.headerH + 'px)',
       rightDisplay: narrow ? 'none' : 'block',
-      stageCols: mobile ? 'minmax(0,1fr)' : '120px minmax(0,1fr)',
-      stageGap: mobile ? '10px' : '24px',
       selectDisplay: mobile ? 'none' : 'block',
       progressPct: (st.progress * 100).toFixed(1) + '%',
       query: st.query, searchVol: st.searchVol, glq: st.glq,
@@ -580,12 +547,9 @@ export default class App extends React.Component {
     }
     vals.isArc = r.view === 'arc';
     if (vals.isArc) {
-      const act = st.stage || 1; const A = App.ARC;
-      vals.arcStage = act;
-      vals.arcBand = HISTORY_STAGES.map((a, index) => ({ href: '/arc/#' + a.id, title: a.title, complete: index + 1 <= act }));
-      const active = A[act - 1]; vals.arcActiveAnchor = active.anchor; vals.arcActivePower = active.power;
+      vals.arcStage = st.stage || 1;
       vals.tocLabel = 'Regimes';
-      vals.toc = A.map((a, index) => ({ text: `${index + 1} · ${a.title}`, href: '/arc/#arc-' + a.n, indent: '0' }));
+      vals.toc = HISTORY_STAGES.map((stage, index) => ({ text: `${index + 1} · ${stage.title}`, href: '/arc/#' + stage.id, indent: '0' }));
     }
     if (cur) {
       const key = cur.slug + '@' + cur.vol; const bl = st.blocks[key] || [];
@@ -595,6 +559,7 @@ export default class App extends React.Component {
       vals.articleIsReference = contentRole(cur) !== 'topic';
       const metadata = st.articleMetadata[cur.id];
       vals.articleSummary = metadata?.summary || null;
+      vals.articleCitations = metadata?.citations || [];
       vals.hubChapters = r.view === 'hub' ? st.manifest.filter(item => item.vol === cur.vol && item.slug !== '00-readme' && !sharedViewForRecord(item)).map(item => ({ href: this.href(item), title: this.short(item) })) : [];
       vals.articleBody = R('div', null, this.blocksToEls(bl, { vol: cur.vol, usedGloss: { set: new Set() }, sectionAliases: cur.sectionAliases, sourcePage: ['gold-12', 'after-13', 'bitcoin-16', 'zcash-13'].includes(cur.id) }));
       vals.toc = bl.filter(b => b.type === 'h2' || b.type === 'h3').map(b => ({ text: this.md.stripInline(b.text), href: this.href(cur, b.id), indent: b.type === 'h3' ? '12px' : '0' }));
@@ -679,7 +644,6 @@ export default class App extends React.Component {
       vals.tocLabel = 'Search'; vals.toc = [];
     }
     vals.onArticleMouseUp = () => {
-      if (!SELECTION_ACTIONS) return;
       const sel = window.getSelection(); const text = sel && sel.toString().trim();
       if (!text || text.length < 12) return;
       const rect = sel.getRangeAt(0).getBoundingClientRect();

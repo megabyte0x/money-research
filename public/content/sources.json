@@ -340,5 +340,23 @@
     "sourceType": "official agency financial report and subsequent-event note",
     "publicationDate": null,
     "accessed": "2026-09-15"
+  },
+  {
+    "id": "boe-history-gold-standard-1931",
+    "publisher": "Bank of England",
+    "title": "History — 1931: Gold standard suspended",
+    "url": "https://www.bankofengland.co.uk/about/history",
+    "sourceType": "official central-bank historical account",
+    "publicationDate": null,
+    "accessed": "2026-10-02"
+  },
+  {
+    "id": "fed-history-roosevelts-gold-program",
+    "publisher": "Federal Reserve History",
+    "title": "Roosevelt's Gold Program",
+    "url": "https://www.federalreservehistory.org/essays/roosevelts-gold-program",
+    "sourceType": "official central-bank historical analysis",
+    "publicationDate": "2013-11-22",
+    "accessed": "2026-10-02"
   }
 ]

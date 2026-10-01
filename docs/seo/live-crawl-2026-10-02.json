@@ -1,0 +1,1157 @@
+[
+  {
+    "url": "https://goldtozcash.vercel.app/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Money Research \u00b7 How money works\u2014and why it changes"
+    ],
+    "description": [
+      "An evidence-led library on gold, post-1971 currencies, Bitcoin and Zcash: 58 documents on how money is issued, held, moved and limited, with sources."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 7901
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/gold/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/gold/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/gold/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Gold \u00b7 Money Research"
+    ],
+    "description": [
+      "Gold volume hub: how a metal became money, how convertibility ended, and what 2026 prices and reserve shares can and cannot establish."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 12184
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/after/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/after/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/after/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "After Gold \u00b7 Money Research"
+    ],
+    "description": [
+      "After Gold volume hub: floating currencies, oil shocks, crises, bank credit, payments innovation and reserve-access risk after 1971."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 13035
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/bitcoin/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/bitcoin/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/bitcoin/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Bitcoin \u00b7 Money Research"
+    ],
+    "description": [
+      "Bitcoin volume hub: independent validation, custody, country acts, supply rules and the evidence still required for saving, paying or institutional use."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 15244
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/zcash/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/zcash/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/zcash/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Zcash \u00b7 Money Research"
+    ],
+    "description": [
+      "Zcash volume hub: shielded payments, ZEC denomination, the 2026 Orchard response, adoption constraints and testable economic hypotheses."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 14759
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/methods/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/methods/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/methods/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "How this library is built and limited \u00b7 Money Research"
+    ],
+    "description": [
+      "How Money Research selects sources, records evidence, handles corrections and should be cited."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 6931
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/glossary/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/glossary/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/glossary/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Glossary \u00b7 Money Research"
+    ],
+    "description": [
+      "Definitions used across the Money Research volumes, with accepted cores, illustrations and links to related chapters where those have been reviewed."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 57741
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/sources/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/sources/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/sources/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Sources and further reading \u00b7 Money Research"
+    ],
+    "description": [
+      "Combined bibliography and source locators from the Gold, After Gold, Bitcoin and Zcash research volumes."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 159228
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/timeline/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/timeline/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/timeline/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "A connected monetary timeline \u00b7 Money Research"
+    ],
+    "description": [
+      "Dated monetary events from ancient gold to Bitcoin and Zcash in one chronology, linked to the chapters that explain them."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 95611
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/takeaways/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/takeaways/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/takeaways/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Explore the short answers \u00b7 Money Research"
+    ],
+    "description": [
+      "Editor-approved chapter answers from Money Research, each kept in its own scope with evidence limits and links to the full chapter."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 40377
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/mechanics/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/mechanics/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/mechanics/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "How money is created and moved \u00b7 Money Research"
+    ],
+    "description": [
+      "Four stylised \u00a3100 transactions distinguishing a bank loan, an interbank payment, a new government bond and a central-bank asset purchase."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 8104
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/compare/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/compare/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/compare/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Compare monetary arrangements by use \u00b7 Money Research"
+    ],
+    "description": [
+      "A qualitative comparison of gold, cash, bank deposits, Bitcoin and a dollar stablecoin. Claims appear only with accepted sources, scope and limits."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 7363
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/arc/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/arc/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/arc/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Monetary arrangements overlap and change under pressure \u00b7 Money Research"
+    ],
+    "description": [
+      "Eleven monetary arrangements from weighed metal to Bitcoin and dollar stablecoins, with who held power and what changed at each turning point."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 15670
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/gold/01-the-metal-itself/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/gold/01-the-metal-itself/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/gold/01-the-metal-itself/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "The Metal Itself \u00b7 Money Research"
+    ],
+    "description": [
+      "Gold is durable, workable and sometimes found in native form. The Varna cemetery is an important early known gold assemblage, but physical properties alone\u2026"
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 11677
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/gold/02-before-money-ornament-ritual-power/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/gold/02-before-money-ornament-ritual-power/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/gold/02-before-money-ornament-ritual-power/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Before Money \u00b7 Money Research"
+    ],
+    "description": [
+      "Archaeological objects and historical records show ornament, ritual, royal treasure, diplomatic gifts and some weighed-metal use in particular societies."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 12027
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/gold/03-from-metal-to-money-weights-rings-coins/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/gold/03-from-metal-to-money-weights-rings-coins/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/gold/03-from-metal-to-money-weights-rings-coins/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "From Metal to Money \u00b7 Money Research"
+    ],
+    "description": [
+      "A stamp identified an issuer and denomination and could lower verification costs, but early electrum composition varied and a coin's purchasing power still\u2026"
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 14442
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/gold/04-what-gives-gold-its-value/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/gold/04-what-gives-gold-its-value/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/gold/04-what-gives-gold-its-value/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "What Gives Gold Its Value and When It Became an Account Unit \u00b7 Money Research"
+    ],
+    "description": [
+      "Physical uses and monetary properties matter, but its price also reflects social acceptance, institutions, expectations and market conditions."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 13488
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/gold/05-silver-copper-bronze-and-bimetallism/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/gold/05-silver-copper-bronze-and-bimetallism/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/gold/05-silver-copper-bronze-and-bimetallism/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Silver, Copper, Bronze and Bimetallism \u00b7 Money Research"
+    ],
+    "description": [
+      "No. Silver, copper and bronze could be full-bodied money, account units or subsidiary tokens under different laws; a mint ratio is not automatically a\u2026"
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 14421
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/gold/06-rulers-and-empires-how-gold-was-used/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/gold/06-rulers-and-empires-how-gold-was-used/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/gold/06-rulers-and-empires-how-gold-was-used/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Rulers and Empires \u00b7 Money Research"
+    ],
+    "description": [
+      "No. Gold served coin, treasury, gift and wealth roles in different states, while silver, copper, paper and credit often handled accounting or payments."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 20638
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/gold/07-the-gold-standard-era-1717-1971/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/gold/07-the-gold-standard-era-1717-1971/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/gold/07-the-gold-standard-era-1717-1971/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "The Gold Standard Era, 1717\u20131971 \u00b7 Money Research"
+    ],
+    "description": [
+      "Britain's adoption, the classical international standard, interwar restorations and Bretton Woods had distinct convertibility rules; the US suspended official\u2026"
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 20544
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/gold/08-why-the-dollar-replaced-gold/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/gold/08-why-the-dollar-replaced-gold/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/gold/08-why-the-dollar-replaced-gold/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Why Dollar Use Survived Official Gold Conversion \u00b7 Money Research"
+    ],
+    "description": [
+      "The dollar had established reserve, trade, banking and securities-market uses; oil invoicing and recycling contributed, but no reviewed 1974 document supplies\u2026"
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 18979
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/gold/09-gold-today-what-still-holds-its-value/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/gold/09-gold-today-what-still-holds-its-value/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/gold/09-gold-today-what-still-holds-its-value/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Gold Today (September 2026) \u00b7 Money Research"
+    ],
+    "description": [
+      "Dated World Gold Council, ECB and IMF observations establish prices, estimated flows and measured shares under specified conventions; they do not guarantee\u2026"
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 19718
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/after/01-the-break-1971-1976/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/after/01-the-break-1971-1976/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/after/01-the-break-1971-1976/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "The Break, 1971\u20131976 \u00b7 Money Research"
+    ],
+    "description": [
+      "The United States suspended official dollar-to-gold conversion in 1971."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 18968
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/after/02-oil-petrodollars-and-stagflation-1973-1982/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/after/02-oil-petrodollars-and-stagflation-1973-1982/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/after/02-oil-petrodollars-and-stagflation-1973-1982/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Oil, Petrodollars and Stagflation, 1973\u20131982 \u00b7 Money Research"
+    ],
+    "description": [
+      "Oil shocks intensified price pressure in the 1970s, while policy, expectations and fiscal pressures also mattered."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 20656
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/after/03-debt-crises-and-the-managed-dollar-1982-1990/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/after/03-debt-crises-and-the-managed-dollar-1982-1990/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/after/03-debt-crises-and-the-managed-dollar-1982-1990/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Debt Crises and the Managed Dollar, 1982\u20131990 \u00b7 Money Research"
+    ],
+    "description": [
+      "Higher dollar interest rates and weaker export earnings strained borrowers; workouts and the Brady restructuring followed."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 18682
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/after/04-cold-war-ends-new-nations-new-currencies-1989-2001/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/after/04-cold-war-ends-new-nations-new-currencies-1989-2001/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/after/04-cold-war-ends-new-nations-new-currencies-1989-2001/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "The Cold War Ends \u00b7 Money Research"
+    ],
+    "description": [
+      "No. New states used different currencies, pegs and monetary frameworks; the Federal Republic of Yugoslavia's January 1994 hyperinflation was an extreme case,\u2026"
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 23232
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/after/05-globalization-and-emerging-market-crises-1990-2001/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/after/05-globalization-and-emerging-market-crises-1990-2001/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/after/05-globalization-and-emerging-market-crises-1990-2001/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Globalization and the Emerging-Market Crises, 1990\u20132001 \u00b7 Money Research"
+    ],
+    "description": [
+      "Trade agreements and freer capital flows developed alongside distinct currency crises."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 18800
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/after/06-wars-invasions-and-money-1971-2026/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/after/06-wars-invasions-and-money-1971-2026/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/after/06-wars-invasions-and-money-1971-2026/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Wars, Invasions and Money, 1971\u20132026 \u00b7 Money Research"
+    ],
+    "description": [
+      "Wars can affect public borrowing, energy prices and access to financial claims or services."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 24159
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/after/07-financial-crisis-and-the-age-of-qe-2007-2019/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/after/07-financial-crisis-and-the-age-of-qe-2007-2019/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/after/07-financial-crisis-and-the-age-of-qe-2007-2019/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "The Financial Crisis and the Age of Quantitative Easing, 2007\u20132019 \u00b7 Money Research"
+    ],
+    "description": [
+      "Housing-credit losses, leverage and fragile funding contributed to the crisis."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 21346
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/after/08-innovation-cards-bitcoin-stablecoins-cbdcs/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/after/08-innovation-cards-bitcoin-stablecoins-cbdcs/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/after/08-innovation-cards-bitcoin-stablecoins-cbdcs/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Innovation \u00b7 Money Research"
+    ],
+    "description": [
+      "No. Authorisation, clearing, settlement, currency conversion and access to usable funds are different stages, and institutions and rights vary by rail and\u2026"
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 21357
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/after/09-pandemic-inflation-and-weaponized-reserves-2020-2026/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/after/09-pandemic-inflation-and-weaponized-reserves-2020-2026/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/after/09-pandemic-inflation-and-weaponized-reserves-2020-2026/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Pandemic, Inflation and Weaponised Reserves, 2020\u20132026 \u00b7 Money Research"
+    ],
+    "description": [
+      "Pandemic fiscal measures, central-bank purchases, bank lending, supply disruption and later rate rises were distinct channels."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 19510
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/after/10-rules-treaties-and-institutions/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/after/10-rules-treaties-and-institutions/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/after/10-rules-treaties-and-institutions/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Rules, Treaties and Institutions of the Fiat Era \u00b7 Money Research"
+    ],
+    "description": [
+      "IMF agreements, national law, central banks and bank-supervision standards have different mandates and legal effects; selected rules evolved after 1971\u2026"
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 21149
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/bitcoin/01-the-origin-what-2008-produced/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/bitcoin/01-the-origin-what-2008-produced/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/bitcoin/01-the-origin-what-2008-produced/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "The Origin \u00b7 Money Research"
+    ],
+    "description": [
+      "It let participants verify issuance and transfers without a central ledger operator; dollar-priced exchanges, funds and custodians later formed around it."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 17752
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/bitcoin/02-what-bitcoin-solved-and-what-it-did-not/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/bitcoin/02-what-bitcoin-solved-and-what-it-did-not/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/bitcoin/02-what-bitcoin-solved-and-what-it-did-not/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "What Bitcoin Solved in Production, and What It Did Not \u00b7 Money Research"
+    ],
+    "description": [
+      "Independent validation and key-controlled transfer reduce reliance on an account provider, while confirmation risk, access, custody choices and price risk\u2026"
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 21174
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/bitcoin/03-how-bitcoin-is-actually-used-global-adoption/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/bitcoin/03-how-bitcoin-is-actually-used-global-adoption/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/bitcoin/03-how-bitcoin-is-actually-used-global-adoption/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "How Bitcoin Is Actually Used \u00b7 Money Research"
+    ],
+    "description": [
+      "Investment, custody and some payments are observed, but surveys, exchange purchases, on-chain flows and Lightning capacity answer different questions."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 20807
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/bitcoin/04-countries-that-adopted-bitcoin-and-what-happened/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/bitcoin/04-countries-that-adopted-bitcoin-and-what-happened/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/bitcoin/04-countries-that-adopted-bitcoin-and-what-happened/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Countries That Adopted Bitcoin, in What Form, and What Happened \u00b7 Money Research"
+    ],
+    "description": [
+      "A law on payments, a public asset holding, state-linked mining and regulated private access are different acts; none alone makes Bitcoin the national pricing\u2026"
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 29311
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/bitcoin/05-supporters-and-opponents-and-their-reasoning/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/bitcoin/05-supporters-and-opponents-and-their-reasoning/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/bitcoin/05-supporters-and-opponents-and-their-reasoning/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Who Favours a Bitcoin Standard, Who Opposes It, and Why \u00b7 Money Research"
+    ],
+    "description": [
+      "A named official, staff author, policy paper, executive order and bank standard have different authority and address different proposed uses."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 19379
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/bitcoin/06-what-legal-tender-requires-and-what-is-missing/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/bitcoin/06-what-legal-tender-requires-and-what-is-missing/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/bitcoin/06-what-legal-tender-requires-and-what-is-missing/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "What Legal Tender Requires, and What Bitcoin Still Lacks \u00b7 Money Research"
+    ],
+    "description": [
+      "No. Debt-discharge rules, tax denomination, private acceptance, prices and reserve authority depend on the country's own law and actual use."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 20326
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/bitcoin/07-the-supply-system-fixed-rate-variable-rate-and-backing/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/bitcoin/07-the-supply-system-fixed-rate-variable-rate-and-backing/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/bitcoin/07-the-supply-system-fixed-rate-variable-rate-and-backing/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "If Bitcoin Were the Unit of the Economy \u00b7 Money Research"
+    ],
+    "description": [
+      "No. Deposits, lending, velocity and prices depend on the banking and redemption arrangement built around the base asset."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 26633
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/bitcoin/08-why-not-gold-again/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/bitcoin/08-why-not-gold-again/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/bitcoin/08-why-not-gold-again/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Why Not Gold Again? Bitcoin Against the Metal It Imitates \u00b7 Money Research"
+    ],
+    "description": [
+      "By the reserve holder's law, custody, liquidity, loss horizon and mandate, with the same dates and units for performance claims."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 21422
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/bitcoin/09-supply-and-control-who-holds-bitcoin-and-who-benefits/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/bitcoin/09-supply-and-control-who-holds-bitcoin-and-who-benefits/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/bitcoin/09-supply-and-control-who-holds-bitcoin-and-who-benefits/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Supply and Control \u00b7 Money Research"
+    ],
+    "description": [
+      "Validators enforce their chosen rules, while miners, custodians, key holders, exchanges and law affect different steps in using the asset."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 23526
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/bitcoin/10-the-path-for-large-economies/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/bitcoin/10-the-path-for-large-economies/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/bitcoin/10-the-path-for-large-economies/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "The Path for Large Economies \u00b7 Money Research"
+    ],
+    "description": [
+      "No. Private access, public investment, central-bank reserves, settlement and native invoicing need separate decisions and evidence."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 18403
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/bitcoin/11-defects-that-stop-bitcoin-from-being-a-global-currency/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/bitcoin/11-defects-that-stop-bitcoin-from-being-a-global-currency/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/bitcoin/11-defects-that-stop-bitcoin-from-being-a-global-currency/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "The Defects That Have Stopped Bitcoin From Becoming a Global Currency \u00b7 Money Research"
+    ],
+    "description": [
+      "Fixed base issuance is a protocol constraint; payment use, price stability, miner participation, credit and custody outcomes must be measured under an actual\u2026"
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 22017
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/bitcoin/12-how-bitcoin-could-reproduce-old-crises/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/bitcoin/12-how-bitcoin-could-reproduce-old-crises/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/bitcoin/12-how-bitcoin-could-reproduce-old-crises/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "How Bitcoin Could Reproduce the Old Crises \u00b7 Money Research"
+    ],
+    "description": [
+      "Custodians, leverage and redeemable claims can transmit run or forced-sale risks, but analogies do not prove identical national crises."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 21344
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/bitcoin/13-is-bitcoin-the-answer/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/bitcoin/13-is-bitcoin-the-answer/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/bitcoin/13-is-bitcoin-the-answer/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Is Bitcoin the True Solution to Money After Gold? \u00b7 Money Research"
+    ],
+    "description": [
+      "Bitcoin addresses some issuer and intermediary trust problems; broad native denomination and a reliable inflation or crisis hedge are not established here."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 14913
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/zcash/01-lessons-from-gold-fiat-and-bitcoin/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/zcash/01-lessons-from-gold-fiat-and-bitcoin/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/zcash/01-lessons-from-gold-fiat-and-bitcoin/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Lessons from Gold, Fiat, and Bitcoin \u00b7 Money Research"
+    ],
+    "description": [
+      "Lessons from Gold, Fiat, and Bitcoin in Volume IV \u2014 Zcash \u2014 Money Research."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 14945
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/zcash/02-what-zcash-is-and-what-is-live/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/zcash/02-what-zcash-is-and-what-is-live/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/zcash/02-what-zcash-is-and-what-is-live/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "What Zcash Is, and What Is Actually Live \u00b7 Money Research"
+    ],
+    "description": [
+      "What Zcash Is, and What Is Actually Live in Volume IV \u2014 Zcash \u2014 Money Research."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 17313
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/zcash/03-which-world-problems-zcash-can-address/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/zcash/03-which-world-problems-zcash-can-address/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/zcash/03-which-world-problems-zcash-can-address/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Which World Problems Can Zcash Address? \u00b7 Money Research"
+    ],
+    "description": [
+      "Which World Problems Can Zcash Address? in Volume IV \u2014 Zcash \u2014 Money Research."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 15379
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/zcash/04-privacy-fungibility-and-the-unique-case/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/zcash/04-privacy-fungibility-and-the-unique-case/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/zcash/04-privacy-fungibility-and-the-unique-case/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Privacy, Fungibility, and the Distinctive Case for Zcash \u00b7 Money Research"
+    ],
+    "description": [
+      "Privacy, Fungibility, and the Distinctive Case for Zcash in Volume IV \u2014 Zcash \u2014 Money Research."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 15974
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/zcash/05-can-zec-be-a-unit-of-account/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/zcash/05-can-zec-be-a-unit-of-account/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/zcash/05-can-zec-be-a-unit-of-account/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Can ZEC Be a Unit of Account? \u00b7 Money Research"
+    ],
+    "description": [
+      "Can ZEC Be a Unit of Account? in Volume IV \u2014 Zcash \u2014 Money Research."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 14244
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/zcash/06-fixed-supply-credit-and-crisis-management/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/zcash/06-fixed-supply-credit-and-crisis-management/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/zcash/06-fixed-supply-credit-and-crisis-management/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Fixed Supply, Credit, and Crisis Management \u00b7 Money Research"
+    ],
+    "description": [
+      "Fixed Supply, Credit, and Crisis Management in Volume IV \u2014 Zcash \u2014 Money Research."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 15400
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/zcash/07-adoption-and-the-current-institutional-system/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/zcash/07-adoption-and-the-current-institutional-system/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/zcash/07-adoption-and-the-current-institutional-system/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Adoption and the Current Institutional System \u00b7 Money Research"
+    ],
+    "description": [
+      "Adoption and the Current Institutional System in Volume IV \u2014 Zcash \u2014 Money Research."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 15885
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/zcash/08-gold-to-fiat-to-bitcoin-to-zcash/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/zcash/08-gold-to-fiat-to-bitcoin-to-zcash/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/zcash/08-gold-to-fiat-to-bitcoin-to-zcash/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Gold \u2192 Fiat \u2192 Bitcoin \u2192 Zcash \u00b7 Money Research"
+    ],
+    "description": [
+      "Gold \u2192 Fiat \u2192 Bitcoin \u2192 Zcash: Transition or Analogy? in Volume IV \u2014 Zcash \u2014 Money Research."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 15000
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/zcash/09-zcash-specific-risks-and-governance/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/zcash/09-zcash-specific-risks-and-governance/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/zcash/09-zcash-specific-risks-and-governance/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Zcash-Specific Risks, Governance, and Future Changes \u00b7 Money Research"
+    ],
+    "description": [
+      "Zcash-Specific Risks, Governance, and Future Changes in Volume IV \u2014 Zcash \u2014 Money Research."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 20909
+  },
+  {
+    "url": "https://goldtozcash.vercel.app/zcash/10-hypothesis-a-world-ready-for-zec/",
+    "status": 200,
+    "final_url": "https://goldtozcash.vercel.app/zcash/10-hypothesis-a-world-ready-for-zec/",
+    "canonical": [
+      "https://goldtozcash.vercel.app/zcash/10-hypothesis-a-world-ready-for-zec/"
+    ],
+    "robots": [
+      "index, follow"
+    ],
+    "x_robots_tag": null,
+    "h1_count": 1,
+    "title": [
+      "Hypothesis \u00b7 Money Research"
+    ],
+    "description": [
+      "Hypothesis: A World Politically Ready for ZEC in Volume IV \u2014 Zcash \u2014 Money Research."
+    ],
+    "json_ld_count": 1,
+    "html_bytes": 47819
+  }
+]

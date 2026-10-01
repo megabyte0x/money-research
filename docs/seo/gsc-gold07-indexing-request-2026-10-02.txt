@@ -1,0 +1,136 @@
+- banner:
+  - button:
+  - link:
+    - /url: ./search-console?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+  - search:
+    - textbox [disabled]: Inspect any URL in "https://goldtozcash.vercel.app/"
+    - combobox
+    - button:
+  - button:
+    - generic: help_outline
+  - tooltip: Help
+  - button:
+    - generic: manage_accounts
+  - tooltip: User settings
+  - button:
+    - generic: notifications
+  - tooltip: Messages
+  - generic: "2"
+  - button:
+  - button:
+- dialog:
+  - navigation:
+    - button:
+      - combobox: https://goldtozcash.vercel.app/
+      - generic: 
+    - link:
+      - /url: ./search-console?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: home
+      - generic: Overview
+    - link:
+      - /url: ./search-console/performance/insights?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: lightbulb_2
+      - generic: Insights
+    - link:
+      - /url: ./search-console/performance/search-analytics?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: trending_up
+      - generic: Performance
+    - button:
+      - generic: search
+      - generic: URL inspection
+    - generic: Indexing
+    - button [expanded]:
+      - generic: keyboard_arrow_up
+    - link:
+      - /url: ./search-console/index?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: file_copy
+      - generic: Pages
+    - link:
+      - /url: ./search-console/sitemaps?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: account_tree
+      - generic: Sitemaps
+    - link:
+      - /url: ./search-console/removals?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: visibility_off
+      - generic: Removals
+    - generic: Experience
+    - button [expanded]:
+      - generic: keyboard_arrow_up
+    - link:
+      - /url: ./search-console/core-web-vitals?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: speed
+      - generic: Core Web Vitals
+    - generic: Security & Manual Actions
+    - button:
+      - generic: keyboard_arrow_down
+    - link:
+      - /url: ./search-console/links?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: link_2
+      - generic: Links
+    - link:
+      - /url: ./search-console/achievements?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: trophy
+      - generic: Achievements
+    - link:
+      - /url: ./search-console/settings?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F
+      - generic: settings
+      - generic: Settings
+    - button:
+      - generic: feedback
+      - generic: Submit feedback
+    - button:
+      - generic: info
+      - generic: About Search Console
+    - link:
+      - /url: https://myaccount.google.com/privacypolicy?hl=en
+      - text: Privacy
+    - link:
+      - /url: https://myaccount.google.com/termsofservice?hl=en
+      - text: Terms
+- generic: https://goldtozcash.vercel.app/gold/07-the-gold-standard-era-1717-1971/
+- navigation:
+  - heading [level=1]: URL Inspection
+- link:
+  - /url: ./search-console/inspect?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F&id=5LWBFOj1hMKqaY_IfrB-5Q&alt_id=6FRfFTY94XIQlpJvEtKgIQ
+  - generic: Google index
+- button [disabled]:
+  - generic: Live test
+- main:
+  - generic: "Tested on: Oct 2, 2026, 1:23 AM"
+  - button:
+    - generic: 
+  - generic: check_circle
+  - generic: URL is available to Google
+  - text: If it gets indexed and selected as canonical, it could appear in Google Search results with all relevant enhancements.
+  - link:
+    - /url: https://support.google.com/webmasters/answer/9012289#url_can_be_on_google
+    - text: Learn more
+  - button:
+    - generic: View tested page
+  - generic: Page changed?
+  - button:
+    - generic: Request indexing
+  - button:
+    - generic: check_circle
+    - generic: Page availability
+    - generic: Page can be indexed
+    - generic: 
+  - generic: Enhancements & Experience
+  - link:
+    - /url: ./search-console/inspect/r/breadcrumbs?resource_id=https%3A%2F%2Fgoldtozcash.vercel.app%2F&id=6FRfFTY94XIQlpJvEtKgIQ&alt_id=5LWBFOj1hMKqaY_IfrB-5Q
+    - generic: check_circle
+    - generic: Breadcrumbs
+    - generic: 1 valid item detected
+    - generic: 
+- dialog "Indexing requested":
+  - heading "Indexing requested" [level=2]:
+    - generic: check_circle
+    - generic: Indexing requested
+  - text: URL was added to a priority crawl queue. Submitting a page multiple times will not change its queue position or priority.
+  - link "Learn more.":
+    - /url: https://support.google.com/webmasters/answer/6065812
+  - button "Dismiss" [active]:
+    - generic: Dismiss
+- iframe [name="a-1loaz2a5ca34"]:
+  - text: protected by
+  - strong: reCAPTCHA

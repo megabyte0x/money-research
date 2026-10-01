@@ -81,7 +81,7 @@ export function resolvePageContent(input) {
     path = canonicalPath(record);
     const name = shortTitle(record);
     title = seoTitle(name);
-    description = chapterDescription(record, articleMetadata);
+    description = articleMetadata[record.id]?.summary?.searchDescription || chapterDescription(record, articleMetadata);
     socialType = 'article';
     breadcrumbs.push({ name: VOLUME_NAME[record.vol], path: `/${record.vol}/` });
     breadcrumbs.push({ name, path });
@@ -317,9 +317,9 @@ export function applyDocumentMeta(html, page, extras = {}) {
   } else {
     out = out.replace(/(<meta property="og:image" content="[^"]*">)/, `$1\n${imageExtras}`);
   }
-  const jsonTag = `<script type="application/ld+json">${json}</script>`;
-  if (/<script type="application\/ld\+json">[\s\S]*?<\/script>/.test(out)) {
-    out = out.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, jsonTag);
+  const jsonTag = `<script type="application/ld+json" data-seo="page">${json}</script>`;
+  if (/<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/.test(out)) {
+    out = out.replace(/<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/, jsonTag);
   } else {
     out = out.replace('</head>', `${jsonTag}\n</head>`);
   }

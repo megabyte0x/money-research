@@ -25,4 +25,5 @@ test('approved chapter summaries and curated section links resolve exactly', () 
 test('reader metadata rejects unknown sections and reference-file summaries', () => {
   assert.throws(() => indexArticleMetadata([{ ...approved, nextSteps: [{ ...approved.nextSteps[0], targetSectionId: 'irrelevant' }] }], manifest, blocks), /Missing next-step section/);
   assert.throws(() => indexArticleMetadata([{ ...approved, id: 'gold-10' }], manifest, blocks), /Reference article/);
+  assert.throws(() => indexArticleMetadata([{ ...approved, summary: { ...approved.summary, searchDescription: 'x'.repeat(161) } }], manifest, blocks), /Invalid chapter summary/);
 });
