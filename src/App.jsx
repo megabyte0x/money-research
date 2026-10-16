@@ -144,7 +144,7 @@ export default class App extends React.Component {
       if (this.state.quote && !e.target.closest('[data-quote-btn]')) this.setState({ quote: null });
       if (this.state.menuOpen && !this.menuRef.current?.contains(e.target)) this.setState({ menuOpen: false });
     };
-    window.addEventListener('mousedown', this.onDown);
+    window.addEventListener('pointerdown', this.onDown);
     this.onMenuEscape = (e) => {
       if (e.key === 'Escape' && this.state.menuOpen) {
         this.setState({ menuOpen: false }, () => this.menuButtonRef.current?.focus());
@@ -174,7 +174,7 @@ export default class App extends React.Component {
   }
   componentWillUnmount() {
     window.removeEventListener('hashchange', this.onHash); window.removeEventListener('popstate', this.onHash); window.removeEventListener('scroll', this.onScroll);
-    window.removeEventListener('mousedown', this.onDown); window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('pointerdown', this.onDown); window.removeEventListener('resize', this.onResize);
     window.removeEventListener('resize', this.onFontResize);
     document.removeEventListener('keydown', this.onMenuEscape);
     this.stageObserver?.disconnect();
