@@ -1,18 +1,173 @@
 {
-  "origin": "https://goldtozcash.vercel.app",
-  "trailingSlash": true,
-  "pages": {
-    "home": {
-      "title": "Money Research · How money works—and why it changes",
-      "description": "An evidence-led research library on gold, post-1971 currencies and Bitcoin. Forty-four documents compare how money is issued, held, transferred and limited, with source locators and open editorial notices."
+  "note": "Search titles (without the ' · Money Research' suffix, max 70 characters) and descriptions (max 160 characters, never truncated) for chapter pages. Each restates the chapter's own content or approved short answer; qualifications stay in.",
+  "chapters": {
+    "gold-01": {
+      "title": "Why gold? The metal's properties and the earliest gold finds",
+      "description": "Why gold became special: durable, workable and sometimes found as native metal. The Varna finds are early evidence, but properties alone didn't make it money."
     },
-    "methods": {
-      "title": "How this library is built and limited · Money Research",
-      "description": "Money Research explains its source selection, evidence statuses, correction practice, citation format and crawler policy. Names, roles and a public contact are omitted by preference; that is a trust limitation, not a completed attribution page."
+    "gold-02": {
+      "title": "Before money: gold as ornament, ritual and royal treasure",
+      "description": "Before coins, gold served as ornament, ritual object, royal treasure and diplomatic gift, and in some societies as weighed metal for payment."
     },
-    "glossary": {
-      "title": "Glossary · Money Research",
-      "description": "Definitions used across the Money Research volumes, with accepted cores, illustrations and links to related chapters where those have been reviewed."
+    "gold-03": {
+      "title": "From weighed metal to the first coins: how gold became money",
+      "description": "How weighed metal became stamped coin: a stamp named the issuer and denomination and eased checking, but a coin's value still depended on acceptance."
+    },
+    "gold-04": {
+      "title": "What gives gold its value, and when it became a unit of account",
+      "description": "Why gold has value: physical uses and monetary properties matter, but its price also reflects social acceptance, institutions, expectations and markets."
+    },
+    "gold-05": {
+      "title": "Silver, copper, bronze and bimetallism: gold's rival metals",
+      "description": "Was money always backed by gold? No. Silver, copper and bronze were coins, account units or tokens; a mint ratio was not a promise to redeem in gold."
+    },
+    "gold-06": {
+      "title": "How empires used gold: coins, treasuries, gifts and wealth",
+      "description": "How empires used gold for coins, treasuries, gifts and wealth, while silver, copper, paper and credit often handled accounting and everyday payments."
+    },
+    "gold-07": {
+      "title": "The gold standard, 1717–1971: how it worked and why it ended",
+      "description": "Why the gold standard ended: Britain's 1931 sterling crisis, the US suspension of domestic gold conversion in 1933, and Nixon's 1971 gold-window closure."
+    },
+    "gold-08": {
+      "title": "Why the dollar replaced gold and outlived gold convertibility",
+      "description": "Why the dollar kept its role after gold: reserve, trade, banking and securities uses. Oil invoicing helped, but no reviewed 1974 document shows oil redemption."
+    },
+    "gold-09": {
+      "title": "Gold today (2026): prices, reserves and what still holds value",
+      "description": "Gold in 2026: what World Gold Council, ECB and IMF data show on prices, flows and reserve shares, and why they don't guarantee gold works as a hedge."
+    },
+    "after-01": {
+      "title": "The Nixon shock, 1971: the end of dollar–gold convertibility",
+      "description": "On 15 August 1971 Nixon closed the gold window. Major currencies floated later, and the IMF's Second Amendment took effect in 1978: three separate steps."
+    },
+    "after-02": {
+      "title": "Oil shocks, petrodollars and stagflation, 1973–1982",
+      "description": "1970s stagflation: oil shocks intensified an inflation already under way. Petrodollars meant dollar invoicing and recycling, not redeeming dollars for oil."
+    },
+    "after-03": {
+      "title": "The 1980s debt crisis, the Brady plan and the managed dollar",
+      "description": "The 1980s debt crisis: high dollar interest rates and weak export earnings strained borrowers, then came workouts, Brady restructuring and Basel capital rules."
+    },
+    "after-04": {
+      "title": "After the Cold War: new nations, new currencies and the euro",
+      "description": "After the Cold War, new states chose different currencies, pegs and frameworks. Yugoslavia's January 1994 hyperinflation was an extreme case, not the rule."
+    },
+    "after-05": {
+      "title": "Emerging-market currency crises, 1990–2001",
+      "description": "The 1990s emerging-market crises: pegs and short-term foreign borrowing left economies exposed to capital outflows, but no single mechanism explains them."
+    },
+    "after-06": {
+      "title": "War and money, 1971–2026: borrowing, energy and asset freezes",
+      "description": "How war affects money: public borrowing, energy prices and access to financial claims. Effects vary by conflict; an asset freeze does not transfer ownership."
+    },
+    "after-07": {
+      "title": "The 2008 financial crisis and quantitative easing (QE), 2007–2019",
+      "description": "The 2008 crisis: housing-credit losses, leverage and fragile funding, and how rate cuts, emergency lending, dollar swaps and QE differed as responses."
+    },
+    "after-08": {
+      "title": "How money went digital: cards, Bitcoin, stablecoins and CBDCs",
+      "description": "How money went digital, 1971–2026: cards, payment rails, Bitcoin, stablecoins and CBDCs, and why faster messaging is not faster final payment."
+    },
+    "after-09": {
+      "title": "Pandemic inflation and weaponised reserves, 2020–2026",
+      "description": "2020s inflation: pandemic spending, central-bank buying, supply shocks and rate rises; 2022 limits on Russia's reserves; gold's share rising through valuation."
+    },
+    "after-10": {
+      "title": "Rules of the fiat era: the IMF, central banks and Basel",
+      "description": "Who sets the rules of fiat money: IMF agreements, national law, central banks and bank-supervision standards, each with different mandates since 1971."
+    },
+    "bitcoin-01": {
+      "title": "Bitcoin's origin: what the 2008 financial crisis produced",
+      "description": "Bitcoin's origin: after the 2008 crisis it let anyone verify issuance and transfers without a central ledger operator. Exchanges and custodians grew around it."
+    },
+    "bitcoin-02": {
+      "title": "What Bitcoin solved, and what it did not",
+      "description": "What Bitcoin solved: self-custody and independent validation cut reliance on account providers. What it didn't: confirmation, access, custody and price risk."
+    },
+    "bitcoin-03": {
+      "title": "How Bitcoin is actually used: global adoption, 2009–2026",
+      "description": "How Bitcoin is used: investment, custody and some payments, and why surveys, exchange data, on-chain flows and Lightning capacity measure different things."
+    },
+    "bitcoin-04": {
+      "title": "Bitcoin as legal tender: El Salvador, the CAR and what happened",
+      "description": "El Salvador's 2021 Bitcoin law and 2025 rollback, the Central African Republic, and why holding or mining Bitcoin doesn't make it a national pricing unit."
+    },
+    "bitcoin-05": {
+      "title": "The Bitcoin standard debate: who supports it, who opposes it",
+      "description": "The Bitcoin standard debate: officials, staff authors, policy papers and an executive order carry different authority and address different proposed uses."
+    },
+    "bitcoin-06": {
+      "title": "Is Bitcoin legal tender? What legal tender really requires",
+      "description": "Does legal tender make Bitcoin a unit of account? No. Debt rules, taxes, private acceptance, prices and reserves depend on each country's law and use."
+    },
+    "bitcoin-07": {
+      "title": "Bitcoin's fixed supply: could it be the unit of an economy?",
+      "description": "Does a fixed Bitcoin base fix the whole money supply? No. Deposits, lending, velocity and prices depend on the banking system built around it."
+    },
+    "bitcoin-08": {
+      "title": "Bitcoin vs gold as a reserve asset: why not gold again?",
+      "description": "Bitcoin vs gold as a reserve asset: compare law, custody, liquidity, loss horizon and mandate, using the same dates and units for performance claims."
+    },
+    "bitcoin-09": {
+      "title": "Who controls Bitcoin? Holders, miners, validators and custodians",
+      "description": "Who controls Bitcoin: validators enforce their chosen rules, while miners, custodians, key holders, exchanges and the law affect different steps of using it."
+    },
+    "bitcoin-10": {
+      "title": "A Bitcoin reserve or standard for the US, China, Europe and others?",
+      "description": "Could large economies move to a Bitcoin reserve or standard? Private access, public investment, reserves and native pricing are separate decisions."
+    },
+    "bitcoin-11": {
+      "title": "Why Bitcoin hasn't become a global currency",
+      "description": "Why Bitcoin isn't a global currency: fixed issuance is a design constraint; payment use, price stability, credit and custody must be measured in practice."
+    },
+    "bitcoin-12": {
+      "title": "Could Bitcoin reproduce old financial crises and bank runs?",
+      "description": "Could Bitcoin repeat old crises? Custodians, leverage and redeemable claims can spread run or forced-sale risk, but analogies don't prove identical crises."
+    },
+    "bitcoin-13": {
+      "title": "Is Bitcoin the answer to money after gold?",
+      "description": "Is Bitcoin the answer after gold? It eases some issuer and intermediary trust problems; wide use as a pricing unit or a reliable hedge is not established."
+    },
+    "zcash-01": {
+      "title": "From gold, fiat and Bitcoin to Zcash: the lessons that carry over",
+      "description": "What the history of gold, fiat and Bitcoin teaches about Zcash: which lessons carry over to private digital money, and which earlier claims need qualifying."
+    },
+    "zcash-02": {
+      "title": "What is Zcash? How shielded payments work and what is live",
+      "description": "What is Zcash? A public network whose shielded payments can be verified without revealing sender, recipient or amount, and what is actually live in 2026."
+    },
+    "zcash-03": {
+      "title": "Which world problems can Zcash address?",
+      "description": "Which problems Zcash can reduce, which it inherits or worsens, and which it leaves untouched: a problem-by-problem look at private digital cash."
+    },
+    "zcash-04": {
+      "title": "Privacy and fungibility: the distinctive case for Zcash",
+      "description": "Why privacy and fungibility matter for money, how Zcash's shielded payments support them, and how unique that case really is."
+    },
+    "zcash-05": {
+      "title": "Can ZEC be a unit of account? What a ZEC economy would need",
+      "description": "Can ZEC be a unit of account? What would count as a ZEC economy, with prices, wages, debts and taxes set in ZEC, and whether one is possible."
+    },
+    "zcash-06": {
+      "title": "Zcash's fixed supply: credit, banks and crisis management",
+      "description": "What a fixed ZEC supply would mean for inflation, lending, banks and emergency liquidity when no one can create unlimited base ZEC in a crisis."
+    },
+    "zcash-07": {
+      "title": "Zcash adoption: legal, commercial and institutional barriers",
+      "description": "The legal, commercial and institutional obstacles to Zcash adoption within today's financial and legal system."
+    },
+    "zcash-08": {
+      "title": "Gold → fiat → Bitcoin → Zcash: transition or analogy?",
+      "description": "Gold, fiat, Bitcoin, Zcash: what the sequence means, whether it is a real transition or only an analogy, and where the analogy fails."
+    },
+    "zcash-09": {
+      "title": "Zcash risks: cryptography, governance, mining and upgrades",
+      "description": "Zcash-specific risks: what could fail in its cryptography, governance, mining, wallets and future network upgrades."
+    },
+    "zcash-10": {
+      "title": "A world ready for ZEC? A hypothesis and how to test it",
+      "description": "A thought experiment: what system could support pricing in ZEC, how it might be adopted, how it would handle stress, and what evidence would reject it."
     }
   }
 }

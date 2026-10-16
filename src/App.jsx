@@ -16,6 +16,15 @@ import { applyClientMeta, resolvePage } from './seo.js';
 import { SITE } from './site-config.js';
 import { loadRoutePayload, loadShell } from './content-load.js';
 import { HISTORY_STAGES } from './history-stages.js';
+import { MORE_NAV, PRIMARY_NAV } from './static-pages.js';
+import { VOLUME_COPY } from './page-copy.js';
+import { chapterBrief } from './article-metadata.js';
+
+const VOLUME_TITLES = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin', zcash: 'Zcash' };
+
+function SiteFooter() {
+  return <footer className="site-footer"><nav aria-label="Library">{MORE_NAV.map(item => <a key={item.href} href={item.href}>{item.label}</a>)}</nav></footer>;
+}
 
 // The prototype declared every rule as an inline CSS string. Keeping those strings
 // verbatim and parsing them once keeps the port pixel-identical to the design file.
@@ -104,6 +113,7 @@ export default class App extends React.Component {
   }
   headerRef = React.createRef();
   menuButtonRef = React.createRef();
+  menuRef = React.createRef();
   stageObserver = null;
 
   // The header is one 52px row on desktop and wraps to two rows on a phone; every
@@ -130,10 +140,13 @@ export default class App extends React.Component {
       });
     };
     window.addEventListener('scroll', this.onScroll, { passive: true });
-    this.onDown = (e) => { if (this.state.quote && !e.target.closest('[data-quote-btn]')) this.setState({ quote: null }); };
-    window.addEventListener('mousedown', this.onDown);
+    this.onDown = (e) => {
+      if (this.state.quote && !e.target.closest('[data-quote-btn]')) this.setState({ quote: null });
+      if (this.state.menuOpen && !this.menuRef.current?.contains(e.target)) this.setState({ menuOpen: false });
+    };
+    window.addEventListener('pointerdown', this.onDown);
     this.onMenuEscape = (e) => {
-      if (e.key === 'Escape' && this.state.mobile && this.state.menuOpen) {
+      if (e.key === 'Escape' && this.state.menuOpen) {
         this.setState({ menuOpen: false }, () => this.menuButtonRef.current?.focus());
       }
     };
@@ -161,7 +174,7 @@ export default class App extends React.Component {
   }
   componentWillUnmount() {
     window.removeEventListener('hashchange', this.onHash); window.removeEventListener('popstate', this.onHash); window.removeEventListener('scroll', this.onScroll);
-    window.removeEventListener('mousedown', this.onDown); window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('pointerdown', this.onDown); window.removeEventListener('resize', this.onResize);
     window.removeEventListener('resize', this.onFontResize);
     document.removeEventListener('keydown', this.onMenuEscape);
     this.stageObserver?.disconnect();
@@ -242,7 +255,7 @@ export default class App extends React.Component {
       const parts = ctx.vol ? referenceSegments(str, ctx.vol, this.byVolumeNumber) : [{ type: 'text', text: str }];
       parts.forEach(part => {
         if (part.type === 'ref') {
-          out.push(R('a', { key: k++, href: this.href(part.record), title: `${part.record.vol.toUpperCase()} · file ${part.record.num}`, style: { textDecorationColor: 'var(--mut)' } }, part.text));
+          out.push(R('a', { key: k++, href: this.href(part.record), title: `${VOLUME_TITLES[part.record.vol]} · Chapter ${Number(part.record.num)}`, style: { textDecorationColor: 'var(--mut)' } }, part.text));
           return;
         }
         const value = part.text;
@@ -301,14 +314,15 @@ export default class App extends React.Component {
       if (b.type === 'h1' && opts.skipH1 !== false) return;
       if (b.type === 'h2') {
         section = blockId; hidden = !!this.state.collapsed[blockId];
+        const headingText = this.md.stripInline(b.text);
         const copied = this.state.copied === blockId;
         if (!opts.idPrefix) for (const [oldId, newId] of Object.entries(ctx.sectionAliases || {})) {
           if (newId === b.id) els.push(R('span', { key: `alias-${i}-${oldId}`, id: oldId, 'aria-hidden': true, className: 'section-alias' }));
         }
         els.push(R('h2', { key: i, id: blockId, style: { fontWeight: 500, fontSize: 23, lineHeight: 1.25, margin: '44px 0 14px', display: 'flex', alignItems: 'baseline', gap: 12, textWrap: 'pretty' } },
-          R('button', { type: 'button', 'aria-expanded': !hidden, 'aria-label': hidden ? 'Expand section' : 'Collapse section', onClick: () => this.setState(st => ({ collapsed: { ...st.collapsed, [blockId]: !st.collapsed[blockId] } })), title: hidden ? 'Expand section' : 'Collapse section', style: { fontFamily: MONO, fontSize: 12, color: 'var(--mut)', width: 14, flexShrink: 0 } }, hidden ? '+' : '−'),
+          R('button', { type: 'button', className: 'section-toggle', 'aria-expanded': !hidden, 'aria-label': `${hidden ? 'Show' : 'Hide'} section: ${headingText}`, onClick: () => this.setState(st => ({ collapsed: { ...st.collapsed, [blockId]: !st.collapsed[blockId] } })), title: hidden ? 'Show this section' : 'Hide this section', style: { fontFamily: MONO, fontSize: 12, color: 'var(--mut)', width: 14, flexShrink: 0 } }, hidden ? '+' : '−'),
           R('span', { style: { flex: 1 } }, this.inline(b.text, { ...ctx, gloss: false })),
-          R('button', { type: 'button', 'aria-label': 'Copy link to section', onClick: () => this.copyLink(blockId), title: 'Copy link to section', style: { fontFamily: MONO, fontSize: 11, color: 'var(--mut)', opacity: copied ? 1 : .6 } }, copied ? 'copied' : '§')));
+          R('button', { type: 'button', className: 'section-link', 'aria-label': copied ? 'Link copied' : `Copy link to section: ${headingText}`, onClick: () => this.copyLink(blockId), title: 'Copy a link to this section', style: { fontFamily: MONO, fontSize: 11, color: 'var(--mut)', opacity: copied ? 1 : .6 } }, copied ? 'link copied' : '§')));
         return;
       }
       if (hidden) return;
@@ -343,10 +357,10 @@ export default class App extends React.Component {
     if (reviewed) {
       const m = this.state.manifest.find(x => x.vol === reviewed[0] && x.num === reviewed[1]);
       const section = m && (this.state.blocks[m.slug + '@' + m.vol] || []).find(b => b.id === reviewed[2]);
-      if (section) return [{ href: this.href(m, section.id), label: 'Checked chapter section · ' + this.short(m) + ' · ' + this.md.stripInline(section.text) }];
+      if (section) return [{ href: this.href(m, section.id), label: 'Read in chapter · ' + this.short(m) + ' · ' + this.md.stripInline(section.text) }];
     }
     const source = this.state.manifest.find(x => x.vol === vol && x.slug.includes('timeline'));
-    return source ? [{ href: this.href(source), label: (status === 'source_timeline_fallback_reviewed' ? 'Reviewed source fallback' : 'Destination review pending') + ' · Source timeline · Vol. ' + ({ gold: 'I', after: 'II', bitcoin: 'III', zcash: 'IV' }[vol]) }] : [];
+    return source ? [{ href: this.href(source), label: 'Volume ' + ({ gold: 'I', after: 'II', bitcoin: 'III', zcash: 'IV' }[vol]) + ' timeline' + (status === 'source_timeline_fallback_reviewed' ? '' : ' (link not yet checked)') }] : [];
   }
   timelineGroups() {
     this.refCache = this.refCache || {};
@@ -471,11 +485,9 @@ export default class App extends React.Component {
       mobile,
       shellCols: narrow ? 'minmax(0,1fr)' : 'minmax(0,1fr) 210px',
       brand: 'Money Research',
-      selectMax: mobile ? '96px' : '180px',
       navGap: narrow ? '12px' : '18px',
       headerGap: mobile ? '10px' : narrow ? '14px' : '24px',
       searchWidth: mobile ? '104px' : narrow ? '150px' : '210px',
-      headerWrap: mobile ? 'wrap' : 'nowrap',
       headerHeight: mobile ? 'auto' : '52px',
       headerPad: mobile ? '8px 16px' : '0 24px',
       navFlex: mobile ? '1 1 100%' : narrow ? '1 1 0' : '0 0 auto',
@@ -483,7 +495,6 @@ export default class App extends React.Component {
       stickyTop: st.headerH + 'px',
       asideHeight: 'calc(100vh - ' + st.headerH + 'px)',
       rightDisplay: narrow ? 'none' : 'block',
-      selectDisplay: mobile ? 'none' : 'block',
       progressPct: (st.progress * 100).toFixed(1) + '%',
       query: st.query, searchVol: st.searchVol, glq: st.glq,
       bodyFontSize: BODY_SIZE + 'px'
@@ -511,19 +522,14 @@ export default class App extends React.Component {
       const next = cur === 'dark' ? 'light' : 'dark';
       document.body.dataset.theme = next; localStorage.setItem('mr-theme', next); this.setState({ theme: next });
     };
-    vals.themeLabel = (st.theme || (typeof matchMedia !== 'undefined' && matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light')) === 'dark' ? '☾ dark' : '☀ light';
-    ['Home', 'Compare', 'Methods', 'Sources', 'Timeline', 'Takeaways', 'Glossary', 'Arc'].forEach(n => vals['nav' + n] = r.view === n.toLowerCase() ? 'var(--fg)' : 'var(--mut)');
+    const currentTheme = st.theme || (typeof matchMedia !== 'undefined' && matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+    vals.themeLabel = currentTheme === 'dark' ? '☀ Light mode' : '☾ Dark mode';
+    vals.themeAction = currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+    vals.activeView = r.view;
+    vals.progress = st.progress;
+    vals.isHub = r.view === 'hub';
     const cur = r.view === 'article' || r.view === 'hub' ? this.chapter(r.vol, r.slug || '00-readme') : null;
-    const homeNames = { gold: ['Vol. I · Gold', 'How did a metal become money and what role remains?'], after: ['Vol. II · After Gold', 'What changed when official gold conversion ended?'], bitcoin: ['Vol. III · Bitcoin', 'What did Bitcoin solve and what remains unsettled?'], zcash: ['Vol. IV · Zcash', 'What can private ZEC payments do, and what remains unproven?'] };
-    vals.homeVolumes = VOLUME_IDS.map(vol => {
-      const directory = st.manifest.find(item => item.id === `${vol}-00`);
-      return directory && { id: vol, label: homeNames[vol][0], href: this.href(directory),
-        title: vol === 'after' ? 'After Gold' : vol === 'gold' ? 'Gold' : vol === 'bitcoin' ? 'Bitcoin' : 'Zcash',
-        question: homeNames[vol][1] };
-    }).filter(Boolean);
-    vals.allChapters = st.manifest.filter(m => !sharedViewForRecord(m)).map(m => ({ href: this.href(m), optLabel: ({ gold: 'I·', after: 'II·', bitcoin: 'III·', zcash: 'IV·' }[m.vol]) + m.num + ' ' + this.short(m) }));
-    vals.selectValue = cur ? this.href(cur) : '';
-    vals.onSelect = e => { if (e.target.value) location.href = e.target.value; };
+    vals.allChapters = st.manifest.filter(m => !sharedViewForRecord(m)).map(m => ({ href: this.href(m), optLabel: ({ gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin', zcash: 'Zcash' }[m.vol]) + (m.slug === '00-readme' ? ' · Overview' : ' ' + Number(m.num) + ' · ' + this.short(m)) }));
     vals.isHome = r.view === 'home'; vals.isCompare = r.view === 'compare'; vals.isMechanics = r.view === 'mechanics'; vals.isMethods = r.view === 'methods';
     const compareParams = new URLSearchParams(location.search);
     vals.compareUse = compareParams.get('use') || r.compareUse || 'saving';
@@ -554,18 +560,21 @@ export default class App extends React.Component {
     if (cur) {
       const key = cur.slug + '@' + cur.vol; const bl = st.blocks[key] || [];
       vals.volLabel = { gold: 'Vol. I — Gold', after: 'Vol. II — After Gold', bitcoin: 'Vol. III — Bitcoin', zcash: 'Vol. IV — Zcash' }[cur.vol];
-      vals.chapterNum = cur.num; vals.readTime = Math.max(1, Math.round(cur.words / 230)); vals.wordCount = cur.words.toLocaleString();
+      vals.chapterLabel = cur.slug === '00-readme' ? 'Overview' : 'Chapter ' + Number(cur.num);
+      vals.volumeIntro = r.view === 'hub' ? VOLUME_COPY[cur.vol]?.intro : null; vals.readTime = Math.max(1, Math.round(cur.words / 230)); vals.wordCount = cur.words.toLocaleString();
       vals.chapterTitle = cur.title.replace(/^\d+\s+—\s+/, '');
       vals.articleIsReference = contentRole(cur) !== 'topic';
       const metadata = st.articleMetadata[cur.id];
       vals.articleSummary = metadata?.summary || null;
+      const brief = !vals.articleIsReference && !metadata?.summary ? chapterBrief(bl) : null;
+      vals.articleBrief = brief && { body: this.inline(brief.text, { vol: cur.vol, gloss: false, usedGloss: { set: new Set() } }), href: '#' + brief.sectionId };
       vals.articleCitations = metadata?.citations || [];
       vals.hubChapters = r.view === 'hub' ? st.manifest.filter(item => item.vol === cur.vol && item.slug !== '00-readme' && !sharedViewForRecord(item)).map(item => ({ href: this.href(item), title: this.short(item) })) : [];
       vals.articleBody = R('div', null, this.blocksToEls(bl, { vol: cur.vol, usedGloss: { set: new Set() }, sectionAliases: cur.sectionAliases, sourcePage: ['gold-12', 'after-13', 'bitcoin-16', 'zcash-13'].includes(cur.id) }));
       vals.toc = bl.filter(b => b.type === 'h2' || b.type === 'h3').map(b => ({ text: this.md.stripInline(b.text), href: this.href(cur, b.id), indent: b.type === 'h3' ? '12px' : '0' }));
       vals.tocLabel = 'On this page';
       const list = st.manifest.filter(m => m.vol === cur.vol && !sharedViewForRecord(m)); const i = list.indexOf(cur); const prev = list[i - 1], next = list[i + 1];
-      vals.hasPrev = !!prev; vals.prevHref = prev && this.href(prev); vals.prevTitle = prev && this.short(prev);
+      vals.hasPrev = !!prev; vals.prevHref = prev && this.href(prev); vals.prevTitle = prev && (prev.slug === '00-readme' ? VOLUME_TITLES[prev.vol] + ': overview' : this.short(prev));
       vals.hasNext = !!next; vals.nextHref = next && this.href(next); vals.nextTitle = next && this.short(next);
     }
     if (vals.isTimeline) {
@@ -653,7 +662,7 @@ export default class App extends React.Component {
       const secEl = sec && document.getElementById(sec);
       const secTitle = secEl ? secEl.innerText.replace(/^[−+]\s*/, '').replace(/\s*(§|copied)\s*$/, '').trim() : null;
       const label = cur
-        ? ({ gold: 'Vol. I — Gold', after: 'Vol. II — After Gold', bitcoin: 'Vol. III — Bitcoin', zcash: 'Vol. IV — Zcash' }[cur.vol]) + ', file ' + cur.num + ' — ' + cur.title.replace(/^\d+\s+—\s+/, '')
+        ? ({ gold: 'Vol. I — Gold', after: 'Vol. II — After Gold', bitcoin: 'Vol. III — Bitcoin', zcash: 'Vol. IV — Zcash' }[cur.vol]) + ', chapter ' + Number(cur.num) + ' — ' + cur.title.replace(/^\d+\s+—\s+/, '')
         : 'Gold → Dollar → Crypto · research notes, ' + (VIEW_NAMES[r.view] || r.view);
       const href = cur ? location.origin + this.href(cur, sec) : location.origin + viewPath(r.view, sec);
       this.setState({ quote: { text, x: rect.left + rect.width / 2, y: rect.top + window.scrollY - 40, label, secTitle, href }, askOpen: false, askQ: '', promptCopied: false });
@@ -669,29 +678,25 @@ export default class App extends React.Component {
     const v = this.renderVals();
     return (
       <div style={s('min-height:100vh;display:flex;flex-direction:column')}>
-        <div style={s('position:fixed;top:0;left:0;height:2px;background:var(--fg);z-index:20', { width: v.progressPct })}></div>
-        <header ref={this.headerRef} style={s("position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--rule);display:flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px", { columnGap: v.headerGap, rowGap: '8px', padding: v.headerPad, height: v.headerHeight, minHeight: '52px', flexWrap: v.headerWrap })}>
+        {v.isArticle && !v.isHub && <div className="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(v.progress * 100)} style={{ width: v.progressPct }}></div>}
+        <header ref={this.headerRef} className="site-header" style={s("position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--rule);display:flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px", { columnGap: v.headerGap, rowGap: '8px', padding: v.headerPad, height: v.headerHeight, minHeight: '52px' })}>
           <a href="/" style={s('text-decoration:none;white-space:nowrap;display:flex;gap:10px;align-items:center')}>
             <span style={s('width:7px;height:7px;border:1px solid var(--fg);display:inline-block')}></span>{v.brand}
           </a>
-          <select value={v.selectValue} onChange={v.onSelect} style={s("font-family:'IBM Plex Mono',monospace;font-size:12px;background:transparent;color:var(--fg);border:1px solid var(--rule);padding:6px 8px;min-width:0", { display: v.selectDisplay, maxWidth: v.selectMax })}>
-            <option value="">Files…</option>
-            {v.allChapters.map(c => <option key={c.href} value={c.href}>{c.optLabel}</option>)}
-          </select>
-          <input type="search" placeholder="Search" value={v.query} onChange={v.onQuery} aria-label="Search all files"
-            style={s('padding:6px 8px;font-size:12px;box-sizing:border-box;min-width:0;flex-shrink:1', { width: v.searchWidth })} />
+          {!v.mobile && <nav aria-label="Primary" className="site-nav">
+            {PRIMARY_NAV.map(item => <a key={item.href} href={item.href} aria-current={v.activeView === item.view ? 'page' : undefined}>{item.label}</a>)}
+          </nav>}
           <div style={s('flex:1')}></div>
-          {v.mobile && <button ref={this.menuButtonRef} aria-expanded={!!this.state.menuOpen} aria-controls="main-navigation" onClick={() => this.setState(st => ({ menuOpen: !st.menuOpen }))} style={s('border:1px solid var(--rule);padding:7px 10px')}>Menu</button>}
-          <nav id="main-navigation" className="nav-scroll" style={s('display:flex;color:var(--mut);white-space:nowrap;align-items:center;min-width:0', { gap: v.navGap, flex: v.navFlex, overflowX: v.navOverflow, display: v.mobile && !this.state.menuOpen ? 'none' : 'flex', flexWrap: v.mobile ? 'wrap' : 'nowrap' })}>
-            <a href="/" style={s('text-decoration:none', { color: v.navHome })}>Start here</a>
-            <a href="/compare/" style={s('text-decoration:none', { color: v.navCompare })}>Compare</a>
-            <a href="/arc/" style={s('text-decoration:none', { color: v.navArc })}>History</a>
-            <a href="/timeline/" style={s('text-decoration:none', { color: v.navTimeline })}>Timeline</a>
-            <a href="/takeaways/" style={s('text-decoration:none', { color: v.navTakeaways })}>Takeaways</a>
-            <a href="/glossary/" style={s('text-decoration:none', { color: v.navGlossary })}>Glossary</a>
-            <a href="/sources/" style={s('text-decoration:none', { color: v.navSources })}>Sources</a>
-            <button type="button" onClick={v.toggleTheme} title="Toggle color mode" aria-label="Toggle color mode" style={s('color:var(--mut);font-size:12px')}>{v.themeLabel}</button>
-          </nav>
+          <input type="search" placeholder="Search" value={v.query} onChange={v.onQuery} aria-label="Search the library"
+            style={s('padding:6px 8px;font-size:12px;box-sizing:border-box;min-width:0;flex-shrink:1', { width: v.searchWidth })} />
+          <div className="site-menu" ref={this.menuRef}>
+            <button type="button" ref={this.menuButtonRef} className="site-menu-button" aria-expanded={!!this.state.menuOpen} aria-controls="site-menu-panel" onClick={() => this.setState(st => ({ menuOpen: !st.menuOpen }))}>{v.mobile ? 'Menu' : 'More'} <span aria-hidden="true">{this.state.menuOpen ? '▴' : '▾'}</span></button>
+            <div id="site-menu-panel" className="site-menu-panel" hidden={!this.state.menuOpen}>
+              {v.mobile && <nav aria-label="Primary" className="site-menu-group">{PRIMARY_NAV.map(item => <a key={item.href} href={item.href} aria-current={v.activeView === item.view ? 'page' : undefined}>{item.label}</a>)}</nav>}
+              <nav aria-label="More pages" className="site-menu-group">{MORE_NAV.map(item => <a key={item.href} href={item.href}>{item.label}</a>)}</nav>
+              <button type="button" className="site-theme-toggle" onClick={v.toggleTheme} aria-label={v.themeAction} title={v.themeAction}>{v.themeLabel}</button>
+            </div>
+          </div>
         </header>
         <div style={s('display:grid;gap:0;flex:1', { gridTemplateColumns: v.shellCols })}>
           <main id="main-content" style={s('padding:40px clamp(16px,4vw,56px) 120px;max-width:820px;width:100%;box-sizing:border-box;justify-self:center;min-width:0')} onMouseUp={v.onArticleMouseUp}>
@@ -769,6 +774,7 @@ export default class App extends React.Component {
             </div>
           </aside>
         </div>
+        <SiteFooter />
         {this.renderSelection()}
         <Analytics />
       </div>

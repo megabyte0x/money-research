@@ -22,7 +22,22 @@ function rebuildContentOnEdit() {
   };
 }
 
+// Preload the body-text font so first paint does not wait on CSS discovery.
+function preloadBodyFont() {
+  return {
+    name: 'preload-body-font',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html, ctx) {
+        const asset = Object.keys(ctx.bundle || {}).find(name => /newsreader-latin-wght-normal-[^/]*\.woff2$/.test(name));
+        if (!asset) return html;
+        return html.replace('</head>', `<link rel="preload" href="/${asset}" as="font" type="font/woff2" crossorigin>\n</head>`);
+      },
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [react(), rebuildContentOnEdit()],
+  plugins: [react(), rebuildContentOnEdit(), preloadBodyFont()],
   build: { outDir: 'dist', assetsDir: 'assets' },
 });

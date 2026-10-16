@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE } from '../src/site-config.js';
+import { stripInline } from '../src/md.js';
 import {
   canonicalPath, isDirectoryRecord, redirectRules, sharedViewForRecord, vercelConfig, VOLUME_IDS,
 } from '../src/routes.js';
@@ -48,6 +49,7 @@ writePage('methods', staticMethods(methodsPage), methodsPage);
 const glossaryPage = resolvePage({ kind: 'glossary' });
 writePage('glossary', staticGlossary(model.glossary, glossaryPage), glossaryPage, {
   itemList: model.glossary.slice(0, 40).map(term => ({ name: term.term, url: `${SITE.origin}/glossary/#${term.id}` })),
+  definedTerms: model.glossary.map(term => ({ id: term.id, name: term.term, description: stripInline(term.def || term.definition || '') })),
 });
 
 const sourcesPage = resolvePage({ kind: 'sources' });

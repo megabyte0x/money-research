@@ -3,8 +3,8 @@
     "id": "after-01",
     "status": "approved",
     "summary": {
-      "answer": "The United States suspended official dollar-to-gold conversion in 1971. Major currencies later floated against the dollar, and the IMF's Second Amendment took effect in 1978; these were separate steps.",
-      "question": "What changed when the dollar's gold window closed?",
+      "answer": "On 15 August 1971 the United States stopped converting foreign governments' dollars into gold. That was the first of three separate steps: major currencies then floated against the dollar, and the IMF's Second Amendment took effect in 1978.",
+      "question": "What changed when Nixon closed the gold window in 1971?",
       "takeaways": [
         "Gold conversion, exchange-rate parities and IMF legal rules changed at different times.",
         "Floating rates did not remove the need for settlement and counterparty protections.",
@@ -40,8 +40,8 @@
     "id": "after-02",
     "status": "approved",
     "summary": {
-      "answer": "Oil shocks intensified price pressure in the 1970s, while policy, expectations and fiscal pressures also mattered. Dollar oil invoicing and recycling were financial practices, not dollar redemption for oil.",
-      "question": "How did oil shocks interact with an inflation already under way?",
+      "answer": "They made 1970s inflation worse, but policy, expectations and fiscal pressures also mattered. \u201cPetrodollars\u201d meant invoicing oil in dollars and recycling oil earnings, not redeeming dollars for oil.",
+      "question": "How did the oil shocks feed an inflation already under way?",
       "takeaways": [
         "US inflation predated the gold-window closure and had multiple channels.",
         "The public US\u2013Saudi commission established cooperation, not an exclusive oil-pricing or redemption treaty.",
@@ -69,8 +69,8 @@
     "id": "after-03",
     "status": "approved",
     "summary": {
-      "answer": "Higher dollar interest rates and weaker export earnings strained borrowers; workouts and the Brady restructuring followed. The Basel Committee agreed bank-capital standards whose effects depended on national implementation.",
-      "question": "How did dollar debt and bank risks reshape the 1980s?",
+      "answer": "Higher dollar interest rates and weaker export earnings squeezed borrowers. Debt workouts and the Brady restructuring followed. The Basel Committee also agreed bank-capital standards, whose effects depended on how each country implemented them.",
+      "question": "What drove the 1980s debt crisis, and what followed?",
       "takeaways": [
         "A dollar loan's servicing burden can change with rates and the exchange rate.",
         "Brady bonds restructured claims; they did not restore fixed exchange rates.",
@@ -98,8 +98,8 @@
     "id": "after-04",
     "status": "approved",
     "summary": {
-      "answer": "No. New states used different currencies, pegs and monetary frameworks; the Federal Republic of Yugoslavia's January 1994 hyperinflation was an extreme case, not a universal outcome.",
-      "question": "Did post-Cold-War currencies follow one stabilisation path?",
+      "answer": "No. New states chose different currencies, pegs and monetary frameworks. The Federal Republic of Yugoslavia's January 1994 hyperinflation was an extreme case, not the norm.",
+      "question": "Did the new post-Cold-War currencies all follow one path?",
       "takeaways": [
         "New currencies and stabilisation choices varied across countries and initial conditions.",
         "German monetary-union 1:1 conversion applied to specified payments and capped personal cash/deposits, not all consumer prices.",
@@ -132,8 +132,8 @@
     "id": "after-05",
     "status": "approved",
     "summary": {
-      "answer": "Trade agreements and freer capital flows developed alongside distinct currency crises. Pegs and short-term foreign borrowing could make economies vulnerable to outflows, but the sequence had no single uniform mechanism.",
-      "question": "What did trade liberalisation leave exposed to capital flows?",
+      "answer": "Trade agreements and freer capital flows grew alongside a series of distinct currency crises. Pegs and short-term foreign borrowing could leave an economy exposed when money flowed out, but no single mechanism explains every crisis.",
+      "question": "Why were 1990s emerging markets exposed to capital flows?",
       "takeaways": [
         "NAFTA reduced North American trade barriers; the EU single market has a wider four-freedom scope.",
         "Currency pegs create different risks when capital moves freely and liabilities are in foreign currency.",
@@ -161,8 +161,8 @@
     "id": "after-06",
     "status": "approved",
     "summary": {
-      "answer": "Wars can affect public borrowing, energy prices and access to financial claims or services. The combination and scale vary by conflict; an asset freeze does not itself transfer ownership.",
-      "question": "Through which channels can conflict affect monetary arrangements?",
+      "answer": "Through several channels: public borrowing, energy prices, and access to financial claims or services. The mix and scale vary by conflict, and freezing an asset does not by itself transfer its ownership.",
+      "question": "How does war change money?",
       "takeaways": [
         "Taxes, borrowing and monetary expansion have financed wars in differing proportions.",
         "Gulf War incremental-cost estimates, allied pledges and received contributions are separate measures.",
@@ -190,8 +190,8 @@
     "id": "after-07",
     "status": "approved",
     "summary": {
-      "answer": "Housing-credit losses, leverage and fragile funding contributed to the crisis. Rate cuts, lending, dollar swaps and asset purchases were distinct responses with different balance-sheet entries.",
-      "question": "How did the 2008 credit crash and central-bank responses differ?",
+      "answer": "Housing-credit losses, leverage and fragile funding contributed to the crisis. Rate cuts, emergency lending, dollar swaps and asset purchases were distinct responses, each recorded differently on balance sheets.",
+      "question": "What caused the 2008 crash, and how did central banks respond?",
       "takeaways": [
         "Policy-rate targets, mortgage-debt ratios, security ratings and derivatives notional measure different things.",
         "A QE purchase creates bank reserves; purchase from a non-bank also credits that seller's deposit.",
@@ -219,8 +219,8 @@
     "id": "after-08",
     "status": "approved",
     "summary": {
-      "answer": "No. Authorisation, clearing, settlement, currency conversion and access to usable funds are different stages, and institutions and rights vary by rail and token.",
-      "question": "Does faster messaging mean faster or cheaper final payment?",
+      "answer": "No. Authorisation, clearing, settlement, currency conversion and access to usable funds are separate stages, and the institutions and rights involved differ by payment rail and token.",
+      "question": "Does faster payment messaging mean faster or cheaper payment?",
       "takeaways": [
         "Swift carries bank instructions; settlement of the underlying claims happens elsewhere.",
         "A card authorisation, instant bank transfer and blockchain transfer have different measures of completion.",
@@ -253,8 +253,8 @@
     "id": "after-09",
     "status": "approved",
     "summary": {
-      "answer": "Pandemic fiscal measures, central-bank purchases, bank lending, supply disruption and later rate rises were distinct channels. The 2022 Russian reserve restrictions highlighted access risk, while gold's measured share also rose through valuation.",
-      "question": "What changed in inflation and reserve-access risk during the 2020s?",
+      "answer": "Pandemic fiscal measures, central-bank purchases, bank lending, supply disruption and later rate rises worked through distinct channels. The 2022 restrictions on Russia's reserves showed the risk of losing access to reserves, while gold's measured share of reserves also rose through valuation.",
+      "question": "What changed in the 2020s for inflation and frozen reserves?",
       "takeaways": [
         "Government borrowing/spending, bank credit and QE are different transactions.",
         "Inflation after the pandemic had demand, supply and policy channels whose weights require analysis.",
@@ -282,8 +282,8 @@
     "id": "after-10",
     "status": "approved",
     "summary": {
-      "answer": "IMF agreements, national law, central banks and bank-supervision standards have different mandates and legal effects; selected rules evolved after 1971 without one common trigger.",
-      "question": "Which rules and institutions govern the post-1971 monetary system?",
+      "answer": "No single body. IMF agreements, national law, central banks and bank-supervision standards each have their own mandate and legal force, and particular rules changed after 1971 without one common trigger.",
+      "question": "Who makes the rules for money after 1971?",
       "takeaways": [
         "IMF reform ended the official dollar-gold parity framework but did not eliminate every monetary role for gold.",
         "Basel standards concern bank exposures and require national implementation; they are not central-bank reserve law.",
@@ -311,8 +311,8 @@
     "id": "gold-01",
     "status": "approved",
     "summary": {
-      "question": "What about gold made it usable, and where does the earliest evidence come from?",
-      "answer": "Gold is durable, workable and sometimes found in native form. The Varna cemetery is an important early known gold assemblage, but physical properties alone did not make gold money.",
+      "question": "What made gold usable, and where is the earliest evidence?",
+      "answer": "Gold is durable, workable and sometimes found in native form. The Varna cemetery is an important early known gold assemblage. But physical properties alone did not make gold money.",
       "takeaways": [
         "Gold's chemistry helps explain preservation and working.",
         "Placer and lode sources involve different extraction.",
@@ -341,7 +341,7 @@
     "status": "approved",
     "summary": {
       "question": "What was gold used for before coins?",
-      "answer": "Archaeological objects and historical records show ornament, ritual, royal treasure, diplomatic gifts and some weighed-metal use in particular societies.",
+      "answer": "Ornament, ritual, royal treasure and diplomatic gifts. Archaeological objects and historical records also show some weighed-metal use in particular societies.",
       "takeaways": [
         "Grave goods establish objects; motives require interpretation.",
         "Temple storage and lending roles varied rather than following one first-bank model.",
@@ -370,7 +370,7 @@
     "status": "approved",
     "summary": {
       "question": "What changed when weighed metal became stamped coin?",
-      "answer": "A stamp identified an issuer and denomination and could lower verification costs, but early electrum composition varied and a coin's purchasing power still depended on acceptance.",
+      "answer": "A stamp named the issuer and the denomination, which could make coins cheaper to check. But early electrum coins varied in composition, and what a coin could buy still depended on people accepting it.",
       "takeaways": [
         "Units of account existed before coins.",
         "Weighed bullion could require scales or testing to establish its quantity and quality.",
@@ -399,7 +399,7 @@
     "status": "approved",
     "summary": {
       "question": "Why does gold have value?",
-      "answer": "Physical uses and monetary properties matter, but its price also reflects social acceptance, institutions, expectations and market conditions.",
+      "answer": "Partly its physical uses and monetary properties. But its price also reflects social acceptance, institutions, expectations and market conditions.",
       "takeaways": [
         "Menger's saleability theory is one interpretation of money's emergence.",
         "Credit and state-account theories offer competing interpretations, without settling the archaeological record.",
@@ -427,8 +427,8 @@
     "id": "gold-05",
     "status": "approved",
     "summary": {
-      "question": "Were other metals always backed by gold?",
-      "answer": "No. Silver, copper and bronze could be full-bodied money, account units or subsidiary tokens under different laws; a mint ratio is not automatically a redemption promise.",
+      "question": "Was money always backed by gold?",
+      "answer": "No. Silver, copper and bronze could be full-value coins, units of account or token coins under different laws. A mint ratio is not automatically a promise to redeem in gold.",
       "takeaways": [
         "Smaller transactions often used lower-value metals.",
         "Legal mint ratios and market exchange ratios answer different questions.",
@@ -461,8 +461,8 @@
     "id": "gold-06",
     "status": "approved",
     "summary": {
-      "question": "Did empires use gold in the same way?",
-      "answer": "No. Gold served coin, treasury, gift and wealth roles in different states, while silver, copper, paper and credit often handled accounting or payments.",
+      "question": "Did every empire use gold the same way?",
+      "answer": "No. Gold served as coin, treasury, gift and store of wealth in different states, while silver, copper, paper and credit often handled accounting and everyday payments.",
       "takeaways": [
         "India and China do not fit a universal European sequence of metallic money.",
         "Ancient treasure totals and reported price effects do not establish one causal rule across empires.",
@@ -490,7 +490,7 @@
     "status": "approved",
     "summary": {
       "question": "Why did the gold standard end?",
-      "answer": "Gold standards ended at different times under different pressures. In Britain, a run on sterling drained reserves before suspension in September 1931. In the United States, a banking crisis and gold outflows preceded Roosevelt's 1933 suspension of domestic dollar\u2013gold conversion. In 1971, Nixon suspended official conversion for foreign governments amid pressure on US gold reserves and inflation. These were different promises and policy decisions, not one worldwide event.",
+      "answer": "Not all at once: gold standards ended at different times, under different pressures. In Britain, a run on sterling drained reserves before suspension in September 1931. In the United States, a banking crisis and gold outflows preceded Roosevelt's 1933 suspension of domestic dollar\u2013gold conversion. In 1971, Nixon suspended official conversion for foreign governments amid pressure on US gold reserves and inflation. These were different promises and policy decisions, not one worldwide event.",
       "takeaways": [
         "A gold definition did not eliminate bank credit.",
         "Scholarship associates earlier departure from gold with earlier Depression recovery; this is not a complete one-cause explanation.",
@@ -536,8 +536,8 @@
     "id": "gold-08",
     "status": "approved",
     "summary": {
-      "question": "Why did dollar use survive official gold conversion?",
-      "answer": "The dollar had established reserve, trade, banking and securities-market uses; oil invoicing and recycling contributed, but no reviewed 1974 document supplies a universal oil-redemption clause.",
+      "question": "Why did the dollar keep its role after gold conversion ended?",
+      "answer": "By then the dollar already had established reserve, trade, banking and securities-market uses. Oil invoicing and recycling contributed, but no reviewed 1974 document supplies a universal oil-redemption clause.",
       "takeaways": [
         "Oil invoicing is not gold convertibility.",
         "The US\u2013Saudi joint commission addressed economic cooperation; it did not begin dollar oil quotations.",
@@ -573,8 +573,8 @@
     "id": "gold-09",
     "status": "approved",
     "summary": {
-      "question": "What can 2026 gold data actually establish?",
-      "answer": "Dated World Gold Council, ECB and IMF observations establish prices, estimated flows and measured shares under specified conventions; they do not guarantee hedging or reveal every reserve manager's motives.",
+      "question": "What can 2026 gold data actually tell us?",
+      "answer": "Dated World Gold Council, ECB and IMF observations show prices, estimated flows and measured shares under stated conventions. They do not guarantee that gold works as a hedge, or reveal every reserve manager's motives.",
       "takeaways": [
         "World Gold Council demand excluding OTC/other differs from its total-demand measure.",
         "The Council revised its central-bank-and-other-official-institutions net-demand estimate for the first quarter of 2026; the first release and revised vintage should not be conflated.",
@@ -611,8 +611,8 @@
     "id": "bitcoin-01",
     "status": "approved",
     "summary": {
-      "question": "What did Bitcoin's design add after the 2008 crisis?",
-      "answer": "It let participants verify issuance and transfers without a central ledger operator; dollar-priced exchanges, funds and custodians later formed around it.",
+      "question": "What did Bitcoin add after the 2008 crisis?",
+      "answer": "A way for participants to verify new coins and transfers without a central ledger operator. Dollar-priced exchanges, funds and custodians later grew up around it.",
       "takeaways": [
         "Participants can validate issuance and transfers under chosen rules.",
         "Confirmations lower replacement risk without a fixed finality hour.",
@@ -645,8 +645,8 @@
     "id": "bitcoin-02",
     "status": "approved",
     "summary": {
-      "question": "Which trust problems does Bitcoin solve for a self-custodied user?",
-      "answer": "Independent validation and key-controlled transfer reduce reliance on an account provider, while confirmation risk, access, custody choices and price risk remain.",
+      "question": "Which trust problems does Bitcoin solve if you hold your own keys?",
+      "answer": "Validating the rules yourself and moving coins with your own keys means relying less on an account provider. Confirmation risk, access, custody choices and price risk remain.",
       "takeaways": [
         "Validation checks rules; a key authorizes spending under an output's conditions.",
         "Self-custody removes an account provider's freeze power but leaves inclusion, access and coercion risks.",
@@ -674,8 +674,8 @@
     "id": "bitcoin-03",
     "status": "approved",
     "summary": {
-      "question": "How can Bitcoin's uses be measured without mixing populations?",
-      "answer": "Investment, custody and some payments are observed, but surveys, exchange purchases, on-chain flows and Lightning capacity answer different questions.",
+      "question": "How is Bitcoin actually used, and how do we know?",
+      "answer": "Investment, custody and some payments are observed. But surveys, exchange purchases, on-chain flows and Lightning capacity answer different questions, so their numbers can't simply be combined.",
       "takeaways": [
         "A cryptocurrency survey is not a Bitcoin owner census.",
         "Exchange purchases, cross-border flows and payments measure distinct channels.",
@@ -703,8 +703,8 @@
     "id": "bitcoin-04",
     "status": "approved",
     "summary": {
-      "question": "What can a country mean when it says it has adopted Bitcoin?",
-      "answer": "A law on payments, a public asset holding, state-linked mining and regulated private access are different acts; none alone makes Bitcoin the national pricing unit.",
+      "question": "What happened when countries adopted Bitcoin?",
+      "answer": "\u201cAdoption\u201d can mean a payment law, a public holding, state-linked mining or regulated private access; none alone makes Bitcoin the national pricing unit. El Salvador's 2021 law required acceptance, and its 2025 amendment made private acceptance voluntary. The Central African Republic's separate experiment also ended.",
       "takeaways": [
         "Payment law, public holding, state-linked mining and private access are different policies.",
         "El Salvador amended mandatory private acceptance while retaining statutory \u201ccurso legal\u201d wording.",
@@ -732,8 +732,8 @@
     "id": "bitcoin-05",
     "status": "approved",
     "summary": {
-      "question": "Who is speaking for or against a Bitcoin standard?",
-      "answer": "A named official, staff author, policy paper, executive order and bank standard have different authority and address different proposed uses.",
+      "question": "Who is arguing for and against a Bitcoin standard?",
+      "answer": "Named officials, staff authors, policy papers, an executive order and bank standards all take positions, but they carry different authority and address different proposed uses.",
       "takeaways": [
         "Identify a speaker's role and document before treating a view as institutional policy.",
         "Staff research, a policy paper and a binding rule carry different authority.",
@@ -762,7 +762,7 @@
     "status": "approved",
     "summary": {
       "question": "Does calling Bitcoin legal tender make it the unit of account?",
-      "answer": "No. Debt-discharge rules, tax denomination, private acceptance, prices and reserve authority depend on the country's own law and actual use.",
+      "answer": "No. Whether it settles debts or taxes, whether sellers accept it, what prices are set in and whether it is held in reserves all depend on the country's own law and on actual use.",
       "takeaways": [
         "Tender labels do not settle private acceptance, taxes or pricing.",
         "Domestic law determines debt discharge and public reserve authority.",
@@ -791,7 +791,7 @@
     "status": "approved",
     "summary": {
       "question": "Does a fixed Bitcoin base fix the whole money supply?",
-      "answer": "No. Deposits, lending, velocity and prices depend on the banking and redemption arrangement built around the base asset.",
+      "answer": "No. Deposits, lending, velocity and prices depend on the banking and redemption system built around the base asset.",
       "takeaways": [
         "Bitcoin's fixed base does not fix deposits or credit.",
         "Monetary effects depend on conversion promises, lending, velocity and output.",
@@ -825,7 +825,7 @@
     "status": "approved",
     "summary": {
       "question": "How should gold and Bitcoin be compared as reserve assets?",
-      "answer": "By the reserve holder's law, custody, liquidity, loss horizon and mandate, with the same dates and units for performance claims.",
+      "answer": "By the reserve holder's law, custody, liquidity, loss horizon and mandate. Any performance claim should use the same dates and units for both.",
       "takeaways": [
         "Reserve comparisons require the holder's mandate, law and custody.",
         "COFER foreign-exchange reserves and broad official reserves use different denominators.",
@@ -854,7 +854,7 @@
     "status": "approved",
     "summary": {
       "question": "Who controls Bitcoin's rules, transfers and holdings?",
-      "answer": "Validators enforce their chosen rules, while miners, custodians, key holders, exchanges and law affect different steps in using the asset.",
+      "answer": "Validators enforce the rules they choose to run. Miners, custodians, key holders, exchanges and the law each affect different steps in using the asset.",
       "takeaways": [
         "Validators enforce chosen validity rules; miners propose blocks and influence inclusion.",
         "Custodians, keys, exchanges and law affect different uses of a coin.",
@@ -888,7 +888,7 @@
     "status": "approved",
     "summary": {
       "question": "Is there one path from regulated access to a Bitcoin standard?",
-      "answer": "No. Private access, public investment, central-bank reserves, settlement and native invoicing need separate decisions and evidence.",
+      "answer": "No. Private access, public investment, central-bank reserves, settlement and native pricing in Bitcoin are separate decisions, each needing its own evidence.",
       "takeaways": [
         "Private access, public investment and central-bank reserve use need separate authority.",
         "A forfeited-asset reserve order is not a purchase order.",
@@ -922,8 +922,8 @@
     "id": "bitcoin-11",
     "status": "approved",
     "summary": {
-      "question": "Which limits come from Bitcoin's design and which can change?",
-      "answer": "Fixed base issuance is a protocol constraint; payment use, price stability, miner participation, credit and custody outcomes must be measured under an actual arrangement.",
+      "question": "Which of Bitcoin's limits are built in, and which can change?",
+      "answer": "Fixed base issuance is built into the protocol. Payment use, price stability, miner participation, credit and custody outcomes are not fixed; they must be measured under an actual arrangement.",
       "takeaways": [
         "Fixed base issuance is a protocol constraint.",
         "Fee-funded mining security is a scenario requiring revenue and attack assumptions.",
@@ -952,7 +952,7 @@
     "status": "approved",
     "summary": {
       "question": "Could familiar financial runs form around Bitcoin?",
-      "answer": "Custodians, leverage and redeemable claims can transmit run or forced-sale risks, but analogies do not prove identical national crises.",
+      "answer": "Yes: custodians, leverage and redeemable claims can spread run or forced-sale risk. But the analogies do not prove Bitcoin would cause identical national crises.",
       "takeaways": [
         "Redeemable custodial claims and leverage can transmit run risks.",
         "Debt deflation depends on a specified monetary and credit regime.",
@@ -980,8 +980,8 @@
     "id": "bitcoin-13",
     "status": "approved",
     "summary": {
-      "question": "What does the reviewed evidence show about saving, paying and institutional trust?",
-      "answer": "Bitcoin addresses some issuer and intermediary trust problems; broad native denomination and a reliable inflation or crisis hedge are not established here.",
+      "question": "So is Bitcoin the answer to money after gold?",
+      "answer": "Partly. It addresses some trust problems with issuers and intermediaries. But broad use as the unit prices are set in, and a reliable hedge against inflation or crises, are not established by the evidence here.",
       "takeaways": [
         "Auditable issuance addresses one issuer-trust problem.",
         "Investment and settlement use does not establish native national denomination.",

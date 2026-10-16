@@ -9,7 +9,7 @@ export const SITE = {
   trailingSlash: true,
   language: 'en',
   name: 'Money Research',
-  tagline: 'How money works—and why it changes',
+  tagline: 'How money works—and why it keeps changing',
   socialCards: {
     directory: '/og/',
     fallbackPath: '/',

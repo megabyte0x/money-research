@@ -1,5 +1,6 @@
 import { SITE, METADATA_FIELDS, absoluteUrl, socialImageUrl } from './site-config.js';
 import OG_CARD_MANIFEST from './generated/og-manifest.json' with { type: 'json' };
+import SEO_METADATA from '../public/content/seo-metadata.json' with { type: 'json' };
 import { DISCOVERY_COPY, HOME_COPY, METHODS_COPY, NOT_FOUND_COPY, SEARCH_COPY, VOLUME_COPY } from './page-copy.js';
 import {
   canonicalPath, DISCOVERY_VIEWS, isDirectoryRecord, publicationStatus, sharedViewForRecord, shortTitle, VOLUME_IDS,
@@ -10,6 +11,11 @@ export { METADATA_FIELDS };
 const VOLUME_NAME = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin', zcash: 'Zcash' };
 const VOLUME_ROMAN = { gold: 'I', after: 'II', bitcoin: 'III', zcash: 'IV' };
 const PUBLISHER = { '@type': 'Organization', name: SITE.name, url: absoluteUrl('/') };
+const CHAPTER_SEO = SEO_METADATA.chapters || {};
+
+export function chapterSeo(record) {
+  return CHAPTER_SEO[record?.id] || null;
+}
 
 export function escapeHtml(text) {
   return String(text)
@@ -66,22 +72,23 @@ export function resolvePageContent(input) {
 
   if (kind === 'home') {
     path = '/';
-    title = `${SITE.name} · ${SITE.tagline}`;
+    title = `${HOME_COPY.seoTitle} · ${SITE.name}`;
     description = HOME_COPY.description;
     schema = 'home';
   } else if (kind === 'hub') {
     const vol = input.vol || record?.vol;
     path = `/${vol}/`;
     const copy = VOLUME_COPY[vol];
-    title = `${copy.title} · ${SITE.name}`;
+    title = `${copy.seoTitle || copy.title} · ${SITE.name}`;
     description = copy.description;
     breadcrumbs.push({ name: copy.title, path });
     schema = 'hub';
   } else if (kind === 'chapter' && record) {
     path = canonicalPath(record);
     const name = shortTitle(record);
-    title = seoTitle(name);
-    description = articleMetadata[record.id]?.summary?.searchDescription || chapterDescription(record, articleMetadata);
+    const override = chapterSeo(record);
+    title = override?.title ? `${override.title} · ${SITE.name}` : seoTitle(name);
+    description = override?.description || articleMetadata[record.id]?.summary?.searchDescription || chapterDescription(record, articleMetadata);
     socialType = 'article';
     breadcrumbs.push({ name: VOLUME_NAME[record.vol], path: `/${record.vol}/` });
     breadcrumbs.push({ name, path });
@@ -94,7 +101,7 @@ export function resolvePageContent(input) {
     schema = 'methods';
   } else if (kind === 'glossary') {
     path = '/glossary/';
-    title = `${DISCOVERY_COPY.glossary.title} · ${SITE.name}`;
+    title = `${DISCOVERY_COPY.glossary.seoTitle || DISCOVERY_COPY.glossary.title} · ${SITE.name}`;
     description = DISCOVERY_COPY.glossary.description;
     breadcrumbs.push({ name: 'Glossary', path });
     schema = 'glossary';
@@ -110,13 +117,13 @@ export function resolvePageContent(input) {
     schema = 'error';
   } else if (DISCOVERY_COPY[kind]) {
     path = `/${kind}/`;
-    title = `${DISCOVERY_COPY[kind].title.replace(/\.$/, '')} · ${SITE.name}`;
+    title = `${(DISCOVERY_COPY[kind].seoTitle || DISCOVERY_COPY[kind].title).replace(/\.$/, '')} · ${SITE.name}`;
     description = DISCOVERY_COPY[kind].description;
     breadcrumbs.push({ name: kind[0].toUpperCase() + kind.slice(1), path });
     schema = 'discovery';
   } else {
     path = path || '/';
-    title = `${SITE.name} · ${SITE.tagline}`;
+    title = `${HOME_COPY.seoTitle} · ${SITE.name}`;
     description = HOME_COPY.description;
   }
 
@@ -139,6 +146,29 @@ export function resolvePageContent(input) {
     vol: input.vol || record?.vol || null,
     headline: record ? shortTitle(record) : kind === 'home' ? SITE.tagline : title.replace(` · ${SITE.name}`, ''),
     citations: articleMetadata[record?.id]?.citations || [],
+    faq: pageFaq(kind, record, articleMetadata),
+  };
+}
+
+// Question/answer pairs for FAQPage markup: the home page's core questions and
+// each chapter's approved question and short answer, exactly as shown on the page.
+function pageFaq(kind, record, articleMetadata) {
+  if (kind === 'home') return HOME_COPY.faq.map(item => ({ question: item.question, answer: item.answer }));
+  const summary = kind === 'chapter' && articleMetadata[record?.id]?.summary;
+  return summary?.question && summary?.answer ? [{ question: summary.question, answer: summary.answer }] : [];
+}
+
+function faqNode(page) {
+  return {
+    '@type': 'FAQPage',
+    '@id': `${page.canonical}#faq`,
+    url: page.canonical,
+    inLanguage: SITE.language,
+    mainEntity: page.faq.map(item => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
   };
 }
 
@@ -172,6 +202,12 @@ export function jsonLdGraph(page, extras = {}) {
       name: SITE.name,
       inLanguage: SITE.language,
       description: page.description,
+      publisher: PUBLISHER,
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: { '@type': 'EntryPoint', urlTemplate: `${absoluteUrl('/search/')}?q={search_term_string}` },
+        'query-input': 'required name=search_term_string',
+      },
     });
     graph.push({
       '@type': 'WebPage',
@@ -199,6 +235,23 @@ export function jsonLdGraph(page, extras = {}) {
           position: index + 1,
           url: item.url,
           name: item.name,
+        })),
+      });
+    }
+    if (extras.definedTerms?.length) {
+      graph.push({
+        '@type': 'DefinedTermSet',
+        '@id': `${page.canonical}#terms`,
+        name: `${SITE.name} glossary`,
+        url: page.canonical,
+        inLanguage: SITE.language,
+        hasDefinedTerm: extras.definedTerms.map(term => ({
+          '@type': 'DefinedTerm',
+          '@id': `${page.canonical}#${term.id}`,
+          name: term.name,
+          description: term.description,
+          url: `${page.canonical}#${term.id}`,
+          inDefinedTermSet: `${page.canonical}#terms`,
         })),
       });
     }
@@ -245,6 +298,7 @@ export function jsonLdGraph(page, extras = {}) {
       inLanguage: SITE.language,
     });
   }
+  if (page.faq?.length) graph.push(faqNode(page));
   if (page.breadcrumbs?.length > 1) {
     graph.push({
       '@type': 'BreadcrumbList',
@@ -317,7 +371,7 @@ export function applyDocumentMeta(html, page, extras = {}) {
   } else {
     out = out.replace(/(<meta property="og:image" content="[^"]*">)/, `$1\n${imageExtras}`);
   }
-  const jsonTag = `<script type="application/ld+json" data-seo="page">${json}</script>`;
+  const jsonTag = `<script type="application/ld+json" data-seo="page" data-prerendered="${escapeHtml(page.canonical)}">${json}</script>`;
   if (/<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/.test(out)) {
     out = out.replace(/<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/, jsonTag);
   } else {
@@ -359,6 +413,10 @@ export function applyClientMeta(page, extras = {}) {
     script.dataset.seo = 'page';
     document.head.appendChild(script);
   }
+  // The prerendered graph for this URL can carry build-time lists (hub chapters,
+  // glossary terms) that the client does not hold, so keep it until navigation.
+  if (script.dataset.prerendered === page.canonical) return;
+  delete script.dataset.prerendered;
   script.textContent = JSON.stringify(jsonLdGraph(page, extras)).replace(/</g, '\\u003c');
 }
 
@@ -409,7 +467,10 @@ export function indexablePages(manifest, articleMetadata) {
 
 export function llmsTxt(pages) {
   const lines = pages.map(page => `- [${page.headline}](${page.canonical}): ${page.description}`);
-  return `# ${SITE.name}\n\n> ${HOME_COPY.description}\n\n## Pages\n\n${lines.join('\n')}\n`;
+  const core = HOME_COPY.faq.map(item => `### ${item.question}\n\n${item.answer} Source: ${absoluteUrl(item.href.split('#')[0])}`);
+  const answers = pages.filter(page => page.kind === 'chapter' && page.faq?.length)
+    .map(page => `- [${page.faq[0].question}](${page.canonical}): ${page.faq[0].answer}`);
+  return `# ${SITE.name}\n\n> ${HOME_COPY.description}\n\n${HOME_COPY.lead}\n\n## Core questions\n\n${core.join('\n\n')}\n\n## Pages\n\n${lines.join('\n')}\n\n## Chapter short answers\n\n${answers.join('\n')}\n`;
 }
 
 export { VOLUME_NAME, VOLUME_ROMAN };

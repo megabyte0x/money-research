@@ -212,3 +212,91 @@ test('legacy hashes translate to real paths while keeping destination and sectio
   assert.equal(parsed.sec, 'stage-one-metal-by-weight-c-3000-650-bce');
   assert.equal(parseLocation({ pathname: '/after/13-sources/', search: '', hash: '' }, manifest).view, 'sources');
 });
+
+const seoMetadata = JSON.parse(readFileSync(join(root, 'public/content/seo-metadata.json'), 'utf8'));
+
+function graphOf(page) {
+  return JSON.parse(page.match(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)[1])['@graph'];
+}
+
+function unescapeHtml(text) {
+  return text.replaceAll('&quot;', '"').replaceAll('&gt;', '>').replaceAll('&lt;', '<').replaceAll('&amp;', '&');
+}
+
+test('every chapter has its own search title and an untruncated description', () => {
+  const chapters = manifest.filter(item => item.slug !== '00-readme' && !sharedViewForRecord(item));
+  for (const record of chapters) {
+    const override = seoMetadata.chapters[record.id];
+    assert.ok(override, `${record.id}: missing seo-metadata entry`);
+    const page = resolvePage({ kind: 'chapter', record, articleMetadata: modelMetadata });
+    assert.equal(page.title, `${override.title} · Money Research`, record.id);
+    assert.equal(page.description, override.description, `${record.id}: description was shortened`);
+  }
+  for (const page of indexablePages(manifest, modelMetadata)) {
+    assert.doesNotMatch(page.description, /…$/, `${page.path}: truncated description`);
+  }
+  assert.match(resolvePage({ kind: 'chapter', record: manifest.find(r => r.id === 'after-01'), articleMetadata: modelMetadata }).title, /Nixon shock.*gold/i);
+  assert.match(resolvePage({ kind: 'home' }).title, /gold.*fiat.*Bitcoin.*Zcash/i);
+});
+
+test('home serves a visible FAQ that matches its FAQPage markup, plus a site search action', () => {
+  const page = html('index.html');
+  const graph = graphOf(page);
+  const faq = graph.find(node => node['@type'] === 'FAQPage');
+  assert.equal(faq.mainEntity.length, HOME_COPY.faq.length);
+  const main = unescapeHtml(page.slice(page.indexOf('<main')));
+  for (const item of faq.mainEntity) {
+    assert.ok(main.includes(item.name), `question not visible: ${item.name}`);
+    assert.ok(main.includes(item.acceptedAnswer.text), `answer not visible: ${item.name}`);
+  }
+  assert.ok(faq.mainEntity.some(item => /fiat/i.test(item.name)) && faq.mainEntity.some(item => /Zcash/.test(item.name)));
+  const site = graph.find(node => node['@type'] === 'WebSite');
+  assert.equal(site.potentialAction['@type'], 'SearchAction');
+  assert.equal(site.potentialAction.target.urlTemplate, `${SITE.origin}/search/?q={search_term_string}`);
+  assert.ok(main.indexOf('Start the story') < main.indexOf('The story in four steps'), 'one primary call to action leads the page');
+});
+
+test('chapters with an approved answer carry it as FAQPage markup; others open with their own takeaways', () => {
+  const approved = graphOf(html('bitcoin/04-countries-that-adopted-bitcoin-and-what-happened/index.html'));
+  const faq = approved.find(node => node['@type'] === 'FAQPage');
+  assert.equal(faq.mainEntity[0].name, modelMetadata['bitcoin-04'].summary.question);
+  assert.equal(faq.mainEntity[0].acceptedAnswer.text, modelMetadata['bitcoin-04'].summary.answer);
+
+  const zcash = html('zcash/02-what-zcash-is-and-what-is-live/index.html');
+  assert.ok(!graphOf(zcash).some(node => node['@type'] === 'FAQPage'), 'no FAQ without an approved answer');
+  const main = zcash.slice(zcash.indexOf('<main'));
+  const brief = main.indexOf('In brief');
+  assert.ok(brief > main.indexOf('<h1') && brief < main.indexOf('<h2 id="network-currency-and-technology-are-different-things"'), 'summary leads the chapter');
+  assert.ok(main.slice(brief).includes('The current case for Zcash must account for Ironwood'), 'summary quotes the chapter takeaways');
+});
+
+test('glossary exposes every term as a DefinedTerm', () => {
+  const graph = graphOf(html('glossary/index.html'));
+  const set = graph.find(node => node['@type'] === 'DefinedTermSet');
+  const model = JSON.parse(readFileSync(join(dist, 'content/index.json'), 'utf8'));
+  assert.equal(set.hasDefinedTerm.length, model.glossary.length);
+  const fiat = set.hasDefinedTerm.find(term => term.name === 'Fiat money');
+  assert.match(fiat.description, /without a fixed legal promise to redeem/);
+  assert.equal(fiat.url, `${SITE.origin}/glossary/#fiat-money`);
+});
+
+test('static chapters end with previous and next chapter links', () => {
+  const page = html('after/01-the-break-1971-1976/index.html');
+  const nav = page.slice(page.indexOf('aria-label="Previous and next chapter"'));
+  assert.match(nav, /← Previous<\/span><a href="\/after\/">After Gold: overview<\/a>/);
+  assert.match(nav, /Next →<\/span><a href="\/after\/02-oil-petrodollars-and-stagflation-1973-1982\/">/);
+  assert.match(page, /Volume II · After Gold · Chapter 1</);
+});
+
+test('reader-facing pages use reader language, not review-status jargon', () => {
+  for (const rel of ['index.html', 'compare/index.html', 'arc/index.html', 'after/01-the-break-1971-1976/index.html']) {
+    const main = html(rel).slice(html(rel).indexOf('<main'));
+    assert.doesNotMatch(main, /Evidence pending|evidence-pending|Editor-approved|remain withheld|File \d/, rel);
+  }
+});
+
+test('fonts are self-hosted and the body font is preloaded', () => {
+  const page = html('index.html');
+  assert.doesNotMatch(page, /fonts\.(googleapis|gstatic)\.com/);
+  assert.match(page, /<link rel="preload" href="\/assets\/newsreader-latin-wght-normal-[^"]+\.woff2" as="font" type="font\/woff2" crossorigin>/);
+});
