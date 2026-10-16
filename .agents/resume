@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Fast wake hook. Dependencies are installed by .agents/setup and restored from the snapshot.
+# Nothing here needs a user or thread credential; keep this under Amp's 10 second wait.
+set -euo pipefail
+
+cd "$(dirname "$(dirname "$(readlink -f "$BASH_SOURCE")")")"
+
+if ! command -v node >/dev/null 2>&1 || ! command -v npm >/dev/null 2>&1; then
+  echo "node or npm is missing after wake; re-run .agents/setup" >&2
+  exit 1
+fi
+
+if [[ ! -d node_modules/vite || ! -d node_modules/react ]]; then
+  echo "node_modules is incomplete; re-run .agents/setup" >&2
+  exit 1
+fi
+
+printf 'resume ok: node %s\n' "$(node -v)"

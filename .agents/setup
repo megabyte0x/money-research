@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Prepare a fresh orb: install lockfile dependencies for the Vite reader.
+# Amp snapshots the result, so later orbs skip this when the snapshot still matches.
+set -euo pipefail
+
+cd "$(dirname "$(dirname "$(readlink -f "$BASH_SOURCE")")")"
+
+step() {
+  local label="$1"
+  shift
+  local start
+  start="$(date +%s)"
+  printf '==> %s\n' "$label"
+  "$@"
+  printf '    %s done in %ss\n' "$label" "$(( $(date +%s) - start ))"
+}
+
+if ! command -v node >/dev/null 2>&1 || ! command -v npm >/dev/null 2>&1; then
+  echo "node and npm are required; the orb base image should already provide them" >&2
+  exit 1
+fi
+
+printf 'node %s, npm %s\n' "$(node -v)" "$(npm -v)"
+
+# npm ci is already a cheap no-op-ish reinstall when node_modules matches the lockfile
+# (about 2s warm). A custom fingerprint would only hide a real lockfile drift.
+step "npm ci" npm ci --no-audit --no-fund
