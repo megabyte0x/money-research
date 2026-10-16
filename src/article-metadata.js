@@ -47,3 +47,12 @@ export function indexArticleMetadata(rows, manifest, blocks) {
   }
   return published;
 }
+
+// Chapters without an approved short answer open with their own "Key takeaways"
+// paragraph, quoted verbatim, so every chapter leads with a citable summary.
+export function chapterBrief(blocks = []) {
+  const start = blocks.findIndex(block => block.type === 'h2' && /^key takeaways$/i.test(block.text.trim()));
+  if (start < 0) return null;
+  const next = blocks.slice(start + 1).find(block => block.type === 'p' || block.type === 'h2');
+  return next?.type === 'p' ? { text: next.text, sectionId: blocks[start].id } : null;
+}

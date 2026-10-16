@@ -4,9 +4,9 @@
   "height": 630,
   "cards": {
     "/": {
-      "image": "/og/home.1eb1ed7c0ca0.png",
-      "alt": "How money works—and why it changes. Money Research sharing card.",
-      "title": "How money works—and why it changes",
+      "image": "/og/home.b87c80cab5c8.png",
+      "alt": "How money works—and why it keeps changing. Money Research sharing card.",
+      "title": "How money works—and why it keeps changing",
       "volume": "",
       "templateVersion": "title-card-v3"
     },
@@ -18,9 +18,9 @@
       "templateVersion": "title-card-v3"
     },
     "/glossary/": {
-      "image": "/og/glossary.b12162cd823c.png",
-      "alt": "Glossary. Money Research sharing card.",
-      "title": "Glossary",
+      "image": "/og/glossary.51b2258151b2.png",
+      "alt": "Money glossary: fiat, gold standard, legal tender, Bitcoin, Zcash. Money Research sharing card.",
+      "title": "Money glossary: fiat, gold standard, legal tender, Bitcoin, Zcash",
       "volume": "",
       "templateVersion": "title-card-v3"
     },
@@ -32,37 +32,37 @@
       "templateVersion": "title-card-v3"
     },
     "/timeline/": {
-      "image": "/og/timeline.e274293a002b.png",
-      "alt": "A connected monetary timeline. Money Research sharing card.",
-      "title": "A connected monetary timeline",
+      "image": "/og/timeline.a8d88eaea45c.png",
+      "alt": "Timeline of money: from gold and coins to 1971, Bitcoin and Zcash. Money Research sharing card.",
+      "title": "Timeline of money: from gold and coins to 1971, Bitcoin and Zcash",
       "volume": "",
       "templateVersion": "title-card-v3"
     },
     "/takeaways/": {
-      "image": "/og/takeaways.7bb8eb74c813.png",
-      "alt": "Explore the short answers. Money Research sharing card.",
-      "title": "Explore the short answers",
+      "image": "/og/takeaways.9ffc715a6b1c.png",
+      "alt": "Short answers on gold, fiat money and Bitcoin, chapter by chapter. Money Research sharing card.",
+      "title": "Short answers on gold, fiat money and Bitcoin, chapter by chapter",
       "volume": "",
       "templateVersion": "title-card-v3"
     },
     "/mechanics/": {
-      "image": "/og/mechanics.ab7b1dd1b593.png",
-      "alt": "How money is created and moved. Money Research sharing card.",
-      "title": "How money is created and moved",
+      "image": "/og/mechanics.18f0a66e07b5.png",
+      "alt": "How banks create money: loans, payments, bonds and QE explained. Money Research sharing card.",
+      "title": "How banks create money: loans, payments, bonds and QE explained",
       "volume": "",
       "templateVersion": "title-card-v3"
     },
     "/compare/": {
-      "image": "/og/compare.4e8f10fe611a.png",
-      "alt": "Compare monetary arrangements by use. Money Research sharing card.",
-      "title": "Compare monetary arrangements by use",
+      "image": "/og/compare.b02e941598cc.png",
+      "alt": "Gold vs cash vs bank deposits vs Bitcoin vs stablecoins. Money Research sharing card.",
+      "title": "Gold vs cash vs bank deposits vs Bitcoin vs stablecoins",
       "volume": "",
       "templateVersion": "title-card-v3"
     },
     "/arc/": {
-      "image": "/og/arc.870db107ded9.png",
-      "alt": "Monetary arrangements overlap and change under pressure. Money Research sharing card.",
-      "title": "Monetary arrangements overlap and change under pressure",
+      "image": "/og/arc.d345b14601d1.png",
+      "alt": "History of money: from weighed metal to gold, fiat and Bitcoin. Money Research sharing card.",
+      "title": "History of money: from weighed metal to gold, fiat and Bitcoin",
       "volume": "",
       "templateVersion": "title-card-v3"
     },

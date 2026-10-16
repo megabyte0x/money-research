@@ -66,3 +66,29 @@
 .reader-history-end{border-top:1px solid var(--fg);padding-top:24px;font-size:17px;line-height:1.6}
 .reader-history-end h2{font-size:24px;font-weight:500;margin:0 0 12px}
 @media(max-width:639px){.reader-history-picker{display:block}.reader-history-progress-label{flex-direction:column;gap:4px}.reader-history-progress-label strong{text-align:left}.reader-history-progress-track a{height:20px}.reader-history-stage{grid-template-columns:1fr;gap:10px;padding:26px 0;scroll-margin-top:110px}.reader-history-copy h2{font-size:22px}}
+.reader-home{max-width:76ch}
+.home-hero{padding:8px 0 4px}
+.home-hero h1{margin-bottom:20px}
+.home-hero .lead{max-width:60ch;margin:0 0 28px}
+.home-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:0 0 12px}
+.home-cta-primary{display:inline-block;background:var(--fg);color:var(--bg);padding:14px 22px;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.01em}
+.home-cta-primary:hover,.home-cta-primary:focus-visible{background:var(--mut);color:var(--bg)}
+.home-cta-secondary{font-size:16px;color:var(--mut)}
+.home-journey{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;counter-reset:step}
+.home-step{position:relative;min-width:0;border-top:3px solid var(--rule)}
+.home-step-gold{border-top-color:#b8862f}.home-step-after{border-top-color:#487b91}.home-step-bitcoin{border-top-color:#c4732f}.home-step-zcash{border-top-color:#7a63b6}
+.home-step:not(:last-child)::after{content:'→';position:absolute;right:-7px;top:16px;font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--mut);background:var(--bg);line-height:1}
+.home-step a{display:flex;flex-direction:column;gap:8px;height:100%;box-sizing:border-box;padding:16px 18px 18px 0;color:inherit;text-decoration:none}
+.home-step:not(:first-child) a{padding-left:16px}
+.home-step a:hover strong,.home-step a:focus-visible strong{text-decoration:underline;text-underline-offset:3px}
+.home-step-num{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.home-step strong{font-size:19px;line-height:1.2;font-weight:500}
+.home-step-text{font-size:15px;line-height:1.45;color:var(--mut)}
+.home-faq{display:grid;gap:0;border-top:1px solid var(--rule)}
+.home-faq-item{border-bottom:1px solid var(--rule);padding:18px 0}
+.home-faq-item h3{font-size:20px;font-weight:500;line-height:1.25;margin:0 0 8px}
+.home-faq-item p{font-size:17px;margin:0 0 8px}
+.home-faq-item a{font-family:'IBM Plex Mono',monospace;font-size:12px}
+.hub-intro{font-size:clamp(1.12rem,1.8vw,1.3rem);line-height:1.45;margin:-12px 0 30px;max-width:62ch}
+@media(max-width:899px){.home-journey{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:8px}.home-step:nth-child(2)::after{display:none}.home-step:nth-child(3) a{padding-left:0}}
+@media(max-width:639px){.home-journey{grid-template-columns:1fr;row-gap:0}.home-step{border-top:0;border-left:3px solid var(--rule);padding-left:14px}.home-step-gold{border-left-color:#b8862f}.home-step-after{border-left-color:#487b91}.home-step-bitcoin{border-left-color:#c4732f}.home-step-zcash{border-left-color:#7a63b6}.home-step a,.home-step:not(:first-child) a,.home-step:nth-child(3) a{padding:12px 0}.home-step::after{display:none}.home-cta-primary{display:block;text-align:center}.home-faq-item h3{font-size:18px}}

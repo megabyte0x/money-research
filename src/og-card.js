@@ -32,7 +32,7 @@ export function cardTitle(page) {
   if (page.record?.id && EDITORIAL_SHORT_TITLES[page.record.id]) {
     return EDITORIAL_SHORT_TITLES[page.record.id];
   }
-  if (page.kind === 'home') return 'How money works—and why it changes';
+  if (page.kind === 'home') return withoutSiteSuffix(page.headline) || 'How money works—and why it keeps changing';
   return withoutSiteSuffix(page.headline || page.title) || 'Money Research';
 }
 

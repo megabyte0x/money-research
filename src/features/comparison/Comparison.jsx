@@ -1,6 +1,7 @@
 import React from 'react';
 import './comparison.css';
 import { ARRANGEMENTS, PERSPECTIVES, USES, publishableCell } from './model.js';
+import { DISCOVERY_COPY } from '../../page-copy.js';
 
 export { ARRANGEMENTS, PERSPECTIVES, USES, publishableCell };
 
@@ -13,7 +14,7 @@ export default function Comparison({ v = {} }) {
   return <section className="intro-page comparison-feature" aria-labelledby="comparison-title">
     <p className="eyebrow">Comparison</p>
     <h1 id="comparison-title">Compare monetary arrangements by use</h1>
-    <p className="lead">Choose a use and whose decision you are considering. A claim appears only after its source, scope and limitations have been accepted for this comparison.</p>
+    <p className="lead">{DISCOVERY_COPY.compare.lead}</p>
     <div className="comparison-controls">
       <label htmlFor="comparison-use">Use</label>
       <select id="comparison-use" value={use.id} onChange={v.onCompareUse}>
@@ -26,7 +27,7 @@ export default function Comparison({ v = {} }) {
     </div>
     <div className="comparison-feature-scroll">
       <table>
-        <caption>{use.label} · {perspective.label}. Evidence gaps are shown explicitly.</caption>
+        <caption>{use.label} · {perspective.label}</caption>
         <thead><tr><th scope="col">Arrangement</th><th scope="col">What the evidence supports</th><th scope="col">Limits and sources</th></tr></thead>
         <tbody>{ARRANGEMENTS.map(arrangement => {
           const cell = cells[`${arrangement.id}:${use.id}:${perspective.id}`];
@@ -38,7 +39,7 @@ export default function Comparison({ v = {} }) {
               <td><div>Limit: {cell.uncertainty}</div><ul>{cell.citations.map((citation, index) =>
                 <li key={index}><a href={citation.href} target="_blank" rel="noopener noreferrer">{citation.title} ↗</a> · {citation.locator}</li>)}</ul></td>
             </> : <>
-              <td><span className="comparison-pending">Evidence pending</span><div>Arrangement-specific evidence has not cleared review for this use and perspective.</div></td>
+              <td><span className="comparison-pending">{DISCOVERY_COPY.compare.pending}</span><div>{DISCOVERY_COPY.compare.pendingNote}</div></td>
               <td><a href={arrangement.research}>Read the research chapter →</a></td>
             </>}
           </tr>;

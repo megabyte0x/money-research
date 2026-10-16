@@ -1,13 +1,14 @@
 import React from 'react';
 import './reader.css';
 import { HISTORY_STAGES as STAGES } from '../../history-stages.js';
+import { DISCOVERY_COPY } from '../../page-copy.js';
 
 function Stage({ stage, index }) {
   return <section className="reader-history-stage" id={stage.id} data-stage={index + 1} aria-labelledby={`${stage.id}-title`}>
     <div className="reader-history-era"><span>{String(index + 1).padStart(2, '0')}</span>{stage.era}</div>
     <div className="reader-history-copy"><h2 id={`${stage.id}-title`}>{stage.title}</h2>
-      <dl><div><dt>Anchor</dt><dd>{stage.anchor}</dd></div><div><dt>Who held power</dt><dd>{stage.power}</dd></div><div><dt>What changed</dt><dd>{stage.change}</dd></div></dl>
-      <p className="reader-history-limit"><strong>Scope and uncertainty:</strong> {stage.limit}</p>
+      <dl><div><dt>What anchored money</dt><dd>{stage.anchor}</dd></div><div><dt>Who held power</dt><dd>{stage.power}</dd></div><div><dt>What changed</dt><dd>{stage.change}</dd></div></dl>
+      <p className="reader-history-limit"><strong>What we can’t say:</strong> {stage.limit}</p>
       <a href={stage.href}>Read the related chapter →</a>
     </div>
   </section>;
@@ -15,9 +16,9 @@ function Stage({ stage, index }) {
 
 export default function HistoryView({ v }) {
   return <div className="history-arc reader-history">
-    <p className="eyebrow">History · eleven arrangements and turning points</p>
-    <h1>Monetary arrangements overlap and change under pressure.</h1>
-    <p className="reader-history-intro">This arc follows selected uses of metal, coin, redeemable notes, bank deposits, central-bank reserves and digital systems. Each stage has a different geographic and legal scope. The interwar bridge separates the classical gold standard from Bretton Woods; Bitcoin and dollar stablecoins developed alongside fiat systems.</p>
+    <p className="eyebrow">{DISCOVERY_COPY.arc.eyebrow}</p>
+    <h1>{DISCOVERY_COPY.arc.title}</h1>
+    <p className="reader-history-intro">{DISCOVERY_COPY.arc.intro}</p>
     <label className="reader-history-picker">Jump to a regime
       <select aria-label="Jump to a History regime" value="" onChange={e => { if (e.target.value) location.href = e.target.value; }}>
         <option value="">Choose a regime or turning point…</option>

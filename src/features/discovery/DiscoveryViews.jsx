@@ -1,5 +1,8 @@
 import React from 'react';
 import './discovery.css';
+import { DISCOVERY_COPY } from '../../page-copy.js';
+
+const VOLUME_NAMES = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin', zcash: 'Zcash' };
 
 export function SearchView({ v }) {
   return <section className="discovery-view" aria-label="Search results">
@@ -72,8 +75,8 @@ export function SynthesisView({ v }) {
       {(synthesis.links || []).length > 0 && <div className="discovery-synthesis-links">{synthesis.links.map(link => <a key={link.href} href={link.href}>{link.label}</a>)}</div>}
     </> : null}
     <>
-      <p className="discovery-meta">Editor-approved chapter answers</p>{synthesis ? <h2>Explore the short answers</h2> : <h1>Explore the short answers</h1>}
-      <p>Browse the questions from individual chapters. Each answer keeps its own scope; follow the chapter for context and source links.</p>
+      <p className="discovery-meta">{DISCOVERY_COPY.takeaways.meta}</p>{synthesis ? <h2>{DISCOVERY_COPY.takeaways.title}</h2> : <h1>{DISCOVERY_COPY.takeaways.title}</h1>}
+      <p>{DISCOVERY_COPY.takeaways.intro}</p>
       <div className="discovery-filters">
         <label>Volume <select value={v.summaryVolume || ''} onChange={v.onSummaryVolume}>
           <option value="">All volumes</option><option value="gold">Gold</option><option value="after">After Gold</option><option value="bitcoin">Bitcoin</option><option value="zcash">Zcash</option>
@@ -84,12 +87,12 @@ export function SynthesisView({ v }) {
       </div>
       <p className="discovery-meta" aria-live="polite">{shown.length} chapter answers</p>
       <div className="discovery-summary-list">{shown.map(row => <article key={row.id} className="discovery-summary">
-        <p className="discovery-meta">{row.article.vol} · {row.role === 'topic' ? row.topics.join(' · ') : 'reference'}</p>
+        <p className="discovery-meta">{VOLUME_NAMES[row.article.vol]} · Chapter {Number(row.article.num)}{row.role === 'topic' && row.topics.length ? ` · ${row.topics.join(' · ')}` : ''}</p>
         <h2><a href={row.href}>{row.summary.question || row.title}</a></h2><p>{row.summary.answer}</p>
         {(row.citations || row.summary.citations || []).length > 0 && <p className="answer-sources">Sources: {(row.citations || row.summary.citations).map((item, i, list) => <span key={`${item.claimId}-${i}`}><a href={item.url}>{item.publisher || item.title}</a>, {item.locator}{i < list.length - 1 ? '; ' : '.'}</span>)}</p>}
-        {(row.summary.evidence || row.summary.uncertainty || row.summary.evidenceAndUncertainty) && <p className="discovery-meta">{row.summary.evidence && <>Evidence: {row.summary.evidence} </>}{row.summary.uncertainty && <>Still uncertain: {row.summary.uncertainty} </>}{row.summary.evidenceAndUncertainty && <>Evidence and limits: {row.summary.evidenceAndUncertainty}</>}</p>}
+        {(row.summary.evidence || row.summary.uncertainty || row.summary.evidenceAndUncertainty) && <details className="discovery-evidence"><summary>Evidence and limits</summary><p>{row.summary.evidence && <>Evidence: {row.summary.evidence} </>}{row.summary.uncertainty && <>Still uncertain: {row.summary.uncertainty} </>}{row.summary.evidenceAndUncertainty}</p></details>}
       </article>)}</div>
-      {shown.length === 0 && <p className="search-empty">No approved chapter answers match these filters. Choose All volumes or All topics.</p>}
+      {shown.length === 0 && <p className="search-empty">No short answers match these filters. Choose All volumes or All topics.</p>}
     </>
   </section>;
 }

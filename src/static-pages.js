@@ -3,7 +3,8 @@ import { referenceSegments } from './references.js';
 import { articleHref, canonicalPath, isDirectoryRecord, sharedViewForRecord, shortTitle, VOLUME_IDS } from './routes.js';
 import { absoluteUrl } from './site-config.js';
 import { escapeHtml, uniqueCitations, VOLUME_NAME, VOLUME_ROMAN } from './seo.js';
-import { DISCOVERY_COPY, HOME_COPY, METHODS_COPY, NOT_FOUND_COPY, SEARCH_COPY } from './page-copy.js';
+import { DISCOVERY_COPY, HOME_COPY, METHODS_COPY, NOT_FOUND_COPY, SEARCH_COPY, VOLUME_COPY } from './page-copy.js';
+import { chapterBrief } from './article-metadata.js';
 import { HISTORY_STAGES } from './history-stages.js';
 import { ARRANGEMENTS, PERSPECTIVES, USES, publishableCell } from './features/comparison/model.js';
 import { eventSortValue, eventYear, mergeSharedEvents } from './timeline.js';
@@ -27,7 +28,7 @@ export function citationLinksHtml(citations = [], label = 'Sources') {
 
 function linkedText(text, record, byVolumeNumber) {
   return referenceSegments(text, record?.vol, byVolumeNumber).map(part => part.type === 'ref'
-    ? `<a href="${escapeHtml(articleHref(part.record))}" title="${escapeHtml(part.record.vol.toUpperCase() + ' · file ' + part.record.num)}">${escapeHtml(part.text)}</a>`
+    ? `<a href="${escapeHtml(articleHref(part.record))}" title="${escapeHtml(VOLUME_NAME[part.record.vol] + ' · Chapter ' + Number(part.record.num))}">${escapeHtml(part.text)}</a>`
     : escapeHtml(part.text)).join('');
 }
 
@@ -86,7 +87,7 @@ export function summaryHtml(metadata) {
   if (!metadata?.summary) return '';
   const summary = metadata.summary;
   const takeaways = summary.takeaways?.length ? `<ul>${summary.takeaways.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : '';
-  return `<section class="static-summary" aria-label="Chapter summary">${summary.question ? `<h2>${escapeHtml(summary.question)}</h2>` : ''}<p>${escapeHtml(summary.answer)}</p>${takeaways}${citationLinksHtml(metadata.citations, 'Sources for specific chapter claims')}</section>`;
+  return `<section class="static-summary" aria-label="Chapter summary">${summary.question ? `<h2>${escapeHtml(summary.question)}</h2>` : ''}<p class="static-summary-label">Short answer</p><p>${escapeHtml(summary.answer)}</p>${takeaways}${citationLinksHtml(metadata.citations, 'Sources for specific chapter claims')}</section>`;
 }
 
 export function staticArticle(record, model, page) {
@@ -109,8 +110,28 @@ export function staticArticle(record, model, page) {
     ? `${Object.entries(record.sectionAliases || {}).filter(([, target]) => target === heading.id).map(([oldId]) => `<span id="${escapeHtml(oldId)}" aria-hidden="true" class="section-alias"></span>`).join('')}<h1 id="${escapeHtml(heading.id)}">${inlineHtml(heading.text, record, byVolumeNumber)}</h1>`
     : `<h1>${escapeHtml(shortTitle(record))}</h1>`;
   const chapterNav = volumeChapterList(record.vol, model.manifest);
-  const summary = contentRole(record) === 'topic' ? summaryHtml(metadata) : '';
-  return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}<p class="eyebrow">Volume ${VOLUME_ROMAN[record.vol]} · ${VOLUME_NAME[record.vol]} · <a href="/">Money Research</a></p>${h1}${summary}${blocksHtml(opening, record, byVolumeNumber)}${toc}${blocksHtml(body, record, byVolumeNumber)}${isDirectoryRecord(record) ? chapterNav : ''}</main>`;
+  const topic = contentRole(record) === 'topic';
+  const brief = topic && !metadata?.summary ? chapterBrief(blocks) : null;
+  const summary = topic ? (metadata?.summary ? summaryHtml(metadata) : brief ? briefHtml(brief, record, byVolumeNumber) : '') : '';
+  const position = isDirectoryRecord(record) ? 'Overview' : `Chapter ${Number(record.num)}`;
+  const intro = isDirectoryRecord(record) && VOLUME_COPY[record.vol]?.intro ? `<p class="lead hub-intro">${escapeHtml(VOLUME_COPY[record.vol].intro)}</p>` : '';
+  return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}<p class="eyebrow">Volume ${VOLUME_ROMAN[record.vol]} · ${VOLUME_NAME[record.vol]} · ${position}</p>${h1}${intro}${summary}${blocksHtml(opening, record, byVolumeNumber)}${toc}${blocksHtml(body, record, byVolumeNumber)}${isDirectoryRecord(record) ? chapterNav : adjacentChaptersHtml(record, model.manifest)}</main>`;
+}
+
+function briefHtml(brief, record, byVolumeNumber) {
+  return `<section class="static-summary" aria-label="Chapter summary"><p class="static-summary-label">In brief</p><p>${inlineHtml(brief.text, record, byVolumeNumber)}</p><p class="small-note"><a href="#${escapeHtml(brief.sectionId)}">Jump to the key takeaways ↓</a></p></section>`;
+}
+
+export function adjacentChapters(record, manifest) {
+  const list = manifest.filter(item => item.vol === record.vol && !sharedViewForRecord(item));
+  const index = list.findIndex(item => item.id === record.id);
+  return { prev: index > 0 ? list[index - 1] : null, next: index >= 0 ? list[index + 1] || null : null };
+}
+
+function adjacentChaptersHtml(record, manifest) {
+  const { prev, next } = adjacentChapters(record, manifest);
+  const label = item => isDirectoryRecord(item) ? `${VOLUME_NAME[item.vol]}: overview` : shortTitle(item);
+  return `<nav class="reader-chapter-nav" aria-label="Previous and next chapter"><div>${prev ? `<span>← Previous</span><a href="${escapeHtml(canonicalPath(prev))}">${escapeHtml(label(prev))}</a>` : ''}</div><div>${next ? `<span>Next →</span><a href="${escapeHtml(canonicalPath(next))}">${escapeHtml(label(next))}</a>` : ''}</div></nav>`;
 }
 
 export function volumeChapterList(vol, manifest, heading = 'Chapters in this volume') {
@@ -123,35 +144,38 @@ export function hubItemList(vol, manifest) {
     .map(item => ({ name: shortTitle(item), url: absoluteUrl(canonicalPath(item)) }));
 }
 
-export function staticHome(manifest, page) {
-  const volumes = VOLUME_IDS.map(vol => {
-    const names = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin', zcash: 'Zcash' };
-    const labels = { gold: 'Vol. I · Gold', after: 'Vol. II · After Gold', bitcoin: 'Vol. III · Bitcoin', zcash: 'Vol. IV · Zcash' };
-    return {
-      vol, title: names[vol], label: labels[vol], href: `/${vol}/`,
-      question: HOME_COPY.volumeQuestions[vol],
-    };
-  });
-  return `<main id="main-content" class="static-article intro-page reader-home">${breadcrumbHtml(page.breadcrumbs)}
-<h1>${escapeHtml(HOME_COPY.title)}</h1>
-<p class="lead">${escapeHtml(HOME_COPY.lead)}</p>
-<nav class="reader-actions" aria-label="Start reading"><a href="#volumes">Browse the volumes →</a><a href="/arc/">Read History →</a><a href="/compare/">Compare arrangements →</a></nav>
-<h2>Four jobs, different arrangements</h2>
-<div class="reader-jobs">${HOME_COPY.jobs.map(([name, description]) => `<div><h3>${escapeHtml(name)}</h3><p>${escapeHtml(description)}</p></div>`).join('')}</div>
-<p>One arrangement need not do all four jobs. A useful comparison starts with what someone holds, who owes a claim and who controls its transfer.</p>
+// Shared by the prerendered page and the React home so both say the same thing.
+export function homeBodyHtml() {
+  const c = HOME_COPY;
+  return `<section class="home-hero" aria-labelledby="home-title">
+<p class="eyebrow">${escapeHtml(c.eyebrow)}</p>
+<h1 id="home-title">${escapeHtml(c.title)}</h1>
+<p class="lead">${escapeHtml(c.lead)}</p>
+<div class="home-cta"><a class="home-cta-primary" href="${escapeHtml(c.primaryCta.href)}">${escapeHtml(c.primaryCta.label)} →</a><a class="home-cta-secondary" href="${escapeHtml(c.secondaryCta.href)}">${escapeHtml(c.secondaryCta.label)} →</a></div>
+</section>
+<section id="volumes" aria-labelledby="journey-title">
+<h2 id="journey-title">The story in four steps</h2>
+<ol class="home-journey">${c.journey.map(step => `<li class="home-step home-step-${escapeHtml(step.vol)}"><a href="${escapeHtml(step.href)}"><span class="home-step-num">${escapeHtml(step.step)} · ${escapeHtml(step.label)}</span><strong>${escapeHtml(step.title)}</strong><span class="home-step-text">${escapeHtml(step.text)}</span></a></li>`).join('')}</ol>
+</section>
+<section aria-labelledby="faq-title">
+<h2 id="faq-title">Quick answers</h2>
+<div class="home-faq">${c.faq.map(item => `<div class="home-faq-item" id="${escapeHtml(item.id)}"><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p><a href="${escapeHtml(item.href)}">${escapeHtml(item.linkLabel)} →</a></div>`).join('')}</div>
+</section>
 <h2>Follow a question</h2>
-<div class="question-grid">${HOME_COPY.questions.map(item => `<a href="${escapeHtml(item.href)}">${escapeHtml(item.title)}<small>${escapeHtml(item.note)}</small></a>`).join('')}</div>
-<h2>Compare the claims</h2>
-<p>Cash is an issuer liability; a bank balance is a claim on a bank; physical gold is an asset held somewhere; self-custodied Bitcoin depends on key control. An exchange balance or stablecoin adds another issuer or custodian. <a href="/compare/">Compare these arrangements by use →</a></p>
-<p>To see why deposits, reserves and bonds are distinct, <a href="/mechanics/">follow four stylised £100 transactions →</a></p>
-<h2>History overlaps</h2>
-<p>Classical gold convertibility was interrupted by the First World War. Interwar attempts to restore it differed from the post-1944 Bretton Woods dollar system. Since the 1970s, fiat currencies, gold reserves, bank deposits and newer digital arrangements have coexisted. Bitcoin and Zcash are different developments within that overlap, with different transparency and operational trade-offs.</p>
-<nav class="reader-actions" aria-label="Explore history"><a href="/arc/">Read the eleven-stage arc →</a><a href="/timeline/">Explore the connected timeline →</a></nav>
-<h2 id="volumes">Four research volumes</h2>
-<div class="reader-volumes">${volumes.map(volume => `<div class="reader-volume reader-volume-${volume.vol}"><a href="${volume.href}"><span class="reader-volume-cue">${escapeHtml(volume.label)}</span><strong>${escapeHtml(volume.title)}</strong><span>${escapeHtml(volume.question)}</span></a></div>`).join('')}</div>
-<h2>What evidence can and cannot settle</h2>
-<p>Bitcoin and Zcash permit transfer without a central account operator, yet broad use for wages, prices and debts remains uncertain. Claims about adoption, privacy, comparative returns and official reserves require populations, dates and precise source locations. Quantitative charts in the historical arc remain withheld while their datasets are checked.</p>
-<p class="small-note"><a href="/methods/">Read the research method →</a></p>
+<div class="question-grid">${c.questions.map(item => `<a href="${escapeHtml(item.href)}">${escapeHtml(item.title)}<small>${escapeHtml(item.note)}</small></a>`).join('')}</div>
+<h2>Four jobs money does</h2>
+<div class="reader-jobs">${c.jobs.map(([name, description]) => `<div><h3>${escapeHtml(name)}</h3><p>${escapeHtml(description)}</p></div>`).join('')}</div>
+<p>${escapeHtml(c.jobsNote)}</p>
+<h2>Compare what you hold</h2>
+<p>${escapeHtml(c.compare)} <a href="/compare/">Compare them side by side →</a></p>
+<p>Where does new money come from? <a href="/mechanics/">Follow four £100 transactions, from a bank loan to QE →</a></p>
+<h2>How we handle evidence</h2>
+<p>${escapeHtml(c.evidence)} <a href="/methods/">How this library is built →</a></p>`;
+}
+
+export function staticHome(manifest, page) {
+  return `<main id="main-content" class="static-article intro-page reader-home">${breadcrumbHtml(page.breadcrumbs)}
+${homeBodyHtml()}
 </main>`;
 }
 
@@ -207,30 +231,30 @@ export function staticTakeaways(manifest, articleMetadata, page) {
     return { article, metadata };
   }).filter(Boolean);
   return `<main id="main-content" class="static-article discovery-view">${breadcrumbHtml(page.breadcrumbs)}
-<p class="discovery-meta">Editor-approved chapter answers</p>
+<p class="discovery-meta">${escapeHtml(DISCOVERY_COPY.takeaways.meta)}</p>
 <h1>${escapeHtml(DISCOVERY_COPY.takeaways.title)}</h1>
-<p>Browse the questions from individual chapters. Each answer keeps its own scope; follow the chapter for context and source links.</p>
+<p>${escapeHtml(DISCOVERY_COPY.takeaways.intro)}</p>
 <div class="discovery-summary-list">${rows.map(row => `<article class="discovery-summary">
-<p class="discovery-meta">${escapeHtml(row.article.vol)}</p>
+<p class="discovery-meta">${escapeHtml(VOLUME_NAME[row.article.vol])} · Chapter ${Number(row.article.num)}</p>
 <h2><a href="${escapeHtml(canonicalPath(row.article))}">${escapeHtml(row.metadata.summary.question)}</a></h2>
 <p>${escapeHtml(row.metadata.summary.answer)}</p>
 ${citationLinksHtml(row.metadata.citations)}
-${row.metadata.summary.evidenceAndUncertainty ? `<p class="discovery-meta">Evidence and limits: ${escapeHtml(row.metadata.summary.evidenceAndUncertainty)}</p>` : ''}
+${row.metadata.summary.evidenceAndUncertainty ? `<details class="discovery-evidence"><summary>Evidence and limits</summary><p>${escapeHtml(row.metadata.summary.evidenceAndUncertainty)}</p></details>` : ''}
 </article>`).join('')}</div>
 </main>`;
 }
 
 export function staticArc(page) {
   return `<main id="main-content" class="static-article history-arc reader-history">${breadcrumbHtml(page.breadcrumbs)}
-<p class="eyebrow">History · eleven arrangements and turning points</p>
+<p class="eyebrow">${escapeHtml(DISCOVERY_COPY.arc.eyebrow)}</p>
 <h1>${escapeHtml(DISCOVERY_COPY.arc.title)}</h1>
-<p class="reader-history-intro">This arc follows selected uses of metal, coin, redeemable notes, bank deposits, central-bank reserves and digital systems. Each stage has a different geographic and legal scope. The interwar bridge separates the classical gold standard from Bretton Woods; Bitcoin and dollar stablecoins developed alongside fiat systems.</p>
+<p class="reader-history-intro">${escapeHtml(DISCOVERY_COPY.arc.intro)}</p>
 <nav class="static-toc" aria-label="Regimes"><ol>${HISTORY_STAGES.map((stage, index) => `<li><a href="#${escapeHtml(stage.id)}">${index + 1} · ${escapeHtml(stage.title)}</a></li>`).join('')}</ol></nav>
 ${HISTORY_STAGES.map((stage, index) => `<section class="reader-history-stage" id="${escapeHtml(stage.id)}" data-stage="${index + 1}">
 <div class="reader-history-era"><span>${String(index + 1).padStart(2, '0')}</span>${escapeHtml(stage.era)}</div>
 <div class="reader-history-copy"><h2 id="${escapeHtml(stage.id)}-title">${escapeHtml(stage.title)}</h2>
-<dl><div><dt>Anchor</dt><dd>${escapeHtml(stage.anchor)}</dd></div><div><dt>Who held power</dt><dd>${escapeHtml(stage.power)}</dd></div><div><dt>What changed</dt><dd>${escapeHtml(stage.change)}</dd></div></dl>
-<p class="reader-history-limit"><strong>Scope and uncertainty:</strong> ${escapeHtml(stage.limit)}</p>
+<dl><div><dt>What anchored money</dt><dd>${escapeHtml(stage.anchor)}</dd></div><div><dt>Who held power</dt><dd>${escapeHtml(stage.power)}</dd></div><div><dt>What changed</dt><dd>${escapeHtml(stage.change)}</dd></div></dl>
+<p class="reader-history-limit"><strong>What we can’t say:</strong> ${escapeHtml(stage.limit)}</p>
 <a href="${escapeHtml(stage.href)}">Read the related chapter →</a></div>
 </section>`).join('')}
 <div class="reader-history-end"><h2>What stays</h2><p>Metal, sovereign money, bank credit and digital networks coexist because users need different combinations of accessible payments, stable prices, credit, final settlement and control over custody. The comparative question is which arrangement works for which use, who can change its rules and who bears the risk when a promise fails.</p><a href="/timeline/">Explore the connected timeline →</a></div>
@@ -249,13 +273,13 @@ export function staticCompare(model, page) {
     if (accepted) {
       return `<tr><th scope="row">${escapeHtml(arrangement.label)}</th><td>${escapeHtml(cell.text)}<div class="comparison-scope">Scope: ${escapeHtml(cell.scope)}</div></td><td><div>Limit: ${escapeHtml(cell.uncertainty)}</div><ul>${cell.citations.map(citation => `<li><a href="${escapeHtml(citation.href)}">${escapeHtml(citation.title)}</a> · ${escapeHtml(citation.locator)}</li>`).join('')}</ul></td></tr>`;
     }
-    return `<tr><th scope="row">${escapeHtml(arrangement.label)}</th><td><span class="comparison-pending">Evidence pending</span><div>Arrangement-specific evidence has not cleared review for this use and perspective.</div></td><td><a href="${escapeHtml(arrangement.research)}">Read the research chapter →</a></td></tr>`;
+    return `<tr><th scope="row">${escapeHtml(arrangement.label)}</th><td><span class="comparison-pending">${escapeHtml(DISCOVERY_COPY.compare.pending)}</span><div>${escapeHtml(DISCOVERY_COPY.compare.pendingNote)}</div></td><td><a href="${escapeHtml(arrangement.research)}">Read the research chapter →</a></td></tr>`;
   }).join('');
   return `<main id="main-content" class="static-article intro-page comparison-feature">${breadcrumbHtml(page.breadcrumbs)}
 <p class="eyebrow">Comparison</p>
 <h1>${escapeHtml(DISCOVERY_COPY.compare.title)}</h1>
-<p class="lead">A claim appears only after its source, scope and limitations have been accepted for this comparison. The static table shows the household / saving-purchasing-power view; other uses are available in the interactive page.</p>
-<table><caption>${escapeHtml(use.label)} · ${escapeHtml(perspective.label)}. Evidence gaps are shown explicitly.</caption>
+<p class="lead">${escapeHtml(DISCOVERY_COPY.compare.lead)}</p>
+<table><caption>${escapeHtml(use.label)} · ${escapeHtml(perspective.label)}. Choose other uses and points of view in the interactive table.</caption>
 <thead><tr><th scope="col">Arrangement</th><th scope="col">What the evidence supports</th><th scope="col">Limits and sources</th></tr></thead>
 <tbody>${rows}</tbody></table>
 </main>`;
@@ -312,16 +336,38 @@ export function staticTimeline(model, page) {
   return `<main id="main-content" class="static-article">${breadcrumbHtml(page.breadcrumbs)}
 <p class="eyebrow">Connected timeline · 4600 BCE – 2026 · ${merged.length} entries</p>
 <h1>${escapeHtml(DISCOVERY_COPY.timeline.title)}</h1>
-<p>Trace the key moments that shaped money—from early coins and gold standards to modern currencies and Bitcoin. The timeline brings these developments together in chronological order.</p>
+<p>${escapeHtml(DISCOVERY_COPY.timeline.intro)}</p>
 <ol class="static-timeline">${merged.map(event => `<li id="${escapeHtml(event.id)}"><time>${escapeHtml(event.date)}</time> <strong>${escapeHtml(event.event)}</strong>${event.significance ? ` — ${escapeHtml(stripInline(event.significance))}` : ''}</li>`).join('')}</ol>
 </main>`;
 }
 
+export const PRIMARY_NAV = [
+  { href: '/arc/', label: 'Story', view: 'arc' },
+  { href: '/compare/', label: 'Compare', view: 'compare' },
+  { href: '/timeline/', label: 'Timeline', view: 'timeline' },
+  { href: '/glossary/', label: 'Glossary', view: 'glossary' },
+];
+
+export const MORE_NAV = [
+  { href: '/gold/', label: 'Vol. I · Gold' },
+  { href: '/after/', label: 'Vol. II · After Gold' },
+  { href: '/bitcoin/', label: 'Vol. III · Bitcoin' },
+  { href: '/zcash/', label: 'Vol. IV · Zcash' },
+  { href: '/takeaways/', label: 'Short answers' },
+  { href: '/mechanics/', label: 'How money is created' },
+  { href: '/sources/', label: 'Sources' },
+  { href: '/methods/', label: 'Methods' },
+];
+
 export function siteChrome() {
   return `<header class="static-header"><a href="/">Money Research</a>
-<nav aria-label="Primary"><a href="/">Start here</a><a href="/compare/">Compare</a><a href="/arc/">History</a><a href="/timeline/">Timeline</a><a href="/takeaways/">Takeaways</a><a href="/glossary/">Glossary</a><a href="/sources/">Sources</a></nav></header>`;
+<nav aria-label="Primary">${PRIMARY_NAV.map(item => `<a href="${item.href}">${escapeHtml(item.label)}</a>`).join('')}<a href="/search/">Search</a></nav></header>`;
+}
+
+export function siteFooter() {
+  return `<footer class="site-footer"><nav aria-label="Library">${MORE_NAV.map(item => `<a href="${item.href}">${escapeHtml(item.label)}</a>`).join('')}</nav></footer>`;
 }
 
 export function wrapStatic(inner) {
-  return `${siteChrome()}${inner}`;
+  return `${siteChrome()}${inner}${siteFooter()}`;
 }
