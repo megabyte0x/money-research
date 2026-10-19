@@ -1,9 +1,11 @@
 export const HOME_COPY = {
   eyebrow: 'Gold → fiat → Bitcoin → Zcash',
   title: 'How money works—and why it keeps changing.',
-  seoTitle: 'From gold to fiat, Bitcoin and Zcash: how money works and changes',
+  seoTitle: 'Gold, Fiat, Bitcoin & Zcash: How Money Works',
+  socialTitle: 'Gold to Zcash',
+  socialDescription: 'How money works, why it changes, and the trade-offs of gold, fiat, Bitcoin and Zcash.',
   lead: 'In many societies, money long meant weighed or stamped metal. Then governments tied their currencies to gold. On 15 August 1971 the United States closed the “gold window”, and the dollar stopped being convertible into gold—even for foreign governments. Bitcoin, launched after the 2008 crisis, offered money with no central issuer; Zcash added private payments. This library follows that story—and shows where each new money worked, and where it didn’t.',
-  description: 'How gold became money, why the gold standard ended in 1971, what fiat is, and what Bitcoin and Zcash change. 58 documents with sources.',
+  description: 'Explore gold, fiat money, Bitcoin and Zcash: how each system works, why money changes, and what it trades off. 58 documents with sources.',
   primaryCta: { href: '/arc/', label: 'Start the story' },
   secondaryCta: { href: '/gold/', label: 'or begin with Volume I, Gold' },
   journey: [
@@ -138,6 +140,14 @@ export const METHODS_COPY = {
       title: 'Preferred citation',
       paragraphs: [
         'Money Research, “[page title],” [canonical URL]. Use a verified publication or modification date when the page records one; otherwise cite the URL and the date you accessed it. Reuse terms have not been published because a license has not been clarified by the owner.',
+      ],
+    },
+    {
+      id: 'analytics',
+      title: 'Analytics and privacy',
+      paragraphs: [
+        'Cloudflare Web Analytics measures visits, page views, referring sites and page performance, including Core Web Vitals. It does not use analytics cookies or track individual visitors across sites. Browser privacy tools and network failures can prevent measurements, so these reports are not a complete visitor count.',
+        'Search Console separately reports Google search visibility and indexing. A page appearing in this library or its sitemap does not mean Google has indexed it.',
       ],
     },
     {

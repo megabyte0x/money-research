@@ -89,6 +89,12 @@ writeFileSync(join(dist, 'llms.txt'), llmsTxt(indexed));
 writeFileSync(join(dist, 'robots.txt'), robotsTxt());
 writeFileSync(join(root, 'vercel.json'), JSON.stringify(vercelConfig(model.manifest), null, 2) + '\n');
 writeFileSync(join(dist, 'redirects.json'), JSON.stringify(redirectRules(model.manifest), null, 2) + '\n');
+// Legacy paths have no asset to trigger automatic slash normalization, so
+// redirect both forms explicitly. Canonical pages use force-trailing-slash.
+writeFileSync(join(dist, '_redirects'), redirectRules(model.manifest).flatMap(rule => [
+  `${rule.source} ${rule.destination} 308`,
+  `${rule.source.replace(/\/$/, '')} ${rule.destination} 308`,
+]).join('\n') + '\n');
 
 const articleCount = model.manifest.filter(record => !isDirectoryRecord(record) && !sharedViewForRecord(record)).length;
 console.log(`Generated ${articleCount} chapter pages, hubs, discovery routes, robots.txt and sitemap.xml`);

@@ -1,11 +1,9 @@
 // Production origin, slash convention, social assets, and metadata field
 // definitions. Publication/indexability lives with the route registry.
-// Domain decision (15 September 2026): goldtozcash.vercel.app is the permanent
-// production origin. The previous domain has been removed, so this release
-// does not rely on redirects from it.
+// Production is hosted on Cloudflare at goldtozcash.com.
 
 export const SITE = {
-  origin: 'https://goldtozcash.vercel.app',
+  origin: 'https://goldtozcash.com',
   trailingSlash: true,
   language: 'en',
   name: 'Money Research',

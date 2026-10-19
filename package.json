@@ -9,20 +9,23 @@
     "test": "node --test --test-isolation=none tests/*.test.mjs",
     "test:build": "node --test tests/static-output.test.mjs",
     "build": "node scripts/build-content.mjs && node scripts/build-og-cards.mjs && vite build && node scripts/prerender.mjs",
+    "build:cloudflare": "npm run build && node scripts/build-cloudflare.mjs",
+    "deploy": "npm run build:cloudflare && cf deploy --prebuilt",
     "test:release": "npm run build && npm test",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vercel/analytics": "^2.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@cloudflare/build-output-utils": "0.9.3",
     "@fontsource-variable/newsreader": "^5.3.0",
     "@fontsource/ibm-plex-mono": "^5.3.0",
     "@fontsource/ibm-plex-sans": "^5.3.0",
     "@resvg/resvg-js": "^2.6.2",
     "@vitejs/plugin-react": "^4.3.4",
+    "cf": "1.0.0-beta.18",
     "satori": "^0.33.4",
     "vite": "^5.4.11"
   }

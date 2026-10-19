@@ -117,7 +117,7 @@ test('sitemap covers the homepage, shared reference pages and each direct articl
 
 test('generated SEO documents do not retain the removed production host', () => {
   for (const file of outputFiles(join(root, 'dist')).filter(path => /\.(?:html|xml|txt)$/.test(path))) {
-    assert.doesNotMatch(readFileSync(file, 'utf8'), /https:\/\/money-research-iota\.vercel\.app/, file);
+    assert.doesNotMatch(readFileSync(file, 'utf8'), /https:\/\/(?:money-research-iota|goldtozcash)\.vercel\.app/, file);
   }
 });
 

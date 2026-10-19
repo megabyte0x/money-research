@@ -1,10 +1,12 @@
 // The sharing-card content and visual language live here so the build renderer
 // and the page-metadata resolver agree on exactly what a card represents.
+import { SITE } from './site-config.js';
+
 export const OG_CARD_WIDTH = 1200;
 export const OG_CARD_HEIGHT = 630;
-export const OG_CARD_TEMPLATE_VERSION = 'title-card-v3';
+export const OG_CARD_TEMPLATE_VERSION = 'minimal-card-v4';
 export const OG_CARD_FONT_FAMILY = 'IBM Plex Sans';
-export const OG_CARD_DOMAIN = 'goldtozcash.vercel.app';
+export const OG_CARD_DOMAIN = new URL(SITE.origin).hostname;
 
 const VOLUME_NAME = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin', zcash: 'Zcash' };
 const VOLUME_ROMAN = { gold: 'I', after: 'II', bitcoin: 'III', zcash: 'IV' };
@@ -32,7 +34,7 @@ export function cardTitle(page) {
   if (page.record?.id && EDITORIAL_SHORT_TITLES[page.record.id]) {
     return EDITORIAL_SHORT_TITLES[page.record.id];
   }
-  if (page.kind === 'home') return withoutSiteSuffix(page.headline) || 'How money works—and why it keeps changing';
+  if (page.kind === 'home') return 'Gold to Zcash.';
   return withoutSiteSuffix(page.headline || page.title) || 'Money Research';
 }
 
@@ -42,6 +44,7 @@ export function cardVolumeLabel(page) {
 }
 
 export function cardAlt(page) {
+  if (page.kind === 'home') return 'Gold to Zcash. How money works. Why it changes. Money Research.';
   const title = cardTitle(page);
   const volume = cardVolumeLabel(page);
   return `${volume ? `${volume} — ` : ''}${title}. Money Research sharing card.`;
@@ -49,6 +52,7 @@ export function cardAlt(page) {
 
 export function ogCardDefinition(page) {
   return {
+    kind: page.kind,
     title: cardTitle(page),
     volume: cardVolumeLabel(page),
     alt: cardAlt(page),
@@ -67,7 +71,8 @@ export function cardTitleFontSize(title) {
 // A plain Satori element tree: no browser, remote assets, or generated art is
 // involved in producing the final PNG.
 export function ogCardTree(card) {
-  const titleSize = cardTitleFontSize(card.title);
+  const home = card.kind === 'home';
+  const titleSize = home ? 120 : cardTitleFontSize(card.title);
   return {
     type: 'div',
     props: {
@@ -76,7 +81,7 @@ export function ogCardTree(card) {
         height: `${OG_CARD_HEIGHT}px`,
         display: 'flex',
         position: 'relative',
-        padding: '66px 84px 58px',
+        padding: '64px 76px 90px',
         boxSizing: 'border-box',
         backgroundColor: '#121211',
         color: '#f6f4ee',
@@ -86,9 +91,9 @@ export function ogCardTree(card) {
         {
           type: 'div',
           props: {
-            style: { display: 'flex', position: 'absolute', top: 66, left: 84, alignItems: 'center', gap: 18, color: '#d5b46c' },
+            style: { display: 'flex', position: 'absolute', top: 64, left: 76, alignItems: 'center', gap: 16, color: '#d5b46c' },
             children: [
-              { type: 'div', props: { style: { display: 'flex', width: '54px', height: '4px', backgroundColor: '#d5b46c' } } },
+              { type: 'div', props: { style: { display: 'flex', width: '40px', height: '3px', backgroundColor: '#d5b46c' } } },
               {
                 type: 'div',
                 props: {
@@ -102,48 +107,48 @@ export function ogCardTree(card) {
         {
           type: 'div',
           props: {
+            style: { display: 'flex', position: 'absolute', top: 64, right: 76, fontSize: 22, color: '#c6c2b8' },
+            children: OG_CARD_DOMAIN,
+          },
+        },
+        card.volume ? {
+          type: 'div',
+          props: {
+            style: { display: 'flex', position: 'absolute', top: 144, left: 76, fontSize: 20, letterSpacing: '0.08em', color: '#b7b3a9' },
+            children: card.volume,
+          },
+        } : null,
+        {
+          type: 'div',
+          props: {
             style: {
               display: 'flex',
               position: 'absolute',
-              top: 154,
-              left: 84,
-              width: 1032,
-              height: 300,
+              top: 200,
+              left: 76,
+              width: 1048,
+              height: home ? 140 : 260,
               alignItems: 'center',
+              gap: home ? 24 : 0,
               fontSize: `${titleSize}px`,
               fontWeight: 600,
               lineHeight: 1.1,
               letterSpacing: '-0.035em',
-              overflow: 'hidden',
             },
-            children: card.title,
+            children: home ? [
+              { type: 'span', props: { children: 'Gold to' } },
+              { type: 'span', props: { style: { color: '#d5b46c' }, children: 'Zcash.' } },
+            ] : card.title,
           },
         },
-        {
+        home ? {
           type: 'div',
           props: {
-            style: { display: 'flex', position: 'absolute', left: 84, bottom: 58, flexDirection: 'column', gap: 9, color: '#b7b3a9' },
-            children: [
-              card.volume
-                ? {
-                  type: 'div',
-                  props: {
-                    style: { display: 'flex', fontSize: '18px', fontWeight: 600, letterSpacing: '0.04em' },
-                    children: card.volume,
-                  },
-                }
-                : null,
-              {
-                type: 'div',
-                props: {
-                  style: { display: 'flex', fontSize: '17px', fontWeight: 600, letterSpacing: '0.04em' },
-                  children: OG_CARD_DOMAIN,
-                },
-              },
-            ].filter(Boolean),
+            style: { display: 'flex', position: 'absolute', top: 354, left: 76, fontSize: 32, color: '#c6c2b8' },
+            children: 'How money works. Why it changes.',
           },
-        },
-      ],
+        } : null,
+      ].filter(Boolean),
     },
   };
 }

@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { Resvg } from '@resvg/resvg-js';
 import satori from 'satori';
 import {
-  OG_CARD_FONT_FAMILY, OG_CARD_HEIGHT, OG_CARD_TEMPLATE_VERSION, OG_CARD_WIDTH,
+  OG_CARD_DOMAIN, OG_CARD_FONT_FAMILY, OG_CARD_HEIGHT, OG_CARD_TEMPLATE_VERSION, OG_CARD_WIDTH,
   ogCardDefinition, ogCardTree,
 } from '../src/og-card.js';
 import { routeInventory } from '../src/routes.js';
@@ -42,8 +42,10 @@ function filenameFor(path) {
 
 function contentHash(card) {
   return createHash('sha256').update(JSON.stringify({
+    kind: card.kind,
     title: card.title,
     volume: card.volume,
+    domain: OG_CARD_DOMAIN,
     templateVersion: OG_CARD_TEMPLATE_VERSION,
     fontHash,
   })).digest('hex').slice(0, 12);

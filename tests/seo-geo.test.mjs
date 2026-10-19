@@ -19,8 +19,8 @@ function html(rel) {
   return readFileSync(join(dist, rel), 'utf8');
 }
 
-test('production origin is the goldtozcash Vercel deployment', () => {
-  assert.equal(SITE.origin, 'https://goldtozcash.vercel.app');
+test('production origin is the goldtozcash custom domain', () => {
+  assert.equal(SITE.origin, 'https://goldtozcash.com');
 });
 
 test('static home and hubs have introduction text and ordinary volume/chapter links', () => {
@@ -61,7 +61,7 @@ test('prerendered structured data is owned by the client page updater', () => {
   const scripts = [...output.matchAll(/<script type="application\/ld\+json"([^>]*)>([\s\S]*?)<\/script>/g)];
   assert.equal(scripts.length, 1);
   assert.match(scripts[0][1], /data-seo="page"/, 'The client updater must reuse the static graph rather than append a second one');
-  assert.equal(JSON.parse(scripts[0][2])['@graph'][0].url, 'https://goldtozcash.vercel.app/');
+  assert.equal(JSON.parse(scripts[0][2])['@graph'][0].url, 'https://goldtozcash.com/');
 });
 
 test('JSON-LD types match page kinds from the shared resolver', () => {
@@ -102,6 +102,12 @@ test('aliases are redirects in host config, not duplicate copies', () => {
   const rules = redirectRules(manifest);
   const config = JSON.parse(html('redirects.json'));
   assert.deepEqual(config, rules);
+  const cloudflare = new Set(html('_redirects').trim().split('\n'));
+  assert.equal(cloudflare.size, rules.length * 2);
+  for (const rule of rules) {
+    assert.ok(cloudflare.has(`${rule.source} ${rule.destination} 308`));
+    assert.ok(cloudflare.has(`${rule.source.replace(/\/$/, '')} ${rule.destination} 308`));
+  }
   const vercel = vercelConfig(manifest);
   assert.equal(vercel.rewrites, undefined);
   assert.ok(rules.some(rule => rule.source === '/gold/00-readme/' && rule.destination === '/gold/' && rule.permanent));
@@ -186,9 +192,19 @@ test('library size in SEO copy matches the manifest', () => {
   assert.match(METHODS_COPY.sections[0].paragraphs[0], new RegExp(`${manifest.length} research documents`));
 });
 
-test('index.html fallback metadata matches the shared home description', () => {
+test('home fallback and prerendered metadata keep sharing copy concise and separate from search copy', () => {
   const shell = readFileSync(join(root, 'index.html'), 'utf8');
-  assert.ok(shell.includes(`content="${HOME_COPY.description}"`));
+  const home = resolvePage({ kind: 'home' });
+  assert.notEqual(home.socialTitle, home.title);
+  assert.ok(home.socialDescription.length <= 100);
+  for (const output of [shell, html('index.html')]) {
+    assert.ok(output.includes(`<title>${home.title.replaceAll('&', '&amp;')}</title>`));
+    assert.ok(output.includes(`<meta name="description" content="${HOME_COPY.description}">`));
+    assert.ok(output.includes(`<meta property="og:title" content="${HOME_COPY.socialTitle}">`));
+    assert.ok(output.includes(`<meta property="og:description" content="${HOME_COPY.socialDescription}">`));
+    assert.ok(output.includes(`<meta name="twitter:title" content="${HOME_COPY.socialTitle}">`));
+    assert.ok(output.includes(`<meta name="twitter:description" content="${HOME_COPY.socialDescription}">`));
+  }
 });
 
 test('prerendered chapters lead with the title and answer before the review notice', () => {

@@ -137,6 +137,8 @@ export function resolvePageContent(input) {
     canonical,
     title,
     description: snippet(description),
+    socialTitle: kind === 'home' ? HOME_COPY.socialTitle : title,
+    socialDescription: kind === 'home' ? HOME_COPY.socialDescription : snippet(description),
     robots,
     indexable,
     socialType,
@@ -331,8 +333,8 @@ export function applyDocumentMeta(html, page, extras = {}) {
   const replacements = [
     [/<title>[^<]*<\/title>/, `<title>${escapeHtml(page.title)}</title>`],
     [/<meta name="description" content="[^"]*">/, `<meta name="description" content="${escapeHtml(page.description)}">`],
-    [/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${escapeHtml(page.title)}">`],
-    [/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${escapeHtml(page.description)}">`],
+    [/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${escapeHtml(page.socialTitle)}">`],
+    [/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${escapeHtml(page.socialDescription)}">`],
     [/<meta property="og:type" content="[^"]*">/, `<meta property="og:type" content="${escapeHtml(page.socialType)}">`],
     [/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${escapeHtml(page.canonical)}">`],
     [/<meta property="og:site_name" content="[^"]*">/, `<meta property="og:site_name" content="${escapeHtml(SITE.name)}">`],
@@ -351,11 +353,11 @@ export function applyDocumentMeta(html, page, extras = {}) {
   if (!/<meta name="twitter:title"/.test(out)) {
     out = out.replace(
       '<meta name="twitter:card"',
-      `<meta name="twitter:title" content="${escapeHtml(page.title)}">\n<meta name="twitter:description" content="${escapeHtml(page.description)}">\n<meta name="twitter:card"`,
+      `<meta name="twitter:title" content="${escapeHtml(page.socialTitle)}">\n<meta name="twitter:description" content="${escapeHtml(page.socialDescription)}">\n<meta name="twitter:card"`,
     );
   } else {
-    out = out.replace(/<meta name="twitter:title" content="[^"]*">/, `<meta name="twitter:title" content="${escapeHtml(page.title)}">`);
-    out = out.replace(/<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${escapeHtml(page.description)}">`);
+    out = out.replace(/<meta name="twitter:title" content="[^"]*">/, `<meta name="twitter:title" content="${escapeHtml(page.socialTitle)}">`);
+    out = out.replace(/<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${escapeHtml(page.socialDescription)}">`);
   }
   const imageExtras = [
     `<meta property="og:image:type" content="image/png">`,
@@ -385,8 +387,8 @@ export function applyClientMeta(page, extras = {}) {
   document.title = page.title;
   setMeta('name', 'description', page.description);
   setMeta('name', 'robots', page.robots);
-  setMeta('property', 'og:title', page.title);
-  setMeta('property', 'og:description', page.description);
+  setMeta('property', 'og:title', page.socialTitle);
+  setMeta('property', 'og:description', page.socialDescription);
   setMeta('property', 'og:type', page.socialType);
   setMeta('property', 'og:url', page.canonical);
   setMeta('property', 'og:site_name', SITE.name);
@@ -395,8 +397,8 @@ export function applyClientMeta(page, extras = {}) {
   setMeta('property', 'og:image:width', String(page.imageWidth));
   setMeta('property', 'og:image:height', String(page.imageHeight));
   setMeta('property', 'og:image:alt', page.imageAlt);
-  setMeta('name', 'twitter:title', page.title);
-  setMeta('name', 'twitter:description', page.description);
+  setMeta('name', 'twitter:title', page.socialTitle);
+  setMeta('name', 'twitter:description', page.socialDescription);
   setMeta('name', 'twitter:image', page.image);
   setMeta('name', 'twitter:image:alt', page.imageAlt);
   let canonical = document.querySelector('link[rel="canonical"]');

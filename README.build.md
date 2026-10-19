@@ -50,7 +50,29 @@ npm run preview
 
 ## Deploy
 
-Vercel auto-detects Vite. `vercel.json` serves prebuilt article directories directly, rewrites standalone SPA views to `index.html`, and sets cache headers for `/content` and `/assets`. Non-production Git branches get protected preview deployments; do not promote until the release gates in `IMPLEMENTATION-STATUS.md` pass.
+Production targets Cloudflare Workers Static Assets at **https://goldtozcash.com**.
+Use Node.js 22.18 or newer and authenticate with `npx cf auth login`.
+
+```
+npm run build:cloudflare
+npm test
+npx cf deploy --prebuilt --dry-run
+npx cf deploy --prebuilt
+```
+
+`npm run deploy` rebuilds and deploys in one command. `cloudflare.config.ts` fixes
+the target account, Worker, custom domain, trailing slashes and real 404 handling.
+The packaging step copies the complete prerendered `dist/` into Cloudflare Build
+Output; do not use plain `cf build` or `cf deploy`, because their Vite detection
+skips our content and prerender scripts. CLI/build-output versions are pinned
+while Cloudflare's tooling is in beta.
+
+The build generates `_redirects` from the same route registry as `vercel.json`,
+and `public/_headers` preserves content noindex/revalidation and immutable
+asset/card caching. The Vercel configuration remains for the existing deployment
+and host tests; this does not create Git-triggered Cloudflare deployments.
+Editorial release gates in `IMPLEMENTATION-STATUS.md` remain open and are not
+certified by a successful deployment.
 
 ## Ask ChatGPT about a passage
 
