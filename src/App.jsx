@@ -92,21 +92,44 @@ function GlossaryTerm({ term, label, definition }) {
   </span>;
 }
 
+function ReadingProgress() {
+  const [progress, setProgress] = React.useState(0);
+  React.useEffect(() => {
+    let tick = 0;
+    const onScroll = () => {
+      if (tick) return;
+      tick = requestAnimationFrame(() => {
+        tick = 0;
+        const h = document.documentElement;
+        const max = h.scrollHeight - h.clientHeight;
+        setProgress(max > 0 ? window.scrollY / max : 0);
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (tick) cancelAnimationFrame(tick);
+    };
+  }, []);
+  return <div className="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress * 100)} style={{ width: (progress * 100).toFixed(1) + '%' }}></div>;
+}
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     const initial = props.initialData || {};
     const search = typeof location !== 'undefined' ? searchState(location.search || location.hash) : { query: '', volume: '' };
     this.state = {
-      manifest: initial.manifest || [], fileRefs: initial.fileRefs || {}, blocks: initial.blocks || {},
+      manifest: initial.manifest || [], blocks: initial.blocks || {},
       glossary: initial.glossary || [], timelineReviewStatus: initial.timelineReviewStatus || {},
       comparisonCells: initial.comparisonCells || {}, observations: initial.observations || {},
-      articleEvidence: initial.articleEvidence || {}, articleClaims: initial.articleClaims || {},
       articleMetadata: initial.articleMetadata || {}, claims: initial.claims || {}, sources: initial.sources || {},
-      searchIndexLoaded: !!initial.searchIndexLoaded, discoveryLoaded: !!initial.discoveryLoaded,
+      searchIndexLoaded: !!initial.searchIndexLoaded, discoveryLoaded: !!initial.discoveryLoaded, readerLoaded: !!initial.readerLoaded,
       route: props.initialRoute || { view: 'home' }, query: search.query, searchVol: search.volume,
-      glq: '', collapsed: {}, progress: 0, copied: false, quote: null, askOpen: false,
+      glq: '', collapsed: {}, copied: false, quote: null, askOpen: false,
       promptCopied: false, theme: null, loaded: !!initial.manifest?.length, headerH: 52, menuOpen: false,
+      mobile: typeof window !== 'undefined' && window.innerWidth < 640,
+      narrow: typeof window !== 'undefined' && window.innerWidth < 1120,
     };
     if (initial.manifest?.length) this.prepareCorpus(initial);
   }
@@ -129,16 +152,6 @@ export default class App extends React.Component {
     this.onHash = () => { this.onNavigate(); };
     window.addEventListener('hashchange', this.onHash);
     window.addEventListener('popstate', this.onHash);
-    this.onScroll = () => {
-      if (this.scrollTick) return;
-      this.scrollTick = requestAnimationFrame(() => {
-        this.scrollTick = 0;
-        const h = document.documentElement; const max = h.scrollHeight - h.clientHeight;
-        const progress = max > 0 ? window.scrollY / max : 0;
-        this.setState(st => st.progress === progress ? null : { progress });
-      });
-    };
-    window.addEventListener('scroll', this.onScroll, { passive: true });
     this.onDown = (e) => {
       if (this.state.quote && !e.target.closest('[data-quote-btn]')) this.setState({ quote: null });
       if (this.state.menuOpen && !this.menuRef.current?.contains(e.target)) this.setState({ menuOpen: false });
@@ -172,12 +185,11 @@ export default class App extends React.Component {
     }
   }
   componentWillUnmount() {
-    window.removeEventListener('hashchange', this.onHash); window.removeEventListener('popstate', this.onHash); window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('hashchange', this.onHash); window.removeEventListener('popstate', this.onHash);
     window.removeEventListener('pointerdown', this.onDown); window.removeEventListener('resize', this.onResize);
     window.removeEventListener('resize', this.onFontResize);
     document.removeEventListener('keydown', this.onMenuEscape);
     this.stageObserver?.disconnect();
-    if (this.scrollTick) cancelAnimationFrame(this.scrollTick);
   }
   prepareCorpus(data) {
     this.md = md;
@@ -191,10 +203,10 @@ export default class App extends React.Component {
   }
   async load() {
     const shell = await loadShell();
-    this.prepareCorpus(shell);
     translateLegacyHash(location, history, shell.manifest);
     const route = parseLocation(location, shell.manifest);
     const extra = await loadRoutePayload(route, shell);
+    this.prepareCorpus({ ...shell, ...extra });
     const search = searchState(location.search || location.hash);
     this.setState({ ...shell, ...extra, loaded: true, route, query: search.query, searchVol: search.volume }, () => this.scrollToSection());
   }
@@ -203,6 +215,7 @@ export default class App extends React.Component {
     const route = parseLocation(location, this.state.manifest);
     const search = searchState(location.search || location.hash);
     const extra = await loadRoutePayload(route, this.state);
+    if (extra.glossary) this.prepareCorpus({ ...this.state, ...extra });
     this.setState({ route, ...extra, collapsed: {}, quote: null, menuOpen: false, query: search.query, searchVol: search.volume }, () => this.scrollToSection());
   }
   pageFromRoute(route = this.state.route) {
@@ -362,6 +375,8 @@ export default class App extends React.Component {
     return source ? [{ href: this.href(source), label: 'Volume ' + ({ gold: 'I', after: 'II', bitcoin: 'III', zcash: 'IV' }[vol]) + ' timeline' + (status === 'source_timeline_fallback_reviewed' ? '' : ' (link not yet checked)') }] : [];
   }
   timelineGroups() {
+    const inputs = [this.state.blocks, this.state.manifest, this.state.timelineReviewStatus, !!this.state.tlAll];
+    if (this.timelineCache?.inputs.every((value, index) => value === inputs[index])) return this.timelineCache.groups;
     this.refCache = this.refCache || {};
     const events = [];
     const big = /Varna|Hammurabi|Lydia strikes|Croesus|Darius|Alexander coins|Denarius debased|Constantine|Abd al-Malik|Charlemagne|jiaozi|Florence strikes|Mansa Musa|Potosí|Newton|Bank of England|Britain (leaves|suspends|returns|adopts|formally)|California|Germany adopts|Coinage Act|Witwatersrand|Bretton Woods|Roosevelt|Gold Pool|Nixon suspends|Smithsonian|major currencies float|Yom Kippur|Herstatt|Jamaica|Volcker|Gold peaks|Mexico announces|Plaza|Black Monday|Basel I\b|Berlin Wall|Soviet Union dissolved|Maastricht|ERM crisis|Tequila|Thai baht|Asian|Russia defaults|LTCM|euro (launched|notes)|China joins WTO|9\/11|Iraq invaded|Lehman|QE1|Bitcoin genesis|Whatever it takes|Draghi|Tether|COVID|Russia invades|CPI 9\.1|Liberation Day|GENIUS|gold \$3,000|gold peaks|record|\$5,590|Basel III|Zerocash|Zcash launch|Sapling|Orchard|NU6\.[123]|Ironwood/i;
@@ -406,7 +421,9 @@ export default class App extends React.Component {
         sigEl: this.inline(event.significance, { vol, gloss: false, usedGloss: { set: new Set() } })
       });
     });
-    return groups.filter(g => g.rows.length > 0);
+    const visible = groups.filter(g => g.rows.length > 0);
+    this.timelineCache = { inputs, groups: visible };
+    return visible;
   }
   search() {
     return searchDocuments(this.state.manifest, this.state.blocks, this.state.query, this.state.searchVol).map(result => ({
@@ -494,7 +511,6 @@ export default class App extends React.Component {
       stickyTop: st.headerH + 'px',
       asideHeight: 'calc(100vh - ' + st.headerH + 'px)',
       rightDisplay: narrow ? 'none' : 'block',
-      progressPct: (st.progress * 100).toFixed(1) + '%',
       query: st.query, searchVol: st.searchVol, glq: st.glq,
       bodyFontSize: BODY_SIZE + 'px'
     };
@@ -525,7 +541,6 @@ export default class App extends React.Component {
     vals.themeLabel = currentTheme === 'dark' ? '☀ Light mode' : '☾ Dark mode';
     vals.themeAction = currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
     vals.activeView = r.view;
-    vals.progress = st.progress;
     vals.isHub = r.view === 'hub';
     const cur = r.view === 'article' || r.view === 'hub' ? this.chapter(r.vol, r.slug || '00-readme') : null;
     vals.allChapters = st.manifest.filter(m => !sharedViewForRecord(m)).map(m => ({ href: this.href(m), optLabel: ({ gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin', zcash: 'Zcash' }[m.vol]) + (m.slug === '00-readme' ? ' · Overview' : ' ' + Number(m.num) + ' · ' + this.short(m)) }));
@@ -677,7 +692,7 @@ export default class App extends React.Component {
     const v = this.renderVals();
     return (
       <div style={s('min-height:100vh;display:flex;flex-direction:column')}>
-        {v.isArticle && !v.isHub && <div className="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(v.progress * 100)} style={{ width: v.progressPct }}></div>}
+        {v.isArticle && !v.isHub && <ReadingProgress />}
         <header ref={this.headerRef} className="site-header" style={s("position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--rule);display:flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px", { columnGap: v.headerGap, rowGap: '8px', padding: v.headerPad, height: v.headerHeight, minHeight: '52px' })}>
           <a href="/" style={s('text-decoration:none;white-space:nowrap;display:flex;gap:10px;align-items:center')}>
             <span style={s('width:7px;height:7px;border:1px solid var(--fg);display:inline-block')}></span>{v.brand}

@@ -36,36 +36,43 @@ export function recordForRoute(route, manifest = []) {
 
 export async function loadRoutePayload(route, state) {
   const next = {};
+  const pending = [];
   const manifest = state.manifest || [];
   const record = recordForRoute(route, manifest);
-  if (record) {
-    const key = `${record.slug}@${record.vol}`;
-    if (!state.blocks?.[key]) {
-      const blocks = { ...(state.blocks || {}) };
-      blocks[key] = await loadArticleBlocks(record.id);
-      next.blocks = blocks;
-    }
+  const records = record ? [record] : ['sources', 'timeline'].includes(route.view)
+    ? manifest.filter(entry => sharedViewForRecord(entry) === route.view) : [];
+  const missing = records.filter(item => !state.blocks?.[`${item.slug}@${item.vol}`]);
+  if (missing.length) {
+    pending.push(Promise.all(missing.map(item => loadArticleBlocks(item.id))).then(loaded => {
+      next.blocks = { ...state.blocks };
+      missing.forEach((item, index) => {
+        next.blocks[`${item.slug}@${item.vol}`] = loaded[index];
+      });
+    }));
   }
-  if (route.view === 'sources' || route.view === 'timeline') {
-    const blocks = { ...(next.blocks || state.blocks || {}) };
-    const missing = manifest.filter(entry => sharedViewForRecord(entry) === route.view && !blocks[`${entry.slug}@${entry.vol}`]);
-    const loaded = await Promise.all(missing.map(item => loadArticleBlocks(item.id)));
-    missing.forEach((item, index) => {
-      const key = `${item.slug}@${item.vol}`;
-      blocks[key] = loaded[index];
-    });
-    next.blocks = blocks;
+  if (['article', 'hub', 'glossary', 'takeaways', 'sources'].includes(route.view) && !state.readerLoaded) {
+    pending.push(loadJson('content/reader.json').then(reader => {
+      next.glossary = reader.glossary;
+      next.articleMetadata = reader.articleMetadata;
+      next.readerLoaded = true;
+    }));
   }
   if (route.view === 'search' && !state.searchIndexLoaded) {
-    next.blocks = { ...(next.blocks || state.blocks || {}), ...(await loadSearchIndex()) };
-    next.searchIndexLoaded = true;
+    pending.push(loadSearchIndex().then(blocks => {
+      next.blocks = { ...state.blocks, ...blocks };
+      next.searchIndexLoaded = true;
+    }));
   }
   if ((route.view === 'timeline' || route.view === 'compare') && !state.discoveryLoaded) {
-    const discovery = await loadDiscovery();
-    next.timelineReviewStatus = discovery.timelineReviewStatus || {};
-    next.comparisonCells = discovery.comparisonCells || {};
-    next.observations = discovery.observations || {};
-    next.discoveryLoaded = true;
+    pending.push(loadDiscovery().then(discovery => {
+      next.timelineReviewStatus = discovery.timelineReviewStatus || {};
+      next.comparisonCells = discovery.comparisonCells || {};
+      next.observations = discovery.observations || {};
+      next.sources = discovery.sources || {};
+      next.claims = discovery.claims || {};
+      next.discoveryLoaded = true;
+    }));
   }
+  await Promise.all(pending);
   return next;
 }

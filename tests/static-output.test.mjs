@@ -29,12 +29,31 @@ test('built browser index and static pages use the same validated source model',
   const expected = createContentModel(manifest, documents, observations, timelineEventIds, { sources, claims }, articleMetadata, timelineReviewStatus, comparisonCells);
   const browserIndex = JSON.parse(readFileSync(join(root, 'dist/content/index.json'), 'utf8'));
   assert.deepEqual(browserIndex, expected);
+  const shell = JSON.parse(readFileSync(join(root, 'dist/content/shell.json'), 'utf8'));
+  const reader = JSON.parse(readFileSync(join(root, 'dist/content/reader.json'), 'utf8'));
+  const discovery = JSON.parse(readFileSync(join(root, 'dist/content/discovery.json'), 'utf8'));
+  const routeData = { ...shell, ...reader, ...discovery };
+  for (const key of ['manifest', 'glossary', 'articleMetadata', 'timelineReviewStatus', 'comparisonCells', 'observations', 'sources', 'claims']) {
+    assert.deepEqual(routeData[key], expected[key], `split browser data lost ${key}`);
+  }
   const timeline = readFileSync(join(root, 'dist/timeline/index.html'), 'utf8');
   assert.match(timeline, /Gold reaches \$5,405\/oz/);
   assert.doesNotMatch(timeline, /\{\{obs:/);
   const source = readFileSync(join(root, 'dist/content/resolved/gold/10-master-timeline.md'), 'utf8');
   assert.match(source, /Gold reaches \$5,405\/oz/);
   assert.doesNotMatch(source, /\{\{obs:/);
+});
+
+test('HTML data preloads point to shipped JSON and match browser fetch credentials', () => {
+  for (const file of outputFiles(join(root, 'dist')).filter(path => path.endsWith('.html'))) {
+    const html = readFileSync(file, 'utf8');
+    const preloads = [...html.matchAll(/<link rel="preload" href="(\/content\/[^"]+)" as="fetch" crossorigin(?: fetchpriority="low")?>/g)].map(match => match[1]);
+    assert.ok(preloads.includes('/content/shell.json'), `${file}: missing startup preload`);
+    assert.equal(new Set(preloads).size, preloads.length, `${file}: duplicate data preload`);
+    for (const path of preloads) {
+      assert.doesNotThrow(() => JSON.parse(readFileSync(join(root, 'dist', path.slice(1)), 'utf8')), `${file}: invalid preload ${path}`);
+    }
+  }
 });
 
 test('approved summaries appear in crawlable chapters without next-step panels', () => {

@@ -3,6 +3,7 @@ dist
 .amp/portals/
 /public/content/index.json
 /public/content/shell.json
+/public/content/reader.json
 /public/content/search-index.json
 /public/content/discovery.json
 /public/content/articles/

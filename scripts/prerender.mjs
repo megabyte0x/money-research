@@ -19,7 +19,18 @@ const model = JSON.parse(readFileSync(join(root, 'public/content/index.json'), '
 const template = readFileSync(join(dist, 'index.html'), 'utf8');
 
 function writePage(relDir, inner, page, extras = {}) {
+  // Start route data alongside the entry script instead of waiting for JS and
+  // the manifest to finish. These are the same URLs loadRoutePayload fetches.
+  const data = [];
+  if (['glossary', 'takeaways', 'sources'].includes(page.kind)) data.push('reader.json');
+  if (['timeline', 'sources'].includes(page.kind)) {
+    data.push(...model.manifest.filter(record => sharedViewForRecord(record) === page.kind).map(record => `articles/${record.id}.json`));
+  }
+  if (['timeline', 'compare'].includes(page.kind)) data.push('discovery.json');
+  if (page.kind === 'search') data.push('search-index.json');
+  const preloads = data.map(path => `<link rel="preload" href="/content/${path}" as="fetch" crossorigin fetchpriority="low">`).join('\n');
   const html = applyDocumentMeta(template, page, extras)
+    .replace('</head>', `${preloads}\n</head>`)
     .replace('<div id="root"></div>', `<div id="root">${wrapStatic(inner)}</div>`);
   const output = relDir ? join(dist, relDir) : dist;
   mkdirSync(output, { recursive: true });
