@@ -2,16 +2,21 @@ import React from 'react';
 import './reader.css';
 import { uniqueCitations } from '../../seo.js';
 import { METHODS_COPY } from '../../page-copy.js';
-import { homeBodyHtml } from '../../static-pages.js';
+import { homeIntroHtml, homeRestHtml } from '../../static-pages.js';
+import { HomeCoexistence, MethodsFigure } from '../figures/registry.jsx';
 
 export function HomePage() {
-  return <div className="intro-page reader-home" dangerouslySetInnerHTML={{ __html: homeBodyHtml() }} />;
+  return <div className="intro-page reader-home">
+    <div dangerouslySetInnerHTML={{ __html: homeIntroHtml() }} />
+    <HomeCoexistence />
+    <div dangerouslySetInnerHTML={{ __html: homeRestHtml() }} />
+  </div>;
 }
 
 export function MethodsPage() {
   return <div className="intro-page reader-methods">
     <p className="eyebrow">{METHODS_COPY.eyebrow}</p><h1>{METHODS_COPY.title}</h1>
-    {METHODS_COPY.sections.map(section => <section key={section.id} id={section.id}><h2>{section.title}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</section>)}
+    {METHODS_COPY.sections.map(section => <section key={section.id} id={section.id}><h2>{section.title}</h2>{section.paragraphs.map((paragraph, i) => <React.Fragment key={paragraph}><p>{paragraph}</p>{section.id === 'process' && i === 0 && <MethodsFigure />}</React.Fragment>)}</section>)}
     <ul>{METHODS_COPY.sourceLinks.map(link => <li key={link.href}><a href={link.href}>{link.label}</a></li>)}</ul>
   </div>;
 }

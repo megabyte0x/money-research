@@ -18,6 +18,7 @@ import { HISTORY_STAGES } from './history-stages.js';
 import { MORE_NAV, PRIMARY_NAV } from './static-pages.js';
 import { VOLUME_COPY } from './page-copy.js';
 import { chapterBrief } from './article-metadata.js';
+import { ARTICLE_FIGURES } from './features/figures/registry.jsx';
 
 const VOLUME_TITLES = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin', zcash: 'Zcash' };
 
@@ -321,7 +322,7 @@ export default class App extends React.Component {
   blocksToEls(blocks, ctx, opts = {}) {
     const R = React.createElement; const els = []; let section = null; let hidden = false;
     const c = () => ({ ...ctx, usedGloss: { set: ctx.usedGloss.set, done: false } });
-    blocks.forEach((b, i) => {
+    const pushBlock = (b, i) => {
       const blockId = b.id ? `${opts.idPrefix || ''}${b.id}` : null;
       if (b.type === 'h1' && opts.skipH1 !== false) return;
       if (b.type === 'h2') {
@@ -348,6 +349,22 @@ export default class App extends React.Component {
           R('thead', null, R('tr', null, b.header.map((h, j) => R('th', { key: j, style: { textAlign: 'left', fontFamily: MONO, fontSize: 11, fontWeight: 500, color: 'var(--mut)', padding: '6px 10px 6px 0', borderBottom: '1px solid var(--fg)', verticalAlign: 'bottom' } }, this.md.stripInline(h))))),
           R('tbody', null, b.rows.map((r, j) => R('tr', { key: j }, r.map((cell, q) => R('td', { key: q, style: { padding: '8px 12px 8px 0', borderBottom: '1px solid var(--rule)', verticalAlign: 'top' } }, this.inline(cell, { ...ctx, gloss: false })))))))));
       }
+    };
+    // An optional figure belongs to one section (null: before the first section) and is
+    // placed after that section's first visible block, or after the block containing `after`.
+    const figure = opts.figure;
+    let figurePlaced = !figure, inFigureSection = !!figure && figure.section === null;
+    const placeFigure = () => { els.push(R(figure.Component, { key: 'figure' })); figurePlaced = true; };
+    blocks.forEach((b, i) => {
+      if (!figurePlaced && b.type === 'h2') {
+        if (figure.section === null) placeFigure();
+        else inFigureSection = b.id === figure.section;
+      }
+      const before = els.length;
+      pushBlock(b, i);
+      if (figurePlaced || !inFigureSection || els.length === before || /^h[1-4]$/.test(b.type) || b.type === 'hr') return;
+      const text = b.text || (b.items || []).join(' ') || (b.rows || []).flat().join(' ');
+      if (!figure.after || text.includes(figure.after)) placeFigure();
     });
     return els;
   }
@@ -584,7 +601,7 @@ export default class App extends React.Component {
       vals.articleBrief = brief && { body: this.inline(brief.text, { vol: cur.vol, gloss: false, usedGloss: { set: new Set() } }), href: '#' + brief.sectionId };
       vals.articleCitations = metadata?.citations || [];
       vals.hubChapters = r.view === 'hub' ? st.manifest.filter(item => item.vol === cur.vol && item.slug !== '00-readme' && !sharedViewForRecord(item)).map(item => ({ href: this.href(item), title: this.short(item) })) : [];
-      vals.articleBody = R('div', null, this.blocksToEls(bl, { vol: cur.vol, usedGloss: { set: new Set() }, sectionAliases: cur.sectionAliases, sourcePage: ['gold-12', 'after-13', 'bitcoin-16', 'zcash-13'].includes(cur.id) }));
+      vals.articleBody = R('div', null, this.blocksToEls(bl, { vol: cur.vol, usedGloss: { set: new Set() }, sectionAliases: cur.sectionAliases, sourcePage: ['gold-12', 'after-13', 'bitcoin-16', 'zcash-13'].includes(cur.id) }, { figure: ARTICLE_FIGURES[cur.id] }));
       vals.toc = bl.filter(b => b.type === 'h2' || b.type === 'h3').map(b => ({ text: this.md.stripInline(b.text), href: this.href(cur, b.id), indent: b.type === 'h3' ? '12px' : '0' }));
       vals.tocLabel = 'On this page';
       const list = st.manifest.filter(m => m.vol === cur.vol && !sharedViewForRecord(m)); const i = list.indexOf(cur); const prev = list[i - 1], next = list[i + 1];

@@ -146,6 +146,11 @@ export function hubItemList(vol, manifest) {
 
 // Shared by the prerendered page and the React home so both say the same thing.
 export function homeBodyHtml() {
+  return homeIntroHtml() + '\n' + homeRestHtml();
+}
+
+// The interactive home page renders a figure between these two parts.
+export function homeIntroHtml() {
   const c = HOME_COPY;
   return `<section class="home-hero" aria-labelledby="home-title">
 <p class="eyebrow">${escapeHtml(c.eyebrow)}</p>
@@ -156,8 +161,12 @@ export function homeBodyHtml() {
 <section id="volumes" aria-labelledby="journey-title">
 <h2 id="journey-title">The story in four steps</h2>
 <ol class="home-journey">${c.journey.map(step => `<li class="home-step home-step-${escapeHtml(step.vol)}"><a href="${escapeHtml(step.href)}"><span class="home-step-num">${escapeHtml(step.step)} · ${escapeHtml(step.label)}</span><strong>${escapeHtml(step.title)}</strong><span class="home-step-text">${escapeHtml(step.text)}</span></a></li>`).join('')}</ol>
-</section>
-<section aria-labelledby="faq-title">
+</section>`;
+}
+
+export function homeRestHtml() {
+  const c = HOME_COPY;
+  return `<section aria-labelledby="faq-title">
 <h2 id="faq-title">Quick answers</h2>
 <div class="home-faq">${c.faq.map(item => `<div class="home-faq-item" id="${escapeHtml(item.id)}"><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p><a href="${escapeHtml(item.href)}">${escapeHtml(item.linkLabel)} →</a></div>`).join('')}</div>
 </section>

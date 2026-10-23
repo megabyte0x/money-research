@@ -1,4 +1,5 @@
 import React from 'react';
+import { MechanicsTiers } from './features/figures/registry.jsx';
 
 const BOE_MONEY = 'https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2014/money-creation-in-the-modern-economy.pdf';
 const BOE_QE = 'https://www.bankofengland.co.uk/monetary-policy/quantitative-easing';
@@ -21,6 +22,7 @@ export default function MoneyMechanics() {
     <p className="lead">A loan, a payment, a government bond and a central-bank asset purchase are four different transactions. Following who gains an asset and who owes a liability prevents “money printing” from standing in for all of them.</p>
     <p className="small-note">These examples omit interest, fees, taxes and later transactions. A “+£100” is a change, not an account's total balance. They explain mechanics, not the net effect of a policy on inflation or welfare.</p>
     <nav className="mechanics-jump" aria-label="Explainer contents"><a href="/mechanics/#mechanics-loan">Bank loan</a><a href="/mechanics/#mechanics-payment">Payment</a><a href="/mechanics/#mechanics-bond">Bond issue</a><a href="/mechanics/#mechanics-qe">QE purchase</a></nav>
+    <MechanicsTiers />
 
     <section id="mechanics-loan">
       <h2>1. A bank makes a £100 loan</h2>
