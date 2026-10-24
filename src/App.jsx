@@ -15,7 +15,7 @@ import { applyClientMeta, resolvePage } from './seo.js';
 import { SITE } from './site-config.js';
 import { loadRoutePayload, loadShell } from './content-load.js';
 import { HISTORY_STAGES } from './history-stages.js';
-import { MORE_NAV, PRIMARY_NAV } from './static-pages.js';
+import { FOOTER_NAV, MORE_NAV, PRIMARY_NAV } from './static-pages.js';
 import { VOLUME_COPY } from './page-copy.js';
 import { chapterBrief } from './article-metadata.js';
 import { ARTICLE_FIGURES } from './features/figures/registry.jsx';
@@ -23,7 +23,7 @@ import { ARTICLE_FIGURES } from './features/figures/registry.jsx';
 const VOLUME_TITLES = { gold: 'Gold', after: 'After Gold', bitcoin: 'Bitcoin', zcash: 'Zcash' };
 
 function SiteFooter() {
-  return <footer className="site-footer"><nav aria-label="Library">{MORE_NAV.map(item => <a key={item.href} href={item.href}>{item.label}</a>)}</nav></footer>;
+  return <footer className="site-footer"><nav aria-label="Library">{FOOTER_NAV.map(item => <a key={item.href} href={item.href}>{item.label}</a>)}</nav><p>built by <a href="https://megabyte.sh">megabyte</a></p></footer>;
 }
 
 // The prototype declared every rule as an inline CSS string. Keeping those strings

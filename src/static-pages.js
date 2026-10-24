@@ -368,13 +368,16 @@ export const MORE_NAV = [
   { href: '/methods/', label: 'Methods' },
 ];
 
+// Hubs the chapter pages rarely link to; the footer keeps them crawlable from every page.
+export const FOOTER_NAV = MORE_NAV.filter(item => ['/takeaways/', '/sources/', '/methods/'].includes(item.href));
+
 export function siteChrome() {
   return `<header class="static-header"><a href="/">Money Research</a>
 <nav aria-label="Primary">${PRIMARY_NAV.map(item => `<a href="${item.href}">${escapeHtml(item.label)}</a>`).join('')}<a href="/search/">Search</a></nav></header>`;
 }
 
 export function siteFooter() {
-  return `<footer class="site-footer"><nav aria-label="Library">${MORE_NAV.map(item => `<a href="${item.href}">${escapeHtml(item.label)}</a>`).join('')}</nav></footer>`;
+  return `<footer class="site-footer"><nav aria-label="Library">${FOOTER_NAV.map(item => `<a href="${item.href}">${escapeHtml(item.label)}</a>`).join('')}</nav><p>built by <a href="https://megabyte.sh">megabyte</a></p></footer>`;
 }
 
 export function wrapStatic(inner) {
